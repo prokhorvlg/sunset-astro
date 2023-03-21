@@ -1,0 +1,470 @@
+@use 'src/styles/variables' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;800&family=Barlow:wght@500&family=Saira+Semi+Condensed:wght@500;800&family=Saira:wght@600&display=swap');
+
+body {
+    overflow-x: hidden;
+    background-color: $color-background-dark;
+    position: relative;
+    margin: 0;
+}
+
+// GLOBAL
+
+body,
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+    font-family: $font-body;
+    color: $color-light-manila;
+}
+
+p {
+    line-height: 1.7rem;
+    font-size: 1rem;
+    color: $color-light-manila;
+}
+
+p,
+span {
+    &.bold {
+        font-weight: 800;
+    }
+
+    &.highlight-orange {
+        color: $color-light-normal-orange;
+    }
+
+    &.highlight-reddish-orange {
+        color: $color-light-reddish-orange;
+    }
+}
+
+/*
+
+// HOME PAGE DESIGN
+.home-block {
+    .home-parallax-banner {
+        height: calc(100vh - 90px - 10vh);
+        position: relative;
+        z-index: 100;
+
+        >div {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .background {
+            background-image: url('./assets/img/sunset/Fg_Comp.png');
+            background-size: cover;
+            //background-position: center;
+            background-position: 50% 0px;
+            z-index: 100;
+            height: 110%;
+            top: -50px;
+
+            // When background too big, fix it to maximum size
+            @media (min-width: 1920px) {
+                background-size: cover;
+                background-position: 50% 0px;
+                top: -200px;
+            }
+        }
+
+        .subject-main {
+            z-index: 120;
+            background-image: url('./assets/img/sunset/Bum_Man_Red (2).png');
+            background-size: cover;
+            background-position: 50% 100%;
+            background-repeat: no-repeat;
+
+            // When background too big, fix it to maximum size
+            @media (min-width: 1920px) {
+                background-size: 80%;
+            }
+        }
+
+        .side-tall {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: 110;
+
+            @media (max-width: 1200px) {
+                display: none;
+            }
+
+            &::before {
+                display: block;
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 100%;
+
+                background-image: url('./assets/img/sunset/hero-side-tall.png');
+                background-size: cover;
+                background-position: bottom left;
+                background-repeat: no-repeat;
+
+                @media (min-width: 1920px) {
+                    background-size: 80%;
+                }
+            }
+
+
+            &.right {
+                &::before {
+                    transform: scaleX(-1);
+                    //background-position: bottom left;
+
+                }
+            }
+        }
+
+        .hero-transition {
+            z-index: 130;
+            background-image: url('./assets/img/sunset/hero-transition.png');
+            background-size: cover;
+            background-position: bottom center;
+            background-repeat: no-repeat;
+        }
+
+    }
+
+    .home-content {
+        background-color: black;
+        position: relative;
+        z-index: 200;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .home-intro-block {
+            display: flex;
+            justify-content: center;
+            padding: 0 20px 0 20px;
+
+            >div {
+                margin-top: -100px;
+                width: 100%;
+                max-width: 800px;
+            }
+
+            .buttons-row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-top: 50px;
+                margin-bottom: 10px;
+
+                >div,
+                >button {
+                    margin-left: 10px;
+                    margin-right: 10px;
+
+                    &:first-child {
+                        margin-left: 0;
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+
+                .continue {
+                    white-space: pre;
+                    display: inline-block;
+                    width: max-content;
+                    background-color: rgba($color-dark-burnished, 0.9);
+                    padding: 20px;
+                }
+            }
+
+        }
+    }
+}
+
+// PILLAR CONTENT BLOCK
+.pillar-intro {
+    .side-lights-content {
+        max-width: 100%;
+        width: 1300px;
+        margin: 250px 0 250px 0;
+    }
+
+    .pillar-background {
+        position: absolute;
+        max-height: 100vh;
+        pointer-events: none;
+
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        background-image: url('./assets/img/sunset/bigplane-dithered-bg.png');
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .images-wrapper {
+        display: flex;
+        flex-direction: row;
+        margin-right: 10px;
+        margin-top: 20px;
+
+        .dialog-wrap {
+            flex: 1;
+            margin-right: 20px;
+            align-items: stretch;
+
+            &:last-child {
+                margin-right: 0px;
+            }
+
+            .dialog-wrap-slot {
+                height: 100%;
+
+                .dialog-content {
+                    padding: 0;
+                    height: 100%;
+
+                    >div,
+                    img {
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.pillar-passage {
+    .side-lights-content {
+        max-width: 100%;
+        width: 1400px;
+        margin: 150px 0 150px 0;
+    }
+
+    .pillar-wrapper {
+        display: flex;
+        flex-direction: row;
+
+        .side-header {
+            border: 3px solid $color-light-reddish-orange;
+            width: 34px;
+            position: relative;
+
+            .diagonal-rotate-wrapper {
+                position: absolute;
+                left: 9px;
+                top: -11px;
+
+                .diagonal-lines {
+                    transform: translateX(-50%) rotate(-90deg) translateX(-50%);
+                }
+            }
+
+            span {
+                position: absolute;
+                display: block;
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+                bottom: 10px;
+                left: 4px;
+
+                font-family: $font-body-condensed;
+                text-transform: uppercase;
+                color: $color-light-reddish-orange;
+                letter-spacing: 0.1rem;
+                font-size: 0.9rem;
+                font-weight: 800;
+            }
+        }
+
+        .main-content-container {
+            margin: 0 5px 0 5px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            .main-header {
+                border: 3px solid $color-light-normal-orange;
+                background-color: rgba($color-dark-orange, 0.5);
+
+                h2,
+                h3 {
+                    padding: 30px 30px 30px 40px;
+                    font-family: $font-title;
+                    font-size: 2.2rem;
+                    letter-spacing: -0.08rem;
+                    color: $color-light-normal-orange;
+                }
+            }
+
+            .main-content {
+                padding: 45px 30px 30px 45px;
+
+                p {
+                    margin-bottom: 20px;
+                    max-width: 800px;
+                }
+            }
+        }
+    }
+}
+
+.slow-background-position {
+    position: relative;
+    width: 100%;
+
+    .slow-background-container {
+        position: absolute;
+        transform: translateY(-30%);
+        left: 50%;
+        right: -5%;
+
+        .slow-background {
+            height: 150vh;
+            width: 100%;
+
+
+            pointer-events: none;
+
+            background-image: url('./assets/img/sunset/gordon-dithered-bg.png');
+            background-size: 100%;
+            background-position: center right;
+            background-repeat: no-repeat;
+        }
+    }
+}
+
+
+
+.side-lights-wrapper {
+    width: 100%;
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+// SIDE LIGHTS BAR
+.side-lights-bar {
+    position: relative;
+    margin: 0 50px 0 50px;
+
+    .light-column {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        transform: translateX(-50%);
+
+        .light-item {
+            width: 30px;
+            height: 9px;
+            background-color: $color-light-normal-orange;
+            margin-bottom: 3px;
+
+            &.light-orange {
+                background-color: $color-light-normal-orange;
+            }
+
+            &.dark-orange {
+                background-color: $color-light-reddish-orange;
+            }
+        }
+
+
+    }
+
+    .code-text {
+        position: absolute;
+        transform: translateX(-50%) rotate(-90deg);
+
+        span {
+            font-family: $font-body-condensed;
+            letter-spacing: 0.1rem;
+            font-size: 0.9rem;
+            font-weight: 900;
+
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        &.dark-orange span {
+            color: $color-light-reddish-orange;
+        }
+    }
+}
+
+
+
+// BUTTONS
+$sunset-botton-travel-distance: 5px;
+
+.sunset-button {
+    border: none;
+    padding: 20px 20px 20px 20px;
+    width: 100%;
+    background: none;
+    position: relative;
+
+    .main-border {
+        position: absolute;
+        top: -$sunset-botton-travel-distance;
+        left: -$sunset-botton-travel-distance;
+        width: 100%;
+        height: 100%;
+        border: 3px solid $color-light-normal-orange;
+
+        transition: 0.1s ease-in-out;
+    }
+
+    .background {
+        position: absolute;
+        right: -$sunset-botton-travel-distance;
+        bottom: -$sunset-botton-travel-distance;
+        height: 100%;
+        width: 100%;
+        background-color: rgba($color-dark-burnished, 0.9);
+        transition: 0.1s ease-in-out;
+    }
+
+    span {
+        position: relative;
+        color: $color-light-normal-orange;
+        font-family: $font-title-condensed;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+    }
+
+    &:hover,
+    &:focus {
+        .main-border {
+            top: 0;
+            left: 0;
+        }
+
+        .background {
+            bottom: 0;
+            right: 0;
+        }
+
+    }
+}*/

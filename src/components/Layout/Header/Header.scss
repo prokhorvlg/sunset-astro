@@ -1,0 +1,158 @@
+@use 'src/styles/variables' as *;
+
+$line-thickness: 3px;
+
+.sunset-header {
+    height: 80px;
+    left: 0;
+    right: 0;
+    position: relative;
+    z-index: 200;
+    padding: 6px;
+
+    display: flex;
+    flex-direction: row;
+
+    .header-wrap {
+        position: relative;
+        top: 0;
+        bottom: 0;
+        padding: $line-thickness;
+
+        >div {
+            background: $color-background-dark;
+            color: white;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .main-segment-wrap {
+        background: linear-gradient(to right, #ffaa01, #ff510c);
+        flex: 1;
+
+        .main-segment {
+            .main-segment-stipple {
+                height: 100%;
+                position: relative;
+                svg {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    margin-top: 2px;
+                }
+
+                &.left {
+                    width: 10%;
+                    margin-left: 5px;
+                }
+
+                &.right {
+                    flex: 1;
+                    margin-right: 5px;
+                }
+            }
+
+            .main-segment-title {
+                padding: 0 50px 0 50px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                white-space: nowrap;
+                .main-segment-title-text, span {
+                    font-family: $font-title;
+                    font-size: 26px;
+                    letter-spacing: -1px;
+                    font-weight: 500;
+                    color: $color-light-normal-orange;
+                    > span {
+                        color: $color-light-reddish-orange;
+                    }
+                }
+                .main-segment-title-blinky {
+                    margin-right: 20px;
+                    margin-top: 2px;
+
+                    display: grid;
+                    gap: 3px;
+                    grid-template-columns: repeat(3, 1fr);
+                    .square {
+                        height: 10px;
+                        width: 10px;
+                        border-radius: 1px;
+                        &.red {
+                            background: $color-light-reddish-orange;
+                            box-shadow: 0px 3px 2px 0 rgba($color-light-reddish-orange,0.1);
+                        }
+                        &.yellow {
+                            background: $color-light-normal-orange;
+                            box-shadow: 0px 3px 2px 0 rgba($color-light-normal-orange,0.1);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    .links-segment-wrap {
+        background: #ff510c;
+        display: flex;
+        flex-direction: row;
+        margin-left: 5px;
+        padding: $line-thickness 10px;
+
+        .links-segment {
+            
+            padding: 0 10px 0 30px;
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
+        }
+
+        .socials-segment {
+            padding: 0 30px 0 20px;
+            border-left: 3px solid $color-light-reddish-orange;
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: row;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    color: $color-light-reddish-orange;
+                    a {
+                        display: block;
+                        cursor: pointer;
+                        padding: 10px;
+                        border: 3px solid transparent;
+                        svg {
+                            font-size: 24px;
+                        }
+
+                        &:hover {
+                            border: 3px solid $color-light-reddish-orange;
+                            background-color: rgba($color-light-reddish-orange,0.1);
+                            svg {
+                                color: $color-light-manila;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

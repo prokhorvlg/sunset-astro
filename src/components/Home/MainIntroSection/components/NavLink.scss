@@ -1,0 +1,23 @@
+.nav-link {
+    list-style: none;
+    width: 250px;
+}
+
+.nav-link-content {
+    display: flex;
+    flex-direction: row;
+
+    .text {
+        span {
+            font-size: 1rem;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        text-align: left;
+        .strong {
+            text-transform: uppercase;
+            font-weight: 800;
+        }
+    }
+}
