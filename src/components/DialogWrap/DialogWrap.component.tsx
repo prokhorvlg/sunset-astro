@@ -61,7 +61,7 @@ const MacintoshStraightHeader = ({
 }) => {
     const titleHasLength = wrapStyle.headerTitle !== ""
     return (
-        <div className="macintosh-header">
+        <div className="macintosh-header filled">
             <div className="macintosh-header-lines left">
                 <div className="line"></div>
                 <div className="line"></div>

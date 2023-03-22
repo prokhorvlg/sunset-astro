@@ -10,11 +10,12 @@ import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-
 const Header = () => {
     return (
         <div className="sunset-header">
-            <div className="header-wrap main-segment-wrap">
+            <div className="header-wrap main-segment-wrap filled">
                 <div className="main-segment">
                     <div className="main-segment-stipple left"><DotGrid /></div>
                     <div className="main-segment-title">
-                        <BlinkingGrid />
+                        {/*<BlinkingGrid />*/}
+                        <img className="main-logo" src="/images/main-logo-alone.png" />
                         <div className="main-segment-title-text">Sunset <span>System</span></div>
                     </div>
                     <div className="main-segment-stipple right"><DotGrid /></div>

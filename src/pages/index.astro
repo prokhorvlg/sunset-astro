@@ -4,6 +4,7 @@ import Footer from '../components/Layout/Footer/Footer.component';
 import Header from '../components/Layout/Header/Header.component';
 import MainIntroSection from '../components/Home/MainIntroSection/MainIntroSection.component';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import MainBanner from '../components/Home/MainBanner/MainBanner.component';
 ---
 
 <!DOCTYPE html>
@@ -14,6 +15,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 	<body>
 		<Header client:only />
 		<main>
+			<MainBanner />
 			<MainIntroSection />
 		</main>
 		<Footer />

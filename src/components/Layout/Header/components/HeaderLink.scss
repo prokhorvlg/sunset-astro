@@ -32,18 +32,21 @@
 
         span {
             color: $color-light-reddish-orange;
-            font-size: 20px;
+            font-size: 18px;
             font-family: $font-body-condensed;
             font-weight: 600;
             position: relative;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
             &::after {
                 content: '';
                 position: absolute;
-                bottom: -2px;
+                bottom: -1px;
                 left: 0px;
-                height: 3px;
-                width: 12px;
-                border-radius: 2px;
+                height: 2px;
+                width: 10px;
+                border-radius: 1px;
                 background-color: $color-light-reddish-orange;
             }
         }
@@ -51,6 +54,7 @@
         &.active {
             background: $color-light-reddish-orange;
             span {
+                font-weight: 700;
                 color: black;
                 &::after {
                     background-color: black;
@@ -62,13 +66,13 @@
             display: none;
             position: absolute;
             top: calc(100% + 7px);
-            border: 3px solid $color-light-reddish-orange;
+            border: $size-line-thickness solid $color-light-reddish-orange;
             border-bottom-width: 15px;
             background: rgba($color-dark-burnished, 0.9);
             padding: 30px;
             flex-direction: row;
             svg {
-                font-size: 30px;
+                font-size: 22px;
                 color: $color-light-reddish-orange;
                 &.fa-arrow-right {
                     padding-left: 10px;

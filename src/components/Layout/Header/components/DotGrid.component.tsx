@@ -6,7 +6,7 @@ interface Props {
   dotSpacing?: number;
 }
 
-function DotGrid({ numRows = 8, dotRadius = 1.8, dotSpacing = 8 }: Props) {
+function DotGrid({ numRows = 10, dotRadius = 1.5, dotSpacing = 6 }: Props) {
   const [gridWidth, setGridWidth] = useState<number>(0);
   const gridRef = useRef<HTMLDivElement>(null);
 
