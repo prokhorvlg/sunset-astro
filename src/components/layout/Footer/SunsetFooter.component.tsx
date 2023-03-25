@@ -1,6 +1,6 @@
 import DotGrid from "../../common/DotGrid.component"
 
-const Footer = () => {
+const SunsetFooter = () => {
     return (
         <div className="sunset-footer-container">
             <div className="sunset-footer">
@@ -10,4 +10,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default SunsetFooter
