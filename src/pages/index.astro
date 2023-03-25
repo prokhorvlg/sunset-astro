@@ -1,23 +1,36 @@
 ---
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Layout/Footer/Footer.component';
-import Header from '../components/Layout/Header/Header.component';
-import MainIntroSection from '../components/Home/MainIntroSection/MainIntroSection.component';
+import SimpleContainer from '../components/containers/SimpleContainer/SimpleContainer.component';
+import HomeBanner from '../components/home/HomeBanner/HomeBanner.component';
+import IntroSection from '../components/home/IntroSection/IntroSection.component';
+import ScrollSuggestion from '../components/home/ScrollSuggestion/ScrollSuggestion.component';
+import Footer from '../components/layout/Footer/Footer.component';
+import Header from '../components/layout/Header/Header.component';
+import FullWidthWrapper from '../components/wrappers/FullWidthWrapper.component';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import MainBanner from '../components/Home/MainBanner/MainBanner.component';
+import { faWrench } from "@fortawesome/free-solid-svg-icons"
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header client:only />
-		<main>
-			<MainBanner />
-			<MainIntroSection />
-		</main>
-		<Footer />
-	</body>
-</html>
+
+	<html lang="en">
+		<head>
+			<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		</head>
+		<body>
+			<Header client:only />
+			<main>
+				<HomeBanner client:only  />
+				<ScrollSuggestion />
+				<IntroSection client:only />
+				<FullWidthWrapper>
+					<SimpleContainer classes="under-construction">
+						<FontAwesomeIcon icon={faWrench} />
+						<p class="highlight-orange">The full introduction is <span class="highlight-aqua">under construction :)</span></p>
+					</SimpleContainer>
+				</FullWidthWrapper>
+			</main>
+			<Footer />
+		</body>
+	</html>

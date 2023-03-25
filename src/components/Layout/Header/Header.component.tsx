@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import DotGrid from "./components/DotGrid.component";
 import HeaderLink from "./components/HeaderLink.component";
-import './Header.scss'
 
 import { faPatreon, faTwitter, faInstagram, faRedditAlien, faDiscord } from '@fortawesome/free-brands-svg-icons'
 import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-icons'
+import DotGrid from "../../common/DotGrid.component";
 
 const Header = () => {
     return (
+      <div className="sunset-header-container">
         <div className="sunset-header">
             <div className="header-wrap main-segment-wrap filled">
                 <div className="main-segment">
@@ -31,16 +31,17 @@ const Header = () => {
                 </div>
                 <div className="socials-segment">
                     <ul>
-                        <li><a><FontAwesomeIcon icon={faImage} /></a></li>
-                        <li><a><FontAwesomeIcon icon={faPatreon} /></a></li>
-                        <li><a><FontAwesomeIcon icon={faDiscord} /></a></li>
-                        <li><a><FontAwesomeIcon icon={faRedditAlien} /></a></li>
-                        <li><a><FontAwesomeIcon icon={faTwitter} /></a></li>
-                        <li><a><FontAwesomeIcon icon={faInstagram} /></a></li>
+                      <li><a><FontAwesomeIcon icon={faPatreon} /></a></li>
+                      <li><a><FontAwesomeIcon icon={faImage} /></a></li>
+                      <li><a><FontAwesomeIcon icon={faDiscord} /></a></li>
+                      <li><a><FontAwesomeIcon icon={faRedditAlien} /></a></li>
+                      <li><a><FontAwesomeIcon icon={faTwitter} /></a></li>
+                      <li><a><FontAwesomeIcon icon={faInstagram} /></a></li>
                     </ul>
                 </div>
             </div>
         </div>
+      </div>
     )
 }
 
