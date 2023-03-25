@@ -6,7 +6,7 @@ import { faPatreon, faTwitter, faInstagram, faRedditAlien, faDiscord } from '@fo
 import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-icons'
 import DotGrid from "../../common/DotGrid.component";
 
-const Header = () => {
+const SunsetHeader = () => {
     return (
       <div className="sunset-header-container">
         <div className="sunset-header">
@@ -117,4 +117,4 @@ enum SquareState {
   };
   
 
-export default Header;
+export default SunsetHeader;

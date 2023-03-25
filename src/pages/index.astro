@@ -6,7 +6,7 @@ import HomeBanner from '../components/home/HomeBanner/HomeBanner.component';
 import IntroSection from '../components/home/IntroSection/IntroSection.component';
 import ScrollSuggestion from '../components/home/ScrollSuggestion/ScrollSuggestion.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
-import Header from '@/components/layout/Header/Header.component';
+import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import FullWidthWrapper from '../components/wrappers/FullWidthWrapper.component';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { faWrench } from "@fortawesome/free-solid-svg-icons"
@@ -19,7 +19,7 @@ import { faWrench } from "@fortawesome/free-solid-svg-icons"
 			<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		</head>
 		<body>
-			<Header client:only />
+			<SunsetHeader client:only />
 			<main>
 				<HomeBanner client:only  />
 				<ScrollSuggestion />
