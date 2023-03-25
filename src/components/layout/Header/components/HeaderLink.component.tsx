@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 interface PropsTypes {
+    type?: HeaderLinkType
     title: string
     active?: boolean
     icon?: any
@@ -9,7 +10,13 @@ interface PropsTypes {
     dropText? : string
 }
 
+export enum HeaderLinkType {
+    Text = "text",
+    Icon = "icon"
+}
+
 const HeaderLink = ({
+    type = HeaderLinkType.Text,
     title,
     active = false,
     icon,
@@ -17,14 +24,28 @@ const HeaderLink = ({
     dropText
 }: PropsTypes) => {
     return (
-        <li className="header-link-item">
+        <li className={`header-link-item ${type}`}>
             <a className={`header-link ${active ? "active" : ""}`} href={target}>
-                <span>{title}</span>
-                <div className="on-hover">
+                { type === HeaderLinkType.Text ? 
+                    <span>{title}</span> 
+                    : 
                     <FontAwesomeIcon icon={icon} />
-                    <FontAwesomeIcon icon={faArrowRight} />
-                    {dropText}
-
+                }
+                <div className="on-hover">
+                    { type === HeaderLinkType.Text ? 
+                        <>
+                            <div className='given-icon-container'>
+                                <FontAwesomeIcon icon={icon} className="given-icon"/>
+                            </div>
+                            <p className="drop-text">{dropText}</p>
+                        </>
+                        :
+                        <div className='text-container'>
+                            <h3>{title}</h3>
+                            <p className="drop-text">{dropText}</p>
+                        </div>
+                    }
+                    <FontAwesomeIcon icon={faArrowRight} className="arrow" />
                 </div>
             </a>
         </li>

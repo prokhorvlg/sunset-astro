@@ -193,16 +193,16 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
 // - HEADER
 .sunset-header-container {
     background: $color-background-dark;
+    width: 100%;
     max-width: 100%;
     .sunset-header {
         height: 80px;
         left: 0;
         right: 0;
         position: relative;
-        z-index: 200;
+        z-index: 90;
         padding: 6px;
-        width: calc($size-max-width + $size-line-width * 2);
-        max-width: 100%;
+        max-width: calc($size-max-width + $size-line-width * 2);
 
         display: flex;
         flex-direction: row;
@@ -379,7 +379,6 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                 border-left: $size-line-width solid $color-sunset-red;
 
                 position: relative;
-
                 ul {
                     list-style: none;
                     display: flex;
@@ -390,7 +389,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                     position: relative;
                     z-index: 1;
 
-                    li {
+                    /*li {
                         color: $color-sunset-red;
                         margin: 2px;
                         a {
@@ -410,7 +409,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                                 }
                             }
                         }
-                    }
+                    }*/
                 }
 
                 @include abg(0.5);
@@ -423,7 +422,6 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
 
 // - HEADER LINK
 .header-link-item {
-    height: 100%;
     position: relative;
     .header-link {
         cursor: pointer;
@@ -434,8 +432,6 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
         margin: 0 2px;
         padding: 0 20px;
         position: relative;
-        top: 50%;
-        transform: translateY(-50%);
         border: $size-line-width solid transparent;
         text-decoration: none;
         transition: 0.1s ease-in-out;
@@ -443,17 +439,19 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
             border-radius: $chicanery-border-radius;
         }
 
-        &:hover:not(.active), &:focus:not(.active) {
-            border: $size-line-width solid $color-sunset-orange;
-            background: rgba($color-sunset-orange, 0.2);
-            span {
-                color: $color-sunset-orange;
-                &::after {
-                    background-color: $color-sunset-orange;
+        &:hover, &:focus {
+            &:not(.active) {
+                border: $size-line-width solid $color-sunset-orange;
+                background: rgba($color-sunset-orange, 0.2);
+                span {
+                    color: $color-sunset-orange;
+                    &::after {
+                        background-color: $color-sunset-orange;
+                    }
                 }
             }
-            .on-hover {
-                display: flex;
+            .on-hover, &::before {
+                opacity: 1;
             }
         }
 
@@ -492,25 +490,115 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
         }
 
         .on-hover {
-            display: none;
             display: flex;
+            opacity: 0;
+            pointer-events: none;
+
             position: absolute;
             top: calc(100% + 15px);
+            right: 0;
             border: $size-line-width solid $color-sunset-red;
-            background: rgba($color-ultradark-red, 1);
-            padding: 30px;
+            background: $color-ultradark-red;
             flex-direction: row;
+            align-items: center;
             z-index: 100;
+            width: 320px;
+            height: 90px;
+            transition: 0.1s ease-in-out;
 
             @if $chicanery-mode {
                 border-radius: $chicanery-border-radius;
             }
+            @include abg(0.3);
+            @include abg-red-diagonal();
+
+            filter: drop-shadow(0 0 0.5rem rgba($color-background-dark, 0.8));
+
+            > svg, p {
+                @include abg-child();
+            }
+
             svg {
                 font-size: 22px;
                 color: $color-sunset-orange;
-                &.fa-arrow-right {
-                    padding-left: 10px;
-                    color: $color-sunset-manila;
+            }
+
+            .given-icon-container {
+                height: 100%;
+                background-color: rgba($color-sunset-red, 0.3);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+            
+            .drop-text {
+                flex: 1;
+                padding: 10px;
+            }
+            .arrow {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+        &::before {
+            $size: 2px;
+
+            content: "";
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 101;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: 0.1s ease-in-out;
+
+            width: $size; 
+            height: $size; 
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            
+            border-bottom: 15px solid $color-sunset-red;
+        }
+    }
+
+    &.icon {
+        .header-link {
+            &::before {
+                top: calc(100% + 15px);
+            }
+        }
+        
+        .header-link {
+            height: 40px;
+            padding: 0 10px;
+        }
+        svg {
+            color: $color-sunset-red;
+            font-size: 18px;
+        }
+        .on-hover {
+            height: 110px;
+            top: calc(100% + 30px);
+            .text-container {
+                display: flex;
+                flex-direction: column;
+                //justify-content: flex-start;
+                //align-items: flex-start;
+                height: 100%;
+                flex: 1;
+                margin-left: 10px;
+                margin-top: 20px;
+                h3 {
+                    margin: 0;
+                    padding: 0;
+                    color: $color-sunset-red;
+                }
+                p {
+                    margin: 0;
+                    padding: 0;
                 }
             }
         }

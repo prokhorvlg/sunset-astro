@@ -5,5 +5,7 @@ export const CommonText = {
     patreon: "Support my work and get early post access",
     prints: "Buy posters of Sunset artwork",
     discord: "Chat about retrofuturism, worldbuilding, etc",
-    subreddit: "Participate in the Sunset community"
+    subreddit: "Participate in the Sunset community",
+    twitter: "Follow announcements and art/lore posts on social media.",
+    instagram: "Follow announcements and art/lore posts on social media."
 }

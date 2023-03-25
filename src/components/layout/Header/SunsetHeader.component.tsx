@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { faPatreon, faTwitter, faInstagram, faRedditAlien, faDiscord } from '@fortawesome/free-brands-svg-icons'
 import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-icons'
-import HeaderLink from "@/components/layout/Header/components/HeaderLink.component";
+import HeaderLink, { HeaderLinkType } from "@/components/layout/Header/components/HeaderLink.component";
 import DotGrid from "@/components/common/DotGrid.component";
 import { CommonText } from "@/components/data/commonText";
 
@@ -38,7 +38,7 @@ const SunsetHeader = () => {
                           target="/posts"
                           dropText={CommonText.posts}
                         />
-                        <HeaderLink 
+                        <HeaderLink
                           title="Game" 
                           icon={faGamepad}
                           target="/game"
@@ -48,12 +48,48 @@ const SunsetHeader = () => {
                 </div>
                 <div className="socials-segment">
                     <ul>
-                      <li><a><FontAwesomeIcon icon={faPatreon} /></a></li>
-                      <li><a><FontAwesomeIcon icon={faImage} /></a></li>
-                      <li><a><FontAwesomeIcon icon={faDiscord} /></a></li>
-                      <li><a><FontAwesomeIcon icon={faRedditAlien} /></a></li>
-                      <li><a><FontAwesomeIcon icon={faTwitter} /></a></li>
-                      <li><a><FontAwesomeIcon icon={faInstagram} /></a></li>
+                      <HeaderLink
+                        title="Patreon" 
+                        icon={faPatreon}
+                        target="/game"
+                        dropText={CommonText.patreon}
+                        type={HeaderLinkType.Icon}
+                      />
+                      <HeaderLink
+                        title="Prints" 
+                        icon={faImage}
+                        target="/game"
+                        dropText={CommonText.prints}
+                        type={HeaderLinkType.Icon}
+                      />
+                      <HeaderLink
+                        title="Discord" 
+                        icon={faDiscord}
+                        target="/game"
+                        dropText={CommonText.discord}
+                        type={HeaderLinkType.Icon}
+                      />
+                      <HeaderLink
+                        title="Subreddit" 
+                        icon={faRedditAlien}
+                        target="/game"
+                        dropText={CommonText.subreddit}
+                        type={HeaderLinkType.Icon}
+                      />
+                      <HeaderLink
+                        title="Twitter" 
+                        icon={faTwitter}
+                        target="/game"
+                        dropText={CommonText.twitter}
+                        type={HeaderLinkType.Icon}
+                      />
+                      <HeaderLink
+                        title="Instagram" 
+                        icon={faInstagram}
+                        target="/game"
+                        dropText={CommonText.instagram}
+                        type={HeaderLinkType.Icon}
+                      />
                     </ul>
                 </div>
             </div>
