@@ -1,11 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-
 import { faPatreon, faTwitter, faInstagram, faRedditAlien, faDiscord } from '@fortawesome/free-brands-svg-icons'
 import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-icons'
 import HeaderLink, { HeaderLinkType } from "@/components/layout/Header/components/HeaderLink.component";
 import DotGrid from "@/components/common/DotGrid.component";
-import { CommonText } from "@/components/data/commonText";
+import { CommonText } from "@/data/CommonText";
 
 const SunsetHeader = () => {
     return (
