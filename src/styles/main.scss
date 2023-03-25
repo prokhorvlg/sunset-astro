@@ -49,7 +49,7 @@ body {
         left: 0;
 
         //background: url('images/textures/gridbg_lite.png');
-        background: url('images/patterns/bg-dot-pattern.svg');
+        background: url('/images/patterns/bg-dot-pattern.svg');
         background-size:5%;
         opacity: 1;
         z-index: -100;
@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
         top: 0; bottom: 0; left: 0; right: 0;
         position: absolute;
         z-index: 0;
-        background: url('images/patterns/red-diagonal-pattern.svg');
+        background: url('/images/patterns/red-diagonal-pattern.svg');
         background-size: 7%;
         opacity: 0.3;
     }
@@ -401,7 +401,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                     right: 0;
                     left: 0;
                     z-index: 0;
-                    background: url('images/patterns/red-diagonal-pattern.svg');
+                    background: url('/images/patterns/red-diagonal-pattern.svg');
                     background-size: 40%;
                     opacity: 0.5;
                 }
@@ -955,14 +955,14 @@ $dialog-main-color: $color-sunset-red;
             width: 100%;
         }
         .sunset-white-grad {
-            background: url('images/Hero_Background (1).png');
+            background: url('/images/Hero_Background (1).png');
             background-size: cover;
             background-position: center;
             mix-blend-mode: overlay;
             opacity: 0.5;
         }
         .sunset-hero-front {
-            background: url('images/Hero_Bum.png');
+            background: url('/images/Hero_Bum.png');
             background-size: cover;
             background-position: bottom;
         }
@@ -971,7 +971,7 @@ $dialog-main-color: $color-sunset-red;
             opacity: 0.4;
         }
         .sunset-hero-left {
-            background: url('images/Hero_Lazarus (24).png');
+            background: url('/images/Hero_Lazarus (24).png');
             background-size: 2100px;
             background-repeat:no-repeat;
             background-position: left center;
@@ -985,7 +985,7 @@ $dialog-main-color: $color-sunset-red;
         .sunset-banner-deep-background {
             background: orange;
             transform: scale(2.5);
-            //background: url('images/Hero_Background.png');
+            //background: url('/images/Hero_Background.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -995,13 +995,13 @@ $dialog-main-color: $color-sunset-red;
             opacity: 0;
         }
         .foreground {
-            background-image: url('images/Fg_Comp (2).png');
+            background-image: url('/images/Fg_Comp (2).png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: bottom center;
         }
         .topground {
-            background-image: url('images/Fg_Comp (2).png');
+            background-image: url('/images/Fg_Comp (2).png');
             transform: rotate(180deg);
             background-size: cover;
             background-repeat: no-repeat;
@@ -1090,7 +1090,7 @@ $dialog-main-color: $color-sunset-red;
                         .bg {
                             position: absolute;
                             top: -50px; bottom: -50px; right: 0; left: 0;
-                            background: url('images/Hero_Background.png');
+                            background: url('/images/Hero_Background.png');
                             background-size: cover;
                             background-repeat: no-repeat;
                             background-position: center;
@@ -1154,7 +1154,7 @@ $dialog-main-color: $color-sunset-red;
                             content: "";
                             position: absolute;
                             top: 0; bottom: 0; right: 0; left: 0;
-                            background: url('images/patterns/red-diagonal-pattern.svg');
+                            background: url('/images/patterns/red-diagonal-pattern.svg');
                             opacity: 0.1;
                             background-size: 10%;
                         }
