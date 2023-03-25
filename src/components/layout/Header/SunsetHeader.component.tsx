@@ -5,6 +5,7 @@ import { faPatreon, faTwitter, faInstagram, faRedditAlien, faDiscord } from '@fo
 import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-icons'
 import HeaderLink from "@/components/layout/Header/components/HeaderLink.component";
 import DotGrid from "@/components/common/DotGrid.component";
+import { CommonText } from "@/components/data/commonText";
 
 const SunsetHeader = () => {
     return (
@@ -24,9 +25,25 @@ const SunsetHeader = () => {
             <div className="header-wrap links-segment-wrap">
                 <div className="links-segment">
                     <ul>
-                        <HeaderLink title="Home" active={true} icon={faHome}/>
-                        <HeaderLink title="Posts" icon={faList}/>
-                        <HeaderLink title="Game" icon={faGamepad} />
+                        <HeaderLink 
+                          title="Home" 
+                          active={true} 
+                          icon={faHome} 
+                          target="/"
+                          dropText={CommonText.home}
+                        />
+                        <HeaderLink 
+                          title="Posts" 
+                          icon={faList}
+                          target="/posts"
+                          dropText={CommonText.posts}
+                        />
+                        <HeaderLink 
+                          title="Game" 
+                          icon={faGamepad}
+                          target="/game"
+                          dropText={CommonText.game}
+                        />
                     </ul>
                 </div>
                 <div className="socials-segment">

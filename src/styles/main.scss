@@ -16,6 +16,8 @@ $size-max-width: 2000px;
 $size-max-width-blog: 800px;
 $size-line-width: 2px;
 
+$breakpoint-mobile: 1200px;
+
 // Otherwise known as rounded mode
 $chicanery-mode: true;
 $chicanery-border-radius: 6px;
@@ -33,27 +35,48 @@ $font-title: 'Saira', sans-serif;
 $font-body: 'Barlow', sans-serif;
 $font-code: 'Chivo Mono', sans-serif;
 
+// MIXINS
+// - ::after background pattern (abg)
+@mixin abg ($opacity: 0.4) {
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0; bottom: 0; left: 0; right: 0;
+        opacity: $opacity;
+        user-select: none;
+    }
+}
+// abg-child: applied to the child, to make sure it is above the background.
+@mixin abg-child {
+    position: relative;
+    z-index: 1;
+}
+// various patterns!
+@mixin abg-red-dot-grid {
+    &::after {
+        background: url('/images/patterns/bg-dot-pattern.svg');
+        background-size: 120px;
+    }
+}
+@mixin abg-red-diagonal {
+    &::after {
+        background: url('/images/patterns/red-diagonal-pattern.svg');
+        background-size: 120px;
+    }
+}
+
+
 // GLOBAL
 body {
     overflow-x: hidden;
     background-color: $color-background-dark;
     position: relative;
     margin: 0;
+
+    @include abg(1);
+    @include abg-red-dot-grid;
     &::after {
-        content: "";
-
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-
-        //background: url('images/textures/gridbg_lite.png');
-        background: url('/images/patterns/bg-dot-pattern.svg');
-        background-size:5%;
-        opacity: 1;
         z-index: -100;
-        user-select: none;
     }
 }
 
@@ -142,19 +165,11 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
     }
     background-color: $color-ultradark-red;
 
-    &::after {
-        content: "";
-        top: 0; bottom: 0; left: 0; right: 0;
-        position: absolute;
-        z-index: 0;
-        background: url('/images/patterns/red-diagonal-pattern.svg');
-        background-size: 7%;
-        opacity: 0.3;
-    }
+    @include abg;
+    @include abg-red-diagonal;
 
     .simple-container-inner {
-        position: relative;
-        z-index: 1;
+        @include abg-child;
     }
 }
 
@@ -179,7 +194,6 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
 .sunset-header-container {
     background: $color-background-dark;
     max-width: 100%;
-    overflow: hidden;
     .sunset-header {
         height: 80px;
         left: 0;
@@ -333,6 +347,10 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
             margin-left: 5px;
             padding: $size-line-width 2px;
 
+            @media screen and (max-width: $breakpoint-mobile) {
+                display: none;
+            }
+
             .links-segment {
                 @if $chicanery-mode {
                     border-radius: $chicanery-border-radius;
@@ -395,18 +413,8 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                     }
                 }
 
-                &::after {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    bottom: 0;
-                    right: 0;
-                    left: 0;
-                    z-index: 0;
-                    background: url('/images/patterns/red-diagonal-pattern.svg');
-                    background-size: 40%;
-                    opacity: 0.5;
-                }
+                @include abg(0.5);
+                @include abg-red-diagonal;
             }
         }
 
@@ -429,9 +437,13 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
         top: 50%;
         transform: translateY(-50%);
         border: $size-line-width solid transparent;
+        text-decoration: none;
         transition: 0.1s ease-in-out;
+        @if $chicanery-mode {
+            border-radius: $chicanery-border-radius;
+        }
 
-        &:hover:not(.active) {
+        &:hover:not(.active), &:focus:not(.active) {
             border: $size-line-width solid $color-sunset-orange;
             background: rgba($color-sunset-orange, 0.2);
             span {
@@ -441,7 +453,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                 }
             }
             .on-hover {
-                //display: flex;
+                display: flex;
             }
         }
 
@@ -464,6 +476,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                 width: 10px;
                 border-radius: 1px;
                 background-color: $color-sunset-red;
+                transition: 0.1s ease-in-out;
             }
         }
 
@@ -480,13 +493,18 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
 
         .on-hover {
             display: none;
+            display: flex;
             position: absolute;
-            top: calc(100% + 7px);
-            border: $size-line-width solid $color-sunset-orange;
-            border-bottom-width: 15px;
-            background: rgba($color-ultradark-red, 0.9);
+            top: calc(100% + 15px);
+            border: $size-line-width solid $color-sunset-red;
+            background: rgba($color-ultradark-red, 1);
             padding: 30px;
             flex-direction: row;
+            z-index: 100;
+
+            @if $chicanery-mode {
+                border-radius: $chicanery-border-radius;
+            }
             svg {
                 font-size: 22px;
                 color: $color-sunset-orange;
@@ -1051,7 +1069,7 @@ $dialog-main-color: $color-sunset-red;
         max-width: 1800px;
         padding: 50px 50px;
 
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: $breakpoint-mobile) {
             flex-direction: column;
         }
 
@@ -1120,10 +1138,8 @@ $dialog-main-color: $color-sunset-red;
                             font-size: 14px;
                             z-index: 3;
                         }
+                        @include abg();
                         &::after {
-                            content: "";
-                            position: absolute;
-                            top: 0px; bottom: 0px; right: 0; left: 0;
                             background: linear-gradient(185deg, 
                                 rgba(152,42,0,0.8) 0%, 
                                 rgba(255,99,1,0) 20%
@@ -1143,9 +1159,8 @@ $dialog-main-color: $color-sunset-red;
                             padding-bottom: 10px;
                             margin-bottom: 60px;
                             position: relative;
+                            @include abg(1);
                             &:after {
-                                content: "";
-                                position: absolute;
                                 top: 100%;
                                 left: 0;
                                 width: 250px;
@@ -1157,14 +1172,8 @@ $dialog-main-color: $color-sunset-red;
                             position: relative;
                             z-index: 2;
                         }
-                        &:after {
-                            content: "";
-                            position: absolute;
-                            top: 0; bottom: 0; right: 0; left: 0;
-                            background: url('/images/patterns/red-diagonal-pattern.svg');
-                            opacity: 0.1;
-                            background-size: 10%;
-                        }
+                        @include abg(0.2);
+                        @include abg-red-diagonal;
                     }
                 }
             }
