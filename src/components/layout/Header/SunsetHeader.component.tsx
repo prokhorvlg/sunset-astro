@@ -3,7 +3,7 @@ import { faPatreon, faTwitter, faInstagram, faRedditAlien, faDiscord } from '@fo
 import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-icons'
 import HeaderLink, { HeaderLinkType } from "@/components/layout/Header/components/HeaderLink.component";
 import DotGrid from "@/components/common/DotGrid.component";
-import { CommonText } from "@/data/CommonText";
+import { CommonLinks, CommonText } from "@/data/Common";
 
 const SunsetHeader = () => {
     return (
@@ -27,19 +27,19 @@ const SunsetHeader = () => {
                           title="Home" 
                           active={true} 
                           icon={faHome} 
-                          target="/"
+                          target={CommonLinks.home}
                           dropText={CommonText.home}
                         />
                         <HeaderLink 
                           title="Posts" 
                           icon={faList}
-                          target="/posts"
+                          target={CommonLinks.posts}
                           dropText={CommonText.posts}
                         />
                         <HeaderLink
                           title="Game" 
                           icon={faGamepad}
-                          target="/game"
+                          target={CommonLinks.game}
                           dropText={CommonText.game}
                         />
                     </ul>
@@ -49,44 +49,50 @@ const SunsetHeader = () => {
                       <HeaderLink
                         title="Patreon" 
                         icon={faPatreon}
-                        target="/game"
+                        target={CommonLinks.patreon}
                         dropText={CommonText.patreon}
                         type={HeaderLinkType.Icon}
+                        external={true}
                       />
                       <HeaderLink
                         title="Prints" 
                         icon={faImage}
-                        target="/game"
+                        target={CommonLinks.prints}
                         dropText={CommonText.prints}
                         type={HeaderLinkType.Icon}
+                        external={true}
                       />
                       <HeaderLink
                         title="Discord" 
                         icon={faDiscord}
-                        target="/game"
+                        target={CommonLinks.discord}
                         dropText={CommonText.discord}
                         type={HeaderLinkType.Icon}
+                        external={true}
                       />
                       <HeaderLink
                         title="Subreddit" 
                         icon={faRedditAlien}
-                        target="/game"
+                        target={CommonLinks.subreddit}
                         dropText={CommonText.subreddit}
                         type={HeaderLinkType.Icon}
+                        external={true}
                       />
                       <HeaderLink
                         title="Twitter" 
                         icon={faTwitter}
-                        target="/game"
+                        target={CommonLinks.twitter}
                         dropText={CommonText.twitter}
                         type={HeaderLinkType.Icon}
+                        external={true}
                       />
                       <HeaderLink
                         title="Instagram" 
                         icon={faInstagram}
-                        target="/game"
+                        target={CommonLinks.instagram}
                         dropText={CommonText.instagram}
                         type={HeaderLinkType.Icon}
+                        external={true}
                       />
                     </ul>
                 </div>

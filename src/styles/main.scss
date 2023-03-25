@@ -246,6 +246,9 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                     &.left {
                         width: 10%;
                         margin-left: 5px;
+                        @media screen and (max-width: $breakpoint-mobile) {
+                            display: none;
+                        }
                     }
 
                     &.right {

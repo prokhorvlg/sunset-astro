@@ -9,3 +9,15 @@ export const CommonText = {
     twitter: "Follow announcements and art/lore posts on social media.",
     instagram: "Follow announcements and art/lore posts on social media."
 }
+
+export const CommonLinks = {
+    home: '/',
+    posts: '/posts',
+    game: '/game',
+    patreon: "https://www.patreon.com/prokhorvlg",
+    prints: "https://www.inprnt.com/gallery/prokhorvlg/",
+    discord: "https://discord.gg/aM5SBShUeA",
+    subreddit: "https://www.reddit.com/r/sunsetsystem/",
+    twitter: "https://twitter.com/prokhorVLG",
+    instagram: "https://instagram.com/prokhorvlg"
+}

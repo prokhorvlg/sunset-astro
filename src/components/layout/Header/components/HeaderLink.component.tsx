@@ -7,7 +7,8 @@ interface PropsTypes {
     active?: boolean
     icon?: any
     target?: string
-    dropText? : string
+    dropText?: string
+    external?: boolean
 }
 
 export enum HeaderLinkType {
@@ -21,11 +22,14 @@ const HeaderLink = ({
     active = false,
     icon,
     target,
-    dropText
+    dropText,
+    external = false
 }: PropsTypes) => {
     return (
         <li className={`header-link-item ${type}`}>
-            <a className={`header-link ${active ? "active" : ""}`} href={target}>
+            <a className={`header-link ${active ? "active" : ""}`} href={target} 
+                target={external ? "_blank" : "_self"}
+            >
                 { type === HeaderLinkType.Text ? 
                     <span>{title}</span> 
                     : 
