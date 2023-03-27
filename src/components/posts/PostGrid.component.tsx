@@ -60,7 +60,7 @@ const PostsView = ({
                 {filteredPosts
                     .map((lorePost) => {
                         return (
-                            <PostCard post={lorePost}/>
+                            <PostCard key={lorePost.id} post={lorePost}/>
                         )
                     })
                 }
