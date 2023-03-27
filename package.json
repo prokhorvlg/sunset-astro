@@ -27,7 +27,9 @@
     "react-dom": "^18.2.0",
     "react-just-parallax": "^3.1.14",
     "react-parallax": "^3.5.1",
-    "react-scroll-parallax": "^3.3.2"
+    "react-scroll-parallax": "^3.3.2",
+    "remark": "^14.0.2",
+    "strip-markdown": "^5.0.0"
   },
   "devDependencies": {
     "sass": "^1.59.3"

@@ -1,6 +1,7 @@
+import { PostType } from '@/components/posts/PostGrid.component';
 import { defineCollection, z } from 'astro:content';
 
-const blog = defineCollection({
+const collectionSetup = {
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
@@ -15,7 +16,13 @@ const blog = defineCollection({
 			.optional()
 			.transform((str) => (str ? new Date(str) : undefined)),
 		heroImage: z.string().optional(),
+		draft: z.boolean().optional(),
+		tags: z.array(z.string()).optional()
 	}),
-});
+}
 
-export const collections = { blog };
+export const collections = {
+	[PostType.Lore]: defineCollection(collectionSetup),
+	[PostType.Game]: defineCollection(collectionSetup),
+	[PostType.Announcement]: defineCollection(collectionSetup),
+};

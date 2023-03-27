@@ -19,9 +19,9 @@ import { faWrench } from "@fortawesome/free-solid-svg-icons"
 			<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		</head>
 		<body>
-			<SunsetHeader client:only />
+			<SunsetHeader client:only currentPage={Astro.url.pathname} />
 			<main>
-				<HomeBanner client:only  />
+				<HomeBanner client:only />
 				<ScrollSuggestion />
 				<IntroSection client:only />
 				<FullWidthWrapper>

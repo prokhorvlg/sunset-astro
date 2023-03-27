@@ -11,8 +11,20 @@ $color-sunset-melancholic: #0ec7ff;
 $color-ultradark-red: #461709;
 $color-background-dark: #24150e;
 
+$color-retro-dreams: $color-sunset-red;
+$color-core-mystery: #2a94ea;
+$color-post-mankind: #d70eff;
+
+/*
+$color-retro-dreams: #ff8800;
+$color-core-mystery: #ea2a63;
+$color-post-mankind: #d70eff;
+b433f0
+*/
+
 // SIZE
 $size-max-width: 2000px;
+$size-max-width-mid: 1400px;
 $size-max-width-blog: 800px;
 $size-line-width: 2px;
 
@@ -44,6 +56,7 @@ $font-code: 'Chivo Mono', sans-serif;
         top: 0; bottom: 0; left: 0; right: 0;
         opacity: $opacity;
         user-select: none;
+        pointer-events: none;
     }
 }
 // abg-child: applied to the child, to make sure it is above the background.
@@ -154,6 +167,8 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
         max-width: $size-max-width;
         margin: 0 6px;
     }
+
+
 }
 
 // - SIMPLE CONTAINER
@@ -415,7 +430,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em {
                     }*/
                 }
 
-                @include abg(0.5);
+                @include abg(0.4);
                 @include abg-red-diagonal;
             }
         }
@@ -1549,5 +1564,195 @@ $dialog-main-color: $color-sunset-red;
                 color: $color-sunset-aqua;
             }
         }
+    }
+}
+
+// POSTS PAGE
+
+// - POSTS VIEW
+.posts-view {
+    width: 100%;
+    max-width: $size-max-width-mid;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+// - POSTS FILTERS
+.posts-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .post-string {
+        position: relative;
+        input {
+            border: $size-line-width solid $color-sunset-red;
+            border-radius: $chicanery-border-radius;
+            background: $color-background-dark;
+            padding: 20px;
+            padding-right: 60px;
+
+            width: 400px;
+            max-width: 100%;
+
+            color: $color-sunset-orange;
+            font-size: 16px;
+            font-family: $font-code;
+            &::placeholder {
+                color: $color-sunset-red;
+                opacity: 0.6;
+            }
+        }
+        .search-icon {
+            position: absolute;
+            color: $color-sunset-red;
+            font-size: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: -40px;
+            pointer-events: none;
+        }
+    }
+}
+
+// - POSTS GRID
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 45px;
+
+    margin: 40px 0 100px 0;
+    transition: 0.1s ease-in-out;
+}
+
+// - POST CARD
+.post-card.dialog-wrap {
+    width: 100%;
+    &:hover {
+        .dialog-wrap-slot {
+            .dialog-content {
+                .post-card-top {
+                    .post-card-image {
+                        transform: scale(1.1) translate(-5px, -5px);
+                    }
+                }
+            }
+        }
+    }
+    .dialog-wrap-slot {
+        .dialog-content {
+            padding: 0;
+            height: 600px;
+            
+            user-select: none;
+            cursor: pointer;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 2fr 1fr 50px;
+            align-items: stretch;
+            background: $color-sunset-red;
+            .post-card-top {
+                overflow: hidden;
+                border: 4px solid $color-background-dark;
+                border-top-right-radius: $chicanery-border-radius;
+                border-top-left-radius: $chicanery-border-radius;
+                background-color: $color-background-dark;
+                border-radius: 6px;
+                
+                
+                z-index: 10;
+                .post-card-image {
+                    height: 100%;
+                    background-size: cover;
+                    background-position: top;
+                    background-repeat: no-repeat;
+                    transform: scale(1) translate(0, 0);
+                    transition: 0.1s ease-in-out;
+                    position: relative;
+                    box-shadow: inset 0 0 30px 5px rgba(black, 0.4);
+
+                    @include abg(0.2);
+                    &:after {
+                        background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
+                        mix-blend-mode: soft-light;
+                    }
+                }
+            }
+            .post-card-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                border-top: $size-line-width solid $color-sunset-red;
+                border-radius: $chicanery-border-radius;
+                background: $color-ultradark-red;
+                padding: 20px;
+                
+                > span, > div, > h3, > p {
+                    @include abg-child();
+                }
+
+                .title {
+                    font-size: 22px;
+                    margin: 10px 0 10px 0;
+                    color: $color-sunset-orange;
+                    font-weight: 600;
+                }
+                .description {
+                    margin: 0;
+                    color: $color-sunset-red;
+                }
+            }
+            .post-card-bottom {
+                position: relative;
+                border-top: $size-line-width solid $color-sunset-red;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                background: $color-ultradark-red;
+                border-radius: $chicanery-border-radius;
+
+                @include abg(0.4);
+                @include abg-red-diagonal();
+                .date {
+                    color: $color-sunset-orange;
+                    padding: 0;
+                    margin: 0;
+                    font-weight: 500;
+                }
+                .arrow {
+                    color: $color-sunset-orange;
+                }
+            }
+        }
+    }
+}
+
+// - POST: TAG CLOUD
+@mixin tag-color ($className, $color, $textColor: white) {
+    &#{$className} {
+        border: none;
+        background-color: $color;
+        color: $textColor;
+    }
+}
+.tags {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    .tag {
+        background: $color-ultradark-red;
+        border: $size-line-width solid $color-sunset-red;
+        color: $color-sunset-red;
+        border-radius: 5px;
+        padding: 0px 5px;
+
+        @include tag-color(".post-mankind", $color-post-mankind);
+        @include tag-color(".retro-dreams", $color-retro-dreams);
+        @include tag-color(".core-mystery", $color-core-mystery);
     }
 }

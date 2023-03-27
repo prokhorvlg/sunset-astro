@@ -1,3 +1,7 @@
+export enum WrapperMax {
+    
+}
+
 const FullWidthWrapper = ({
     children,
     classes = ""
