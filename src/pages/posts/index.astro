@@ -6,16 +6,27 @@ import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import PostsView, { PostType } from '@/components/posts/PostGrid.component';
 
-const lorePosts= await getCollection(PostType.Lore, ({ data }) => {
+const lorePosts = await getCollection(PostType.Lore, ({ data }) => {
   return data.draft !== true;
 })
-
 const lorePostsProcessed = lorePosts.map((item) => {
 	return {
 		...item,
-		searchData: `${item.data.title.toLowerCase()} ${item.data.mainText.toLowerCase()} ${item.data.tags?.map((tag) => tag.toLowerCase() + " ")} ${item.body.toLowerCase()}`
+		searchData: `${item.data.title.toLowerCase()} ${item.data.mainText?.toLowerCase()} ${item.data.tags?.map((tag) => tag.toLowerCase() + " ")} ${item.body.toLowerCase()}`
 	}
 });
+
+const introductionPosts = await getCollection(PostType.Introduction, ({ data }) => {
+  return data.draft !== true;
+})
+const introductionPostsProcessed = introductionPosts.map((item) => {
+	return {
+		...item,
+		searchData: `${item.data.title.toLowerCase()} ${item.data.mainText?.toLowerCase()} ${item.data.tags?.map((tag) => tag.toLowerCase() + " ")} ${item.body.toLowerCase()}`
+	}
+});
+
+
 /*
 const gamePosts = await getCollection(PostType.Game, ({ data }) => {
   return data.draft !== true;
@@ -40,6 +51,7 @@ const announcementPosts = await getCollection(PostType.Announcement, ({ data }) 
 		<main>
 			<PostsView  client:only
 				lorePosts={lorePostsProcessed}
+				introductionPosts={introductionPostsProcessed}
 			/>
 			
 

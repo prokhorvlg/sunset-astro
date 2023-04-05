@@ -10,14 +10,11 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import ImageContentRow from '@/components/common/ContentRow/ImageContentRow.component'
-export const imageSource = "/images/content/gordon.jpg"
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 
-<ImageContentRow imageItems={[
-  {
-    source: imageSource
-  }
-]} />
+<ImageContentRowRender 
+  images={['Gordon']}
+/>
 
 <TextContentRow>
   1987 was a year of tremendous progress in the arena of Western cybernetics. With Maple’s announcement of an incredible new human-facing robot, and Berkeley’s cybernetic refresh of their ubiquitous business machines, it was clear that a revolution was on the horizon.
@@ -27,4 +24,6 @@ export const imageSource = "/images/content/gordon.jpg"
   It wouldn’t be until the 2000s before humanity at large recognized it; when cybernetics found its way into every home, every city, and everywhere there was civilization. This Era of Creation was prosperous and glorious: no problem too great for technology to conquer.
 
   They achieved their dream, and by the 2090s, there was only one thing left to conquer: the limitations of the human being itself.
+
+  > quote
 </TextContentRow>

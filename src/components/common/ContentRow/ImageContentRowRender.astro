@@ -1,0 +1,76 @@
+---
+import { ImageDetails, ImageId, Images } from '@/utils/sharedImages';
+import { getImage } from '@astrojs/image';
+import ImageContentRow from './ImageContentRow.component'
+import { Image, Picture } from '@astrojs/image/components';
+
+
+interface Props {
+  images: ImageId[];
+}
+
+/*const imageObjects = Astro.props.images.map((image) => {
+  const imageObject = Images.find((imageItem) => imageItem.id === image)
+  return imageObject
+})
+
+
+let imageObjects: ImageDetails[] = []
+Astro.props.images.forEach((image) => {
+  const imageObject = Images.find((imageItem) => imageItem.id === image)
+  if (imageObject) {
+    imageObjects.push(imageObject)
+  }
+})*/
+
+const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) => {
+  // Find relevant image object
+  const imageObject = Images.find((imageItem) => imageItem.id === image)
+  if (!imageObject) return null
+
+  // Generate an image of the correct size
+  return await getImage({
+    src: imageObject.src,
+    alt: "",
+    aspectRatio: imageObject.aspectRatio,
+    width: imageObject.width,
+    height: imageObject.height,
+    format: "webp"
+  })
+}))
+---
+
+<!--{Astro.props.images.map((imageId) => {
+  const imageObject = Images.find((imageItem) => imageItem.id === imageId)
+  if (imageObject) {
+    return (
+      <Image src={imageObject.src} alt="" format="webp" width={200} height={300} loading="lazy" />
+    )
+  }
+  return null
+})}-->
+
+<ImageContentRow 
+  client:only="react"
+  imageItems={imagesProcessed} 
+/>
+
+<!-- 
+<ImageContentRow 
+  client:only="react"
+  imageItems={[
+    {
+      id: "gordon",
+      src: src,
+      width: 3000,
+      height: 4144,
+    },
+    {
+      id: "lazarus",
+      src: "/images/content/lazarus.jpg",
+      width: 3688,
+      height: 2294
+    },
+]} />
+
+-->

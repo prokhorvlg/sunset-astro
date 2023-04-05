@@ -10,34 +10,38 @@ import strip from 'strip-markdown'
 
 export enum PostType {
 	Lore = 'lore',
+    Introduction = 'introduction',
 	Game = 'game',
 	Announcement = 'announcement'
 }
 
 interface PropTypes {
     lorePosts: CollectionEntry<PostType.Lore>[]
+    introductionPosts: CollectionEntry<PostType.Introduction>[]
 }
 
 const PostsView = ({
-    lorePosts
+    lorePosts,
+    introductionPosts
 }: PropTypes) => {
     const [searchString, setSearchString] = useState("")
     const [activeCollection, setActiveCollection] = useState(PostType.Lore)
-    const [filteredPosts, setFilteredPosts] = useState<CollectionEntry<PostType.Lore>[]>([])
+    const [filteredPosts, setFilteredPosts] = useState<CollectionEntry<PostType.Lore | PostType.Introduction>[]>([])
 
-    /*
-    const processedLorePosts = lorePosts.map(async (post) => {
-        const strippedMarkdown = await remark().use(strip).process(post.body)
-        return {
-            ...post,
-            searchData: `${strippedMarkdown}`
-        }
-    })*/
+    const filterPosts = (
+        posts: CollectionEntry<PostType.Lore | PostType.Introduction>[], 
+        searchString: string
+    ) => {
+        return posts.filter((i) => i.searchData.includes(searchString.toLowerCase()))
+    }
 
     useEffect(() => {
         console.log("searching on", searchString)
         
-        setFilteredPosts(lorePosts.filter((i) => i.searchData.includes(searchString.toLowerCase())))
+        setFilteredPosts([
+            ...filterPosts(lorePosts, searchString),
+            ...filterPosts(introductionPosts, searchString),
+        ])
     }, [searchString])
 
     return (
@@ -58,9 +62,9 @@ const PostsView = ({
             </div>
             <div className="posts-grid">
                 {filteredPosts
-                    .map((lorePost) => {
+                    .map((post) => {
                         return (
-                            <PostCard key={lorePost.id} post={lorePost}/>
+                            <PostCard key={post.slug} post={post}/>
                         )
                     })
                 }

@@ -1,16 +1,19 @@
 export interface QuoteAuthor {
+    id: string
     name: string
     image: string
     description: string
 }
 
 export const AuthorTerminal: QuoteAuthor = {
-    name: "Command Line",
+    id: "you",
+    name: "Internal Memory",
     image: "",
-    description: "The little voice in your head."
+    description: "The little voices in your head."
 
 }
 export const AuthorUniserve: QuoteAuthor = {
+    id: "uniserve",
     name: "UNISERVE",
     image: "/images/home/uniserve-present.png",
     description: "The curator of this exhibit."

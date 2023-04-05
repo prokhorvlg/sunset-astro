@@ -25,6 +25,7 @@ const collectionSetup = {
 
 export const collections = {
 	[PostType.Lore]: defineCollection(collectionSetup),
+	[PostType.Introduction]: defineCollection(collectionSetup),
 	[PostType.Game]: defineCollection(collectionSetup),
 	[PostType.Announcement]: defineCollection(collectionSetup),
 };
