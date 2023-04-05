@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import DialogContainer, { DialogHeaderStyle } from "../../../containers/DialogContainer/DialogContainer.component"
 
 interface PropTypes {
-    icon: IconProp
+    icon?: IconProp
     title: string
-    description: string
+    description?: string
     style?: string
 }
 
@@ -20,13 +20,13 @@ const NavLink = ({
         <li className={`nav-link ${style}`}>
             <DialogContainer wrapStyle={{
                 headerStyle: DialogHeaderStyle.none,
-                hasHover: true
+                isHoverable: true
             }}>
                 <div className={`nav-link-content`}>
                     <div className="nav-link-pushdown">
-                        <div className="icon">
+                        {icon && <div className="icon">
                             <FontAwesomeIcon icon={icon}/>
-                        </div>
+                        </div>}
                         <div className="text">
                             <span className="title">{title}</span>
                             <span className="description">{description}</span>

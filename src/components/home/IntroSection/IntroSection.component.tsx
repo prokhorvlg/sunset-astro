@@ -39,7 +39,7 @@ const IntroSection = () => {
                 </div>
                 <div className="side-portal right">
                     <ul>
-                    <NavLink 
+                        <NavLink 
                             icon={PostsIcon}
                             title="Posts"
                             description="View the art and lore for Sunset System"

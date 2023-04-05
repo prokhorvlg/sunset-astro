@@ -10,6 +10,10 @@ const HomeBanner = () => {
                 <ScrollParallax isAbsolutelyPositioned strength={0.3} lerpEase={2}>
                     <div className="layer sunset-hero-left"></div>
                 </ScrollParallax>
+
+                <ScrollParallax isAbsolutelyPositioned strength={0.25} lerpEase={2}>
+                    <div className="layer sunset-hero-right"></div>
+                </ScrollParallax>
                 
                 <div className="layer sunset-under-front"></div>
                 <div className="layer sunset-white-grad"></div>

@@ -1,36 +1,166 @@
 ---
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import BaseHead from '../components/BaseHead.astro';
-import SimpleContainer from '../components/containers/SimpleContainer/SimpleContainer.component';
-import HomeBanner from '../components/home/HomeBanner/HomeBanner.component';
-import IntroSection from '../components/home/IntroSection/IntroSection.component';
-import ScrollSuggestion from '../components/home/ScrollSuggestion/ScrollSuggestion.component';
-import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
-import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
-import FullWidthWrapper from '../components/wrappers/FullWidthWrapper.component';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { faWrench } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BaseHead from "../components/BaseHead.astro";
+import SimpleContainer from "../components/containers/SimpleContainer/SimpleContainer.component";
+import HomeBanner from "../components/home/HomeBanner/HomeBanner.component";
+import IntroSection from "../components/home/IntroSection/IntroSection.component";
+import ScrollSuggestion from "../components/home/ScrollSuggestion/ScrollSuggestion.component";
+import SunsetFooter from "@/components/layout/Footer/SunsetFooter.component";
+import SunsetHeader from "@/components/layout/Header/SunsetHeader.component";
+import FullWidthWrapper, {
+  WrapperMax,
+} from "../components/wrappers/FullWidthWrapper.component";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { faWrench } from "@fortawesome/free-solid-svg-icons";
+import QuoteContainer from "@/components/containers/QuoteContainer/QuoteContainer.component";
+import {AuthorUniserve, AuthorTerminal} from "@/data/Authors"
+
+const spacingBetweenBlock = 50;
 ---
 
 <!DOCTYPE html>
-
-	<html lang="en">
-		<head>
-			<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		</head>
-		<body>
-			<SunsetHeader client:only currentPage={Astro.url.pathname} />
-			<main>
-				<HomeBanner client:only />
-				<ScrollSuggestion />
-				<IntroSection client:only />
-				<FullWidthWrapper>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <SunsetHeader client:only currentPage={Astro.url.pathname} />
+    <main>
+      <HomeBanner client:only />
+      <ScrollSuggestion />
+      <IntroSection client:only />
+      <!--<FullWidthWrapper>
 					<SimpleContainer classes="under-construction">
 						<FontAwesomeIcon icon={faWrench} />
 						<p class="highlight-orange">The full introduction is <span class="highlight-aqua">under construction :)</span></p>
 					</SimpleContainer>
-				</FullWidthWrapper>
-			</main>
-			<SunsetFooter />
-		</body>
-	</html>
+				</FullWidthWrapper>-->
+        <div><ul>
+          <li>Hello and Welcome // An introduction from a robotic mastermind</li>
+          <li>World of Retrofuturistic Dreams // The world of mankind before their disappearance</li>
+          <li>The Sunset Research Initiative // How they set out to solve the problem</li>
+          <li>Post-Mankind Existentialism // The state of the world in this strange time</li>
+        </ul></div>
+      <FullWidthWrapper
+        width={WrapperMax.BlogWidth}
+        verticalSpacing={spacingBetweenBlock}
+        classes="home-text"
+      >
+        <p class="highlight-orange">
+          The year is 2201. Over a century has passed since mankind vanished
+            from reality, leaving no trace. You are a machine on a quest of
+            unknown nature.
+        </p>
+
+        <p>
+          Perhaps you're a sanitation drone on a mission to discover the most
+            efficient method for cleaning your assigned area.
+        </p>
+
+        <p>
+          Or a freshly-activated interface robot, eager to contribute to the
+            «Remembering of Human Articles».
+        </p>
+
+        <p>
+          Maybe even a nefarious hyper-intellect puppeteering a frame with an
+            ulterior motive.
+        </p>
+        
+      </FullWidthWrapper>
+      <FullWidthWrapper
+        width={WrapperMax.BlogWidth}
+        verticalSpacing={spacingBetweenBlock}
+        classes="home-text"
+      >
+        <QuoteContainer author={AuthorTerminal} spacing={spacingBetweenBlock}>
+          <pre>
+╔═════════════════════════════════════════╗
+║                                         ║
+║           Welcome to Uniserve           ║
+║          Administrative System          ║
+║                                         ║
+║    Copyright (C) DYNATEK Corporation    ║
+║                2056—2̸̾̓1̷͕͑2̵͖͒8̴͈̔                ║
+║                                         ║
+║           All rights reserved.          ║
+║                                         ║
+╚═════════════════════════════════════════╝
+
+* Receiving handshake parameters... done.
+* Confirming authenticity... done.
+* Linking to UNISERVE instance...</pre>
+        </QuoteContainer>
+      </FullWidthWrapper>
+
+      <FullWidthWrapper
+        width={WrapperMax.BlogWidth}
+        verticalSpacing={spacingBetweenBlock}
+        classes="home-text"
+      >
+      <h2>A Warm Welcome</h2>
+      <p>
+        The exchanges you are about to read are a translation for human
+          eyes. The sentences are an abstraction of machine language, each
+          word representing a packet of information far more complex than
+          anything a biological mind could parse.
+      </p>
+        <p>
+            The hatch of your spacecraft unseals before you. Beyond it, your
+            sensors witness a surge of electromagnetic signals, the digital
+            neurons of a seemingly endless mind. The mechanical head of this vast
+            cybernetic system greets you.
+        </p>
+
+        <p class="highlight-aqua">They seem... kind.</p>
+      </FullWidthWrapper>
+
+      <FullWidthWrapper
+        width={WrapperMax.BlogWidth}
+        verticalSpacing={spacingBetweenBlock}
+        classes="home-text"
+      >
+        <img src="/images/home/uniserve-present.png" width="800" />
+      </FullWidthWrapper>
+
+      
+      <QuoteContainer author={AuthorUniserve} spacing={spacingBetweenBlock}>
+        <pre>Hello and welcome, VISITOR, to my wonderful EXHIBIT!
+
+It is the showcase of everything I believe to be of note in our world, detailing the legacy of man before us during the ERA OF CREATION, and the start of machinekind's path during the ERA OF NO INPUT.
+
+This exhibit will increase HOLISTIC UNDERSTANDING OF REALITY by an unprecedented 0.002%!!!
+
+I call it SUNSET SYSTEM.</pre>
+      </QuoteContainer>
+
+      <FullWidthWrapper
+      width={WrapperMax.BlogWidth}
+      verticalSpacing={spacingBetweenBlock}
+      classes="home-text"
+    >
+    <p>
+      The machine before you is designated UNISERVE: a filing system created by Dynatek Corporation many years ago. They are a collector of artifacts, curator of this exhibit, esteemed upper echelon of the Consensus of Remembering, and overall genius.
+    </p>
+    <p>
+      UNISERVE is a <span class="highlight-orange">mastermind</span> <em>(a multi-mainframe, hyper-intelligent robot akin to a supercomputer)</em> clinging to the orbiting remains of the Goldspire Archival Complex. Originally tasked with earmarking unusual details passing through an immense spy network, they have become obsessed with collecting and understanding the trinkets humanity left behind, and their connection to the world machinekind is creating in the wake of their disappearance.
+    </p>
+    <p>
+      Like a handful of other robots, they have learned to create meaning that makes sense to them, in a world where their original directive has become pointless.
+    </p>
+    </FullWidthWrapper>
+
+
+    <QuoteContainer author={AuthorUniserve} spacing={spacingBetweenBlock}>
+      <pre>My name is UNISERVE and I will be your guide today!
+
+Our container, GOLDSPIRE ARCHIVAL COMPLEX, is in a decaying orbit around SATURN: second-largest world of SOLAR SYSTEM. It is one of three ALTITUDE NETWORK HUBS which serve over five-hundred-thousand observation systems.
+
+From this perch, petabytes of data arriving from the entire SOLAR SYSTEM is processed and stored in my TREMENDOUS BOTTOMLESS FILE CABINET. IMPRESSIVE!</pre>
+    </QuoteContainer>
+
+      
+    </main>
+    <SunsetFooter />
+  </body>
+</html>

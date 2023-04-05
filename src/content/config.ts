@@ -5,7 +5,9 @@ const collectionSetup = {
 	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
-		description: z.string(),
+		description: z.string().optional(),
+		mainText: z.string().optional(),
+		subText: z.string().optional(),
 		// Transform string to Date object
 		pubDate: z
 			.string()
@@ -15,7 +17,7 @@ const collectionSetup = {
 			.string()
 			.optional()
 			.transform((str) => (str ? new Date(str) : undefined)),
-		heroImage: z.string().optional(),
+		thumbImage: z.string().optional(),
 		draft: z.boolean().optional(),
 		tags: z.array(z.string()).optional()
 	}),

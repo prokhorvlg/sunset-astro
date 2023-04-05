@@ -1,5 +1,7 @@
+import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer from "@/components/containers/DialogContainer/DialogContainer.component"
 import { PostType } from "@/components/posts/PostGrid.component"
+import { getDateString } from "@/utils/date"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { CollectionEntry } from "astro:content"
@@ -8,35 +10,28 @@ interface PropTypes {
     post: CollectionEntry<PostType.Lore>
 }
 
-const TagStrategy = {
-    'post-mankind': "post-mankind existentialism",
-    'retro-dreams': "retrofuturistic dreams"
-}
-
 const PostCard = ({
     post
 }: PropTypes) => {
     const date = post.data.pubDate
-    const dateString = `${date.toLocaleString('default', { month: 'long' })} ${date.getDate()}, ${date.getFullYear()}`
+    const dateString = getDateString(date)
 
     return (
         <DialogContainer wrapStyle={{
-            hasHover: true,
+            isLink: true,
+            linkURL: `/posts/${post.slug}`,
             classes: "post-card"
         }}>
             <div className="post-card-top">
                 <div className="post-card-image" style={{
-                    backgroundImage: `url(${post.data.heroImage})`
+                    backgroundImage: `url(${post.data.thumbImage})`
                 }}></div>
             </div>
             <div className="post-card-content">
-                <div className="tags">
-                    {post.data.tags?.map((tag) => (
-                        <span className={`tag ${tag}`}>{TagStrategy[tag] || tag}</span>
-                    ))}
-                </div>
+                
                 <h3 className="title">{post.data.title}</h3>
-                <p className="description">{post.data.description}</p>
+                <p className="description">{post.data.mainText}</p>
+                <TagCloud tags={post.data.tags} />
             </div>
             <div className="post-card-bottom">
                 <span className="date code">{dateString}</span>

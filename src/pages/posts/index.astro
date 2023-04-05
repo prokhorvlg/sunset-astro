@@ -13,7 +13,7 @@ const lorePosts= await getCollection(PostType.Lore, ({ data }) => {
 const lorePostsProcessed = lorePosts.map((item) => {
 	return {
 		...item,
-		searchData: `${item.data.title.toLowerCase()} ${item.data.description.toLowerCase()} ${item.data.tags?.map((tag) => tag.toLowerCase() + " ")} ${item.body.toLowerCase()}`
+		searchData: `${item.data.title.toLowerCase()} ${item.data.mainText.toLowerCase()} ${item.data.tags?.map((tag) => tag.toLowerCase() + " ")} ${item.body.toLowerCase()}`
 	}
 });
 /*

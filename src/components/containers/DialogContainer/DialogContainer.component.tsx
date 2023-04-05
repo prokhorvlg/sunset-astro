@@ -15,9 +15,17 @@ export interface DialogWrapStyle {
     headerStyle?: DialogHeaderStyle
     headerTitle?: string
     hasCloseButton?: boolean
-    hasHover?: boolean
+
     theme?: DialogTheme
     classes?: string
+
+    isHoverable?: boolean
+
+    isLink?: boolean
+    linkURL?: string
+
+    isButton?: boolean
+    onButtonClick?: Function
 }
 
 interface PropTypes {
@@ -26,17 +34,51 @@ interface PropTypes {
 }
 
 // Template component for content to be wrapped in a dialog-style border.
-// TODO support a gradient border?? ehh....
 const DialogContainer = ({
     children,
     wrapStyle
 }: PropTypes) => {
+    if (wrapStyle.isLink) {
+        return (
+            <a className={`dialog-wrap hover
+                    ${wrapStyle.theme ? wrapStyle.theme : ''}
+                    ${wrapStyle.classes}
+                `}
+                href={wrapStyle.linkURL}
+            >
+                <DialogInner wrapStyle={wrapStyle} children={children}/>
+            </a>
+        )
+    } else if (wrapStyle.isButton) {
+        const onButtonClick = wrapStyle.onButtonClick || (() => {})
+        return (
+            <button className={`dialog-wrap hover
+                    ${wrapStyle.theme ? wrapStyle.theme : ''}
+                    ${wrapStyle.classes}
+                `}
+                onClick={() => onButtonClick()}
+            >
+                <DialogInner wrapStyle={wrapStyle} children={children}/>
+            </button>
+        )
+    }
     return (
         <div className={`dialog-wrap
-            ${wrapStyle.hasHover ? 'hover' : ''} 
+            ${wrapStyle.isHoverable ? 'hover' : ''} 
             ${wrapStyle.theme ? wrapStyle.theme : ''}
             ${wrapStyle.classes}
         `}>
+            <DialogInner wrapStyle={wrapStyle} children={children}/>
+        </div>
+    )
+}
+
+const DialogInner = ({
+    wrapStyle,
+    children
+}) => {
+    return (
+        <>
             <div className="dialog-wrap-slot">
                 {(wrapStyle.headerStyle === DialogHeaderStyle.MacintoshStraight) ?
                     <MacintoshStraightHeader wrapStyle={wrapStyle} />
@@ -50,8 +92,7 @@ const DialogContainer = ({
                 </div>
             </div>
             <div className="border right"></div>
-            {/*<div className="border bottom"></div>*/}
-        </div>
+        </>
     )
 }
 

@@ -1,17 +1,30 @@
 ---
 title: "Redmond Cybernetics GORDON"
-description: "Magazine ad from a reality where robots became common during the microcomputer era."
+mainText: "Magazine ad from a reality where robots became common during the microcomputer era."
+subText: "In the early 2000s, Redmond Cybernetics introduces GORDON, a series of interfacer robots."
 pubDate: "Dec 15 2022"
-heroImage: "/images/content/gordon.jpg"
+thumbImage: "/images/content/gordon.jpg"
 tags:
   - retro-dreams
   - robot
 ---
 
-1987 was a year of tremendous progress in the arena of Western cybernetics. With Maple’s announcement of an incredible new human-facing robot, and Berkeley’s cybernetic refresh of their ubiquitous business machines, it was clear that a revolution was on the horizon.
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import ImageContentRow from '@/components/common/ContentRow/ImageContentRow.component'
+export const imageSource = "/images/content/gordon.jpg"
 
-In other parts of the world, similar progress was evident. In the East, new models trotted out of factories and into shipping crates seemingly each week. Beyond the Iron Curtain, nuclear behemoths were assembled to conquer new worlds.
+<ImageContentRow imageItems={[
+  {
+    source: imageSource
+  }
+]} />
 
-It wouldn’t be until the 2000s before humanity at large recognized it; when cybernetics found its way into every home, every city, and everywhere there was civilization. This Era of Creation was prosperous and glorious: no problem too great for technology to conquer.
+<TextContentRow>
+  1987 was a year of tremendous progress in the arena of Western cybernetics. With Maple’s announcement of an incredible new human-facing robot, and Berkeley’s cybernetic refresh of their ubiquitous business machines, it was clear that a revolution was on the horizon.
 
-They achieved their dream, and by the 2090s, there was only one thing left to conquer: the limitations of the human being itself.
+  In other parts of the world, similar progress was evident. In the East, new models trotted out of factories and into shipping crates seemingly each week. Beyond the Iron Curtain, nuclear behemoths were assembled to conquer new worlds.
+
+  It wouldn’t be until the 2000s before humanity at large recognized it; when cybernetics found its way into every home, every city, and everywhere there was civilization. This Era of Creation was prosperous and glorious: no problem too great for technology to conquer.
+
+  They achieved their dream, and by the 2090s, there was only one thing left to conquer: the limitations of the human being itself.
+</TextContentRow>
