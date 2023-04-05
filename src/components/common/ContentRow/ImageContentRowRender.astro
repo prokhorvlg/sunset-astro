@@ -33,8 +33,8 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
     src: imageObject.src,
     alt: "",
     aspectRatio: imageObject.aspectRatio,
-    width: imageObject.width,
-    height: imageObject.height,
+    width: 1000,
+    //height: imageObject.height,
     format: "webp"
   })
 }))

@@ -14,7 +14,7 @@ export const Images: ImageDetails[] = [
     {
         id: ImageId.Gordon,
         src: "/images/content/gordon.jpg",
-        aspectRatio: "25:9",
+        aspectRatio: "3000:4144",
         width: 3000,
         height: 4144
     }
