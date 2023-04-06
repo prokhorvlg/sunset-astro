@@ -17,13 +17,13 @@ const SunsetHeader = ({
       <div className="sunset-header">
           <div className="header-wrap main-segment-wrap filled">
               <div className="main-segment">
-                  <div className="main-segment-stipple left">{/*<DotGrid />*/}</div>
+                  <div className="main-segment-stipple left">{<DotGrid />}</div>
                   <div className="main-segment-title">
                       {/*<BlinkingGrid />*/}
                       <img className="main-logo" src="/images/main-logo-alone.png" height="55" width="55" alt="Main Logo"/>
                       <div className="main-segment-title-text">Sunset <span>System</span></div>
                   </div>
-                  <div className="main-segment-stipple right">{/*<DotGrid />*/}</div>
+                  <div className="main-segment-stipple right">{<DotGrid />}</div>
               </div>
           </div>
           <div className="header-wrap links-segment-wrap">
