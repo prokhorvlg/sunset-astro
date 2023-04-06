@@ -5,7 +5,12 @@ import React, { ImgHTMLAttributes } from 'react'
 //import 'react-medium-image-zoom/dist/styles.css'
 import { Gallery, Item } from "react-photoswipe-gallery";
 import 'photoswipe/dist/photoswipe.css'
+import { ImageDetails } from "@/utils/sharedImages";
 
+export interface FullImageDetails {
+    originalObject: ImageDetails                        // Contains the original file source
+    processedObject: astroHTML.JSX.ImgHTMLAttributes  // Contains the webp converted file for thumb
+}
 
 export interface ImageItem {
     id?: string
@@ -16,23 +21,12 @@ export interface ImageItem {
 }
 
 interface PropTypes {
-    imageItems: (astroHTML.JSX.ImgHTMLAttributes | null)[]
+    imageItems: (FullImageDetails | null)[]
 }
 
 const ImageContentRow = ({
     imageItems
 }: PropTypes) => {
-    /*return (
-        <ContentRow>
-            {imageItems.map((imageItem) => {
-                if (!imageItem) return null
-                return (
-                    <img src={imageItem.src || ""} width="100%" loading="lazy"/>
-                )
-            })}
-        </ContentRow>
-    )*/
-
     return (
         <ContentRow classes="image-content-row">
             <Gallery>
@@ -41,18 +35,20 @@ const ImageContentRow = ({
                         if (!imageItem) return null
                         return (
                             <Item
-                                original={imageItem.src as string}
-                                width={imageItem.width as number}
-                                height={imageItem.height as number}
+                                original={imageItem.originalObject.src as string}
+                                width={imageItem.originalObject.width as number}
+                                height={imageItem.originalObject.height as number}
                             >
                                 {({ ref, open }) => (
-                                    <img 
-                                        src={imageItem.src || ""} 
-                                        width="100%" 
-                                        //loading="lazy"
-                                        ref={ref as React.MutableRefObject<HTMLImageElement>}
-                                        onClick={open}
-                                    />
+                                    <button className="image-content-image" onClick={open}> 
+                                        <div className="top-text">// IMAGE VIEWER - <span className="highlight-aqua">{imageItem.originalObject.label || ""}</span></div>
+                                        <img
+                                            src={imageItem.processedObject.src || ""} 
+                                            width="994"
+                                            loading="lazy"
+                                            ref={ref as React.MutableRefObject<HTMLImageElement>}
+                                        />
+                                    </button>
                                 )}
                             </Item>
                         )

@@ -1,11 +1,10 @@
 ---
 import { ImageDetails, ImageId, Images } from '@/utils/sharedImages';
 import { getImage } from '@astrojs/image';
-import ImageContentRow from './ImageContentRow.component'
-import { Image, Picture } from '@astrojs/image/components';
-
+import ImageContentRow, { FullImageDetails } from './ImageContentRow.component'
 
 interface Props {
+  direction?: "vertical" | "horizontal"
   images: ImageId[];
 }
 
@@ -13,7 +12,6 @@ interface Props {
   const imageObject = Images.find((imageItem) => imageItem.id === image)
   return imageObject
 })
-
 
 let imageObjects: ImageDetails[] = []
 Astro.props.images.forEach((image) => {
@@ -29,14 +27,17 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
   if (!imageObject) return null
 
   // Generate an image of the correct size
-  return await getImage({
-    src: imageObject.src,
-    alt: "",
-    aspectRatio: imageObject.aspectRatio,
-    width: 1000,
-    //height: imageObject.height,
-    format: "webp"
-  })
+  return {
+    originalObject: imageObject,
+    processedObject: await getImage({
+      src: imageObject.src,
+      alt: "",
+      aspectRatio: imageObject.aspectRatio,
+      width: 1000,
+      //height: imageObject.height,
+      format: "webp"
+    })
+  } as FullImageDetails
 }))
 ---
 

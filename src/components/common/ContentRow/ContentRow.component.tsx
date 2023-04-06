@@ -8,7 +8,7 @@ const ContentRow = ({
         <FullWidthWrapper
             width={WrapperMax.BlogWidth}
             verticalSpacing={50}
-            classes={"content-row" + classes} 
+            classes={"content-row " + classes} 
         >
             {children}
         </FullWidthWrapper>

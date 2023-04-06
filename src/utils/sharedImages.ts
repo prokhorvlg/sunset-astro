@@ -1,6 +1,7 @@
 export interface ImageDetails {
-    id: ImageId,
+    id: ImageId | string,
     src: string,
+    label?: string
     aspectRatio: `${number}:${number}`
     width?: number
     height: number
@@ -14,6 +15,7 @@ export const Images: ImageDetails[] = [
     {
         id: ImageId.Gordon,
         src: "/images/content/gordon.jpg",
+        label: "Print advertisement for Gordon",
         aspectRatio: "3000:4144",
         width: 3000,
         height: 4144

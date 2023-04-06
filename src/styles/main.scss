@@ -2027,10 +2027,76 @@ $dialog-main-color: $color-sunset-red;
 }
 
 .image-content-row {
-    img {
-        border: 3px solid blue;
-        &:hover {
-            border: 3px solid red;
+    position: relative;
+    
+    .image-content-image {
+        display: block;
+        position: relative;
+        background: none;
+        border: 2px solid transparent;
+        padding: 4px 4px 1px 4px;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: 0.1s ease-in-out;
+        border-radius: $chicanery-border-radius;
+
+        .top-text {
+            position: absolute;
+            //top: 2px;
+            //left: 50%;
+            //transform: translateX(-50%);
+            top: 0;
+            right: 0;
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.1s ease-in-out;
+            user-select: none;
+            margin-top: -26px;
+
+            color: $color-sunset-red;
+            font-family: $font-code;
+            font-size: 18px;
+        }
+
+        img {
+            z-index: 0;
+            transition: 0.1s ease-in-out;
+            max-width: 100%;
+            border-radius: 3px;
+        }
+
+        &::before {
+            content: '';
+            z-index: 1;
+            display: block;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0;
+
+            background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
+            transition: 0.1s ease-in-out;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        @include abg(0);
+        @include abg-red-diagonal();
+
+        &:hover, &:focus {
+            border: 2px solid $color-sunset-red;
+            .top-text {
+                opacity: 1;
+            }
+            img {
+                transform: scale(0.98);
+            }
+            &::before {
+                opacity: 0.3;
+            }
+            &::after {
+                opacity: 0;
+            }
         }
     }
 }
