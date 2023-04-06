@@ -46,7 +46,6 @@ const ImageContentRow = ({
                                             src={imageItem.processedObject.src || ""}
                                             alt={imageItem.originalObject.alt || ""}
                                             width="994"
-                                            loading="lazy"
                                             ref={ref as React.MutableRefObject<HTMLImageElement>}
                                         />
                                     </button>
