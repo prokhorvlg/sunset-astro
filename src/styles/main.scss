@@ -390,10 +390,8 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
                     flex-direction: row;
                     align-items: center;
                     white-space: nowrap;
-                    $logoDimensions: 55px;
                     .main-logo {
                         border-radius: 50%;
-                        width: $logoDimensions;
                         margin-right: 6px;
                         user-select: none;
                     }
