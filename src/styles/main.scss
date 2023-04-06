@@ -2064,6 +2064,11 @@ $dialog-main-color: $color-sunset-red;
             transition: 0.1s ease-in-out;
             max-width: 100%;
             border-radius: 3px;
+            width: 100%;
+
+            @media screen and (max-width: 1000px) {
+                height: auto;
+            }
         }
 
         &::before {

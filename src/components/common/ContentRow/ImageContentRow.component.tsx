@@ -24,6 +24,8 @@ interface PropTypes {
     imageItems: (FullImageDetails | null)[]
 }
 
+const MAX_WIDTH = 994 // based on row width max
+
 const ImageContentRow = ({
     imageItems
 }: PropTypes) => {
@@ -39,17 +41,22 @@ const ImageContentRow = ({
                                 width={imageItem.originalObject.width as number}
                                 height={imageItem.originalObject.height as number}
                             >
-                                {({ ref, open }) => (
-                                    <button className="image-content-image" onClick={open}> 
-                                        <div className="top-text">// IMAGE VIEWER - <span className="highlight-aqua">{imageItem.originalObject.alt || ""}</span></div>
-                                        <img
-                                            src={imageItem.processedObject.src || ""}
-                                            alt={imageItem.originalObject.alt || ""}
-                                            width="994"
-                                            ref={ref as React.MutableRefObject<HTMLImageElement>}
-                                        />
-                                    </button>
-                                )}
+                                {({ ref, open }) => {
+                                    const originalWidth = imageItem.originalObject.width || 1
+                                    const originalHeight = imageItem.originalObject.height || 1
+                                    return (
+                                        <button className="image-content-image" onClick={open}> 
+                                            <div className="top-text">// IMAGE VIEWER - <span className="highlight-aqua">{imageItem.originalObject.alt || ""}</span></div>
+                                            <img
+                                                src={imageItem.processedObject.src || ""}
+                                                alt={imageItem.originalObject.alt || ""}
+                                                width={MAX_WIDTH}
+                                                height={MAX_WIDTH / originalWidth * originalHeight}
+                                                ref={ref as React.MutableRefObject<HTMLImageElement>}
+                                            />
+                                        </button>
+                                    )
+                                }}
                             </Item>
                         )
                     })}
