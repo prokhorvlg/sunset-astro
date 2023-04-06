@@ -31,7 +31,7 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
     originalObject: imageObject,
     processedObject: await getImage({
       src: imageObject.src,
-      alt: "",
+      alt: imageObject.alt || "",
       aspectRatio: imageObject.aspectRatio,
       width: 1000,
       //height: imageObject.height,

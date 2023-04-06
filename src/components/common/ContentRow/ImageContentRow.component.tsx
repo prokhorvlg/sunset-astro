@@ -41,9 +41,10 @@ const ImageContentRow = ({
                             >
                                 {({ ref, open }) => (
                                     <button className="image-content-image" onClick={open}> 
-                                        <div className="top-text">// IMAGE VIEWER - <span className="highlight-aqua">{imageItem.originalObject.label || ""}</span></div>
+                                        <div className="top-text">// IMAGE VIEWER - <span className="highlight-aqua">{imageItem.originalObject.alt || ""}</span></div>
                                         <img
-                                            src={imageItem.processedObject.src || ""} 
+                                            src={imageItem.processedObject.src || ""}
+                                            alt={imageItem.originalObject.alt || ""}
                                             width="994"
                                             loading="lazy"
                                             ref={ref as React.MutableRefObject<HTMLImageElement>}
