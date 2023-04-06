@@ -4,6 +4,7 @@ import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-
 import HeaderLink, { HeaderLinkType } from "@/components/layout/Header/components/HeaderLink.component";
 import DotGrid from "@/components/common/DotGrid.component";
 import { CommonLinks, CommonText } from "@/data/Common";
+import Button from "@/components/common/Button/Button.component";
 
 interface PropTypes {
   currentPage?: string
@@ -26,6 +27,9 @@ const SunsetHeader = ({
                   <div className="main-segment-stipple right">{<DotGrid />}</div>
               </div>
           </div>
+          <Button classes="menu">
+            <span>Menu</span>
+          </Button>
           <div className="header-wrap links-segment-wrap">
               <div className="links-segment">
                   <ul>

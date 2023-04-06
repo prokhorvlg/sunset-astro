@@ -13,15 +13,15 @@ const PostNavigationBar = ({
     return (
         <FullWidthWrapper width={WrapperMax.MaxWidth} verticalSpacing={0}>
             <div className="post-navigation-bar">
-                <NavLink 
+                {/*<NavLink 
                     title="Newer Post"
-                />
+    />*/}
                 <SimpleContainer classes="post-navigation-date code highlight-orange">
-                    <div>{dateString} // <span className="highlight-aqua">{title}</span>   </div>
+                    <div>{dateString} // <span className="highlight-aqua">{title}</span></div>
                 </SimpleContainer>
-                <NavLink 
+                {/*<NavLink 
                     title="Older Post"
-                />
+                />*/}
             </div>
         </FullWidthWrapper>
     )
