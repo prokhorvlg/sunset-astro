@@ -337,6 +337,9 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
         display: flex;
         flex-direction: row;
         margin: 2px auto 0 auto;
+        @media screen and (max-width: $breakpoint-mobile) {
+            height: 60px;
+        }
 
         .header-wrap {
             position: relative;
@@ -394,14 +397,15 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
                     align-items: center;
                     white-space: nowrap;
                     @media screen and (max-width: $breakpoint-mobile) {
-                        padding: 0 15px 0 15px;
+                        padding: 0 10px 0 10px;
                     }
                     .main-logo {
                         border-radius: 50%;
                         margin-right: 6px;
                         user-select: none;
                         @media screen and (max-width: $breakpoint-mobile) {
-                            transform: scale(0.9);
+                            transform: scale(0.6);
+                            margin-right: -7px;
                         }
                     }
                     .main-segment-title-text, span {
@@ -768,7 +772,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
     &.menu {
         margin-left: 4px;
         margin-right: 6px;
-        width: 80px;
+        width: 60px;
         margin-bottom: 2px;
         @media screen and (min-width: $breakpoint-mobile) {
             display: none;
