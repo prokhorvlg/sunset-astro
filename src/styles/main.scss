@@ -1946,7 +1946,7 @@ $post-heading-width: 1000px;
         @media screen and (max-width: $post-heading-width) {
             width: auto;
             max-width: 100%;
-            margin: 10px 6px;
+            margin: 3px 4px;
         }
         
         $space-around-heading-content: 25px;
@@ -2030,7 +2030,7 @@ $post-heading-width: 1000px;
         @media screen and (max-width: $breakpoint-mobile) {
             width: auto;
             max-width: 100%;
-            margin: 0 2px;
+            margin: 0px 4px 0 4px;
             .dialog-wrap-slot {
                 height: auto;
             }
