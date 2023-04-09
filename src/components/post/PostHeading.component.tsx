@@ -9,7 +9,6 @@ const PostHeading = ({
     return (
         <FullWidthWrapper classes="post-heading" width={WrapperMax.MaxWidth} verticalSpacing={0}>
             <DialogContainer wrapStyle={{
-                //headerStyle: DialogHeaderStyle.MacintoshStraight,
                 headerTitle: post.data.title,
                 hasCloseButton: true,
                 classes: "date-dialog"

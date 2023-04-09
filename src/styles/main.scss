@@ -399,7 +399,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
                     align-items: center;
                     white-space: nowrap;
                     @media screen and (max-width: $breakpoint-mobile) {
-                        padding: 0 5px 0 5px;
+                        padding: 0 10px 0 0px;
                     }
                     .main-logo {
                         border-radius: 50%;
@@ -1984,34 +1984,59 @@ $post-heading-width: 1000px;
             //@include abg-red-crisscross();
         }        
     }
-    .date-area {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        
-        @include abg(0.4);
-        @include abg-red-diagonal();
-
-        .inner {
-            width: $size-max-width-wide-content;
-            max-width: 100%;
-
+    .date-dialog {
+        .date-area {
+            width: 100%;
             display: flex;
-            align-items: center;
             justify-content: center;
-        }
-        p {
-            @include abg-child();
-
-            display: block;
+            align-items: center;
             position: relative;
-            z-index: 2;
+            
+            @include abg(0.4);
+            @include abg-red-diagonal();
+    
+            .inner {
+                width: $size-max-width-wide-content;
+                max-width: 100%;
+    
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    padding: 20px 10px;
+                }
+            }
+            p {
+                @include abg-child();
+    
+                display: block;
+                position: relative;
+                z-index: 2;
+    
+                font-family: $font-code;
+                color: $color-sunset-orange;
+                font-size: 20px;
 
-            font-family: $font-code;
-            color: $color-sunset-orange;
-            font-size: 20px;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    margin: 0;
+                    text-align: center;
+                    span {
+                        display: block;
+                    }
+                }
+            } 
+        }
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            width: auto;
+            max-width: 100%;
+            margin: 0 2px;
+            .dialog-wrap-slot {
+                height: auto;
+            }
+            .border {
+                display: none;
+            }
         }
     }
 }
