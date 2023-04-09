@@ -1,21 +1,26 @@
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
-  numRows?: number;
+  numRowsInitial?: number;
   dotRadius?: number;
   dotSpacing?: number;
 }
 
-function DotGrid({ numRows = 10, dotRadius = 1.5, dotSpacing = 6 }: Props) {
+function DotGrid({ numRowsInitial = 10, dotRadius = 1.5, dotSpacing = 6 }: Props) {
+  const [numRows, setNumRows] = useState<number>(numRowsInitial);
   const [gridWidth, setGridWidth] = useState<number>(0);
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateGridWidth = () => {
-        console.log("update")
       if (gridRef.current) {
         setGridWidth(gridRef.current.offsetWidth);
-
+      }
+      // Set number of rows based on window size
+      if (window.innerWidth < 1100) {
+        setNumRows(8);
+      } else {
+        setNumRows(numRowsInitial);
       }
     };
     updateGridWidth();
@@ -41,7 +46,7 @@ function DotGrid({ numRows = 10, dotRadius = 1.5, dotSpacing = 6 }: Props) {
   }
 
   return (
-    <div ref={gridRef}>
+    <div ref={gridRef} className="dot-grid">
       <svg width={gridWidth} height={numRows * dotSpacing}>
         {grid}
       </svg>

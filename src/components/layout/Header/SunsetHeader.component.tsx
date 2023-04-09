@@ -54,6 +54,13 @@ const SunsetHeader = ({
                         target={CommonLinks.game}
                         dropText={CommonText.game}
                       />
+                      <HeaderLink 
+                        title="Patrons" 
+                        active={currentPage === "/"} 
+                        icon={faHome} 
+                        target={CommonLinks.home}
+                        dropText={CommonText.home}
+                      />
                   </ul>
               </div>
               <div className="socials-segment">
@@ -111,6 +118,12 @@ const SunsetHeader = ({
           </div>
       </div>
     </div>
+  )
+}
+
+const MainMenu = () => {
+  return (
+    null
   )
 }
 

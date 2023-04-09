@@ -338,6 +338,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
         flex-direction: row;
         margin: 2px auto 0 auto;
         @media screen and (max-width: $breakpoint-mobile) {
+            padding: 2px;
             height: 60px;
         }
 
@@ -397,14 +398,14 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
                     align-items: center;
                     white-space: nowrap;
                     @media screen and (max-width: $breakpoint-mobile) {
-                        padding: 0 10px 0 10px;
+                        padding: 0 5px 0 0px;
                     }
                     .main-logo {
                         border-radius: 50%;
                         margin-right: 6px;
                         user-select: none;
                         @media screen and (max-width: $breakpoint-mobile) {
-                            transform: scale(0.6);
+                            transform: scale(0.55);
                             margin-right: -7px;
                         }
                     }
@@ -420,7 +421,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
                         }
                         
                         @media screen and (max-width: $breakpoint-mobile) {
-                            font-size: 24px;
+                            font-size: 20px;
                         }
                     }
                 }
@@ -770,10 +771,12 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
 
     // Menu button in header
     &.menu {
-        margin-left: 4px;
+        margin-left: 3px;
         margin-right: 6px;
-        width: 60px;
-        margin-bottom: 2px;
+        width: 80px;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
         @media screen and (min-width: $breakpoint-mobile) {
             display: none;
         }
