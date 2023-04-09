@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { faPatreon, faTwitter, faInstagram, faRedditAlien, faDiscord } from '@fortawesome/free-brands-svg-icons'
-import { faHome, faImage, faList, faGamepad } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faImage, faList, faGamepad, faBars } from '@fortawesome/free-solid-svg-icons'
 import HeaderLink, { HeaderLinkType } from "@/components/layout/Header/components/HeaderLink.component";
 import DotGrid from "@/components/common/DotGrid.component";
 import { CommonLinks, CommonText } from "@/data/Common";
-import Button from "@/components/common/Button/Button.component";
+import Button, { ButtonType } from "@/components/common/Button/Button.component";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface PropTypes {
   currentPage?: string
@@ -27,8 +28,8 @@ const SunsetHeader = ({
                   <div className="main-segment-stipple right">{<DotGrid />}</div>
               </div>
           </div>
-          <Button classes="menu">
-            <span>Menu</span>
+          <Button classes="menu" type={ButtonType.Simple}>
+            <span><FontAwesomeIcon icon={faBars} /></span>
           </Button>
           <div className="header-wrap links-segment-wrap">
               <div className="links-segment">

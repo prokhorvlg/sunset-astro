@@ -339,6 +339,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
         margin: 2px auto 0 auto;
         @media screen and (max-width: $breakpoint-mobile) {
             padding: 2px;
+            margin-bottom: 1px;
             height: 60px;
         }
 
@@ -398,7 +399,7 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
                     align-items: center;
                     white-space: nowrap;
                     @media screen and (max-width: $breakpoint-mobile) {
-                        padding: 0 5px 0 0px;
+                        padding: 0 5px 0 5px;
                     }
                     .main-logo {
                         border-radius: 50%;
@@ -753,35 +754,44 @@ h1, h2, h3, h4, h5, h6, p, span, strong, em, div {
 
 // UNIVERSAL
 
-// - BUTTON (with the dialog wrap)
-.sunset-button.dialog-wrap {    
-    width: auto;
+// - BUTTON
+.sunset-button {
     font-family: $font-code;
-    color: $color-sunset-red;
     font-size: 18px;
-    cursor: pointer;
-    .dialog-wrap-slot {
-        .dialog-content {
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+    color: $color-sunset-red;
+
+    background: none;
+    border: none;
+
+    // (with the dialog wrap)
+    &.dialog-wrap {
+        width: auto;        
+        cursor: pointer;
+        .dialog-wrap-slot {
+            .dialog-content {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
     }
 
-    // Menu button in header
-    &.menu {
-        margin-left: 3px;
-        margin-right: 6px;
-        width: 80px;
-        margin-bottom: 4px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        @media screen and (min-width: $breakpoint-mobile) {
-            display: none;
+    // (no style, just padding and transparent)
+    &.none {}
+    &.simple {
+        border: $size-line-width solid $color-sunset-red;
+        border-radius: $chicanery-border-radius;
+
+        &.menu {
+            width: 60px;
+            text-align: center;
+            font-size: 22px;
+            margin-left: 3px;
         }
     }
 }
+
 
 // - DIALOG WRAP
 $dialog-wrap-border-width: $size-line-width;
@@ -810,6 +820,16 @@ $dialog-main-color: $color-sunset-red;
                 color: $dialog-main-color;
             }
         }
+    }
+
+    @mixin simpleDialog {
+
+    }
+    &.simple {
+        @include simpleDialog;
+    }
+    &.simple-on-mobile {
+        @include simpleDialog;
     }
 
     .dialog-wrap-slot {
