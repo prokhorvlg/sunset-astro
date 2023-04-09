@@ -122,6 +122,13 @@ body {
     &::after {
         z-index: -100;
     }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        &::after {
+            background: url('/images/patterns/bg-dot-pattern.svg');
+            background-size: 80px;
+        }
+    }
 }
 
 :root {
