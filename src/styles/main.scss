@@ -1955,6 +1955,9 @@ $post-heading-width: 1000px;
             max-width: 100%;
             margin: 80px $space-around-heading-content 60px $space-around-heading-content;
             z-index: 1;
+            @media screen and (max-width: $post-heading-width) {
+                margin: 60px $space-around-heading-content 10px $space-around-heading-content;
+            }
             > div, h1, p {
                 position: relative;
                 z-index: 5;
@@ -1970,6 +1973,7 @@ $post-heading-width: 1000px;
                 @media screen and (max-width: $breakpoint-mobile) {
                     font-size: 34px;
                     line-height: 38px;
+                    margin-top: 30px;
                 }
             }
             .description {
