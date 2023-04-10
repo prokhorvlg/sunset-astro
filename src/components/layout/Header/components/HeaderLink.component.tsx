@@ -31,10 +31,14 @@ const HeaderLink = ({
                 target={external ? "_blank" : "_self"}
             >
                 { type === HeaderLinkType.Text ? 
-                    <span>{title}</span> 
+                    <span className="title">{title}</span> 
                     : 
-                    <FontAwesomeIcon icon={icon} />
+                    <div>
+                        <FontAwesomeIcon icon={icon} />
+                        <span className="mobile-only title">{title}</span> 
+                    </div>
                 }
+                <FontAwesomeIcon icon={faArrowRight} className="mobile-arrow" />
                 <div className="on-hover">
                     { type === HeaderLinkType.Text ? 
                         <>

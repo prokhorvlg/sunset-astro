@@ -15,7 +15,7 @@ const PostHeading = ({
             }}>
                 <div className="date-area">
                     <div className="inner">
-                        <p>{getDateString(post.data.pubDate)} // <span className="highlight-aqua">{post.data.title}</span></p>
+                        <p><span className="date">{getDateString(post.data.pubDate)}</span><span className="slashes"> //</span><span className="name highlight-aqua"> {post.data.title}</span></p>
                     </div>
                 </div>
             </DialogContainer>
