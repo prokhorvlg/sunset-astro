@@ -10,7 +10,7 @@ const TagCloud = ({
     return (
         <div className="tag-cloud">
             {tags.map((tag) => (
-                <span className={`tag ${tag}`}>{TagStrategy[tag] || tag}</span>
+                <span key={tag} className={`tag ${tag}`}>{TagStrategy[tag] || tag}</span>
             ))}
         </div>
     )

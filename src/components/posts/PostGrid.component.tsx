@@ -5,9 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { CollectionEntry } from "astro:content"
 import { useEffect, useState } from "react"
 
-import {remark} from 'remark'
-import strip from 'strip-markdown'
-
 export enum PostType {
 	Lore = 'lore',
     Introduction = 'introduction',
@@ -15,33 +12,33 @@ export enum PostType {
 	Announcement = 'announcement'
 }
 
+export interface ProcessedPost {
+    post: CollectionEntry<PostType.Lore> | CollectionEntry<PostType.Introduction>
+    searchData: string
+    processedThumbImage: astroHTML.JSX.ImgHTMLAttributes | null
+}
+
 interface PropTypes {
-    lorePosts: CollectionEntry<PostType.Lore>[]
-    introductionPosts: CollectionEntry<PostType.Introduction>[]
+    processedPosts: ProcessedPost[]
 }
 
 const PostsView = ({
-    lorePosts,
-    introductionPosts
+    processedPosts
 }: PropTypes) => {
     const [searchString, setSearchString] = useState("")
-    const [activeCollection, setActiveCollection] = useState(PostType.Lore)
-    const [filteredPosts, setFilteredPosts] = useState<CollectionEntry<PostType.Lore | PostType.Introduction>[]>([])
+    //const [activeCollection, setActiveCollection] = useState(PostType.Lore)
+    const [filteredPosts, setFilteredPosts] = useState<ProcessedPost[]>([])
 
     const filterPosts = (
-        posts: CollectionEntry<PostType.Lore | PostType.Introduction>[], 
+        posts: ProcessedPost[], 
         searchString: string
     ) => {
+        console.log(posts)
         return posts.filter((i) => i.searchData.includes(searchString.toLowerCase()))
     }
 
     useEffect(() => {
-        console.log("searching on", searchString)
-        
-        setFilteredPosts([
-            ...filterPosts(lorePosts, searchString),
-            ...filterPosts(introductionPosts, searchString),
-        ])
+        setFilteredPosts(filterPosts(processedPosts, searchString))
     }, [searchString])
 
     return (
@@ -60,9 +57,9 @@ const PostsView = ({
             </div>
             <div className="posts-grid">
                 {filteredPosts
-                    .map((post) => {
+                    .map((filteredPost) => {
                         return (
-                            <PostCard key={post.slug} post={post}/>
+                            <PostCard key={filteredPost.post.slug} processedPost={filteredPost}/>
                         )
                     })
                 }

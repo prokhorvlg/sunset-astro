@@ -1,51 +1,86 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
+import { getCollection, image } from 'astro:content';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
-import PostsView, { PostType } from '@/components/posts/PostGrid.component';
+import PostsView, { PostType, ProcessedPost } from '@/components/posts/PostGrid.component';
 import PageHeading from '@/components/page/PageHeading.component';
+import { Images } from '@/utils/sharedImages';
+import { getImage } from '@astrojs/image';
+import { ImgHTMLAttributes } from 'react';
 
+const processPosts = async (posts) => {
+	return await Promise.all(posts.map(async (post) => {
+		// Find and process the thumb image if available.
+		const imageObject = Images.find((imageItem) => imageItem.id === post.data.thumbImage)
+		console.log(imageObject)
+		let processedImageObject
+		if (imageObject) {
+			processedImageObject = await getImage({
+				src: imageObject.src,
+				alt: imageObject.alt || "",
+				aspectRatio: `${imageObject.width}:${imageObject.height}`,
+				width: 600,
+				format: "webp"
+			})
+		}
+
+		// Compile the processed post object
+		return {
+			post: post,
+			processedThumbImage: processedImageObject ? processedImageObject : null,
+			searchData: `
+				${post.data.title.toLowerCase()} 
+				${post.data.mainText?.toLowerCase()} 
+				${post.data.subText?.toLowerCase()} 
+				${post.data.tags?.map((tag) => tag.toLowerCase() + " ")} 
+				${post.body.toLowerCase()}`
+		} as ProcessedPost
+	}))
+}
+
+// Load in every post type (must be done using the Astro way).
+// LORE
 const lorePosts = await getCollection(PostType.Lore, ({ data }) => {
   return data.draft !== true;
 })
-const lorePostsProcessed = lorePosts.map((item) => {
-	return {
-		...item,
-		searchData: `${item.data.title.toLowerCase()} ${item.data.mainText?.toLowerCase()} ${item.data.tags?.map((tag) => tag.toLowerCase() + " ")} ${item.body.toLowerCase()}`
-	}
-});
+const lorePostsProcessed = await processPosts(lorePosts)
 
+// INTRODUCTION
 const introductionPosts = await getCollection(PostType.Introduction, ({ data }) => {
   return data.draft !== true;
 })
-const introductionPostsProcessed = introductionPosts.map((item) => {
-	return {
-		...item,
-		searchData: `${item.data.title.toLowerCase()} ${item.data.mainText?.toLowerCase()} ${item.data.tags?.map((tag) => tag.toLowerCase() + " ")} ${item.body.toLowerCase()}`
-	}
-});
+const introductionPostsProcessed = await processPosts(introductionPosts)
+
+// Combine all of the above.
+const processedPosts: ProcessedPost[] = [...lorePostsProcessed, ...introductionPostsProcessed]
+
+//console.log(processedPosts[1])
+
+// Sort collection by date.
+
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={"Posts"} description={SITE_DESCRIPTION} />
+		<BaseHead title="Posts" description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
 		<main>
-			<PageHeading title="Posts" subtext={"A collection of every post made for Sunset System."}>
-				<!--<>
-					<p>If none of this makes sense, head to the home page and proceed through the introduction.</p>
-				</>-->
-			</PageHeading>
+			<PageHeading title="Posts" subtext={"A collection of every post made for Sunset System."}></PageHeading>
 			<PostsView client:only
-				lorePosts={lorePostsProcessed}
-				introductionPosts={introductionPostsProcessed}
+				processedPosts={processedPosts}
 			/>
 		</main>
 		<SunsetFooter client:only currentPage={Astro.url.pathname} />
 	</body>
 </html>
+
+<!--
+
+	lorePosts={lorePostsProcessed}
+				introductionPosts={introductionPostsProcessed}
+ -->

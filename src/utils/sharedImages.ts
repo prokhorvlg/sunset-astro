@@ -33,21 +33,7 @@ export enum ImageId {
 }
 
 export const Images: ImageDetails[] = [
-    {
-        id: ImageId.Gordon,
-        src: "/images/content/gordon.jpg",
-        alt: "Print advertisement for Gordon",
-        aspectRatio: "3000:4144",
-        width: 3000,
-        height: 4144
-    },
-    {
-        id: 'lazarus',
-        src: "/images/content/lazarus.jpg",
-        alt: "Lazarus standing and pointing",
-        width: 3688,
-        height: 2294
-    },
+    // UNISERVE
     {
         id: 'uniserve-present',
         src: "/images/home/uniserve-present.png",
@@ -71,16 +57,34 @@ export const Images: ImageDetails[] = [
         height: 2120,
         artist: ArtistProkhor
     },
+    // CONTENT
+    {
+        id: ImageId.Gordon,
+        src: "/images/content/gordon.jpg",
+        alt: "Print advertisement for Gordon",
+        aspectRatio: "3000:4144",
+        width: 3000,
+        height: 4144
+    },
+    {
+        id: 'lazarus',
+        src: "/images/content/lazarus.jpg",
+        alt: "Lazarus standing and pointing",
+        width: 3688,
+        height: 2294
+    },
+    {
+        id: 'pals',
+        src: "/images/content/pals.jpg",
+        alt: "Advertisement for PAL teleindexers",
+        width: 2000,
+        height: 2775
+    },
+    {
+        id: 'sri-brochure',
+        src: "/images/content/sunset-brochure-intro.jpg",
+        alt: "Brochure for Sunset Research Initiative",
+        width: 2700,
+        height: 1673
+    },
 ]
-
-/*
-export const GordonImage = {
-    id: "gordon",
-    src: "/images/content/gordon.jpg",
-    aspectRatio="25:9"
-  }
-export const LazarusImage = {
-    id: "lazarus",
-    src: "/images/content/lazarus.jpg",
-    aspectRatio="25:9"
-  }*/

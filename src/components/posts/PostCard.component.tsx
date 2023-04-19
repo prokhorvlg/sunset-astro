@@ -1,22 +1,26 @@
 import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer from "@/components/containers/DialogContainer/DialogContainer.component"
-import { PostType } from "@/components/posts/PostGrid.component"
+import { PostType, ProcessedPost } from "@/components/posts/PostGrid.component"
 import { getDateString } from "@/utils/date"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { CollectionEntry } from "astro:content"
 
 interface PropTypes {
-    post: CollectionEntry<PostType.Lore>
+    processedPost: ProcessedPost
 }
 
 const PostCard = ({
-    post
+    processedPost
 }: PropTypes) => {
+    const post = processedPost.post
     const date = post.data.pubDate
     const dateString = getDateString(date)
     const collection: PostType = post.collection as PostType
-    console.log(collection)
+
+    const imageSrc = processedPost.processedThumbImage ? 
+        processedPost.processedThumbImage.src :
+        post.data.thumbImage
 
     return (
         <div className={`post-card-container ${collection}`}>
@@ -28,7 +32,7 @@ const PostCard = ({
             }}>
                 <div className="post-card-top">
                     <div className="post-card-image" style={{
-                        backgroundImage: `url(${post.data.thumbImage})`
+                        backgroundImage: `url(${imageSrc})`
                     }}></div>
                 </div>
 

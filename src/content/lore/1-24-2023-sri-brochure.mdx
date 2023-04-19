@@ -11,16 +11,27 @@ tags:
   - robot
 ---
 
-By the 2020s, the Datanet was useful, but it was also a convoluted mess of protocols and standards designed around machine communication. Human users rarely took full advantage of the system because of this.
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRow from '@/components/common/ContentRow/QuoteContentRow.component'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorCAN } from '@/data/Authors.ts'
 
-Maple thought: why bother sorting out the mess if a machine could do it for them?
+<ImageContentRowRender 
+  images={['sri-brochure']}
+/>
 
-The teleindexer (or teledex) was designed to take full advantage of the Datanet for their human user. It would crawl through its nodes, indexing various services, pages, and media streams that it suspected its user would be interested in.
+<TextContentRow>
+  By the 2020s, the Datanet was useful, but it was also a convoluted mess of protocols and standards designed around machine communication. Human users rarely took full advantage of the system because of this.
 
-Eventually, the teledex’s neuromorphic intelligence would imprint on their user. It would gain an innate understanding of their personality and behavior patterns, allowing it to find the perfect content and even taking actions on their behalf.
+  Maple thought: why bother sorting out the mess if a machine could do it for them?
 
-The imprint would get scary good. The teledex could diagnose possible diseases and stress issues, engage in automated finance management, and take measures to protect the user’s identity and security.
+  The teleindexer (or teledex) was designed to take full advantage of the Datanet for their human user. It would crawl through its nodes, indexing various services, pages, and media streams that it suspected its user would be interested in.
 
-That isn’t to say similar systems weren’t developed. Even before the teledex, crafty users and several startups attempted neuromorphic Datanet indexing using microcomputers and mainframes, but the teledex was the method that really blew up thanks to its convenient pattern (1 user, 1 teledex, portable).
+  Eventually, the teledex’s neuromorphic intelligence would imprint on their user. It would gain an innate understanding of their personality and behavior patterns, allowing it to find the perfect content and even taking actions on their behalf.
 
-PAL was initially released with two models, Draw and Pro. Several years later, Maple would release the Pal Mini, a cheaper screen-less design relying on vocal interfacing. Maple and its competitors would ultimately release thousands of various teleindexer models.
+  The imprint would get scary good. The teledex could diagnose possible diseases and stress issues, engage in automated finance management, and take measures to protect the user’s identity and security.
+
+  That isn’t to say similar systems weren’t developed. Even before the teledex, crafty users and several startups attempted neuromorphic Datanet indexing using microcomputers and mainframes, but the teledex was the method that really blew up thanks to its convenient pattern (1 user, 1 teledex, portable).
+
+  PAL was initially released with two models, Draw and Pro. Several years later, Maple would release the Pal Mini, a cheaper screen-less design relying on vocal interfacing. Maple and its competitors would ultimately release thousands of various teleindexer models.
+</TextContentRow>
