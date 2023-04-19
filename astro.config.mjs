@@ -9,5 +9,10 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://example.com',
-  integrations: [mdx(), sitemap(), react(), image()]
+  integrations: [mdx(), sitemap(), react(), image()],
+  vite: {
+    define: {
+      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
+    },
+  },
 });
