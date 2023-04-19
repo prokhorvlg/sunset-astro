@@ -5,6 +5,7 @@ import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import PostHeading from '@/components/post/PostHeading.component';
 import PostNavigationBar from '@/components/post/PostNavigationBar.component';
+import PostLayout from '@/layouts/PostLayout.astro';
 import { CollectionEntry, getCollection } from 'astro:content';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
@@ -24,13 +25,18 @@ const { Content } = await post.render();
 const date = post.data.pubDate
 ---
 
+<PostLayout post={post}>
+	<Content />
+</PostLayout>
+
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<BaseHead title={post.data.title} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<SunsetHeader client:only currentPage={Astro.url.pathname}/>
+		<SunsetHeader client:only currentPage={Astro.url.pathname} />
 		<main>
 			
 			<PostHeading post={post}/>
@@ -42,6 +48,6 @@ The showcase is presented by a filing system named UNISERVE, who can get you int
 </QuoteContentRow>
 			<PostNavigationBar date={date} title={post.data.title}/>
 		</main>
-		<SunsetFooter />
+		<SunsetFooter client:only currentPage={Astro.url.pathname} />
 	</body>
-</html>
+</html>-->

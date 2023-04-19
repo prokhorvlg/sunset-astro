@@ -5,19 +5,22 @@ interface PropTypes {
     classes?: string
     onClickHandler?: Function
     type?: ButtonType | string
+    linkURL?: string
 }
 
 export enum ButtonType {
     Dialog = 'dialog',
     None = 'none',
-    Simple = 'simple'
+    Simple = 'simple',
+    Link = 'link'
 }
 
 const Button = ({
     children,
     classes = "",
     onClickHandler = () => { console.log("clicked!") },
-    type = "dialog"
+    type = "dialog",
+    linkURL = ''
 }: PropTypes) => {
     if (type === "dialog") {
         return (
@@ -30,7 +33,19 @@ const Button = ({
                 {children}
             </DialogContainer>
         )
-    } else if (type === "none") {
+    } else if (type === "link") {
+        return (
+            <DialogContainer wrapStyle={{
+                isHoverable: true,
+                isLink: true,
+                linkURL: linkURL,
+                classes: `sunset-button ${classes}`
+            }}>
+                {children}
+            </DialogContainer>
+        )
+    }
+    else if (type === "none") {
         return (
             <button 
                 onClick={() => onClickHandler()} 

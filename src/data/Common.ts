@@ -7,13 +7,15 @@ export const CommonText = {
     discord: "Chat about retrofuturism, worldbuilding, etc",
     subreddit: "Participate in the Sunset community",
     twitter: "Follow announcements and art/lore posts on social media.",
-    instagram: "Follow announcements and art/lore posts on social media."
+    instagram: "Follow announcements and art/lore posts on social media.",
+    supporters: "The people who make this possible."
 }
 
 export const CommonLinks = {
     home: '/',
     posts: '/posts',
     game: '/game',
+    supporters: '/supporters',
     patreon: "https://www.patreon.com/prokhorvlg",
     prints: "https://www.inprnt.com/gallery/prokhorvlg/",
     discord: "https://discord.gg/aM5SBShUeA",

@@ -9,6 +9,7 @@ interface PropsTypes {
     target?: string
     dropText?: string
     external?: boolean
+    isFooter?: boolean
 }
 
 export enum HeaderLinkType {
@@ -23,21 +24,20 @@ const HeaderLink = ({
     icon,
     target,
     dropText,
-    external = false
+    external = false,
+    isFooter = false
 }: PropsTypes) => {
     return (
-        <li className={`header-link-item ${type}`}>
+        <li className={`header-link-item ${type} ${isFooter ? "is-footer" : ""}`}>
             <a className={`header-link ${active ? "active" : ""}`} href={target} 
                 target={external ? "_blank" : "_self"}
             >
-                { type === HeaderLinkType.Text ? 
+                <div className="icon-container">
+                    { type === HeaderLinkType.Icon ? 
+                        <FontAwesomeIcon icon={icon} /> : null
+                    }
                     <span className="title">{title}</span> 
-                    : 
-                    <div>
-                        <FontAwesomeIcon icon={icon} />
-                        <span className="mobile-only title">{title}</span> 
-                    </div>
-                }
+                </div>
                 <FontAwesomeIcon icon={faArrowRight} className="mobile-arrow" />
                 <div className="on-hover">
                     { type === HeaderLinkType.Text ? 

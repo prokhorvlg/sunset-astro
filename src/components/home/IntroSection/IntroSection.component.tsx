@@ -3,6 +3,7 @@ import { ScrollParallax } from 'react-just-parallax'
 import DialogContainer, { DialogHeaderStyle } from '../../containers/DialogContainer/DialogContainer.component'
 import NavLink from './components/NavLink.component'
 import { PostsIcon, GameIcon, PrintsIcon } from '@/utils/sharedIcons'
+import styled from 'styled-components';
 
 const IntroSection = () => {
     return (
@@ -20,7 +21,7 @@ const IntroSection = () => {
                     >
                         
                         <div className="bg-box">
-                            <ScrollParallax isAbsolutelyPositioned strength={0.1} lerpEase={2}>
+                            <ScrollParallax isAbsolutelyPositioned lerpEase={1} enableOnTouchDevice={true}>
                                 <div className="bg"></div>
                             </ScrollParallax>
                             

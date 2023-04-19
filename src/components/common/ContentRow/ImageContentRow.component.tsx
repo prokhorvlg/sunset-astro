@@ -36,28 +36,39 @@ const ImageContentRow = ({
                     {imageItems.map((imageItem) => {
                         if (!imageItem) return null
                         return (
-                            <Item
-                                original={imageItem.originalObject.src as string}
-                                width={imageItem.originalObject.width as number}
-                                height={imageItem.originalObject.height as number}
-                            >
-                                {({ ref, open }) => {
-                                    const originalWidth = imageItem.originalObject.width || 1
-                                    const originalHeight = imageItem.originalObject.height || 1
-                                    return (
-                                        <button className="image-content-image" onClick={open}> 
-                                            <div className="top-text">// IMAGE VIEWER - <span className="highlight-aqua">{imageItem.originalObject.alt || ""}</span></div>
-                                            <img
-                                                src={imageItem.processedObject.src || ""}
-                                                alt={imageItem.originalObject.alt || ""}
-                                                width={MAX_WIDTH}
-                                                height={MAX_WIDTH / originalWidth * originalHeight}
-                                                ref={ref as React.MutableRefObject<HTMLImageElement>}
-                                            />
-                                        </button>
-                                    )
-                                }}
-                            </Item>
+                            <div className="gallery-item">
+                                {imageItem.originalObject.artist ? 
+                                    <a className="artist-tag" target="_blank" href={imageItem.originalObject.artist.link || ""}>
+                                        <img src={imageItem.originalObject.artist.profilePic} width="60"/>
+                                        <span>Created by {imageItem.originalObject.artist.name}</span>
+                                    </a> 
+                                    :
+                                    null
+                                }
+                                <Item
+                                    thumbnail={imageItem.processedObject.src as string}
+                                    original={imageItem.originalObject.src as string}
+                                    width={imageItem.originalObject.width as number}
+                                    height={imageItem.originalObject.height as number}
+                                >
+                                    {({ ref, open }) => {
+                                        const originalWidth = imageItem.originalObject.width || 1
+                                        const originalHeight = imageItem.originalObject.height || 1
+                                        return (
+                                            <button className="image-content-image" onClick={open}> 
+                                                <div className="top-text">// IMAGE VIEWER - <span className="highlight-aqua">{imageItem.originalObject.alt || ""}</span></div>
+                                                <img
+                                                    src={imageItem.processedObject.src || ""}
+                                                    alt={imageItem.originalObject.alt || ""}
+                                                    width={MAX_WIDTH}
+                                                    height={MAX_WIDTH / originalWidth * originalHeight}
+                                                    ref={ref as React.MutableRefObject<HTMLImageElement>}
+                                                />
+                                            </button>
+                                        )
+                                    }}
+                                </Item>
+                            </div>
                         )
                     })}
                 </div>

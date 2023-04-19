@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import PostsView, { PostType } from '@/components/posts/PostGrid.component';
+import PageHeading from '@/components/page/PageHeading.component';
 
 const lorePosts = await getCollection(PostType.Lore, ({ data }) => {
   return data.draft !== true;
@@ -25,50 +26,26 @@ const introductionPostsProcessed = introductionPosts.map((item) => {
 		searchData: `${item.data.title.toLowerCase()} ${item.data.mainText?.toLowerCase()} ${item.data.tags?.map((tag) => tag.toLowerCase() + " ")} ${item.body.toLowerCase()}`
 	}
 });
-
-
-/*
-const gamePosts = await getCollection(PostType.Game, ({ data }) => {
-  return data.draft !== true;
-});
-const announcementPosts = await getCollection(PostType.Announcement, ({ data }) => {
-  return data.draft !== true;
-});*/
-
-//const [aye, useAye] = useState("")
-/*.sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);*/
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={"Posts"} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<SunsetHeader client:only currentPage={Astro.url.pathname}/>
+		<SunsetHeader client:only currentPage={Astro.url.pathname} />
 		<main>
-			<PostsView  client:only
+			<PageHeading title="Posts" subtext={"A collection of every post made for Sunset System."}>
+				<!--<>
+					<p>If none of this makes sense, head to the home page and proceed through the introduction.</p>
+				</>-->
+			</PageHeading>
+			<PostsView client:only
 				lorePosts={lorePostsProcessed}
 				introductionPosts={introductionPostsProcessed}
 			/>
-			
-
-
-			<section>
-				<ul>
-					{/* 
-						posts.map((post) => (
-							<li>
-								<FormattedDate date={post.data.pubDate} />
-								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-							</li>
-						))
-					*/}
-				</ul>
-			</section>
 		</main>
-		<SunsetFooter />
+		<SunsetFooter client:only currentPage={Astro.url.pathname} />
 	</body>
 </html>

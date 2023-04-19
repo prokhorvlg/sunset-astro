@@ -16,25 +16,19 @@ const QuoteContainer = ({
 }: Props) => {
     const isAuthorYou = author.id === "you"
     return (
-        <FullWidthWrapper
-            width={WrapperMax.BlogWidth}
-            verticalSpacing={spacing}
-            classes="quote-wrapper"
-        >
-            <div className="quote-container">
-                <div className="author-box">
-                    {isAuthorYou ? 
-                        <BlinkingGrid />:
-                        <div className="image" style={{backgroundImage: "url(" + author.image + ")"}}></div>
-                    }
-                    <span className="name">{author.name}</span>
-                    <span className="description"><em>{author.description}</em></span>
-                </div>
-                <SimpleContainer classes="code-block quote-box">
-                    {children}
-                </SimpleContainer>
+        <div className="quote-container">
+            <div className="author-box">
+                {isAuthorYou ? 
+                    <BlinkingGrid />:
+                    <div className="image" style={{backgroundImage: "url(" + author.image + ")"}}></div>
+                }
+                <span className="name">{author.name}</span>
+                <span className="description">{author.description}</span>
             </div>
-        </FullWidthWrapper>
+            <SimpleContainer classes="code-block quote-box">
+                {children}
+            </SimpleContainer>
+        </div>
     )
 }
 

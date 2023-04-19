@@ -46,11 +46,9 @@ const PostsView = ({
 
     return (
         <div className="posts-view">
-            <h1>Posts</h1>
             <div className="posts-filters">
                 <div className="post-type"></div>
                 <div className="post-string">
-                    
                     <input 
                         type="text" 
                         value={searchString} 

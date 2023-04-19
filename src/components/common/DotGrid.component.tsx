@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
-  numRowsInitial?: number;
-  dotRadius?: number;
-  dotSpacing?: number;
+  numRowsInitial?: number
+  numRowsMobile?: number
+  dotRadius?: number
+  dotSpacing?: number
 }
 
-function DotGrid({ numRowsInitial = 10, dotRadius = 1.5, dotSpacing = 6 }: Props) {
+function DotGrid({ numRowsInitial = 10, numRowsMobile = 8, dotRadius = 1.5, dotSpacing = 6 }: Props) {
   const [numRows, setNumRows] = useState<number>(numRowsInitial);
   const [gridWidth, setGridWidth] = useState<number>(0);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -18,7 +19,7 @@ function DotGrid({ numRowsInitial = 10, dotRadius = 1.5, dotSpacing = 6 }: Props
       }
       // Set number of rows based on window size
       if (window.innerWidth < 1100) {
-        setNumRows(8);
+        setNumRows(numRowsMobile);
       } else {
         setNumRows(numRowsInitial);
       }
@@ -39,7 +40,7 @@ function DotGrid({ numRowsInitial = 10, dotRadius = 1.5, dotSpacing = 6 }: Props
           cx={x - dotRadius}
           cy={y - dotRadius}
           r={dotRadius}
-          fill="#ff510c"
+          fill="#461709"
         />
       );
     }

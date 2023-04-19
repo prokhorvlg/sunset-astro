@@ -1,0 +1,28 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
+import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
+import PostsView, { PostType } from '@/components/posts/PostGrid.component';
+import PageHeading from '@/components/page/PageHeading.component';
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component';
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead title={"Supporters"} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<SunsetHeader client:only currentPage={Astro.url.pathname} />
+		<main>
+			<PageHeading title="Supporters" subtext={"The people that make this project possible."}></PageHeading>
+            <TextContentRow>
+                Wow!
+            </TextContentRow>
+		</main>
+		<SunsetFooter client:only currentPage={Astro.url.pathname} />
+	</body>
+</html>

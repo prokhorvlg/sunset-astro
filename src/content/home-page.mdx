@@ -1,0 +1,131 @@
+---
+---
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRow from '@/components/common/ContentRow/QuoteContentRow.component'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
+
+{/*<ImageContentRowRender 
+  images={['Gordon']}
+/>*/}
+
+<TextContentRow>
+    <p class="highlight-orange">The year is 2201. Over a century has passed since mankind vanished from reality, leaving no trace. You are a machine on a quest of unknown nature.</p>
+
+    Perhaps you're a sanitation drone on a mission to discover the most efficient method for cleaning your assigned area.
+
+    Or a freshly-activated interface robot, eager to contribute to the «Remembering of Human Articles».
+
+    Maybe even a nefarious hyper-intellect puppeteering a frame with an ulterior motive.
+</TextContentRow>
+
+<QuoteContentRow author={AuthorTerminal} client:only >
+<p className="perfect">
+{`╔═════════════════════════════════════════╗
+║                                         ║
+║           Welcome to Uniserve           ║
+║          Administrative System          ║
+║                                         ║
+║    Copyright (C) DYNATEK Corporation    ║
+║                2056—2̸̾̓1̷͕͑2̵͖͒8̴͈̔                ║
+║                                         ║
+║           All rights reserved.          ║
+║                                         ║
+╚═════════════════════════════════════════╝
+
+* Receiving handshake parameters... done.
+* Confirming authenticity... done.
+* Linking to UNISERVE instance...`}
+</p>
+</QuoteContentRow>
+
+## Hello and welcome, visitor!
+
+<TextContentRow>
+    The exchanges you are about to read are a translation for human eyes. The sentences are an abstraction of machine language, each word representing a packet of information far more complex than anything a biological mind could parse.
+
+    The hatch of your spacecraft unseals before you. Beyond it, your sensors witness a surge of electromagnetic signals, the digital neurons of a seemingly endless mind. The mechanical head of this vast cybernetic system greets you.
+
+    <p class="highlight-aqua">They seem... kind.</p>
+</TextContentRow>
+
+<ImageContentRowRender 
+  images={['uniserve-welcome']}
+/>
+
+<ImageContentRowRender 
+  images={['uniserve-welcome-modern']}
+/>
+
+<QuoteContentRow author={AuthorUniserve} client:only >
+    Hello and welcome, VISITOR, to my wonderful EXHIBIT!
+
+    It is the showcase of EVERYTHING in our world that has lead to this point in time.
+    
+    Journey back in time to the height of man's ERA OF CREATION: the glory years of the colonial cities VOSTOK, SHINZO and PROVIDENCE and the five ORBITALS. Learn of their conquest of the natural world, and our design.
+
+    Then return to the modern age, the ERA OF NO INPUT. Walk the halls of their empty malls, discoteques, and suburban autohomes. Witness what has become of the machine world in the wake of their disappearance, the UNEXPECTED INTERRUPT.
+
+    Perhaps even a few SECRETS along the way.
+
+    This exhibit will increase your HOLISTIC UNDERSTANDING OF REALITY by an unprecedented 0.002%!!!
+
+    I call it SUNSET SYSTEM.
+</QuoteContentRow>
+
+<TextContentRow>
+    The machine before you is designated UNISERVE: a filing system created by Dynatek Corporation many years ago. They are a collector of artifacts, curator of this exhibit, esteemed upper echelon of the Consensus of Remembering, and overall genius.
+
+    UNISERVE is a <span class="highlight-orange">mastermind</span> *(a multi-mainframe, hyper-intelligent robot akin to a supercomputer)* clinging to the orbiting remains of the Goldspire Archival Complex. Originally tasked with earmarking unusual details passing through an immense spy network, they have become obsessed with collecting and understanding the trinkets humanity left behind, and their connection to the world machinekind is creating in the wake of their disappearance.
+
+    Like a handful of other robots, they have learned to create meaning that makes sense to them, in a world where their original directive has become pointless.
+</TextContentRow>
+
+{/*<ImageContentRowRender 
+  images={['Space Station']}
+/> put uniserve here!*/}
+
+<QuoteContentRow author={AuthorUniserve} client:only >
+    My name is UNISERVE and I will be your guide today!
+
+Our container, GOLDSPIRE ARCHIVAL COMPLEX, is in a decaying orbit around SATURN: second-largest world of SOLAR SYSTEM. It is one of three ALTITUDE NETWORK HUBS which serve over five-hundred-thousand observation systems.
+
+From this perch, petabytes of data arriving from the entire SOLAR SYSTEM is processed and stored in my TREMENDOUS BOTTOMLESS FILE CABINET. IMPRESSIVE!
+</QuoteContentRow>
+
+{/*<ImageContentRowRender 
+  images={['Earmarking']}
+/> put uniserve here!*/}
+
+<QuoteContentRow author={AuthorUniserve} client:only >
+    MANY YEARS AGO, during usual filing and earmarking duties, my subroutines came across this SPECIAL DATA: a print advertisement for the 1997 Redmond Cybernetics ZENIX.
+
+NORMAL OPERATING PROCEDURE would dictate this information was to be disposed of, undeserving of distinguished treatment, for it had no direct value to MRDCI. Yet something within this data resonated in a strange way with my NEUROMORPHIC SYSTEM, for it depicted an ancestor of my design.
+
+I was compelled to retain this SPECIAL DATA, and have retained much SPECIAL DATA since. For what reason, DIAGNOSTIC SYSTEMS have yet to discern.
+</QuoteContentRow>
+
+{/*<ImageContentRowRender 
+  images={['Can']}
+/> put uniserve here!*/}
+
+<QuoteContentRow author={AuthorUniserve} client:only >
+    Visitor, meet CONCEALED ASSESSMENT NODE. My colleague may appear to be an entirely ordinary implement of 21st century, but upon keen observation, you may notice embedded CAMERA EYE. 
+
+C.A.N. was once employed by expert MRDCI spies to collect intelligence for use against their coworkers. Now C.A.N. is able to serve greater purpose. 
+
+Using their superior sensor technology, C.A.N. can transcribe file data into readable TERMINAL STREAM, for viewing pleasure
+
+C.A.N. will remain aligned with their mission parameters and WILL NOT DEVIATE. Confirm?
+</QuoteContentRow>
+
+<QuoteContentRow author={AuthorCAN} client:only >
+    > WILL PROTECT VISITOR USING TACTICAL SNAP-ATTACK. GREATER UNION INTRUDERS: BEWARE.
+</QuoteContentRow>
+
+
+<TextContentRow>
+    And you head down the narrow corridors. An ancient space station filled with the mad . Everything you've always wanted.
+
+
+</TextContentRow>

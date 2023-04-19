@@ -31,11 +31,22 @@ const PostCard = ({
                         backgroundImage: `url(${post.data.thumbImage})`
                     }}></div>
                 </div>
-                <div className="post-card-content">
-                    <h3 className="title">{post.data.title}</h3>
-                    <p className="description">{post.data.mainText}</p>
-                    <TagCloud tags={post.data.tags} />
-                </div>
+
+                {(collection === PostType.Lore) ? 
+                    <div className="post-card-content">
+                        <h3 className="title">{post.data.title}</h3>
+                        <p className="description">{post.data.mainText}</p>
+                        <TagCloud tags={post.data.tags} />
+                    </div> : null
+                }
+                {(collection === PostType.Introduction) ? 
+                    <div className="post-card-content">
+                        <h3 className="title">{post.data.title}</h3>
+                        <p className="description">{post.data.subText}</p>
+                        <TagCloud tags={post.data.tags} />
+                    </div> : null
+                }
+
                 <div className="post-card-bottom">
                     <span className="date code">{dateString}</span>
                     <FontAwesomeIcon icon={faArrowRight} className="arrow" />

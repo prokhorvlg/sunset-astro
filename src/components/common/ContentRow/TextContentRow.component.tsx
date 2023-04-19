@@ -1,10 +1,11 @@
 import ContentRow from "@/components/common/ContentRow/ContentRow.component"
 
 const TextContentRow = ({
-    children
+    children,
+    classes = ''
 }) => {
     return (
-        <ContentRow>
+        <ContentRow classes={`text-content-row ${classes}`}>
             {children}
         </ContentRow>
     )

@@ -107,11 +107,13 @@ const MacintoshStraightHeader = ({
                 <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>
+                <div className="line"></div>
             </div>
             {titleHasLength && <><div className="macintosh-header-title">
                 <span>{wrapStyle.headerTitle}</span>
             </div>
             <div className="macintosh-header-lines right">
+                <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>
                 <div className="line"></div>
