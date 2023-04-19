@@ -7,20 +7,8 @@ import IntroSection from "../components/home/IntroSection/IntroSection.component
 import ScrollSuggestion from "../components/home/ScrollSuggestion/ScrollSuggestion.component";
 import SunsetFooter from "@/components/layout/Footer/SunsetFooter.component";
 import SunsetHeader from "@/components/layout/Header/SunsetHeader.component";
-import FullWidthWrapper, {
-  WrapperMax,
-} from "../components/wrappers/FullWidthWrapper.component";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { faWrench } from "@fortawesome/free-solid-svg-icons";
-import QuoteContainer from "@/components/containers/QuoteContainer/QuoteContainer.component";
-import {AuthorUniserve, AuthorTerminal} from "@/data/Authors"
-import QuoteContentRow from "@/components/common/ContentRow/QuoteContentRow.component";
-//import * as homePageContent from '@/content/home-page.mdx';
-import {Content as HomePageContent} from '@/content/home-page.mdx';
-
-//const { Content } = await homePageContent.render();
-
-const spacingBetweenBlock = 50;
+import { Content } from '@/content/home-page.mdx';
 ---
 
 <!DOCTYPE html>
@@ -34,23 +22,20 @@ const spacingBetweenBlock = 50;
       <HomeBanner client:only />
       <ScrollSuggestion />
       <IntroSection client:only />
-      <HomePageContent />
-      
-      
+      <Content />
+
       <!--<FullWidthWrapper>
 					<SimpleContainer classes="under-construction">
 						<FontAwesomeIcon icon={faWrench} />
 						<p class="highlight-orange">The full introduction is <span class="highlight-aqua">under construction :)</span></p>
 					</SimpleContainer>
 				</FullWidthWrapper>-->
-        <div><ul>
+        <!--<div><ul>
           <li>Hello and Welcome // An introduction from a robotic mastermind</li>
           <li>World of Retrofuturistic Dreams // The world of mankind before their disappearance</li>
           <li>The Sunset Research Initiative // How they set out to solve the problem</li>
           <li>Post-Mankind Existentialism // The state of the world in this strange time</li>
-        </ul></div>
-
-      
+        </ul></div>-->
     </main>
     <SunsetFooter client:only currentPage={Astro.url.pathname} />
   </body>
