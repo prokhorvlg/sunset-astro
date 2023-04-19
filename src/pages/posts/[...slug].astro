@@ -1,13 +1,6 @@
 ---
-import BaseHead from '@/components/BaseHead.astro';
-import QuoteContentRow from '@/components/common/ContentRow/QuoteContentRow.component';
-import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
-import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
-import PostHeading from '@/components/post/PostHeading.component';
-import PostNavigationBar from '@/components/post/PostNavigationBar.component';
 import PostLayout from '@/layouts/PostLayout.astro';
 import { CollectionEntry, getCollection } from 'astro:content';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('lore');
@@ -19,35 +12,10 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<'lore'>;
 
 const post = Astro.props;
-const content = post.body
+//const { Content } = await post.render();
 const { Content } = await post.render();
-
-const date = post.data.pubDate
 ---
 
 <PostLayout post={post}>
 	<Content />
 </PostLayout>
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={post.data.title} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<SunsetHeader client:only currentPage={Astro.url.pathname} />
-		<main>
-			
-			<PostHeading post={post}/>
-			<Content />
-			<QuoteContentRow client:only>
-Sunset System is a showcase about a world where humanity vanished from the Solar System during an extended Space Race, leaving behind the robots that ran the world. The project explores the machines' struggle to find meaning as they gain consciousness, the decaying retrofuturistic dreams they are surrounded by, and the wild and strange ways their society may be evolving.
-
-The showcase is presented by a filing system named UNISERVE, who can get you introduced on the home page.
-</QuoteContentRow>
-			<PostNavigationBar date={date} title={post.data.title}/>
-		</main>
-		<SunsetFooter client:only currentPage={Astro.url.pathname} />
-	</body>
-</html>-->
