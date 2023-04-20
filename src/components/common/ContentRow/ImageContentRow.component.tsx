@@ -55,8 +55,11 @@ const ImageContentRow = ({
                                         const originalWidth = imageItem.originalObject.width || 1
                                         const originalHeight = imageItem.originalObject.height || 1
                                         return (
-                                            <button className="image-content-image" onClick={open}> 
-                                                <div className="top-text">// IMAGE VIEWER - <span className="highlight-aqua">{imageItem.originalObject.alt || ""}</span></div>
+                                            <button className="image-content-image" onClick={open}>
+                                                {imageItem.originalObject.caption ? 
+                                                    <div className="top-text">CAPTION // <span className="highlight-orange">{imageItem.originalObject.caption || ""}</span></div>
+                                                    : null
+                                                }
                                                 <img
                                                     src={imageItem.processedObject.src || ""}
                                                     alt={imageItem.originalObject.alt || ""}

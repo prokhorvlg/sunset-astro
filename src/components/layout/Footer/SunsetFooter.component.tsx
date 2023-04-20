@@ -32,7 +32,8 @@ const SunsetFooter = ({ currentPage = '' }) => {
                     <div className="divider"></div>
                     <div className="description">
                         <p className="strong">Sunset System is a showcase of my cassette-futurist world, a place of decaying retrofuturistic dreams and existential machines.</p>
-                        <p>During an alternate Space Race, humanity achieved wonders through a process of unyielding scientific progress, resulting in a beautiful yet divided Solar System. After losing control of a massive decades-long experiment to erase conflict as a concept, they vanished from reality altogether. They left behind a civilization of robots, duty-bound to ancient core directives while struggling to comprehend their own emerging consciousness, evolving into something unrecognizable.</p>
+                        <p>During an alternate Space Race, humanity accomplished wonders through steadfast scientific progress, resulting in a beautiful but divided Solar System. After a secretive organization lost control of an experiment to erase conflict as a concept, man vanished from reality altogether.</p>
+                        <p>They left behind a civilization of robots, duty-bound to ancient core directives while struggling to comprehend their own emerging consciousness. As machine civilization evolves into something unrecognizable, they continue to hold the memory of mankind dear.</p>
                         <p>* The wonderful people who have supported and helped me realize this project are recognized here.</p>
                     </div>
                 </div>
@@ -56,12 +57,14 @@ const SunsetFooter = ({ currentPage = '' }) => {
                         <div className="input-row">
                             <input type="text" placeholder="Email Address"/>
                             <Button type={ButtonType.Dialog}><>Submit</></Button>
-    </div>*/}
-                        <iframe 
-                            data-w-type="embedded" 
-                            src="https://9yjq.mjt.lu/wgt/9yjq/o18/form?c=91733615" 
-                            width="100%" style={{flex: 1}}/>
-                        <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
+                        </div>*/}
+                        <div className="email-form">
+                            <iframe 
+                                data-w-type="embedded" 
+                                src="https://9yjq.mjt.lu/wgt/9yjq/o18/form?c=91733615" 
+                                width="100%" style={{flex: 1}}/>
+                            <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
+                        </div>
 
                     </div>
                 </div>

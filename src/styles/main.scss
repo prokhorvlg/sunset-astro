@@ -12,12 +12,12 @@ $color-ultradark-red: #461709;
 $color-background-dark: #24150e;
 
 $color-retro-dreams: $color-sunset-red;
-$color-enigma-of-humanitys-fate: #2a94ea;
+$color-core-mystery: #2a94ea;
 $color-post-mankind: #d70eff;
 
 /*
 $color-retro-dreams: #ff8800;
-$color-enigma-of-humanitys-fate: #ea2a63;
+$color-core-mystery: #ea2a63;
 $color-post-mankind: #d70eff;
 b433f0
 */
@@ -29,7 +29,7 @@ $size-max-width-wide-content: 1000px;
 $size-max-width-blog: 800px;
 $size-line-width: 2px;
 
-$breakpoint-mobile: 1200px;
+$breakpoint-mobile: 1000px;
 $breakpoint-footer: 1500px;
 
 // Otherwise known as rounded mode
@@ -44,8 +44,8 @@ $chicanery-border-radius: 6px;
 // - BODY FONT
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&display=swap');
 // - 'CODE' FONT
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@500;600;700&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Consolas:wght@600;700&display=swap');
 
 $font-title: 'Saira', sans-serif;
@@ -234,10 +234,10 @@ input[type=text] {
     align-items: center;
     .full-width-wrapper-inner {
         width: 100%;
-        max-width: $size-max-width-wide;
-        margin: 0 6px;
+        max-width: $size-max-width-wide + 4px;
+        margin: 0 2px;
         @media screen and (max-width: $size-max-width-wide) {
-            width: calc(100% - 6px);
+            width: calc(100% - 2px);
         }
     }
 
@@ -312,6 +312,45 @@ input[type=text] {
     }
 }
 
+.heading-content-row {
+    h1, h2, h3, h4, h5, h6 {
+        //color: $color-sunset-orange;
+        line-height: 35px;
+        width: 90%;
+        @media screen and (max-width: $breakpoint-mobile) {
+            font-size: 22px;
+        }
+    }
+
+    &.centered-on-mobile {
+        @media screen and (max-width: $breakpoint-mobile) {
+            text-align: center;
+            h1, h2, h3, h4, h5, h6 {
+                width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+
+    // Centered with blinky lights
+    &.blips {
+        .heading-content-wrap {
+            display: flex;
+            flex-direction: row;
+            .left-box {
+                height: 100px;
+                width: 100px;
+                border: 2px solid $color-sunset-orange;
+            }
+            .heading-box {
+                flex: 1;
+            }
+        }
+    }
+    
+}
+
 @mixin codeText() {
     font-family: $font-code;
     font-size: 16px;
@@ -321,10 +360,11 @@ input[type=text] {
     @media screen and (max-width: $breakpoint-mobile) {
         font-size: 14px;
         line-height: 24px;
-        width: 95%;
-        margin: 25px auto;
+        //width: 95%;
+        //margin: 25px auto;
     }
 }
+$breakpoint-quote: 1600px;
 .quote-content-row {
     pre {
         white-space: pre-wrap;
@@ -339,6 +379,18 @@ input[type=text] {
         p.perfect {
             font-family: monospace;
         }
+        li {
+            line-height: 10px;
+            @media screen and (max-width: $breakpoint-mobile) {
+                margin: 0;
+            }
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: $font-code;
+            font-weight: 600;
+            margin-top: 40px;
+        }
     }
 
     .full-width-wrapper-inner {
@@ -349,17 +401,21 @@ input[type=text] {
             display: inline-block;
             position: relative;
             .author-box {
-                width: 300px;
+                width: 250px;
                 position: absolute;
                 left: calc(100% + 15px);
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
                 align-items: flex-start;
-                @media screen and (max-width: $breakpoint-mobile) {
+                @media screen and (max-width: $breakpoint-quote) {
+                    position: relative;
                     left: auto;
-                    right: 0;
-                    bottom: 100%;
+                    width: auto;
+
+                    flex-direction: row-reverse;
+                    align-items: flex-end;
+                    margin-bottom: 4px;
                 }
                 .image {
                     max-width: 200px;
@@ -370,23 +426,42 @@ input[type=text] {
                     background-repeat: no-repeat;
                     //border: $size-line-width solid $color-sunset-red;
                     border-radius: $chicanery-border-radius;
-                    margin-bottom: 15px;
+                    margin-bottom: 20px;
+                    flex-shrink: 0;
+                    @media screen and (max-width: $breakpoint-quote) {
+                        margin: 0 0 0 10px;
+                        width: 100px;
+                        height: 100px;
+                    }
                 }
-                .name {
-                    font-family: $font-code;
-                    font-size: 18px;
-                    line-height: 24px;
-                    text-align: left;
-                    color: $color-sunset-orange;
+                .text {
+                    display: flex;
+                    flex-direction: column;
+                    .name {
+                        font-family: $font-title;
+                        font-weight: 600;
+                        font-size: 24px;
+                        line-height: 24px;
+                        text-align: left;
+                        color: $color-sunset-orange;
+                        @media screen and (max-width: $breakpoint-quote) {
+                            text-align: right;
+                        }
+                    }
+                    .description {
+                        margin-top: 8px;
+                        text-align: left;
+                        color: $color-sunset-red;
+                        font-family: $font-code;
+                        font-size: 14px;
+                        line-height: 20px;
+                        @media screen and (max-width: $breakpoint-quote) {
+                            margin-top: 4px;
+                            text-align: right;
+                        }
+                    }
                 }
-                .description {
-                    margin-top: 8px;
-                    text-align: left;
-                    color: $color-sunset-red;
-                    font-family: $font-code;
-                    font-size: 16px;
-                    line-height: 24px;
-                }
+                
 
                 .blinking-grid {
                     margin-bottom: 20px;
@@ -775,6 +850,7 @@ input[type=text] {
 
         .icon-container {
             @include abg-child();
+            flex:1;
             svg {
                 color: $color-sunset-red;
                 font-size: 18px;
@@ -928,7 +1004,9 @@ input[type=text] {
         @media screen and (max-width: $breakpoint-mobile) {
             justify-content: center;
             .title {
-                font-size: 24px;
+                font-size: 20px;
+                font-weight: 500;
+                letter-spacing: 0.5px;
                 position: relative;
                 display: block;
                 width: 100%;
@@ -1122,6 +1200,9 @@ input[type=text] {
                 background: linear-gradient(to right, #ffaa01, #ff510c);
                 border-radius: $chicanery-border-radius;
                 padding: 30px 30px 40px 30px;
+                @media screen and (max-width: $breakpoint-footer) {
+                    padding: 20px;
+                }
                 p {
                     color: $color-background-dark;
                     font-family: $font-body;
@@ -1196,6 +1277,7 @@ input[type=text] {
                 margin-left: 3px;
                 background-color: $color-ultradark-red;
                 padding: 20px;
+                padding: 3px;
                 position: relative;
                 flex-basis: 30%;
     
@@ -1207,6 +1289,7 @@ input[type=text] {
                     margin-left: 0;
                     margin-bottom: 2px;
                     flex-basis: 50%;
+                    min-height: 400px;
                 }
                 > h3 {
                     @include abg-child();
@@ -1214,10 +1297,12 @@ input[type=text] {
                     font-weight: 600;
                     margin: 30px 0 20px 10px;
                     color: $color-sunset-orange;
+                    padding: 18px 18px 0 18px;
                 }
                 .divider {
                     @include abg-child();
                     background-color: $color-sunset-orange;
+                    display: none;
                 }
                 .input-row {
                     @include abg-child();
@@ -1238,6 +1323,19 @@ input[type=text] {
                         }
                     }
                 }
+
+                .email-form {
+                    z-index: 5;
+                    background: linear-gradient(to right, #ffaa01, #ff510c);
+                    border-radius: 4px;
+                    padding: 20px;
+                    flex: 1;
+                    iframe {
+                        border: none;
+                        height: 100%;
+                    }
+                }
+                
             }
         }
     }
@@ -1293,7 +1391,7 @@ $dialog-main-color: $color-sunset-red;
     padding: 0;
     display: block;
     text-decoration: none;
-    margin-left: -2px;
+    //margin-left: -2px;
     margin-right: 2px;
     
     &.hover:hover, &.hover:focus {
@@ -1440,7 +1538,7 @@ $dialog-main-color: $color-sunset-red;
     padding-bottom: 5px;
     border-bottom: $size-line-width solid $dialog-main-color;
 
-    $spaceAroundTitle: 60px;
+    $spaceAroundTitle: 10px;
     .macintosh-header-title {
         text-transform: uppercase;
         margin: 0 $spaceAroundTitle 0 $spaceAroundTitle;
@@ -1448,8 +1546,8 @@ $dialog-main-color: $color-sunset-red;
         span {
             font-family: $font-code;
             font-size: 1.1rem;
-            color: $dialog-main-color;
-            font-weight: 800;
+            color: $color-background-dark;
+            font-weight: 600;
         }
     }
 
@@ -1563,9 +1661,13 @@ $dialog-main-color: $color-sunset-red;
 .sunset-banner-container {
     display: flex;
     justify-content: center;
-    height: calc(100vh - 92px - 102px); // - header height - bottom peek
+    height: calc(100vh - 92px - 84px); // - header height - bottom peek
     //background: $color-background-dark;
     background: linear-gradient(0deg, rgba(36,21,14,0) 30%, rgba(36,21,14,1) 100%);
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        height: calc(100vh - 92px - 84px - 34px);
+    }
     
     .sunset-banner {
         height: 100%;
@@ -1574,7 +1676,7 @@ $dialog-main-color: $color-sunset-red;
         overflow: hidden;
         position: relative;
         //border: $size-line-width solid $color-sunset-orange;
-        margin: 0px 6px;
+        margin: 0px 2px;
         @if $chicanery-mode {
             border-radius: $chicanery-border-radius;
         }
@@ -1591,11 +1693,11 @@ $dialog-main-color: $color-sunset-red;
             padding: 0;
             text-shadow: $color-sunset-red 0 0 100px;
             @media screen and (max-width: $breakpoint-mobile) {
-                top: 20%;
+                top: 30%;
                 left: 12px;
                 right: 12px;
                 transform: none;
-                display: none;
+                //display: none;
             }
 
             h1 {
@@ -1634,10 +1736,10 @@ $dialog-main-color: $color-sunset-red;
                     border-radius: $chicanery-border-radius;
                 }
                 @media screen and (max-width: $breakpoint-mobile) {
-                    margin-top: -10px;
-                    margin: -10px 0px 0 0px;
+                    margin: -12px 0px 0 0px;
                     width: 100%;
                     max-width: 100%;
+                    font-size: 14px;
                     .slashes {
                         display: none;
                     }
@@ -1678,7 +1780,7 @@ $dialog-main-color: $color-sunset-red;
             left: -550px;
             opacity: 1;
             @media screen and (max-width: $breakpoint-mobile) {
-                background-size: 1500px;
+                background-size: 1400px;
                 top: 300px;
                 left: -400px;
             }
@@ -1699,6 +1801,7 @@ $dialog-main-color: $color-sunset-red;
                 top: 57%;
                 right: -350px;
                 background-size: 1200px;
+                display: none;
             }
         }
         .sunset-banner-deep-background {
@@ -1756,7 +1859,7 @@ $dialog-main-color: $color-sunset-red;
 .scroll-suggestion {
     margin-top: 0;
     .simple-container {
-        margin: 6px auto;
+        margin: 3px auto;
         max-width: $size-max-width-wide;
         .simple-container-inner {
             height: 80px;
@@ -1771,6 +1874,15 @@ $dialog-main-color: $color-sunset-red;
             .text {
                 font-family: $font-code;
                 font-size: 18px;
+                text-align: center;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    font-size: 14px;
+                    line-height: 20px;
+                    span:not(.blinking) {
+                        display: block;
+                    }
+                }
+                
             }
         }
     }
@@ -1779,7 +1891,7 @@ $dialog-main-color: $color-sunset-red;
 // - INTRO DIALOG
 .sunset-main-intro {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: -10px;
@@ -1790,7 +1902,7 @@ $dialog-main-color: $color-sunset-red;
 
     .main-intro-area {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         max-width: 1800px;
         padding: 50px 50px;
 
@@ -1811,7 +1923,7 @@ $dialog-main-color: $color-sunset-red;
                 padding: 0;
                 margin: 0;
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 justify-content: space-around;
                 height: 100%;
             }
@@ -1894,7 +2006,8 @@ $dialog-main-color: $color-sunset-red;
                     }
                     .content-box {
                         padding: 60px 60px 60px 60px;
-                        max-width: 1000px;
+                        //max-width: 1000px;
+                        flex: 1;
                         border-left: $size-line-width solid $dialog-main-color;
                         position: relative;
                         border-radius: $chicanery-border-radius;
@@ -1904,17 +2017,18 @@ $dialog-main-color: $color-sunset-red;
                         }
 
                         h2 {
-                            font-family: $font-title-condensed;
+                            font-family: $font-title;
                             font-size: 24px;
                             line-height: 38px;      
                             padding-bottom: 10px;
-                            margin-bottom: 60px;
+                            margin: 30px 0 0px 0;
                             position: relative;
                             @include abg(1);
                             @media screen and (max-width: $breakpoint-mobile) {
                                 text-align: center;
                             }
                             &:after {
+                                display: none;
                                 top: 100%;
                                 left: 0;
                                 width: 250px;
@@ -1936,6 +2050,95 @@ $dialog-main-color: $color-sunset-red;
                         @include abg-red-diagonal;
                     }
                 }
+            }
+        }
+    }
+}
+
+.home-hub {
+    margin: 1px 0 20px 0 !important;
+    .hub-dialog {
+        margin-right: -2px;
+        .hub-container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: $color-sunset-red;
+            
+            .hub-main-heading {
+                position: relative;
+                background: linear-gradient(to bottom, darken($color-sunset-red, 40%), $color-ultradark-red);
+                border-radius: $chicanery-border-radius;
+                @include abg(0.5);
+                @include abg-red-crisscross();
+                
+                .hub-border {
+                    padding: 150px 0;
+                    //border: 2px solid $color-sunset-orange;
+                    border-radius: $chicanery-border-radius - 2px;
+                    margin: 2px;
+                }
+                h2 {
+                    font-size: 38px;
+                    margin-bottom: 50px;
+                    color: $color-sunset-orange;
+                }
+                h2, p {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .hub-cols {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 2px;
+        margin: 0 80px 90px 80px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            grid-template-columns: 1fr;
+        }
+
+        .hub-col {
+            position: relative;
+            z-index: 5;
+            //background: $color-ultradark-red;
+            border-radius: $chicanery-border-radius;
+            //@include abg(0.5);
+            //@include abg-red-crisscross();
+            margin: 0 1px 0 1px;
+            padding: 30px 40px;
+            //background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
+            background: rgba($color-sunset-red, 0.1);
+            background: linear-gradient(to bottom, rgba($color-sunset-red, 0.05), rgba($color-sunset-red, 0.1));
+
+            &.aqua {
+                background: linear-gradient(to bottom, rgba($color-sunset-melancholic, 0.1), rgba($color-sunset-aqua, 0.1));
+            }
+            min-height: 500px;
+        }
+        h3 {
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            font-size: 24px;
+            //text-transform: uppercase;
+            text-align: center;
+            font-family: $font-code;
+
+            background: $color-sunset-red;
+            border-radius: $chicanery-border-radius;
+            padding: 20px 0;
+
+            background: none;
+            border: 2px solid $color-sunset-red;
+            
+            &.standard {
+                color: $color-ultradark-red;
+                color: $color-sunset-red;
+            }
+            &.aqua {
+                border-color: $color-sunset-aqua;
+                color: $color-sunset-aqua;
+                background: rgba($color-sunset-melancholic, 0.2);
             }
         }
     }
@@ -2427,7 +2630,7 @@ $dialog-main-color: $color-sunset-red;
 
         @include tag-color(".post-mankind", $color-post-mankind);
         @include tag-color(".retro-dreams", $color-retro-dreams);
-        @include tag-color(".enigma-of-humanitys-fate", $color-enigma-of-humanitys-fate);
+        @include tag-color(".core-mystery", $color-core-mystery);
     }
 }
 
@@ -2636,17 +2839,15 @@ $post-heading-width: 1000px;
 
     // Variation of heading designed for main pages
     &.page {
+        &.hidden-header {
+            margin-top: -2px !important;
+        }
         .heading-crown-wrapper {
             margin-top: 0px;
             border: 2px solid $color-sunset-red;
             background: $color-sunset-red;
             border-radius: $chicanery-border-radius;
-            //margin-bottom: -2px;
             position: relative;
-
-            @media screen and (max-width: $breakpoint-mobile) {
-
-            }
 
             &::before {
                 //content: '';
@@ -2797,6 +2998,10 @@ $post-heading-width: 1000px;
         .main-area {
             margin: 6px 4px;
             border-radius: $chicanery-border-radius - 4px;
+            &.pull-down {
+                height: 400px;
+                margin-bottom: -200px;
+            }
             svg {
                 font-size: 80px;
                 margin-right: 10px;
@@ -2948,7 +3153,7 @@ $post-heading-width: 1000px;
     }
     
     .image-content-image {
-        display: block;
+        display: flex;
         position: relative;
         background: none;
         border: 2px solid transparent;
@@ -2957,24 +3162,51 @@ $post-heading-width: 1000px;
         cursor: pointer;
         transition: 0.1s ease-in-out;
         border-radius: $chicanery-border-radius;
+        flex-direction: column-reverse;
 
         .top-text {
             position: absolute;
             //top: 2px;
             //left: 50%;
             //transform: translateX(-50%);
-            top: 0;
-            right: 0;
+            bottom: 3px;
+            right: 3px;
+            left: 3px;
             z-index: 2;
             opacity: 0;
             pointer-events: none;
             transition: 0.1s ease-in-out;
             user-select: none;
-            margin-top: -26px;
+            padding: 15px;
 
             color: $color-sunset-red;
             font-family: $font-code;
-            font-size: 18px;
+            font-size: 16px;
+
+            background: $color-ultradark-red;
+            border-radius: $chicanery-border-radius - 2px;
+            border: 2px solid $color-sunset-red;
+
+            @include abg(0.2);
+            @include abg-red-diagonal();
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                bottom: auto;
+                right: auto;
+                top: auto;
+                left: auto;
+                opacity: 1;
+
+                font-size: 14px;
+                letter-spacing: -0.2px;
+                line-height: 18px;
+                
+                position: relative;
+                align-self: flex-end;
+                display: inline-block;
+                margin-top: 2px;
+                margin-bottom: 3px;
+            }
         }
 
         img {
@@ -3010,9 +3242,6 @@ $post-heading-width: 1000px;
             border: 2px solid $color-sunset-red;
             .top-text {
                 opacity: 1;
-                @media screen and (max-width: $breakpoint-mobile) {
-                    display: none;
-                }
             }
             img {
                 transform: scale(0.98);
@@ -3056,5 +3285,20 @@ a.artist-tag {
         transform: scale(1.05);
         border-color: $color-sunset-orange;
         background-color: lighten($color-ultradark-red, 5%);
+    }
+}
+
+.transition-gradient {
+    .gradient {
+        border-radius: 6px;
+        height: 400px;
+        &.to-bottom {
+            margin: -200px auto 3px auto;
+            background: linear-gradient(to top, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+        }
+        &.to-top {
+            margin: 3px auto -200px auto;
+            background: linear-gradient(to bottom, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+        }
     }
 }

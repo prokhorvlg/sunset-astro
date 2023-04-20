@@ -26,6 +26,7 @@ export interface ImageDetails {
     width: number
     height: number
     artist?: ImageArtist
+    caption?: string
 }
 
 export enum ImageId {
@@ -83,8 +84,16 @@ export const Images: ImageDetails[] = [
     {
         id: 'sri-brochure',
         src: "/images/content/sunset-brochure-intro.jpg",
-        alt: "Brochure for Sunset Research Initiative",
+        alt: "Brochure for the Sunset Research Initiative",
         width: 2700,
         height: 1673
+    },
+    {
+        id: 'sri-brochure-photo',
+        src: "/images/content/sunset-brochure-photo.png",
+        alt: "Photo of the Input Data Sanitization Team",
+        caption: "A photograph of the Input Data Sanitization Team on Project BELOBOG: Genadiy Sobakin, Jane Davis, and DTEK.",
+        width: 2245,
+        height: 1768
     },
 ]

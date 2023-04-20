@@ -56,9 +56,10 @@ const introductionPostsProcessed = await processPosts(introductionPosts)
 // Combine all of the above.
 const processedPosts: ProcessedPost[] = [...lorePostsProcessed, ...introductionPostsProcessed]
 
-//console.log(processedPosts[1])
-
 // Sort collection by date.
+const sortedPosts = processedPosts.sort((a,b) => {
+  return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
+});
 
 ---
 
@@ -70,9 +71,9 @@ const processedPosts: ProcessedPost[] = [...lorePostsProcessed, ...introductionP
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
 		<main>
-			<PageHeading title="Posts" subtext={"A collection of every post made for Sunset System."}></PageHeading>
+			<PageHeading title="Posts" subtext={"A collection of every post made for Sunset System."} image='computer-blinking'><></></PageHeading>
 			<PostsView client:only
-				processedPosts={processedPosts}
+				processedPosts={sortedPosts}
 			/>
 		</main>
 		<SunsetFooter client:only currentPage={Astro.url.pathname} />

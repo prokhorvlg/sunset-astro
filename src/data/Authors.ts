@@ -23,7 +23,7 @@ export const AuthorUniserve: QuoteAuthor = {
 // Text-transcribing spy robot.
 export const AuthorCAN: QuoteAuthor = {
     id: "can",
-    name: "Concealed Assessment Node",
+    name: "Trash CAN",
     image: "/images/home/uniserve-present.png",
-    description: "Your trusty transcription companion."
+    description: "Your trusty companion. Bites intruders and transcribes text."
 }

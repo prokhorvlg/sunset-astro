@@ -22,8 +22,10 @@ const QuoteContainer = ({
                     <BlinkingGrid />:
                     <div className="image" style={{backgroundImage: "url(" + author.image + ")"}}></div>
                 }
-                <span className="name">{author.name}</span>
-                <span className="description">{author.description}</span>
+                <div className="text">
+                    <span className="name">{author.name}</span>
+                    <span className="description">{author.description}</span>
+                </div>
             </div>
             <SimpleContainer classes="code-block quote-box">
                 {children}

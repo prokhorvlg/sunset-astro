@@ -1,14 +1,17 @@
 ---
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BaseHead from "../components/BaseHead.astro";
-import SimpleContainer from "../components/containers/SimpleContainer/SimpleContainer.component";
 import HomeBanner from "../components/home/HomeBanner/HomeBanner.component";
 import IntroSection from "../components/home/IntroSection/IntroSection.component";
 import ScrollSuggestion from "../components/home/ScrollSuggestion/ScrollSuggestion.component";
 import SunsetFooter from "@/components/layout/Footer/SunsetFooter.component";
 import SunsetHeader from "@/components/layout/Header/SunsetHeader.component";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { Content } from '@/data/home-page.mdx';
+
+import { Content as HomePageUniserve } from '@/data/home-page/home-page-uniserve.mdx';
+import { Content as HomePageSummary } from '@/data/home-page/home-page-summary.mdx';
+import PageHeading from "@/components/page/PageHeading.component";
+import HomeHub from "@/components/home/HomeHub.component";
+import TransitionGradient from "@/components/home/TransitionGradient.component";
 ---
 
 <!DOCTYPE html>
@@ -21,8 +24,17 @@ import { Content } from '@/data/home-page.mdx';
     <main>
       <HomeBanner client:only />
       <ScrollSuggestion />
-      <IntroSection client:only />
-      <Content />
+      
+      <PageHeading pullDown showHeaderBar={false}><></></PageHeading>
+      
+      <HomePageSummary />
+      <TransitionGradient direction="to-bottom" />
+      <!--<IntroSection client:only />-->
+      <HomeHub />
+      <img src="/images/Hero_Background.png" width={2000}/>
+      <TransitionGradient direction="to-top" />
+
+      <HomePageUniserve />
 
       <!--<FullWidthWrapper>
 					<SimpleContainer classes="under-construction">
