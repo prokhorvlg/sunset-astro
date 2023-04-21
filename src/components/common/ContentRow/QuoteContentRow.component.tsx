@@ -12,8 +12,8 @@ const QuoteContentRow = ({
     children
 }: PropTypes) => {
     return (
-        <ContentRow classes="quote-content-row">
-            <QuoteContainer author={author} spacing={50}>
+        <ContentRow classes="quote-content-row" verticalSpacing={100}>
+            <QuoteContainer author={author} spacing={100}>
                 <pre>{children}</pre>
             </QuoteContainer>
         </ContentRow>

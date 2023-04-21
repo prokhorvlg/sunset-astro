@@ -6,23 +6,24 @@ import QuoteContentRow from '@/components/common/ContentRow/QuoteContentRow.comp
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
+import { Image, Picture } from '@astrojs/image/components';
 export const HEADING_VERTICAL_SPACING = 50
 
-<HeadingContentRow classes="centered-on-mobile" verticalSpacing={HEADING_VERTICAL_SPACING}>
-<img src="/images/Sunset_Icons (1).png" width={300} />
+<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>
+    <img src="/images/Icon_Cassette (4).png" width={400} />
+    {/*<Image src="/images/Icon_Cassette (4).png" width={400} aspectRatio="624:447" alt="Datasette" format="png" quality={100}/>*/}
     <h2 className="highlight-orange">Sunset System is a cassette-futurist project set in a strange alternate reality, where the world of tomorrow was brute-forced through scientific progress.</h2>
 </HeadingContentRow>
 
 <TextContentRow>
-    The optimistic future everyone was so certain of in the midcentury came to pass. Cosmonauts descended upon the Venusian jungles in nuclear-powered spaceplanes by the 1970s; astronauts would crawl the forests of Titan in land cruisers soon after.
+    The optimistic future everyone was so certain of in the midcentury came to pass. Cosmonauts descended upon Venusian jungles in nuclear-powered spaceplanes by the 1970s; astronauts hacked through Titan's forests soon after.
     
     Less than a century later, these worlds would be filled with suburbs and communes, as household robots and cybernetic masterminds automated all of the things humans didn't want to do.
-
-    It was amazing.
 </TextContentRow>
 
-<HeadingContentRow classes="centered-on-mobile" verticalSpacing={HEADING_VERTICAL_SPACING}>
-    <h2 className="highlight-orange">The Cold War followed them beyond Earth's skies, bringing with it a perpetual terror of nuclear annihilation.</h2>
+<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>
+<img src="/images/Icon_Space_Race (2).png" width={400} />
+    <h2 className="highlight-orange">But no amount of progress could hide the omnipresent terror of nuclear annihilation, as the Cold War followed colonists beyond Earth's skies.</h2>
 </HeadingContentRow>
 
 <TextContentRow>
@@ -31,8 +32,9 @@ export const HEADING_VERTICAL_SPACING = 50
     The *Sunset Research Initiative* was created as a joint effort between the Union, Coalition, and Pact to erase the concept of conflict from the human race. They studied the noosphere to create a machine unlike any other...
 </TextContentRow>
 
-<HeadingContentRow classes="centered-on-mobile" verticalSpacing={HEADING_VERTICAL_SPACING}>
-    <h2 className="highlight-orange">Their experiments backfired, and their robots were the only ones left behind.</h2>
+<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>
+<img src="/images/Icon_Robots (2).png" width={350} />
+    <h2 className="highlight-orange">Their experiments to erase 'conflict' backfired, and their robots were the only ones left behind.</h2>
 </HeadingContentRow>
     
 <TextContentRow>

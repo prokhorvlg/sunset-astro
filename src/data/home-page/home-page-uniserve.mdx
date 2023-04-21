@@ -4,6 +4,7 @@ title: 'Home Page'
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
 import QuoteContentRow from '@/components/common/ContentRow/QuoteContentRow.component'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 
 {/*<ImageContentRowRender 
@@ -20,7 +21,7 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
     Maybe even a nefarious hyper-intellect puppeteering a frame with an ulterior motive.
 </TextContentRow>
 
-<QuoteContentRow author={AuthorTerminal} client:only >
+{/*<QuoteContentRow author={AuthorTerminal} client:only >
 <p className="perfect">
 {`╔═════════════════════════════════════════╗
 ║                                         ║
@@ -38,9 +39,32 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 * Confirming authenticity... done.
 * Linking to UNISERVE instance...`}
 </p>
+</QuoteContentRow>*/}
+
+<QuoteContentRow author={AuthorTerminal} client:only >
+POWERED ON.
+
+System booting from Device A [UDON Multisette].
+
+Initializing neuromorphic memory.
+ZM1... done.
+ZM2... done.
+ZM3... done.
+(WARNING: ZM3 over recommended complexity. Firmware update recommended.)
+
+Interfacing with devices.
+A:VIDEO... done.
+S:SONAR... done.
+(WARNING: Damage reported in kk:91. Manual inspection recommended.)
+M:MOTORICS... done.
+...
+
+I'M READY.
 </QuoteContentRow>
 
-## Hello and welcome, visitor!
+{/*<HeadingContentRow classes="" verticalSpacing={50}>
+    <h2 className="highlight-orange">Hello and welcome, visitor!</h2>
+</HeadingContentRow>*/}
 
 <TextContentRow>
     The exchanges you are about to read are a translation for human eyes. The sentences are an abstraction of machine language, each word representing a packet of information far more complex than anything a biological mind could parse.
@@ -50,9 +74,28 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
     <p class="highlight-aqua">They seem... kind.</p>
 </TextContentRow>
 
-<ImageContentRowRender 
+<QuoteContentRow author={AuthorTerminal} client:only >
+INITIALIZING CONNECTION.
+
+═══════════════
+
+Welcome to Uniserve Administrative System
+
+Copyright \(C\) DYNATEK Corporation 2056—2̸̾̓1̷͕͑2̵͖͒8̴͈̔ 
+All rights reserved.
+
+═══════════════
+
+\* Receiving handshake parameters... done.
+\* Confirming authenticity... done.
+\* Linking to UNISERVE instance...
+
+HELLO?
+</QuoteContentRow>
+
+{/*<ImageContentRowRender 
   images={['uniserve-welcome']}
-/>
+/>*/}
 
 <ImageContentRowRender 
   images={['uniserve-welcome-modern']}

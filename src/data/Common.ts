@@ -21,5 +21,7 @@ export const CommonLinks = {
     discord: "https://discord.gg/aM5SBShUeA",
     subreddit: "https://www.reddit.com/r/sunsetsystem/",
     twitter: "https://twitter.com/prokhorVLG",
-    instagram: "https://instagram.com/prokhorvlg"
+    instagram: "https://instagram.com/prokhorvlg",
+    deviantart: "https://www.deviantart.com/prokhorvlg",
+    tumblr: "https://prokhorvlg.tumblr.com/"
 }

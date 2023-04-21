@@ -102,12 +102,12 @@ $font-code: 'Chivo Mono', sans-serif;
     }
 }
 
-
 // GLOBAL
 // Height adjustment, always be at least browser height
 html {
     min-height: 100%;
     display: flex;
+    scroll-behavior: smooth;
 } 
 body {
     display: flex;
@@ -202,6 +202,15 @@ input[type=text] {
     }
 }
 
+.tiny-code {
+    text-transform: uppercase;
+    color: $color-sunset-orange;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 13px;
+    font-family: $font-code;
+}
+
 // - ANIMATIONS
 .blinking {
     animation: blinking-opacity 1s infinite;
@@ -225,7 +234,6 @@ input[type=text] {
 }
 
 // COMMON COMPONENTS
-
 .full-width-wrapper {
     width: 100%;
     margin: 50px 0;
@@ -245,15 +253,6 @@ input[type=text] {
         max-width: $size-max-width-wide-content;
     }
 }
-
-/*.home-text {
-    p {
-        font-size: 20px;
-        line-height: 35px;
-        margin-bottom: 30px;
-        letter-spacing: 0.1px;
-    }
-}*/
 
 // - SIMPLE CONTAINER
 .simple-container {
@@ -303,10 +302,14 @@ input[type=text] {
         line-height: 35px;
         margin-bottom: 30px;
         letter-spacing: 0.1px;
+        @media screen and (max-width: 1200px) {
+            width: 80%;
+            margin: 30px auto;
+        }
         @media screen and (max-width: $breakpoint-mobile) {
             font-size: 18px;
             line-height: 28px;
-            width: 95%;
+            width: 90%;
             margin: 30px auto;
         }
     }
@@ -314,14 +317,30 @@ input[type=text] {
 
 .heading-content-row {
     h1, h2, h3, h4, h5, h6 {
-        //color: $color-sunset-orange;
         line-height: 35px;
         width: 90%;
+        @media screen and (max-width: 1200px) {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
         @media screen and (max-width: $breakpoint-mobile) {
+            width: 90%;
             font-size: 22px;
         }
     }
 
+    &.centered {
+        text-align: center;
+        h1, h2, h3, h4, h5, h6 {
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            @media screen and (max-width: 1200px) {
+                width: 80%;
+            }
+        }
+    }
     &.centered-on-mobile {
         @media screen and (max-width: $breakpoint-mobile) {
             text-align: center;
@@ -331,6 +350,11 @@ input[type=text] {
                 margin-right: auto;
             }
         }
+    }
+
+    img {
+        max-width: 100%;
+        margin: 0 auto;
     }
 
     // Centered with blinky lights
@@ -396,6 +420,8 @@ $breakpoint-quote: 1600px;
     .full-width-wrapper-inner {
         display: flex;
         justify-content: flex-end;
+        margin-left: 6px;
+        margin-right: 6px;
     
         .quote-container {
             display: inline-block;
@@ -462,10 +488,45 @@ $breakpoint-quote: 1600px;
                     }
                 }
                 
-
-                .blinking-grid {
+                .blinkbox-container {
+                    position: relative;
                     margin-bottom: 20px;
+                    max-width: 200px;
+                    height: 150px;
+                    width: 100%;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 2px solid $color-sunset-red;
+                    border-radius: $chicanery-border-radius;
+                    background: linear-gradient(to bottom, rgba($color-sunset-red, 0.05), rgba($color-sunset-red, 0.2));
+
+                    @media screen and (max-width: $breakpoint-quote) {
+                        margin-bottom: 0;
+                        margin-left: 10px;
+
+                        max-width: 80px;
+                        height: 120px;
+                    }
+
+                    .blinking-grid {
+                        margin: 1.5px;
+                        height: 50px;
+                        width: 50px;
+                    }
+                    .floater {
+                        position: absolute;
+                        top: 10px;
+                        color: $color-sunset-red;
+                    }
+                    .floater-under {
+                        position: absolute;
+                        bottom: 10px;
+                        color: $color-sunset-orange;
+                    }
                 }
+                
             }
             .quote-box {
                 padding: 10px 30px;
@@ -1116,7 +1177,7 @@ $breakpoint-quote: 1600px;
     justify-content: center;
     align-items: center;
     .sunset-footer-gradient {
-        width: calc(100% - 6px);
+        width: calc(100% - 2px);
         max-width: $size-max-width-wide;
         //padding: 4px;
         margin: -300px auto 1px auto;
@@ -1130,7 +1191,7 @@ $breakpoint-quote: 1600px;
         position: relative;
         z-index: 200;
         padding: 2px 4px;
-        width: calc(100% - 6px);
+        //width: calc(100% - 2px);
         max-width: $size-max-width-wide;
         margin: 0 auto 4px auto;
 
@@ -1786,7 +1847,7 @@ $dialog-main-color: $color-sunset-red;
             }
         }
         .sunset-hero-right {
-            background: url('/images/Hero_Shroomy (11).png');
+            background: url('/images/Hero_Shroomy (18).png');
             background-size: 1973px;
             background-repeat: no-repeat;
             /* background-position: right center; */
@@ -2056,7 +2117,7 @@ $dialog-main-color: $color-sunset-red;
 }
 
 .home-hub {
-    margin: 1px 0 20px 0 !important;
+    margin: 2px 0 0px 0 !important;
     .hub-dialog {
         margin-right: -2px;
         .hub-container {
@@ -2067,24 +2128,31 @@ $dialog-main-color: $color-sunset-red;
             
             .hub-main-heading {
                 position: relative;
-                background: linear-gradient(to bottom, darken($color-sunset-red, 40%), $color-ultradark-red);
+                background: linear-gradient(to bottom, 
+                    darken($color-sunset-red, 42%) 0%, 
+                    darken($color-sunset-red, 35%) 30%, 
+                    $color-ultradark-red);
                 border-radius: $chicanery-border-radius;
                 @include abg(0.5);
                 @include abg-red-crisscross();
                 
                 .hub-border {
-                    padding: 150px 0;
-                    //border: 2px solid $color-sunset-orange;
-                    border-radius: $chicanery-border-radius - 2px;
-                    margin: 2px;
-                }
-                h2 {
-                    font-size: 38px;
-                    margin-bottom: 50px;
-                    color: $color-sunset-orange;
-                }
-                h2, p {
-                    text-align: center;
+                    padding: 200px 20px;
+                    @media screen and (max-width: $breakpoint-mobile) {
+                        padding: 150px 20px;
+                    }
+                    h2 {
+                        font-size: 48px;
+                        margin-bottom: 50px;
+                        color: $color-sunset-orange;
+                        @media screen and (max-width: $breakpoint-mobile) {
+                            font-size: 36px;
+                            line-height: 44px;
+                        }
+                    }
+                    h2, p {
+                        text-align: center;
+                    }
                 }
             }
         }
@@ -2093,52 +2161,172 @@ $dialog-main-color: $color-sunset-red;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-column-gap: 2px;
+        grid-row-gap: 2px;
+        justify-content: space-around;
         margin: 0 80px 90px 80px;
+        @media screen and (max-width: 1800px) {
+            grid-template-columns: repeat(2, minmax(200px, 600px));
+            grid-column-gap: 20px;
+            grid-row-gap: 50px;
+        }
         @media screen and (max-width: $breakpoint-mobile) {
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0px, 500px);
+            grid-column-gap: 2px;
+            grid-row-gap: 70px;
+            margin: 0 12px 30px 12px;
         }
 
         .hub-col {
             position: relative;
             z-index: 5;
-            //background: $color-ultradark-red;
             border-radius: $chicanery-border-radius;
-            //@include abg(0.5);
-            //@include abg-red-crisscross();
             margin: 0 1px 0 1px;
-            padding: 30px 40px;
-            //background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
-            background: rgba($color-sunset-red, 0.1);
-            background: linear-gradient(to bottom, rgba($color-sunset-red, 0.05), rgba($color-sunset-red, 0.1));
-
-            &.aqua {
-                background: linear-gradient(to bottom, rgba($color-sunset-melancholic, 0.1), rgba($color-sunset-aqua, 0.1));
-            }
-            min-height: 500px;
-        }
-        h3 {
-            font-weight: 600;
-            letter-spacing: -0.5px;
-            font-size: 24px;
-            //text-transform: uppercase;
-            text-align: center;
-            font-family: $font-code;
-
-            background: $color-sunset-red;
-            border-radius: $chicanery-border-radius;
-            padding: 20px 0;
-
-            background: none;
+            padding: 30px 40px 50px 40px;
             border: 2px solid $color-sunset-red;
-            
-            &.standard {
+            background: rgba($color-sunset-red, 0.1);
+            background: linear-gradient(to bottom, rgba($color-sunset-red, 0.1), rgba($color-background-dark, 0.4));
+
+            display: flex;
+            flex-direction: column;
+            //max-width: 300px;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                padding: 20px 30px 40px 30px;
+                border-left: none;
+                border-right: none;
+            }
+
+            .tiny-code {
+                position: absolute;
+                bottom: calc(100% + 5px);
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            h3 {
+                font-weight: 600;
+                letter-spacing: -0.5px;
+                font-size: 24px;
+                text-align: center;
+                font-family: $font-code;
+    
+                background: $color-sunset-red;
+                border-radius: $chicanery-border-radius;
+                padding: 20px 0 30px 0;
+    
+                background: none;
+                border: 2px solid $color-sunset-red;
+                border: none;
+                
                 color: $color-ultradark-red;
                 color: $color-sunset-red;
+                &.aqua {
+                    border-color: $color-sunset-aqua;
+                    color: $color-sunset-aqua;
+                }
             }
+            p {
+                margin: 10px 0;
+                text-align: left;
+            }
+            .grow {
+                flex: 1;
+            }
+            .spacer {
+                height: 20px;
+            }
+
             &.aqua {
+                background: linear-gradient(to bottom, rgba(1, 87, 199, 0.3), rgba(darken($color-sunset-aqua, 40%), 0.3));
                 border-color: $color-sunset-aqua;
-                color: $color-sunset-aqua;
-                background: rgba($color-sunset-melancholic, 0.2);
+                .tiny-code {
+                    color: $color-sunset-melancholic;
+                }
+            }
+
+            .scroll-arrow {
+                padding: 30px;
+                border: 2px solid transparent;
+                border-top: 2px solid $color-sunset-aqua;
+                border-bottom-right-radius: $chicanery-border-radius;
+                border-bottom-left-radius: $chicanery-border-radius;
+                background: linear-gradient(to bottom, rgba($color-sunset-melancholic, 0.15), rgba($color-sunset-aqua, 0.05));
+                text-align: center;
+                svg {
+                    color: $color-sunset-aqua;
+                    font-size: 28px;
+                }
+
+                &:hover, &:focus {
+                    border: 2px solid $color-sunset-aqua;
+                }
+            }
+        }
+    }
+}
+
+.hub-link {
+    color: $color-sunset-orange;
+    text-decoration: none;
+    font-family: $font-code;
+
+    border: 2px solid rgba($color-sunset-orange, 0.1);
+    border-left: 2px solid $color-sunset-orange;
+    
+    background: linear-gradient(to right, rgba($color-sunset-orange, 0.2), rgba($color-sunset-red, 0.1));
+    border-top-right-radius: $chicanery-border-radius;
+    border-bottom-right-radius: $chicanery-border-radius;
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    span {
+        flex: 1;
+    }
+    .inner-icon {
+        margin-right: 10px;
+    }
+    .arrow {
+        margin-left: 15px;
+    }
+
+    &:hover, &:focus {
+        border: 2px solid $color-sunset-orange;
+    }
+}
+
+.hub-socials {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 100%;
+    overflow-y: auto;
+    li {
+        flex-shrink: 0;
+        margin: 3px;
+        a {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: $color-sunset-orange;
+            background: linear-gradient(to bottom, rgba($color-sunset-orange, 0.1), rgba($color-sunset-red, 0.1));
+            font-size: 24px;
+            padding: 5px;
+            width: 40px;
+            height: 40px;
+            
+            border: 2px solid transparent;
+            border-radius: $chicanery-border-radius;
+            &:hover, &:focus {
+                border: 2px solid $color-sunset-orange;
             }
         }
     }
@@ -3258,7 +3446,8 @@ $post-heading-width: 1000px;
 a.artist-tag {
     position: absolute;
     //height: 60px;
-    top: -25px;
+    bottom: 100%;
+    transform: translateY(50%) scale(1);
     left: 30px;
 
     z-index: 20;
@@ -3276,19 +3465,26 @@ a.artist-tag {
 
     img {
         border-radius: 100px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            height: 40px;
+            width: 40px;
+        }
     }
     span {
         padding: 10px 20px 10px 15px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            padding: 5px 10px 5px 10px;
+        }
     }
 
     &:hover, &:focus {
-        transform: scale(1.05);
+        transform: translateY(50%) scale(1.05);
         border-color: $color-sunset-orange;
         background-color: lighten($color-ultradark-red, 5%);
     }
 }
 
-.transition-gradient {
+.transition-gradient-simple {
     .gradient {
         border-radius: 6px;
         height: 400px;
@@ -3299,6 +3495,167 @@ a.artist-tag {
         &.to-top {
             margin: 3px auto -200px auto;
             background: linear-gradient(to bottom, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+        }
+    }
+}
+
+.transition-gradient-dialog {
+    //margin-top: -2px !important;
+
+    // Small floating text areas
+    $floater-distance: 40px;
+    $floater-mobile: 20px;
+
+    .main-area-wrapper {
+        position: relative;
+        border-radius: $chicanery-border-radius;
+        margin-top: 2px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            //margin-top: 7px;
+        }
+
+        // Gradient lines on the side
+        &::before {
+            position: absolute;
+            content: '';
+            left: 0px;
+            top: 10px;
+            width: 2px;
+            height: 60%;
+            background: linear-gradient(to bottom, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+        }
+        &::after {
+            position: absolute;
+            content: '';
+            right: 0px;
+            top: 10px;
+            width: 2px;
+            height: 60%;
+            background: linear-gradient(to bottom, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+        }
+
+        // Solid border on top/bottom edge
+        .main-area-top-border {
+            position: absolute;
+            top: -4px;
+            left: 0;
+            right: 0;
+            height: 20px;
+            border: 2px solid $color-sunset-red;
+            border-top-left-radius: $chicanery-border-radius;
+            border-top-right-radius: $chicanery-border-radius;
+            border-bottom: none;
+        }
+
+        // Actual gradient area
+        .main-area {
+            background-size: cover;
+            background-position: center;
+    
+            display: flex;
+            justify-content: center;
+            
+            position: relative;
+            background: linear-gradient(to bottom, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+            border-radius: $chicanery-border-radius;
+    
+            margin: 6px 4px;
+            @media screen and (max-width: $post-heading-width) {
+                width: auto;
+                max-width: 100%;
+            }
+            @media screen and (max-width: $breakpoint-mobile) {
+                margin: 6px 2px;
+            }
+    
+            border-radius: $chicanery-border-radius - 4px;
+            &.pull-down {
+                height: 400px;
+                margin-bottom: -200px;
+            }
+    
+            // Small floating text areas
+            .floater {
+                position: absolute;
+                top: $floater-distance;
+                span {
+                    text-transform: uppercase;
+                    color: $color-sunset-orange;
+                    font-weight: 600;
+                    letter-spacing: 1px;
+                    font-size: 13px;
+                    font-family: $font-code;
+                }
+                &.left {
+                    left: $floater-distance;
+                }
+                &.right {
+                    right: $floater-distance;
+                }
+                @media screen and (max-width: $breakpoint-mobile) {
+                    span {
+                        font-size: 10px;
+                    }
+                    top: $floater-mobile;
+                    &.left {
+                        left: $floater-mobile;
+                    }
+                    &.right {
+                        right: $floater-mobile;
+                    }
+                }
+            }
+        }
+    }
+    
+    // Flip everything for gradient to fade upwards
+    &.to-bottom {
+        .main-area-wrapper {
+            margin-top: auto;
+            margin-bottom: 4px;
+            
+    
+            // Gradient lines on the side
+            &::before {
+                top: auto;
+                bottom: 10px;
+                background: linear-gradient(to top, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+            }
+            &::after {
+                top: auto;
+                bottom: 10px;
+                background: linear-gradient(to top, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+            }
+    
+            // Solid border on top/bottom edge
+            .main-area-top-border {
+                top: auto;
+                bottom: -4px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: $chicanery-border-radius;
+                border-bottom-right-radius: $chicanery-border-radius;
+                border-top: none;
+                border-bottom: 2px solid $color-sunset-red;
+            }
+    
+            // Actual gradient area
+            .main-area {       
+                background: linear-gradient(to top, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+                &.pull-down {
+                    margin-bottom: auto;
+                    margin-top: -200px;
+                }
+                
+                .floater {
+                    top: auto;
+                    bottom: $floater-distance;
+                    @media screen and (max-width: $breakpoint-mobile) {
+                        top: auto;
+                        bottom: $floater-mobile;
+                    }
+                }
+            }
         }
     }
 }

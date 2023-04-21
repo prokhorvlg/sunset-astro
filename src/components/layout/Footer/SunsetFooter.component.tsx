@@ -1,4 +1,5 @@
 import Button, { ButtonType } from "@/components/common/Button/Button.component"
+import TransitionGradient from "@/components/home/TransitionGradient.component"
 import LinksSegment from "@/components/layout/common/LinksSegment.component"
 import SocialsSegment from "@/components/layout/common/SocialsSegment.component"
 import HeaderLink from "@/components/layout/Header/components/HeaderLink.component"
@@ -11,7 +12,8 @@ const SunsetFooter = ({ currentPage = '' }) => {
     return (
         
         <div className="sunset-footer-container">
-            <div className="sunset-footer-gradient"></div>
+            {/*<div className="sunset-footer-gradient"></div>*/}
+            <TransitionGradient direction="to-bottom" />
             <div className="sunset-footer">
                 <div className="content-area">
                     <div className="heading">
