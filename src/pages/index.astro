@@ -6,12 +6,66 @@ import ScrollSuggestion from "../components/home/ScrollSuggestion/ScrollSuggesti
 import SunsetFooter from "@/components/layout/Footer/SunsetFooter.component";
 import SunsetHeader from "@/components/layout/Header/SunsetHeader.component";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import Image, { getImage } from "@astrojs/image";
 
 import { Content as HomePageUniserve } from '@/data/home-page/home-page-uniserve.mdx';
 import { Content as HomePageSummary } from '@/data/home-page/home-page-summary.mdx';
-import PageHeading from "@/components/page/PageHeading.component";
 import HomeHub from "@/components/home/HomeHub.component";
 import TransitionGradient from "@/components/home/TransitionGradient.component";
+import { GetImageTransform } from "@astrojs/image/dist/lib/get-image";
+
+// Switch to "true" to load images faster, as they aren't being compressed.
+const DEBUGGING = false
+
+const imageSources = [
+  {
+    id: "lazarus",
+    alt: "",
+    src: "/images/Hero_Lazarus (24).png",
+    aspectRatio: "3688:2294",
+    width: 2500,
+    format: "png"
+  },
+  {
+    id: "hero-bg",
+    alt: "",
+    src: "/images/Hero_Background (1).png",
+    aspectRatio: "5119:2387",
+    width: 2500,
+    format: "webp"
+  },
+  {
+    id: "shroomy",
+    alt: "",
+    src: "/images/Hero_Shroomy (18).png",
+    aspectRatio: "3688:2294",
+    width: 2500,
+    format: "png"
+  },
+  {
+    id: "marvin",
+    alt: "",
+    src: "/images/Hero_Bum (1).png",
+    aspectRatio: "3500:2146",
+    width: 2500,
+    format: "png"
+  },
+]
+
+const compiledImageSources = await Promise.all(imageSources.map(async (imageSource) => {
+    return {
+      id: imageSource.id,
+      img: await getImage(imageSource as GetImageTransform)
+    }
+  }
+))
+
+const getImageSrcById = (id) => {
+  if (DEBUGGING) {
+    return imageSources.find((obj) => obj.id === id)?.src || ""
+  }
+  return compiledImageSources.find((obj) => obj.id === id)?.img.src || ""
+}
 ---
 
 <!DOCTYPE html>
@@ -22,17 +76,31 @@ import TransitionGradient from "@/components/home/TransitionGradient.component";
   <body>
     <SunsetHeader client:only currentPage={Astro.url.pathname} />
     <main>
-      <HomeBanner client:only />
+      <HomeBanner 
+        lazarusImageSrc={getImageSrcById("lazarus")}
+        heroBgSrc={getImageSrcById("hero-bg")}
+        shroomyImageSrc={getImageSrcById("shroomy")}
+        marvinImageSrc={getImageSrcById("marvin")}
+        client:only />
       <ScrollSuggestion />
-      
-      <PageHeading pullDown showHeaderBar={false}><></></PageHeading>
-      
+      <TransitionGradient 
+        direction="to-top" 
+      />
       <HomePageSummary />
-      <TransitionGradient direction="to-bottom" />
+      <TransitionGradient 
+        direction="to-bottom" 
+        floaterTextLeft="mrdci secure facility"
+        floaterTextRight="::112999::BROKENDATA"
+      />
       <!--<IntroSection client:only />-->
       <HomeHub />
       <!--<img src="/images/Hero_Background.png" width={2000}/>-->
-      <TransitionGradient direction="to-top" id="top-of-uniserve-intro" />
+      <TransitionGradient 
+        direction="to-top" 
+        id="top-of-uniserve-intro" 
+        floaterTextLeft="pan sol commprotocol A9:114"
+        floaterTextRight="graphics initialized"
+      />
 
       <HomePageUniserve />
 

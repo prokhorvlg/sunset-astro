@@ -3,6 +3,7 @@ import BaseHead from '@/components/BaseHead.astro';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import PostHeading from '@/components/post/PostHeading.component';
+import PostNavigationBar from '@/components/post/PostNavigationBar.component';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const { post } = Astro.props;
@@ -20,11 +21,7 @@ const { post } = Astro.props;
             <article>
 			    <slot />
             </article>
-			<!--<QuoteContentRow client:only>Sunset System is a showcase about a world where humanity vanished from the Solar System during an extended Space Race, leaving behind the robots that ran the world. The project explores the machines' struggle to find meaning as they gain consciousness, the decaying retrofuturistic dreams they are surrounded by, and the wild and strange ways their society may be evolving.
-
-The showcase is presented by a filing system named UNISERVE, who can get you introduced on the home page.
-</QuoteContentRow>-->
-			<!--<PostNavigationBar date={date} title={post.data.title}/>-->
+			<PostNavigationBar />
 		</main>
 		<SunsetFooter client:only currentPage={Astro.url.pathname} />
 	</body>

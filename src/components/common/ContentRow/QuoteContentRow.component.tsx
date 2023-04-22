@@ -5,15 +5,17 @@ import { AuthorTerminal, QuoteAuthor } from "@/data/Authors"
 interface PropTypes {
     author: QuoteAuthor
     children: JSX.Element
+    shrink?: boolean
 }
 
 const QuoteContentRow = ({
     author,
-    children
+    children,
+    shrink
 }: PropTypes) => {
     return (
-        <ContentRow classes="quote-content-row" verticalSpacing={100}>
-            <QuoteContainer author={author} spacing={100}>
+        <ContentRow classes="quote-content-row">
+            <QuoteContainer author={author} shrink={shrink}>
                 <pre>{children}</pre>
             </QuoteContainer>
         </ContentRow>

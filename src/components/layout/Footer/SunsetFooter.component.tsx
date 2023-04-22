@@ -13,7 +13,10 @@ const SunsetFooter = ({ currentPage = '' }) => {
         
         <div className="sunset-footer-container">
             {/*<div className="sunset-footer-gradient"></div>*/}
-            <TransitionGradient direction="to-bottom" />
+            <TransitionGradient direction="to-bottom" 
+                floaterTextLeft="9189 tb consumed"
+                floaterTextRight="dawnlight :>> beyond these walls"
+            />
             <div className="sunset-footer">
                 <div className="content-area">
                     <div className="heading">
@@ -33,10 +36,8 @@ const SunsetFooter = ({ currentPage = '' }) => {
                     </div>
                     <div className="divider"></div>
                     <div className="description">
-                        <p className="strong">Sunset System is a showcase of my cassette-futurist world, a place of decaying retrofuturistic dreams and existential machines.</p>
-                        <p>During an alternate Space Race, humanity accomplished wonders through steadfast scientific progress, resulting in a beautiful but divided Solar System. After a secretive organization lost control of an experiment to erase conflict as a concept, man vanished from reality altogether.</p>
-                        <p>They left behind a civilization of robots, duty-bound to ancient core directives while struggling to comprehend their own emerging consciousness. As machine civilization evolves into something unrecognizable, they continue to hold the memory of mankind dear.</p>
-                        <p>* The wonderful people who have supported and helped me realize this project are recognized here.</p>
+                        <p className="strong">Sunset System is my cassette-futurist project about a place of decaying retrofuturistic dreams and existential robots.</p>
+                        <p>During an alternate Space Race, the world of tomorrow was brute-forced through scientific progress. After an unfortunate experiment, mankind vanished. They left behind their machines to an empty Solar System, struggling to comprehend their own emerging consciousness, and searching for purpose.</p>
                     </div>
                 </div>
                 <div className="alt-area">

@@ -8,7 +8,6 @@ import PostsView, { PostType, ProcessedPost } from '@/components/posts/PostGrid.
 import PageHeading from '@/components/page/PageHeading.component';
 import { Images } from '@/utils/sharedImages';
 import { getImage } from '@astrojs/image';
-import { ImgHTMLAttributes } from 'react';
 
 const processPosts = async (posts) => {
 	return await Promise.all(posts.map(async (post) => {
@@ -79,9 +78,3 @@ const sortedPosts = processedPosts.sort((a,b) => {
 		<SunsetFooter client:only currentPage={Astro.url.pathname} />
 	</body>
 </html>
-
-<!--
-
-	lorePosts={lorePostsProcessed}
-				introductionPosts={introductionPostsProcessed}
- -->

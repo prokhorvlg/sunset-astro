@@ -56,7 +56,21 @@ export const Images: ImageDetails[] = [
         alt: "UNISERVE saying hello to the viewer",
         width: 2589,
         height: 2120,
-        artist: ArtistProkhor
+    },
+    // GOLDSPIRE INTRO
+    {
+        id: 'goldspire-2022',
+        src: "/images/home/goldspire-2022.png",
+        alt: "The Goldspire Archival Complex",
+        width: 2801,
+        height: 1779,
+    },
+    {
+        id: 'can-2022',
+        src: "/images/home/can-2022.png",
+        alt: "The Goldspire Archival Complex",
+        width: 1248,
+        height: 1039,
     },
     // CONTENT
     {

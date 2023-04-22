@@ -1,14 +1,18 @@
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
 
+interface PropTypes {
+    children: any,
+    classes?: string,
+    verticalSpacing?: number
+}
+
 const ContentRow = ({
     children,
     classes = "",
-    verticalSpacing = 50
-}) => {
+}: PropTypes) => {
     return (
         <FullWidthWrapper
             width={WrapperMax.BlogWidth}
-            verticalSpacing={verticalSpacing}
             classes={"content-row " + classes} 
         >
             {children}

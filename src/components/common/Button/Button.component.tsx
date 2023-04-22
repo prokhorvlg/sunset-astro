@@ -39,7 +39,7 @@ const Button = ({
                 isHoverable: true,
                 isLink: true,
                 linkURL: linkURL,
-                classes: `sunset-button ${classes}`
+                classes: `sunset-button link ${classes}`
             }}>
                 {children}
             </DialogContainer>

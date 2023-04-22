@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 interface Props {
     children: JSX.Element
     author: QuoteAuthor
-    spacing: number
+    shrink?: boolean
 }
 
 function getRandomInt(min, max) {
@@ -20,7 +20,7 @@ function getRandomInt(min, max) {
 const QuoteContainer = ({
     children,
     author,
-    spacing
+    shrink
 }: Props) => {
     const isAuthorYou = author.id === "you"
     const [number, setNumber] = useState(0);
@@ -44,15 +44,18 @@ const QuoteContainer = ({
     return (
         <div className="quote-container">
             <div className="author-box">
-                {isAuthorYou ? 
-                    <div className="blinkbox-container">
-                        <span className="floater tiny-code">{number}</span>
-                        <span className="floater-under tiny-code">{number2}</span>
-                        <BlinkingGrid />
-                    </div>
-                    :
-                    <div className="image" style={{backgroundImage: "url(" + author.image + ")"}}></div>
+                {shrink ?
+                    null : 
+                    isAuthorYou ? 
+                        <div className="blinkbox-container">
+                            <span className="floater tiny-code">{number}</span>
+                            <span className="floater-under tiny-code">{number2}</span>
+                            <BlinkingGrid />
+                        </div>
+                        :
+                        <div className="image" style={{backgroundImage: "url(" + author.image + ")"}}></div>
                 }
+                
                 <div className="text">
                     <span className="name">{author.name}</span>
                     <span className="description">{author.description}</span>

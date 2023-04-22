@@ -1,6 +1,7 @@
 import Button, { ButtonType } from "@/components/common/Button/Button.component"
 import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer, { DialogHeaderStyle } from "@/components/containers/DialogContainer/DialogContainer.component"
+import TransitionGradient from "@/components/home/TransitionGradient.component"
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
 import { getDateString } from "@/utils/date"
 import { faArrowLeft, faBackward } from "@fortawesome/free-solid-svg-icons"
@@ -10,7 +11,7 @@ const PostHeading = ({
     post
 }) => {
     return (
-        <FullWidthWrapper classes="heading-area post" width={WrapperMax.MaxWidth} verticalSpacing={0}>
+        <FullWidthWrapper classes="heading-area post" width={WrapperMax.MaxWidth}>
             <div className="date-row">
                 <Button classes="back-all-posts" type={ButtonType.Link} linkURL="/posts">
                     <>
@@ -29,6 +30,9 @@ const PostHeading = ({
                     </div>
                 </DialogContainer>
             </div>
+            <TransitionGradient 
+                direction="to-top" 
+            />
             <div className="main-area">
                 <div className="heading-content">
                     <TagCloud tags={post.data.tags} />

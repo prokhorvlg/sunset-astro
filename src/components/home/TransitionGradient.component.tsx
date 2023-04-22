@@ -2,32 +2,30 @@ import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWra
 
 const TransitionGradient = ({
     direction = 'to-bottom',
-    id =''
+    id = '',
+    floaterTextLeft = '162k available',
+    floaterTextRight = 'version 4.2 (c) Redmond Cybernetics'
 }) => {
     return (
-        <FullWidthWrapper classes={`transition-gradient-dialog ${direction}`} width={WrapperMax.MaxWidth} verticalSpacing={0} >
+        <FullWidthWrapper classes={`transition-gradient-dialog ${direction}`} width={WrapperMax.MaxWidth}>
             <div className="main-area-wrapper" id={id}>
                 <div className="main-area-top-border"></div>
                 <div className={`main-area pull-down`}>
                     <div className="floater left">
-                        <span>162k available</span>
+                        <span>{floaterTextLeft}</span>
                     </div>
                     <div className="floater right">
-                        <span>version 4.2 (c) Redmond Cybernetics</span>
+                        <span>{floaterTextRight}</span>
                     </div>
                 </div>
             </div>
         </FullWidthWrapper>
     )
-
-
-    return (
+    /*return (
         <FullWidthWrapper classes='transition-gradient'>
             <div className={`gradient ${direction}`}></div>
         </FullWidthWrapper>
-    )
-
-
+    )*/
 }
 
 export default TransitionGradient

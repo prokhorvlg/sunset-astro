@@ -1,27 +1,27 @@
-import DialogContainer from "@/components/containers/DialogContainer/DialogContainer.component"
-import SimpleContainer from "@/components/containers/SimpleContainer/SimpleContainer.component"
-import NavLink from "@/components/home/IntroSection/components/NavLink.component"
+import Button, { ButtonType } from "@/components/common/Button/Button.component"
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
-import { getDateString } from "@/utils/date"
-import { PostsIcon } from "@/utils/sharedIcons"
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const PostNavigationBar = ({
-    date,
-    title
 }) => {
-    const dateString = getDateString(date)
     return (
-        <FullWidthWrapper width={WrapperMax.MaxWidth} verticalSpacing={0}>
-            <div className="post-navigation-bar">
-                {/*<NavLink 
-                    title="Newer Post"
-    />*/}
-                <SimpleContainer classes="post-navigation-date code highlight-orange">
-                    <div>{dateString} // <span className="highlight-aqua">{title}</span></div>
-                </SimpleContainer>
-                {/*<NavLink 
-                    title="Older Post"
-                />*/}
+        <FullWidthWrapper width={WrapperMax.BlogWidth} classes="post-navigation-bar">
+            <div className="post-navigation-inner">
+                <span className="floater tiny-code">post navigation</span>
+                <Button type={ButtonType.Link} linkURL="/posts" classes="padded left">
+                    <>
+                        <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+                        <span className="label">Newer Post</span>
+                    </>
+                </Button>
+                <div className="line"></div>
+                <Button type={ButtonType.Link} linkURL="/posts" classes="padded right">
+                    <>
+                        <span className="label">Older Post</span>
+                        <FontAwesomeIcon icon={faArrowRight}></FontAwesomeIcon>
+                    </>
+                </Button>
             </div>
         </FullWidthWrapper>
     )

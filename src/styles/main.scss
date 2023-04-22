@@ -30,7 +30,6 @@ $size-max-width-blog: 800px;
 $size-line-width: 2px;
 
 $breakpoint-mobile: 1000px;
-$breakpoint-footer: 1500px;
 
 // Otherwise known as rounded mode
 $chicanery-mode: true;
@@ -615,7 +614,7 @@ $breakpoint-quote: 1600px;
                 }
 
                 .main-segment-title {
-                    padding: 0 30px 0 30px;
+                    padding: 0 15px 0 15px;
                     display: flex;
                     flex-direction: row;
                     align-items: center;
@@ -1168,6 +1167,7 @@ $breakpoint-quote: 1600px;
 }
 
 // - FOOTER
+$breakpoint-footer: 1200px;
 .sunset-footer-container {
     margin-top: 100px;
     background: linear-gradient(to bottom, rgba(36, 21, 14, 0) 30%, rgb(36, 21, 14) 100%);
@@ -1215,7 +1215,7 @@ $breakpoint-quote: 1600px;
         .content-area {
             grid-area: 1 / 1 / 2 / 2;
             .heading {
-                padding: 20px 20px 20px 20px;
+                padding: 15px;
                 display: flex;
                 flex-direction: row;
                 justify-content: center;
@@ -1228,7 +1228,7 @@ $breakpoint-quote: 1600px;
                     padding: 10px;
                 }
                 .title-area {
-                    margin: 0 40px 0 40px;
+                    margin: 0 20px 0 20px;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -1261,8 +1261,10 @@ $breakpoint-quote: 1600px;
                 background: linear-gradient(to right, #ffaa01, #ff510c);
                 border-radius: $chicanery-border-radius;
                 padding: 30px 30px 40px 30px;
-                @media screen and (max-width: $breakpoint-footer) {
-                    padding: 20px;
+                max-height: 300px;
+                overflow-y: auto;
+                @media screen and (max-width: 1600px) {
+                    padding: 15px;
                 }
                 p {
                     color: $color-background-dark;
@@ -1305,7 +1307,7 @@ $breakpoint-quote: 1600px;
                 border-radius: $chicanery-border-radius;
                 background: $color-background-dark;
                 
-                flex-basis: 70%;
+                flex-basis: 60%;
                 padding: 20px;
 
                 @include abg(0.3);
@@ -1340,7 +1342,7 @@ $breakpoint-quote: 1600px;
                 padding: 20px;
                 padding: 3px;
                 position: relative;
-                flex-basis: 30%;
+                flex-basis: 40%;
     
                 display: flex;
                 flex-direction: column;
@@ -1432,6 +1434,12 @@ $breakpoint-quote: 1600px;
     &.simple {
         border: $size-line-width solid $color-sunset-red;
         border-radius: $chicanery-border-radius;
+    }
+
+    &.padded {
+        .dialog-content {
+            padding: 20px;
+        }
     }
 }
 
@@ -1726,6 +1734,9 @@ $dialog-main-color: $color-sunset-red;
     //background: $color-background-dark;
     background: linear-gradient(0deg, rgba(36,21,14,0) 30%, rgba(36,21,14,1) 100%);
 
+    min-height: 500px;
+        max-height: 3000px;
+
     @media screen and (max-width: $breakpoint-mobile) {
         height: calc(100vh - 92px - 84px - 34px);
     }
@@ -1734,9 +1745,11 @@ $dialog-main-color: $color-sunset-red;
         height: 100%;
         width: 100%;
         max-width: calc($size-max-width-wide + 4px);
+
+        
+
         overflow: hidden;
         position: relative;
-        //border: $size-line-width solid $color-sunset-orange;
         margin: 0px 2px;
         @if $chicanery-mode {
             border-radius: $chicanery-border-radius;
@@ -1746,7 +1759,7 @@ $dialog-main-color: $color-sunset-red;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            top: 10%;
+            top: 8%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -1765,12 +1778,17 @@ $dialog-main-color: $color-sunset-red;
                 margin: 0;
                 text-transform: uppercase;
                 font-size: 86px;
+                font-size: 5rem;
                 color: $color-ultradark-red;
                 font-weight:800;
                 letter-spacing:10px;
                 white-space: nowrap;
                 @media screen and (max-width: $breakpoint-mobile) {
                     font-size: 46px;
+                    letter-spacing:-1px;
+                }
+                @media screen and (max-width: 250px) {
+                    font-size: 36px;
                     letter-spacing:-1px;
                 }
             }
@@ -1798,11 +1816,22 @@ $dialog-main-color: $color-sunset-red;
                 }
                 @media screen and (max-width: $breakpoint-mobile) {
                     margin: -12px 0px 0 0px;
-                    width: 100%;
+                    width: 400px;
                     max-width: 100%;
                     font-size: 14px;
                     .slashes {
                         display: none;
+                    }
+                }
+            }
+
+            // If screen too flat, shrink title a bit
+            @media screen and (orientation: landscape) {
+                @media screen and (max-height: 1200px) {
+                    top: 5%;
+                    h1 {
+                        font-size: 4.5rem;
+                        letter-spacing: 0;
                     }
                 }
             }
@@ -1814,7 +1843,6 @@ $dialog-main-color: $color-sunset-red;
             width: 100%;
         }
         .sunset-white-grad {
-            background: url('/images/Hero_Background (1).png');
             background-size: cover;
             background-position: center;
             mix-blend-mode: overlay;
@@ -1829,46 +1857,9 @@ $dialog-main-color: $color-sunset-red;
             background: linear-gradient(0deg, $color-sunset-red 0%, $color-sunset-orange 100%);
             opacity: 0.4;
         }
-        .sunset-hero-left {
-            background: url('/images/Hero_Lazarus (24).png');
-            background-size: 2100px;
-            background-repeat:no-repeat;
-            background-position: left center;
-            width: 10000px;
-            height: 10000px;
-            top: calc(50% + 100px);
-            transform: translateY(-50%);
-            left: -550px;
-            opacity: 1;
-            @media screen and (max-width: $breakpoint-mobile) {
-                background-size: 1400px;
-                top: 300px;
-                left: -400px;
-            }
-        }
-        .sunset-hero-right {
-            background: url('/images/Hero_Shroomy (18).png');
-            background-size: 1973px;
-            background-repeat: no-repeat;
-            /* background-position: right center; */
-            width: 10000px;
-            height: 10000px;
-            top: 53%;
-            transform: translateY(-50%);
-            /* opacity: 1; */
-            background-position: right;
-            right: -308px;
-            @media screen and (max-width: $breakpoint-mobile) {
-                top: 57%;
-                right: -350px;
-                background-size: 1200px;
-                display: none;
-            }
-        }
         .sunset-banner-deep-background {
             background: orange;
             transform: scale(2.5);
-            //background: url('/images/Hero_Background.png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -1890,12 +1881,83 @@ $dialog-main-color: $color-sunset-red;
             background-repeat: no-repeat;
             background-position: bottom center;
         }
+
+
+
+
+        .parallaxing-image {
+            background-repeat: no-repeat;
+            background-position: center;
+
+            position: absolute;
+            width: 5000px;
+            height: 5000px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-lazarus {
+            background-size: 170vh;
+            // On landscape, lazarus is on the left side.
+            @media screen and (orientation: landscape) {
+                margin-top: 2vh;
+                margin-left: -20vw;
+                // If too wide, cap the distance lazarus goes.
+                @media screen and (min-width: 2100px) {
+                    margin-left: -400px;
+                }
+                // If too short, don't downscale laz any more
+                @media screen and (max-height: 900px) {
+                    background-size: 1600px;
+                }
+                // Too tall and too thin are portrait problems.
+            }
+            // On portrait, lazarus looms over the title.
+            @media screen and (orientation: portrait) {
+                background-size: 180vh;
+                margin-left: 20vh;
+            }
+        }
+
+        .hero-shroomy {
+            background-size: 150vh;
+            @media screen and (orientation: landscape) {
+                margin-top: 8vh;
+                margin-left: 10vw;
+                // If too short, don't downscale any more
+                @media screen and (max-height: 900px) {
+                    background-size: 1500px;
+                }
+            }
+            // On portrait, shroomy says bye.
+            @media screen and (orientation: portrait) {
+                display: none;
+            }
+        }
+
+        .hero-marvin {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: bottom;
+            background-repeat: no-repeat;
+
+            // If too short, shrink a bit
+            @media screen and (orientation: landscape) {
+                @media screen and (max-height: 1100px) {
+                    background-size: 160vh;
+                }
+            }
+        }
+
     }
 }
 
 // HEADER NAV, MOBILE
 .sunset-button.simple.menu {
-    width: 60px;
+    width: 70px;
     text-align: center;
     font-size: 22px;
     margin-left: 3px;
@@ -1918,9 +1980,9 @@ $dialog-main-color: $color-sunset-red;
 
 // - SCROLL SUGGESTION
 .scroll-suggestion {
-    margin-top: 0;
+    margin: 0;
     .simple-container {
-        margin: 3px auto;
+        margin: 3px auto 1px auto;
         max-width: $size-max-width-wide;
         .simple-container-inner {
             height: 80px;
@@ -2824,34 +2886,57 @@ $dialog-main-color: $color-sunset-red;
 
 
 .post-navigation-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    height: 80px;
-    .nav-link {
-        margin: 0;
+    margin-top: 200px;
+    @media screen and (max-width: $breakpoint-mobile) {
+        margin-top: 100px;
     }
-    .post-navigation-date {
-        flex: 1;
-        height: 100%;
-        margin: 10px;
-        .simple-container-inner {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 20px;
-            height: 100%;
+    .post-navigation-inner {
+        margin: 0 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .line {
+            flex: 1;
+            height: 2px;
+            background: $color-sunset-red;
+            border-radius: 1px;
+            margin: 0 10px;
         }
-        
+        .floater {
+            position: absolute;
+            text-align: center;
+            top: 0;
+        }
+        .left {
+            svg {
+                margin-right: 10px;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    margin-right: 0px;
+                }
+            }
+        }
+        .right {
+            svg {
+                margin-left: 10px;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    margin-left: 0px;
+                }
+            }
+        }
+        .label {
+            @media screen and (max-width: $breakpoint-mobile) {
+                display: none;
+            }
+        }
     }
 }
 
 // - POST HEADING
 $post-heading-width: 1000px;
 .heading-area {
+    margin: 0 auto;
     background: linear-gradient(0deg, rgba(36,21,14,0) 70%, rgba(36,21,14,1) 100%);
     .dialog-wrap .border {
         z-index: 0;
@@ -2859,16 +2944,9 @@ $post-heading-width: 1000px;
     .main-area {
         background-size: cover;
         background-position: center;
-
         display: flex;
         justify-content: center;
-        //width: 100%;
-        
         position: relative;
-        background: linear-gradient(to bottom, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
-        border-radius: $chicanery-border-radius;
-        //overflow: hidden;
-
         margin: 6px 0 0 0;
         @media screen and (max-width: $post-heading-width) {
             width: auto;
@@ -2878,12 +2956,11 @@ $post-heading-width: 1000px;
             margin: 6px 2px;
         }
         
-        
         $space-around-heading-content: 25px;
         .heading-content {
             width: $size-max-width-wide-content;
             max-width: 100%;
-            margin: 80px $space-around-heading-content 60px $space-around-heading-content;
+            margin: -50px $space-around-heading-content 100px $space-around-heading-content;
             z-index: 1;
             @media screen and (max-width: $post-heading-width) {
                 margin: 60px $space-around-heading-content 10px $space-around-heading-content;
@@ -2915,8 +2992,21 @@ $post-heading-width: 1000px;
             }
 
             @include abg(0.4);
-            //@include abg-red-crisscross();
         }        
+    }
+
+    &.post {
+        .transition-gradient-dialog .main-area-wrapper .main-area.pull-down {
+            margin-bottom: -200px;
+            @media screen and (max-width: $breakpoint-mobile) {
+                margin-bottom: -400px;
+            }
+            .floater {
+                @media screen and (max-width: $breakpoint-mobile) {
+                    display: none;
+                }
+            }
+        }
     }
 
     $all-posts-offset: 300px;
@@ -2948,16 +3038,6 @@ $post-heading-width: 1000px;
                 margin: 0px 2px 0px -2px;
                 align-self: stretch;
                 height: 100%;
-    
-                //margin: 0px 6px 3px 6px;
-                .dialog-wrap-slot {
-                    //background: none;
-                    //border: none;
-                    //height: auto;
-                }
-                .border {
-                    //display: none;
-                }
             }
             .date-area {
                 width: 100%;
@@ -2976,7 +3056,6 @@ $post-heading-width: 1000px;
                 }
         
                 .inner {
-                    //width: $size-max-width-wide-content;
                     max-width: 100%;
                     margin-right: $all-posts-offset;
         
@@ -3037,24 +3116,6 @@ $post-heading-width: 1000px;
             border-radius: $chicanery-border-radius;
             position: relative;
 
-            &::before {
-                //content: '';
-                position: absolute;
-                left: -2px;
-                top: calc(100% - 2px);
-                width: 2px;
-                height: 10px;
-                background-color: $color-sunset-red;
-            }
-            &::after {
-                //content: '';
-                position: absolute;
-                right: -2px;
-                top: calc(100% - 2px);
-                width: 2px;
-                height: 10px;
-                background-color: $color-sunset-red;
-            }
         }
         .heading-crown {
             //border: 2px solid black;
@@ -3152,44 +3213,10 @@ $post-heading-width: 1000px;
             @media screen and (max-width: $breakpoint-mobile) {
                 margin-top: 7px;
             }
-            &::before {
-                position: absolute;
-                content: '';
-                left: 0px;
-                top: 10px;
-                width: 2px;
-                height: 60%;
-                background: linear-gradient(to bottom, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
-            }
-            &::after {
-                position: absolute;
-                content: '';
-                right: 0px;
-                top: 10px;
-                width: 2px;
-                height: 60%;
-                background: linear-gradient(to bottom, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
-            }
-
-            .main-area-top-border {
-                position: absolute;
-                top: -4px;
-                left: 0;
-                right: 0;
-                height: 20px;
-                border: 2px solid $color-sunset-red;
-                border-top-left-radius: $chicanery-border-radius;
-                border-top-right-radius: $chicanery-border-radius;
-                border-bottom: none;
-            }
         }
         .main-area {
             margin: 6px 4px;
             border-radius: $chicanery-border-radius - 4px;
-            &.pull-down {
-                height: 400px;
-                margin-bottom: -200px;
-            }
             svg {
                 font-size: 80px;
                 margin-right: 10px;
@@ -3330,16 +3357,26 @@ $post-heading-width: 1000px;
                 
             }
         }
+        .transition-gradient-dialog .main-area-wrapper .main-area.pull-down {
+            margin-bottom: -300px;
+            // If screen too flat, shrink a bit more
+            @media screen and (orientation: landscape) {
+                @media screen and (max-height: 1200px) {
+                    margin-bottom: -420px;
+                }
+            }
+            @media screen and (max-width: $breakpoint-mobile) {
+                margin-bottom: -400px;
+            }
+        }
     }
 }
 
 .image-content-row {
     position: relative;
-
     .gallery-item {
         position: relative;
     }
-    
     .image-content-image {
         display: flex;
         position: relative;
@@ -3500,12 +3537,11 @@ a.artist-tag {
 }
 
 .transition-gradient-dialog {
-    //margin-top: -2px !important;
+    margin: 0;
 
     // Small floating text areas
     $floater-distance: 40px;
     $floater-mobile: 20px;
-
     .main-area-wrapper {
         position: relative;
         border-radius: $chicanery-border-radius;
@@ -3571,7 +3607,10 @@ a.artist-tag {
             border-radius: $chicanery-border-radius - 4px;
             &.pull-down {
                 height: 400px;
-                margin-bottom: -200px;
+                margin-bottom: -100px;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    margin-bottom: -300px;
+                }
             }
     
             // Small floating text areas
@@ -3613,19 +3652,6 @@ a.artist-tag {
         .main-area-wrapper {
             margin-top: auto;
             margin-bottom: 4px;
-            
-    
-            // Gradient lines on the side
-            &::before {
-                top: auto;
-                bottom: 10px;
-                background: linear-gradient(to top, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
-            }
-            &::after {
-                top: auto;
-                bottom: 10px;
-                background: linear-gradient(to top, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
-            }
     
             // Solid border on top/bottom edge
             .main-area-top-border {
@@ -3638,13 +3664,28 @@ a.artist-tag {
                 border-top: none;
                 border-bottom: 2px solid $color-sunset-red;
             }
+
+            // Gradient lines on the side
+            &::before {
+                top: auto;
+                bottom: 10px;
+                background: linear-gradient(to top, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+            }
+            &::after {
+                top: auto;
+                bottom: 10px;
+                background: linear-gradient(to top, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+            }
     
             // Actual gradient area
             .main-area {       
                 background: linear-gradient(to top, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
                 &.pull-down {
                     margin-bottom: auto;
-                    margin-top: -200px;
+                    margin-top: -100px;
+                    @media screen and (max-width: $breakpoint-mobile) {
+                        margin-top: -300px;
+                    }
                 }
                 
                 .floater {

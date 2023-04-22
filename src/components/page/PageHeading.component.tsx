@@ -3,6 +3,7 @@ import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWra
 import { faClose, faFile, faList, faMinus } from "@fortawesome/free-solid-svg-icons"
 import { faSquare } from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import TransitionGradient from "@/components/home/TransitionGradient.component"
 
 interface PropTypes {
     title?: string
@@ -22,7 +23,7 @@ const PageHeading = ({
     showHeaderBar = true
 }: PropTypes) => {
     return (
-        <FullWidthWrapper classes={`heading-area page ${pullDown ? 'hidden-header' : null}`} width={WrapperMax.MaxWidth} verticalSpacing={0}>
+        <FullWidthWrapper classes={`heading-area page ${pullDown ? 'hidden-header' : null}`} width={WrapperMax.MaxWidth}>
             {showHeaderBar ? 
                 <div className="heading-crown-wrapper">
                     <div className="heading-crown">
@@ -55,22 +56,11 @@ const PageHeading = ({
                     </div>
                 </div>
             : null}
+            <TransitionGradient 
+                direction="to-top" 
+            />
             <div className="main-area-wrapper">
-                <div className="main-area-top-border"></div>
-                <div className={`main-area ${pullDown ? 'pull-down' : null}`}>
-                    <div className="floater left">
-                        <span>162k available</span>
-                    </div>
-                    <div className="floater right">
-                        <span>version 4.2 (c) Redmond Cybernetics</span>
-                    </div>
-                    <div className="blocks">
-                        <div className="block" />
-                        <div className="block" style={{width: "55%"}}/>
-                        <div className="block" style={{width: "12%"}}/>
-                        <div className="block" />
-                        <div className="block" style={{width: "80px"}}/>
-                    </div>
+                <div className={`main-area`}>
                     <div className="heading-content">
                         {(image === 'computer-blinking') ?
                             <div className="heading-image posts">
