@@ -1866,16 +1866,16 @@ $dialog-main-color: $color-sunset-red;
             opacity: 1;
         }
         .foreground, .topground {
-            opacity: 0;
+            //opacity: 0;
         }
         .foreground {
-            background-image: url('/images/Fg_Comp (2).png');
+            //background-image: url('/images/Fg_Comp (2).png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: bottom center;
         }
         .topground {
-            background-image: url('/images/Fg_Comp (2).png');
+            //background-image: url('/images/Fg_Comp (2).png');
             transform: rotate(180deg);
             background-size: cover;
             background-repeat: no-repeat;

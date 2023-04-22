@@ -50,6 +50,14 @@ const imageSources = [
     width: 2500,
     format: "png"
   },
+  {
+    id: "fg-bottom",
+    alt: "",
+    src: "/images/Fg_Comp (7).png",
+    aspectRatio: "3500:2146",
+    width: 2500,
+    format: "png"
+  },
 ]
 
 const compiledImageSources = await Promise.all(imageSources.map(async (imageSource) => {
@@ -81,6 +89,7 @@ const getImageSrcById = (id) => {
         heroBgSrc={getImageSrcById("hero-bg")}
         shroomyImageSrc={getImageSrcById("shroomy")}
         marvinImageSrc={getImageSrcById("marvin")}
+        fgBottomImageSrc={getImageSrcById("fg-bottom")}
         client:only />
       <ScrollSuggestion />
       <TransitionGradient 

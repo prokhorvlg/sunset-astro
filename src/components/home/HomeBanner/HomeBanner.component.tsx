@@ -5,7 +5,8 @@ const HomeBanner = ({
     lazarusImageSrc,
     shroomyImageSrc,
     marvinImageSrc,
-    heroBgSrc
+    heroBgSrc,
+    fgBottomImageSrc
 }) => {
     // No parallax on mobile view
     const noParallaxCutoff = 1000;
@@ -84,7 +85,12 @@ const HomeBanner = ({
                 }
 
                 {/* The computers nearest us */}
-                <div className="layer foreground"></div>
+                <div 
+                    className="layer foreground"
+                    style={{
+                        backgroundImage: `url('${fgBottomImageSrc}')`
+                    }}
+                />
                 <div className="layer topground"></div>                
                 
                 <div className="floating-header">
