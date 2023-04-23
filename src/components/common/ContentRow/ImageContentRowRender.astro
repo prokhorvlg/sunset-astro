@@ -8,19 +8,6 @@ interface Props {
   images: ImageId[];
 }
 
-/*const imageObjects = Astro.props.images.map((image) => {
-  const imageObject = Images.find((imageItem) => imageItem.id === image)
-  return imageObject
-})
-
-let imageObjects: ImageDetails[] = []
-Astro.props.images.forEach((image) => {
-  const imageObject = Images.find((imageItem) => imageItem.id === image)
-  if (imageObject) {
-    imageObjects.push(imageObject)
-  }
-})*/
-
 const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) => {
   // Find relevant image object
   const imageObject = Images.find((imageItem) => imageItem.id === image)
@@ -33,45 +20,14 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
       src: imageObject.src,
       alt: imageObject.alt || "",
       aspectRatio: `${imageObject.width}:${imageObject.height}`,
-      width: 1000,
-      //height: imageObject.height,
+      width: 1500,
       format: "webp"
     })
   } as FullImageDetails
 }))
 ---
 
-<!--{Astro.props.images.map((imageId) => {
-  const imageObject = Images.find((imageItem) => imageItem.id === imageId)
-  if (imageObject) {
-    return (
-      <Image src={imageObject.src} alt="" format="webp" width={200} height={300} loading="lazy" />
-    )
-  }
-  return null
-})}-->
-
 <ImageContentRow 
   client:only="react"
   imageItems={imagesProcessed} 
 />
-
-<!-- 
-<ImageContentRow 
-  client:only="react"
-  imageItems={[
-    {
-      id: "gordon",
-      src: src,
-      width: 3000,
-      height: 4144,
-    },
-    {
-      id: "lazarus",
-      src: "/images/content/lazarus.jpg",
-      width: 3688,
-      height: 2294
-    },
-]} />
-
--->

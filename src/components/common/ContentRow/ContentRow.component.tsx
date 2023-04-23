@@ -8,12 +8,12 @@ interface PropTypes {
 
 const ContentRow = ({
     children,
-    classes = "",
+    classes = ""
 }: PropTypes) => {
     return (
         <FullWidthWrapper
             width={WrapperMax.BlogWidth}
-            classes={"content-row " + classes} 
+            classes={"content-row " + classes}
         >
             {children}
         </FullWidthWrapper>

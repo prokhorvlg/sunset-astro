@@ -52,7 +52,7 @@ export const Images: ImageDetails[] = [
     },
     {
         id: 'uniserve-welcome-modern',
-        src: "/images/home/Uniserve_2 (2).png",
+        src: "/images/home/Uniserve_2_Composition (6).png",
         alt: "UNISERVE saying hello to the viewer",
         width: 2589,
         height: 2120,

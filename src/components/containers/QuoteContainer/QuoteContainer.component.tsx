@@ -8,6 +8,7 @@ interface Props {
     children: JSX.Element
     author: QuoteAuthor
     shrink?: boolean
+    none?: boolean
 }
 
 function getRandomInt(min, max) {
@@ -20,7 +21,8 @@ function getRandomInt(min, max) {
 const QuoteContainer = ({
     children,
     author,
-    shrink
+    shrink,
+    none
 }: Props) => {
     const isAuthorYou = author.id === "you"
     const [number, setNumber] = useState(0);
@@ -42,25 +44,28 @@ const QuoteContainer = ({
       }, []);
 
     return (
-        <div className="quote-container">
-            <div className="author-box">
-                {shrink ?
-                    null : 
-                    isAuthorYou ? 
-                        <div className="blinkbox-container">
-                            <span className="floater tiny-code">{number}</span>
-                            <span className="floater-under tiny-code">{number2}</span>
-                            <BlinkingGrid />
-                        </div>
-                        :
-                        <div className="image" style={{backgroundImage: "url(" + author.image + ")"}}></div>
-                }
-                
-                <div className="text">
-                    <span className="name">{author.name}</span>
-                    <span className="description">{author.description}</span>
+        <div className={`quote-container ${author.theme ? author.theme : ''}`}>
+            {none ? 
+                null : 
+                <div className="author-box">
+                    {shrink ?
+                        null : 
+                        isAuthorYou ? 
+                            <div className="blinkbox-container">
+                                <span className="floater tiny-code">{number}</span>
+                                <span className="floater-under tiny-code">{number2}</span>
+                                <BlinkingGrid />
+                            </div>
+                            :
+                            <div className="image" style={{backgroundImage: "url(" + author.image + ")"}}></div>
+                    }
+                    
+                    <div className="text">
+                        <span className="name">{author.name}</span>
+                        <span className="description">{author.description}</span>
+                    </div>
                 </div>
-            </div>
+            }
             <SimpleContainer classes="code-block quote-box">
                 {children}
             </SimpleContainer>

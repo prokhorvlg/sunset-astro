@@ -3,6 +3,7 @@ export interface QuoteAuthor {
     name: string
     image: string
     description: string
+    theme?: string
 }
 
 export const AuthorTerminal: QuoteAuthor = {
@@ -15,8 +16,10 @@ export const AuthorTerminal: QuoteAuthor = {
 export const AuthorUniserve: QuoteAuthor = {
     id: "uniserve",
     name: "UNISERVE",
-    image: "/images/home/uniserve-welcome.png",
-    description: "The curator of this exhibit."
+    //image: "/images/home/uniserve-welcome.png",
+    image: "/images/home/Uniserve_2_Composition (3).png",
+    description: "The curator of this exhibit.",
+    theme: "aqua",
 }
 
 // C.A.N.
@@ -24,6 +27,6 @@ export const AuthorUniserve: QuoteAuthor = {
 export const AuthorCAN: QuoteAuthor = {
     id: "can",
     name: "Trash CAN",
-    image: "/images/home/uniserve-present.png",
+    image: "/images/home/can-2022.png",
     description: "Your trusty companion. Bites intruders and transcribes text."
 }

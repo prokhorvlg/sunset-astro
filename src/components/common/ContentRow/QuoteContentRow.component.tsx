@@ -6,16 +6,18 @@ interface PropTypes {
     author: QuoteAuthor
     children: JSX.Element
     shrink?: boolean
+    none?: boolean
 }
 
 const QuoteContentRow = ({
     author,
     children,
-    shrink
+    shrink,
+    none
 }: PropTypes) => {
     return (
         <ContentRow classes="quote-content-row">
-            <QuoteContainer author={author} shrink={shrink}>
+            <QuoteContainer author={author} shrink={shrink} none={none}>
                 <pre>{children}</pre>
             </QuoteContainer>
         </ContentRow>

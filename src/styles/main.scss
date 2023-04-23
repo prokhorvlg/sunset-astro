@@ -533,6 +533,37 @@ $breakpoint-quote: 1600px;
                     padding: 5px 15px;
                 }
             }
+
+            // quote author theme
+            &.aqua {
+                .simple-container.quote-box {
+                    border-color: darken($color-sunset-melancholic, 15%);
+                    background-color: darken($color-sunset-melancholic, 45%);
+                    &::after {
+                        background: url('./images/patterns/white-crisscross-pattern.svg');
+                        opacity: 0.3;
+                        background-size: 150px;
+                        mix-blend-mode: color-dodge;
+                    }
+                    p {
+                        color: $color-sunset-aqua;
+                    }
+                }
+                .author-box {
+                    .image {
+                        
+                    }
+                    .text {
+                        .name {
+                            color: $color-sunset-aqua;
+                        }
+                        .description {
+                            color: $color-sunset-melancholic;
+                        }
+                    }
+                    
+                }
+            }
         }
     }
 }
@@ -1923,7 +1954,7 @@ $dialog-main-color: $color-sunset-red;
         .hero-shroomy {
             background-size: 150vh;
             @media screen and (orientation: landscape) {
-                margin-top: 8vh;
+                margin-top: 0vh;
                 margin-left: 10vw;
                 // If too short, don't downscale any more
                 @media screen and (max-height: 900px) {
@@ -3518,6 +3549,16 @@ a.artist-tag {
         transform: translateY(50%) scale(1.05);
         border-color: $color-sunset-orange;
         background-color: lighten($color-ultradark-red, 5%);
+    }
+}
+
+.spacing-content-row {
+    .divide {
+        height: 2px;
+        border-radius: 1px;
+        width: 60%;
+        margin: 0 auto;
+        background-color: $color-sunset-red;
     }
 }
 
