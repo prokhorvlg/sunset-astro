@@ -10,7 +10,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRow from '@/components/common/ContentRow/QuoteContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN } from '@/data/Authors.ts'
 
@@ -27,7 +27,3 @@ import { AuthorCAN } from '@/data/Authors.ts'
 
   For the first time, LAZARUS is shipped off-world in an atomic freighter. They are experiencing uncertainty, a product of the advanced mind it has constructed within itself after decades of advanced strategy and improvisation. Whether this is a new form of self-preservation, or if LAZARUS is questioning the morality of eradicating other potentially conscious entities, is currently unknown.
 </TextContentRow>
-
-<QuoteContentRow author={AuthorCAN} client:only >
-You better not judge me, you worthless fuck.
-</QuoteContentRow>

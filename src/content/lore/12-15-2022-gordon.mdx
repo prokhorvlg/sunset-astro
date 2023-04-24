@@ -10,7 +10,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRow from '@/components/common/ContentRow/QuoteContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN } from '@/data/Authors.ts'
 
@@ -28,7 +28,7 @@ import { AuthorCAN } from '@/data/Authors.ts'
   They achieved their dream, and by the 2090s, there was only one thing left to conquer: the limitations of the human being itself.
 </TextContentRow>
 
-<QuoteContentRow author={AuthorCAN} client:only >
+<QuoteContentRowRender author={AuthorCAN} >
 GORDON isn't here to look pretty.
 
 He's here to solve the problem.
@@ -53,9 +53,4 @@ Redmond Cybernetics
 
 800 Aramingo Drive, Providence, Dollar Bank, TITAN 56-0013
 REDMOND-56 (Datanet service not guaranteed)
-
-</QuoteContentRow>
-
-{/*<QuoteContentRow author={AuthorCAN} client:only shrink >
-GORDON isn't here to look pretty.
-</QuoteContentRow>*/}
+</QuoteContentRowRender>

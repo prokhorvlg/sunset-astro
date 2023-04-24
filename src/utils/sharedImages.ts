@@ -33,6 +33,10 @@ export enum ImageId {
     Gordon = 'Gordon'
 }
 
+export const getImageById = (id: string) => {
+    return Images.find((image) => image.id === id)
+}
+
 export const Images: ImageDetails[] = [
     // UNISERVE
     {
@@ -52,10 +56,10 @@ export const Images: ImageDetails[] = [
     },
     {
         id: 'uniserve-welcome-modern',
-        src: "/images/home/Uniserve_2_Composition (6).png",
+        src: "/images/home/uniserve-2.png",
         alt: "UNISERVE saying hello to the viewer",
-        width: 2589,
-        height: 2120,
+        width: 2520,
+        height: 1947,
     },
     // GOLDSPIRE INTRO
     {

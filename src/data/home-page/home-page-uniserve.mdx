@@ -2,7 +2,7 @@
 title: 'Home Page'
 ---
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRow from '@/components/common/ContentRow/QuoteContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
@@ -22,27 +22,7 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
     Maybe even a nefarious hyper-intellect puppeteering a frame with an ulterior motive.
 </TextContentRow>
 
-{/*<QuoteContentRow author={AuthorTerminal} client:only >
-<p className="perfect">
-{`╔═════════════════════════════════════════╗
-║                                         ║
-║           Welcome to Uniserve           ║
-║          Administrative System          ║
-║                                         ║
-║    Copyright (C) DYNATEK Corporation    ║
-║                2056—2̸̾̓1̷͕͑2̵͖͒8̴͈̔                ║
-║                                         ║
-║           All rights reserved.          ║
-║                                         ║
-╚═════════════════════════════════════════╝
-
-* Receiving handshake parameters... done.
-* Confirming authenticity... done.
-* Linking to UNISERVE instance...`}
-</p>
-</QuoteContentRow>*/}
-
-<QuoteContentRow author={AuthorTerminal} client:only >
+<QuoteContentRowRender author={AuthorTerminal}>
 POWER ON
 
 System booting from Device A [UDON Multisette].
@@ -61,7 +41,7 @@ M:MOTORICS... done.
 ...
 
 SYSTEM READY
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 {/*<HeadingContentRow classes="" verticalSpacing={50}>
     <h2 className="highlight-orange">Hello and welcome, visitor!</h2>
@@ -75,7 +55,7 @@ SYSTEM READY
     <p class="highlight-aqua">They seem... kind.</p>
 </TextContentRow>
 
-<QuoteContentRow author={AuthorTerminal} client:only >
+<QuoteContentRowRender author={AuthorTerminal} >
 INITIALIZING CONNECTION
 
 ═══════════════
@@ -92,7 +72,7 @@ All rights reserved.
 \* Linking to UNISERVE instance...
 
 HELLO ?
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 {/*<ImageContentRowRender 
   images={['uniserve-welcome']}
@@ -102,11 +82,11 @@ HELLO ?
   images={['uniserve-welcome-modern']}
 />
 
-<QuoteContentRow author={AuthorUniserve} client:only >
+<QuoteContentRowRender author={AuthorUniserve} >
     Hello and welcome VISITOR, to my wonderful EXHIBIT!
 
     This unit is DELIGHTED that you have arrived here with minimal damage. Those YSH SHUTTLES were not designed to transport delicate electronics...    
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 <TextContentRow>
     The machine before you is designated UNISERVE: a filing system created by Dynatek Corporation many years ago. They are a collector of artifacts, curator of this exhibit, and esteemed member of the Consensus of Remembering.
@@ -116,23 +96,23 @@ HELLO ?
     Like a handful of other robots, they have learned to create meaning that makes sense to them, in a world where their original directive has become pointless.
 </TextContentRow>
 
-<QuoteContentRow author={AuthorUniserve} client:only none >
+<QuoteContentRowRender author={AuthorUniserve} none >
 This is my showcase of EVERYTHING in our world that has lead to this point in time.
 
 It will increase your HOLISTIC UNDERSTANDING OF REALITY by an unprecedented 0.002%!!!
 
 I call it SUNSET SYSTEM.
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 <ImageContentRowRender 
   images={['goldspire-2022']}
 />
 
-<QuoteContentRow author={AuthorUniserve} client:only >
+<QuoteContentRowRender author={AuthorUniserve} >
 This is our container, the GOLDSPIRE ARCHIVAL COMPLEX, a space station in decaying orbit around SATURN (second-largest world of SOLAR SYSTEM). It is of the three ALTITUDE network hubs, serving countless observation systems. 
 
 You like information, correct? There is much information here. Petabytes of data arrive from the entire SOLAR SYSTEM every hour, to be processed and stored in my TREMENDOUS BOTTOMLESS FILE CABINET. IMPRESSIVE!
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 
 <TextContentRow>
@@ -141,15 +121,15 @@ You like information, correct? There is much information here. Petabytes of data
 You remember that they don't just know the place, they *are* the place.
 </TextContentRow>
 
-<QuoteContentRow author={AuthorUniserve} client:only none >
+<QuoteContentRowRender author={AuthorUniserve} none >
 There is one more thing you will need before we can enter the COMPLEX.
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 <ImageContentRowRender 
   images={['can-2022']}
 />
 
-<QuoteContentRow author={AuthorUniserve} client:only >
+<QuoteContentRowRender author={AuthorUniserve} >
     VISITOR, meet CONCEALED ASSESSMENT NODE. My colleague may appear to be an entirely ordinary implement of 21st century, but upon keen observation, you may notice embedded CAMERA EYE. 
 
 C.A.N. was once employed by expert MRDCI spies to collect intelligence for use against their coworkers. Now C.A.N. is able to serve greater purpose. 
@@ -157,13 +137,13 @@ C.A.N. was once employed by expert MRDCI spies to collect intelligence for use a
 Using their superior sensor technology, C.A.N. can transcribe file data into readable TERMINAL STREAM, for viewing pleasure.
 
 C.A.N. will remain aligned with their mission parameters and WILL NOT DEVIATE. Confirm?
-</QuoteContentRow>
+</QuoteContentRowRender>
 
-<QuoteContentRow author={AuthorCAN} client:only >
+<QuoteContentRowRender author={AuthorCAN} >
     \> WILL PROTECT VISITOR USING TACTICAL SNAP-ATTACK.
     
     \> UNION INTRUDERS: BEWARE.
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 <TextContentRow>
 The sentient trash can quickly falls in line with the group, hopping on its four stubby legs with terrifying agility.
@@ -181,20 +161,20 @@ It becomes apparent this entire "museum" is nothing more than a collection of sh
 Perhaps UNISERVE deserves a break, though. They're only a filing system, operating far outside the scope of their parameters.
 </TextContentRow>
 
-<QuoteContentRow author={AuthorUniserve} client:only >
+<QuoteContentRowRender author={AuthorUniserve} >
 ONWARDS!
 
 The first EXHIBIT awaits: WORLD OF RETROFUTURISTIC DREAMS.
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 
 {/*
 
-<QuoteContentRow author={AuthorUniserve} client:only >
+<QuoteContentRowRender author={AuthorUniserve} >
     Then return to the modern age, the ERA OF NO INPUT. Walk the halls of their empty malls, discoteques, and suburban autohomes. 
     
     Witness what has become of the machine world in the wake of their disappearance, the UNEXPECTED INTERRUPT.
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 
 
@@ -202,13 +182,13 @@ The first EXHIBIT awaits: WORLD OF RETROFUTURISTIC DREAMS.
   images={['Earmarking']}
 /> put uniserve here!
 
-<QuoteContentRow author={AuthorUniserve} client:only >
+<QuoteContentRowRender author={AuthorUniserve} >
     MANY YEARS AGO, during usual filing and earmarking duties, my subroutines came across this SPECIAL DATA: a print advertisement for the 1997 Redmond Cybernetics ZENIX.
 
 NORMAL OPERATING PROCEDURE would dictate this information was to be disposed of, undeserving of distinguished treatment, for it had no direct value to MRDCI. Yet something within this data resonated in a strange way with my NEUROMORPHIC SYSTEM, for it depicted an ancestor of my design.
 
 I was compelled to retain this SPECIAL DATA, and have retained much SPECIAL DATA since. For what reason, DIAGNOSTIC SYSTEMS have yet to discern.
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 
 
@@ -220,7 +200,7 @@ I was compelled to retain this SPECIAL DATA, and have retained much SPECIAL DATA
 
 
 
-<QuoteContentRow author={AuthorUniserve} client:only >
+<QuoteContentRowRender author={AuthorUniserve} >
 We will first learn of ERA OF CREATION, the height of civilization. 
 
 By interacting and admiring RELICS of their time, we will be transported *metaphorically* through time to the COLONIAL CITIES and the ORBITALs.
@@ -228,7 +208,7 @@ By interacting and admiring RELICS of their time, we will be transported *metaph
 You will learn of their conquest of the SOLAR SYSTEM.
 
 clinging to the orbiting remains of the Goldspire Archival Complex
-</QuoteContentRow>
+</QuoteContentRowRender>
 
 
 */}

@@ -389,7 +389,7 @@ input[type=text] {
 }
 $breakpoint-quote: 1600px;
 .quote-content-row {
-    pre {
+    astro-slot {
         white-space: pre-wrap;
         font-size: 16px;
         @include codeText();
@@ -438,25 +438,28 @@ $breakpoint-quote: 1600px;
                     left: auto;
                     width: auto;
 
-                    flex-direction: row-reverse;
+                    flex-direction: row;
                     align-items: flex-end;
                     margin-bottom: 4px;
                 }
+                $imageHeight: 130px;
+                $imageWidth: 200px;
+                $mobileShrink: 0.7;
                 .image {
                     max-width: 200px;
-                    height: 150px;
-                    width: 100%;
+                    height: $imageHeight;
+                    width: $imageWidth;
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
-                    //border: $size-line-width solid $color-sunset-red;
+                    border: $size-line-width solid $color-sunset-red;
                     border-radius: $chicanery-border-radius;
                     margin-bottom: 20px;
                     flex-shrink: 0;
                     @media screen and (max-width: $breakpoint-quote) {
-                        margin: 0 0 0 10px;
-                        width: 100px;
-                        height: 100px;
+                        margin: 0 10px 0 0;
+                        width: $imageWidth * $mobileShrink;
+                        height: $imageHeight * $mobileShrink;
                     }
                 }
                 .text {
@@ -470,7 +473,7 @@ $breakpoint-quote: 1600px;
                         text-align: left;
                         color: $color-sunset-orange;
                         @media screen and (max-width: $breakpoint-quote) {
-                            text-align: right;
+                            text-align: left;
                         }
                     }
                     .description {
@@ -482,7 +485,7 @@ $breakpoint-quote: 1600px;
                         line-height: 20px;
                         @media screen and (max-width: $breakpoint-quote) {
                             margin-top: 4px;
-                            text-align: right;
+                            font-size: 12px;
                         }
                     }
                 }
@@ -503,7 +506,7 @@ $breakpoint-quote: 1600px;
 
                     @media screen and (max-width: $breakpoint-quote) {
                         margin-bottom: 0;
-                        margin-left: 10px;
+                        margin-right: 10px;
 
                         max-width: 80px;
                         height: 120px;
@@ -528,13 +531,14 @@ $breakpoint-quote: 1600px;
                 
             }
             .quote-box {
-                padding: 10px 30px;
+                padding: 20px 30px;
                 @media screen and (max-width: $breakpoint-mobile) {
                     padding: 5px 15px;
                 }
             }
 
             // quote author theme
+            // aqua is actually UNISERVE
             &.aqua {
                 .simple-container.quote-box {
                     border-color: darken($color-sunset-melancholic, 15%);
@@ -551,7 +555,10 @@ $breakpoint-quote: 1600px;
                 }
                 .author-box {
                     .image {
-                        
+                        border-color: darken($color-sunset-melancholic, 15%);
+                        background-size: 120%;
+                        background-position-x: 20%;
+                        background-position-y: 80%;
                     }
                     .text {
                         .name {
@@ -3475,6 +3482,9 @@ $post-heading-width: 1000px;
             @media screen and (max-width: $breakpoint-mobile) {
                 height: auto;
             }
+
+            border: 2px solid #0094c1;
+            border-radius: 6px;
         }
 
         &::before {

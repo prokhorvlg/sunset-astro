@@ -1,3 +1,6 @@
+import { getImageById } from "@/utils/sharedImages"
+import { getImage } from "astro/dist/assets"
+
 export interface QuoteAuthor {
     id: string
     name: string
@@ -8,8 +11,8 @@ export interface QuoteAuthor {
 
 export const AuthorTerminal: QuoteAuthor = {
     id: "you",
-    name: "Internal Memory",
     image: "",
+    name: "Internal Memory",
     description: "The little voices in your head."
 
 }
@@ -17,7 +20,8 @@ export const AuthorUniserve: QuoteAuthor = {
     id: "uniserve",
     name: "UNISERVE",
     //image: "/images/home/uniserve-welcome.png",
-    image: "/images/home/Uniserve_2_Composition (3).png",
+    //image: "/images/home/uniserve-2.png",
+    image: "uniserve-welcome-modern",
     description: "The curator of this exhibit.",
     theme: "aqua",
 }
@@ -27,6 +31,6 @@ export const AuthorUniserve: QuoteAuthor = {
 export const AuthorCAN: QuoteAuthor = {
     id: "can",
     name: "Trash CAN",
-    image: "/images/home/can-2022.png",
+    image: "can-2022",
     description: "Your trusty companion. Bites intruders and transcribes text."
 }

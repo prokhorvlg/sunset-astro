@@ -1,0 +1,34 @@
+---
+import { QuoteAuthor } from '@/data/Authors';
+import { getImageById } from '@/utils/sharedImages';
+import { getImage } from '@astrojs/image';
+import QuoteContentRow from './QuoteContentRow.component'
+
+interface Props {
+    author: QuoteAuthor
+    shrink?: boolean
+    none?: boolean
+}
+
+const authorImage = Astro.props.author.image
+let imageObject
+let imageProcessed
+if (authorImage !== "") {
+    imageObject = getImageById(Astro.props.author.image)
+    imageProcessed = await getImage({
+        src: imageObject!.src,
+        width: 400,
+        aspectRatio: imageObject!.width / imageObject!.height,
+        format: "webp",
+        alt: ""
+    })
+}
+---
+
+<QuoteContentRow
+    author={Astro.props.author}
+    imageItem={imageProcessed} 
+    shrink={Astro.props.shrink || false}
+    none={Astro.props.none}
+    client:only="react"
+><slot /></QuoteContentRow>
