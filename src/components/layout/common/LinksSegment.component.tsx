@@ -31,7 +31,7 @@ export const LinksSegment = ({ currentPage = '', isFooter = false }) => {
                     isFooter={isFooter}
                 />
                 <HeaderLink
-                    title="Supporters"
+                    title="Credits"
                     active={currentPage === "/supporters"}
                     icon={faHome}
                     target={CommonLinks.supporters}

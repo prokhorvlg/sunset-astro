@@ -27,6 +27,9 @@ export interface ImageDetails {
     height: number
     artist?: ImageArtist
     caption?: string
+    classes?: string
+
+    originalPost?: string
 }
 
 export enum ImageId {
@@ -38,6 +41,8 @@ export const getImageById = (id: string) => {
 }
 
 export const Images: ImageDetails[] = [
+    // MAIN THUMBNAILS
+    
     // UNISERVE
     {
         id: 'uniserve-present',
@@ -60,6 +65,7 @@ export const Images: ImageDetails[] = [
         alt: "UNISERVE saying hello to the viewer",
         width: 2520,
         height: 1947,
+        classes: "uniserve-modern"
     },
     // GOLDSPIRE INTRO
     {
@@ -113,5 +119,20 @@ export const Images: ImageDetails[] = [
         caption: "A photograph of the Input Data Sanitization Team on Project BELOBOG: Genadiy Sobakin, Jane Davis, and DTEK.",
         width: 2245,
         height: 1768
+    },
+    {
+        id: 'pan-sol-crane-ad',
+        src: "/images/content/crane-airline-ad.jpg",
+        alt: "Advertisement for the Pan Sol Crane spaceplane",
+        caption: "A photograph of the Input Data Sanitization Team on Project BELOBOG: Genadiy Sobakin, Jane Davis, and DTEK.",
+        width: 2818,
+        height: 1831
+    },
+    {
+        id: 'nations-tri-panel',
+        src: "/images/content/sunset-system-nations.png",
+        alt: "Advertisement for the Pan Sol Crane spaceplane",
+        width: 2719,
+        height: 1427
     },
 ]

@@ -1,7 +1,7 @@
 const TagStrategy = {
     'post-mankind': "post-mankind existentialism",
     'retro-dreams': "retrofuturistic dreams",
-    'core-mystery': "mystery of man's departure"
+    'core-mystery': "core mystery"
 }
 
 const TagCloud = ({

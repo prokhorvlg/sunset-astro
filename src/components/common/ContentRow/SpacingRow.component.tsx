@@ -3,14 +3,16 @@ import ContentRow from "@/components/common/ContentRow/ContentRow.component"
 interface PropTypes {
     extraSpacing?: number | string,
     divide?: boolean,
+    classes?: string
 }
 
 const SpacingRow = ({
     extraSpacing = 0,
+    classes,
     divide,
 }: PropTypes) => {
     return (
-        <ContentRow classes="spacing-content-row">
+        <ContentRow classes={`spacing-content-row ${classes}`}>
             <div style={{
                 marginTop: extraSpacing,
                 marginBottom: extraSpacing,

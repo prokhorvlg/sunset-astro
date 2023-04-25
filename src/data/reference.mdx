@@ -1,0 +1,36 @@
+---
+title: "Reference Markdown Document"
+mainText: "Magazine ad from a reality where robots became common during the microcomputer era."
+subText: "In the early 2000s, Redmond Cybernetics introduces GORDON, a series of interfacer robots."
+pubDate: "Dec 15 2022"
+thumbImage: "Gordon"
+tags:
+  - retro-dreams
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
+import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
+import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
+
+<ImageContentRowRender 
+  images={['Gordon']}
+/>
+
+<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>
+<img src="/images/Icon_Robots (2).png" width={350} className="image-robot-look"  />
+    <h2 className="highlight-orange">Their experiments to erase 'conflict' backfired, and their robots were the only ones left behind.</h2>
+</HeadingContentRow>
+
+<TextContentRow>
+  They achieved their dream, and by the 2090s, there was only one thing left to conquer: the limitations of the human being itself.
+</TextContentRow>
+
+<QuoteContentRowRender author={AuthorCAN} >
+800 Aramingo Drive, Providence, Dollar Bank, TITAN 56-0013
+REDMOND-56 (Datanet service not guaranteed)
+</QuoteContentRowRender>
+
+<SpacingRow extraSpacing={"calc(5vw + 20px)"} divide />

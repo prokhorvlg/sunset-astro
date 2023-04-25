@@ -15,7 +15,7 @@ const SunsetFooter = ({ currentPage = '' }) => {
             {/*<div className="sunset-footer-gradient"></div>*/}
             <TransitionGradient direction="to-bottom" 
                 floaterTextLeft="9189 tb consumed"
-                floaterTextRight="dawnlight :>> beyond these walls"
+                floaterTextRight="disc corruption detected"
             />
             <div className="sunset-footer">
                 <div className="content-area">

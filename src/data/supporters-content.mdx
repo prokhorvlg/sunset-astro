@@ -1,0 +1,51 @@
+---
+title: 'Credits'
+description: 'Sunset System may be my pet project, but it was not built alone!'
+---
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
+import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
+import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
+
+<TextContentRow>
+    This page is dedicated to the friends of Sunset System, all the people who have helped me take this strange thought experiment to the next level.
+
+    A huge thank you to everyone on this page, and to anyone else that has supported my work!
+</TextContentRow>
+
+<QuoteContentRowRender author={AuthorUniserve} >
+    Special thanks to my partner, BLACK_VELVET, for putting up with me doing... this... when I'm not performing my primary functions.
+</QuoteContentRowRender>
+
+<HeadingContentRow type="grandiose">
+    <h2 className="highlight-orange">Goldspire Crew</h2>
+
+    Contributing members of the Sunset System team.
+</HeadingContentRow>
+
+<TextContentRow>
+    * TheOneTruBae: lead developer, handles anything to do with game-related tech.
+    * Bughana: 
+    * superwendel: 
+    * Kat
+</TextContentRow>
+
+<HeadingContentRow type="grandiose">
+    <h2 className="highlight-orange">Patrons</h2>
+
+    Community members who have subscribed to the Patreon page!
+</HeadingContentRow>
+
+<TextContentRow>
+    Community members who thought my work actually merited financial support. I am incredibly grateful to you guys.
+
+    ### Transit Mastermind
+
+    * -
+
+    ### interfacer
+    
+    * Nervosus
+</TextContentRow>

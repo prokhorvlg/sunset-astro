@@ -66,6 +66,7 @@ const ImageContentRow = ({
                                                     width={MAX_WIDTH}
                                                     height={MAX_WIDTH / originalWidth * originalHeight}
                                                     ref={ref as React.MutableRefObject<HTMLImageElement>}
+                                                    className={`inner-image ${imageItem.originalObject.classes}`}
                                                 />
                                             </button>
                                         )

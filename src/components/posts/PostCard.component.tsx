@@ -45,7 +45,7 @@ const PostCard = ({
                 }
                 {(collection === PostType.Introduction) ? 
                     <div className="post-card-content">
-                        <h3 className="title">{post.data.title}</h3>
+                        <h3 className="title">{post.data.mainText}</h3>
                         <p className="description">{post.data.subText}</p>
                         <TagCloud tags={post.data.tags} />
                     </div> : null
@@ -58,6 +58,10 @@ const PostCard = ({
             </DialogContainer>
         </div>
     )
+}
+
+const IntroductionContents = () => {
+    return null
 }
 
 export default PostCard

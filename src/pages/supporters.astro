@@ -8,20 +8,20 @@ import PostsView, { PostType } from '@/components/posts/PostGrid.component';
 import PageHeading from '@/components/page/PageHeading.component';
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component';
 
+import { Content } from '@/data/supporters-content.mdx';
+import * as post from '@/data/supporters-content.mdx';
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={"Supporters"} description={SITE_DESCRIPTION} />
+		<BaseHead title={post.frontmatter.title} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
 		<main>
-			<PageHeading title="Supporters" subtext={"The people that make this project possible."}></PageHeading>
-            <TextContentRow>
-                Wow!
-            </TextContentRow>
+			<PageHeading title={post.frontmatter.title} subtext={post.frontmatter.description}><></></PageHeading>
+            <Content />
 		</main>
 		<SunsetFooter client:only currentPage={Astro.url.pathname} />
 	</body>

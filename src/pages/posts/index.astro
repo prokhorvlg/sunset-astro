@@ -1,64 +1,13 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection, image } from 'astro:content';
+import { SITE_DESCRIPTION } from '../../consts';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import PostsView, { PostType, ProcessedPost } from '@/components/posts/PostGrid.component';
 import PageHeading from '@/components/page/PageHeading.component';
-import { Images } from '@/utils/sharedImages';
-import { getImage } from '@astrojs/image';
+import { getAllPosts } from '@/utils/astroHelpers';
 
-const processPosts = async (posts) => {
-	return await Promise.all(posts.map(async (post) => {
-		// Find and process the thumb image if available.
-		const imageObject = Images.find((imageItem) => imageItem.id === post.data.thumbImage)
-		console.log(imageObject)
-		let processedImageObject
-		if (imageObject) {
-			processedImageObject = await getImage({
-				src: imageObject.src,
-				alt: imageObject.alt || "",
-				aspectRatio: `${imageObject.width}:${imageObject.height}`,
-				width: 600,
-				format: "webp"
-			})
-		}
-
-		// Compile the processed post object
-		return {
-			post: post,
-			processedThumbImage: processedImageObject ? processedImageObject : null,
-			searchData: `
-				${post.data.title.toLowerCase()} 
-				${post.data.mainText?.toLowerCase()} 
-				${post.data.subText?.toLowerCase()} 
-				${post.data.tags?.map((tag) => tag.toLowerCase() + " ")} 
-				${post.body.toLowerCase()}`
-		} as ProcessedPost
-	}))
-}
-
-// Load in every post type (must be done using the Astro way).
-// LORE
-const lorePosts = await getCollection(PostType.Lore, ({ data }) => {
-  return data.draft !== true;
-})
-const lorePostsProcessed = await processPosts(lorePosts)
-
-// INTRODUCTION
-const introductionPosts = await getCollection(PostType.Introduction, ({ data }) => {
-  return data.draft !== true;
-})
-const introductionPostsProcessed = await processPosts(introductionPosts)
-
-// Combine all of the above.
-const processedPosts: ProcessedPost[] = [...lorePostsProcessed, ...introductionPostsProcessed]
-
-// Sort collection by date.
-const sortedPosts = processedPosts.sort((a,b) => {
-  return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
-});
+const posts = await getAllPosts()
 
 ---
 
@@ -72,7 +21,7 @@ const sortedPosts = processedPosts.sort((a,b) => {
 		<main>
 			<PageHeading title="Posts" subtext={"A collection of every post made for Sunset System."} image='computer-blinking'><></></PageHeading>
 			<PostsView client:only
-				processedPosts={sortedPosts}
+				processedPosts={posts}
 			/>
 		</main>
 		<SunsetFooter client:only currentPage={Astro.url.pathname} />

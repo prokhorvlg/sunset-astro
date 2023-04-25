@@ -18,7 +18,7 @@ function DotGrid({ numRowsInitial = 10, numRowsMobile = 8, dotRadius = 1.5, dotS
         setGridWidth(gridRef.current.offsetWidth);
       }
       // Set number of rows based on window size
-      if (window.innerWidth < 1100) {
+      if (window.innerWidth < 1200) {
         setNumRows(numRowsMobile);
       } else {
         setNumRows(numRowsInitial);
