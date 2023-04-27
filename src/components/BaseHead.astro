@@ -28,16 +28,16 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 
 <meta name="description" content={description} />
 <meta name="theme-color" content="#ff3d00">
-<meta property="og:site_name" content="Sunset System">
+<!--<meta property="og:site_name" content="Sunset System">-->
 
-<meta property="og:image" content="https://www.sunset-system.com/images/meta/main-logo-favicon.png" />
+<!-- <meta property="og:image" content="https://www.sunset-system.com/images/meta/main-logo-favicon.png" /> -->
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<!--<meta property="og:image" content={new URL(image, Astro.url)} />-->
+<meta property="og:image" content={new URL(image, Astro.url)} />
 
 <!-- Twitter -->
 <!--<meta property="twitter:card" content="summary_large_image" />-->
@@ -46,6 +46,6 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Embed metadata -->
+<!-- oEmbed metadata -->
 <link type="application/json+oembed" href="https://www.sunset-system.com/oembed.json" />
 
