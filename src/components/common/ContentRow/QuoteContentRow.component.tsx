@@ -39,7 +39,7 @@ const QuoteContentRow = ({
             setNumber(getRandomInt(10000,99999))
             setNumber2(getRandomInt(10000,99999))
           },
-          500
+          250
         );
     
         // clean up interval on unmount

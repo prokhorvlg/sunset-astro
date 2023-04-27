@@ -4,10 +4,11 @@ const TransitionGradient = ({
     direction = 'to-bottom',
     id = '',
     floaterTextLeft = '162k available',
-    floaterTextRight = 'version 4.2 (c) Redmond Cybernetics'
+    floaterTextRight = 'version 4.2 (c) Redmond Cybernetics',
+    classes = ''
 }) => {
     return (
-        <FullWidthWrapper classes={`transition-gradient-dialog ${direction}`} width={WrapperMax.MaxWidth}>
+        <FullWidthWrapper classes={`transition-gradient-dialog ${direction} ${classes}`} width={WrapperMax.MaxWidth}>
             <div className="main-area-wrapper" id={id}>
                 <div className="main-area-top-border"></div>
                 <div className={`main-area pull-down`}>

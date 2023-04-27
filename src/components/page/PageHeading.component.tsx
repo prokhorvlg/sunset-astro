@@ -12,6 +12,7 @@ interface PropTypes {
     image?: string
     pullDown?: boolean // artificially heighten and reduce margin?
     showHeaderBar?: boolean
+    isSpooky?: boolean
 }
 
 const PageHeading = ({
@@ -20,8 +21,14 @@ const PageHeading = ({
     children = <></>,
     image,
     pullDown,
-    showHeaderBar = true
+    showHeaderBar = true,
+    isSpooky = false
 }: PropTypes) => {
+    // Transform the page into the spooky page instead.
+    const triggerSpooky = () => {
+        
+    }
+
     return (
         <FullWidthWrapper classes={`heading-area page ${pullDown ? 'hidden-header' : null}`} width={WrapperMax.MaxWidth}>
             {showHeaderBar ? 
@@ -46,12 +53,12 @@ const PageHeading = ({
                                 <div className="line" />
                                 <div className="line" />
                             </div>
-                            <div className="crown-button">
+                            <button className="crown-button orange">
                                 <FontAwesomeIcon icon={faMinus} />
-                            </div>
-                            <div className="crown-button close">
+                            </button>
+                            <button className={`crown-button close ${isSpooky ? 'spooky' : null}`} onClick={() => triggerSpooky()}>
                                 <FontAwesomeIcon icon={faClose} />
-                            </div>
+                            </button>
                         </div>
                     </div>
                 </div>

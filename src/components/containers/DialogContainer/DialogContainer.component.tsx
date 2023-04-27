@@ -1,4 +1,6 @@
 
+import { faClose } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import DiagonalLinesBar from "./components/DiagonalLinesBar.component"
 
 export enum DialogHeaderStyle {
@@ -119,7 +121,9 @@ const MacintoshStraightHeader = ({
                 <div className="line"></div>
                 <div className="line"></div>
             </div></>}
-            <div className="macintosh-header-close"></div>
+            <button className={`crown-button close macintosh-header-close`}>
+                <FontAwesomeIcon icon={faClose} />
+            </button>
         </div>
     )
 }

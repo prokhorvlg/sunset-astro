@@ -24,7 +24,7 @@ interface PropTypes {
     imageItems: (FullImageDetails | null)[]
 }
 
-const MAX_WIDTH = 994 // based on row width max
+const MAX_WIDTH = 1000 // based on row width max
 
 const ImageContentRow = ({
     imageItems
@@ -55,20 +55,24 @@ const ImageContentRow = ({
                                         const originalWidth = imageItem.originalObject.width || 1
                                         const originalHeight = imageItem.originalObject.height || 1
                                         return (
-                                            <button className="image-content-image" onClick={open}>
+                                            <div className="image-content-box">
+                                                
+                                                <button className="image-content-image" onClick={open}>
+                                                    <img
+                                                        src={imageItem.processedObject.src || ""}
+                                                        alt={imageItem.originalObject.alt || ""}
+                                                        width={MAX_WIDTH}
+                                                        height={MAX_WIDTH / originalWidth * originalHeight}
+                                                        ref={ref as React.MutableRefObject<HTMLImageElement>}
+                                                        className={`inner-image ${imageItem.originalObject.classes}`}
+                                                    />
+                                                </button>
                                                 {imageItem.originalObject.caption ? 
                                                     <div className="top-text">CAPTION // <span className="highlight-orange">{imageItem.originalObject.caption || ""}</span></div>
                                                     : null
                                                 }
-                                                <img
-                                                    src={imageItem.processedObject.src || ""}
-                                                    alt={imageItem.originalObject.alt || ""}
-                                                    width={MAX_WIDTH}
-                                                    height={MAX_WIDTH / originalWidth * originalHeight}
-                                                    ref={ref as React.MutableRefObject<HTMLImageElement>}
-                                                    className={`inner-image ${imageItem.originalObject.classes}`}
-                                                />
-                                            </button>
+                                            </div>
+                                            
                                         )
                                     }}
                                 </Item>

@@ -28,6 +28,7 @@ export interface ImageDetails {
     artist?: ImageArtist
     caption?: string
     classes?: string
+    format?: string
 
     originalPost?: string
 }
@@ -74,7 +75,19 @@ export const Images: ImageDetails[] = [
         alt: "The Goldspire Archival Complex",
         width: 2801,
         height: 1779,
+        classes: "uniserve-modern"
     },
+    {
+        id: 'goldspire-rev',
+        src: "/images/home/Goldspire (3).png",
+        alt: "The Goldspire Archival Complex",
+        width: 1677,
+        height: 1634,
+        classes: "goldspire-rev",
+        format: "jpg",
+        caption: "Goldspire Archival Complex, the space station you are currently on. The hub of the Coalition's spy network, ALTITUDE, and home of UNISERVE. Used to contain around a thousand crew members."
+    },
+    
     {
         id: 'can-2022',
         src: "/images/home/can-2022.png",

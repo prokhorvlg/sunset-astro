@@ -14,21 +14,18 @@ import HomeHub from "@/components/home/HomeHub.component";
 import TransitionGradient from "@/components/home/TransitionGradient.component";
 import { GetImageTransform } from "@astrojs/image/dist/lib/get-image";
 import PostCard from "@/components/posts/PostCard.component";
+import { getProcessedPost } from "@/utils/astroHelpers";
 
 // Switch to "true" to load images faster, as they aren't being compressed.
 const DEBUGGING = false
-
-/*import * as nextPost from '../content/introduction/world-of-retrofuturistic-dreams.mdx';
-import { processPosts } from "@/utils/astroHelpers";
-const nextPostsProcessed = processPosts([nextPost])[0]*/
-
+const nextPost = await getProcessedPost('world-of-retrofuturistic-dreams', 'introduction')
 const DEFAULT_WIDTH = 3500;
 
 const imageSources = [
   {
     id: "lazarus",
     alt: "",
-    src: "/images/Hero_Lazarus (24).png",
+    src: "/images/lazarus-cropped-2.png",
     aspectRatio: "3688:2294",
     width: DEFAULT_WIDTH,
     format: "webp"
@@ -44,7 +41,7 @@ const imageSources = [
   {
     id: "shroomy",
     alt: "",
-    src: "/images/Hero_Shroomy (18).png",
+    src: "/images/shroomy-cropped.png",
     aspectRatio: "3688:2294",
     width: DEFAULT_WIDTH,
     format: "webp"
@@ -52,7 +49,7 @@ const imageSources = [
   {
     id: "marvin",
     alt: "",
-    src: "/images/Hero_Bum.png",
+    src: "/images/marvin-cropped.png",
     aspectRatio: "3500:2146",
     width: DEFAULT_WIDTH,
     format: "webp"
@@ -61,6 +58,14 @@ const imageSources = [
     id: "fg-bottom",
     alt: "",
     src: "/images/Fg_Comp (7).png",
+    aspectRatio: "3500:2146",
+    width: DEFAULT_WIDTH,
+    format: "webp"
+  },
+  {
+    id: "noise",
+    alt: "",
+    src: "/images/noise.png",
     aspectRatio: "3500:2146",
     width: DEFAULT_WIDTH,
     format: "webp"
@@ -81,8 +86,6 @@ const getImageSrcById = (id) => {
   }
   return compiledImageSources.find((obj) => obj.id === id)?.img.src || ""
 }
-
-//const nextPost = 
 ---
 
 <!DOCTYPE html>
@@ -99,6 +102,9 @@ const getImageSrcById = (id) => {
         shroomyImageSrc={getImageSrcById("shroomy")}
         marvinImageSrc={getImageSrcById("marvin")}
         fgBottomImageSrc={getImageSrcById("fg-bottom")}
+        noiseSrc={getImageSrcById("noise")}
+
+        
         client:only />
       <ScrollSuggestion />
       <TransitionGradient 
@@ -117,13 +123,17 @@ const getImageSrcById = (id) => {
         direction="to-top" 
         id="top-of-uniserve-intro" 
         floaterTextLeft="pan sol commprotocol A9:114"
-        floaterTextRight="graphics initialized"
+        floaterTextRight="consensus_of_all.dat"
+        classes="spooky-right"
       />
 
       <HomePageUniserve />
-      <!--<PostCard processedPost={nextPostsProcessed}/>-->
+      <PostCard processedPost={await getProcessedPost('world-of-retrofuturistic-dreams', 'introduction')}/>
 
-      <!--<FullWidthWrapper>
+      <!--
+        graphics initialized
+        
+        <FullWidthWrapper>
 					<SimpleContainer classes="under-construction">
 						<FontAwesomeIcon icon={faWrench} />
 						<p class="highlight-orange">The full introduction is <span class="highlight-aqua">under construction :)</span></p>

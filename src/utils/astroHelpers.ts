@@ -1,7 +1,7 @@
 import { PostType, ProcessedPost } from "@/components/posts/PostGrid.component";
 import { Images } from "@/utils/sharedImages";
 import { getImage } from "@astrojs/image";
-import { getCollection } from "astro:content";
+import { getCollection, getEntryBySlug } from "astro:content";
 
 // loadAnyPost
 export const loadAnyPost = async () => {
@@ -13,6 +13,15 @@ export const loadAnyPost = async () => {
 		params: { slug: post.slug },
 		props: post,
 	}));
+}
+
+export const getPost = async (id: string, collection: string) => {
+  const post = await getEntryBySlug(collection as any, id)
+  return post
+}
+export const getProcessedPost = async (id: string, collection: string): Promise<ProcessedPost> => {
+  const post = await getPost(id, collection)
+  return await processPost(post)
 }
 
 // getAllPosts: Returns a collection of all posts on the website.
@@ -51,33 +60,36 @@ export const getAllPosts = async () => {
 export const processPosts = async (posts) => {
   return await Promise.all(
     posts.map(async (post) => {
-      // Find and process the thumb image if available.
-      const imageObject = Images.find(
-        (imageItem) => imageItem.id === post.data.thumbImage
-      );
-      console.log(imageObject);
-      let processedImageObject;
-      if (imageObject) {
-        processedImageObject = await getImage({
-          src: imageObject.src,
-          alt: imageObject.alt || "",
-          aspectRatio: `${imageObject.width}:${imageObject.height}`,
-          width: 600,
-          format: "webp",
-        });
-      }
-
-      // Compile the processed post object
-      return {
-        post: post,
-        processedThumbImage: processedImageObject ? processedImageObject : null,
-        searchData: `
-				${post.data.title.toLowerCase()} 
-				${post.data.mainText?.toLowerCase()} 
-				${post.data.subText?.toLowerCase()} 
-				${post.data.tags?.map((tag) => tag.toLowerCase() + " ")} 
-				${post.body.toLowerCase()}`,
-      } as ProcessedPost;
+      return await processPost(post)
     })
   );
 };
+
+export const processPost = async (post) => {
+  // Find and process the thumb image if available.
+  const imageObject = Images.find(
+    (imageItem) => imageItem.id === post.data.thumbImage
+  );
+  let processedImageObject;
+  if (imageObject) {
+    processedImageObject = await getImage({
+      src: imageObject.src,
+      alt: imageObject.alt || "",
+      aspectRatio: `${imageObject.width}:${imageObject.height}`,
+      width: 600,
+      format: "webp",
+    });
+  }
+
+  // Compile the processed post object
+  return {
+    post: post,
+    processedThumbImage: processedImageObject ? processedImageObject : null,
+    searchData: `
+    ${post.data.title.toLowerCase()} 
+    ${post.data.mainText?.toLowerCase()} 
+    ${post.data.subText?.toLowerCase()} 
+    ${post.data.tags?.map((tag) => tag.toLowerCase() + " ")} 
+    ${post.body.toLowerCase()}`,
+  } as ProcessedPost;
+}

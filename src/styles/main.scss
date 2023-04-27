@@ -13,7 +13,10 @@ $color-background-dark: #24150e;
 
 $color-retro-dreams: $color-sunset-red;
 $color-core-mystery: #2a94ea;
-$color-post-mankind: #d70eff;
+$color-post-mankind: #ff0ec3;
+
+$color-spooky: #cf0eff;
+$color-spooky-light: lighten($color-spooky, 16%);
 
 /*
 $color-retro-dreams: #ff8800;
@@ -1343,7 +1346,7 @@ $quoteMobileSidePadding: 20px;
 }
 
 // - FOOTER
-$breakpoint-footer: 1200px;
+$breakpoint-footer: $breakpoint-tablet;
 .sunset-footer-container {
     margin-top: 100px;
     background: linear-gradient(to bottom, rgba(36, 21, 14, 0) 30%, rgb(36, 21, 14) 100%);
@@ -1844,18 +1847,8 @@ $dialog-main-color: $color-sunset-red;
     }
 
     .macintosh-header-close {
-        height: 15px;
-        width: 15px;
-        border: $size-line-width solid $dialog-main-color;
         margin-right: 6px;
-        @if $chicanery-mode {
-            border-radius: 4px;
-        }
-
-        &:hover {
-            background: $dialog-main-color;
-            cursor: pointer;
-        }
+        margin-left: 0;
     }
 
     $filledOpacity: 1;
@@ -1866,15 +1859,6 @@ $dialog-main-color: $color-sunset-red;
         .line {
             background: rgba($color-ultradark-red, $filledOpacity);
             height: $size-line-width;
-        }
-        .macintosh-header-close {
-            border-color: rgba($color-ultradark-red, $filledOpacity);
-            //background-color: rgba($color-dark-burnished, $filledOpacity);
-            border-width: $size-line-width;
-            transition: 0.1s ease-in-out;
-            &:hover {
-                background: rgba($color-sunset-orange, $filledOpacity);
-            }
         }
     }
 }
@@ -1953,9 +1937,6 @@ $dialog-main-color: $color-sunset-red;
         height: 100%;
         width: 100%;
         max-width: calc($size-max-width-wide + 4px);
-
-        
-
         overflow: hidden;
         position: relative;
         margin: 0px 2px;
@@ -2035,7 +2016,7 @@ $dialog-main-color: $color-sunset-red;
 
             // If screen too flat, shrink title a bit
             @media screen and (orientation: landscape) {
-                @media screen and (max-height: 1200px) {
+                @media screen and (max-height: $breakpoint-tablet) {
                     top: 5%;
                     h1 {
                         font-size: 4.5rem;
@@ -2054,7 +2035,7 @@ $dialog-main-color: $color-sunset-red;
             background-size: cover;
             background-position: center;
             mix-blend-mode: overlay;
-            opacity: 0.5;
+            opacity: 0.4;
         }
         .sunset-hero-front {
             background: url('/images/Hero_Bum.png');
@@ -2064,6 +2045,11 @@ $dialog-main-color: $color-sunset-red;
         .sunset-under-front {
             background: linear-gradient(0deg, $color-sunset-red 0%, $color-sunset-orange 100%);
             opacity: 0.4;
+        }
+        .a {
+            @media screen and (max-width: $breakpoint-mobile) {
+                display: none;
+            }
         }
         .sunset-banner-deep-background {
             background: orange;
@@ -2075,6 +2061,9 @@ $dialog-main-color: $color-sunset-red;
         }
         .foreground, .topground {
             //opacity: 0;
+            @media screen and (max-width: $breakpoint-mobile) {
+                opacity: 0;
+            }
         }
         .foreground {
             //background-image: url('/images/Fg_Comp (2).png');
@@ -2088,6 +2077,15 @@ $dialog-main-color: $color-sunset-red;
             background-size: cover;
             background-repeat: no-repeat;
             background-position: bottom center;
+        }
+
+        .noise {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            mix-blend-mode: overlay;
+            //mix-blend-mode: color-burn;
+            opacity: 0.1;
         }
 
 
@@ -2132,7 +2130,7 @@ $dialog-main-color: $color-sunset-red;
             background-size: 150vh;
             @media screen and (orientation: landscape) {
                 margin-top: 0vh;
-                margin-left: 10vw;
+                margin-left: 12vw;
                 // If too short, don't downscale any more
                 @media screen and (max-height: 900px) {
                     background-size: 1500px;
@@ -2823,7 +2821,7 @@ $dialog-main-color: $color-sunset-red;
     .post-string {
         position: relative;
         width: 100%;
-        max-width: 353px;
+        max-width: 443px;
         display: flex;
         input {
             position: relative;
@@ -3337,6 +3335,8 @@ $post-heading-width: 1000px;
             background: $color-sunset-red;
             border-radius: $chicanery-border-radius;
             position: relative;
+            margin-left: 2px;
+            margin-right: 2px;
 
         }
         .heading-crown {
@@ -3387,39 +3387,6 @@ $post-heading-width: 1000px;
                 @media screen and (max-width: 500px) {
                     opacity: 0;
                 }
-            }
-
-            .crown-button {
-                $dimensions: 18px;
-                width: $dimensions;
-                height: $dimensions;
-                background-color: $color-background-dark;
-                border: 2px solid transparent;
-                border-radius: 5px;
-                margin-left: 3px;
-
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-                user-select: none;
-
-                svg {
-                    color: $color-sunset-red;
-                }
-                &.close {
-                    svg {
-                        color: $color-sunset-yellow;
-                    }
-                }
-
-                &:hover {
-                    border: 2px solid $color-sunset-yellow;
-                    svg {
-                        color: $color-sunset-yellow;
-                    }
-                }
-                
             }
             .main-icon {
                 color: $color-background-dark;
@@ -3594,41 +3561,77 @@ $post-heading-width: 1000px;
     }
 }
 
+
+// CROWN BUTTON: used in dialog headers, the close button.
+.crown-button {
+    $dimensions: 22px;
+    width: 28px;
+    height: $dimensions;
+    background-color: $color-background-dark;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    margin-left: 3px;
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+
+    svg {
+        margin-left: 1px;
+        color: $color-sunset-red;
+    }
+    &.orange {
+        svg {
+            color: $color-sunset-orange;
+        }
+    }
+
+    &:hover {
+        border: 2px solid $color-sunset-yellow;
+        svg {
+            color: $color-sunset-yellow;
+        }
+    }
+
+    // Spooky purple button to activate dark terminal
+    &.spooky {
+        svg {
+            color: $color-spooky;
+        }
+        &.close {
+            svg {
+                color: $color-spooky;
+            }
+        }
+
+        &:hover {
+            border: 2px solid $color-sunset-melancholic;
+            svg {
+                color: $color-sunset-melancholic;
+            }
+        }
+    }
+    
+}
+
 .image-content-row {
     position: relative;
     .gallery-item {
         position: relative;
     }
-    .image-content-image {
+    .image-content-box {
         display: flex;
-        position: relative;
-        background: none;
-        border: 2px solid transparent;
-        padding: 4px 4px 1px 4px;
-        margin: 0 auto;
-        cursor: pointer;
-        transition: 0.1s ease-in-out;
-        border-radius: $chicanery-border-radius;
-        flex-direction: column-reverse;
-
+        flex-direction: column;
         .top-text {
-            position: absolute;
-            //top: 2px;
-            //left: 50%;
-            //transform: translateX(-50%);
-            bottom: 3px;
-            right: 3px;
-            left: 3px;
-            z-index: 2;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.1s ease-in-out;
-            user-select: none;
             padding: 15px;
-
             color: $color-sunset-red;
             font-family: $font-code;
-            font-size: 16px;
+            font-size: 14px;
+            letter-spacing: -0.2px;
+            line-height: 18px;
 
             background: $color-ultradark-red;
             border-radius: $chicanery-border-radius - 2px;
@@ -3636,76 +3639,77 @@ $post-heading-width: 1000px;
 
             @include abg(0.2);
             @include abg-red-diagonal();
-
-            @media screen and (max-width: $breakpoint-mobile) {
-                bottom: auto;
-                right: auto;
-                top: auto;
-                left: auto;
-                opacity: 1;
-
-                font-size: 14px;
-                letter-spacing: -0.2px;
-                line-height: 18px;
-                
-                position: relative;
-                align-self: flex-end;
-                display: inline-block;
-                margin-top: 2px;
-                margin-bottom: 3px;
-            }
+            
+            position: relative;
+            align-self: flex-end;
+            display: inline-block;
+            margin-top: 2px;
+            margin-bottom: 3px;
         }
+        button.image-content-image {
+            position: relative;
 
-        img {
-            z-index: 0;
+            background: none;
+            border: 2px solid transparent;
+            cursor: pointer;
             transition: 0.1s ease-in-out;
-            max-width: 100%;
-            border-radius: 3px;
-            width: 100%;
-            border-radius: 6px;
-
-            @media screen and (max-width: $breakpoint-mobile) {
-                height: auto;
-            }
-
-            &.uniserve-modern {
-                border: 2px solid #0094c1;
-            }
-        }
-
-        &::before {
-            content: '';
-            z-index: 1;
-            display: block;
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            opacity: 0;
-
-            background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
-            transition: 0.1s ease-in-out;
-            user-select: none;
-            pointer-events: none;
-        }
-
-        @include abg(0);
-        @include abg-red-diagonal();
-
-        &:hover, &:focus {
-            border: 2px solid $color-sunset-red;
-            .top-text {
-                opacity: 1;
-            }
+            border-radius: $chicanery-border-radius;
+            padding: 0;
+    
             img {
-                transform: scale(0.98);
+                z-index: 0;
+                transition: 0.1s ease-in-out;
+                max-width: calc(100% - 4px); // because border is a margin
+                width: 100%;
+                border-radius: 6px;
+    
+                @media screen and (max-width: $breakpoint-mobile) {
+                    height: auto;
+                }
+    
+                &.uniserve-modern {
+                    border: 2px solid #0094c1;
+                }
+                &.goldspire-rev {
+                    border: 2px solid $color-sunset-orange;
+                }
             }
+    
             &::before {
-                opacity: 0.3;
-            }
-            &::after {
+                content: '';
+                z-index: 1;
+                display: block;
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
                 opacity: 0;
+    
+                background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
+                transition: 0.1s ease-in-out;
+                user-select: none;
+                pointer-events: none;
+            }
+    
+            @include abg(0);
+            @include abg-red-diagonal();
+    
+            &:hover, &:focus {
+                border: 2px solid $color-sunset-red;
+                .top-text {
+                    opacity: 1;
+                }
+                img {
+                    transform: scale(0.98);
+                }
+                &::before {
+                    opacity: 0.3;
+                }
+                &::after {
+                    opacity: 0;
+                }
             }
         }
     }
+    
 }
 a.artist-tag {
     position: absolute;
@@ -3939,6 +3943,18 @@ a.artist-tag {
                     }
                 }
             }
+        }
+    }
+
+    // Special color classes
+    &.spooky-left {
+        .floater.left span {
+            color: $color-spooky-light;
+        }
+    }
+    &.spooky-right {
+        .floater.right span {
+            color: $color-spooky-light;
         }
     }
 }

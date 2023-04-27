@@ -6,7 +6,8 @@ const HomeBanner = ({
     shroomyImageSrc,
     marvinImageSrc,
     heroBgSrc,
-    fgBottomImageSrc
+    fgBottomImageSrc,
+    noiseSrc
 }) => {
     // No parallax on mobile view
     const noParallaxCutoff = 1000;
@@ -60,6 +61,8 @@ const HomeBanner = ({
                     : lazarus
                 }
 
+                <div className="layer sunset-under-front a"></div>
+
                 {/* Robot on right, shroomy */}
                 {isParallaxing ?
                     <ScrollParallax isAbsolutelyPositioned strength={0.14} lerpEase={1}>
@@ -91,7 +94,14 @@ const HomeBanner = ({
                         backgroundImage: `url('${fgBottomImageSrc}')`
                     }}
                 />
-                <div className="layer topground"></div>                
+                <div className="layer topground"></div>
+
+                <div 
+                    className="layer noise"
+                    style={{
+                        backgroundImage: `url('${noiseSrc}')`
+                    }}
+                />              
                 
                 <div className="floating-header">
                     <h1 style={{textAlign: "center"}}>Sunset System</h1>

@@ -19,7 +19,7 @@ const posts = await getAllPosts()
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
 		<main>
-			<PageHeading title="Posts" subtext={"A collection of every post made for Sunset System."} image='computer-blinking'><></></PageHeading>
+			<PageHeading title="Posts" subtext={"A collection of every post made for Sunset System."} image='computer-blinking' isSpooky><></></PageHeading>
 			<PostsView client:only
 				processedPosts={posts}
 			/>
