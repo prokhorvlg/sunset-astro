@@ -43,6 +43,13 @@ export const getImageById = (id: string) => {
 
 export const Images: ImageDetails[] = [
     // MAIN THUMBNAILS
+    {
+        id: 'micro-pc-screenie',
+        src: '/images/meta/micro-pc-screenie.png',
+        alt: 'MICRO Computer',
+        width: 927,
+        height: 496
+    },
     
     // UNISERVE
     {
@@ -137,7 +144,7 @@ export const Images: ImageDetails[] = [
         id: 'pan-sol-crane-ad',
         src: "/images/content/crane-airline-ad.jpg",
         alt: "Advertisement for the Pan Sol Crane spaceplane",
-        caption: "A photograph of the Input Data Sanitization Team on Project BELOBOG: Genadiy Sobakin, Jane Davis, and DTEK.",
+        caption: "Pan Sol's Crane 850 ULTRA was one of many spaceplanes that ferried people and cargo among the living worlds.",
         width: 2818,
         height: 1831
     },

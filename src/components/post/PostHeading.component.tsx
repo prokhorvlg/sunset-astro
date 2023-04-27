@@ -2,6 +2,7 @@ import Button, { ButtonType } from "@/components/common/Button/Button.component"
 import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer, { DialogHeaderStyle } from "@/components/containers/DialogContainer/DialogContainer.component"
 import TransitionGradient from "@/components/home/TransitionGradient.component"
+import { PostType } from "@/components/posts/PostGrid.component"
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
 import { getDateString } from "@/utils/date"
 import { faArrowLeft, faBackward } from "@fortawesome/free-solid-svg-icons"
@@ -33,13 +34,28 @@ const PostHeading = ({
             <TransitionGradient 
                 direction="to-top" 
             />
-            <div className="main-area">
-                <div className="heading-content">
-                    <TagCloud tags={post.data.tags} />
-                    <h1 className="title">{post.data.mainText}</h1>
-                    <p className="description">// {post.data.subText}</p>
-                </div>
-            </div>
+            {(post.collection === PostType.Introduction) ? 
+                <div className="main-area introduction">
+                    
+                    <img src="/images/Icon_Space_Race (2).png" width={400} />
+                    <div className="heading-content">
+                        <span className="eyebrow">INTRODUCTION</span>
+                        
+                        <h1 className="title">{post.data.mainText}</h1>
+                        <p className="description">// {post.data.subText}</p>
+                        <TagCloud tags={post.data.tags} />
+                    </div>
+                </div> : null
+            }
+            {(post.collection === PostType.Lore) ? 
+                <div className="main-area">
+                    <div className="heading-content">
+                        <TagCloud tags={post.data.tags} />
+                        <h1 className="title">{post.data.mainText}</h1>
+                        <p className="description">// {post.data.subText}</p>
+                    </div>
+                </div> : null
+            }
         </FullWidthWrapper>
     )
 }

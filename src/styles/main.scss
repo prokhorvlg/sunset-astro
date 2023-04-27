@@ -3559,6 +3559,38 @@ $post-heading-width: 1000px;
             }
         }
     }
+
+    // Introduction variation
+    .introduction.main-area {
+        margin-top: -30px;
+        flex-direction: column;
+        align-items: center;
+        .heading-content {
+            margin-top: 20px;
+            align-items: center;
+            text-align: center;
+            .eyebrow {
+                font-family: $font-code;
+                color: $color-sunset-red;
+                font-weight: 700;
+                letter-spacing: 2px;
+                
+            }
+            h1.title {
+                margin-top: 0;
+                margin-bottom: 30px;
+                font-family: $font-title;
+                font-size: 38px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+            .tag-cloud {
+                margin-top: 10px;
+                justify-content: center;
+            }
+        }
+        
+    }
 }
 
 
@@ -3764,6 +3796,17 @@ a.artist-tag {
     &.variable-height {
         margin-top: calc(5vw + 20px);
         margin-bottom: calc(5vw + 20px);
+    }
+}
+
+.post-card-content-row {
+    margin-top: 100px;
+    .post-card-container {
+        max-width: 450px;
+        margin: 0 auto;
+        @media screen and (max-width: $breakpoint-mobile) {
+            max-width: 90%;
+        }
     }
 }
 
