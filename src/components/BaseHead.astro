@@ -1,4 +1,5 @@
 ---
+import { TITLE_SUFFIX } from '@/consts';
 import '../styles/main.scss';
 
 export interface Props {
@@ -23,7 +24,7 @@ const { title, description, image = 'images/meta/main-logo-favicon.png', isLarge
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
+<title>{title + TITLE_SUFFIX}</title>
 <meta name="title" content={title} />
 
 <meta name="description" content={description} />

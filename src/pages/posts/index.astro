@@ -5,19 +5,16 @@ import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import PostsView, { PostType, ProcessedPost } from '@/components/posts/PostGrid.component';
 import PageHeading from '@/components/page/PageHeading.component';
-import { getAllPosts, getThumbnailImage } from '@/utils/astroHelpers';
+import { getAllPosts } from '@/utils/astroHelpers';
 
 const posts = await getAllPosts()
 const SUBTEXT = "A collection of every post made for the Sunset System project."
-
-//const thumbnail = await getThumbnailImage('micro-pc-screenie')
-
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={"Posts" + TITLE_SUFFIX} description={SUBTEXT} />
+		<BaseHead title={"Posts"} description={SUBTEXT} />
 	</head>
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
