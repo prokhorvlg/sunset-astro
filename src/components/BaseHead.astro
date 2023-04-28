@@ -11,7 +11,9 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = 'images/meta/main-logo-favicon.png', isLargeImage = false } = Astro.props;
+const { title, description, image, isLargeImage = false } = Astro.props;
+
+const finalImage = (image) ? new URL(image, Astro.url) : '/images/meta/main-logo-favicon.png'
 ---
 
 <!-- Global Metadata -->
@@ -29,21 +31,21 @@ const { title, description, image = 'images/meta/main-logo-favicon.png', isLarge
 
 <meta name="description" content={description} />
 <meta name="theme-color" content="#ff3d00">
-<!--<meta property="og:site_name" content="Sunset System">-->
+<meta property="og:site_name" content="Vigil for a Lost Future">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={finalImage} />
 
 <!-- Twitter -->
 {isLargeImage && <meta property="twitter:card" content="summary_large_image" />}
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={finalImage} />
 <meta property="twitter:creator" content="@prokhorVLG" />
 
 <!-- oEmbed metadata -->

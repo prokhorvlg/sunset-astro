@@ -12,7 +12,12 @@ const { post, image = null } = Astro.props;
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={post.data.title} description={SITE_DESCRIPTION} image={image} isLargeImage={(image !== null)} />
+		<BaseHead 
+			title={post.data.mainText} 
+			description={post.data.subText} 
+			image={image} 
+			isLargeImage={(image !== null)} 
+		/>
 	</head>
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
