@@ -1,0 +1,37 @@
+---
+import { getImageById, ImageDetails, ImageId, Images } from '@/utils/sharedImages';
+import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
+import ImageGallery, { FullImageDetails } from "@/components/common/ImageGallery/ImageGallery.component";
+import { getImageObjectById } from '@/utils/astroHelpers';
+
+interface Props {
+  classes?: string
+  verticalSpacing?: number
+
+  imageId?: ImageId;
+  imageDesktopWidth?: number
+  imageMobileWidth?: number
+}
+const { imageId, classes, verticalSpacing, imageDesktopWidth, imageMobileWidth } = Astro.props
+
+const imageProcessed = await getImageById(imageId || "")
+const imageItems = [
+    {
+        originalObject: getImageObjectById(imageId || ""),
+        processedObject: imageProcessed
+    }
+]
+---
+
+<HeadingContentRow classes={classes} verticalSpacing={verticalSpacing} client:only="react">
+    {imageId && 
+        <ImageGallery 
+            client:only="react"
+            classes="heading-gallery"
+            imageDesktopWidth={imageDesktopWidth}
+            imageMobileWidth={imageMobileWidth}
+            imageItems={imageItems as any}
+        />
+    }
+    <slot />
+</HeadingContentRow>

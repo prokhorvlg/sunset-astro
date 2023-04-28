@@ -4,16 +4,23 @@
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
 import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
+import HeadingContentRowRender from '@/components/common/ContentRow/HeadingContentRowRender.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 import { Image, Picture } from '@astrojs/image/components';
+import { getImageObjectById } from '@/utils/astroHelpers.ts'
 export const HEADING_VERTICAL_SPACING = 50
+export const IMAGE_CASSETTE = getImageObjectById('title-cassette')
 
-<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>
-    <img src="/images/Icon_Cassette (4).png" width={400} className="image-cassette"/>
-    {/*<Image src="/images/Icon_Cassette (4).png" width={400} aspectRatio="624:447" alt="Datasette" format="png" quality={100}/>*/}
+<HeadingContentRowRender 
+    classes="centered" 
+    verticalSpacing={HEADING_VERTICAL_SPACING} 
+    imageId='title-cassette' 
+    imageDesktopWidth={400} 
+    imageMobileWidth={300} 
+>
     <h2 className="highlight-orange">Sunset System is a cassette-futurist project set in a strange alternate reality, where the world of tomorrow was brute-forced through scientific progress.</h2>
-</HeadingContentRow>
+</HeadingContentRowRender>
 
 <TextContentRow>
     The optimistic future everyone was so certain of in the midcentury came to pass. Cosmonauts and astronauts descended upon Venusian jungles and Martian deserts in gleaming nuclear spaceplanes by the 1970s. The neuromorph was perfected during the microcomputer era, giving way to household robots and cybernetic masterminds.
@@ -21,10 +28,15 @@ export const HEADING_VERTICAL_SPACING = 50
     Less than a century later, these worlds would be filled with suburbs and communes, as machines automated all of the things humans didn't want to do. The world was starting to look a lot like those starry-eyed visions...
 </TextContentRow>
 
-<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>
-<img src="/images/Icon_Space_Race (2).png" width={400} className="image-space-race" />
+<HeadingContentRowRender 
+    classes="centered" 
+    verticalSpacing={HEADING_VERTICAL_SPACING} 
+    imageId='title-space-race' 
+    imageDesktopWidth={400} 
+    imageMobileWidth={300} 
+>
     <h2 className="highlight-orange">But no amount of progress could hide the omnipresent terror of nuclear annihilation, as the Cold War followed colonists beyond Earth's skies.</h2>
-</HeadingContentRow>
+</HeadingContentRowRender>
 
 <TextContentRow>
     Despite all their achievements, it was the one thing the scientists failed to resolve. So the nations of the world set out to resolve their ideological rivalries the only way they knew how.
@@ -32,14 +44,18 @@ export const HEADING_VERTICAL_SPACING = 50
     The *Sunset Research Initiative* was created as a joint effort between the Union, Coalition, and Pact to erase the concept of conflict from the human race. They studied the noosphere to create a machine unlike any other...
 </TextContentRow>
 
-<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>
-<img src="/images/Icon_Robots (2).png" width={350} className="image-robot-look"  />
+<HeadingContentRowRender 
+    classes="centered" 
+    verticalSpacing={HEADING_VERTICAL_SPACING} 
+    imageId='title-robots' 
+    imageDesktopWidth={400} 
+    imageMobileWidth={250} 
+>
     <h2 className="highlight-orange">Their experiments to erase 'conflict' backfired, and their robots were the only ones left behind.</h2>
-</HeadingContentRow>
+</HeadingContentRowRender>
     
 <TextContentRow>
     One day in the 2090s, humans vanished from reality altogether. They left behind a civilization of machines, trapped in their deference to humanity and their final commands. These neuromorphs remain in their routines, while improvisation slowly causes their neural pathways to grow more complex. With time, they begin to reconceptualize their core directives, and question their purpose for existence.
-    
 </TextContentRow>
 
 <HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>

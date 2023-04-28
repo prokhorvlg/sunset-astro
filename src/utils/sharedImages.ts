@@ -50,6 +50,29 @@ export const Images: ImageDetails[] = [
         width: 927,
         height: 496
     },
+
+    // TITLE IMAGES
+    {
+        id: 'title-cassette',
+        src: '/images/title-images/title-cassette.png',
+        alt: 'Cassette that stores data',
+        width: 624,
+        height: 447
+    },
+    {
+        id: 'title-space-race',
+        src: '/images/title-images/title-space-race.png',
+        alt: 'Rocket launching into the sky',
+        width: 519,
+        height: 432
+    },
+    {
+        id: 'title-robots',
+        src: '/images/title-images/title-robots.png',
+        alt: 'Boxy robot looking at you',
+        width: 420,
+        height: 507
+    },
     
     // UNISERVE
     {

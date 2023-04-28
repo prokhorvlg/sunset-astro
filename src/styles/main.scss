@@ -390,8 +390,11 @@ input[type=text] {
             width: 90%;
             margin-left: auto;
             margin-right: auto;
-            @media screen and (max-width: 1200px) {
+            @media screen and (max-width: $breakpoint-tablet) {
                 width: 80%;
+            }
+            @media screen and (max-width: $breakpoint-mobile) {
+                width: 90%;
             }
         }
     }
@@ -478,6 +481,13 @@ input[type=text] {
                         rgba(0,0,0,0) 100%);
        
             }
+        }
+    }
+
+    .heading-gallery {
+        margin: 0 auto -20px auto;
+        img {
+            height: auto;
         }
     }
 }
@@ -3644,97 +3654,96 @@ $post-heading-width: 1000px;
 
 .image-content-row {
     position: relative;
-    .gallery-item {
+}
+.gallery-item {
+    position: relative;
+}
+.image-content-box {
+    display: flex;
+    flex-direction: column;
+    .top-text {
+        padding: 15px;
+        color: $color-sunset-red;
+        font-family: $font-code;
+        font-size: 14px;
+        letter-spacing: -0.2px;
+        line-height: 18px;
+
+        background: $color-ultradark-red;
+        border-radius: $chicanery-border-radius;
+        border: 2px solid $color-sunset-red;
+
+        @include abg(0.2);
+        @include abg-red-diagonal();
+        
         position: relative;
+        align-self: flex-end;
+        display: inline-block;
+        margin-top: 2px;
+        margin-bottom: 3px;
     }
-    .image-content-box {
-        display: flex;
-        flex-direction: column;
-        .top-text {
-            padding: 15px;
-            color: $color-sunset-red;
-            font-family: $font-code;
-            font-size: 14px;
-            letter-spacing: -0.2px;
-            line-height: 18px;
+    button.image-content-image {
+        position: relative;
 
-            background: $color-ultradark-red;
-            border-radius: $chicanery-border-radius - 2px;
-            border: 2px solid $color-sunset-red;
+        background: none;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: 0.1s ease-in-out;
+        border-radius: $chicanery-border-radius;
+        padding: 0;
 
-            @include abg(0.2);
-            @include abg-red-diagonal();
-            
-            position: relative;
-            align-self: flex-end;
-            display: inline-block;
-            margin-top: 2px;
-            margin-bottom: 3px;
-        }
-        button.image-content-image {
-            position: relative;
-
-            background: none;
-            border: 2px solid transparent;
-            cursor: pointer;
+        img {
+            z-index: 0;
             transition: 0.1s ease-in-out;
-            border-radius: $chicanery-border-radius;
-            padding: 0;
-    
+            max-width: calc(100% - 4px); // because border is a margin
+            width: 100%;
+            border-radius: 6px;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                height: auto;
+            }
+
+            &.uniserve-modern {
+                border: 2px solid #0094c1;
+            }
+            &.goldspire-rev {
+                border: 2px solid $color-sunset-orange;
+            }
+        }
+
+        &::before {
+            content: '';
+            z-index: 1;
+            display: block;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            opacity: 0;
+
+            background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
+            transition: 0.1s ease-in-out;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        @include abg(0);
+        @include abg-red-diagonal();
+
+        &:hover, &:focus {
+            border: 2px solid $color-sunset-red;
+            .top-text {
+                opacity: 1;
+            }
             img {
-                z-index: 0;
-                transition: 0.1s ease-in-out;
-                max-width: calc(100% - 4px); // because border is a margin
-                width: 100%;
-                border-radius: 6px;
-    
-                @media screen and (max-width: $breakpoint-mobile) {
-                    height: auto;
-                }
-    
-                &.uniserve-modern {
-                    border: 2px solid #0094c1;
-                }
-                &.goldspire-rev {
-                    border: 2px solid $color-sunset-orange;
-                }
+                transform: scale(0.98);
             }
-    
             &::before {
-                content: '';
-                z-index: 1;
-                display: block;
-                position: absolute;
-                top: 0; left: 0; right: 0; bottom: 0;
-                opacity: 0;
-    
-                background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
-                transition: 0.1s ease-in-out;
-                user-select: none;
-                pointer-events: none;
+                opacity: 0.3;
             }
-    
-            @include abg(0);
-            @include abg-red-diagonal();
-    
-            &:hover, &:focus {
-                border: 2px solid $color-sunset-red;
-                .top-text {
-                    opacity: 1;
-                }
-                img {
-                    transform: scale(0.98);
-                }
-                &::before {
-                    opacity: 0.3;
-                }
-                &::after {
-                    opacity: 0;
-                }
+            &::after {
+                opacity: 0;
             }
         }
     }
-    
 }
 a.artist-tag {
     position: absolute;
@@ -3992,22 +4001,5 @@ a.artist-tag {
         .floater.right span {
             color: $color-spooky-light;
         }
-    }
-}
-
-// Tiny home pictures
-img.image-cassette {
-    @media screen and (max-width: $breakpoint-mobile) {
-        width: 300px;
-    }
-}
-img.image-space-race {
-    @media screen and (max-width: $breakpoint-mobile) {
-        width: 300px;
-    }
-}
-img.image-robot-look {
-    @media screen and (max-width: $breakpoint-mobile) {
-        width: 250px;
     }
 }

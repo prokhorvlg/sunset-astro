@@ -97,8 +97,8 @@ export const processPost = async (post) => {
   } as ProcessedPost;
 };
 
-// Get a thumbnail image by id.
-export const getThumbnailImage = async (imageId: string) => {
+// Get an image by id.
+export const getImageById = async (imageId: string, width?: number, format?: string) => {
   // Find the image.
   const imageObject = Images.find((imageItem) => imageItem.id === imageId);
   if (!imageObject) return
@@ -107,7 +107,11 @@ export const getThumbnailImage = async (imageId: string) => {
     src: imageObject.src,
     alt: imageObject.alt || "",
     aspectRatio: `${imageObject.width}:${imageObject.height}`,
-    width: 800,
-    format: "webp",
+    width: width || 1000,
+    format: format as any || "webp",
   });
 };
+
+export const getImageObjectById = (imageId: string) => {
+  return Images.find((imageItem) => imageItem.id === imageId);
+}

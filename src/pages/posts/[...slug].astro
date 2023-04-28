@@ -8,8 +8,10 @@ export async function getStaticPaths() {
 
 const post = Astro.props;
 const { Content } = await post.render();
+
+const image = post.data.thumbImage
 ---
 
-<PostLayout post={post}>
+<PostLayout post={post} image={image}>
 	<Content />
 </PostLayout>

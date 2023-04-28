@@ -1,7 +1,8 @@
 ---
+import { FullImageDetails } from '@/components/common/ImageGallery/ImageGallery.component';
 import { ImageDetails, ImageId, Images } from '@/utils/sharedImages';
 import { getImage } from '@astrojs/image';
-import ImageContentRow, { FullImageDetails } from './ImageContentRow.component'
+import ImageContentRow from './ImageContentRow.component'
 
 interface Props {
   direction?: "vertical" | "horizontal"
