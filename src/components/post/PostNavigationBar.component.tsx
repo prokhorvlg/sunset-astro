@@ -18,7 +18,7 @@ const PostNavigationBar = ({
     }
 
     let previousSlug, previousPostURL
-    if (nextPost) {
+    if (previousPost) {
         previousSlug = getFilenameWithoutExtension(previousPost?.file || "")
         previousPostURL = previousPost ? `/posts/${previousSlug}` : ''
     }
