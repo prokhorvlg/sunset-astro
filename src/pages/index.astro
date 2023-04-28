@@ -20,7 +20,7 @@ import PostCardContentRow from "@/components/common/ContentRow/PostCardContentRo
 // Switch to "true" to load images faster, as they aren't being compressed.
 const DEBUGGING = false
 const nextPost = await getProcessedPost('world-of-retrofuturistic-dreams', 'introduction')
-const DEFAULT_WIDTH = 2500;
+const DEFAULT_WIDTH = 2300;
 
 const imageSources = [
   {
@@ -52,17 +52,18 @@ const imageSources = [
     alt: "",
     src: "/images/home-banner/marvin-cropped.png",
     aspectRatio: "3500:2146",
-    width: DEFAULT_WIDTH,
-    format: "webp"
+    width: DEFAULT_WIDTH + 500,
+    format: "webp",
+    quality: 98
   },
   {
     id: "fg-bottom",
     alt: "",
     src: "/images/home-banner/banner-foreground-computers.png",
     aspectRatio: "3500:2146",
-    width: DEFAULT_WIDTH,
+    width: DEFAULT_WIDTH + 500,
     format: "webp",
-    quality: 100
+    quality: 98
   },
   {
     id: "noise",
@@ -104,7 +105,7 @@ const getImageSrcById = (id) => {
         shroomyImageSrc={getImageSrcById("shroomy")}
         marvinImageSrc={getImageSrcById("marvin")}
         fgBottomImageSrc={getImageSrcById("fg-bottom")}
-        noiseSrc={"/images/noise.png"}
+        noiseSrc={"/images/noise.webp"}
 
         client:only />
       <ScrollSuggestion />
