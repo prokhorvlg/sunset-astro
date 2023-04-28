@@ -13,8 +13,8 @@ const { post, image = null } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead 
-			title={post.data.mainText} 
-			description={post.data.subText} 
+			title={post.data.title} 
+			description={post.data.mainText} 
 			image={image} 
 			isLargeImage={(image !== null)} 
 		/>
