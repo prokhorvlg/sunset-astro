@@ -1,8 +1,8 @@
 ---
-import { getImageById, ImageDetails, ImageId, Images } from '@/utils/sharedImages';
+import { ImageDetails, ImageId, Images } from '@/utils/sharedImages';
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import ImageGallery, { FullImageDetails } from "@/components/common/ImageGallery/ImageGallery.component";
-import { getImageObjectById } from '@/utils/astroHelpers';
+import { getImageObjectById, getProcessedImageById } from '@/utils/astroHelpers';
 
 interface Props {
   classes?: string
@@ -14,7 +14,7 @@ interface Props {
 }
 const { imageId, classes, verticalSpacing, imageDesktopWidth, imageMobileWidth } = Astro.props
 
-const imageProcessed = await getImageById(imageId || "")
+const imageProcessed = await getProcessedImageById(imageId || "")
 const imageItems = [
     {
         originalObject: getImageObjectById(imageId || ""),

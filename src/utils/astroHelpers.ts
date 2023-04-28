@@ -97,11 +97,11 @@ export const processPost = async (post) => {
   } as ProcessedPost;
 };
 
-// Get an image by id.
-export const getImageById = async (imageId: string, width?: number, format?: string) => {
+// Get a processed, minified image by id.
+export const getProcessedImageById = async (imageId: string, width?: number, format?: string) => {
   // Find the image.
   const imageObject = Images.find((imageItem) => imageItem.id === imageId);
-  if (!imageObject) return
+  if (!imageObject) return null
   // Return a processed version.
   return await getImage({
     src: imageObject.src,

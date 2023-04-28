@@ -28,7 +28,7 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
       aspectRatio: `${imageObject.width}:${imageObject.height}`,
       width: isSmall ? imageObject.width : CRUNCH_WIDTH,
       format: imageObject.format ? imageObject.format as any : "webp",
-      quality: 100
+      quality: 99
     })
   } as FullImageDetails
 }))
