@@ -17,13 +17,13 @@ const SUBTEXT = "A collection of every post made for the Sunset System project."
 		<BaseHead title={"Posts"} description={SUBTEXT} />
 	</head>
 	<body>
-		<SunsetHeader client:only currentPage={Astro.url.pathname} />
+		<SunsetHeader client:only currentPage={"/posts"} />
 		<main>
 			<PageHeading title="Posts" subtext={SUBTEXT} image='computer-blinking' isSpooky><></></PageHeading>
 			<PostsView client:only
 				processedPosts={posts}
 			/>
 		</main>
-		<SunsetFooter client:only currentPage={Astro.url.pathname} />
+		<SunsetFooter client:only currentPage={"/posts"} />
 	</body>
 </html>

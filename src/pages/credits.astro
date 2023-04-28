@@ -18,11 +18,11 @@ import * as post from '@/data/supporters-content.mdx';
 		<BaseHead title={post.frontmatter.title} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<SunsetHeader client:only currentPage={Astro.url.pathname} />
+		<SunsetHeader client:only currentPage={"/credits"} />
 		<main>
 			<PageHeading title={post.frontmatter.title} subtext={post.frontmatter.description}><></></PageHeading>
             <Content />
 		</main>
-		<SunsetFooter client:only currentPage={Astro.url.pathname} />
+		<SunsetFooter client:only currentPage={"/credits"} />
 	</body>
 </html>

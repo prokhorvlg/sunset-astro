@@ -15,7 +15,7 @@ export const CommonLinks = {
     home: '/',
     posts: '/posts',
     game: '/game',
-    supporters: '/supporters',
+    supporters: '/credits',
     patreon: "https://www.patreon.com/prokhorvlg",
     prints: "https://www.inprnt.com/gallery/prokhorvlg/",
     discord: "https://discord.gg/aM5SBShUeA",
