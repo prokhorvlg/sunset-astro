@@ -46,7 +46,7 @@ const PostCard = ({
                 }
                 {(collection === PostType.Introduction) ? 
                     <div className="post-card-content">
-                        <img src={getImageObjectById('title-space-race')!.src || ''} width={300} />
+                        <img src={getImageObjectById('title-space-race')?.src || ''} width={300} />
                         <h3 className="title">{post.data.mainText}</h3>
                         <p className="description">{post.data.subText}</p>
                         <TagCloud tags={post.data.tags} />

@@ -38,7 +38,7 @@ const PostHeading = ({
             {(post.collection === PostType.Introduction) ? 
                 <div className="main-area introduction">
                     
-                    <img src={getImageObjectById('title-space-race')!.src || ''} width={400} />
+                    <img src={getImageObjectById('title-space-race')?.src || ''} width={400} />
                     <div className="heading-content">
                         <span className="eyebrow">INTRODUCTION</span>
                         
