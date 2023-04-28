@@ -3168,6 +3168,10 @@ $dialog-main-color: $color-sunset-red;
                 }
             }
         }
+        .unavailable {
+            opacity: 0;
+            display: none;
+        }
         .label {
             @media screen and (max-width: $breakpoint-mobile) {
                 display: none;
@@ -4022,4 +4026,8 @@ a.artist-tag {
             color: $color-spooky-light;
         }
     }
+}
+
+.image-lighten {
+    mix-blend-mode: lighten;
 }

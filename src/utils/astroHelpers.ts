@@ -52,12 +52,23 @@ export const getAllPosts = async () => {
   ];
 
   // Sort collection by date.
-  const sortedPosts = processedPosts.sort((a, b) => {
-    return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
-  });
+  const sortedPosts = sortProcessedPostsByPubDate(processedPosts)
 
   return sortedPosts;
 };
+
+// This is for posts processed from getCollection.
+export const sortProcessedPostsByPubDate = (processedPosts) => {
+  return processedPosts.sort((a, b) => {
+    return b.post.data.pubDate.valueOf() - a.post.data.pubDate.valueOf();
+  });
+}
+// This is for globbed posts.
+export const sortPostsByPubDate = (posts) => {
+  return posts.sort((a, b) => {
+    return b.frontmatter.pubDate.valueOf() - a.frontmatter.pubDate.valueOf();
+  });
+}
 
 // Takes incoming posts, compiles thumb image and search data
 export const processPosts = async (posts) => {
@@ -114,4 +125,8 @@ export const getProcessedImageById = async (imageId: string, width?: number, for
 
 export const getImageObjectById = (imageId: string) => {
   return Images.find((imageItem) => imageItem.id === imageId);
+}
+
+export const getNearestPosts = () => {
+  
 }

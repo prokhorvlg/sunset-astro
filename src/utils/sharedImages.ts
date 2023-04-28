@@ -61,7 +61,7 @@ export const Images: ImageDetails[] = [
     },
     {
         id: 'title-space-race',
-        src: '/images/title-images/title-space-race.png',
+        src: '/images/title-images/title-space-race-4.png',
         alt: 'Rocket launching into the sky',
         width: 519,
         height: 432

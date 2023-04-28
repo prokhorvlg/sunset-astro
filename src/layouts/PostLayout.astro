@@ -4,9 +4,22 @@ import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import PostHeading from '@/components/post/PostHeading.component';
 import PostNavigationBar from '@/components/post/PostNavigationBar.component';
+import { findAdjacentObjects } from '@/utils/posts';
+import { sortPostsByPubDate } from '@/utils/astroHelpers';
 import { SITE_TITLE, SITE_DESCRIPTION, TITLE_SUFFIX} from '../consts';
 
 const { post, image = null } = Astro.props;
+
+const posts = await Astro.glob('../content/**/*.mdx');
+const sortedPosts = sortPostsByPubDate(posts)
+
+interface GlobbedPost {
+	frontmatter: any,
+	Content: any
+}
+
+const { previousPost, nextPost } = findAdjacentObjects(sortedPosts, post.data.title)
+console.log("previousPost", previousPost)
 ---
 
 <!DOCTYPE html>
@@ -26,7 +39,7 @@ const { post, image = null } = Astro.props;
             <article>
 			    <slot />
             </article>
-			<PostNavigationBar />
+			<PostNavigationBar previousPost={previousPost} nextPost={nextPost}/>
 		</main>
 		<SunsetFooter client:only currentPage={Astro.url.pathname} />
 	</body>
