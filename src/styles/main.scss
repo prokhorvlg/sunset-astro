@@ -1365,6 +1365,10 @@ $breakpoint-footer: $breakpoint-tablet;
     max-width: 100%;
     justify-content: center;
     align-items: center;
+    .main-area-wrapper {
+        pointer-events: none;
+        user-select: none;
+    }
     .sunset-footer-gradient {
         width: calc(100% - 2px);
         max-width: $size-max-width-wide;
@@ -3244,6 +3248,8 @@ $post-heading-width: 1000px;
 
     &.post {
         .transition-gradient-dialog .main-area-wrapper .main-area.pull-down {
+            pointer-events: none;
+            user-select: none;
             margin-bottom: -200px;
             @media screen and (max-width: $breakpoint-mobile) {
                 margin-bottom: -400px;
@@ -3574,6 +3580,8 @@ $post-heading-width: 1000px;
             }
         }
         .transition-gradient-dialog .main-area-wrapper .main-area.pull-down {
+            pointer-events: none;
+            user-select: none;
             margin-bottom: -300px;
             // If screen too flat, shrink a bit more
             @media screen and (orientation: landscape) {
@@ -3921,6 +3929,8 @@ a.artist-tag {
     
             border-radius: $chicanery-border-radius - 4px;
             &.pull-down {
+                pointer-events: none;
+            user-select: none;
                 height: 400px;
                 margin-bottom: -100px;
                 @media screen and (max-width: $breakpoint-mobile) {
@@ -3996,6 +4006,8 @@ a.artist-tag {
             .main-area {       
                 background: linear-gradient(to top, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
                 &.pull-down {
+                    pointer-events: none;
+                    user-select: none;
                     margin-bottom: auto;
                     margin-top: -100px;
                     @media screen and (max-width: $breakpoint-mobile) {
