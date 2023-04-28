@@ -3068,6 +3068,9 @@ $dialog-main-color: $color-sunset-red;
                         margin-bottom: 20px;
                         //width: 85%;
                         line-height: 35px;
+                        @media screen and (max-width: $breakpoint-mobile) {
+                            font-size: 24px;
+                        }
                     }
                     p.description {
                         //flex: 0;
@@ -3077,7 +3080,7 @@ $dialog-main-color: $color-sunset-red;
                         font-size: 16px;
                         line-height: 22px;
 
-                        width: 400px;
+                        max-width: 400px;
 
                         overflow: hidden;
   text-overflow: ellipsis;
@@ -3085,7 +3088,11 @@ $dialog-main-color: $color-sunset-red;
   max-height:66px; 
   -webkit-line-clamp: 3; 
   -webkit-box-orient: vertical;
-
+  @media screen and (max-width: $breakpoint-mobile) {
+    -webkit-line-clamp: 4; 
+    max-height:88px; 
+    font-size: 15px;
+}
                     }
                 }
             }
