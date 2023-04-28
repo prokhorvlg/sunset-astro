@@ -1,6 +1,6 @@
 ---
 import PostLayout from '@/layouts/PostLayout.astro';
-import { loadAnyPost } from '@/utils/astroHelpers';
+import { getProcessedImageById, loadAnyPost } from '@/utils/astroHelpers';
 
 export async function getStaticPaths() {
 	return await loadAnyPost();
@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 const post = Astro.props;
 const { Content } = await post.render();
 
-const image = post.data.thumbImage
+const image = await getProcessedImageById(post.data.thumbImage, 1500)
 ---
 
 <PostLayout post={post} image={image}>
