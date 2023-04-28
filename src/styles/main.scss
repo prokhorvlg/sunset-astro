@@ -2026,31 +2026,15 @@ $dialog-main-color: $color-sunset-red;
             }
         }
        
+        // LAYERS
+
         .layer {
             position: absolute;
             height: 100%;
             width: 100%;
         }
-        .sunset-white-grad {
-            background-size: cover;
-            background-position: center;
-            mix-blend-mode: overlay;
-            opacity: 0.4;
-        }
-        .sunset-hero-front {
-            background: url('/images/Hero_Bum.png');
-            background-size: cover;
-            background-position: bottom;
-        }
-        .sunset-under-front {
-            background: linear-gradient(0deg, $color-sunset-red 0%, $color-sunset-orange 100%);
-            opacity: 0.4;
-        }
-        .a {
-            @media screen and (max-width: $breakpoint-mobile) {
-                display: none;
-            }
-        }
+
+        // Deepest background, just orange
         .sunset-banner-deep-background {
             background: orange;
             transform: scale(2.5);
@@ -2059,37 +2043,46 @@ $dialog-main-color: $color-sunset-red;
             background-position: center;
             opacity: 1;
         }
-        .foreground, .topground {
-            //opacity: 0;
+
+        // Overlay of the sunset image
+        .sunset-hero-overlay {
+            background-size: cover;
+            background-position: center;
+            mix-blend-mode: overlay;
+            opacity: 0.4;
+        }
+        
+        // gradient overlay layer
+        .sunset-under-front {
+            background: linear-gradient(0deg, $color-sunset-red 0%, $color-sunset-orange 100%);
+            opacity: 0.6;
+            &.deep {
+                opacity: 0.2;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    display: none;
+                }
+            }
+        }
+
+        // The computers at the bottom nearest us
+        .foreground {
             @media screen and (max-width: $breakpoint-mobile) {
                 opacity: 0;
             }
-        }
-        .foreground {
-            //background-image: url('/images/Fg_Comp (2).png');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: bottom center;
-        }
-        .topground {
-            //background-image: url('/images/Fg_Comp (2).png');
-            transform: rotate(180deg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: bottom center;
+            bottom: 0px;
         }
 
+        // A noise layer over all of it
         .noise {
             background-size: cover;
             background-repeat: no-repeat;
             background-position: bottom center;
             mix-blend-mode: overlay;
-            //mix-blend-mode: color-burn;
             opacity: 0.1;
         }
-
-
-
 
         .parallaxing-image {
             background-repeat: no-repeat;

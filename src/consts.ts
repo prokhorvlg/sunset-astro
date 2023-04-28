@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = 'Sunset System';
 export const SITE_DESCRIPTION = 'Sunset System is a showcase about a world where humanity vanished from the Solar System during an extended Space Race, leaving behind the robots that ran the world.';
+export const TITLE_SUFFIX = " - Sunset System"

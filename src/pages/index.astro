@@ -5,7 +5,7 @@ import IntroSection from "../components/home/IntroSection/IntroSection.component
 import ScrollSuggestion from "../components/home/ScrollSuggestion/ScrollSuggestion.component";
 import SunsetFooter from "@/components/layout/Footer/SunsetFooter.component";
 import SunsetHeader from "@/components/layout/Header/SunsetHeader.component";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { SITE_TITLE, SITE_DESCRIPTION, TITLE_SUFFIX } from "../consts";
 import Image, { getImage } from "@astrojs/image";
 
 import { Content as HomePageUniserve } from '@/data/home-page/home-page-uniserve.mdx';
@@ -26,7 +26,7 @@ const imageSources = [
   {
     id: "lazarus",
     alt: "",
-    src: "/images/lazarus-cropped-2.png",
+    src: "/images/home-banner/lazarus-cropped.png",
     aspectRatio: "3688:2294",
     width: DEFAULT_WIDTH,
     format: "webp"
@@ -34,7 +34,7 @@ const imageSources = [
   {
     id: "hero-bg",
     alt: "",
-    src: "/images/Hero_Background (1).png",
+    src: "/images/home-banner/banner-hero-overlay.png",
     aspectRatio: "5119:2387",
     width: DEFAULT_WIDTH,
     format: "webp"
@@ -42,7 +42,7 @@ const imageSources = [
   {
     id: "shroomy",
     alt: "",
-    src: "/images/shroomy-cropped.png",
+    src: "/images/home-banner/shroomy-cropped.png",
     aspectRatio: "3688:2294",
     width: DEFAULT_WIDTH,
     format: "webp"
@@ -50,7 +50,7 @@ const imageSources = [
   {
     id: "marvin",
     alt: "",
-    src: "/images/marvin-cropped.png",
+    src: "/images/home-banner/marvin-cropped.png",
     aspectRatio: "3500:2146",
     width: DEFAULT_WIDTH,
     format: "webp"
@@ -58,10 +58,11 @@ const imageSources = [
   {
     id: "fg-bottom",
     alt: "",
-    src: "/images/Fg_Comp (7).png",
+    src: "/images/home-banner/banner-foreground-computers.png",
     aspectRatio: "3500:2146",
     width: DEFAULT_WIDTH,
-    format: "webp"
+    format: "webp",
+    quality: 100
   },
   {
     id: "noise",
@@ -92,7 +93,7 @@ const getImageSrcById = (id) => {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={"Home" + TITLE_SUFFIX} description={SITE_DESCRIPTION} />
   </head>
   <body>
     <SunsetHeader client:only currentPage={Astro.url.pathname} />

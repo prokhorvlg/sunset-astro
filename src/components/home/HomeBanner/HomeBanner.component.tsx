@@ -61,7 +61,7 @@ const HomeBanner = ({
                     : lazarus
                 }
 
-                <div className="layer sunset-under-front a"></div>
+                <div className="layer sunset-under-front deep"></div>
 
                 {/* Robot on right, shroomy */}
                 {isParallaxing ?
@@ -73,7 +73,7 @@ const HomeBanner = ({
                 
                 <div className="layer sunset-under-front"></div>
                 <div 
-                    className="layer sunset-white-grad"
+                    className="layer sunset-hero-overlay"
                     style={{
                         backgroundImage: `url('${heroBgSrc}')`
                     }}
@@ -94,7 +94,6 @@ const HomeBanner = ({
                         backgroundImage: `url('${fgBottomImageSrc}')`
                     }}
                 />
-                <div className="layer topground"></div>
 
                 <div 
                     className="layer noise"
@@ -113,45 +112,3 @@ const HomeBanner = ({
 }
 
 export default HomeBanner
-
-{/*<ScrollParallax isAbsolutelyPositioned strength={0.4} lerpEase={1} enableOnTouchDevice={false}>
-                    <div className="layer sunset-banner-deep-background"></div>
-                </ScrollParallax>
-                
-                <ScrollParallax isAbsolutelyPositioned strength={0.3} lerpEase={1}enableOnTouchDevice={false}>
-                    <div className="layer sunset-hero-left"></div>
-                </ScrollParallax>
-
-                <ScrollParallax 
-                    isAbsolutelyPositioned 
-                    strength={0.25} 
-                    lerpEase={1}
-                    enableOnTouchDevice={false}
-                >
-                    <div className="layer sunset-hero-right"></div>
-                </ScrollParallax>
-                
-                <div className="layer sunset-under-front"></div>
-                <div className="layer sunset-white-grad"></div>
-                <ScrollParallax isAbsolutelyPositioned strength={0.2} lerpEase={1} enableOnTouchDevice={false}>
-                    <div className="layer sunset-hero-front"></div>
-                </ScrollParallax>
-
-                <div className="layer foreground"></div>
-                <div className="layer topground"></div>
-            
-            
-            
-            
-            {isParallaxing ?
-                    <ScrollParallax isAbsolutelyPositioned strength={isParallaxing ? 0.2 : 0} lerpEase={1} enableOnTouchDevice={isParallaxing}>
-                    <div className="parallaxing-image hero-lazarus"
-                        style={{
-                            backgroundImage: `url('${lazarusImageSrc}')`
-                        }} />
-                </ScrollParallax> :
-                    <div className="parallaxing-image hero-lazarus"
-                    style={{
-                        backgroundImage: `url('${lazarusImageSrc}')`
-                    }} />
-                }*/}

@@ -1,6 +1,6 @@
 ---
 import BaseHead from '../../components/BaseHead.astro';
-import { SITE_DESCRIPTION } from '../../consts';
+import { TITLE_SUFFIX } from '../../consts';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import PostsView, { PostType, ProcessedPost } from '@/components/posts/PostGrid.component';
@@ -10,14 +10,14 @@ import { getAllPosts, getThumbnailImage } from '@/utils/astroHelpers';
 const posts = await getAllPosts()
 const SUBTEXT = "A collection of every post made for the Sunset System project."
 
-const thumbnail = await getThumbnailImage('micro-pc-screenie')
+//const thumbnail = await getThumbnailImage('micro-pc-screenie')
 
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title="Posts" description={SUBTEXT} image={thumbnail!.src || ""} />
+		<BaseHead title={"Posts" + TITLE_SUFFIX} description={SUBTEXT} />
 	</head>
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />

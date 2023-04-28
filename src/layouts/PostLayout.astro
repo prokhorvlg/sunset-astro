@@ -4,15 +4,15 @@ import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import PostHeading from '@/components/post/PostHeading.component';
 import PostNavigationBar from '@/components/post/PostNavigationBar.component';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, TITLE_SUFFIX} from '../consts';
 
-const { post } = Astro.props;
+const { post, image = null } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={post.data.title} description={SITE_DESCRIPTION} />
+		<BaseHead title={post.data.title + TITLE_SUFFIX} description={SITE_DESCRIPTION} image={image}/>
 	</head>
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
