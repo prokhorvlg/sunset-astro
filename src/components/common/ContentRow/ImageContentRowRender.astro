@@ -9,7 +9,7 @@ interface Props {
   images: ImageId[];
 }
 
-const CRUNCH_WIDTH = 1500
+const CRUNCH_WIDTH = 1300
 
 const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) => {
   // Find relevant image object
