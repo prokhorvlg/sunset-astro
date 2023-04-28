@@ -4,6 +4,7 @@ import DialogContainer, { DialogHeaderStyle } from "@/components/containers/Dial
 import TransitionGradient from "@/components/home/TransitionGradient.component"
 import { PostType } from "@/components/posts/PostGrid.component"
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
+import { getImageObjectById } from "@/utils/astroHelpers"
 import { getDateString } from "@/utils/date"
 import { faArrowLeft, faBackward } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -37,7 +38,7 @@ const PostHeading = ({
             {(post.collection === PostType.Introduction) ? 
                 <div className="main-area introduction">
                     
-                    <img src="/images/Icon_Space_Race (2).png" width={400} />
+                    <img src={getImageObjectById('title-space-race')!.src || ''} width={400} />
                     <div className="heading-content">
                         <span className="eyebrow">INTRODUCTION</span>
                         

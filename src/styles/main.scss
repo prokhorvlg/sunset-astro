@@ -3030,22 +3030,23 @@ $dialog-main-color: $color-sunset-red;
     }
 
     &.introduction {
-        @include card-recolor($color-sunset-yellow, #fff);
+        //@include card-recolor($color-sunset-yellow, #fff);
 
         .post-card {
             .dialog-wrap-slot {
                 .dialog-content{
                     .post-card-content {
-                        background: linear-gradient(to top, darken($color-sunset-red, 30%), darken($color-sunset-orange, 25%));
-                        @include abg(0.7);
-                        @include abg-red-dot-grid()
+                        background: linear-gradient(to bottom, #290d05, #811e00);
+                        @include abg(0.4);
+                        @include abg-red-dot-grid();
+                        //@include abg-red-crisscross();
                     }
                 }
             }
         }
         
         .dialog-wrap-slot {
-            border-color: $color-sunset-yellow;
+            border-color: $color-sunset-red;
             .dialog-content {
                 grid-template-columns: 1fr;
                 grid-template-rows: 0px 1fr 40px;
@@ -3058,21 +3059,33 @@ $dialog-main-color: $color-sunset-red;
                     justify-content: center;
                     align-items: center;
                     h3.title {
-                        text-transform: uppercase;
+                        //text-transform: uppercase;
                         text-align: center;
-                        font-size: 22px;
+                        font-size: 26px;
                         //font-family: $font-code;
-                        letter-spacing: 1px;
-                        color: $color-sunset-yellow;
+                        letter-spacing: 0px;
+                        color: $color-sunset-orange;
                         margin-bottom: 20px;
+                        //width: 85%;
+                        line-height: 35px;
                     }
                     p.description {
-                        flex: 0;
-                        color: lighten($color-sunset-red,10%);
-                        margin-bottom: 20px;
-                        /*font-family: $font-code;
+                        //flex: 0;
+                        color: $color-sunset-red;
+                        margin-bottom: 40px;
+                        font-family: $font-code;
                         font-size: 16px;
-                        line-height: 22px;*/
+                        line-height: 22px;
+
+                        width: 400px;
+
+                        overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  max-height:66px; 
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+
                     }
                 }
             }

@@ -1,6 +1,7 @@
 import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer from "@/components/containers/DialogContainer/DialogContainer.component"
 import { PostType, ProcessedPost } from "@/components/posts/PostGrid.component"
+import { getImageObjectById } from "@/utils/astroHelpers"
 import { getDateString } from "@/utils/date"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -45,6 +46,7 @@ const PostCard = ({
                 }
                 {(collection === PostType.Introduction) ? 
                     <div className="post-card-content">
+                        <img src={getImageObjectById('title-space-race')!.src || ''} width={300} />
                         <h3 className="title">{post.data.mainText}</h3>
                         <p className="description">{post.data.subText}</p>
                         <TagCloud tags={post.data.tags} />
