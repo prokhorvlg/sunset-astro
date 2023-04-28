@@ -8,7 +8,8 @@ interface Props {
 }
 
 function DotGrid({ numRowsInitial = 10, numRowsMobile = 8, dotRadius = 1.5, dotSpacing = 6 }: Props) {
-  const [numRows, setNumRows] = useState<number>(numRowsInitial);
+  return null
+  /*const [numRows, setNumRows] = useState<number>(numRowsInitial);
   const [gridWidth, setGridWidth] = useState<number>(0);
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +53,7 @@ function DotGrid({ numRowsInitial = 10, numRowsMobile = 8, dotRadius = 1.5, dotS
         {grid}
       </svg>
     </div>
-  );
+  );*/
 
 }
 
