@@ -91,7 +91,7 @@ export const processPost = async (post) => {
       src: imageObject.src,
       alt: imageObject.alt || "",
       aspectRatio: `${imageObject.width}:${imageObject.height}`,
-      width: 600,
+      width: 1000,
       format: "webp",
     });
   }

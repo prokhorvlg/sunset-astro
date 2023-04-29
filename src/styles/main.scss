@@ -3103,13 +3103,16 @@ $dialog-main-color: $color-sunset-red;
                     justify-content: center;
                     align-items: center;
                     h3.title {
+
                         //text-transform: uppercase;
                         text-align: center;
                         font-size: 26px;
-                        //font-family: $font-code;
-                        letter-spacing: 0px;
+                        font-family: $font-code;
+                        letter-spacing: -1px;
                         color: $color-sunset-orange;
                         margin-bottom: 20px;
+                        display: block;
+                        max-height: none;
                         //width: 85%;
                         line-height: 35px;
                         @media screen and (max-width: $breakpoint-mobile) {
@@ -3120,7 +3123,7 @@ $dialog-main-color: $color-sunset-red;
                         //flex: 0;
                         color: $color-sunset-red;
                         margin-bottom: 40px;
-                        font-family: $font-code;
+                        //font-family: $font-code;
                         font-size: 16px;
                         line-height: 22px;
 
@@ -3926,7 +3929,7 @@ a.artist-tag {
     .post-card-container {
         max-width: 450px;
         margin: 0 auto;
-        @media screen and (max-width: $breakpoint-mobile) {
+        @media screen and (max-width: 450px) {
             max-width: 90%;
         }
     }
