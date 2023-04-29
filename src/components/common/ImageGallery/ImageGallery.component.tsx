@@ -40,8 +40,6 @@ const ImageGallery = ({
         }
     `;
 
-    console.log(imageItems)
-
     return (
         <Gallery>
             <ContainerDiv className={`gallery-container ${classes}`}>

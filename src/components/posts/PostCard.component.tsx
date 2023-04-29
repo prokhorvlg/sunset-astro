@@ -41,6 +41,7 @@ const PostCard = ({
                     <div className="post-card-content">
                         <h3 className="title">{post.data.title}</h3>
                         <p className="description">{post.data.mainText}</p>
+                        <div className="fill"></div>
                         <TagCloud tags={post.data.tags} />
                     </div> : null
                 }

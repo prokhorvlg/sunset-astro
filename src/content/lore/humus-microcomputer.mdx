@@ -1,0 +1,45 @@
+---
+id: humus-microcomputer
+title: "HUMUS Microcomputer"
+mainText: "HUMUS, the radial PC definitely designed by people!"
+subText: "Now in advertisement form."
+pubDate: "Feb 16 2023"
+thumbImage: "humus-revised"
+tags:
+  - retro-dreams
+  - computer
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorCAN } from '@/data/Authors.ts'
+
+<ImageContentRowRender 
+  images={['humus-revised']}
+/>
+
+<TextContentRow>
+After months of resets and fine-tuning, nothing changed. Each time KASA-1 was instructed to design the new hardware system, the screen was a c i r c l e. The machine claimed the layout was far more efficient, and the humans would never understand.
+
+Ultimately, the design firm was forced to produce the HUMUS Radial to satisfy the impatient investors. And to everyone's surprise… it sold incredibly well, especially among technology tinkerers.
+
+Guess there's something to radial screens after all.
+</TextContentRow>
+
+<QuoteContentRowRender author={AuthorCAN}>
+## HUMUS.™
+
+It’s the radial microcomputer everyone’s talking about.
+
+The one our team spent years perfecting. It’s made by humans, for humans.
+
+The one that lets you switch between your applications at blazing fast speeds.
+
+The one that’s moddable and customizable to your heart’s content.
+
+Yep, it’s that radial microcomputer. Try it now at your local cybernetics store!
+
+**“We are thinking ahead of the competition.”**
+*KASA CYBERNETICS INC.*
+</QuoteContentRowRender>

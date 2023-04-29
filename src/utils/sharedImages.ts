@@ -176,4 +176,39 @@ export const Images: ImageDetails[] = [
         width: 2719,
         height: 1427
     },
+    {
+        id: 'mastodon-ultraheavy',
+        src: "/images/content/mastodon.jpg",
+        alt: "Large 4-legged cargo walker",
+        width: 1478,
+        height: 1688
+    },
+    {
+        id: 'emerson-hdim-9100',
+        src: "/images/content/9910-magazine-ad.png",
+        alt: "Big robot on campus",
+        width: 2615,
+        height: 1692
+    },
+    {
+        id: 'internal-use-only',
+        src: "/images/content/internal-use-only-2.png",
+        alt: "Hanging television in a spooky dark area",
+        width: 1797,
+        height: 1797
+    },
+    {
+        id: 'organ-terrarium',
+        src: "/images/content/heart-organ-terrarium-ad.png",
+        alt: "Rolling organ terrarium robot with heart inside",
+        width: 1327,
+        height: 1677
+    },
+    {
+        id: 'humus-revised',
+        src: "/images/content/humus-rev-2023.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 1891,
+        height: 1187
+    },
 ]

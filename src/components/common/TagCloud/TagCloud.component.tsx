@@ -4,13 +4,25 @@ const TagStrategy = {
     'core-mystery': "core mystery"
 }
 
+// TODO: Add proper tag filtering!
 const TagCloud = ({
     tags
 }) => {
+    const onTagClick = (e, tag) => {
+        e.preventDefault()
+        console.log("tag click!", tag)        
+    }
+
     return (
         <div className="tag-cloud">
             {tags.map((tag) => (
-                <span key={tag} className={`tag ${tag}`}>{TagStrategy[tag] || tag}</span>
+                <button 
+                    key={tag} 
+                    className={`tag ${tag}`}
+                    onClick={(e) => onTagClick(e, tag)}
+                >
+                    {TagStrategy[tag] || tag}
+                </button>
             ))}
         </div>
     )

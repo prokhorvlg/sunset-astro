@@ -33,7 +33,6 @@ const PostsView = ({
         posts: ProcessedPost[], 
         searchString: string
     ) => {
-        console.log(posts)
         return posts.filter((i) => i.searchData.includes(searchString.toLowerCase()))
     }
 

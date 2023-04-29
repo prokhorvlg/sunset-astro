@@ -9,9 +9,15 @@ import { getDateString } from "@/utils/date"
 import { faArrowLeft, faBackward } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
+interface Props {
+    post: any
+    processedThumb?: astroHTML.JSX.ImgHTMLAttributes | null
+}
+
 const PostHeading = ({
-    post
-}) => {
+    post,
+    processedThumb
+}: Props) => {
     return (
         <FullWidthWrapper classes="heading-area post" width={WrapperMax.MaxWidth}>
             <div className="date-row">
@@ -37,8 +43,7 @@ const PostHeading = ({
             />
             {(post.collection === PostType.Introduction) ? 
                 <div className="main-area introduction">
-                    
-                    <img src={'/images/title-images/title-space-race.png'} width={400} />
+                    {processedThumb && <img src={processedThumb?.src || ''} width={400} />}
                     <div className="heading-content">
                         <span className="eyebrow">INTRODUCTION</span>
                         

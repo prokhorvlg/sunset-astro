@@ -65,9 +65,10 @@ export const sortProcessedPostsByPubDate = (processedPosts) => {
 }
 // This is for globbed posts.
 export const sortPostsByPubDate = (posts) => {
-  return posts.sort((a, b) => {
+  return posts.sort((a, b) => (new Date(a.frontmatter.pubDate) as any) - (new Date(b.frontmatter.pubDate) as any));
+  /*return posts.sort((a, b) => {
     return b.frontmatter.pubDate.valueOf() - a.frontmatter.pubDate.valueOf();
-  });
+  });*/
 }
 
 // Takes incoming posts, compiles thumb image and search data

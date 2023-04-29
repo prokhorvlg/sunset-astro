@@ -128,7 +128,7 @@ const HubSocial = ({
     icon
 }) => {
     return (
-        <li><a href={url} target="_blank"><FontAwesomeIcon icon={icon} /></a></li>
+        <li><a href={url} target="_blank" className="hub-link-icon"><FontAwesomeIcon icon={icon} /></a></li>
     )
 }
 
