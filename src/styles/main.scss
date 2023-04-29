@@ -397,6 +397,9 @@ input[type=text] {
 
     &.less-top {
         margin-top: -50px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            margin-top: 0px;
+        }
     }
 
     &.centered {
@@ -3130,16 +3133,16 @@ $dialog-main-color: $color-sunset-red;
                         max-width: 400px;
 
                         overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  max-height:66px; 
-  -webkit-line-clamp: 3; 
-  -webkit-box-orient: vertical;
-  @media screen and (max-width: $breakpoint-mobile) {
-    -webkit-line-clamp: 4; 
-    max-height:88px; 
-    font-size: 15px;
-}
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        max-height:66px; 
+                        -webkit-line-clamp: 3; 
+                        -webkit-box-orient: vertical;
+                        @media screen and (max-width: $breakpoint-mobile) {
+                            -webkit-line-clamp: 4; 
+                            max-height:88px; 
+                            font-size: 15px;
+                        }
                     }
                 }
             }
@@ -3296,7 +3299,12 @@ $post-heading-width: 1000px;
                 color: $color-sunset-red;
                 font-family: $font-code;
                 font-size: 20px;
-                line-height: 32px;
+                line-height: 30px;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin-bottom: 10px;
+                }
             }
 
             @include abg(0.4);
@@ -3531,8 +3539,8 @@ $post-heading-width: 1000px;
                     text-align: center;
                     margin-bottom: 0;
                     @media screen and (max-width: $breakpoint-mobile) {
-                        font-size: 18px;
-                        line-height: 28px;
+                        font-size: 16px;
+                        line-height: 24px;
                         max-width: 90%;
                     }
                 }
@@ -3666,7 +3674,7 @@ $post-heading-width: 1000px;
             max-width: 100%;
             @media screen and (max-width: $breakpoint-mobile) {
                 max-width: 80%;
-                margin: 60px auto 0 auto;
+                margin: 80px auto 20px auto;
             }
         }
         .heading-content {
@@ -3681,7 +3689,6 @@ $post-heading-width: 1000px;
                 color: $color-sunset-red;
                 font-weight: 700;
                 letter-spacing: 2px;
-                
             }
             h1.title {
                 margin-top: 0;
@@ -3691,11 +3698,10 @@ $post-heading-width: 1000px;
                 letter-spacing: 1px;
                 text-transform: uppercase;
                 @media screen and (max-width: $breakpoint-mobile) {
-                    font-size: 30px;
-                    font-family: $font-title-condensed;
-                    line-height: 35px;
+                    font-size: 24px;
+                    line-height: 30px;
                     max-width: 95%;
-                    margin-top: 10px;
+                    margin-top: 20px;
                     margin-left: auto;
                     margin-right: auto;
                 }
