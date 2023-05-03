@@ -32,5 +32,5 @@ export const AuthorCAN: QuoteAuthor = {
     id: "can",
     name: "Trash CAN",
     image: "can-2022",
-    description: "Your trusty companion. Bites intruders and transcribes text."
+    description: "Trusty companion. Transcribes image text, bites intruders."
 }

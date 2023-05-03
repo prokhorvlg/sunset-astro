@@ -4,6 +4,8 @@ import BlinkingGrid from "@/components/layout/Header/components/BlinkingGrid.com
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
 import { QuoteAuthor } from "@/data/Authors"
 import { getImageById } from "@/utils/sharedImages"
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
 
 interface Props {
@@ -11,6 +13,8 @@ interface Props {
     author: QuoteAuthor
     shrink?: boolean
     none?: boolean
+    transcription?: boolean
+    left?: boolean
     imageItem: astroHTML.JSX.ImgHTMLAttributes
 }
 
@@ -25,11 +29,14 @@ const QuoteContentRow = ({
     author,
     shrink,
     none,
-    imageItem
+    transcription,
+    imageItem,
+    left
 }: Props) => {
     const isAuthorYou = author.id === "you"
     const [number, setNumber] = useState(0);
     const [number2, setNumber2] = useState(0);
+    const [isOpen, setIsOpen] = useState(transcription ? false : true)
 
     // For "internal memory", randomize two number strings
     useEffect(() => {
@@ -48,10 +55,17 @@ const QuoteContentRow = ({
         };
     }, []);
 
+    const openQuote = () => {
+        setIsOpen(true)
+    }
+
     return (
-        <ContentRow classes="quote-content-row">
-            <div className={`quote-container ${author.theme ? author.theme : ''}`}>
-                {none ? 
+        <ContentRow classes={`quote-content-row ${left ? 'left' : ''} `}>
+            <div className={`quote-container ${author.theme ? author.theme : ''} 
+            ${transcription ? 'transcription' : ''} 
+            
+            ${isOpen ? 'open' : ''}`}>
+                {none || !isOpen ? 
                     null : 
                     <div className="author-box">
                         {shrink ?
@@ -73,6 +87,9 @@ const QuoteContentRow = ({
                     </div>
                 }
                 <SimpleContainer classes="code-block quote-box">
+                    {transcription && 
+                        <button className="transcription-open" onClick={() => {openQuote()}}>Press to view transcription <FontAwesomeIcon icon={faArrowDown} className="blinking"/></button>
+                    }
                     {children}
                 </SimpleContainer>
             </div>

@@ -1,16 +1,15 @@
 ---
 import BaseHead from '@/components/BaseHead.astro';
+import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import PostHeading from '@/components/post/PostHeading.component';
 import PostNavigationBar from '@/components/post/PostNavigationBar.component';
+
 import { findAdjacentObjects } from '@/utils/posts';
 import { processPost, sortPostsByPubDate } from '@/utils/astroHelpers';
-import { SITE_TITLE, SITE_DESCRIPTION, TITLE_SUFFIX} from '../consts';
-import JamComments from '@jam-comments/astro';
 
-const { post, image = null, url } = Astro.props;
-
+const { post, image = null } = Astro.props;
 const posts = await Astro.glob('../content/**/*.mdx');
 const sortedPosts = sortPostsByPubDate(posts)
 
@@ -39,9 +38,7 @@ const processedThumb = processedPost.processedThumbImage
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
 		<main>
 			<PostHeading post={post} processedThumb={processedThumb} client:only />
-            <article>
-			    <slot />
-            </article>
+            <MarkdownWrapper><slot /></MarkdownWrapper>
 			<PostNavigationBar previousPost={previousPost} nextPost={nextPost}/>
 			<!-- <JamComments path={url} /> -->
 		</main>

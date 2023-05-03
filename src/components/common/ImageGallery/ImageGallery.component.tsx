@@ -3,6 +3,8 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import 'photoswipe/dist/photoswipe.css'
 import { ImageDetails } from "@/utils/sharedImages";
 import styled from "styled-components";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
 
 export interface FullImageDetails {
     originalObject: ImageDetails                        // Contains the original file source
@@ -50,7 +52,7 @@ const ImageGallery = ({
                             {imageItem.originalObject.artist ? 
                                 <a className="artist-tag" target="_blank" href={imageItem.originalObject.artist.link || ""}>
                                     <img src={imageItem.originalObject.artist.profilePic} width="60"/>
-                                    <span>Created by {imageItem.originalObject.artist.name}</span>
+                                    <span>Drawn by {imageItem.originalObject.artist.name} <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></span>
                                 </a> 
                                 :
                                 null
@@ -75,6 +77,10 @@ const ImageGallery = ({
                                                     height={MAX_WIDTH / originalWidth * originalHeight}
                                                     ref={ref as React.MutableRefObject<HTMLImageElement>}
                                                     className={`inner-image ${imageItem.originalObject.classes}`}
+                                                    style={{
+                                                        borderColor: imageItem.originalObject.borderColor ? 
+                                                        imageItem.originalObject.borderColor : "auto" 
+                                                    }}
                                                 />
                                             </button>
                                             {imageItem.originalObject.caption ? 

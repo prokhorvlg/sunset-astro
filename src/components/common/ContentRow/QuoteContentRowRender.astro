@@ -8,6 +8,8 @@ interface Props {
     author: QuoteAuthor
     shrink?: boolean
     none?: boolean
+    transcription?: boolean
+    left?: boolean
 }
 
 const authorImage = Astro.props.author.image
@@ -30,5 +32,7 @@ if (authorImage !== "") {
     imageItem={imageProcessed} 
     shrink={Astro.props.shrink || false}
     none={Astro.props.none}
+    left={Astro.props.left || false}
+    transcription={Astro.props.transcription}
     client:only="react"
 ><slot /></QuoteContentRow>

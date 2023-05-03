@@ -31,6 +31,8 @@ export interface ImageDetails {
     format?: string
 
     originalPost?: string
+
+    borderColor?: string // Style applied to image border color in image gallery
 }
 
 export enum ImageId {
@@ -80,7 +82,8 @@ export const Images: ImageDetails[] = [
         src: "/images/home/uniserve-present.png",
         alt: "UNISERVE giving a present to a coworker",
         width: 2130,
-        height: 1530
+        height: 1530,
+        caption: "UNISERVE observes an annual tradition with their coworker, Jeff, who died from a heart attack moments before the Unexpected Interrupt."
     },
     {
         id: 'uniserve-welcome',
@@ -88,7 +91,8 @@ export const Images: ImageDetails[] = [
         alt: "UNISERVE saying hello to the viewer",
         width: 865,
         height: 703,
-        artist: ArtistLarkine
+        artist: ArtistLarkine,
+        caption: "UNISERVE says hello! UNISERVE has made enhancements to their chassis over time, leading to an inconsistent appearance over time. Boom, still canon!"
     },
     {
         id: 'uniserve-welcome-modern',
@@ -96,7 +100,30 @@ export const Images: ImageDetails[] = [
         alt: "UNISERVE saying hello to the viewer",
         width: 2520,
         height: 1947,
-        classes: "uniserve-modern"
+        classes: "border-uniserve-blue",
+        //artist: ArtistProkhor
+    },
+    // PATREON
+    {
+        id: 'interface-robot',
+        src: "/images/patron-images/interface-robot.jpg",
+        alt: "Interface robot looks at a sheet of paper",
+        width: 1129,
+        height: 584
+    },
+    {
+        id: 'scrubber-drone',
+        src: "/images/patron-images/scrubber-drone.jpg",
+        alt: "Scrubber drone",
+        width: 1129,
+        height: 584
+    },
+    {
+        id: 'transit-mastermind',
+        src: "/images/patron-images/transit-mastermind.jpg",
+        alt: "Transit mastermind",
+        width: 1129,
+        height: 584
     },
     // GOLDSPIRE INTRO
     {
@@ -105,7 +132,7 @@ export const Images: ImageDetails[] = [
         alt: "The Goldspire Archival Complex",
         width: 2801,
         height: 1779,
-        classes: "uniserve-modern"
+        classes: "border-uniserve-blue"
     },
     {
         id: 'goldspire-rev',
@@ -113,7 +140,7 @@ export const Images: ImageDetails[] = [
         alt: "The Goldspire Archival Complex",
         width: 1677,
         height: 1634,
-        classes: "goldspire-rev",
+        classes: "border-orange",
         caption: "Goldspire Archival Complex, the space station you are currently on. The hub of the Coalition's spy network, ALTITUDE, and home of UNISERVE. Used to contain around a thousand crew members."
     },
     {
@@ -122,6 +149,17 @@ export const Images: ImageDetails[] = [
         alt: "The Goldspire Archival Complex",
         width: 1248,
         height: 1039,
+        
+    },
+    // LARKIN LOCATIONS
+    {
+        id: 'weston-mission-control',
+        src: "/images/larkine-locations/weston-mission-control.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 919,
+        height: 566,
+        classes: "border-red",
+        artist: ArtistLarkine
     },
     // CONTENT
     {
@@ -144,7 +182,8 @@ export const Images: ImageDetails[] = [
         src: "/images/content/pals.jpg",
         alt: "Advertisement for PAL teleindexers",
         width: 2000,
-        height: 2775
+        height: 2775,
+        //borderColor: "#e58d12"
     },
     {
         id: 'sri-brochure',
@@ -195,7 +234,8 @@ export const Images: ImageDetails[] = [
         src: "/images/content/internal-use-only-2.png",
         alt: "Hanging television in a spooky dark area",
         width: 1797,
-        height: 1797
+        height: 1797,
+        classes: "border-red",
     },
     {
         id: 'organ-terrarium',

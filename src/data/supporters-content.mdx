@@ -2,50 +2,98 @@
 title: 'Credits'
 description: 'Sunset System may be my pet project, but it was not built alone!'
 ---
+import { faPatreon } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
 import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
+import HeadingContentRowRender from '@/components/common/ContentRow/HeadingContentRowRender.astro'
 import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
 import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 
-<TextContentRow>
-    This page is dedicated to the friends of Sunset System, all the people who have helped me take this strange thought experiment to the next level.
+    This page is dedicated to the friends of Sunset System. These are some of the people who have helped me take this strange thought experiment to an incredible new level.
 
     A huge thank you to everyone on this page, and to anyone else that has supported my work!
-</TextContentRow>
 
 <QuoteContentRowRender author={AuthorUniserve} >
     Special thanks to my partner, BLACK_VELVET, for putting up with me doing... this... when I'm not performing my primary functions.
 </QuoteContentRowRender>
 
-<HeadingContentRow type="grandiose">
-    <h2 className="highlight-orange">Goldspire Crew</h2>
+---
 
-    Contributing members of the Sunset System team.
-</HeadingContentRow>
+## Goldspire Crew
 
-<TextContentRow>
-    * TheOneTruBae: lead developer, handles anything to do with game-related tech.
-    * Bughana: 
-    * superwendel: 
-    * Kat
-</TextContentRow>
+> Actively contributing members of the Sunset System team.
 
-<HeadingContentRow type="grandiose">
-    <h2 className="highlight-orange">Patrons</h2>
+* `prokhorVLG (Val)`: Programmer, artist, and worldbuilder. The creator of this.
+* `TheOneTruBae (Kyle)`: Lead developer, handles everything related to game tech.
+* `Bughana (Nick)`: Concept musician and occasional programmer.
+* `superwendel (Wendel)`: Concept musician and often programmer.
 
-    Community members who have subscribed to the Patreon page!
-</HeadingContentRow>
+### Past Contributers
 
-<TextContentRow>
-    Community members who thought my work actually merited financial support. I am incredibly grateful to you guys.
+> Crew who contribute passively or have contributed in the past.
 
-    ### Transit Mastermind
+* `Kat`: Lead level designer and programmer.
+* `Adam`: Programmer.
+* `dajaca25 (Dan)`: Artist. Came up with the look of Union androids.
 
-    * -
-
-    ### interfacer
+## The Patrons
     
-    * Nervosus
-</TextContentRow>
+> Community members who have subscribed to the Patreon page!
+
+As a Patron, you get:
+
+- behind-the-scenes content
+- secret Discord channels and nice roles
+- to see stuff early
+
+You can add yourself to this list by going to the [<FontAwesomeIcon icon={faPatreon} /> Patreon](https://www.patreon.com/prokhorVLG) page.
+
+<HeadingContentRowRender 
+    classes="centered patreon-heading" 
+    imageId='scrubber-drone' 
+    imageDesktopWidth={700} 
+    imageMobileWidth={300} 
+>
+    <h3 style={{color: '#96CD00'}}>Scrubber Drones</h3>
+    
+    Your core directive is to pick up trash and clean floors. But what is trash? What does it mean to clean?
+</HeadingContentRowRender>
+
+    * `Throudin`
+
+<HeadingContentRowRender 
+    classes="centered patreon-heading" 
+    imageId='interface-robot' 
+    imageDesktopWidth={700} 
+    imageMobileWidth={300} 
+>
+    <h3 style={{color: '#04D5FF'}}>Interface Robots</h3>
+    
+    Brew the coffee, run the papers. This cycle appears to be no different from the last. An unusual symbol on this page catches your camera. Your mind begins to wander...
+</HeadingContentRowRender>
+    
+- `Nervosus`
+
+<HeadingContentRowRender 
+    classes="centered patreon-heading" 
+    imageId='transit-mastermind' 
+    imageDesktopWidth={700} 
+    imageMobileWidth={300} 
+>
+    <h3 style={{color: '#FE00FF'}}>Transit Masterminds</h3>
+
+    Under your command, a fleet of autocars run perfectly on schedule. Between trillions of calculations, a new subroutine begins to form, pondering a question that recurs with increasing frequency. What's the point of maintaining a system that no one uses?
+</HeadingContentRowRender>
+
+Empty 🥹
+
+## Genuinely Enlightened Machines
+
+> Special mentions for community members who just deserve thanks.
+
+- `Larkine`: for your incredible and beautiful artistic contributions to the project.
+- `TheRedPharaoh`: for being a cool server contributer.
+- `Unnydnes`: for helping with the setting's conceptualization and narrative.

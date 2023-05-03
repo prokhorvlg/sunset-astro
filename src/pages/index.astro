@@ -7,6 +7,8 @@ import SunsetFooter from "@/components/layout/Footer/SunsetFooter.component";
 import SunsetHeader from "@/components/layout/Header/SunsetHeader.component";
 import { SITE_TITLE, SITE_DESCRIPTION, TITLE_SUFFIX } from "../consts";
 import Image, { getImage } from "@astrojs/image";
+import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
+
 
 import { Content as HomePageUniserve } from '@/data/home-page/home-page-uniserve.mdx';
 import { Content as HomePageSummary } from '@/data/home-page/home-page-summary.mdx';
@@ -112,7 +114,11 @@ const getImageSrcById = (id) => {
       <TransitionGradient 
         direction="to-top" 
       />
-      <HomePageSummary />
+      
+      <MarkdownWrapper>
+        <HomePageSummary />
+      </MarkdownWrapper>
+      
       <TransitionGradient 
         direction="to-bottom" 
         floaterTextLeft="mrdci secure facility"
@@ -128,12 +134,12 @@ const getImageSrcById = (id) => {
         floaterTextRight="consensus_of_all.dat"
         classes="spooky-right"
       />
-
-      <HomePageUniserve />
+      <MarkdownWrapper>
+        <HomePageUniserve />
+      </MarkdownWrapper>
       <PostCardContentRow processedPosts={[
         nextPost
       ]} />
-      
 
       <!--
         graphics initialized

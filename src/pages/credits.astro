@@ -10,6 +10,7 @@ import TextContentRow from '@/components/common/ContentRow/TextContentRow.compon
 
 import { Content } from '@/data/supporters-content.mdx';
 import * as post from '@/data/supporters-content.mdx';
+import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 ---
 
 <!DOCTYPE html>
@@ -21,7 +22,9 @@ import * as post from '@/data/supporters-content.mdx';
 		<SunsetHeader client:only currentPage={"/credits"} />
 		<main>
 			<PageHeading title={post.frontmatter.title} subtext={post.frontmatter.description}><></></PageHeading>
-            <Content />
+			<MarkdownWrapper>
+            	<Content />
+			</MarkdownWrapper>
 		</main>
 		<SunsetFooter client:only currentPage={"/credits"} />
 	</body>
