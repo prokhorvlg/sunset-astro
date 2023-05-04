@@ -161,6 +161,15 @@ export const Images: ImageDetails[] = [
         classes: "border-red",
         artist: ArtistLarkine
     },
+    {
+        id: 'storage-bay',
+        src: "/images/larkine-locations/storage-bay.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 919,
+        height: 566,
+        classes: "border-red",
+        artist: ArtistLarkine
+    },
     // CONTENT
     {
         id: ImageId.Gordon,
@@ -250,5 +259,20 @@ export const Images: ImageDetails[] = [
         alt: "Large desktop microcomputer with two circular screens",
         width: 1891,
         height: 1187
+    },
+    {
+        id: 'first-altar-photo',
+        src: "/images/content/altar-photo.jpg",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 2883,
+        height: 2034
+    },
+    {
+        id: 'first-altar-full',
+        src: "/images/content/first-altar-full.jpg",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 2951,
+        height: 1642,
+        caption: "A collection of documents pertaining to Project SVAROG, the first fully-functional Altar."
     },
 ]
