@@ -301,4 +301,12 @@ export const Images: ImageDetails[] = [
         caption: "Dr. Samuel Lewis demonstrates the wearable nooscope in a series of educational videos.",
         classes: ""
     },
+    {
+        id: 'sunset-initiative-logo',
+        src: "/images/sunset-logo.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 514,
+        height: 658,
+        classes: ""
+    },
 ]
