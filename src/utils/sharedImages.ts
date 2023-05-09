@@ -170,6 +170,15 @@ export const Images: ImageDetails[] = [
         classes: "border-red",
         artist: ArtistLarkine
     },
+    {
+        id: 'earthview-garden',
+        src: "/images/larkine-locations/earthview-garden.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 919,
+        height: 566,
+        classes: "border-red",
+        artist: ArtistLarkine
+    },
     // CONTENT
     {
         id: ImageId.Gordon,
@@ -274,5 +283,22 @@ export const Images: ImageDetails[] = [
         width: 2951,
         height: 1642,
         caption: "A collection of documents pertaining to Project SVAROG, the first fully-functional Altar."
+    },
+    {
+        id: 'shroomy-postcard',
+        src: "/images/content/shroomy-postcard.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 2273,
+        height: 2566,
+        caption: "A collection of documents pertaining to Project SVAROG, the first fully-functional Altar."
+    },
+    {
+        id: 'presenter-snapshot',
+        src: "/images/content/presenter-final-orange.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 2533,
+        height: 1798,
+        caption: "Dr. Samuel Lewis demonstrates the wearable nooscope in a series of educational videos.",
+        classes: ""
     },
 ]

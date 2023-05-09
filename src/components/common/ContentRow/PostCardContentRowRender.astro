@@ -1,0 +1,15 @@
+---
+import PostCardContentRow from "@/components/common/ContentRow/PostCardContentRow.component";
+import { getProcessedPost } from "@/utils/astroHelpers";
+
+interface Props {
+    tag: string
+    slug: string
+}
+
+const nextPost = await getProcessedPost(Astro.props.slug, Astro.props.tag)
+---
+
+<PostCardContentRow processedPosts={[
+    nextPost
+]} />
