@@ -309,4 +309,28 @@ export const Images: ImageDetails[] = [
         height: 658,
         classes: ""
     },
+    {
+        id: 'planet-venus',
+        src: "/images/Planet_Venus (6).png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 1200,
+        height: 1200,
+        classes: ""
+    },
+    {
+        id: 'planet-mars',
+        src: "/images/Mars.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 1200,
+        height: 1200,
+        classes: ""
+    },
+    {
+        id: 'planet-titan',
+        src: "/images/Titan.png",
+        alt: "Large desktop microcomputer with two circular screens",
+        width: 1200,
+        height: 1200,
+        classes: ""
+    },
 ]

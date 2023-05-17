@@ -131,7 +131,7 @@ body {
     position: relative;
     margin: 0;
 
-    @include abg(0.8);
+    @include abg(0.6);
     @include abg-red-dot-grid;
     &::after {
         z-index: -100;
@@ -704,7 +704,6 @@ article.markdown {
                     right: auto;
                     left: auto;
                     transform: none;
-                    
 
                     width: 15px;
                     margin-top: 4px;
@@ -738,6 +737,76 @@ article.markdown {
             @media screen and (max-width: $breakpoint-mobile) {
                 font-size: 16px;
             }
+        }
+    }
+
+    // Variation used for location/planet headings
+    &.world-heading {
+        .full-width-wrapper-inner {
+            position: relative;
+            .floater {
+                display: none;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 99;
+                right: calc(100% + 20px);
+                
+                font-family: $font-code;
+                letter-spacing: 1px;
+            }
+        }
+        
+        .heading-gallery {
+            margin: 0;
+            img {
+                border: 2px solid;
+            }
+        }
+        astro-slot {
+            display: flex;
+            flex-direction: row;
+            @media screen and (max-width: $breakpoint-tablet) {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .content-slot {
+                flex-basis: 50%;
+                margin-left: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                h3 {
+                    text-transform: uppercase;
+                    letter-spacing: 4px;
+                    font-weight: 700;
+                    font-size: 68px;
+                    margin-top: 0;
+                    margin-left: 0;
+                    margin-bottom: 0px;
+                    line-height: 78px;
+                }
+                p {
+                    //background: $color-sunset-orange;
+                    display: inline-block;
+                    width: auto;
+                    font-family: $font-code;
+                    font-weight: 600;
+                    font-size: 22px;
+                    padding: 5px 5px 5px 20px;
+                    margin: 0 0 25px 0;
+                    color: $color-background-dark;
+                }
+                ul {
+                    li {
+                        font-family: $font-code;
+                        margin-bottom: 10px;
+                        color: $color-sunset-manila;
+                    }
+                }
+            }
+            
         }
     }
 

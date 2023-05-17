@@ -17,7 +17,6 @@ export interface ImageItem {
     width: number
     height: number
     element?: HTMLImageElement
-    
 }
 
 interface PropTypes {
@@ -25,6 +24,8 @@ interface PropTypes {
     classes?: string
     imageDesktopWidth?: number
     imageMobileWidth?: number
+    color?: string
+
 }
 
 const MAX_WIDTH = 1000 // based on row width max
@@ -33,7 +34,8 @@ const ImageGallery = ({
     imageItems,
     classes = '',
     imageDesktopWidth,
-    imageMobileWidth
+    imageMobileWidth,
+    color = ''
 }: PropTypes) => {
     const ContainerDiv = styled.div`
         width: ${imageDesktopWidth + "px" || 'auto'};
@@ -78,8 +80,9 @@ const ImageGallery = ({
                                                     ref={ref as React.MutableRefObject<HTMLImageElement>}
                                                     className={`inner-image ${imageItem.originalObject.classes}`}
                                                     style={{
-                                                        borderColor: imageItem.originalObject.borderColor ? 
-                                                        imageItem.originalObject.borderColor : "auto" 
+                                                        borderColor: color ? color :
+                                                            imageItem.originalObject.borderColor ? imageItem.originalObject.borderColor : 
+                                                                "auto" 
                                                     }}
                                                 />
                                             </button>

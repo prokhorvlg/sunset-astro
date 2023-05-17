@@ -11,6 +11,8 @@ interface Props {
   imageId?: ImageId;
   imageDesktopWidth?: number
   imageMobileWidth?: number
+  type?: string
+  color?: string
 }
 const { imageId, classes, verticalSpacing, imageDesktopWidth, imageMobileWidth } = Astro.props
 
@@ -23,7 +25,7 @@ const imageItems = [
 ]
 ---
 
-<HeadingContentRow classes={classes} verticalSpacing={verticalSpacing} client:only="react">
+<HeadingContentRow classes={classes} color={Astro.props.color} verticalSpacing={verticalSpacing} type={Astro.props.type} client:only="react">
     {imageId && 
         <ImageGallery 
             client:only="react"
@@ -31,7 +33,9 @@ const imageItems = [
             imageDesktopWidth={imageDesktopWidth}
             imageMobileWidth={imageMobileWidth}
             imageItems={imageItems as any}
+            color={Astro.props.color}
         />
     }
-    <slot />
+    <div class="content-slot"><slot /></div>
+    
 </HeadingContentRow>

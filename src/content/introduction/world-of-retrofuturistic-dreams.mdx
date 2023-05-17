@@ -14,7 +14,9 @@ import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRo
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
 import PostCardContentRowRender from "@/components/common/ContentRow/PostCardContentRowRender.astro"
+import HeadingContentRowRender from '@/components/common/ContentRow/HeadingContentRowRender.astro'
 import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
+export const PLANET_WIDTH = 600;
 
   You proceed through a dim hallway. Your metallic chassis clangs with each step against the cold cement.
 
@@ -80,60 +82,6 @@ By their nature, the neuromorphs are goal-oriented beings. They aren't conscious
 
 When a neuromorph is first initialized, it is not much more than a computer with a particular set of instructions. After days, months, and even years, they could be considered experts in their craft. But this came with incredible ramifications no one foresaw: `emergent consciousness`.
 
-## The worlds of the Solar System were discovered to be habitable, yet alien.
-
-<ImageContentRowRender 
-  images={['pan-sol-crane-ad']}
-/>
-
-In 1974, man would take their first collective step on an alien world. It was confirmed — Venus sustained a thriving ecosystem, as did Mars, Titan, Europa, and so forth.
-
-Were these worlds a gift from God, or an alien entity? Did they come to be as part of a misunderstood natural process?
-
-The answer to these questions would become a cover-up job assigned to the Coalition's Anomalous Research Division, and the Union's Operation 253.
-
-From the moment the probes glanced at the living worlds in the 1960s, to the moment mankind vanished in 2095, the System would be consumed by mankind's final great endeavor. The Cold War, the Space Race, it all began here — for whoever would be the first to plant their flag in the furthest reach would be the first to secure their people's place among the stars, while the last was doomed to fade into obscurity.
-
-The living worlds include:
-
-### Earth
-
-> The home world
-
-A dying sphere, its ecosystem slowly dwinndling. 
-
-### Venus
-
-> The jungle world
-
-When the probe first landed here, it transmitted a grainy image of a lush alien jungle, wet and hot, teeming with life. Her soil was rich in nutrients, and her biology a master at rapid growth. It was the first alien ecosystem to be confirmed to exist, and as news of the discovery made rounds around the globe, a new flame erupted under the engines of the Space Race.
-
-Venus was the first living world to be colonized, but never truly tamed. The Soviets tried. They launched everything they had towards it: from sending steel behemoths to burn away wide swaths of its surface area, to constructing massive concrete barriers around their colonial lands, and launching bio-engineered viruses into the depths.
-
-Yet with the passing of each mission year, the planet seemed to fight back harder than before.
-
-Regardless, Venus was the Union's most successful endeavor, and the nation's largest claim. The sanitized lands made for incredible farmland, and the living world would rapidly become the breadbasket for the rest of the Solar System, as hundreds of tons of engineered corn, wheat, and tuber were shipped to Luna.
-
-### Mars
-
-> The desert world
-
-### Titan
-
-The frigid world
-
-### Europa
-
-The ocean world
-
-### Io
-
-The volcanic world
-
-<QuoteContentRowRender author={AuthorUniserve} >
-There are files here pertaining to an expedition to a world called ‘Nibiru’, an umbral world purportedly beyond the edge of the known System. It never returned.
-</QuoteContentRowRender>
-
 ## Three major powers ruled the world, mighty political blocs that formed around powerful ideologies.
 
 ### Greater Union
@@ -167,6 +115,150 @@ In the Far East, a new power was forged in the remains of a nuclear hellscape. U
 Their resolve would manifest in the formation of an economic superpower, its unending exports striking fear in the citizens of the Coalition, and its technology rivaling that of the mighty Union. Their cities would be built upon the deserts of Mars, which had until that point evaded any genuine attempt at colonization.
 
 They would be a force to be reckoned with, eventually.
+
+## The worlds of the Solar System were discovered to be habitable, yet alien.
+
+<ImageContentRowRender 
+  images={['pan-sol-crane-ad']}
+/>
+
+In 1974, man would take their first collective step on an alien world. It was confirmed — Venus sustained a thriving ecosystem, as did Mars, Titan, Europa, and so forth.
+
+Were these worlds a gift from God, or an alien entity? Did they come to be as part of a misunderstood natural process?
+
+The answer to these questions would become a cover-up job assigned to the Coalition's Anomalous Research Division, and the Union's Operation 253.
+
+From the moment the probes glanced at the living worlds in the 1960s, to the moment mankind vanished in 2095, the System would be consumed by mankind's final great endeavor. The Cold War, the Space Race, it all began here — for whoever would be the first to plant their flag in the furthest reach would be the first to secure their people's place among the stars, while the last was doomed to fade into obscurity.
+
+The living worlds include:
+
+<HeadingContentRowRender 
+    imageId='planet-venus' 
+    imageDesktopWidth={PLANET_WIDTH} 
+    imageMobileWidth={PLANET_WIDTH} 
+    type="world-heading"
+    color="#fff"
+>
+    ### Earth
+    🌎 Home world
+    
+    - Gunked by tactical nuclear wars
+    - Origin of human civilization
+</HeadingContentRowRender>
+
+She requires no introduction. You already understand the importance of Earth, the cradle of all human civilization.
+
+But throughout the Cold War, she was dying. The Neutron Wars, a series of proxy conflicts that made use of tactical nuclear warheads, had devastated her biosphere in the late 20th century. This damage could not be reversed, as not even the science of the reclomator could prevent the atomic contamination from spreading. At least, not yet.
+
+In their great wisdom, the leaders of Earth looked up, and set their sights upon the newly discovered living worlds. Ripe and ready for the taking, their ecosystems were unspoiled by atomic obliteration. They were the perfect place to begin the next chapter, where new colonies and cities could be perfectly molded into a model of their ideology.
+
+The future was just few very large atomic rockets away...
+
+<HeadingContentRowRender 
+    imageId='planet-venus' 
+    imageDesktopWidth={PLANET_WIDTH} 
+    imageMobileWidth={PLANET_WIDTH} 
+    type="world-heading"
+    color="#ffeb1c"
+>
+    ### Venus
+    Caustic jungle world
+    
+    - 🌾 Breadbasket of the Solar System
+    - Really doesn't seem to like settlers
+    - Glory to the Union!
+</HeadingContentRowRender>
+
+### A lush toxic jungle would be claimed by the Soviets and turned to farmland. 
+
+When the probe first landed here, it transmitted a grainy image of a lush alien jungle, wet and hot, teeming with life. Her soil was rich in nutrients, and her biology a master at rapid growth. It was the first alien ecosystem to be confirmed to exist, and as news of the discovery made rounds around the globe, a new flame erupted under the engines of the Space Race.
+
+Venus was the first living world to be colonized, but never truly tamed. The Soviets tried. They launched everything they had towards it: from sending steel behemoths to burn away wide swaths of its surface area, to constructing massive concrete barriers around their colonial lands, and launching bio-engineered viruses into the depths.
+
+### Yet with the passing of each mission year, the planet seemed to fight back harder than before.
+
+Regardless, Venus was the Union's most successful endeavor, and the nation's largest claim. The sanitized lands made for incredible farmland, and the living world would rapidly become the breadbasket for the rest of the Solar System, as hundreds of tons of engineered corn, wheat, and tuber were shipped to Luna. Around the farmlands, fully-automated communes and academies of science formed a civilization worthy in the eyes the Communist vision. This was the future.
+
+<HeadingContentRowRender 
+    imageId='planet-mars' 
+    imageDesktopWidth={PLANET_WIDTH} 
+    imageMobileWidth={PLANET_WIDTH} 
+    type="world-heading"
+    color="#eb3d2a"
+>
+    ### Mars
+    Arid desert world
+
+    - Future technologies hub
+    - Endless automated war
+    - Stronghold of the Rising Pact
+</HeadingContentRowRender>
+
+### They found a dry world of worthless sands, and moved on.
+
+In the early days of the Space Race, Mars brought much fascination to the world. Even before astronauts landed on its surface, orbiters revealed enormous living structures underneath planet-spanning gulfs of sand, sweeping savannahs across its surface, even strange world-scars through which liquid water flowed.
+
+But soon after the Americans planted their first outposts, they set their eyes on the far more docile world of Titan, which would become their stronghold among the stars. They had lost interest...
+
+### Then the Pact came along and discovered what Mars was holding secret.
+
+It wasn't until the Pact came along, much later, that Mars' true value was uncovered. The organisms of Mars were bioaccumulators for an exotic form of matter, which could be harvested and used for an antigravitational effect. By now, it had been too late for either the Union or the Coalition; the Pact had claimed the waters of the Ancient Canals, and had supreme control. Their city, Shinzokasei, was a shining beacon of their domination over Mars and industrial acuity.
+
+Yet neither the Coalition nor the Union desired to reliquish their limited claim over the Sands. In the late 21st century, Mars became host to the Shadow Conflicts, the largest automated conflict in the Solar System. Hundreds of nuclear automatons were sent across the Sands to blast each other to bits, surrounded by hundreds of miles of nothing.
+
+They would be commanded by cybernetic masterminds, as their human operators shut down their sensors. For is there a war if no human is around to hear the whine of the railguns?
+
+<HeadingContentRowRender 
+    imageId='planet-titan' 
+    imageDesktopWidth={PLANET_WIDTH} 
+    imageMobileWidth={PLANET_WIDTH} 
+    type="world-heading"
+    color="#1b7ef7"
+>
+    ### Titan
+    Frigid fungal world
+
+    - Alloy mining operations
+    - Stronghold of the Enduring Coalition
+    - Suburbs and tax havens
+</HeadingContentRowRender>
+
+At first glance, Titan is beautiful but seems fairly pointless as a colonization target: too distant and cold. It meanders around Saturn in the outskirts of the Solar System, a place where sunshine rarely finds its way to surface. Its biosphere is similar to a fungus, slow but highly adaptable, the result of a low-energy system. 
+
+Many found it like Yellowstone, quiet and serene, but angry at times.
+
+### That changed when Alloy was discovered, triggering a new interplanetary gold rush.
+
+When atomic thumpers pulsed their way to the living world, surveyors discovered an unusual mineral in the rocks below. Tetradite alloy, they called it - naturally-occuring deposits of a metallic amalgam, much stronger and lighter than anything humans could forge. Its origin was a mystery, but the economic benefits were clear.
+
+### Half a century later, Titan was paved and stabilized. It had become a suburban paradise.
+
+Like a budding ecosystem in a new land, new arrivals formed a structure that could support more advanced arrivals. Prospector camps and mining robots made way for railgun-based shipping infrastructure, organized government and a relaxed tax code made way for technology corporations. As Titan became more civilized, it began to look a lot more like California or Texas than an untamed wilderness. Spaceports, stadiums, malls, and suburbs replaced fungal forests and drilling machines.
+
+But they would never let go of their identity as rugged Titanites.
+
+### Notable locations
+
+- The Dollar Bank: The calm respite of the northeastern crest of the Hyperion continent became the hub of human activity on this living world.
+  - Providence: The largest metropolitan area on Titan peaked with a population of 33 million people. What began as a colonial settlement and spaceport for alloy mining later became a megapolis filled with stadiums, malls, and offices, surrounded by miles of suburban sprawl.
+    - 
+  - DYNATEK campus, where UNISERVE was designed!
+- The Alloy Fields
+- Silentwoods
+  - MONOLITH: an enormous railgun operated by the Coalition's Heavenbreaker Colonial Initiative. It was built to send millions of tons of alloy into orbit. It also happens to be pretty good at shooting down spacecraft, but Heavenbreaker didn't talk much about that.
+- Fungal Blooms
+  -- Here, advanced fungal beings ovetake. Scientists presumed this was a later stage of . The region is too dense to be traversed by traditional vehicles, and required specialized bio-drilling machines. Even with those, little was uncovered about this place.
+
+<QuoteContentRowRender author={AuthorUniserve} >
+There are a few more to make note of.
+
+- Europa, the ocean world, was a paradisal destination, heavily colonized by the Union. Its oceans are deep and endless, with the dangers increasing with depth.
+- Io, the volcanic moon, was a hot and horrible place to exist in. But it contained valuable crystals used in electronic manufacturing, and would host many secret bases and weapon test sites.
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorUniserve} >
+There are files here pertaining to an expedition to a world called 'Nibiru', an umbral world purportedly beyond the edge of the known System. It never returned.
+</QuoteContentRowRender>
 
 ## And just like that, it was all over.
 
