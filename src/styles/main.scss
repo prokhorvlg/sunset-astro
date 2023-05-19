@@ -777,6 +777,12 @@ article.markdown {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                @media screen and (max-width: $breakpoint-tablet) {
+                    margin-left: 0;
+                    margin-top: 30px;
+                    align-items: center;
+                    width: 95%;
+                }
                 h3 {
                     text-transform: uppercase;
                     letter-spacing: 4px;
@@ -786,6 +792,10 @@ article.markdown {
                     margin-left: 0;
                     margin-bottom: 0px;
                     line-height: 78px;
+                    @media screen and (max-width: $breakpoint-tablet) {
+                        margin-right: 0;
+                        width: auto;
+                    }
                 }
                 p {
                     //background: $color-sunset-orange;
@@ -797,6 +807,11 @@ article.markdown {
                     padding: 5px 5px 5px 20px;
                     margin: 0 0 25px 0;
                     color: $color-background-dark;
+                    @media screen and (max-width: $breakpoint-tablet) {
+                        padding: 10px 50px;
+                        //width: 80%;
+                        text-align: center;
+                    }
                 }
                 ul {
                     li {
@@ -4296,77 +4311,84 @@ $post-heading-width: 1000px;
         }
     }
 }
-a.artist-tag {
-    //position: absolute;
-    height: 40px;
-    margin-bottom: 2px;
-    margin-left: 10px;
-    //bottom: 100%;
-    //transform: translateY(50%) scale(1);
-    //top: 10px;
-    //left: 10px;
-
-    z-index: 50;
-    border: 2px solid $color-sunset-red;
-    background: linear-gradient(to right, darken($color-ultradark-red, 4%), $color-ultradark-red);
-    color: $color-sunset-orange;
-    padding: 2px;
-    border-radius: 100px;
-    text-decoration: none;
-    //transition: 0.1s ease-in-out;
-
-    display: inline-flex;
+.over-image {
+    display: flex;
     flex-direction: row;
     align-items: center;
-
-    @media screen and (max-width: $breakpoint-mobile) {
-        height: 30px;
-    }
-
-    img {
-        position: absolute;
-        z-index: 50;
-        border-radius: 100px;
+    justify-content: flex-end;
+    gap: 5px;
+    a {
         height: 40px;
-        width: 40px;
-        transition: 0.08s ease-in-out;
+        margin-bottom: 2px;
+        z-index: 50;
+
+        border: 2px solid $color-sunset-red;
+        background: linear-gradient(to right, darken($color-ultradark-red, 4%), $color-ultradark-red);
+        color: $color-sunset-orange;
+        padding: 2px;
+        border-radius: 100px;
+        text-decoration: none;
+
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+
         @media screen and (max-width: $breakpoint-mobile) {
             height: 30px;
-            width: 30px;
         }
-    }
-    span {
-        //color: $color-sunset-red;
-        margin-left: 40px;
-        padding: 10px 20px 10px 15px;
-        @media screen and (max-width: $breakpoint-mobile) {
-            margin-left: 30px;
-            padding: 5px 10px 5px 10px;
-        }
-    }
-    svg {
-        font-size: 16px;
-        margin-left: 8px;
-        transform: scale(1);
-    }
 
-    &:hover, &:focus {
-        //transform: translateY(50%) scale(1.05);
-        opacity: 1;
-        border-color: $color-sunset-orange;
-        background: lighten($color-ultradark-red, 10%);
-        color: lighten($color-sunset-orange, 15%);
-        img {
-            position: absolute;
-            //margin-left: -20px;
-            transform: scale(2) translateX(-10px);
-            border: 1.5px solid $color-sunset-orange;
+        span {
+            padding: 10px 20px 10px 15px;
             @media screen and (max-width: $breakpoint-mobile) {
-                transform: scale(1.5) translateX(-7px);
+                padding: 5px 10px 5px 10px;
+            }
+        }
+        svg {
+            font-size: 16px;
+            margin-left: 8px;
+            transform: scale(1);
+        }
+        &:hover, &:focus {
+            opacity: 1;
+            border-color: $color-sunset-orange;
+            background: lighten($color-ultradark-red, 10%);
+            color: lighten($color-sunset-orange, 15%);
+            img {
+                position: absolute;
+                //margin-left: -20px;
+                transform: scale(1.1) translateX(0px);
+                //border: 1.5px solid $color-sunset-orange;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    transform: scale(1.5) translateX(-7px);
+                }
             }
         }
     }
+
+    .artist-tag {    
+        img {
+            position: absolute;
+            z-index: 50;
+            border-radius: 100px;
+            height: 40px;
+            width: 40px;
+            transition: 0.08s ease-in-out;
+            @media screen and (max-width: $breakpoint-mobile) {
+                height: 30px;
+                width: 30px;
+            }
+        }
+        span {
+            margin-left: 40px;
+            @media screen and (max-width: $breakpoint-mobile) {
+                margin-left: 30px;
+            }
+        }
+    }
+
+    .original-post-tag {}
 }
+
 
 .spacing-content-row {
     .divide {

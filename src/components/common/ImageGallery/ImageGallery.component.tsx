@@ -41,6 +41,7 @@ const ImageGallery = ({
         width: ${imageDesktopWidth + "px" || 'auto'};
         @media screen and (max-width: 900px) {
             width: ${imageMobileWidth + "px" || 'auto'};
+            max-width: 98%;
         }
     `;
 
@@ -51,14 +52,22 @@ const ImageGallery = ({
                     if (!imageItem) return null
                     return (
                         <div className="gallery-item" key={imageItem.originalObject.id}>
-                            {imageItem.originalObject.artist ? 
-                                <a className="artist-tag" target="_blank" href={imageItem.originalObject.artist.link || ""}>
-                                    <img src={imageItem.originalObject.artist.profilePic} width="60"/>
-                                    <span>Drawn by {imageItem.originalObject.artist.name} <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></span>
-                                </a> 
-                                :
-                                null
-                            }
+                            <div className="over-image">
+                                {imageItem.originalObject.artist ? 
+                                    <a className="artist-tag" target="_blank" href={imageItem.originalObject.artist.link || ""}>
+                                        <img src={imageItem.originalObject.artist.profilePic} width="60"/>
+                                        <span>Drawn by {imageItem.originalObject.artist.name} <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></span>
+                                    </a> 
+                                    :
+                                    null
+                                }
+                                {imageItem.originalObject.originalPost ? 
+                                    <a className="original-post-tag" href={`/posts/${imageItem.originalObject.originalPost}`} target="_blank">
+                                        <span>Go to original post <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></span>
+                                    </a>
+                                    : null 
+                                }
+                            </div>
                             <Item
                                 thumbnail={imageItem.processedObject.src as string}
                                 original={imageItem.originalObject.src as string}
@@ -70,7 +79,6 @@ const ImageGallery = ({
                                     const originalHeight = imageItem.originalObject.height || 1
                                     return (
                                         <div className="image-content-box">
-                                            
                                             <button className="image-content-image" onClick={open}>
                                                 <img
                                                     src={imageItem.processedObject.src || ""}

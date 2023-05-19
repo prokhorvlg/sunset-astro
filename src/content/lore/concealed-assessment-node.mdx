@@ -1,0 +1,44 @@
+---
+title: "Concealed Assessment Node"
+mainText: "An unusual spying gadget found within the Goldspire Complex."
+subText: "Concealed Assessment Node was found in large quantities at this space station. UNISERVE has put one of them to work."
+pubDate: "May 17 2023"
+thumbImage: "can-memo"
+tags:
+  - post-mankind existentialism
+  - robot
+  - coalition
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
+
+<ImageContentRowRender 
+  images={['can-memo']}
+/>
+
+<QuoteContentRowRender author={AuthorUniserve}>
+This came with the document as well...
+
+\#\#\#\#\#
+
+To: **ALL STAFF**
+
+Be made aware of “CONCEALED ASSESSMENT NODE”
+
+This is an intelligent data collection system disguised as a standard-issue garbage can.
+
+The origins of this device is unknown. At least 250 have been recovered from offices and rest areas.
+
+Remain vigilant
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorCAN} transcription>
+CONFIDENTIAL
+
+Classification: Top Secret 3
+Authority: Counterintelligence Analysis Group
+Reason: B-9
+</QuoteContentRowRender>

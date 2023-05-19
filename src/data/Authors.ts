@@ -31,6 +31,6 @@ export const AuthorUniserve: QuoteAuthor = {
 export const AuthorCAN: QuoteAuthor = {
     id: "can",
     name: "Trash CAN",
-    image: "can-2022",
+    image: "can-memo",
     description: "Trusty companion. Transcribes image text, bites intruders."
 }

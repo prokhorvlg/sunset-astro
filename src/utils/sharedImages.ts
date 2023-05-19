@@ -151,6 +151,16 @@ export const Images: ImageDetails[] = [
         height: 1039,
         
     },
+    {
+        id: 'can-memo',
+        src: "/images/content/can-memo-2.png",
+        alt: "The Goldspire Archival Complex",
+        width: 2387,
+        height: 2168,
+        //classes: "border-uniserve-blue"
+        originalPost: "concealed-assessment-node",
+        artist: ArtistProkhor
+    },
     // LARKIN LOCATIONS
     {
         id: 'weston-mission-control',
@@ -309,26 +319,27 @@ export const Images: ImageDetails[] = [
         height: 658,
         classes: ""
     },
+    // PLANET MARBLES
     {
         id: 'planet-venus',
-        src: "/images/Planet_Venus (6).png",
-        alt: "Large desktop microcomputer with two circular screens",
+        src: "/images/planet-marbles/Venus.png",
+        alt: "Venus, the hot jungle",
         width: 1200,
         height: 1200,
         classes: ""
     },
     {
         id: 'planet-mars',
-        src: "/images/Mars.png",
-        alt: "Large desktop microcomputer with two circular screens",
+        src: "/images/planet-marbles/Mars.png",
+        alt: "Mars, the world of red sands",
         width: 1200,
         height: 1200,
         classes: ""
     },
     {
         id: 'planet-titan',
-        src: "/images/Titan.png",
-        alt: "Large desktop microcomputer with two circular screens",
+        src: "/images/planet-marbles/Titan.png",
+        alt: "Titan, frigid moon of Saturn",
         width: 1200,
         height: 1200,
         classes: ""
