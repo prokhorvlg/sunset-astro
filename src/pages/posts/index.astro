@@ -20,7 +20,7 @@ const SUBTEXT = "A collection of every post made for the Sunset System project."
 		<SunsetHeader client:only currentPage={"/posts"} />
 		<main>
 			<PageHeading title="Posts" subtext={SUBTEXT} image='computer-blinking' isSpooky><></></PageHeading>
-			<PostsView client:only
+			<PostsView client:only="react"
 				processedPosts={posts}
 			/>
 		</main>

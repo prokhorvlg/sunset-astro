@@ -1,0 +1,44 @@
+---
+title: "Conclusion"
+mainText: "Conclusion"
+subText: "You have made it to the end of the guided tour."
+pubDate: "May 25 2023"
+thumbImage: "title-cassette"
+hidden: true
+tags:
+  - conclusion
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
+import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
+import Pickup from '@/components/common/Pickup.component'
+import PostCardContentRowRender from "@/components/common/ContentRow/PostCardContentRowRender.astro"
+import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
+
+
+
+
+<QuoteContentRowRender author={AuthorUniserve} >
+  And so, my friend, our journey together comes to an END.
+
+  You are ready to head into the rest of my EXHIBIT on your own.
+
+  Did you ENJOY my tour? Y / N
+</QuoteContentRowRender>
+
+  <QuoteContentRowRender author={AuthorTerminal} left>
+CORRECT.
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorUniserve} >
+  It has been a pleasure. You are free to come and go as you please.
+</QuoteContentRowRender>
+
+UNISERVE's hanging chassis turns around and glides away, disappearing into a maintenance chute behind the walls. As the whine of their motors dies away, you are left alone in a dark, silent hallway.
+
+You notice something on the floor.
+
+<Pickup />

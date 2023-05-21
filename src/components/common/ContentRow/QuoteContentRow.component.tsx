@@ -3,7 +3,7 @@ import SimpleContainer from "@/components/containers/SimpleContainer/SimpleConta
 import BlinkingGrid from "@/components/layout/Header/components/BlinkingGrid.component"
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
 import { QuoteAuthor } from "@/data/Authors"
-import { getImageById } from "@/utils/sharedImages"
+import { getImageById, ImageDetails } from "@/utils/sharedImages"
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
@@ -15,6 +15,7 @@ interface Props {
     none?: boolean
     transcription?: boolean
     left?: boolean
+    imageObject: ImageDetails
     imageItem: astroHTML.JSX.ImgHTMLAttributes
 }
 
@@ -31,12 +32,15 @@ const QuoteContentRow = ({
     none,
     transcription,
     imageItem,
+    imageObject,
     left
 }: Props) => {
     const isAuthorYou = author.id === "you"
     const [number, setNumber] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [isOpen, setIsOpen] = useState(transcription ? false : true)
+
+    const isAuthorUnknown = author.id === "unknown"
 
     // For "internal memory", randomize two number strings
     useEffect(() => {
@@ -65,7 +69,7 @@ const QuoteContentRow = ({
             ${transcription ? 'transcription' : ''} 
             
             ${isOpen ? 'open' : ''}`}>
-                {none || !isOpen ? 
+                {none || !isOpen || isAuthorUnknown ? 
                     null : 
                     <div className="author-box">
                         {shrink ?
@@ -77,7 +81,7 @@ const QuoteContentRow = ({
                                     <BlinkingGrid />
                                 </div>
                                 :
-                                <div className="image" style={{backgroundImage: "url(" + imageItem.src + ")"}}></div>
+                                <div className={`image ${imageObject.quoteClasses ? imageObject.quoteClasses : ''}`} style={{backgroundImage: "url(" + imageItem.src + ")"}}></div>
                         }
                         
                         <div className="text">

@@ -32,7 +32,7 @@ export const getAllPosts = async () => {
   // Load in every post type (must be done using the Astro way).
   // LORE
   const lorePosts = await getCollection(PostType.Lore, ({ data }) => {
-    return data.draft !== true;
+    return data.draft !== true && data.hidden !== true;
   });
   const lorePostsProcessed = await processPosts(lorePosts);
 
@@ -40,7 +40,7 @@ export const getAllPosts = async () => {
   const introductionPosts = await getCollection(
     PostType.Introduction,
     ({ data }) => {
-      return data.draft !== true;
+      return data.draft !== true && data.hidden !== true;
     }
   );
   const introductionPostsProcessed = await processPosts(introductionPosts);

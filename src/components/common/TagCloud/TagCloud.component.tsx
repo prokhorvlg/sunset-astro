@@ -1,16 +1,29 @@
 const TagStrategy = {
-    'post-mankind': "post-mankind existentialism",
-    'retro-dreams': "retrofuturistic dreams",
-    'core-mystery': "core mystery"
+    'post-mankind existentialism': "post-mankind existentialism",
+    'retrofuturistic dreams': "retrofuturistic dreams",
+    'core mystery': "core mystery"
+}
+
+interface Props {
+    tags: string[]
+    onCardTagClick?: (arg0: string) => void
 }
 
 // TODO: Add proper tag filtering!
 const TagCloud = ({
-    tags
-}) => {
+    tags,
+    onCardTagClick
+}: Props) => {
     const onTagClick = (e, tag) => {
         e.preventDefault()
-        console.log("tag click!", tag)        
+        console.log("tag click!", tag)
+
+        // If on posts page, affect tag list state
+        if (onCardTagClick) onCardTagClick(tag)
+        else {
+            // If not on posts page, navigate to the posts page with query string
+            window.location.href = `/posts?targetTag=${tag}`
+        }
     }
 
     return (

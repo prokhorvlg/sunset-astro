@@ -7,6 +7,7 @@ import ImageContentRow from './ImageContentRow.component'
 interface Props {
   direction?: "vertical" | "horizontal"
   images: ImageId[];
+  noCap?: boolean
 }
 
 const CRUNCH_WIDTH = 1300
@@ -37,4 +38,5 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
 <ImageContentRow 
   client:only="react"
   imageItems={imagesProcessed} 
+  noCap={Astro.props.noCap}
 />

@@ -8,14 +8,7 @@ const HeadingContentRow = ({
     verticalSpacing,
     color = ''
 }) => {
-    const ColorContainer = styled.div`
-        h3, .floater {
-            color: ${color || "auto"};
-        }
-        p {
-            background-color: ${color || "auto"};
-        }
-    `;
+    
     // Style reserved for home page blippy?
     if (type === 'blips') {
         return (
@@ -45,7 +38,7 @@ const HeadingContentRow = ({
     if (type === 'world-heading') {
         return (
             <ContentRow classes={`heading-content-row world-heading ${classes}`} verticalSpacing={verticalSpacing}>
-                <ColorContainer>
+                <ColorContainer color={color}>
                     <div className="floater">ASTROSCOPE</div>
 
                     {children}
@@ -64,5 +57,14 @@ const HeadingContentRow = ({
         </ContentRow>
     )
 }
+
+const ColorContainer = styled.div`
+    h3, .floater {
+        color: ${props => props.color || "auto"};
+    }
+    p {
+        background-color: ${props => props.color || "auto"};
+    }
+`;
 
 export default HeadingContentRow

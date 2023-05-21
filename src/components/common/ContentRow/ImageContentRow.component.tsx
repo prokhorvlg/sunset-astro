@@ -5,14 +5,16 @@ import ImageGallery, { FullImageDetails } from "@/components/common/ImageGallery
 
 interface PropTypes {
     imageItems: (FullImageDetails | null)[]
+    noCap?: boolean
 }
 
 const ImageContentRow = ({
-    imageItems
+    imageItems,
+    noCap
 }: PropTypes) => {
     return (
         <ContentRow classes="image-content-row">
-            <ImageGallery imageItems={imageItems}/>
+            <ImageGallery imageItems={imageItems} noCap={noCap}/>
         </ContentRow>
     )
 }

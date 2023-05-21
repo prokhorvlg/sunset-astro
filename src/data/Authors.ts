@@ -14,7 +14,12 @@ export const AuthorTerminal: QuoteAuthor = {
     image: "",
     name: "Internal Memory",
     description: "The little voices in your head."
-
+}
+export const AuthorUnknown: QuoteAuthor = {
+    id: "unknown",
+    image: "",
+    name: "UNKNOWN",
+    description: "A transmission of unknown source."
 }
 export const AuthorUniserve: QuoteAuthor = {
     id: "uniserve",
@@ -31,6 +36,6 @@ export const AuthorUniserve: QuoteAuthor = {
 export const AuthorCAN: QuoteAuthor = {
     id: "can",
     name: "Trash CAN",
-    image: "can-memo",
+    image: "can-memo-crop",
     description: "Trusty companion. Transcribes image text, bites intruders."
 }

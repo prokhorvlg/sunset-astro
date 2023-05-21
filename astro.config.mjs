@@ -17,7 +17,7 @@ export default defineConfig({
     define: {
       'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
     },
-    legacy: { buildSsrCjsExternalHeuristics: true },
-    ssr: { noExternal: ['@emotion/*', 'styled-components'] },
+    //legacy: { buildSsrCjsExternalHeuristics: true },
+    //ssr: { noExternal: ['@emotion/*', 'styled-components'] },
   },
 });

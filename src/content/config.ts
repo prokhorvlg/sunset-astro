@@ -18,7 +18,9 @@ const collectionSetup = {
 			.optional()
 			.transform((str) => (str ? new Date(str) : undefined)),
 		thumbImage: z.string().optional(),
+		thumbAlignment: z.string().optional(),
 		draft: z.boolean().optional(),
+		hidden: z.boolean().optional(),
 		tags: z.array(z.string()).optional()
 	}),
 }

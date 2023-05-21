@@ -25,7 +25,7 @@ interface PropTypes {
     imageDesktopWidth?: number
     imageMobileWidth?: number
     color?: string
-
+    noCap?: boolean
 }
 
 const MAX_WIDTH = 1000 // based on row width max
@@ -35,19 +35,14 @@ const ImageGallery = ({
     classes = '',
     imageDesktopWidth,
     imageMobileWidth,
-    color = ''
+    color = '',
+    noCap = false
 }: PropTypes) => {
-    const ContainerDiv = styled.div`
-        width: ${imageDesktopWidth + "px" || 'auto'};
-        @media screen and (max-width: 900px) {
-            width: ${imageMobileWidth + "px" || 'auto'};
-            max-width: 98%;
-        }
-    `;
+    
 
     return (
         <Gallery>
-            <ContainerDiv className={`gallery-container ${classes}`}>
+            <ContainerDiv className={`gallery-container ${classes}`} imageDesktopWidth={imageDesktopWidth} imageMobileWidth={imageMobileWidth}>
                 {imageItems.map((imageItem) => {
                     if (!imageItem) return null
                     return (
@@ -56,14 +51,23 @@ const ImageGallery = ({
                                 {imageItem.originalObject.artist ? 
                                     <a className="artist-tag" target="_blank" href={imageItem.originalObject.artist.link || ""}>
                                         <img src={imageItem.originalObject.artist.profilePic} width="60"/>
-                                        <span>Drawn by {imageItem.originalObject.artist.name} <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></span>
+                                        <div className="text-container">
+                                            <span className="hide-on-mobile">Created by&nbsp;</span>
+                                            <span className="show-on-mobile">by&nbsp;</span>
+                                            {imageItem.originalObject.artist.name} 
+                                            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                                        </div>
                                     </a> 
                                     :
                                     null
                                 }
                                 {imageItem.originalObject.originalPost ? 
                                     <a className="original-post-tag" href={`/posts/${imageItem.originalObject.originalPost}`} target="_blank">
-                                        <span>Go to original post <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></span>
+                                        <div className="text-container">
+                                            <span className="hide-on-mobile">Go to original post </span>
+                                            <span className="show-on-mobile">Original post </span>
+                                            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+                                        </div>
                                     </a>
                                     : null 
                                 }
@@ -94,7 +98,7 @@ const ImageGallery = ({
                                                     }}
                                                 />
                                             </button>
-                                            {imageItem.originalObject.caption ? 
+                                            {imageItem.originalObject.caption && !noCap ? 
                                                 <div className="top-text">CAPTION // <span className="highlight-orange">{imageItem.originalObject.caption || ""}</span></div>
                                                 : null
                                             }
@@ -110,5 +114,13 @@ const ImageGallery = ({
         </Gallery>
     )
 }
+
+const ContainerDiv = styled.div`
+    width: ${props => props.imageDesktopWidth + "px" || 'auto'};
+    @media screen and (max-width: 900px) {
+        width: ${props => props.imageMobileWidth + "px" || 'auto'};
+        max-width: 98%;
+    }
+`
 
 export default ImageGallery
