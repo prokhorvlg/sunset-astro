@@ -4078,7 +4078,7 @@ $post-heading-width: 1000px;
             width: $all-posts-offset;
             max-width: 100%;
             margin-right: 4px;
-            z-index: 99;
+            z-index: 50;
             @media screen and (max-width: $breakpoint-mobile) {
                 width: 70px;
             }
