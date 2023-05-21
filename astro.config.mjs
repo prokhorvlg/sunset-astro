@@ -10,7 +10,7 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), react(), image()],
   vite: {
     define: {
-      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
+      'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`
     }
   }
 });
