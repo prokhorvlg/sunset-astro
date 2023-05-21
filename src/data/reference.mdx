@@ -19,7 +19,7 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
   images={['Gordon']}
 />
 
-<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING}>
+<HeadingContentRow classes="centered" verticalSpacing={HEADING_VERTICAL_SPACING} client:only="react">
 <img src="/images/Icon_Robots (2).png" width={350} className="image-robot-look"  />
     <h2 className="highlight-orange">Their experiments to erase 'conflict' backfired, and their robots were the only ones left behind.</h2>
 </HeadingContentRow>
