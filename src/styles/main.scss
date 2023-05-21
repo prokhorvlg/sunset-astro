@@ -4026,10 +4026,10 @@ $post-heading-width: 1000px;
 
                 font-family: $font-title;
                 font-weight: 700;
-                letter-spacing: -1px;
+                letter-spacing: -0.5px;
                 line-height: 66px;
                 @media screen and (max-width: $breakpoint-mobile) {
-                    font-size: 34px;
+                    font-size: 32px;
                     line-height: 38px;
                     margin-top: 30px;
                 }
