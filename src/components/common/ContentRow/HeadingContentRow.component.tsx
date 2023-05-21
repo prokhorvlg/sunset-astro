@@ -1,5 +1,7 @@
 import ContentRow from "@/components/common/ContentRow/ContentRow.component"
-import styled from 'styled-components'
+import { styled } from '@stitches/react';
+
+const ColorContainer = styled('div', {});
 
 const HeadingContentRow = ({
     children,
@@ -8,7 +10,6 @@ const HeadingContentRow = ({
     verticalSpacing,
     color = ''
 }) => {
-    
     // Style reserved for home page blippy?
     if (type === 'blips') {
         return (
@@ -38,7 +39,16 @@ const HeadingContentRow = ({
     if (type === 'world-heading') {
         return (
             <ContentRow classes={`heading-content-row world-heading ${classes}`} verticalSpacing={verticalSpacing}>
-                <ColorContainer color={color}>
+                <ColorContainer 
+                    css={{
+                        'h3, .floater': {
+                            color: color
+                        },
+                        'p': {
+                            backgroundColor: color
+                        },
+                      }}
+                >
                     <div className="floater">ASTROSCOPE</div>
 
                     {children}
@@ -57,14 +67,5 @@ const HeadingContentRow = ({
         </ContentRow>
     )
 }
-
-const ColorContainer = styled.div`
-    h3, .floater {
-        color: ${props => props.color || "auto"};
-    }
-    p {
-        background-color: ${props => props.color || "auto"};
-    }
-`;
 
 export default HeadingContentRow

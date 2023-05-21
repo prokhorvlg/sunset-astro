@@ -22,14 +22,14 @@ export const LinksSegment = ({ currentPage = '', isFooter = false }) => {
                     dropText={CommonText.posts}
                     isFooter={isFooter}
                 />
-                <HeaderLink
+                {/*<HeaderLink
                     title="Game"
                     active={currentPage === "/game"}
                     icon={faGamepad}
                     target={CommonLinks.game}
                     dropText={CommonText.game}
                     isFooter={isFooter}
-                />
+    />*/}
                 <HeaderLink
                     title="Credits"
                     active={currentPage === "/credits"}

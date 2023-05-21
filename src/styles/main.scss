@@ -34,19 +34,18 @@ $chicanery-border-radius: 6px;
 
 // FONTS
 // - TITLE FONT
-@import url('https://fonts.googleapis.com/css2?family=Saira:wght@600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700;1,800&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@600;700;800;900&display=swap');
 // - BODY FONT
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
 // - 'CODE' FONT
-//@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@500;600;700&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Consolas:wght@600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@400;500;600;700&display=swap');
 
 $font-title: 'Saira', sans-serif;
 $font-title-condensed: 'Saira Semi Condensed', sans-serif;
-$font-body: 'Barlow', sans-serif;
+$font-body: 'DM Sans', sans-serif;
 $font-code: 'Chivo Mono', sans-serif;
 
 // MIXINS
@@ -186,7 +185,8 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
     line-height: 1.7rem;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
+    font-weight: 500;
     color: $color-sunset-manila;
 }
 
@@ -266,12 +266,12 @@ article.markdown {
         line-height: 36px;
         font-weight: 600;
         position: relative;
-        margin-top: 100px;
+        margin-top: 120px;
         margin-bottom: 30px;
 
         @media screen and (max-width: $breakpoint-mobile) {
-            font-size: 26px;
-            line-height: 34px;
+            font-size: 24px;
+            line-height: 32px;
         }
 
         @include abg-red-diagonal();
@@ -280,10 +280,19 @@ article.markdown {
             display: block;
             position: relative;
             margin-top: 8px;
-            height: 40px;            
+            height: 40px;   
+            
+            position: absolute;
+            //right: 80%;
+            //width: 100px;
+            left: 0px;
+            right: 0;
+            bottom: calc(100% + 20px);
+            height: 20px;
+            z-index: -90;
         }
         &::before {
-            content: "›";
+            //content: "›";
             font-family: $font-code;
             color: $color-sunset-orange;
             display: block;
@@ -309,12 +318,12 @@ article.markdown {
     > h3 {
         font-size: 24px;
         line-height: 34px;
-        font-weight: 700;
+        font-weight: 600;
         position: relative;
         color: $color-sunset-red;
         @media screen and (max-width: $breakpoint-mobile) {
-            font-size: 20px;
-            line-height: 26px;
+            font-size: 22px;
+            line-height: 32px;
         }
 
         &::before {
@@ -340,36 +349,60 @@ article.markdown {
 
     // Links ( ()[] )
     > a, > p a {
+        display: inline-block;
+        text-decoration: none;
+        position: relative;
+        //border-bottom: 2px solid $color-sunset-red;
         color: $color-sunset-red;
-        font-weight: 600;
+        //font-weight: 600;
         &:hover, &:focus {
-            color: $color-background-dark;
-            background: $color-sunset-red;
+            color: $color-sunset-orange;
+            //background: $color-sunset-red;
             text-decoration: none;
+            &::before {
+                background: rgba($color-sunset-red, 0.3);
+                height: 100%;
+                bottom: 0;
+            }
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: 5px;
+            height: 3px;
+            background: rgba($color-sunset-red, 0.4);
+            transition: 0.04s ease-in-out;
+            z-index: -90;
         }
     }
 
     // Paragraphs ( )
     > p {
-        font-size: 20px;
+        font-size: 18px;
         line-height: 32px;
-        margin-bottom: 30px;
+        margin-top: 40px;
+        margin-bottom: 40px;
         letter-spacing: 0.1px;
+        font-weight: 500;
         @media screen and (max-width: $breakpoint-tablet) {
             width: 80%;
-            margin: 30px auto;
+            //margin: 30px auto;
         }
         @media screen and (max-width: $breakpoint-mobile) {
-            font-size: 18px;
-            line-height: 28px;
+            //font-size: 18px;
+            //line-height: 36px;
             width: 90%;
+        }
+        > em {
+            // /color: darken($color-sunset-manila, 5%);
+            //font-weight: 600;
         }
     }
 
     // Lists ( - xyz )
     > ul, > ol {
         li {
-            font-size: 20px;
+            font-size: 18px;
             line-height: 32px;
             margin-bottom: 10px;
             letter-spacing: 0.1px;
@@ -414,11 +447,13 @@ article.markdown {
     }
     > p, > ul > li {
         > code {
+            background-color: rgba($color-sunset-red, 0.2);
+            padding: 0px 3px 2px;
             &::before {
-                content: '«';
+                //content: '«';
             }
             &::after {
-                content: '»';
+                //content: '»';
             }
         }
     }
@@ -426,15 +461,15 @@ article.markdown {
         font-family: $font-code;
         color: $color-sunset-orange;
         font-weight: 500;
-        letter-spacing: 0px;
-        
+        letter-spacing: -0.5px;
     }
 
     // Blockquotes ( > )
     > blockquote {
         border-left: 2px solid $color-sunset-red;
+        
         padding: 1px 20px 1px 20px;
-        background: rgba($color-sunset-red, 0.1);
+        background: rgba($color-background-dark, 1);
         
         @media screen and (max-width: $breakpoint-tablet) {
             width: 80%;
@@ -446,7 +481,7 @@ article.markdown {
             margin-bottom: 10px;
         }
         p {
-            color: $color-sunset-orange;
+            color: #afafaf;
         }
     }
 
@@ -920,6 +955,7 @@ $quoteMobileSidePadding: 20px;
             margin-top: 20px;
             margin-bottom: 20px;
             width: 100%;
+            line-height: 26px;
         }
         p.perfect {
             font-family: monospace;
@@ -941,6 +977,8 @@ $quoteMobileSidePadding: 20px;
         }
         code {
             color: $color-sunset-red;
+            background-color: rgba($color-background-dark, 0.4);
+            padding: 0px 3px 2px;
         }
         hr {
             border-color: $color-sunset-red;
@@ -1023,6 +1061,7 @@ $quoteMobileSidePadding: 20px;
                     display: flex;
                     flex-direction: column;
                     .name {
+                        display: inline-block;
                         font-family: $font-title;
                         font-weight: 600;
                         font-size: 24px;
@@ -1032,14 +1071,23 @@ $quoteMobileSidePadding: 20px;
                         @media screen and (max-width: $breakpoint-quote) {
                             text-align: left;
                         }
+
+                        text-decoration: none;
+                        &:hover, &:focus {
+                            color: white !important;
+                            background-color: rgba(white, 0.1);
+                        }
                     }
                     .description {
-                        margin-top: 8px;
+                        margin-top: 2px;
                         text-align: left;
                         color: $color-sunset-red;
-                        font-family: $font-code;
-                        font-size: 14px;
+                        //font-family: $font-code;
+                        font-size: 15px;
                         line-height: 20px;
+
+                        font-weight: 500;
+                        //letter-spacing: -0.5px;
                         @media screen and (max-width: $breakpoint-quote) {
                             margin-top: 4px;
                             font-size: 12px;
@@ -3614,8 +3662,7 @@ $postsGalleryCutoff: 768px;
     
                     .title {
                         font-family: $font-title;
-                        line-height: 30px;
-                        font-size: 24px;
+                        line-height: 32px;
                         margin: 0px 0 0px 0;
                         color: $color-sunset-red;
                         font-weight: 600;
@@ -3623,10 +3670,10 @@ $postsGalleryCutoff: 768px;
                         text-overflow: ellipsis;
                         //white-space:nowrap;
 
-                        font-family: $font-code;
-                        font-size: 18px;
-                        font-weight: 500;
-                        letter-spacing: 0;
+                        //font-family: $font-code;
+                        font-size: 20px;
+                        font-weight: 600;
+                        letter-spacing: -0.5px;
 
                         overflow: hidden;
                         display: -webkit-box;
@@ -3708,9 +3755,10 @@ $postsGalleryCutoff: 768px;
                 grid-template-rows: 1.2fr 1fr 40px;
                 border-radius: 6px;
 
-                background: linear-gradient(to bottom, #360e01, #681703);
+                background: linear-gradient(to bottom, #360e01 0%, #681703 100%);
                         @include abg(0.4);
                         @include abg-red-dot-grid();
+
                 .post-card-top {
                     border: none;
                     flex-basis: 50%;
@@ -3733,16 +3781,17 @@ $postsGalleryCutoff: 768px;
                     justify-content: center;
                     align-items: center;
                     background: none;
+                    //border-bottom: 2px solid $color-sunset-red;
                     &::after {
                         display: none;
                     }
                     
                     h3.title {
                         text-align: center;
-                        font-size: 26px;
-                        font-family: $font-code;
-                        letter-spacing: -1px;
-                        color: $color-sunset-orange;
+                        font-size: 24px;
+                        //font-family: $font-code;
+                        letter-spacing: -0.5px;
+                        //color: $color-sunset-orange;
                         margin-bottom: 10px;
                         display: block;
                         max-height: none;
@@ -3752,17 +3801,17 @@ $postsGalleryCutoff: 768px;
                         }
                     }
                     p.description {
-                        color: $color-sunset-red;
+                        //color: $color-sunset-red;
                         margin-bottom: 30px;
                         font-size: 16px;
                         line-height: 22px;
 
                         max-width: 400px;
-
                         overflow: hidden;
                         text-overflow: ellipsis;
+
                         display: -webkit-box;
-                        max-height:66px; 
+                        max-height:66px;
                         -webkit-line-clamp: 3; 
                         -webkit-box-orient: vertical;
                         @media screen and (max-width: $breakpoint-mobile) {
@@ -3812,12 +3861,14 @@ $postsGalleryCutoff: 768px;
         border: $size-line-width solid transparent;
         background-color: $color;
         color: $textColor;
+        font-weight: 500;
 
         &.inactive {
             background-color: $color-ultradark-red;
             color: $color-sunset-red;
             border-color: rgba($color-sunset-red, 0.2);
             &:hover {
+                color: white;
                 border-color: white;
             }
         }
@@ -3841,6 +3892,7 @@ $postsGalleryCutoff: 768px;
         border-radius: 5px;
         padding: 0px 5px;
         font-size: 16px;
+        font-weight: 500;
 
         cursor: pointer;
         overflow: hidden;
@@ -3857,6 +3909,7 @@ $postsGalleryCutoff: 768px;
         @include tag-color(".core", $color-core-mystery);
 
         &:hover {
+            color: white;
             border-color: white;
         }
 
@@ -3964,12 +4017,17 @@ $post-heading-width: 1000px;
             }
             .title {
                 margin: 40px 0 0 0;
-                font-weight: 700;
+                //font-weight: 700;
                 color: $color-sunset-orange;
-                font-family: $font-title-condensed;
+                //font-family: $font-title-condensed;
                 font-size: 55px;
-                line-height: 62px;
-                letter-spacing: -0.1px;
+                //line-height: 62px;
+                //letter-spacing: -0.1px;
+
+                font-family: $font-title;
+                font-weight: 700;
+                letter-spacing: -1px;
+                line-height: 66px;
                 @media screen and (max-width: $breakpoint-mobile) {
                     font-size: 34px;
                     line-height: 38px;
@@ -3977,7 +4035,7 @@ $post-heading-width: 1000px;
                 }
             }
             .description {
-                margin: 15px 0 0px 0;
+                margin: 25px 0 0px 0;
                 color: $color-sunset-red;
                 font-family: $font-code;
                 font-size: 20px;
@@ -4221,6 +4279,8 @@ $post-heading-width: 1000px;
                 .description {
                     text-align: center;
                     margin-bottom: 0;
+                    font-weight: 600;
+                    letter-spacing: -0.5px;
                     @media screen and (max-width: $breakpoint-mobile) {
                         font-size: 16px;
                         line-height: 24px;
@@ -4356,6 +4416,7 @@ $post-heading-width: 1000px;
         flex-direction: column;
         align-items: center;
         img {
+
             max-width: 100%;
             @media screen and (max-width: $breakpoint-mobile) {
                 max-width: 80%;
@@ -4366,7 +4427,9 @@ $post-heading-width: 1000px;
             margin-top: 20px;
             align-items: center;
             text-align: center;
+            margin-bottom: 80px;
             @media screen and (max-width: $breakpoint-mobile) {
+                margin-bottom: 30px;
                 margin-top: 10px;
             }
             .eyebrow {
@@ -4375,23 +4438,26 @@ $post-heading-width: 1000px;
                 font-weight: 700;
                 letter-spacing: 2px;
             }
+            // introduction title on page
             h1.title {
                 margin-top: 0;
-                margin-bottom: 30px;
+                margin-bottom: 40px;
                 font-family: $font-title;
-                font-size: 38px;
-                letter-spacing: 1px;
-                text-transform: uppercase;
+                font-size: 48px;
+                font-weight: 700;
+                letter-spacing: -0.5px;
+                //text-transform: uppercase;
                 @media screen and (max-width: $breakpoint-mobile) {
                     font-size: 24px;
                     line-height: 30px;
                     max-width: 95%;
-                    margin-top: 20px;
+                    margin-top: 5px;
                     margin-left: auto;
                     margin-right: auto;
                 }
             }
             p.description {
+                margin-bottom: 30px;
                 @media screen and (max-width: $breakpoint-mobile) {
                     margin-left: 25px;
                     margin-right: 25px;

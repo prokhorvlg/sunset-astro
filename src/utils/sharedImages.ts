@@ -443,10 +443,10 @@ export const Images: ImageDetails[] = [
     // Sunset logo
     {
         id: 'sunset-initiative-logo',
-        src: "/images/sunset-logo.png",
+        src: "/images/sunset-logo-itself.png",
         alt: "Logo of the Sunset Research Initiative",
         width: 514,
-        height: 658
+        height: 458//658
     },
     // PLANET MARBLES
     {

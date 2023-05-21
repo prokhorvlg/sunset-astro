@@ -2,9 +2,9 @@ import React from 'react'
 import { Gallery, Item } from "react-photoswipe-gallery";
 import 'photoswipe/dist/photoswipe.css'
 import { ImageDetails } from "@/utils/sharedImages";
-import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { styled } from '@stitches/react';
 
 export interface FullImageDetails {
     originalObject: ImageDetails                        // Contains the original file source
@@ -30,6 +30,8 @@ interface PropTypes {
 
 const MAX_WIDTH = 1000 // based on row width max
 
+const ContainerDiv = styled('div', {});
+
 const ImageGallery = ({
     imageItems,
     classes = '',
@@ -38,11 +40,18 @@ const ImageGallery = ({
     color = '',
     noCap = false
 }: PropTypes) => {
-    
-
     return (
         <Gallery>
-            <ContainerDiv className={`gallery-container ${classes}`} imageDesktopWidth={imageDesktopWidth} imageMobileWidth={imageMobileWidth}>
+            <ContainerDiv 
+                className={`gallery-container ${classes}`} 
+                css={{
+                    width: imageDesktopWidth + "px" || 'auto',
+                    '@media screen and (max-width: 900px)': {
+                        width: imageMobileWidth + "px" || 'auto',
+                        maxWidth: '98%'
+                    }
+                  }}
+            >
                 {imageItems.map((imageItem) => {
                     if (!imageItem) return null
                     return (
@@ -114,13 +123,5 @@ const ImageGallery = ({
         </Gallery>
     )
 }
-
-const ContainerDiv = styled.div`
-    width: ${props => props.imageDesktopWidth + "px" || 'auto'};
-    @media screen and (max-width: 900px) {
-        width: ${props => props.imageMobileWidth + "px" || 'auto'};
-        max-width: 98%;
-    }
-`
 
 export default ImageGallery

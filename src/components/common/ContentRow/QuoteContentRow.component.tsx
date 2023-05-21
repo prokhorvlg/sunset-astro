@@ -85,7 +85,7 @@ const QuoteContentRow = ({
                         }
                         
                         <div className="text">
-                            <span className="name">{author.name}</span>
+                            <a className="name" target="_blank" href={author.originalPage ? author.originalPage : "/"}>{author.name}</a>
                             <span className="description">{author.description}</span>
                         </div>
                     </div>
