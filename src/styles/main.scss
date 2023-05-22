@@ -3,8 +3,8 @@
 
 $color-sunset-manila: #ffe9d3;
 $color-sunset-yellow: #ffd901;
-$color-sunset-orange: #ffaa01;
-$color-sunset-red: #ff3d00;
+$color-sunset-orange: #ffae0b;
+$color-sunset-red: #fd460e;
 $color-sunset-aqua: #46ffff;
 $color-sunset-melancholic: #0ec7ff;
 
@@ -406,6 +406,7 @@ article.markdown {
             line-height: 32px;
             margin-bottom: 10px;
             letter-spacing: 0.1px;
+            font-weight: 500;
             &::marker {
                 color: $color-sunset-red;
             }
