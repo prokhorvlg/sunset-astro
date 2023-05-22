@@ -36,7 +36,7 @@ const SunsetHeader = ({ currentPage = "" }: PropTypes) => {
                 <div className="header-wrap main-segment-wrap filled">
                     <div className="main-segment">
                         <div className="main-segment-stipple left">{<DotGrid />}</div>
-                        <div className="main-segment-title">
+                        <a className="main-segment-title" href="/">
                             <img
                                 className="main-logo"
                                 src="/images/main-logo-alone.png"
@@ -47,7 +47,7 @@ const SunsetHeader = ({ currentPage = "" }: PropTypes) => {
                             <div className="main-segment-title-text">
                                 Sunset <span>System</span>
                             </div>
-                        </div>
+                        </a>
                         <div className="main-segment-stipple right">{<DotGrid />}</div>
                     </div>
                 </div>

@@ -62,18 +62,52 @@ const SunsetFooter = ({ currentPage = '' }) => {
                             <Button type={ButtonType.Dialog}><>Submit</></Button>
                         </div>*/}
                         <div className="email-form">
-                            <iframe 
+                            <div className="email-form-embed" dangerouslySetInnerHTML={{ __html: MailchimpEmailForm }}></div>
+                            {/*<iframe 
                                 data-w-type="embedded" 
                                 src="https://9yjq.mjt.lu/wgt/9yjq/o18/form?c=91733615" 
-                                width="100%" style={{flex: 1}}/>
-                            <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>
-                        </div>
+                                width="100%" style={{flex: 1, color: "white"}}/>
+                    <script type="text/javascript" src="https://app.mailjet.com/pas-nc-embedded-v1.js"></script>*/}
 
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
+const MailchimpEmailForm = `
+    
+        <div id="mc_embed_signup">
+            <form action="https://gmail.us8.list-manage.com/subscribe/post?u=0d610baae3db500c779266023&amp;id=cf022598ec&amp;f_id=000516e0f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+                <h2>Sign up for updates</h2>
+                <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+                <div className="mc-field-group">
+                    <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+                </label>
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                    <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+                </div>
+                <div id="mce-responses" className="clear foot">
+                    <div class="response" id="mce-error-response" style="display:none"></div>
+                    <div class="response" id="mce-success-response" style="display:none"></div>
+                </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_0d610baae3db500c779266023_cf022598ec" tabindex="-1" value=""></div>
+                    <div class="optionalParent">
+                        <div class="clear foot">
+                            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                            <p class="brandingLogo"><a href="http://eepurl.com/irKSSg" title="Mailchimp - email marketing made easy and fun"><img src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    </link>
+    `
+
 
 export default SunsetFooter

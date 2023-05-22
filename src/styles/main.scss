@@ -1350,6 +1350,15 @@ $quoteMobileSidePadding: 20px;
                     flex-direction: row;
                     align-items: center;
                     white-space: nowrap;
+                    text-decoration: none;
+                    border-radius: $chicanery-border-radius;
+                    border: 2px solid transparent;
+
+                    &:hover, &:focus {
+                        background-color: rgba($color-sunset-yellow, 0.5);
+                        //transform: scale(1.05);
+                        border-color: $color-sunset-yellow;
+                    }
                     @media screen and (max-width: $breakpoint-tablet) {
                         padding: 0 10px 0 0px;
                     }
@@ -1998,8 +2007,9 @@ $breakpoint-footer: $breakpoint-tablet;
                     }
                     p {
                         color: $color-background-dark;
-                        font-weight: bold;
-                        margin: -10px 0 0 0;
+                        font-family: $font-code;
+                        font-weight: 600;
+                        margin: -5px 0 0 0;
                         padding: 0;
                         white-space: nowrap;
                     }
@@ -2026,7 +2036,7 @@ $breakpoint-footer: $breakpoint-tablet;
                     color: $color-background-dark;
                     font-family: $font-body;
                     font-size: 16px;
-                    line-height: 22px;
+                    line-height: 26px;
                     font-weight: 600;
                     margin: 15px auto;
                     width: 95%;
@@ -2131,7 +2141,7 @@ $breakpoint-footer: $breakpoint-tablet;
                 }
                 > h3 {
                     @include abg-child();
-                    font-family: $font-body;
+                    font-family: $font-title;
                     font-weight: 700;
                     margin: 30px 0 20px 0px;
                     text-align: center;
@@ -2178,6 +2188,13 @@ $breakpoint-footer: $breakpoint-tablet;
                         height: 100%;
                         max-width: 400px;
                         margin: 0 auto;
+                    }
+
+                    .email-form-embed {
+                        #mc_embed_signup_scroll {
+                            display: flex;
+                            flex-direction: column;
+                        }
                     }
                 }
                 
@@ -4571,6 +4588,7 @@ $post-heading-width: 1000px;
         display: inline-block;
         margin-top: 2px;
         margin-bottom: 3px;
+        font-weight: 500;
 
         @media screen and (max-width: $breakpoint-mobile) {
             padding: 15px;
