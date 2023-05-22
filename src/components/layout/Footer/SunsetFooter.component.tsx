@@ -62,8 +62,8 @@ const SunsetFooter = ({ currentPage = '' }) => {
                             <Button type={ButtonType.Dialog}><>Submit</></Button>
                         </div>*/}
                         <div className="email-form">
-                            <div className="email-form-embed" dangerouslySetInnerHTML={{ __html: MailchimpEmailForm }}></div>
-                            {/*<iframe 
+                            {/*<div className="email-form-embed" dangerouslySetInnerHTML={{ __html: MailchimpEmailForm }}></div>
+                            <iframe 
                                 data-w-type="embedded" 
                                 src="https://9yjq.mjt.lu/wgt/9yjq/o18/form?c=91733615" 
                                 width="100%" style={{flex: 1, color: "white"}}/>
