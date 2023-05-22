@@ -253,7 +253,7 @@ export const Images: ImageDetails[] = [
         caption: "Pan Sol's Crane 850 ULTRA was one of many spaceplanes that ferried people and cargo among the living worlds.",
         width: 2818,
         height: 1831,
-        originalPost: "sri-brochure",
+        originalPost: "pan-sol-crane",
         artist: ArtistProkhor
     },
     {

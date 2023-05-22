@@ -423,6 +423,7 @@ article.markdown {
 
     // Code blocks ( ` ` )
     > pre {
+        word-wrap: normal;
         padding: 20px;
         border: 2px solid $color-sunset-orange;
         border-radius: $chicanery-border-radius;
@@ -466,10 +467,11 @@ article.markdown {
 
     // Blockquotes ( > )
     > blockquote {
-        border-left: 2px solid $color-sunset-red;
+        //border-left: 2px solid $color-sunset-red;
+        margin-top: -20px;
+        border-top: 2px dotted $color-sunset-red;
         
-        padding: 1px 20px 1px 20px;
-        background: rgba($color-background-dark, 1);
+        //padding: 1px 20px 1px 20px;
         
         @media screen and (max-width: $breakpoint-tablet) {
             width: 80%;
@@ -481,7 +483,9 @@ article.markdown {
             margin-bottom: 10px;
         }
         p {
-            color: #afafaf;
+            color: $color-sunset-orange;
+            font-family: $font-code;
+            font-style: italic;
         }
     }
 
