@@ -467,25 +467,20 @@ article.markdown {
 
     // Blockquotes ( > )
     > blockquote {
-        //border-left: 2px solid $color-sunset-red;
         margin-top: -20px;
         border-top: 2px dotted $color-sunset-red;
-        
-        //padding: 1px 20px 1px 20px;
-        
+        margin-bottom: 35px;
         @media screen and (max-width: $breakpoint-tablet) {
-            width: 80%;
-            margin: 30px auto;
-        }
-        @media screen and (max-width: $breakpoint-mobile) {
-            width: 80%;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            width: 90%;
         }
         p {
             color: $color-sunset-orange;
             font-family: $font-code;
             font-style: italic;
+            font-size: 16.8px;
+            @media screen and (max-width: $breakpoint-mobile) {
+                font-size: 15px;
+            }
         }
     }
 
