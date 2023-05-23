@@ -119,6 +119,7 @@ body {
 }
 main {
     flex: 1;
+    max-width: 100%;
 }
 .mobile-only {
     display: none;
@@ -227,6 +228,48 @@ input[type=text] {
     }
 }
 
+@mixin BasicLinkStyle {
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    color: $color-sunset-red;
+    &:hover, &:focus {
+        color: $color-sunset-orange;
+        text-decoration: none;
+        &::before {
+            background: rgba($color-sunset-red, 0.3);
+            height: 100%;
+            bottom: 0;
+        }
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0; right: 0; bottom: 5px;
+        height: 3px;
+        background: rgba($color-sunset-red, 0.4);
+        transition: 0.04s ease-in-out;
+        z-index: -90;
+    }
+    .active-icon {
+        display: none;
+        position: absolute;
+        left: -18px;
+        top: 50%;
+        transform: translateY(calc(-50% - 2px));
+    }
+
+    &.active {
+        color: $color-sunset-orange;
+        &::before {
+            background: rgba($color-sunset-red, 0.4)
+        }
+        .active-icon {
+            display: block;
+        }
+    }
+}
+
 .tiny-code {
     text-transform: uppercase;
     color: $color-sunset-orange;
@@ -258,6 +301,11 @@ article.markdown {
             line-height: 32px;
             width: 90%;
         }
+
+        // Used only to transfer data to table of contents
+        i {
+            display: none;
+        }
     }
 
     // Secondary heading
@@ -266,12 +314,21 @@ article.markdown {
         line-height: 36px;
         font-weight: 600;
         position: relative;
-        margin-top: 120px;
+        margin-top: 20px;
         margin-bottom: 30px;
-
+        padding-top: 100px;
         @media screen and (max-width: $breakpoint-mobile) {
             font-size: 24px;
             line-height: 32px;
+        }
+
+        span.short {
+            position: absolute;
+            font-family: $font-code;
+            color: $color-sunset-red;
+            font-size: 18px;
+            font-weight: 500;
+            bottom: calc(100% - 62px);
         }
 
         @include abg-red-diagonal();
@@ -280,14 +337,12 @@ article.markdown {
             display: block;
             position: relative;
             margin-top: 8px;
-            height: 40px;   
-            
+            height: 40px;
+
             position: absolute;
-            //right: 80%;
-            //width: 100px;
-            left: 0px;
+            left: 0;
             right: 0;
-            bottom: calc(100% + 20px);
+            bottom: calc(100% - 80px);
             height: 20px;
             z-index: -90;
         }
@@ -315,7 +370,7 @@ article.markdown {
     // ◻ ▒ ›
 
     // Tertiary heading
-    > h3 {
+    > h3, > h4 {
         font-size: 24px;
         line-height: 34px;
         font-weight: 600;
@@ -324,6 +379,15 @@ article.markdown {
         @media screen and (max-width: $breakpoint-mobile) {
             font-size: 22px;
             line-height: 32px;
+        }
+
+        span.short {
+            display: none;
+            font-family: $font-code;
+            color: $color-sunset-orange;
+            font-size: 16px;
+            font-weight: 500;
+            bottom: calc(100% - 5px);
         }
 
         &::before {
@@ -349,31 +413,7 @@ article.markdown {
 
     // Links ( ()[] )
     > a, > p a {
-        display: inline-block;
-        text-decoration: none;
-        position: relative;
-        //border-bottom: 2px solid $color-sunset-red;
-        color: $color-sunset-red;
-        //font-weight: 600;
-        &:hover, &:focus {
-            color: $color-sunset-orange;
-            //background: $color-sunset-red;
-            text-decoration: none;
-            &::before {
-                background: rgba($color-sunset-red, 0.3);
-                height: 100%;
-                bottom: 0;
-            }
-        }
-        &::before {
-            content: '';
-            position: absolute;
-            left: 0; right: 0; bottom: 5px;
-            height: 3px;
-            background: rgba($color-sunset-red, 0.4);
-            transition: 0.04s ease-in-out;
-            z-index: -90;
-        }
+        @include BasicLinkStyle();
     }
 
     // Paragraphs ( )
@@ -648,11 +688,6 @@ article.markdown {
             margin-left: 30px;
         }
     }
-}
-
-// - CONTENT ROWS
-.text-content-row {
-    
 }
 
 .heading-content-row {
@@ -1030,6 +1065,7 @@ $quoteMobileSidePadding: 20px;
                     border-radius: $chicanery-border-radius;
                     margin-bottom: 20px;
                     flex-shrink: 0;
+                    box-shadow: inset 0 0 15px rgba(black, 0.5);
                     @media screen and (max-width: $breakpoint-quote) {
                         margin: 0 10px 0 0;
                         width: $imageWidth * $mobileShrink;
@@ -1038,21 +1074,21 @@ $quoteMobileSidePadding: 20px;
 
                     &.trash-can-overlay {
                         position: relative;
-                        //border-color: white;
+                        
                         &::before {
                             content: '';
                             position: absolute;
                             top: 0; bottom: 0; left: 0; right: 0;
-                            background: linear-gradient(to bottom, $color-sunset-yellow, $color-sunset-red);
-                            opacity: 0.7;
+                            background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
+                            opacity: 0.9;
                             mix-blend-mode: color;
                         }
                         &::after {
                             content: '';
                             position: absolute;
                             top: 0; bottom: 0; left: 0; right: 0;
-                            background: linear-gradient(to bottom, $color-sunset-yellow, $color-sunset-red);
-                            opacity: 0.6;
+                            background: linear-gradient(to bottom, $color-sunset-orange, #ff8100);
+                            opacity: 0.3;
                             mix-blend-mode: hard-light;
                         }
                     }
@@ -3952,6 +3988,7 @@ $postsGalleryCutoff: 768px;
         justify-content: center;
         align-items: center;
         position: relative;
+        z-index: 60;
         .line {
             flex: 1;
             height: 2px;
@@ -4993,4 +5030,91 @@ $post-heading-width: 1000px;
     width: $size-max-width-wide-content;
     max-width: 100%;
     margin: 200px auto 0 auto !important;
+}
+
+$aside-sticky-breakpoint: 1800px;
+.aside-container {
+    
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    @media screen and (max-width: $aside-sticky-breakpoint) {
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+}
+
+// Table of contents
+.toc-container {
+    position: sticky;
+    width: 0;
+    z-index: 60;
+    top: 0;
+    padding-top: 40px;
+    margin-top: 40px;
+    
+    @media screen and (max-width: $aside-sticky-breakpoint) {
+        position: relative;
+        width: 1000px;
+        top: auto;
+        padding-top: 0;
+        margin-top: 20px;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+        width: 80%;
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+        width: 90%;
+    }
+    .toc {
+        h3 {
+            min-width: 300px;
+            display: block;
+            margin-left: 40px;
+            font-weight: 500;
+            font-family: $font-code;
+            color: $color-sunset-orange;
+            @media screen and (max-width: $breakpoint-tablet) {
+                margin-left: 0;
+            }
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            margin-left: 40px;
+            @media screen and (max-width: $breakpoint-tablet) {
+                margin-left: 0;
+            }
+
+            li.table-item {
+                list-style: none;
+                a {
+                    @include BasicLinkStyle();
+                    line-height: 32px;
+                    font-weight: 600;
+                    span {
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        display: inline-block;
+                        margin-bottom: -10px;
+                        max-width: 500px;
+                        @media screen and (max-width: 2000px) {
+                            max-width: 300px;
+                        }
+                        @media screen and (max-width: $aside-sticky-breakpoint) {
+                            max-width: 100%;
+                        }
+                    }
+                }
+                &.depth-3 {
+                    margin-left: 20px;
+                }
+                &.depth-4 {
+                    margin-left: 40px;
+                }
+            }
+        }
+    }
 }

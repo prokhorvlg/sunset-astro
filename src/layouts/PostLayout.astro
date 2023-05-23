@@ -8,6 +8,7 @@ import PostNavigationBar from '@/components/post/PostNavigationBar.component';
 
 import { findAdjacentObjects } from '@/utils/posts';
 import { processPost, sortPostsByPubDate } from '@/utils/astroHelpers';
+import TableOfContents from '@/components/common/TableOfContents/TableOfContents.component';
 
 const { post, image = null } = Astro.props;
 const posts = await Astro.glob('../content/**/*.mdx');
@@ -22,6 +23,7 @@ const { previousPost, nextPost } = findAdjacentObjects(sortedPosts, post.data.ti
 
 const processedPost = await processPost(post)
 const processedThumb = processedPost.processedThumbImage
+const { headings } = await post.render();
 ---
 
 <!DOCTYPE html>
@@ -36,12 +38,15 @@ const processedThumb = processedPost.processedThumbImage
 	</head>
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
-		<main>
-			<PostHeading post={post} processedThumb={processedThumb} client:only />
-            <MarkdownWrapper><slot /></MarkdownWrapper>
-			<PostNavigationBar previousPost={previousPost} nextPost={nextPost}/>
-			<!-- <JamComments path={url} /> -->
-		</main>
+		<PostHeading post={post} processedThumb={processedThumb} client:only />
+		<div class="aside-container">
+			<TableOfContents headings={headings} client:only />
+			<main>
+				<MarkdownWrapper><slot /></MarkdownWrapper>
+				<PostNavigationBar previousPost={previousPost} nextPost={nextPost}/>
+				<!-- <JamComments path={url} /> -->
+			</main>
+		</div>
 		<SunsetFooter client:only currentPage={Astro.url.pathname} />
 	</body>
 </html>
