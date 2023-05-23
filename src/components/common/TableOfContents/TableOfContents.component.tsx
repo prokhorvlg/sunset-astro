@@ -17,10 +17,16 @@ const TableOfContents = ({ headings }: Props) => {
     // Contains slug for current active heading
     const [activeHeading, setActiveHeading] = useState<string>("");
 
-
     // Add an event listener listening for scroll
     useEffect(() => {
-        const articleHeadings = document.querySelectorAll('article h2');
+        const articleHeadings = Array.from(document.querySelectorAll('article h2, article h3'))
+            // Prunes any headings hidden from the toc
+            .filter((el) => {
+                if (!el.textContent) return false
+                return !el.textContent.includes(':hide:')
+            });
+        if (!articleHeadings) return         
+
         const handleScroll = () => {
             const bodyTop = document.body.getBoundingClientRect().top
             const scrollPosition = window.scrollY;
