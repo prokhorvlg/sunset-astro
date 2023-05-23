@@ -1,0 +1,37 @@
+---
+title: "Zero-G Coffee Makers"
+mainText: "A collection of zero-g ☕ coffee makers from the Era of Creation."
+subText: "They made those endless nights through the starry void just a little more bearable."
+pubDate: "Dec 6 2022"
+thumbImage: "zero-g-coffee-makers"
+tags:
+  - retrofuturistic dreams
+  - gadget
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
+
+<ImageContentRowRender 
+  images={['zero-g-coffee-makers']}
+/>
+
+They made those endless nights through the starry void just a little more bearable. Each thumper had at least a hundred of these bad boys to keep the crew going. Might be a bit heavy, but it's worth every kilogram!
+
+- The `Hufschmidt 5600`, a sleek and complex device with 55 different modes, often used on Coalition thumpers.
+- The standard coffee maker of the interplanetary Union - the `Sultan ABK-1568` - doubled as a bludgeoning tool, and makes a strange grinding noise.
+- Finally, the `RUSL 229` is what spacers reached for when they settled. Better than a capsule, but worse than a proper brew.
+
+<QuoteContentRowRender author={AuthorCAN} transcription>
+`HUFSCHMIDT 5600`: German over-engineering
+
+`ABK-15BV SULTAN`: Might of the Union!
+
+`RUSL 229`: Gets job done.
+</QuoteContentRowRender>
+
+<ImageContentRowRender 
+  images={['coffee-maker-hufschmidt', 'coffee-maker-rusl', 'coffee-maker-sultan']}
+/>

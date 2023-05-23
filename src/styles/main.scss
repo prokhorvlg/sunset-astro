@@ -50,14 +50,22 @@ $font-code: 'Chivo Mono', sans-serif;
 
 // MIXINS
 // - ::after background pattern (abg)
+@mixin bgPattern ($opacity: 0.4) {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    opacity: $opacity;
+    user-select: none;
+    pointer-events: none;
+}
 @mixin abg ($opacity: 0.4) {
     &::after {
-        content: "";
-        position: absolute;
-        top: 0; bottom: 0; left: 0; right: 0;
-        opacity: $opacity;
-        user-select: none;
-        pointer-events: none;
+        @include bgPattern($opacity);
+    }
+}
+@mixin bbg ($opacity: 0.4) {
+    &::before {
+        @include bgPattern($opacity);
     }
 }
 // abg-child: applied to the child, to make sure it is above the background.
@@ -3979,6 +3987,37 @@ $postsGalleryCutoff: 768px;
             padding-right: 2px;
         }
 
+        @mixin canonTag ($color) {
+            position: relative;
+            @include bbg(1);
+            font-family: $font-code;
+            font-weight: 600;
+            &::before {
+                z-index: -1;
+                background: url('/images/patterns/dark-diag.svg');
+                background-size: 110px;
+            }
+            &::after {
+                content: '⚠️';
+                font-family: $font-code;
+            }
+            border-color: $color;
+            color: $color;
+            filter: drop-shadow(0px 0px 10px rgba(black, 0.5));
+
+            &:hover, &:focus {
+                background-color: rgba($color-sunset-orange, 0.3);
+                border-color: white;
+                color: white;
+            }
+        }
+        &.semi-canon {
+            @include canonTag(rgb(255, 174, 0));
+        }
+        &.not-canon {
+            @include canonTag(rgb(255, 51, 0));
+        }
+
         .close-mark {
             margin-left: 5px;
         }
@@ -5077,6 +5116,13 @@ $aside-sticky-breakpoint: 1800px;
         width: 90%;
     }
     .toc {
+        width: 400px;
+        @media screen and (max-width: 2000px) {
+            width: 300px;
+        }
+        @media screen and (max-width: $aside-sticky-breakpoint) {
+            width: 100%;
+        }
         h3 {
             min-width: 300px;
             display: block;
@@ -5092,29 +5138,26 @@ $aside-sticky-breakpoint: 1800px;
             padding: 0;
             margin: 0;
             margin-left: 40px;
+            max-width: 100%;
             @media screen and (max-width: $breakpoint-tablet) {
                 margin-left: 0;
             }
 
             li.table-item {
                 list-style: none;
+                max-width: 100%;
                 a {
                     @include BasicLinkStyle();
                     line-height: 32px;
                     font-weight: 600;
+                    max-width: 100%;
                     span {
                         white-space: nowrap;
                         text-overflow: ellipsis;
                         overflow: hidden;
                         display: inline-block;
                         margin-bottom: -10px;
-                        max-width: 500px;
-                        @media screen and (max-width: 2000px) {
-                            max-width: 300px;
-                        }
-                        @media screen and (max-width: $aside-sticky-breakpoint) {
-                            max-width: 100%;
-                        }
+                        max-width: 100%;
                     }
                 }
                 &.depth-3 {

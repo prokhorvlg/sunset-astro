@@ -54,7 +54,36 @@ export const Images: ImageDetails[] = [
         width: 927,
         height: 496
     },
-
+    // Sunset logo
+    {
+        id: 'sunset-initiative-logo',
+        src: "/images/sunset-logo-itself.png",
+        alt: "Logo of the Sunset Research Initiative",
+        width: 514,
+        height: 458//658
+    },
+    // PLANET MARBLES
+    {
+        id: 'planet-venus',
+        src: "/images/planet-marbles/Venus.png",
+        alt: "Venus, the hot jungle",
+        width: 1200,
+        height: 1200
+    },
+    {
+        id: 'planet-mars',
+        src: "/images/planet-marbles/Mars.png",
+        alt: "Mars, the world of red sands",
+        width: 1200,
+        height: 1200
+    },
+    {
+        id: 'planet-titan',
+        src: "/images/planet-marbles/Titan.png",
+        alt: "Titan, frigid moon of Saturn",
+        width: 1200,
+        height: 1200
+    },
     // TITLE IMAGES
     {
         id: 'title-cassette',
@@ -440,34 +469,49 @@ export const Images: ImageDetails[] = [
         originalPost: "consensus-of-the-everything",
         classes: ""
     },
-    // Sunset logo
     {
-        id: 'sunset-initiative-logo',
-        src: "/images/sunset-logo-itself.png",
-        alt: "Logo of the Sunset Research Initiative",
-        width: 514,
-        height: 458//658
-    },
-    // PLANET MARBLES
-    {
-        id: 'planet-venus',
-        src: "/images/planet-marbles/Venus.png",
-        alt: "Venus, the hot jungle",
-        width: 1200,
-        height: 1200
+        id: 'zero-g-coffee-makers',
+        src: "/images/content/coffee-makers/zero-g-coffee-makers-main.png",
+        alt: "",
+        width: 1964,
+        height: 1503,
+        originalPost: "zero-g-coffee-makers",
+        classes: ""
     },
     {
-        id: 'planet-mars',
-        src: "/images/planet-marbles/Mars.png",
-        alt: "Mars, the world of red sands",
+        id: 'coffee-maker-hufschmidt',
+        src: "/images/content/coffee-makers/Hufschmidt_Coffee_Maker.png",
+        alt: "",
         width: 1200,
-        height: 1200
+        height: 1200,
+        originalPost: "zero-g-coffee-makers",
+        classes: ""
     },
     {
-        id: 'planet-titan',
-        src: "/images/planet-marbles/Titan.png",
-        alt: "Titan, frigid moon of Saturn",
+        id: 'coffee-maker-rusl',
+        src: "/images/content/coffee-makers/Rusl_Coffee_Maker.png",
+        alt: "",
         width: 1200,
-        height: 1200
+        height: 1200,
+        originalPost: "zero-g-coffee-makers",
+        classes: ""
+    },
+    {
+        id: 'coffee-maker-sultan',
+        src: "/images/content/coffee-makers/Sultan_Coffee_Maker.png",
+        alt: "",
+        width: 1200,
+        height: 1200,
+        originalPost: "zero-g-coffee-makers",
+        classes: ""
+    },
+    {
+        id: 'h500-boglim',
+        src: "/images/content/h500-boglim.png",
+        alt: "",
+        width: 1527,
+        height: 808,
+        originalPost: "h500-boglim",
+        classes: ""
     },
 ]
