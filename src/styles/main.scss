@@ -553,6 +553,16 @@ article.markdown {
     > hr {
         @include break();
     }
+
+    .icon {
+        text-align: center;
+        font-size: 80px;
+        margin-top: 60px;
+        margin-bottom: 60px;
+        &.the-voice {
+            color: $color-post-mankind;
+        }
+    }
 }
 
 // - ANIMATIONS
@@ -5034,7 +5044,6 @@ $post-heading-width: 1000px;
 
 $aside-sticky-breakpoint: 1800px;
 .aside-container {
-    
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
