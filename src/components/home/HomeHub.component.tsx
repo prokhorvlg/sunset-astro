@@ -8,7 +8,10 @@ import { faArrowDown, faArrowRight, faDownLong, faList, faPrint, IconDefinition 
 import Button from '@/components/common/Button/Button.component'
 import { CommonLinks } from '@/data/Common'
 
-const HomeHub = () => {
+const HomeHub = ({
+    variant = "home"
+}) => {
+    const isConclusion = variant === "conclusion"
     return (
         <FullWidthWrapper classes='home-hub'>
             <DialogContainer
@@ -22,24 +25,41 @@ const HomeHub = () => {
                 <div className="hub-container">
                     <div className="hub-main-heading">
                         <div className="hub-border">
-                            <h2>Congrats, you made it through the pitch!</h2>
-                            <p>There's more, but that’s all you need to have a basic understanding of the project.</p>
-                            <p>From here, there are a few ways to go.</p>
+                            {isConclusion ? 
+                                <>
+                                    <h2>You made it through the entire introduction!</h2>
+                                    <p>Here's a hub for the project.</p>
+                                </> :
+                                <>
+                                    <h2>Congrats, you made it through the pitch!</h2>
+                                    <p>There's more, but that’s all you need to have a basic understanding of the project.</p>
+                                    <p>From here, there are a few ways to go.</p>
+                                </>
+                            }
                         </div>
                         <div className="hub-cols">
-                            <HubCol
-                                style="aqua"
-                                title="Just keep scrolling!"
-                                tinyText="uniserve bears gifts"
-                            >
-                                <p>Experience the full introduction.</p>
-                                <p className="grow">Step into the role of a robot and get a tour of the universe, lead by Curator UNISERVE!</p>
-                                <div className="spacer"></div>
+                            {isConclusion ? 
+                                <HubCol
+                                    style="aqua"
+                                    title="Well done 😊"
+                                    tinyText="you get a tie"
+                                >
+                                    <p>You've experienced the intro! Now, off to the rest of the project.</p>
+                                </HubCol> :
+                                <HubCol
+                                    style="aqua"
+                                    title="Just keep scrolling!"
+                                    tinyText="uniserve bears gifts"
+                                >
+                                    <p>Experience the full introduction.</p>
+                                    <p className="grow">Step into the role of a robot and get a tour of the universe, lead by Curator UNISERVE!</p>
+                                    <div className="spacer"></div>
 
-                                <a href="#top-of-uniserve-intro" className="scroll-arrow">
-                                    <FontAwesomeIcon icon={faArrowDown} />
-                                </a>
-                            </HubCol>
+                                    <a href="#top-of-uniserve-intro" className="scroll-arrow">
+                                        <FontAwesomeIcon icon={faArrowDown} />
+                                    </a>
+                                </HubCol>
+                            }
                             <HubCol
                                 title="Browse around 👀"
                                 tinyText="the exhibit is open"

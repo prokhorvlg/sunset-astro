@@ -1008,7 +1008,7 @@ $quoteMobileSidePadding: 20px;
             margin-top: 20px;
             margin-bottom: 20px;
             width: 100%;
-            line-height: 26px;
+            line-height: 28px;
         }
         p.perfect {
             font-family: monospace;
@@ -1025,8 +1025,20 @@ $quoteMobileSidePadding: 20px;
 
         h1, h2, h3, h4, h5, h6 {
             font-family: $font-code;
+            color: $color-sunset-red;
+            //background-color: rgba($color-background-dark, 0.4);
             font-weight: 600;
             margin-top: 40px;
+            margin-bottom: 30px;
+            line-height: 38px;
+            padding: 10px 3px 2px 3px;
+            display: inline-block;
+            &::before {
+                //content: "# ";
+            }
+            i {
+                display: none;
+            }
         }
         code {
             color: $color-sunset-red;
@@ -1036,6 +1048,9 @@ $quoteMobileSidePadding: 20px;
         hr {
             border-color: $color-sunset-red;
             margin: 60px 0;
+        }
+        a {
+            @include BasicLinkStyle();
         }
     }
 
@@ -3072,6 +3087,8 @@ $dialog-main-color: $color-sunset-red;
         grid-column-gap: 2px;
         grid-row-gap: 2px;
         justify-content: space-around;
+        //justify-content: center;
+        //align-items: center;
         margin: 0 80px 90px 80px;
         @media screen and (max-width: 1800px) {
             grid-template-columns: repeat(2, minmax(200px, 600px));
@@ -5127,11 +5144,27 @@ $aside-sticky-breakpoint: 1800px;
             min-width: 300px;
             display: block;
             margin-left: 40px;
-            font-weight: 500;
-            font-family: $font-code;
+            
             color: $color-sunset-orange;
             @media screen and (max-width: $breakpoint-tablet) {
                 margin-left: 0;
+            }
+
+            button {
+                font-weight: 500;
+                font-family: $font-code;
+                font-size: 20px;
+
+                color: $color-sunset-orange;
+                background: none;
+                border: none;
+                &:hover {
+                    background-color: rgba($color-sunset-red, 0.3);
+                    cursor: pointer;
+                }
+                .icon {
+                    margin-right: 10px;
+                }
             }
         }
         ul {
@@ -5141,6 +5174,10 @@ $aside-sticky-breakpoint: 1800px;
             max-width: 100%;
             @media screen and (max-width: $breakpoint-tablet) {
                 margin-left: 0;
+            }
+
+            &.hidden {
+                display: none;
             }
 
             li.table-item {

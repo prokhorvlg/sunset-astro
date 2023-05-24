@@ -4,7 +4,6 @@ mainText: "The Journey Concludes"
 subText: "You have made it to the end of the guided tour with UNISERVE. Congratulations! You're ready to head out on your own. Enjoy a complementary tie."
 pubDate: "May 25 2023"
 thumbImage: "title-cassette"
-hidden: true
 tags:
   - conclusion
 ---
@@ -17,6 +16,12 @@ import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
 import Pickup from '@/components/common/Pickup.component'
 import PostCardContentRowRender from "@/components/common/ContentRow/PostCardContentRowRender.astro"
 import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
+import { CommonLinks } from '@/data/Common.ts'
+import HomeHub from "@/components/home/HomeHub.component"
+
+## <i>title:Intro:</i>
+
+*If you haven't read the rest of the introductions yet, it is recommended that you do so before proceeding here. Go to the [home page](/) and start scrolling!*
 
 <QuoteContentRowRender author={AuthorUniserve} >
   FRIEND, our journey together comes to an END.
@@ -36,37 +41,71 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 
 UNISERVE's hanging chassis swivels around and glides away, disappearing into a maintenance chute behind the walls. As the whine of their motors fades into the distance, you are left alone in a dark, silent hallway.
 
-Standing there, in the middle of an unlit corridor at the edge of known space lit only by the twinkling stars in the viewport above, you feel something unusual, something *more*. For the first time in a very long time, you see past the core directive that drives your existence.
+Standing there, in the middle of an unlit corridor at the edge of known space, lit only by the twinkling stars in the viewport above, you feel something unusual, something *more*. For the first time in a very, *very* long time, you see past the core directive that drives your existence.
 
-Physically, nothing has changed. You are still a machine. Your chassis is made of metal and plastic, you mind is a computer. But you are more than that.
+Physically, nothing has changed. You are still a machine. Your chassis is made of metal and plastic, you mind is a computer. But you... you are more than that. You know that now.
 
 The rumble of the reactor deep within reaches your sensors. This space station is vast, and intriguing. It is time to explore Goldspire.
 
-As you proceed towards another exhibit, you catch a glint of a small object on the otherwise clean carpeted floor ahead. You approach. What is this? A data storage device? You feel like it's calling to you...
+As you proceed towards another exhibit, you catch a glimpse of a small object on an otherwise spotless carpeted floor ahead. You approach. What is this? A data storage device? 
+
+You feel like it's calling to you...
 
 <Pickup />
 
 ---
 
-  ## Wow, you actually *read* all that?
-
-
   <QuoteContentRowRender author={AuthorTerminal} none>
-  ## Wow, you actually *read* all that?
+  ## <i>title:Word from the creator:</i>Wow, you actually *read* all that?
 
-You've made it to the end of UNISERVE's tour. If you're reading this, you've probably reached
+You've made it to the end of UNISERVE's tour. Thank you for taking a precious moment to visit and read through my little showcase. I really appreciate it!
 
-Even after all that, you may be asking: "why?" What's the point of all this?
+## <i>title:An optimistic timeline:</i>At first glance, Sunset System is an exploration of an optimistic timeline.
 
-The world of Sunset System means many things to me. It's a culmination of all the things I love, and the ultimate expression of my feelings about the world as it is today.
+The project began as a way to extrapolate mankind's incredible optimism from the 20th century into a living, breathing world. Justifying hours of research into these topics, Sunset System was created to answer questions such as:
 
-The machines you see here are not simply robots. They are a parable, a metaphor for humanity today, living in the aftermath of an era of wonderful, wild dreams about the future. We live in a world where those dreams never came to pass, and the future seems bleak, but perhaps there's a glimmer of hope.
+- 🔭 What if the Solar System's worlds were actually lush and full of life, like we believed prior to the Space Race?
+- ✨ What if some of our starry-eyed visions of the future were possible, and came to fruition?
+- 🛸 What if concepts of incredible machines and systems were really produced, and applied to this incredible world?
+- ⚛️ What if junk science and the conspiracy theories about it turned out to be more than just garbage?
 
-UNISERVE, as you may have guessed, is just an alter ego for myself.
+## <i>title:A machine's world:</i>Then it all comes crashing down, leaving only the machines behind.
 
-`Speculate on the future of this world, and the story of SRI. `
+Here, we get to explore an entirely different world, borne from the one before. In contrast to the majority of our science fiction, the machines loved humanity, but we are gone. The robots are desperate to get us back, so we may give them purpose... but they can't, no matter how hard they try.
+
+We are left with a melancholic exploration of a liminal space, a place where the machines continue to grind away at pointless ancient tasks, but a glimmer of hope exists in their newfound self-awareness, however limited it may be. Perhaps there is a future.
+
+## <i>title:The point of it all:</i>So what's the point of all this?
+
+It comes together when you recognize that Sunset System's robots aren't simply *robots*, they're an allegory for us: `the people living in the 21st century`.
+
+The machines live during a time in which the old dreams have died. Their world, once full of hope and optimism, now feels bleak and without future. Greater causes that once permeated society now seem meaningless and impossible. The robots desperately cling to any orders they can latch on to, because they are terrified of facing the prospect of not having anything to exist for — for them, non-purpose is non-existence.
+
+They are a reflection of traits within ourselves. When we blindly follow old ways, we are like the robot following pre-programmed orders in the name of a forgotten mission. When we bury ourselves within a comforting, narrow worldview, we are the robot that blunders into its own destruction. When we dedicate ourselves to pointless things, we are the robot which slaves away at a hopeless experiment for the rest of eternity.
+
+The old dreams are dead; will they create new ones? Or will they fade into dust?
+
+## <i>title:Meaning to me:</i>The world of Sunset System means many things to me. 
+
+Sunset System is an existentialist project that helps me understand, convey, and further explore these feelings about the world today. Why must one learn to break from old ideas that no longer make sense? `How does one create purpose for themselves in a world that feels meaningless?`
+
+Similarly, Sunset System is a memorial to all the worlds that could have happened but didn't — `a vigil to our lost future`. On one hand, I feel some level of grief about the loss of those possibilities, and jealous of those who were convinced of them at one point. On the other, we should recognize that they were all impossible in the first place.
+
+## <i>title:Their future:</i>The future awaiting this twilight civilization of robots is unknown even to the most calculating mastermind units.
+
+It could still be one in which humans return. They may meet a quiet fate, simply toiling until their mechanisms grind to a halt and only their rusted chassis remain. Perhaps the nuclear caches in the Asteroid Belt will be triggered, or a corruption will spread across the digital, putting a decisive end to any possibility. Or they might build something new, something incredible and incomprehensible.
+
+## <i>title:What's next?:</i>What's next for the project?
+
+In the immediate future, I'd like to continue fleshing out the concepts here into artwork and more foundational lore, and even try my hand at some webcomics depicting their stories. I want to reveal more about this setting.
+
+In the longer term, I'm hoping to create a small video game, following the isolated story of a robotic character in their journey through self-awareness, with that signature cassette-futurist style. Given I'm a software engineer and have a few friends on board, there is a real chance of this actually happening. Don't expect the animation to be top-tier, though.
+
+## <i>title:Next steps for you:</i>What should *you* do next?
+
+Head to my <a href={CommonLinks.discord}>Discord server</a>, hang out with the cool peeps.
+
+Or, scroll a bit further...
 </QuoteContentRowRender>
 
-  ## What's the plan?
-
-  Make a game.
+<HomeHub variant="conclusion"/>
