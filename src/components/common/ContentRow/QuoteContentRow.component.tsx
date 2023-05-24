@@ -15,8 +15,8 @@ interface Props {
     none?: boolean
     transcription?: boolean
     left?: boolean
-    imageObject: ImageDetails
-    imageItem: astroHTML.JSX.ImgHTMLAttributes
+    imageObject?: ImageDetails
+    imageItem?: astroHTML.JSX.ImgHTMLAttributes
 }
 
 function getRandomInt(min, max) {
@@ -81,7 +81,7 @@ const QuoteContentRow = ({
                                     <BlinkingGrid />
                                 </div>
                                 :
-                                <div className={`image ${imageObject.quoteClasses ? imageObject.quoteClasses : ''}`} style={{backgroundImage: "url(" + imageItem.src + ")"}}></div>
+                                <div className={`image ${imageObject!.quoteClasses ? imageObject!.quoteClasses : ''}`} style={{backgroundImage: "url(" + imageItem!.src + ")"}}></div>
                         }
                         
                         <div className="text">

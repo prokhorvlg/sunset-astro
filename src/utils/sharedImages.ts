@@ -505,13 +505,53 @@ export const Images: ImageDetails[] = [
         originalPost: "zero-g-coffee-makers",
         classes: ""
     },
+    // Vehicles 2022 collection
     {
         id: 'h500-boglim',
         src: "/images/content/h500-boglim.png",
         alt: "",
         width: 1527,
         height: 808,
-        originalPost: "h500-boglim",
-        classes: ""
+        originalPost: "vehicles-2022"
+    },
+    {
+        id: 'franklin-truck',
+        src: "/images/content/franklin.png",
+        alt: "",
+        width: 1527,
+        height: 808,
+        originalPost: "vehicles-2022"
+    },
+    {
+        id: 'shyrok-car',
+        src: "/images/content/shyrok-ba-6.png",
+        alt: "",
+        width: 1527,
+        height: 808,
+        originalPost: "vehicles-2022"
+    },
+    {
+        id: 'jupiter-kenny',
+        src: "/images/content/jupiter-kenny.png",
+        alt: "",
+        width: 1527,
+        height: 808,
+        originalPost: "vehicles-2022"
+    },
+    {
+        id: 'buckley-whispercraft',
+        src: "/images/content/buckley-whispercraft.png",
+        alt: "",
+        width: 1527,
+        height: 808,
+        originalPost: "vehicles-2022"
+    },
+    {
+        id: 'h500-boglim',
+        src: "/images/content/h500-boglim.png",
+        alt: "",
+        width: 1527,
+        height: 808,
+        originalPost: "vehicles-2022"
     },
 ]

@@ -997,7 +997,7 @@ $breakpoint-quote: 1600px;
 $quoteMobileSidePadding: 20px;
 .quote-content-row {
     font-variant-ligatures: none; // Because fi was turning into a single character?
-    astro-slot {
+    astro-slot, .simple-container-inner {
         white-space: pre-wrap;
         font-size: 16px;
         @include codeText();
@@ -1332,6 +1332,25 @@ $quoteMobileSidePadding: 20px;
                     }
                 }
             }
+        }
+    }
+
+    button.user-choice {
+        border: 2px solid $color-sunset-aqua;
+        background: none;
+        color: $color-sunset-aqua;
+        background: rgba($color-sunset-melancholic, 0.2);
+        border-radius: $chicanery-border-radius;
+        margin: 20px 10px;
+        padding: 10px;
+
+        font-family: $font-code;
+        font-weight: 600;
+        cursor: pointer;
+        
+        &:hover, &:focus {
+            color: white;
+            border-color: white;
         }
     }
 }

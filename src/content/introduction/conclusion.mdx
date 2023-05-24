@@ -18,6 +18,7 @@ import PostCardContentRowRender from "@/components/common/ContentRow/PostCardCon
 import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 import { CommonLinks } from '@/data/Common.ts'
 import HomeHub from "@/components/home/HomeHub.component"
+import UniserveConclusion from "@/components/special/UniserveConclusion.astro"
 
 ## <i>title:Intro:</i>
 
@@ -31,13 +32,7 @@ import HomeHub from "@/components/home/HomeHub.component"
   Did you ENJOY my tour? Y / N
 </QuoteContentRowRender>
 
-  <QuoteContentRowRender author={AuthorTerminal} left>
-<button>click</button>
-</QuoteContentRowRender>
-
-<QuoteContentRowRender author={AuthorUniserve} >
-  It has been a pleasure. You are free to come and go as you please!
-</QuoteContentRowRender>
+<UniserveConclusion />
 
 UNISERVE's hanging chassis swivels around and glides away, disappearing into a maintenance chute behind the walls. As the whine of their motors fades into the distance, you are left alone in a dark, silent hallway.
 
