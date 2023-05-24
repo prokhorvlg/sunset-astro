@@ -505,6 +505,46 @@ export const Images: ImageDetails[] = [
         originalPost: "zero-g-coffee-makers",
         classes: ""
     },
+    {
+        id: 'dawnlight-vigil',
+        src: "/images/content/dawnlight-vigil.png",
+        alt: "",
+        width: 2388,
+        height: 1688,
+        originalPost: "dawnlight-vigil"
+    },
+    {
+        id: 'microcomputers',
+        src: "/images/content/microcomputers.png",
+        alt: "",
+        width: 2125,
+        height: 1361,
+        originalPost: "microcomputers"
+    },
+    {
+        id: 'bigheads',
+        src: "/images/content/bigheads-2023-rev.png",
+        alt: "",
+        width: 2370,
+        height: 1954,
+        originalPost: "bigheads"
+    },
+    {
+        id: 'thumpers',
+        src: "/images/content/thumpers.png",
+        alt: "",
+        width: 1351,
+        height: 1771,
+        originalPost: "thumpers"
+    },
+    {
+        id: 'cybernetics-lab',
+        src: "/images/content/cybernetics-lab.png",
+        alt: "",
+        width: 1278,
+        height: 1083,
+        originalPost: "cybernetics-lab"
+    },
     // Vehicles 2022 collection
     {
         id: 'h500-boglim',
@@ -518,40 +558,41 @@ export const Images: ImageDetails[] = [
         id: 'franklin-truck',
         src: "/images/content/franklin.png",
         alt: "",
-        width: 1527,
-        height: 808,
+        width: 1238,
+        height: 880,
         originalPost: "vehicles-2022"
     },
     {
         id: 'shyrok-car',
         src: "/images/content/shyrok-ba-6.png",
         alt: "",
-        width: 1527,
-        height: 808,
+        width: 1319,
+        height: 1113,
         originalPost: "vehicles-2022"
     },
     {
         id: 'jupiter-kenny',
         src: "/images/content/jupiter-kenny.png",
         alt: "",
-        width: 1527,
-        height: 808,
+        width: 1479,
+        height: 1167,
         originalPost: "vehicles-2022"
     },
     {
         id: 'buckley-whispercraft',
         src: "/images/content/buckley-whispercraft.png",
         alt: "",
-        width: 1527,
-        height: 808,
+        width: 1379,
+        height: 978,
         originalPost: "vehicles-2022"
     },
+    // Gadgets 2021-2022
     {
-        id: 'h500-boglim',
-        src: "/images/content/h500-boglim.png",
+        id: 'test',
+        src: "/images/content/test.png",
         alt: "",
-        width: 1527,
-        height: 808,
+        width: 1379,
+        height: 978,
         originalPost: "vehicles-2022"
     },
 ]

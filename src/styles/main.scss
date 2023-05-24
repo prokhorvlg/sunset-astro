@@ -397,6 +397,10 @@ article.markdown {
             font-weight: 500;
             bottom: calc(100% - 5px);
         }
+        code {
+            background-color: rgba($color-sunset-red, 0.2);
+            padding: 3px 2px;
+        }
 
         &::before {
             content: "»";
