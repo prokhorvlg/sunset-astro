@@ -21,6 +21,7 @@ const collectionSetup = {
 		thumbAlignment: z.string().optional(),
 		draft: z.boolean().optional(),
 		hidden: z.boolean().optional(),
+		noTableOfContents: z.boolean().optional(),
 		tags: z.array(z.string()).optional()
 	}),
 }

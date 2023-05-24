@@ -24,6 +24,10 @@ const { previousPost, nextPost } = findAdjacentObjects(sortedPosts, post.data.ti
 const processedPost = await processPost(post)
 const processedThumb = processedPost.processedThumbImage
 const { headings } = await post.render();
+
+const showTableOfContents = 
+	post.data?.noTableOfContents === undefined ||
+	post.data?.noTableOfContents === false
 ---
 
 <!DOCTYPE html>
@@ -40,7 +44,7 @@ const { headings } = await post.render();
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
 		<PostHeading post={post} processedThumb={processedThumb} client:only />
 		<div class="aside-container">
-			<TableOfContents headings={headings} client:only />
+			{ showTableOfContents && <TableOfContents headings={headings} client:only /> }
 			<main>
 				<MarkdownWrapper><slot /></MarkdownWrapper>
 				<PostNavigationBar previousPost={previousPost} nextPost={nextPost}/>

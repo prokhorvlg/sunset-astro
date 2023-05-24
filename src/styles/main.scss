@@ -490,12 +490,19 @@ article.markdown {
             width: 80%;
         }
         code {
-            
             &::after, &::before {
                 content: '';
             }
             .line span {
                 color: $color-sunset-orange !important;
+            }
+        }
+
+        // Code blocks ( ``` )
+        &.astro-code {
+            overflow: hidden !important;
+            > code {
+                white-space: pre-wrap;
             }
         }
     }
@@ -4723,6 +4730,7 @@ $post-heading-width: 1000px;
         transition: 0.1s ease-in-out;
         border-radius: $chicanery-border-radius;
         padding: 0;
+        text-align: center;
 
         img {
             z-index: 0;
@@ -4748,6 +4756,26 @@ $post-heading-width: 1000px;
             }
             &.border-red {
                 border-color: $color-sunset-red;
+            }
+
+            @mixin shrink($percent) {
+                max-width: $percent;
+                height: auto;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    max-width: 100%;
+                }
+            }
+            &.shrink-50 {
+                @include shrink(50%);
+            }
+            &.shrink-60 {
+                @include shrink(60%);
+            }
+            &.shrink-70 {
+                @include shrink(70%);
+            }
+            &.shrink-80 {
+                @include shrink(80%);
             }
         }
 

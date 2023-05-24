@@ -545,6 +545,23 @@ export const Images: ImageDetails[] = [
         height: 1083,
         originalPost: "cybernetics-lab"
     },
+    {
+        id: 'larkin',
+        src: "/images/content/larkin waterlogged machine.png",
+        alt: "",
+        width: 1875,
+        height: 1668,
+        originalPost: "larkin"
+    },
+    {
+        id: 'kaizen-k10',
+        src: "/images/content/kaizen-k10.jpg",
+        alt: "",
+        width: 1481,
+        height: 2898,
+        originalPost: "kaizen-k10",
+        classes: "shrink-50"
+    },
     // Vehicles 2022 collection
     {
         id: 'h500-boglim',
@@ -586,13 +603,125 @@ export const Images: ImageDetails[] = [
         height: 978,
         originalPost: "vehicles-2022"
     },
+    {
+        id: 'hovertrains',
+        src: "/images/content/hovertrains.png",
+        alt: "",
+        width: 2041,
+        height: 1450,
+        originalPost: "vehicles-2022"
+    },
+    {
+        id: 'ibragimov-ib-58',
+        src: "/images/content/ibragimov-ib-58.jpg",
+        alt: "",
+        width: 1280,
+        height: 1134,
+        originalPost: "vehicles-2022"
+    },
     // Gadgets 2021-2022
     {
-        id: 'test',
-        src: "/images/content/test.png",
+        id: 'guns-1',
+        src: "/images/content/artifacts-2021-2022/guns-1.png",
         alt: "",
-        width: 1379,
-        height: 978,
-        originalPost: "vehicles-2022"
+        width: 1458,
+        height: 1138,
+        originalPost: "artifacts-2021-2022"
+    },
+    {
+        id: 'neurocaster',
+        src: "/images/content/artifacts-2021-2022/neurocaster.png",
+        alt: "",
+        width: 1016,
+        height: 768,
+        originalPost: "artifacts-2021-2022",
+        classes: "shrink-50"
+    },
+    {
+        id: 'kobra-pistol',
+        src: "/images/content/artifacts-2021-2022/kobra pistol.png",
+        alt: "",
+        width: 1122,
+        height: 813,
+        originalPost: "artifacts-2021-2022",
+        classes: "shrink-50"
+    },
+    {
+        id: 'uspeh',
+        src: "/images/content/artifacts-2021-2022/uspeh.png",
+        alt: "",
+        width: 1135,
+        height: 843,
+        originalPost: "artifacts-2021-2022",
+        classes: "shrink-80"
+    },
+    {
+        id: 'brainsaver',
+        src: "/images/content/artifacts-2021-2022/brainsaver.png",
+        alt: "",
+        width: 1086,
+        height: 924,
+        originalPost: "artifacts-2021-2022",
+        classes: "shrink-50"
+    },
+    // robots 2022
+    {
+        id: 'agro-rev',
+        src: "/images/content/robots-2022/agro-rev.png",
+        alt: "",
+        width: 2000,
+        height: 1605,
+        originalPost: "random-robots-2022"
+    },
+    {
+        id: 'contemplate',
+        src: "/images/content/robots-2022/contemplate.png",
+        alt: "",
+        width: 1609,
+        height: 1185,
+        originalPost: "random-robots-2022"
+    },
+    {
+        id: 'encounter',
+        src: "/images/content/robots-2022/encounter.png",
+        alt: "",
+        width: 1158,
+        height: 809,
+        originalPost: "random-robots-2022"
+    },
+    {
+        id: 'moh-walker',
+        src: "/images/content/robots-2022/moh-walker.png",
+        alt: "",
+        width: 915,
+        height: 809,
+        originalPost: "random-robots-2022",
+        classes: "shrink-60"
+    },
+    {
+        id: 'peb',
+        src: "/images/content/robots-2022/peb.png",
+        alt: "",
+        width: 1441,
+        height: 1819,
+        originalPost: "random-robots-2022",
+        classes: "shrink-80"
+    },
+    {
+        id: 'steel-titan',
+        src: "/images/content/robots-2022/steel-titan.png",
+        alt: "",
+        width: 722,
+        height: 809,
+        originalPost: "random-robots-2022",
+        classes: "shrink-60"
+    },
+    {
+        id: 'sos-r9',
+        src: "/images/content/robots-2022/sos-r9.png",
+        alt: "",
+        width: 1769,
+        height: 1097,
+        originalPost: "random-robots-2022"
     },
 ]
