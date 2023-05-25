@@ -765,4 +765,52 @@ export const Images: ImageDetails[] = [
         height: 1761,
         originalPost: "datasphere"
     },
+    {
+        id: 'smasher',
+        src: "/images/content/smasher.png",
+        alt: "",
+        width: 1193,
+        height: 929,
+        originalPost: "smasher"
+    },
+    {
+        id: 'raz-26-tremor',
+        src: "/images/content/raz-26-tremor.png",
+        alt: "",
+        width: 2109,
+        height: 1955,
+        originalPost: "raz-26-tremor"
+    },
+    {
+        id: 'northern-alliance-thundercat',
+        src: "/images/content/northern-alliance-thundercat.png",
+        alt: "",
+        width: 1758,
+        height: 1031,
+        originalPost: "northern-alliance-thundercat"
+    },
+    {
+        id: 'longhorn-starfire',
+        src: "/images/content/longhorn-starfire.png",
+        alt: "",
+        width: 1821,
+        height: 1010,
+        originalPost: "longhorn-starfire"
+    },
+    {
+        id: 'northern-alliance-zoro',
+        src: "/images/content/northern-alliance-zoro.png",
+        alt: "",
+        width: 2388,
+        height: 1668,
+        originalPost: "northern-alliance-zoro"
+    },
+    {
+        id: 'agburo-locust',
+        src: "/images/content/agburo-locust.png",
+        alt: "",
+        width: 2388,
+        height: 1668,
+        originalPost: "terraforming-venus"
+    },
 ]

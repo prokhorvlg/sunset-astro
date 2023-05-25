@@ -25,7 +25,7 @@ interface PropTypes {
 const POST_TYPES = [
     PostType.Lore,
     PostType.Announcement,
-    PostType.Game,
+    //PostType.Game,
     PostType.Introduction
 ]
 
