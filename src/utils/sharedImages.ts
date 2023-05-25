@@ -547,7 +547,7 @@ export const Images: ImageDetails[] = [
     },
     {
         id: 'larkin',
-        src: "/images/content/larkin waterlogged machine.png",
+        src: "/images/content/larkin-waterlogged-machine.png",
         alt: "",
         width: 1875,
         height: 1668,
@@ -723,5 +723,46 @@ export const Images: ImageDetails[] = [
         width: 1769,
         height: 1097,
         originalPost: "random-robots-2022"
+    },
+    // content
+    {
+        id: 'sushibot',
+        src: "/images/content/sushibot.png",
+        alt: "",
+        width: 1327,
+        height: 1267,
+        originalPost: "sushibot"
+    },
+    {
+        id: 'reclomat',
+        src: "/images/content/reclomat.png",
+        alt: "",
+        width: 1307,
+        height: 1154,
+        originalPost: "reclomat"
+    },
+    {
+        id: 'botanist-rev',
+        src: "/images/content/botanist-rev.png",
+        alt: "",
+        width: 2201,
+        height: 1796,
+        originalPost: "patient-potato"
+    },
+    {
+        id: 'forgotten-draco',
+        src: "/images/content/forgotten-draco.png",
+        alt: "",
+        width: 2945,
+        height: 2076,
+        originalPost: "forgotten-draco"
+    },
+    {
+        id: 'datasphere',
+        src: "/images/content/datasphere-2023-2.jpg",
+        alt: "",
+        width: 2632,
+        height: 1761,
+        originalPost: "datasphere"
     },
 ]
