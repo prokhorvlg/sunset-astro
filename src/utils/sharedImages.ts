@@ -816,4 +816,12 @@ export const Images: ImageDetails[] = [
         height: 1668,
         originalPost: "terraforming-venus"
     },
+    {
+        id: 'sanatorium-quick',
+        src: "/images/content/sanatorium-quick.png",
+        alt: "",
+        width: 2388,
+        height: 1668,
+        originalPost: "venusian-sanatorium"
+    },
 ]
