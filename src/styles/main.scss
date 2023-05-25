@@ -576,10 +576,26 @@ article.markdown {
     .icon {
         text-align: center;
         font-size: 80px;
-        margin-top: 60px;
-        margin-bottom: 60px;
+        padding: 60px 0;
+        font-weight: 400;
+        border-radius: 6px;        
         &.the-voice {
-            color: $color-post-mankind;
+            svg {
+                transform: rotate(180deg) scaleX(-1);
+            }
+        }
+        &.erasure {
+            svg {
+                transform: rotate(180deg);
+            }
+        }
+        &.dangers-entities {
+            background: rgba($color-sunset-red, 0.1);
+            color: $color-sunset-red;
+            &:hover {
+                background-color: rgba($color-sunset-red, 0.2);
+                color: $color-sunset-orange;
+            }
         }
     }
 }

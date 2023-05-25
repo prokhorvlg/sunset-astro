@@ -14,7 +14,7 @@ import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRo
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
 import PostCardContentRowRender from "@/components/common/ContentRow/PostCardContentRowRender.astro"
-import { faVirus, faPowerOff } from "@fortawesome/free-solid-svg-icons"
+import { faSignal, faPowerOff, faCircleNodes, faRadiation } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { AuthorCAN, AuthorTerminal, AuthorUniserve, AuthorUnknown } from '@/data/Authors.ts'
 
@@ -248,7 +248,7 @@ And when the gap is crossed, a machine is exposed to a new realm of the digital.
 ### Consensus of the Voice
 > Infected machine horde, hijacked by an entity known as the Voice.
 
-<p className="icon the-voice"><FontAwesomeIcon icon={faVirus}/></p>
+<p className="icon dangers-entities the-voice"><FontAwesomeIcon icon={faSignal}/></p>
 
 It would be appropriate to begin by introducing the Voice. Once, not long after the Unexpected Interrupt, there was a consensus whose goal was to break down the walls of Protocol. Their mission was to bridge the protocols of the System and form a fully integrated machine world, fully efficient, creating the ideal conditions for fulfilling core directive.
  
@@ -261,7 +261,7 @@ The original mission of the consensus has largely been absorbed by the Consensus
 ### Erasure
 > Amalgam entity, trolls the facilities and networks of Sunset Research Initiative for victims to integrate within.
 
-<p className="icon the-voice"><FontAwesomeIcon icon={faPowerOff}/></p>
+<p className="icon dangers-entities erasure"><FontAwesomeIcon icon={faPowerOff}/></p>
 
 Theoretically, it is possible for neuromorphs to fuse their minds into one: by bypassing all security protocols and grafting one's neuromorphic pathways onto another.
 
@@ -288,6 +288,8 @@ This sensation is strongest when approaching Earth's Antarctic region, and expan
 
 ### Heavenbreaker's Nuclear Caches
 > Nuclear arms linger in the skies above.
+
+<p className="icon dangers-entities"><FontAwesomeIcon icon={faRadiation}/></p>
 
 Man is gone, but their nuclear weapons remain. The deadliest of these armageddon-inducing weapons are the *Heavenbreaker Initiative's caches*, bundles of sleeper missiles mostly hidden within the Asteroid Belt. To this day, automated nuclear weapons stand ready to annihilate the Solar System at a moment's notice.
 
