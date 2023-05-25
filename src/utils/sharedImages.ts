@@ -245,7 +245,8 @@ export const Images: ImageDetails[] = [
         width: 3688,
         height: 2294,
         originalPost: "lazarus-warwalker",
-        artist: ArtistProkhor
+        artist: ArtistProkhor,
+        caption: "LAZARUS, a Martian combat system, is being shipped out to combat rogue entities on other worlds. They are experiencing hesitation for the first time."
     },
     {
         id: 'pals',
@@ -350,7 +351,9 @@ export const Images: ImageDetails[] = [
         src: "/images/content/shroomy-postcard.png",
         alt: "Postcard of a robot waving hello in a hot jungle environment",
         width: 2273,
-        height: 2566
+        height: 2566,
+        caption: "GREEB poses for a photograph in the Venusian jungle, as part of an expedition to catalog and sample the local life forms. Centuries later, GREEB hunts down human remains for genetic data, so that the human race may be revived.",
+        originalPost: "hello-from-venus"
     },
     {
         id: 'presenter-snapshot',
