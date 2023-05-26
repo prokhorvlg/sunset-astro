@@ -9,7 +9,7 @@ const Pickup = () => {
         // On load, check if pickup is true
         const currentPickup = localStorage.getItem(PICKUP_ID)
         if (currentPickup) {
-            setIsPickedUp(true)
+            //setIsPickedUp(true)
         }
     }, [])
 
@@ -21,7 +21,7 @@ const Pickup = () => {
         return (
             <div className="pickup-disc-container picked-up">
                 <button className="pickup-disc-button">
-                    <img src="/images/Muguang_Disc (2).png" className="pickup-disc-image" width="800" />
+                    <img src="/images/Muguang_Disc (3).png" className="pickup-disc-image" width="800" />
                     <span className="pickup-disc-title">You took the floppy disk</span>
                     <span className="pickup-disc-title bottom">well done</span>
                 </button>
@@ -31,7 +31,7 @@ const Pickup = () => {
         return (
             <div className="pickup-disc-container">
                 <button onClick={() => onClick()} className="pickup-disc-button">
-                    <img src="/images/Muguang_Disc (2).png" className="pickup-disc-image" width="800" />
+                    <img src="/images/Muguang_Disc (3).png" className="pickup-disc-image" width="800" />
                     <span className="pickup-disc-title">Take the floppy disk</span>
                     <span className="pickup-disc-title bottom">You must take it</span>
                 </button>
