@@ -5327,12 +5327,19 @@ $aside-sticky-breakpoint: 1800px;
             text-transform: uppercase;
             letter-spacing: 4px;
             font-weight: 400;
-            //transition: 0.1s ease-in-out;
             opacity: 0;
             user-select: none;
+            @media screen and (max-width: $breakpoint-mobile) {
+                top: 0px;
+                font-size: 16px;
+                opacity: 1;
+            }
             &.bottom {
                 top: auto;
                 bottom: 20px;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    bottom: 0px;
+                }
             }
         }
     }
