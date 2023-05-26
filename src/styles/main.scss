@@ -5329,7 +5329,7 @@ $aside-sticky-breakpoint: 1800px;
             font-weight: 400;
             opacity: 0;
             user-select: none;
-            @media screen and (max-width: $breakpoint-mobile) {
+            @media screen and (max-width: $breakpoint-tablet) {
                 top: 0px;
                 font-size: 16px;
                 opacity: 1;
@@ -5337,7 +5337,7 @@ $aside-sticky-breakpoint: 1800px;
             &.bottom {
                 top: auto;
                 bottom: 20px;
-                @media screen and (max-width: $breakpoint-mobile) {
+                @media screen and (max-width: $breakpoint-tablet) {
                     bottom: 0px;
                 }
             }
@@ -5365,6 +5365,7 @@ $aside-sticky-breakpoint: 1800px;
         }
         img {
             filter: invert(10%) brightness(150%);
+            opacity: 1;
         }
     }
 }
