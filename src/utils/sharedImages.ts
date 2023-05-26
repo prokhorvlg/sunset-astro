@@ -824,4 +824,11 @@ export const Images: ImageDetails[] = [
         height: 1668,
         originalPost: "venusian-sanatorium"
     },
+    {
+        id: 'muguang-disk',
+        src: "/images/Muguang_Disc.png",
+        alt: "",
+        width: 1025,
+        height: 920,
+    },
 ]

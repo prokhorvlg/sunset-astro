@@ -2,7 +2,7 @@
 // Basic colors used across website, for consistency.
 
 $color-sunset-manila: #ffe9d3;
-$color-sunset-yellow: #ffd901;
+$color-sunset-yellow: #ffda35;
 $color-sunset-orange: #ffae0b;
 $color-sunset-red: #ff4e18;
 $color-sunset-aqua: #46ffff;
@@ -5271,6 +5271,93 @@ $aside-sticky-breakpoint: 1800px;
                     margin-left: 40px;
                 }
             }
+        }
+    }
+}
+
+.pickup-disc-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .pickup-disc-button {
+        background: none;
+        border: none;
+        padding: 10px;
+        margin: 10px;
+        position: relative;
+        border: 2px dashed transparent;
+        border-radius: $chicanery-border-radius;
+        cursor: pointer;
+        &::after {
+            content: '';
+            position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: block;
+            background: linear-gradient(to top, rgba($color-spooky, 0.03), rgba($color-sunset-yellow, 0.15));
+            opacity: 0;
+        }
+        &:hover, &:focus {
+            border: 2px solid $color-sunset-orange;
+            &::after {
+                opacity: 1;
+            }
+            img {
+                opacity: 1;
+            }
+            span.pickup-disc-title {
+                opacity: 1;
+            }
+        }
+        img {
+            opacity: 1;
+            //width: 800px;
+            //transition: 0.1s ease-in-out;
+            max-width: 100%;
+        }
+        span.pickup-disc-title {
+            position: absolute;
+            z-index: 60;
+            left: 0;
+            right: 0;
+            top: 20px;
+            text-align: center;
+            color: $color-sunset-yellow;
+            font-family: $font-code;
+            font-size: 24px;
+            filter: drop-shadow(0px 0px 10px black);
+            font-variant-ligatures: none;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 400;
+            //transition: 0.1s ease-in-out;
+            opacity: 0;
+            user-select: none;
+            &.bottom {
+                top: auto;
+                bottom: 20px;
+            }
+        }
+    }
+
+    &.picked-up {
+        .pickup-disc-button {
+            cursor: auto;
+            &:hover, &:focus {
+                border: 2px solid transparent;
+                &::after {
+                    opacity: 0;
+                }
+                img {
+                    opacity: 1;
+                }
+                span.pickup-disc-title {
+                    opacity: 1;
+                }
+            }
+        }
+        span.pickup-disc-title {
+            opacity: 1;
+        }
+        img {
+            filter: invert(10%) brightness(150%);
         }
     }
 }
