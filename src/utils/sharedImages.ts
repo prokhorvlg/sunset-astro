@@ -831,4 +831,53 @@ export const Images: ImageDetails[] = [
         width: 1025,
         height: 920,
     },
+    // EXOTIC RESOURCES
+    {
+        id: 'exotic-resources',
+        src: "/images/content/exotic-resources/exotic-resources.png",
+        alt: "",
+        width: 1735,
+        height: 1265,
+    },
+    {
+        id: 'alloy',
+        src: "/images/content/exotic-resources/alloy.png",
+        alt: "",
+        width: 940,
+        height: 640,
+        classes: "shrink-60"
+    },
+    {
+        id: 'meta',
+        src: "/images/content/exotic-resources/meta.png",
+        alt: "",
+        width: 940,
+        height: 640,
+        classes: "shrink-60"
+    },
+    {
+        id: 'genetic',
+        src: "/images/content/exotic-resources/genetic.png",
+        alt: "",
+        width: 940,
+        height: 640,
+        classes: "shrink-60"
+    },
+    {
+        id: 'particle',
+        src: "/images/content/exotic-resources/particle.png",
+        alt: "",
+        width: 940,
+        height: 640,
+        classes: "shrink-60"
+    },
+    {
+        id: 'platter',
+        src: "/images/content/exotic-resources/platter.png",
+        alt: "",
+        width: 940,
+        height: 640,
+        classes: "shrink-60"
+    },
+
 ]

@@ -74,7 +74,7 @@ const SpookyView = ({
 
                     <p>You enter a small supply closet in the underbelly of Goldspire's inner ring. Something drew you here, something your sensors couldn't understand. All you can be sure of is that it wasn't by random chance.</p>
 
-                    <p>Tucked away into the corner of the dark space, you spot an unusual microcomputer. Seems dangerous to link with this directly, so you ready your physical interfacers and push the power button.</p>
+                    <p>Tucked away into the corner of the dark space, you spot an unusual microcomputer. Seems dangerous to link with this directly. You dust off the keys, ready your physical interfacers, and push the power button.</p>
 
                     <h3>Muguang E-440 Microcomputer</h3>
                     <blockquote>
