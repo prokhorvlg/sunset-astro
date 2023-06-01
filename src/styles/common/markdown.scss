@@ -142,7 +142,7 @@ article.markdown {
     }
 
     // Links ( ()[] )
-    > a, > p a {
+    > a, > p a, > ul li a {
         @include BasicLinkStyle();
     }
 
