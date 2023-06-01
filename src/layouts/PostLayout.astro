@@ -9,6 +9,7 @@ import PostNavigationBar from '@/components/post/PostNavigationBar.component';
 import { findAdjacentProcessedPosts } from '@/utils/posts';
 import { processPost, sortProcessedPostsByPubDate, getAllPosts, processPosts } from '@/utils/astroHelpers';
 import TableOfContents from '@/components/common/TableOfContents/TableOfContents.component';
+import RedirectSecret from '@/components/layout/common/RedirectSecret.component';
 
 const { post, image = null } = Astro.props;
 const posts = await getAllPosts();
@@ -42,6 +43,7 @@ const showTableOfContents =
 			postType={post.collection}
 			client:only 
 		/>
+		<RedirectSecret postType={post.collection} client:only />
 		<div class="aside-container">
 			{ showTableOfContents && <TableOfContents headings={headings} client:only /> }
 			<main>
