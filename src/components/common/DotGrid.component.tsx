@@ -9,14 +9,14 @@ interface Props {
 
 // TODO: Replace this garbage with a normal SVG pattern, wtf lol
 function DotGrid({ numRowsInitial = 10, numRowsMobile = 8, dotRadius = 1.5, dotSpacing = 6 }: Props) {
-  const [numRows, setNumRows] = useState<number>(numRowsInitial);
+  /*const [numRows, setNumRows] = useState<number>(numRowsInitial);
   const [gridWidth, setGridWidth] = useState<number>(0);
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateGridWidth = () => {
       if (gridRef.current) {
-        setGridWidth(gridRef.current.offsetWidth);
+        setGridWidth(gridRef.current.offsetWidth - 10);
       }
       // Set number of rows based on window size
       if (window.innerWidth < 1200) {
@@ -26,6 +26,7 @@ function DotGrid({ numRowsInitial = 10, numRowsMobile = 8, dotRadius = 1.5, dotS
       }
     };
     updateGridWidth();
+    
     window.addEventListener("resize", updateGridWidth);
     return () => window.removeEventListener("resize", updateGridWidth);
   }, []);
@@ -45,15 +46,19 @@ function DotGrid({ numRowsInitial = 10, numRowsMobile = 8, dotRadius = 1.5, dotS
         />
       );
     }
-  }
+  }*/
 
   return (
+    <div className="dot-grid"></div>
+  )
+
+  /*return (
     <div ref={gridRef} className="dot-grid">
       <svg width={gridWidth} height={numRows * dotSpacing}>
         {grid}
       </svg>
     </div>
-  );
+  );*/
 
 }
 

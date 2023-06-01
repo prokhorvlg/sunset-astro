@@ -32,7 +32,7 @@
                 border-radius: $chicanery-border-radius;
             }
 
-            >div {
+            > div {
                 background: $color-background-dark;
                 color: white;
                 height: 100%;
@@ -48,8 +48,9 @@
 
             .main-segment {
                 .main-segment-stipple {
-                    height: 100%;
+                    height: 70%;
                     position: relative;
+                    margin-top: 1px;
                     svg {
                         position: absolute;
                         top: 50%;
@@ -132,7 +133,8 @@
                         fill: rgba($color-ultradark-red, 1);
                     }
                     .main-segment-title {
-                        //height: 70px;
+                        height: 60px;
+                        width: 250px;
                         .main-segment-title-text {
                             font-weight: 800;
                             color: $color-background-dark;
