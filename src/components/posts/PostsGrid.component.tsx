@@ -23,6 +23,11 @@ interface PropTypes {
     processedPosts: ProcessedPost[]
 }
 
+interface ResultArray {
+    year: number
+    posts: any[]
+}
+
 const POST_TYPES = [
     PostType.Lore,
     PostType.Announcement,
@@ -41,6 +46,8 @@ const PostsGrid = ({
 }: PropTypes) => {
     // POSTS GRID
     const [filteredPosts, setFilteredPosts] = useState<ProcessedPost[]>([])
+    const [splitPosts, setSplitPosts] = useState<ResultArray[]>([])
+
     const [searchString, setSearchString] = useState("")
     const [activeCollection, setActiveCollection] = useState<PostType | null>(null)
     const [activePillar, setActivePillar] = useState<string | null>(null)
@@ -49,7 +56,7 @@ const PostsGrid = ({
     const [galleryMode, setGalleryMode] = useState(true);
 
     const filterPosts = (
-        posts: ProcessedPost[], 
+        posts: ProcessedPost[],
         searchString: string
     ) => {
         return posts.filter((i) => {
@@ -69,6 +76,48 @@ const PostsGrid = ({
     useEffect(() => {
         setFilteredPosts(filterPosts(processedPosts, searchString))
     }, [searchString, activeCollection, activePillar, additionalTags])
+
+    useEffect(() => {
+        console.log(filteredPosts[0]?.post.data.pubDate.getFullYear())
+        const splitByYear = reduceByYear(filteredPosts)
+        console.log(splitByYear)
+        setSplitPosts(splitByYear)
+    }, [filteredPosts])
+
+    // [ { year: x, posts: [] } ]
+
+    const reduceByYear = (posts) => {
+        /*return posts.reduce((buckets, post) => {
+            const currentYear = post.post.data.pubDate.getFullYear() || 0
+            if(!buckets[currentYear]) buckets[currentYear] = [];
+            buckets[currentYear].push(post);
+            return buckets;
+        },{});*/
+
+        // I'm so sorry, I just want this to be done...
+
+        let result: ResultArray[] = []
+        function find(year) {
+            for (let i = 0; i < result.length; i++)
+                if (result[i].year === year) return result[i]
+            return null
+        }
+        for (var i = 0; i < posts.length; i++) {
+            const currentYear = posts[i].post.data.pubDate.getFullYear() || 0
+            const x = find(currentYear)
+            if (x === null) {
+                result.push({ 
+                    year: currentYear, 
+                    posts: [ posts[i] ]
+                })
+            }
+            else {
+                x.posts.push(posts[i])
+            }
+        }
+
+        return result
+    }
 
     const onPostTypeClick = (type: string) => {
         if (activeCollection === type) {
@@ -171,16 +220,41 @@ const PostsGrid = ({
                     <FontAwesomeIcon icon={faSearch} className="search-icon" />
                 </div>
             </div>
-            <div className={`posts-grid ${galleryMode ? 'gallery-mode' : ''}`}>
-                {filteredPosts
-                    .map((filteredPost) => {
-                        return (
-                            <PostCard key={filteredPost.post.slug} processedPost={filteredPost} onCardTagClick={onCardTagClick} galleryMode={galleryMode}/>
-                        )
-                    })
-                }
-            </div>
+
+            {splitPosts.map((splitPostObject) => 
+                (
+                    <>
+                        <h2 className="post-grid-year-title">{splitPostObject.year}</h2>
+                        <PostGrid
+                            galleryMode={galleryMode}
+                            filteredPosts={splitPostObject.posts}
+                            onCardTagClick={onCardTagClick}
+                        />
+                    </>
+                )
+            )}
+
+                    
+
             
+        </div>
+    )
+}
+
+const PostGrid = ({
+    galleryMode,
+    filteredPosts,
+    onCardTagClick
+}) => {
+    return (
+        <div className={`posts-grid ${galleryMode ? 'gallery-mode' : ''}`}>
+            {filteredPosts
+                .map((filteredPost) => {
+                    return (
+                        <PostCard key={filteredPost.post.slug} processedPost={filteredPost} onCardTagClick={onCardTagClick} galleryMode={galleryMode}/>
+                    )
+                })
+            }
         </div>
     )
 }
