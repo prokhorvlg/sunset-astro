@@ -46,6 +46,8 @@ const PostHeading = ({
             <TransitionGradient 
                 direction="to-top" 
                 classes={postType}
+                floaterTextLeft={postType === "secret" ? "992.0037%%% AVAILABLE" : "162k available"}
+                floaterTextRight={postType === "secret" ? "MUGUANG COMPUTER CORPORATION" : "version 4.2 (c) Redmond Cybernetics"}
             />
             {(post.collection === PostType.Introduction) ? 
                 <div className="main-area introduction">
