@@ -1,0 +1,78 @@
+// MIXINS
+
+// - ::after background pattern (abg)
+@mixin bgPattern ($opacity: 0.4) {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    opacity: $opacity;
+    user-select: none;
+    pointer-events: none;
+}
+@mixin abg ($opacity: 0.4) {
+    &::after {
+        @include bgPattern($opacity);
+    }
+}
+@mixin bbg ($opacity: 0.4) {
+    &::before {
+        @include bgPattern($opacity);
+    }
+}
+// abg-child: applied to the child, to make sure it is above the background.
+@mixin abg-child {
+    position: relative;
+    z-index: 1;
+}
+
+$standardBoxShadow: drop-shadow(0px 0px 15px rgba(0,0,0,0.5));
+@mixin standardBoxShadow {
+    filter: $standardBoxShadow;
+}
+
+// various patterns!
+@mixin abg-red-dot-grid {
+    &::after {
+        background: url('/images/patterns/bg-dot-pattern.svg');
+        background-size: 110px;
+    }
+}
+@mixin abg-red-diagonal {
+    &::after {
+        background: url('/images/patterns/red-diagonal-pattern.svg');
+        background-size: 120px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            background-size: 100px;
+        }
+    }
+}
+@mixin abg-red-plus {
+    &::after {
+        background: url('/images/patterns/red-plus-pattern.svg');
+        background-size: 180px;
+    }
+}
+@mixin abg-red-crisscross {
+    &::after {
+        background: url('/images/patterns/red-crisscross-pattern.svg');
+        background-size: 140px;
+    }
+}
+@mixin abg-dark-diag {
+    &::after {
+        background: url('/images/patterns/dark-diag.svg');
+        background-size: 110px;
+    }
+}
+
+@mixin codeText() {
+    font-family: $font-code;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    color: $color-sunset-orange;
+    @media screen and (max-width: $breakpoint-mobile) {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}

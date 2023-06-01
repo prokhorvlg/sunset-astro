@@ -13,13 +13,13 @@ const PostNavigationBar = ({
 
     let nextSlug, nextPostURL
     if (nextPost) {
-        nextSlug = getFilenameWithoutExtension(nextPost?.file || "")
+        nextSlug = nextPost.post.slug
         nextPostURL = nextPost ? `/posts/${nextSlug}` : ''
     }
 
     let previousSlug, previousPostURL
     if (previousPost) {
-        previousSlug = getFilenameWithoutExtension(previousPost?.file || "")
+        previousSlug = previousPost.post.slug
         previousPostURL = previousPost ? `/posts/${previousSlug}` : ''
     }
 

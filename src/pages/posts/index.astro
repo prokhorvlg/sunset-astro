@@ -3,12 +3,15 @@ import BaseHead from '../../components/BaseHead.astro';
 import { TITLE_SUFFIX } from '../../consts';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
-import PostsView, { PostType, ProcessedPost } from '@/components/posts/PostGrid.component';
 import PageHeading from '@/components/page/PageHeading.component';
-import { getAllPosts } from '@/utils/astroHelpers';
+import { getAllPosts, getAllSecretPosts } from '@/utils/astroHelpers';
+import PostsView from '@/components/posts/PostsView.component';
 
 const posts = await getAllPosts()
 const SUBTEXT = "A collection of every post made for the Sunset System project."
+
+const secretPosts = await getAllSecretPosts()
+
 ---
 
 <!DOCTYPE html>
@@ -19,11 +22,14 @@ const SUBTEXT = "A collection of every post made for the Sunset System project."
 	<body>
 		<SunsetHeader client:only currentPage={"/posts"} />
 		<main>
-			<PageHeading title="Posts" subtext={SUBTEXT} image='computer-blinking' isSpooky><></></PageHeading>
-			<PostsView client:only="react"
+			<PostsView 
+				title="Posts" 
+				subtext={SUBTEXT} 
 				processedPosts={posts}
+				secretPosts={secretPosts}
+				client:only="react" 
 			/>
 		</main>
-		<SunsetFooter client:only currentPage={"/posts"} />
+		<SunsetFooter client:only currentPage={"/posts"} noGradient />
 	</body>
 </html>

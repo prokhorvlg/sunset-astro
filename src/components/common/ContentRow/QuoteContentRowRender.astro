@@ -15,8 +15,8 @@ interface Props {
 const authorImage = Astro.props.author.image
 let imageObject
 let imageProcessed
-if (authorImage !== "") {
-    imageObject = getImageById(Astro.props.author.image)
+if (authorImage !== undefined && authorImage !== "") {
+    imageObject = getImageById(Astro.props.author.image || "")
     imageProcessed = await getImage({
         src: imageObject!.src,
         width: 400,

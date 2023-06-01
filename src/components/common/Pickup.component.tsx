@@ -9,7 +9,7 @@ const Pickup = () => {
         // On load, check if pickup is true
         const currentPickup = localStorage.getItem(PICKUP_ID)
         if (currentPickup) {
-            //setIsPickedUp(true)
+            setIsPickedUp(true)
         }
     }, [])
 

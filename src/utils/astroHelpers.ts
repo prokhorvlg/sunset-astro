@@ -1,4 +1,4 @@
-import { PostType, ProcessedPost } from "@/components/posts/PostGrid.component";
+import { PostType, ProcessedPost } from "@/components/posts/PostsGrid.component";
 import { Images } from "@/utils/sharedImages";
 import { getImage } from "@astrojs/image";
 import { getCollection, getEntryBySlug } from "astro:content";
@@ -6,7 +6,9 @@ import { getCollection, getEntryBySlug } from "astro:content";
 export const loadAnyPost = async () => {
   const posts = await getCollection("lore");
   const introductionPosts = await getCollection("introduction");
-  const combinedPosts = [...posts, ...introductionPosts];
+  const announcementPosts = await getCollection("announcement");
+  const secretPosts = await getCollection("secret");
+  const combinedPosts = [...posts, ...introductionPosts, ...announcementPosts, ...secretPosts];
 
   return combinedPosts.map((post) => ({
     params: { slug: post.slug },
@@ -45,15 +47,38 @@ export const getAllPosts = async () => {
   );
   const introductionPostsProcessed = await processPosts(introductionPosts);
 
+  const announcementPosts = await getCollection(
+    PostType.Announcement,
+    ({ data }) => {
+      return data.draft !== true && data.hidden !== true;
+    }
+  );
+  const announcementPostsProcessed = await processPosts(announcementPosts);
+
   // Combine all of the above.
   const processedPosts: ProcessedPost[] = [
     ...lorePostsProcessed,
     ...introductionPostsProcessed,
+    ...announcementPostsProcessed
   ];
 
   // Sort collection by date.
   const sortedPosts = sortProcessedPostsByPubDate(processedPosts)
 
+  return sortedPosts;
+};
+
+export const getAllSecretPosts = async () => {
+  const secretPosts = await getCollection(PostType.Secret, ({ data }) => {
+    return data.draft !== true && data.hidden !== true;
+  });
+  const secretPostsProcessed = await processPosts(secretPosts);
+  // Combine all of the above.
+  const processedPosts: ProcessedPost[] = [
+    ...secretPostsProcessed,
+  ];
+  // Sort collection by date.
+  const sortedPosts = sortProcessedPostsByPubDate(processedPosts)
   return sortedPosts;
 };
 
@@ -66,9 +91,6 @@ export const sortProcessedPostsByPubDate = (processedPosts) => {
 // This is for globbed posts.
 export const sortPostsByPubDate = (posts) => {
   return posts.sort((a, b) => (new Date(a.frontmatter.pubDate) as any) - (new Date(b.frontmatter.pubDate) as any));
-  /*return posts.sort((a, b) => {
-    return b.frontmatter.pubDate.valueOf() - a.frontmatter.pubDate.valueOf();
-  });*/
 }
 
 // Takes incoming posts, compiles thumb image and search data
@@ -81,10 +103,13 @@ export const processPosts = async (posts) => {
 };
 
 export const processPost = async (post) => {
-  // Find and process the thumb image if available.
-  const imageObject = Images.find(
-    (imageItem) => imageItem.id === post.data.thumbImage
-  );
+  let imageObject
+  if (post.data.thumbImage) {
+    // Find and process the thumb image if available.
+    imageObject = Images.find(
+      (imageItem) => imageItem.id === post.data.thumbImage
+    );
+  }
   let processedImageObject;
   if (imageObject) {
     processedImageObject = await getImage({

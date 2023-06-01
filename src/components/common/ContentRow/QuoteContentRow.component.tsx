@@ -1,9 +1,8 @@
 import ContentRow from "@/components/common/ContentRow/ContentRow.component"
 import SimpleContainer from "@/components/containers/SimpleContainer/SimpleContainer.component"
 import BlinkingGrid from "@/components/layout/Header/components/BlinkingGrid.component"
-import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
 import { QuoteAuthor } from "@/data/Authors"
-import { getImageById, ImageDetails } from "@/utils/sharedImages"
+import { ImageDetails } from "@/utils/sharedImages"
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
@@ -40,6 +39,7 @@ const QuoteContentRow = ({
     const [number2, setNumber2] = useState(0);
     const [isOpen, setIsOpen] = useState(transcription ? false : true)
 
+    const hasImage = author.image
     const isAuthorUnknown = author.id === "unknown"
 
     // For "internal memory", randomize two number strings
@@ -64,7 +64,7 @@ const QuoteContentRow = ({
     }
 
     return (
-        <ContentRow classes={`quote-content-row ${left ? 'left' : ''} `}>
+        <ContentRow classes={`quote-content-row ${left ? 'left' : ''} ${hasImage || isAuthorYou || isAuthorUnknown ? 'has-image' : 'no-image'}`}>
             <div className={`quote-container ${author.theme ? author.theme : ''} 
             ${transcription ? 'transcription' : ''} 
             
@@ -72,7 +72,7 @@ const QuoteContentRow = ({
                 {none || !isOpen || isAuthorUnknown ? 
                     null : 
                     <div className="author-box">
-                        {shrink ?
+                        {shrink || (!hasImage && !isAuthorYou) ?
                             null : 
                             isAuthorYou ? 
                                 <div className="blinkbox-container">

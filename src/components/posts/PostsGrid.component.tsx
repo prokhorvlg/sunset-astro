@@ -9,7 +9,8 @@ export enum PostType {
 	Lore = 'lore',
     Introduction = 'introduction',
 	Game = 'game',
-	Announcement = 'announcement'
+	Announcement = 'announcement',
+    Secret = 'secret'
 }
 
 export interface ProcessedPost {
@@ -35,19 +36,16 @@ export const PILLAR_TAGS = [
     "core mystery"
 ]
 
-const PostsView = ({
+const PostsGrid = ({
     processedPosts
 }: PropTypes) => {
+    // POSTS GRID
     const [filteredPosts, setFilteredPosts] = useState<ProcessedPost[]>([])
-
     const [searchString, setSearchString] = useState("")
     const [activeCollection, setActiveCollection] = useState<PostType | null>(null)
     const [activePillar, setActivePillar] = useState<string | null>(null)
-
     const [additionalTags, setAdditionalTags] = useState<string[]>([])
-
     const [areFiltersOpen, setAreFiltersOpen] = useState(false)
-
     const [galleryMode, setGalleryMode] = useState(true);
 
     const filterPosts = (
@@ -99,7 +97,7 @@ const PostsView = ({
     }
 
     return (
-        <div className="posts-view">
+        <div className="posts-grid-container">
             <button className={`open-filters ${areFiltersOpen ? "filters-open" : "filters-closed"}`} onClick={() => setAreFiltersOpen(!areFiltersOpen)}>
                 {areFiltersOpen ? 
                     <span>Filters</span> :
@@ -173,7 +171,6 @@ const PostsView = ({
                     <FontAwesomeIcon icon={faSearch} className="search-icon" />
                 </div>
             </div>
-            {/*<button onClick={() => setGalleryMode(!galleryMode)}>Gallery Mode</button>*/}
             <div className={`posts-grid ${galleryMode ? 'gallery-mode' : ''}`}>
                 {filteredPosts
                     .map((filteredPost) => {
@@ -190,4 +187,4 @@ const PostsView = ({
 
 const CloseIcon = () => <FontAwesomeIcon icon={faCircleXmark} className="close-mark" />
 
-export default PostsView
+export default PostsGrid

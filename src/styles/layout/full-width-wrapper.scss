@@ -1,0 +1,71 @@
+// COMMON COMPONENTS
+.full-width-wrapper {
+    width: 100%;
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media screen and (max-width: $breakpoint-tablet) {
+        margin: 50px 0;
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+        margin: 30px 0;
+    }
+    .full-width-wrapper-inner {
+        width: 100%;
+        max-width: $width-2000 + 4px;
+        margin: 0 2px;
+        @media screen and (max-width: $width-2000) {
+            width: calc(100% - 2px);
+        }
+    }
+
+    &.blog-width .full-width-wrapper-inner {
+        max-width: $width-1000;
+    }
+    
+    // VERTICAL CLASSES
+    // tiny, small, mid, tall, ultra
+    $tiny: 25px;
+    $small: 50px;
+    $mid: 75px;
+    $tall: 150px;
+    $ultra: 200px;
+
+    &.top-tiny {
+        margin-top: $tiny;
+    }
+    &.top-small {
+        margin-top: $small;
+    }
+    &.top-mid {
+        margin-top: $mid;
+    }
+    // TODO: generate some proper classes idk
+    &.top-tall {
+        margin-top: $tall;
+        @media screen and (max-width: $breakpoint-mobile) {
+            margin-top: calc($tall / 2);
+        }
+    }
+    &.top-ultra {
+        margin-top: $ultra;
+    }
+
+    &.bottom-tiny {
+        margin-bottom: $tiny;
+    }
+    &.bottom-small {
+        margin-bottom: $small;
+    }
+    &.bottom-mid {
+        margin-bottom: $mid;
+    }
+    &.bottom-tall {
+        margin-bottom: $tall;
+    }
+    &.bottom-ultra {
+        margin-bottom: $ultra;
+    }
+
+}

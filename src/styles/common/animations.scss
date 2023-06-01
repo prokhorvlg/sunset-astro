@@ -1,0 +1,24 @@
+// ANIMATIONS
+
+// Blinking
+// Mainly meant for cursor dot
+.blinking {
+    animation: blinking-opacity 1s infinite;
+}
+@keyframes blinking-opacity {
+    0% {
+        opacity: 0
+    }
+
+    25% {
+        opacity: 1
+    }
+
+    75% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}

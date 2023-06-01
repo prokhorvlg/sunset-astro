@@ -1,22 +1,23 @@
-import Button, { ButtonType } from "@/components/common/Button/Button.component"
 import TransitionGradient from "@/components/home/TransitionGradient.component"
 import LinksSegment from "@/components/layout/common/LinksSegment.component"
 import SocialsSegment from "@/components/layout/common/SocialsSegment.component"
-import HeaderLink from "@/components/layout/Header/components/HeaderLink.component"
-import { CommonLinks, CommonText } from "@/data/Common"
-import { faHome, faList, faGamepad } from "@fortawesome/free-solid-svg-icons"
 import DotGrid from "../../common/DotGrid.component"
 
-const SunsetFooter = ({ currentPage = '' }) => {
+const SunsetFooter = ({ 
+    currentPage = '', 
+    noGradient = false,
+    postType = ""
+}) => {
     const gridNumRows = 25
     return (
-        
-        <div className="sunset-footer-container">
-            {/*<div className="sunset-footer-gradient"></div>*/}
-            <TransitionGradient direction="to-bottom" 
-                floaterTextLeft="9189 tb consumed"
-                floaterTextRight="disc corruption detected"
-            />
+        <div className={`sunset-footer-container ${noGradient ? 'no-gradient' : ''}`}>
+            { !noGradient && 
+                <TransitionGradient direction="to-bottom" 
+                    floaterTextLeft="9189 tb consumed"
+                    floaterTextRight="disc corruption detected"
+                    classes={postType}
+                />
+            }
             <div className="sunset-footer">
                 <div className="content-area">
                     <div className="heading">

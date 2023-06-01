@@ -1,6 +1,6 @@
 import ContentRow from "@/components/common/ContentRow/ContentRow.component"
 import PostCard from "@/components/posts/PostCard.component"
-import { ProcessedPost } from "@/components/posts/PostGrid.component"
+import { ProcessedPost } from "@/components/posts/PostsGrid.component"
 
 interface PropTypes {
     classes?: string

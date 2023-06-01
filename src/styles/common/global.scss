@@ -1,0 +1,145 @@
+// GLOBAL
+// Site-wide adjustments to styling
+html {
+    min-height: 100%;
+    display: flex;
+    scroll-behavior: smooth;
+} 
+body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-variant-ligatures: none;
+
+    overflow-x: hidden;
+    background-color: $color-background-dark;
+    position: relative;
+    margin: 0;
+
+    // Dotted after pattern on body
+    @include abg(0.6);
+    @include abg-red-dot-grid;
+    &::after {
+        z-index: -100;
+    }
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        &::after {
+            background: url('/images/patterns/bg-dot-pattern.svg');
+            background-size: 80px;
+        }
+    }
+}
+main {
+    flex: 1;
+    max-width: 100%;
+}
+
+// Global classes
+.mobile-only {
+    display: none;
+    @media screen and (max-width: $breakpoint-mobile) {
+        display: block;
+    }
+}
+.hide {
+    display: none !important;
+}
+.code {
+    font-family: $font-code;
+}
+.highlight-aqua {
+    color: $color-sunset-aqua;
+}
+.highlight-yellow {
+    color: $color-sunset-yellow;
+}
+.highlight-orange {
+    color: $color-sunset-orange;
+}
+.highlight-red {
+    color: $color-sunset-red;
+}
+
+:root {
+    font-family: $font-body;
+    color: $color-sunset-manila;
+}
+p, button {
+    font-family: $font-body;
+    text-align: left;
+
+    line-height: 1.7rem;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: $color-sunset-manila;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-title;
+}
+
+input[type=text] {
+    border: $size-line-width solid $color-sunset-red;
+    border-radius: $chicanery-border-radius;
+    background: $color-background-dark;
+    padding: 20px;
+    color: $color-sunset-orange;
+    font-family: $font-code;
+    font-size: 16px;
+
+    &::placeholder {
+        color: $color-sunset-red;
+        opacity: 0.6;
+    }
+}
+
+@mixin BasicLinkStyle {
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    color: $color-sunset-red;
+    &:hover, &:focus {
+        color: $color-sunset-orange;
+        text-decoration: none;
+        &::before {
+            background: rgba($color-sunset-red, 0.3);
+            height: 100%;
+            bottom: 0;
+        }
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0; right: 0; bottom: 5px;
+        height: 3px;
+        background: rgba($color-sunset-red, 0.4);
+        transition: 0.04s ease-in-out;
+        z-index: -90;
+    }
+    .active-icon {
+        display: none;
+        position: absolute;
+        left: -18px;
+        top: 50%;
+        transform: translateY(calc(-50% - 2px));
+    }
+
+    &.active {
+        color: $color-sunset-orange;
+        &::before {
+            background: rgba($color-sunset-red, 0.4)
+        }
+        .active-icon {
+            display: block;
+        }
+    }
+}
+
+.tiny-code {
+    text-transform: uppercase;
+    color: $color-sunset-orange;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 13px;
+    font-family: $font-code;
+}

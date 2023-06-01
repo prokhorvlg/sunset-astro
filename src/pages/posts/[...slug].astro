@@ -12,6 +12,6 @@ const { Content } = await post.render();
 const image = await getProcessedImageById(post.data.thumbImage, 1500)
 ---
 
-<PostLayout post={post} image={image?.src}>
+<PostLayout post={post} image={image?.src} >
 	<Content />
 </PostLayout>

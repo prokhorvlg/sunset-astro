@@ -6,20 +6,14 @@ import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import PostHeading from '@/components/post/PostHeading.component';
 import PostNavigationBar from '@/components/post/PostNavigationBar.component';
 
-import { findAdjacentObjects } from '@/utils/posts';
-import { processPost, sortPostsByPubDate } from '@/utils/astroHelpers';
+import { findAdjacentProcessedPosts } from '@/utils/posts';
+import { processPost, sortProcessedPostsByPubDate, getAllPosts, processPosts } from '@/utils/astroHelpers';
 import TableOfContents from '@/components/common/TableOfContents/TableOfContents.component';
 
 const { post, image = null } = Astro.props;
-const posts = await Astro.glob('../content/**/*.mdx');
-const sortedPosts = sortPostsByPubDate(posts)
-
-interface GlobbedPost {
-	frontmatter: any,
-	Content: any
-}
-
-const { previousPost, nextPost } = findAdjacentObjects(sortedPosts, post.data.title)
+const posts = await getAllPosts();
+const sortedPosts = sortProcessedPostsByPubDate(posts)
+const { previousPost, nextPost } = findAdjacentProcessedPosts(sortedPosts, post.data.title)
 
 const processedPost = await processPost(post)
 const processedThumb = processedPost.processedThumbImage
@@ -42,15 +36,26 @@ const showTableOfContents =
 	</head>
 	<body>
 		<SunsetHeader client:only currentPage={Astro.url.pathname} />
-		<PostHeading post={post} processedThumb={processedThumb} client:only />
+		<PostHeading 
+			post={post} 
+			processedThumb={processedThumb}
+			postType={post.collection}
+			client:only 
+		/>
 		<div class="aside-container">
 			{ showTableOfContents && <TableOfContents headings={headings} client:only /> }
 			<main>
-				<MarkdownWrapper><slot /></MarkdownWrapper>
-				<PostNavigationBar previousPost={previousPost} nextPost={nextPost}/>
+				<MarkdownWrapper postType={post.collection}><slot /></MarkdownWrapper>
+				{ post.collection !== "secret" &&
+					<PostNavigationBar previousPost={previousPost} nextPost={nextPost}/>
+				}
 				<!-- <JamComments path={url} /> -->
 			</main>
 		</div>
-		<SunsetFooter client:only currentPage={Astro.url.pathname} />
+		<SunsetFooter 
+			client:only
+			currentPage={Astro.url.pathname}
+			postType={post.collection}
+		/>
 	</body>
 </html>

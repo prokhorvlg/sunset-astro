@@ -1,9 +1,9 @@
 import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer from "@/components/containers/DialogContainer/DialogContainer.component"
-import { PostType, ProcessedPost } from "@/components/posts/PostGrid.component"
+import { PostType, ProcessedPost } from "@/components/posts/PostsGrid.component"
 import { getImageObjectById } from "@/utils/astroHelpers"
 import { getDateString } from "@/utils/date"
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBullhorn } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { CollectionEntry } from "astro:content"
 import { useState, useEffect } from "react"
@@ -75,7 +75,11 @@ const PostCard = ({
                 classes: `post-card`
             }}>
                 <div className="post-card-top">
-                    {galleryMode && mobileMode && collection !== PostType.Introduction ? 
+                    { galleryMode && 
+                        mobileMode && 
+                        collection !== PostType.Introduction &&
+                        collection !== PostType.Announcement 
+                        ? 
                         <img src={imageSrc || ""} 
                             height={imageHeight} 
                             width={imageWidth}
@@ -100,6 +104,13 @@ const PostCard = ({
                         <h3 className="title">{post.data.mainText}</h3>
                         <p className="description">{post.data.subText}</p>
                         <TagCloud tags={post.data.tags || []} onCardTagClick={onCardTagClick} />
+                    </div> : null
+                }
+                {(collection === PostType.Announcement) ? 
+                    <div className="post-card-content">
+                        <FontAwesomeIcon icon={faBullhorn} className="icon" />
+                        <h3 className="title">{post.data.title}</h3>
+                        <p className="description">{post.data.description}</p>
                     </div> : null
                 }
 

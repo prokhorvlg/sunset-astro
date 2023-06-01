@@ -1,15 +1,15 @@
-export const findAdjacentObjects = (
+export const findAdjacentProcessedPosts = (
   arr,
   targetId: number
 ) => {
-  const targetIndex = arr.findIndex((obj) => obj.frontmatter.title === targetId);
+  const targetIndex = arr.findIndex((obj) => obj.post.data.title === targetId);
 
   if (targetIndex === -1) {
     return { previousPost: null, nextPost: null }; // target object with given id not found in array
   }
 
-  const previousPost = targetIndex > 0 ? arr[targetIndex - 1] : null;
-  const nextPost = targetIndex < arr.length - 1 ? arr[targetIndex + 1] : null;
+  const nextPost = targetIndex > 0 ? arr[targetIndex - 1] : null;
+  const previousPost = targetIndex < arr.length - 1 ? arr[targetIndex + 1] : null;
 
   return { previousPost, nextPost };
 }

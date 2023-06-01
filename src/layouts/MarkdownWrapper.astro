@@ -1,8 +1,8 @@
 ---
-const {  } = Astro.props;
+const { postType } = Astro.props;
 
 ---
 
-<article class="markdown">
+<article class=`markdown ${postType}`>
     <slot />
 </article>

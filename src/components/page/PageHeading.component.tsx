@@ -1,18 +1,20 @@
-import DialogContainer, { DialogHeaderStyle } from "@/components/containers/DialogContainer/DialogContainer.component"
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
-import { faClose, faFile, faList, faMinus } from "@fortawesome/free-solid-svg-icons"
-import { faSquare } from "@fortawesome/free-regular-svg-icons"
+import { faClose, faList, faMinus } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import TransitionGradient from "@/components/home/TransitionGradient.component"
+
+export const INSERTED_DISK_ID = "inserted_disk_id"
 
 interface PropTypes {
     title?: string
     subtext?: string
-    children: any,
+    children?: any,
     image?: string
     pullDown?: boolean // artificially heighten and reduce margin?
     showHeaderBar?: boolean
-    isSpooky?: boolean
+    isSpooky?: boolean // Does this page top trigger a spooky mode with close button (only on posts)
+    isSpookyMode?: boolean
+    setIsSpookyMode?: Function
 }
 
 const PageHeading = ({
@@ -22,13 +24,16 @@ const PageHeading = ({
     image,
     pullDown,
     showHeaderBar = true,
-    isSpooky = false
+    isSpooky = false,
+    isSpookyMode,
+    setIsSpookyMode
 }: PropTypes) => {
     // Transform the page into the spooky page instead.
     const triggerSpooky = () => {
-        
+        if (setIsSpookyMode) {
+            setIsSpookyMode(true)
+        }
     }
-
     return (
         <FullWidthWrapper classes={`heading-area page ${pullDown ? 'hidden-header' : null}`} width={WrapperMax.MaxWidth}>
             {showHeaderBar ? 

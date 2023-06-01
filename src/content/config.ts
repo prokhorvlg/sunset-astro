@@ -1,4 +1,4 @@
-import { PostType } from '@/components/posts/PostGrid.component';
+import { PostType } from '@/components/posts/PostsGrid.component';
 import { defineCollection, z } from 'astro:content';
 
 const collectionSetup = {
@@ -22,7 +22,8 @@ const collectionSetup = {
 		draft: z.boolean().optional(),
 		hidden: z.boolean().optional(),
 		noTableOfContents: z.boolean().optional(),
-		tags: z.array(z.string()).optional()
+		tags: z.array(z.string()).optional(),
+		id: z.string().optional()
 	}),
 }
 
@@ -31,4 +32,5 @@ export const collections = {
 	[PostType.Introduction]: defineCollection(collectionSetup),
 	[PostType.Game]: defineCollection(collectionSetup),
 	[PostType.Announcement]: defineCollection(collectionSetup),
+	[PostType.Secret]: defineCollection(collectionSetup),
 };
