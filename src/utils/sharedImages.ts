@@ -831,6 +831,36 @@ export const Images: ImageDetails[] = [
         width: 1025,
         height: 920,
     },
+    {
+        id: 'sadie-festival',
+        src: "/images/content/sadie-festival.png",
+        alt: "",
+        width: 1692,
+        height: 1336
+    },
+    {
+        id: 'sandblasted-walker',
+        src: "/images/content/sandblasted-walker.png",
+        alt: "Robot with weapons standing in the desert",
+        width: 2388,
+        height: 1470,
+        classes: "border-orange"
+    },
+    {
+        id: 'powerful-organizations',
+        src: "/images/content/powerful-organizations.png",
+        alt: "Logos of various factions in the Solar System",
+        width: 2560,
+        height: 2168,
+        classes: "border-uniserve-blue"
+    },
+    {
+        id: 'dragon-wing',
+        src: "/images/content/dragon-wing.png",
+        alt: "Sleek aircraft designed to take down space launches",
+        width: 1635,
+        height: 996
+    },
     // EXOTIC RESOURCES
     {
         id: 'exotic-resources',

@@ -191,7 +191,7 @@ article.markdown {
         padding: 20px;
         border: 2px solid $color-sunset-orange;
         border-radius: $chicanery-border-radius;
-        background-color: $color-ultradark-red;
+        
         line-height: 24px;
         margin-top: 40px;
         margin-bottom: 40px;
@@ -216,8 +216,11 @@ article.markdown {
                 white-space: pre-wrap;
             }
         }
+        &.astro-code {
+            background-color: $color-ultradark-red !important;
+        }
     }
-    > p, > ul > li {
+    > p, > ul > li, > ul > li > p {
         > code {
             background-color: rgba($color-sunset-red, 0.2);
             padding: 0px 3px 2px;
