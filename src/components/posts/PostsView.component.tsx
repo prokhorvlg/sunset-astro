@@ -45,8 +45,9 @@ const PostsView = ({
                         processedPosts={processedPosts}
                     />
                     <TransitionGradient direction="to-bottom" 
-                        floaterTextLeft="9189 tb consumed"
                         floaterTextRight="disc corruption detected"
+                        floaterTextLeft="WHATAR~1.TXT"
+			            classes="spooky-left"
                     />
                 </>
             }

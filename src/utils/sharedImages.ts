@@ -203,7 +203,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'weston-mission-control',
         src: "/images/larkine-locations/weston-mission-control.png",
-        alt: "Large desktop microcomputer with two circular screens",
+        alt: "Scene depicting a mission control room",
         width: 919,
         height: 566,
         classes: "border-red",
@@ -212,7 +212,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'storage-bay',
         src: "/images/larkine-locations/storage-bay.png",
-        alt: "Large desktop microcomputer with two circular screens",
+        alt: "Scene depicting a storage bay where the walls are filled with containers",
         width: 919,
         height: 566,
         classes: "border-red",
@@ -221,7 +221,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'earthview-garden',
         src: "/images/larkine-locations/earthview-garden.png",
-        alt: "Large desktop microcomputer with two circular screens",
+        alt: "Scene depicting a garden within a space station",
         width: 919,
         height: 566,
         classes: "border-red",

@@ -55,3 +55,9 @@ export const CharacterEndOfTime: QuoteAuthor = {
     description: "World of silicon, many as one.",
     theme: "secret machine-end-of-time",
 }
+export const CharacterBROKENDATA: QuoteAuthor = {
+    id: "brokendata",
+    name: "BROKENDATA",
+    description: "???",
+    theme: "secret",
+}

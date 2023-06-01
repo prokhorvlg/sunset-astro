@@ -3,19 +3,31 @@ import LinksSegment from "@/components/layout/common/LinksSegment.component"
 import SocialsSegment from "@/components/layout/common/SocialsSegment.component"
 import DotGrid from "../../common/DotGrid.component"
 
+interface Props {
+    currentPage: string
+    noGradient?: boolean
+    postType?: string
+    floaterTextLeft?: string
+    floaterTextRight?: string
+    gradientClasses?: string
+}
+
 const SunsetFooter = ({ 
     currentPage = '', 
     noGradient = false,
-    postType = ""
-}) => {
+    postType,
+    floaterTextLeft,
+    floaterTextRight,
+    gradientClasses
+}: Props) => {
     const gridNumRows = 25
     return (
         <div className={`sunset-footer-container ${noGradient ? 'no-gradient' : ''}`}>
             { !noGradient && 
                 <TransitionGradient direction="to-bottom" 
-                    floaterTextLeft="9189 tb consumed"
-                    floaterTextRight="disc corruption detected"
-                    classes={postType}
+                    floaterTextLeft={floaterTextLeft ? floaterTextLeft : "9189 tb consumed"}
+                    floaterTextRight={floaterTextRight ? floaterTextRight : "disc corruption detected"}
+                    classes={`${postType ? postType : ""} ${gradientClasses ? gradientClasses : ""}`}
                 />
             }
             <div className="sunset-footer">
