@@ -12,7 +12,7 @@ tags:
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
 import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
-import { AuthorCAN } from '@/data/Authors.ts'
+import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
 <ImageContentRowRender 
   images={['pals']}
@@ -33,6 +33,12 @@ import { AuthorCAN } from '@/data/Authors.ts'
   That isn’t to say similar systems weren’t developed. Even before the teledex, crafty users and several startups attempted neuromorphic Datanet indexing using microcomputers and mainframes, but the teledex was the method that really blew up thanks to its convenient pattern (1 user, 1 teledex, portable).
 
   PAL was initially released with two models, `Draw` and `Pro`. Several years later, Maple would release the Pal Mini, a cheaper screen-less design relying on vocal interfacing. Maple and its competitors would ultimately release thousands of various teleindexer models.
+
+  <QuoteContentRowRender author={AuthorUniserve} left >
+There are still at least a few dozen PALS and other TELEINDEXERS lying around this space station. They fell to the ground, completely immobile, the moment the UNEXPECTED INTERRUPT occured.
+
+But they weren't ENTIRELY HELPLESS. No legs, sure, but they half-exist in the realm of the digital. Like THIS UNIT.
+</QuoteContentRowRender>
 
 <QuoteContentRowRender author={AuthorCAN} transcription>
 ## Say hello to Pal, your new best friend.
