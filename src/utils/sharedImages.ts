@@ -893,6 +893,20 @@ export const Images: ImageDetails[] = [
         height: 2127,
         classes: "border-red"
     },
+    {
+        id: 'ysh-5k',
+        src: "/images/content/ysh-5k.png",
+        alt: "A Union shuttle",
+        width: 1606,
+        height: 1178
+    },
+    {
+        id: 'ysh-11B2-K',
+        src: "/images/content/ysh-11B2-K.png",
+        alt: "A Union cargo spaceplane",
+        width: 1500,
+        height: 887
+    },
     // EXOTIC RESOURCES
     {
         id: 'exotic-resources',
