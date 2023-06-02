@@ -861,6 +861,13 @@ export const Images: ImageDetails[] = [
         width: 1635,
         height: 996
     },
+    {
+        id: 'consensus-2023-rev',
+        src: "/images/content/consensus-2023-rev.jpg",
+        alt: "A tri-headed robot",
+        width: 1666,
+        height: 1156
+    },
     // EXOTIC RESOURCES
     {
         id: 'exotic-resources',

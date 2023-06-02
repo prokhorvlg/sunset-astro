@@ -233,10 +233,6 @@ const PostsGrid = ({
                     </>
                 )
             )}
-
-                    
-
-            
         </div>
     )
 }
