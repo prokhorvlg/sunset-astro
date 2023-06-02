@@ -866,7 +866,32 @@ export const Images: ImageDetails[] = [
         src: "/images/content/consensus-2023-rev.jpg",
         alt: "A tri-headed robot",
         width: 1666,
-        height: 1156
+        height: 1156,
+    },
+    // MAPS
+    {
+        id: 'map-of-venus',
+        src: "/images/content/maps/p-venus-2023.png",
+        alt: "Map of Venus",
+        width: 2500,
+        height: 2101,
+        classes: "border-orange"
+    },
+    {
+        id: 'map-of-titan',
+        src: "/images/content/maps/p-titan-2023.png",
+        alt: "Map of Titan",
+        width: 2500,
+        height: 2127,
+        classes: "border-uniserve-blue"
+    },
+    {
+        id: 'map-of-mars',
+        src: "/images/content/maps/p-mars-2023.png",
+        alt: "Map of Mars",
+        width: 2500,
+        height: 2127,
+        classes: "border-red"
     },
     // EXOTIC RESOURCES
     {
