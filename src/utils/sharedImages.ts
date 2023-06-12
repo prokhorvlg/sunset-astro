@@ -722,7 +722,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'sos-r9',
         src: "/images/content/robots-2022/sos-r9.png",
-        alt: "",
+        alt: "Flying robot with a gun arm",
         width: 1769,
         height: 1097,
         originalPost: "random-robots-2022"
@@ -731,7 +731,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'sushibot',
         src: "/images/content/sushibot.png",
-        alt: "",
+        alt: "Robotic sushi food cart",
         width: 1327,
         height: 1267,
         originalPost: "sushibot"
@@ -739,7 +739,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'reclomat',
         src: "/images/content/reclomat.png",
-        alt: "",
+        alt: "Large boxy appliance called a reclomat",
         width: 1307,
         height: 1154,
         originalPost: "reclomat"
@@ -747,7 +747,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'botanist-rev',
         src: "/images/content/botanist-rev.png",
-        alt: "",
+        alt: "Botanist robot treating a corn plant",
         width: 2201,
         height: 1796,
         originalPost: "patient-potato"
@@ -755,7 +755,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'forgotten-draco',
         src: "/images/content/forgotten-draco.png",
-        alt: "",
+        alt: "Mining robot blasting away in a cave",
         width: 2945,
         height: 2076,
         originalPost: "forgotten-draco"
@@ -763,7 +763,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'datasphere',
         src: "/images/content/datasphere-2023-2.jpg",
-        alt: "",
+        alt: "Infographic about the datasphere",
         width: 2632,
         height: 1761,
         originalPost: "datasphere"
@@ -771,7 +771,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'smasher',
         src: "/images/content/smasher.png",
-        alt: "",
+        alt: "A broken keyboard",
         width: 1193,
         height: 929,
         originalPost: "smasher"
@@ -779,7 +779,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'raz-26-tremor',
         src: "/images/content/raz-26-tremor.png",
-        alt: "",
+        alt: "VTOL gunship employed by the Union on Venus",
         width: 2109,
         height: 1955,
         originalPost: "raz-26-tremor"
@@ -787,7 +787,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'northern-alliance-thundercat',
         src: "/images/content/northern-alliance-thundercat.png",
-        alt: "",
+        alt: "High-altitude fighter rocketship",
         width: 1758,
         height: 1031,
         originalPost: "northern-alliance-thundercat"
@@ -795,7 +795,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'longhorn-starfire',
         src: "/images/content/longhorn-starfire.png",
-        alt: "",
+        alt: "High-speed screamer spacecraft",
         width: 1821,
         height: 1010,
         originalPost: "longhorn-starfire"
@@ -803,7 +803,7 @@ export const Images: ImageDetails[] = [
     {
         id: 'northern-alliance-zoro',
         src: "/images/content/northern-alliance-zoro.png",
-        alt: "",
+        alt: "Coalition helicopter gunship flying over a desert",
         width: 2388,
         height: 1668,
         originalPost: "northern-alliance-zoro"
@@ -906,6 +906,13 @@ export const Images: ImageDetails[] = [
         alt: "A Union cargo spaceplane",
         width: 1500,
         height: 887
+    },
+    {
+        id: 'thinkbot-ad',
+        src: "/images/content/thinkbot-ad-5.png",
+        alt: "Union thinkbot robot",
+        width: 1852,
+        height: 2542
     },
     // EXOTIC RESOURCES
     {

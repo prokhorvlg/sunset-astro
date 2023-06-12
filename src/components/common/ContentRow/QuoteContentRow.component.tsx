@@ -38,6 +38,7 @@ const QuoteContentRow = ({
     const [number, setNumber] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [isOpen, setIsOpen] = useState(transcription ? false : true)
+    //const [isOpen, setIsOpen] = useState(true)
 
     const hasImage = author.image
     const isAuthorUnknown = author.id === "unknown"
