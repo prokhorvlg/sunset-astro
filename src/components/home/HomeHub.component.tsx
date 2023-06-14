@@ -68,7 +68,7 @@ const HomeHub = ({
                                 <HubLink url={CommonLinks.posts} text="Posts" />
                                 <div className="spacer"></div>
                                 <p>The crew is working on a 🕹️ metroidvania game set in this universe!</p>
-                                <HubLink url={CommonLinks.game} text="Game" />
+                                {/*<HubLink url={CommonLinks.game} text="Game" />*/}
                             </HubCol>
                             <HubCol
                                 title="Support the project ❤️"
