@@ -909,7 +909,7 @@ export const Images: ImageDetails[] = [
     },
     {
         id: 'thinkbot-ad',
-        src: "/images/content/thinkbot-ad-5.png",
+        src: "/images/content/thinkbot-ad-6.png",
         alt: "Union thinkbot robot",
         width: 1852,
         height: 2542
