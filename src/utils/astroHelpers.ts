@@ -29,7 +29,7 @@ export const getProcessedPost = async (
   return await processPost(post);
 };
 
-// getAllPosts: Returns a collection of all posts on the website.
+// getAllPosts: Returns a collection of all posts on the website (processed).
 export const getAllPosts = async () => {
   // Load in every post type (must be done using the Astro way).
   // LORE
@@ -67,6 +67,36 @@ export const getAllPosts = async () => {
 
   return sortedPosts;
 };
+
+export const getAllCollections = async () => {
+   // Load in every post type (must be done using the Astro way).
+  // LORE
+  const lorePosts = await getCollection(PostType.Lore, ({ data }) => {
+    return data.draft !== true && data.hidden !== true;
+  });
+  // INTRODUCTION
+  const introductionPosts = await getCollection(
+    PostType.Introduction,
+    ({ data }) => {
+      return data.draft !== true && data.hidden !== true;
+    }
+  );
+  const announcementPosts = await getCollection(
+    PostType.Announcement,
+    ({ data }) => {
+      return data.draft !== true && data.hidden !== true;
+    }
+  );
+
+  // Combine all of the above.
+  const allPosts = [
+    ...lorePosts,
+    ...introductionPosts,
+    ...announcementPosts
+  ];
+
+  return allPosts;
+}
 
 export const getAllSecretPosts = async () => {
   const secretPosts = await getCollection(PostType.Secret, ({ data }) => {
