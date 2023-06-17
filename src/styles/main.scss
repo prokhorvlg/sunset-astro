@@ -4231,3 +4231,23 @@ $aside-sticky-breakpoint: 1800px;
         width: 95%;
     }
 }
+
+.build-a-bot-container {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+    height: 2000px;
+    background: $color-sunset-manila;
+
+    h1, p {
+        color: $color-background-dark;
+    }
+
+    input {
+        border-radius: 0;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid $color-background-dark;
+        color: $color-background-dark;
+    }
+}
