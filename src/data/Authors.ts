@@ -61,3 +61,16 @@ export const CharacterBROKENDATA: QuoteAuthor = {
     description: "???",
     theme: "secret",
 }
+
+export const AuthorSanguineHaze: QuoteAuthor = {
+    id: "sanguine-haze",
+    name: "SANGUINE HAZE",
+    description: "Lord of the Order, Pact origin.",
+    theme: "red"
+}
+export const AuthorOperatorCobalt: QuoteAuthor = {
+    id: "operator-cobalt",
+    name: "OPERATOR COBALT",
+    description: "Lord of the Order, Coalition origin.",
+    theme: "blue"
+}
