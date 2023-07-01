@@ -1,5 +1,5 @@
 import { PostType, ProcessedPost } from "@/components/posts/PostsGrid.component";
-import { Images } from "@/utils/sharedImages";
+import { Images } from "@/data/sharedImages";
 import { getImage } from "@astrojs/image";
 import { getCollection, getEntryBySlug } from "astro:content";
 

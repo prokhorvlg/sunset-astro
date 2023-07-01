@@ -72,6 +72,32 @@ $quoteMobileSidePadding: 20px;
         );
         @include whiteBGQuote();
     }
+    &.sanguine {
+        $red: #ff442b;
+        @include recolorQuote(
+            #ff6923,
+            #ff6923,
+            darken($red, 45%),
+            #ffc21c,
+            $red
+        );
+        .author-box .image {
+            background-size: 150%;
+            background-position-x: 70%;
+            background-position-y: 10%;
+        }
+    }
+    &.cobalt {
+        $cobalt: #6399fd;
+        @include recolorQuote(
+            lighten($cobalt, 20%),
+            darken($cobalt, 05%),
+            darken($cobalt, 50%),
+            #1cb7ff,
+            $cobalt
+        );
+        @include whiteBGQuote();
+    }
 
     // Themes for specific characters
     &.uniserve {
@@ -86,6 +112,7 @@ $quoteMobileSidePadding: 20px;
             text-transform: uppercase;
         }
     }
+
 }
 
 // MAIN STYLING

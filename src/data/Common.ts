@@ -1,3 +1,5 @@
+// Contains commonly shared text.
+
 export const CommonText = {
     home: "What is Sunset System?",
     posts: "View the art and lore for Sunset System",

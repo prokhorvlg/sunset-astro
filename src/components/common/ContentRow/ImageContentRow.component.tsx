@@ -1,6 +1,6 @@
 import ContentRow from "@/components/common/ContentRow/ContentRow.component"
 import 'photoswipe/dist/photoswipe.css'
-import { ImageDetails } from "@/utils/sharedImages";
+import { ImageDetails } from "@/data/sharedImages";
 import ImageGallery, { FullImageDetails } from "@/components/common/ImageGallery/ImageGallery.component";
 
 interface PropTypes {

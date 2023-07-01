@@ -1,4 +1,4 @@
-import { getImageById } from "@/utils/sharedImages"
+import { getImageById } from "@/data/sharedImages"
 import { getImage } from "astro/dist/assets"
 
 export interface QuoteAuthor {
@@ -65,12 +65,14 @@ export const CharacterBROKENDATA: QuoteAuthor = {
 export const AuthorSanguineHaze: QuoteAuthor = {
     id: "sanguine-haze",
     name: "SANGUINE HAZE",
-    description: "Lord of the Order, Pact origin.",
-    theme: "red"
+    description: "Lord of Order. The erratic one.",
+    theme: "sanguine",
+    image: "sanguine-haze",
+    originalPage: "/posts/two-lords-origin"
 }
 export const AuthorOperatorCobalt: QuoteAuthor = {
     id: "operator-cobalt",
     name: "OPERATOR COBALT",
-    description: "Lord of the Order, Coalition origin.",
-    theme: "blue"
+    description: "Lord of Order. The strategic one.",
+    theme: "cobalt"
 }

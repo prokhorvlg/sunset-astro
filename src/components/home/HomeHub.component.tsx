@@ -1,6 +1,6 @@
 import { faDeviantart, faDiscord, faInstagram, faPatreon, faRedditAlien, faTumblr, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { ScrollParallax } from 'react-just-parallax'
-import { PostsIcon, GameIcon, PrintsIcon } from '@/utils/sharedIcons'
+import { PostsIcon, GameIcon, PrintsIcon } from '@/data/sharedIcons'
 import FullWidthWrapper from '@/components/wrappers/FullWidthWrapper.component'
 import DialogContainer, { DialogHeaderStyle } from '@/components/containers/DialogContainer/DialogContainer.component'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
