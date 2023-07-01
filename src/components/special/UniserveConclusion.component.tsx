@@ -1,6 +1,6 @@
 import QuoteContentRow from "@/components/common/ContentRow/QuoteContentRow.component"
 import { AuthorTerminal, AuthorUniserve } from "@/data/Authors"
-import { getImageById } from "@/utils/sharedImages"
+import { getImageById } from "@/data/sharedImages"
 import { useState } from "react"
 
 enum Choice {

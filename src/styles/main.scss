@@ -4251,3 +4251,77 @@ $aside-sticky-breakpoint: 1800px;
         color: $color-background-dark;
     }
 }
+
+.organizations-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    max-width: 2000px;
+    gap: 10px;
+    margin: 0 auto;
+    .org-item {
+        border: 2px dotted transparent;
+        cursor: pointer;
+        border-radius: $chicanery-border-radius;
+        background: rgba(rgb(48, 48, 48), 0.5);
+        padding: 20px;
+        &:hover {
+            border: 2px dotted $color-sunset-red;
+        }
+
+        @mixin factionColor($color) {
+            //background-color: rgba($color, 0.1);
+            //border-color: rgba($color, 0.1);
+            &:hover {
+                border-color: rgba($color, 1);
+            }
+            .affiliation {
+                color: $color;
+            }
+        }
+        &.Union {
+            @include factionColor($color-sunset-red);
+        }
+        &.Coalition {
+            @include factionColor($color-sunset-aqua);
+        }
+        &.Pact {
+            @include factionColor($color-sunset-orange);
+        }
+
+        .top-bar {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            border-bottom: 1px solid $color-sunset-manila;
+            p {
+                margin: 0;
+            }
+        }
+            
+        .affiliation {
+            font-family: $font-code;
+            text-transform: uppercase;
+            margin-bottom: 0;
+            
+        }
+        .type {
+            font-family: $font-code;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+        .name {
+            margin-top: 0;
+            margin-bottom: 10px;
+            //color: $color-sunset-orange;
+            font-size: 22px;
+            font-weight: 500;
+            font-family: $font-code;
+        }
+        .description {
+            //color: $color-sunset-red;
+        }
+    }
+}

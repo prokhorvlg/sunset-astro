@@ -2,7 +2,7 @@ import { faDiscord, faPatreon, faRedditAlien } from '@fortawesome/free-brands-sv
 import { ScrollParallax } from 'react-just-parallax'
 import DialogContainer, { DialogHeaderStyle } from '../../containers/DialogContainer/DialogContainer.component'
 import NavLink from './components/NavLink.component'
-import { PostsIcon, GameIcon, PrintsIcon } from '@/utils/sharedIcons'
+import { PostsIcon, GameIcon, PrintsIcon } from '@/data/sharedIcons'
 
 const IntroSection = () => {
     return (

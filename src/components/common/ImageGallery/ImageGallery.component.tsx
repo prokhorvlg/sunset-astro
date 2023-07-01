@@ -1,7 +1,7 @@
 import React from 'react'
 import { Gallery, Item } from "react-photoswipe-gallery";
 import 'photoswipe/dist/photoswipe.css'
-import { ImageDetails } from "@/utils/sharedImages";
+import { ImageDetails } from "@/data/sharedImages";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { styled } from '@stitches/react';
