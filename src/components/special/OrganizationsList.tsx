@@ -5,33 +5,16 @@ import { Organization, Organizations } from "@/data/organizations"
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
+import { styled } from '@stitches/react';
+
 
 // sort by:
 // - affiliation
 // - name
 // search by: words
 
-const ColoredButton = styled.button<{ primary?: string }>`
-    ${props => props.primary ? `
-        &:hover, &:focus {
-            border-color: ${props.primary} !important;
-            background: linear-gradient(to bottom, 
-                transparent, 
-                ${props.primary}44) !important;
-            .name {
-                color: ${props.primary} !important;
-            }
-        }` : ""}
-`;
-
-const ModalContent = styled.div<{ primary?: string }>`
-    ${props => props.primary ? `
-        strong {
-            color: ${props.primary} !important;
-            filter: brightness(110%);
-        }` : ""}
-`;
+const ColoredButton = styled('button', {});
+const ModalContent = styled('div', {});
 
 const OrganizationsList = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -56,11 +39,19 @@ const OrganizationsList = () => {
                     return (
                         <ColoredButton 
                             key={org.id}
-                            primary={org.color}
                             className={`org-item ${org.affiliation}`} 
                             onClick={()=> {
                                 setModalData(org);
                                 setModalIsOpen(true);
+                            }}
+                            css={{
+                                '&:hover, &:focus': {
+                                    borderColor: `${org.color} !important`,
+                                    background: `linear-gradient(to bottom, transparent, ${org.color}44) !important`,
+                                    '.name': {
+                                        color: `${org.color} !important`
+                                    }
+                                },
                             }}
                         >
                             <div className="organizations-top-bar">
@@ -95,7 +86,12 @@ const OrganizationsList = () => {
                 <div className="organizations-logo-container">
                     <Logo org={modalData} />
                 </div>
-                <ModalContent className="content" primary={modalData?.color}>
+                <ModalContent className="content" css={{
+                    'strong': {
+                        color: `${modalData?.color} !important`,
+                        filter: `brightness(110%)`
+                    }
+                }}>
                     <ReactMarkdown>{modalData?.description || ""}</ReactMarkdown>
                 </ModalContent>
             </Modal>
