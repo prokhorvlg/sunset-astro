@@ -81,7 +81,7 @@ const OrganizationsList = () => {
                     <p className={`affiliation ${modalData?.affiliation ? modalData.affiliation : ""}`}>{modalData?.affiliation}</p>
                 </div>
                 {modalData?.basedOn && 
-                    <p>this organization is an alternate timeline version of {modalData.basedOn}</p>
+                    <p>Noetic disturbance detected: this organization may be an alternate stem from {modalData.basedOn}</p>
                 }
                 <div className="organizations-logo-container">
                     <Logo org={modalData} />
