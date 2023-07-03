@@ -4252,6 +4252,8 @@ $aside-sticky-breakpoint: 1800px;
     }
 }
 
+$organizationsColorWhite: rgb(238, 234, 229);
+$organizationsColorFaded: darken($organizationsColorWhite, 40%);
 .organizations-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -4259,21 +4261,58 @@ $aside-sticky-breakpoint: 1800px;
     max-width: 2000px;
     gap: 10px;
     margin: 0 auto;
+    @media screen and (max-width: 2100px) {
+        grid-template-columns: repeat(3, 1fr);
+        width: 96%;
+        max-width: 100%;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+        gap: 0px;
+    }
     .org-item {
-        border: 2px dotted transparent;
+        border: 1px dotted transparent;
         cursor: pointer;
-        border-radius: $chicanery-border-radius;
+        border-radius: 6px;
         background: rgba(rgb(48, 48, 48), 0.5);
+        background: none;
+        border: 1px dotted $organizationsColorFaded;
         padding: 20px;
+        height: 500px;
+        color: $organizationsColorWhite;
+
+        display: flex;
+        flex-direction: column;
+        
         &:hover {
-            border: 2px dotted $color-sunset-red;
+            border: 1px dotted $color-sunset-red;
+        }
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            border-style: solid;
+            border-width: 1px;
+            height: 300px;
+            padding: 10px;
+            border-left: none;
+            border-radius: 0;
+            &:nth-child(n+3) {
+                border-top: none;
+            }
+            &:nth-child(2n) {
+                border-right: none;
+            }
         }
 
         @mixin factionColor($color) {
-            //background-color: rgba($color, 0.1);
-            //border-color: rgba($color, 0.1);
             &:hover {
+                border-style: solid;
                 border-color: rgba($color, 1);
+                background: linear-gradient(to bottom, transparent, rgba($color, 0.2));
+                .name {
+                    color: white;
+                }
             }
             .affiliation {
                 color: $color;
@@ -4289,39 +4328,173 @@ $aside-sticky-breakpoint: 1800px;
             @include factionColor($color-sunset-orange);
         }
 
-        .top-bar {
-            margin-top: 10px;
-            margin-bottom: 20px;
+        .organizations-logo-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            .logo {
+                width: 320px;
+                max-width: 100%;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    max-width: 90%;
+                }
+            }
+        } 
+        .name {
+            margin: 0 auto 10px auto;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: $font-title;
+            color: $organizationsColorFaded;
+            letter-spacing: -1.2px;
+            text-align: center;
+            @media screen and (max-width: $breakpoint-mobile) {
+                font-size: 16px;
+            }
+        }
+        .organizations-top-bar {
+            @media screen and (max-width: $breakpoint-mobile) {
+                display: none;
+            }
+        }
+    }
+}
+
+.organizations-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 200;
+    background: rgba(darken($color-background-dark, 5%), 0.95);
+    @include abg(0.5);
+    @include abg-dark-diag;
+    display: flex;
+    align-items: center;
+    > * {
+        z-index: 205;
+    }
+    .organizations-modal-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 800px;
+        max-width: 100%;
+        overflow-y: auto;
+        max-height: 100%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 20px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            height: 100%;
+        }
+        .top-area {
+            width: 100%;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            border-bottom: 1px solid $color-sunset-manila;
-            p {
+            align-items: center;
+            border-bottom: 1px solid $organizationsColorWhite;
+            padding-bottom: 10px;
+            .close {
+                cursor: pointer;
+                border: 2px solid $organizationsColorWhite;
+                border-radius: 6px;
+                background: transparent;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                color: $organizationsColorWhite;
+                font-size: 26px;
+                &:hover, &:focus {
+                    background-color: rgba($organizationsColorWhite, 0.2);
+                }
+            }
+            h1 {
+                font-size: 32px;
+                font-weight: 600;
+                font-family: $font-title;
+                letter-spacing: -1.2px;
                 margin: 0;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    font-size: 20px;
+                }
             }
         }
-            
-        .affiliation {
-            font-family: $font-code;
-            text-transform: uppercase;
-            margin-bottom: 0;
-            
+        .organizations-logo-container {
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @media screen and (max-width: $breakpoint-mobile) {
+                height: auto;
+                flex: 1;
+            }
+            .logo {
+                width: 400px;
+                max-width: 100%;
+                max-height: 400px;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    max-height: none;
+                }
+            }
+        }
+        .organizations-top-bar {
+            border-bottom: none;
+            .affiliation {
+                color: white;
+                &.Union {
+                    color: $color-sunset-red;
+                }
+                &.Coalition {
+                    color: $color-sunset-aqua;
+                }
+                &.Pact {
+                    color: $color-sunset-orange;
+                }
+            }
         }
         .type {
-            font-family: $font-code;
-            text-transform: uppercase;
-            margin-bottom: 0;
+            color: $organizationsColorWhite;
         }
-        .name {
-            margin-top: 0;
-            margin-bottom: 10px;
-            //color: $color-sunset-orange;
-            font-size: 22px;
-            font-weight: 500;
-            font-family: $font-code;
-        }
-        .description {
-            //color: $color-sunset-red;
-        }
+    }
+}
+
+.organizations-top-bar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid $organizationsColorFaded;
+    p {
+        margin: 0;
+    }
+    .affiliation {
+        font-family: $font-code;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    .type {
+        font-family: $font-code;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: $organizationsColorFaded;
+    }
+}
+
+.organizations-logo-container {
+    .no-logo {
+        font-family: $font-code;
+        text-transform: uppercase;
+        font-size: 16px;
+        color: $color-sunset-red;
     }
 }
