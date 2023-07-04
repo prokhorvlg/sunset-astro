@@ -1,0 +1,27 @@
+---
+title: "Robot Manufacturers"
+mainText: "Robot Manufacturers"
+subText: "A collection of companies, design bureaus, and other entities that designed and built robots in Sunset System."
+pubDate: "June 26 2023"
+thumbImage: "title-robots"
+hidden: true
+tags:
+  - retrofuturistic dreams
+  - robot
+---
+
+import OrganizationsList from '@/components/special/OrganizationsList'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import { AuthorCAN, AuthorTerminal, AuthorUniserve, AuthorUnknown } from '@/data/Authors.ts'
+
+<QuoteContentRowRender author={AuthorUniserve} >
+  Ah, you have discovered a DATABASE PAGE!
+
+  A DATABASE like this is intended to serve as a detailed reference as well as a presentation.
+
+  Enjoy!
+</QuoteContentRowRender>
+
+Here, you will find a list of organizations from across the Solar System that participated in the manufacturing of neuromorphs. This list may be updated with any newly discovered organizations from the Era of Creation. 
+
+<OrganizationsList client:only />

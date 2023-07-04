@@ -968,4 +968,12 @@ export const Images: ImageDetails[] = [
         classes: "border-red",
         caption: "A Hokota J-1108 interfacer stands guard at the base of SANGUINE HAZE, somewhere inside of a complex under the Martian Sands."
     },
+    {
+        id: 'klaus-meister',
+        src: "/images/content/klaus-min.png",
+        alt: "German robot designed by Klaus holding Kaizen TV",
+        width: 1297,
+        height: 1463,
+        caption: "A Klaus 4096 Meister carries a Kaizen television set."
+    },
 ]

@@ -21,6 +21,7 @@ export interface Organization {
     affiliation: Affiliation
     basedOn?: string
     tags: string[]
+    examples?: string[]
 }
 
 // You, the visitor.
@@ -76,10 +77,16 @@ They would often compete for contracts with Dynatek. They also really liked wood
         description:
 `A pioneer in the cybernetics field, **Redmond** made its reputation with business-facing robotics, computers, and software. As BBM's primary competitor for over a century, Redmond sold itself on their cleaner user-experience and high customizability. 
 
-Redmond is known in household robotics, but they tended to remain business-facing, selling their neuromorphic software to consumer-facing companies.`,
+Redmond is known in household robotics, but they tended to remain business-facing, selling their neuromorphic software to consumer-facing companies.
+
+### Aesthetic
+
+Redmond robots are very practical.
+`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
-        basedOn: "Microsoft"
+        basedOn: "Microsoft",
+        examples: [""]
     },
     {
         id: "maple",
