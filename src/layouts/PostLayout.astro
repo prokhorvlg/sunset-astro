@@ -23,14 +23,22 @@ const { headings } = await post.render();
 const showTableOfContents = 
 	post.data?.noTableOfContents === undefined ||
 	post.data?.noTableOfContents === false
+
+const isIntroduction = post.collection === "introduction"
+let metaTitle = post.data.title
+let metaDescription = post.data.mainText
+if (isIntroduction) {
+	metaTitle = post.data.mainText
+	metaDescription = post.data.subText
+}
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<BaseHead 
-			title={post.data.title} 
-			description={post.data.mainText} 
+			title={metaTitle} 
+			description={metaDescription} 
 			image={image} 
 			isLargeImage={(image !== null)} 
 		/>
