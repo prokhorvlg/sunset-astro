@@ -9,6 +9,17 @@ export enum SortType {
     RobotManufacturer = 'Robot Manufacturer'
 }
 
+export enum RobotExampleType {
+    Link,
+    ImageURL
+}
+
+export interface RobotExample {
+    name: string
+    description?: string
+    type: RobotExampleType
+    target: string
+}
 export interface Organization {
     id: string
     image?: string
@@ -20,8 +31,8 @@ export interface Organization {
     specialization?: string
     affiliation: Affiliation
     basedOn?: string
-    tags: string[]
-    examples?: string[]
+    tags?: string[]
+    examples?: RobotExample[]
 }
 
 // You, the visitor.
@@ -34,12 +45,24 @@ export const Organizations: Organization[] = [
         sortType: SortType.RobotManufacturer,
         type: "Major Technology Corporation",
         description: 
-`The most prolific technology company in the Coalition, **BBM** specialized in just about everything and made a huge number of advances in the cybernetic sciences. 
-
-Their robots were ubiquitous, but mostly targetted towards businesses and government organizations.`,
+`The most prolific technology company in the West since the mid-20th century, **BBM** pioneered just about everything in the electronic realm, from personal computing and mainframe engineering to advanced cybernetic and neuromorphic matrices. Since the creation of their business robot brand in the 1980s, the corporation skyrocketed to ubiquitous status, becoming a staple in every office.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
-        basedOn: "IBM"
+        basedOn: "IBM",
+        examples: [
+            {
+                type: RobotExampleType.Link,
+                name: "MARVIN",
+                target: "/",
+                description: "Home page banner, central position depicts BBM interfacer."
+            },
+            {
+                type: RobotExampleType.Link,
+                name: "MARVIN",
+                target: "/credits",
+                description: "'Interfacer' Patreon tier depicts BBM interfacer."
+            }
+        ]
     },
     /*{
         id: "dynatek",
@@ -61,12 +84,12 @@ Their robots were ubiquitous, but mostly targetted towards businesses and govern
         color: "#ff4208",
         type: "Defense & High-Intellect Systems",
         description: 
-`**Maxwell** was a small but important cybernetics corporation, usually producing intelligent systems for government and military organizations.
+`**Maxwell** was a large and important cybernetics corporation, often producing experimental systems for government and military organizations. Notoriously, they designed intelligent weaponry: guided missiles, automated gunships, warhead controllers, and more. Less notoriously, they created some of the first Western neuromorphs based on Soviet designs for the military, although they did little to make it a commercial success.
 
-They would often compete for contracts with Dynatek. They also really liked wood-paneling.`,
+Maxwell produced products in most other industries, such as standardized intelligent parts for autohomes, vehicles, and construction. They often competed for government contracts with their primary direct rival Dynatek. Their designers were also fond of wood-paneling.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
-        basedOn: "Honeywell"
+        basedOn: "Honeywell, Xerox"
     },
     {
         id: "redmond",
@@ -75,30 +98,46 @@ They would often compete for contracts with Dynatek. They also really liked wood
         name: "Redmond Cybernetics",
         type: "Major Technology Corporation",
         description:
-`A pioneer in the cybernetics field, **Redmond** made its reputation with business-facing robotics, computers, and software. As BBM's primary competitor for over a century, Redmond sold itself on their cleaner user-experience and high customizability. 
+`A pioneer in the cybernetics field, **Redmond** made its reputation with business-facing robotics, computers, and software in the 1990s. As BBM's primary competitor for over a century, Redmond sold itself on their cleaner user-experience and high customizability.
 
-Redmond is known in household robotics, but they tended to remain business-facing, selling their neuromorphic software to consumer-facing companies.
-
-### Aesthetic
-
-Redmond robots are very practical.
-`,
+Redmond was known in household robotics, but they tended to remain business-facing, preferring to sell their software such as Moto Operating System to consumer-facing companies.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
         basedOn: "Microsoft",
-        examples: [""]
+        examples: [{
+            name: "GORDON",
+            type: RobotExampleType.Link,
+            target: "/posts/redmond-gordon",
+            description: "Advertisement depicts a Redmond interfacer."
+        }]
     },
     {
         id: "maple",
         name: "Maple Cybernetic",
         image: "/images/logos/maple.png",
-        color: "#ffbe00",
+        color: "#ffc251",
         type: "Major Technology Corporation",
         description: 
-        `**Maple** was an extremely unique brand famous across the entire System. They were pioneers in human-neuromorph interaction going back to the 1980s, and were well known for their expensive machines.`,
+        `**Maple** was a unique corporation famous across the entire System for their user-friendly electronics and invention of the teleindexer, a mobile neuromorphic tablet. It was often considered to be the most valuable brand in existence, although BBM rivaled that claim. They were pioneers in human-neuromorph interaction going back to their roots in the 1980s with ISAAC, the first robot that could hold a natural conversation. 
+        
+Maple's products were notorious for being underpowered and expensive, but somehow, that didn't stop people from buying them.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
-        basedOn: "Apple"
+        basedOn: "Apple",
+        examples: [
+            {
+                type: RobotExampleType.Link,
+                name: "ISAAC",
+                target: "/posts/maple-cybernetic-isaac",
+                description: "Advertisement depicts a Maple interfacer."
+            },
+            {
+                type: RobotExampleType.Link,
+                name: "PAL",
+                target: "/posts/pal",
+                description: "Advertisement depicts a Maple teleindexer tablet."
+            }
+        ]
     },
     {
         id: "klaus",
@@ -110,7 +149,15 @@ Redmond robots are very practical.
         `They called it precision German engineering. **Klaus**' robots were widely considered to be some of the highest quality and most advanced cybernetics in the System. Their user experience tended to be dated relative to their other Western counterparts, but the designs were robust.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
-        basedOn: "Braun, Siemens"
+        basedOn: "Braun, Siemens",
+        examples: [
+            {
+                type: RobotExampleType.Link,
+                name: "4096 Meister",
+                target: "/posts/klaus-meister",
+                description: "Image depicts a Klaus interfacer."
+            }
+        ]
     },
     {
         id: "vdl",
@@ -124,7 +171,15 @@ Redmond robots are very practical.
 It wasn't well known, but many other companies used standardized VDL parts in the construction of their own robots.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
-        basedOn: "Wal-Mart"
+        basedOn: "Wal-Mart",
+        examples: [
+            {
+                type: RobotExampleType.Link,
+                name: "DTEK",
+                target: "/posts/sri-brochure",
+                description: "Brochure depicts a VDL interfacer."
+            }
+        ]
     },
     /*{
         id: "vaughn",
@@ -158,10 +213,18 @@ Kelso products often incorporated wood-paneling in their design, considered luxu
         color: "#ffce00",
         type: "Industrial Robotics Company",
         description:
-        `**ENIZ** was an industrial company, well-known for its massive construction and transportation machines. Their extensive line of cargo haulers could be seen operating anywhere from spaceports to the depths of wilderness.`,
+        `**ENIZ** was an industrial and logistics company, well-known for its massive construction and transportation machines. Their extensive line of cargo haulers could be seen operating anywhere from spaceports to the depths of wilderness.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
-        basedOn: "CAT"
+        basedOn: "CAT",
+        examples: [
+            {
+                type: RobotExampleType.Link,
+                name: "Mastodon Ultraheavy",
+                target: "/posts/mastodon-ultraheavy",
+                description: "Advertisement depicts an ENIZ cargo walker."
+            }
+        ]
     },
     /*{
         id: "emerson",
@@ -200,10 +263,24 @@ Insite would design the occasional robot or mastermind as a testbed or demonstra
         color: "#ff9b44",
         image: "/images/logos/kasawi.svg",
         type: "Industrial Syndicate",
-        description: "",
+        description: `**Kasawi Heavy Industries** was a massively influential corporation originating in Japan. As the state's designated industrial syndicate, they were often contracted to manufacture robots, space infrastructure, and much else for the Pact government and other syndicates. Their machines were the most common designs in the battlefields of Nobody's War in the late 21st century.`,
         affiliation: Affiliation.Pact,
         tags: [],
-        basedOn: "Kawasaki, Komatsu"
+        basedOn: "Kawasaki, Komatsu",
+        examples: [
+            {
+                type: RobotExampleType.Link,
+                name: "Kasawi Type 750 Warmaster",
+                target: "/posts/lazarus-warwalker",
+                description: "Report depicts a Kasawi combat walker."
+            },
+            {
+                type: RobotExampleType.Link,
+                name: "Kasawi Kunshu",
+                target: "/posts/kasawi-kunshu",
+                description: "Advertisement depicts a Kasawi economy car."
+            }
+        ]
     },
     {
         id: "kaizen",
@@ -211,10 +288,18 @@ Insite would design the occasional robot or mastermind as a testbed or demonstra
         color: "#be0707",
         image: "/images/logos/kaizen.svg",
         type: "High-Intellect & Medical Electronics",
-        description: "",
+        description: `Starting life as an electrics company in the late 19th century, **Kaizen** was responsible for a wide variety of developments long before they ever began to explore neuromorphics. They were one of the first Japanese corporations to jump into robotics when neuromorphs entered the field in the mid-1970s.
+        
+Kaizen was best known for their advanced, feature-rich neuromorphs and domination over the medical technology field, often finding themselves in fierce competition with the Western-based Vaughn Corporation.`,
         affiliation: Affiliation.Pact,
         tags: [],
-        basedOn: "Toshiba"
+        basedOn: "Toshiba",
+        examples: [{
+            name: "K3200 Satellite & T250",
+            type: RobotExampleType.Link,
+            target: "https://www.patreon.com/posts/kaizen-k3200-85662582",
+            description: "Advertisement includes an interfacer with a perched drone."
+        }]
     },
     {
         id: "hokota",
@@ -222,10 +307,18 @@ Insite would design the occasional robot or mastermind as a testbed or demonstra
         color: "#e21428",
         image: "/images/logos/hokota.png",
         type: "Industrial Syndicate",
-        description: "",
+        description: `The **Hokota Group** was a multinational conglomerate which began sometime after World War 2 as an automotive designer and manufacturer. The company soon expanded into aeronautics and other powered equipment, setting the stage for a rapid entry into nuclear-powered aircraft and robotics by the 1970s and 1980s. They were the world's largest manufacturer of antigravity-enabled technologies, using the nyxium found on Mars.
+        
+Hokota stood out against its competitors with its culture of extreme risk-taking and innovation. The company hosted a number of competitions in fields ranging from sports racing to neuromorphic battle, and was well known for displaying dozens of prototypes in an annual conference.`,
         affiliation: Affiliation.Pact,
         tags: [],
-        basedOn: "Honda, Hitachi"
+        basedOn: "Honda, Hitachi",
+        examples: [{
+            name: "SANGUINE HAZE & J-1108",
+            type: RobotExampleType.Link,
+            target: "/posts/two-lords-origin",
+            description: "A mastermind and an interfacer standing guard."
+        }]
     },
     {
         id: "saito",
@@ -233,10 +326,18 @@ Insite would design the occasional robot or mastermind as a testbed or demonstra
         image: "/images/logos/saito.png",
         color: "#095aff",
         type: "Affordable Consumer Electronics Company",
-        description: "",
+        description: `**Saito Computer** was an innovator in display technology before branching out into other consumer electronics. They were known best for their affordable and reliable electronics, such as the intelligent Saito Watch, a teleindexer for the wrist created in the 2030s. Saito was also a great innovator in the video game space, being one of the largest producers of laser-based virtual reality in the late 21st century.
+        
+They are considered a direct competitor to Micro.`,
         affiliation: Affiliation.Pact,
         tags: [],
-        basedOn: "Casio, Sony"
+        basedOn: "Casio, Sony",
+        examples: [{
+            name: "MAX Videocassette Player",
+            type: RobotExampleType.Link,
+            target: "/posts/internal-use-only",
+            description: "A Saito-made audiovisual system."
+        }]
     },
     {
         id: "micro",
@@ -244,21 +345,36 @@ Insite would design the occasional robot or mastermind as a testbed or demonstra
         image: "/images/logos/micro.png",
         color: "#cd022b",
         type: "Consumer and business electronics company",
-        description: "",
+        description: `**Micro Electrics Corporation** was a general consumer products manufacturer, deriving its name from the microfilm, one of their first commercial products. They began with producing radios, cameras, television sets, and calculators before expanding further into all electronics and eventually neuromorphics in the 1980s. Their products are typically considered low-cost and reliable, and are found all over the System.
+        
+They are considered a direct competitor to Saito.`,
         affiliation: Affiliation.Pact,
         tags: [],
-        basedOn: "Sharp"
+        basedOn: "Sharp",
+        examples: [{
+            name: "TZ-90B Portable Commander PC",
+            type: RobotExampleType.Link,
+            target: "/posts/portable-commander",
+            description: "On-line advertisement for a MICRO specialty microcomputer."
+        }]
     },
     {
         id: "raz",
         name: "RAZ",
         image: "/images/logos/raz.png",
         color: "#e81c2c",
-        type: "Consumer and business electronics company",
-        description: "",
+        type: "State-Owned Industrial Association",
+        description: `Formed by state order during World War 2, the **Ratamkan Automobile Plant** was created to mass-produce military vehicles for the Soviet Union. After the war, RAZ became the nation's largest automotive manufacturer, encompassing at least a dozen manufacturing facilities and an in-house engineering design team. 
+
+In the early 1980s, RAZ's plants were assigned to design and construct many of the nation's neuromorphic robots, especially those with an industrial purpose. They were well known for their production of hardy Venusian vehicles and robots.`,
         affiliation: Affiliation.Union,
         tags: [],
-        basedOn: "MAZ"
+        basedOn: "MAZ",
+        examples: [{
+            name: "RAZ-G1105 (gene harvester)",
+            type: RobotExampleType.Link,
+            target: "/posts/hello-from-venus",
+        }]
     },
     /*{
         id: "rosum",

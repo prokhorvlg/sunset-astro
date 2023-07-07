@@ -1,0 +1,258 @@
+@import 'src/styles/imports.scss';
+
+.spooky-view {
+    .spooky-heading-area {
+        max-width: $width-2000;
+        margin: 0 auto;
+        border-radius: $chicanery-border-radius;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .spooky-inner.markdown {
+            width: $width-1000;
+            max-width: calc(100% - 4px);
+            margin: 0px auto;
+            padding: 50px 2px 50px 2px;
+
+            .heading {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-top: -100px;
+                .icon {
+                    text-align: center;
+                    font-size: 100px;
+                    color: $color-spooky;
+                }
+                .title {
+                    text-align: center;
+                    font-size: 48px;
+                    font-weight: 700;
+                    letter-spacing: -0.5px;
+                    margin-top: 0;
+
+                    font-family: $font-title;
+                    color: $color-spooky;
+                    @media screen and (max-width: $breakpoint-tablet) {
+                        font-size: 36px;
+                        width: 90%;
+                    }
+                }
+                .eyebrow {
+                    text-align: center;
+                    margin-top: 0px;
+                    margin-bottom: 0;
+                    color: $color-spooky-secondary;
+                    font-weight: 700;
+                    letter-spacing: 2px;
+                    font-family: $font-title;
+                    text-transform: uppercase;
+                    @media screen and (max-width: $breakpoint-tablet) {
+                        font-size: 16px;
+                    }
+                }
+            }
+            
+            h3 {
+                color: $color-spooky-secondary;
+                &::before {
+                    color: $color-spooky-secondary;
+                }
+            }
+            blockquote {
+                border-color: $color-spooky-secondary;
+                p {
+                    color: $color-spooky;
+                }
+            }
+            pre {
+                border: none;
+                background-color: rgba(darken($color-spooky, 20%), 0.2);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                code {
+                    color: $color-spooky-secondary;
+                    font-weight: 600;
+                }
+            }
+
+            .filename-input-container {
+                max-width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .filename-input {
+                    border-color: $color-sunset-aqua;
+                    background-color: darken($color-sunset-melancholic, 45%);
+                    color: $color-sunset-aqua;
+                    width: 80%;
+                    
+                    z-index: 40;
+                    position: relative;
+                    text-align: center;
+
+                    &::placeholder {
+                        color: $color-sunset-aqua;
+                    }
+                }
+            }
+            
+            .spooky-button {
+                position: relative;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 100px 0;
+                button {
+                    cursor: pointer;
+                    z-index: 60;
+                    border: 2px dotted $color-sunset-aqua;
+                    background: darken($color-sunset-melancholic, 45%);
+                    color: $color-sunset-aqua;
+                    border-radius: 4px;
+                    padding: 20px;
+                    font-family: $font-code;
+                    font-weight: 600;
+                    max-width: 90vw;
+
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 20px;
+
+                    .icon {
+                        font-size: 24px;
+                        padding: 0;
+                    }
+                    code {
+                        font-size: 18px;
+                        color: $color-sunset-aqua;
+                        @media screen and (max-width: $breakpoint-tablet) {
+                            font-size: 16px;
+                        }
+                    }
+
+                    &:hover, &:focus {
+                        border-color: white;
+                        border-style: solid;
+                        color: white;
+                        code {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+
+        .results-container {
+            border-radius: 6px;
+            margin-top: 30px;
+            padding: 100px 50px;
+            background: rgba($color-spooky, 0.1);
+            max-width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            @media screen and (max-width: $breakpoint-tablet) {
+                margin: 50px 20px 100px 20px;
+            }
+
+            .icon {
+                font-size: 50px;
+                color: $color-spooky;
+                padding: 0;
+                margin-bottom: 10px;
+            }
+            code {
+                font-size: 20px;
+                color: $color-spooky;
+            }
+        }
+        .no-results {}
+        .found-file {
+            code {
+                margin-bottom: 20px;
+            }
+            @keyframes foundFile {
+                0% {
+                  color: $color-sunset-aqua;
+                  border-color: $color-sunset-aqua;
+                  background-color: rgba($color-sunset-aqua, 0.1);
+                }
+                49% {
+                    color: $color-sunset-aqua;
+                    border-color: $color-sunset-aqua;
+                    background-color: rgba($color-sunset-aqua, 0.1);
+                  }
+                50% {
+                    color: $color-spooky-secondary;
+                    border-color: $color-spooky-secondary;
+                    background-color: rgba($color-spooky-secondary, 0.1);
+                }
+                51% {
+                    color: $color-spooky-secondary;
+                    border-color: $color-spooky-secondary;
+                    background-color: rgba($color-spooky-secondary, 0.1);
+                }
+                99% {
+                    color: $color-spooky-secondary;
+                    border-color: $color-spooky-secondary;
+                    background-color: rgba($color-spooky-secondary, 0.1);
+                }
+                100% {
+                    color: $color-sunset-aqua;
+                    border-color: $color-sunset-aqua;
+                    background-color: rgba($color-sunset-aqua, 0.1);
+                }
+            }
+            a.found-file-link {
+                border: 2px dotted $color-spooky-secondary;
+                color: $color-spooky-secondary;
+                border-radius: 4px;
+                padding: 20px;
+                text-decoration: none;
+                font-family: $font-code;
+                text-transform: uppercase;
+                background-color: rgba($color-sunset-aqua, 0.1);
+
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                animation: 1s infinite foundFile;
+
+                position: relative;
+                z-index: 50;
+                .icon {
+                    margin: 0;
+                    color: $color-spooky-secondary;
+                    font-size: 26px;
+                    animation: 1s infinite foundFile;
+                }
+                span {
+                    font-size: 16px;
+                    font-weight: 600;
+                    letter-spacing: 0.5px;
+                }
+
+                &:hover, &:focus {
+                    animation: none;
+                    color: WHITE;
+                    border-color: white;
+                    border-style: solid;
+                    background-color: rgba(white, 0.1);
+                    .icon {
+                        animation: none;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

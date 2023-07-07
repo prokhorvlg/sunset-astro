@@ -3,6 +3,8 @@ import LinksSegment from "@/components/layout/common/LinksSegment.component"
 import SocialsSegment from "@/components/layout/common/SocialsSegment.component"
 import DotGrid from "../../common/DotGrid.component"
 
+import './Footer.scss'
+
 interface Props {
     currentPage: string
     noGradient?: boolean

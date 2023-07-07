@@ -1,0 +1,34 @@
+---
+title: "All You Will Ever Need"
+mainText: "Print advertisement for a set of Kaizen robots, a Japanese corporation specializing in cybertech."
+subText: "The Baryt T8 from ELEKTRONIKA is an export version of a 2060s-era Soviet microcomputer."
+pubDate: "Jul 6 2023"
+thumbImage: "kaizen-robots-ad"
+thumbAlignment: "center 25%"
+hidden: true
+tags:
+  - retrofuturistic dreams
+  - computer
+  - union
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
+
+<ImageContentRowRender 
+  images={['kaizen-robots-ad']}
+/>
+
+An export version of a Soviet microcomputer from the 2060s, when Coalition and Union relations began to warm after a decade-long standoff. Devices like this filled a niche that allowed Western users to access the Union's AGREGAT network, locked behind the KONTROL chip.
+
+This system was one of the first steps on a long journey to bridge the Ternary Divide, which eventually allowed the free flow of information between the two primary dataspheres of the world.
+
+<QuoteContentRowRender author={AuthorCAN} transcription>
+*EXPERIENCE THE SOCIALIST DATANET ! \**
+
+## ELEKTRONIKA BARYT T8
+
+\* AGREGAT network only accessible by devices with KONTROL chipset. **Service not included.**
+</QuoteContentRowRender>

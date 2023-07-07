@@ -2,11 +2,12 @@ import Button, { ButtonType } from "@/components/common/Button/Button.component"
 import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer, { DialogHeaderStyle } from "@/components/containers/DialogContainer/DialogContainer.component"
 import TransitionGradient from "@/components/home/TransitionGradient.component"
+import { MapStringToIcon } from "@/components/posts/PostCard.component"
 import { PostType } from "@/components/posts/PostsGrid.component"
 import FullWidthWrapper, { WrapperMax } from "@/components/wrappers/FullWidthWrapper.component"
 import { getImageObjectById } from "@/utils/astroHelpers"
 import { getDateString } from "@/utils/date"
-import { faArrowLeft, faBackward, faBullhorn, faFile } from "@fortawesome/free-solid-svg-icons"
+import { faArrowLeft, faBackward, faBullhorn, faDatabase, faFile, faIndustry, faMicrochip, faRobot } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 interface Props {
@@ -73,7 +74,7 @@ const PostHeading = ({
             {(post.collection === PostType.Secret) ? 
                 <div className="main-area secret">
                     <div className="heading-content">
-                        <FontAwesomeIcon icon={faFile} className="file-icon" />
+                        <FontAwesomeIcon icon={faFile} className="main-icon" />
                         <span className="eyebrow">SECRET FILE</span>
                         <h1 className="title">{post.data.title}</h1>
                         <p className="description">// {post.data.description}</p>
@@ -83,10 +84,28 @@ const PostHeading = ({
             {(post.collection === PostType.Announcement) ? 
                 <div className="main-area announcement">
                     <div className="heading-content">
-                        <FontAwesomeIcon icon={faBullhorn} className="file-icon" />
+                        <div className="icon-pack">
+                            <FontAwesomeIcon icon={faBullhorn} className="main-icon" />
+                        </div>
                         <span className="eyebrow">ANNOUNCEMENT</span>
                         <h1 className="title">{post.data.title}</h1>
                         <p className="description">// {post.data.description}</p>
+                    </div>
+                </div> : null
+            }
+
+
+            {(post.collection === PostType.Database) ? 
+                <div className="main-area introduction">
+                    <div className="heading-content">
+                        <div className="icon-pack">
+                            <FontAwesomeIcon icon={faDatabase} className="main-icon" />
+                            <FontAwesomeIcon icon={MapStringToIcon[post.data.icon || ""]} className="sub-icon" />
+                        </div>
+                        <span className="eyebrow">DATABASE</span>
+                        <h1 className="title">{post.data.mainText}</h1>
+                        <p className="description">// {post.data.subText}</p>
+                        <TagCloud tags={post.data.tags} />
                     </div>
                 </div> : null
             }

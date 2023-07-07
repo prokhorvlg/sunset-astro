@@ -1,0 +1,219 @@
+@import 'src/styles/imports.scss';
+
+.home-hub {
+    margin: 2px 0 0px 0 !important;
+    .hub-dialog {
+        margin-right: -2px;
+        .hub-container {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: $color-sunset-red;
+            
+            .hub-main-heading {
+                position: relative;
+                background: linear-gradient(to bottom, 
+                    darken($color-sunset-red, 42%) 0%, 
+                    darken($color-sunset-red, 35%) 30%, 
+                    $color-ultradark-red);
+                border-radius: $chicanery-border-radius;
+                @include abg(0.5);
+                @include abg-red-crisscross();
+                
+                .hub-border {
+                    padding: 200px 20px;
+                    @media screen and (max-width: $breakpoint-mobile) {
+                        padding: 150px 20px;
+                    }
+                    h2 {
+                        font-size: 48px;
+                        margin-bottom: 50px;
+                        color: $color-sunset-orange;
+                        @media screen and (max-width: $breakpoint-mobile) {
+                            font-size: 36px;
+                            line-height: 44px;
+                        }
+                    }
+                    h2, p {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    .hub-cols {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 2px;
+        grid-row-gap: 2px;
+        justify-content: space-around;
+        //justify-content: center;
+        //align-items: center;
+        margin: 0 80px 90px 80px;
+        @media screen and (max-width: 1800px) {
+            grid-template-columns: repeat(2, minmax(200px, 600px));
+            grid-column-gap: 20px;
+            grid-row-gap: 50px;
+        }
+        @media screen and (max-width: $breakpoint-mobile) {
+            grid-template-columns: minmax(0px, 500px);
+            grid-column-gap: 2px;
+            grid-row-gap: 70px;
+            margin: 0 12px 30px 12px;
+        }
+
+        .hub-col {
+            position: relative;
+            z-index: 5;
+            border-radius: $chicanery-border-radius;
+            margin: 0 1px 0 1px;
+            padding: 30px 40px 50px 40px;
+            border: 2px solid $color-sunset-red;
+            background: rgba($color-sunset-red, 0.1);
+            background: linear-gradient(to bottom, rgba($color-sunset-red, 0.1), rgba($color-background-dark, 0.4));
+
+            display: flex;
+            flex-direction: column;
+            //max-width: 300px;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+                padding: 20px 30px 40px 30px;
+                //border-left: none;
+                //border-right: none;
+            }
+
+            .tiny-code {
+                position: absolute;
+                bottom: calc(100% + 5px);
+                left: 0;
+                right: 0;
+                text-align: center;
+            }
+            h3 {
+                font-weight: 600;
+                letter-spacing: -0.5px;
+                font-size: 24px;
+                text-align: center;
+                font-family: $font-code;
+    
+                background: $color-sunset-red;
+                border-radius: $chicanery-border-radius;
+                padding: 20px 0 30px 0;
+    
+                background: none;
+                border: 2px solid $color-sunset-red;
+                border: none;
+                
+                color: $color-ultradark-red;
+                color: $color-sunset-red;
+                &.aqua {
+                    border-color: $color-sunset-aqua;
+                    color: $color-sunset-aqua;
+                }
+            }
+            p {
+                margin: 10px 0;
+                text-align: left;
+            }
+            .grow {
+                flex: 1;
+            }
+            .spacer {
+                height: 20px;
+            }
+
+            &.aqua {
+                background: linear-gradient(to bottom, rgba(1, 87, 199, 0.3), rgba(darken($color-sunset-aqua, 40%), 0.3));
+                border-color: $color-sunset-aqua;
+                .tiny-code {
+                    color: $color-sunset-melancholic;
+                }
+            }
+
+            .scroll-arrow {
+                padding: 30px;
+                border: 2px solid transparent;
+                border-top: 2px solid $color-sunset-aqua;
+                border-bottom-right-radius: $chicanery-border-radius;
+                border-bottom-left-radius: $chicanery-border-radius;
+                background: linear-gradient(to bottom, rgba($color-sunset-melancholic, 0.15), rgba($color-sunset-aqua, 0.05));
+                text-align: center;
+                svg {
+                    color: $color-sunset-aqua;
+                    font-size: 28px;
+                }
+
+                &:hover, &:focus {
+                    border: 2px solid $color-sunset-aqua;
+                }
+            }
+        }
+    }
+}
+
+.hub-link {
+    color: $color-sunset-orange;
+    text-decoration: none;
+    font-family: $font-code;
+
+    border: 2px solid rgba($color-sunset-orange, 0.1);
+    border-left: 2px solid $color-sunset-orange;
+    
+    background: linear-gradient(to right, rgba($color-sunset-orange, 0.2), rgba($color-sunset-red, 0.1));
+    border-top-right-radius: $chicanery-border-radius;
+    border-bottom-right-radius: $chicanery-border-radius;
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    span {
+        flex: 1;
+    }
+    .inner-icon {
+        margin-right: 10px;
+    }
+    .arrow {
+        margin-left: 15px;
+    }
+
+    &:hover, &:focus {
+        border: 2px solid $color-sunset-orange;
+    }
+}
+
+.hub-socials {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 100%;
+    overflow-y: auto;
+    li {
+        flex-shrink: 0;
+        margin: 3px;
+        a {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: $color-sunset-orange;
+            background: linear-gradient(to bottom, rgba($color-sunset-orange, 0.1), rgba($color-sunset-red, 0.1));
+            font-size: 24px;
+            padding: 5px;
+            width: 40px;
+            height: 40px;
+            
+            border: 2px solid transparent;
+            border-radius: $chicanery-border-radius;
+            &:hover, &:focus {
+                border: 2px solid $color-sunset-orange;
+            }
+        }
+    }
+}

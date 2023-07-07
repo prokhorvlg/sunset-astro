@@ -23,7 +23,8 @@ const collectionSetup = {
 		hidden: z.boolean().optional(),
 		noTableOfContents: z.boolean().optional(),
 		tags: z.array(z.string()).optional(),
-		id: z.string().optional()
+		id: z.string().optional(),
+		icon: z.string().optional()
 	}),
 }
 
@@ -33,4 +34,5 @@ export const collections = {
 	[PostType.Game]: defineCollection(collectionSetup),
 	[PostType.Announcement]: defineCollection(collectionSetup),
 	[PostType.Secret]: defineCollection(collectionSetup),
+	[PostType.Database]: defineCollection(collectionSetup),
 };

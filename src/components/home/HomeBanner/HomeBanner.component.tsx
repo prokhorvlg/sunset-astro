@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ScrollParallax } from 'react-just-parallax';
+import "./HomeBanner.scss"
 
 const HomeBanner = ({
     lazarusImageSrc,

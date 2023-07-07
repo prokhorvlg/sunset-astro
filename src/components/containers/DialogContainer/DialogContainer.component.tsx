@@ -2,6 +2,7 @@
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import DiagonalLinesBar from "./components/DiagonalLinesBar.component"
+import "./DialogContainer.scss"
 
 export enum DialogHeaderStyle {
     none,

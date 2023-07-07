@@ -1,0 +1,312 @@
+@import 'src/styles/imports.scss';
+
+$organizationsColorWhite: rgb(238, 234, 229);
+$organizationsColorFaded: darken($organizationsColorWhite, 40%);
+.organizations-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    max-width: 2000px;
+    gap: 10px;
+    margin: 200px auto;
+    @media screen and (max-width: 2100px) {
+        grid-template-columns: repeat(3, 1fr);
+        width: 96%;
+        max-width: 100%;
+    }
+    @media screen and (max-width: $breakpoint-tablet) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+        gap: 0px;
+    }
+    .org-item {
+        cursor: pointer;
+        border-radius: 6px;
+        background: rgba(rgb(48, 48, 48), 0.5);
+        background: none;
+        border: 1px dotted $organizationsColorFaded;
+        padding: 20px;
+        height: 500px;
+        color: $organizationsColorWhite;
+
+        display: flex;
+        flex-direction: column;
+        
+        &:hover {
+            border: 1px dotted $color-sunset-red;
+        }
+
+        @media screen and (max-width: $breakpoint-mobile) {
+            border-style: solid;
+            border-width: 1px;
+            height: 300px;
+            padding: 10px;
+            border-left: none;
+            border-radius: 0;
+            &:nth-child(n+3) {
+                border-top: none;
+            }
+            &:nth-child(2n) {
+                border-right: none;
+            }
+        }
+
+        @mixin factionColor($color) {
+            &:hover {
+                border-style: solid;
+                border-color: rgba($color, 1);
+                background: linear-gradient(to bottom, transparent, rgba($color, 0.2));
+                .name {
+                    color: white;
+                }
+            }
+            .affiliation {
+                color: $color;
+            }
+        }
+        &.Union {
+            @include factionColor($color-sunset-red);
+        }
+        &.Coalition {
+            @include factionColor($color-sunset-aqua);
+        }
+        &.Pact {
+            @include factionColor($color-sunset-orange);
+        }
+
+        .organizations-logo-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            .logo {
+                width: 320px;
+                max-width: 100%;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    max-width: 90%;
+                }
+            }
+        } 
+        .name {
+            margin: 0 auto 10px auto;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: $font-title;
+            color: $organizationsColorFaded;
+            letter-spacing: -1.2px;
+            text-align: center;
+            @media screen and (max-width: $breakpoint-mobile) {
+                font-size: 16px;
+            }
+        }
+        .organizations-top-bar {
+            @media screen and (max-width: $breakpoint-mobile) {
+                display: none;
+            }
+        }
+    }
+}
+
+.organizations-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 200;
+    background: rgba(darken($color-background-dark, 5%), 0.95);
+    @include abg(0.5);
+    @include abg-dark-diag;
+    display: flex;
+    align-items: center;
+   
+    > * {
+        z-index: 205;
+    }
+    .organizations-modal-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 800px;
+        max-width: 100%;
+        overflow-y: auto;
+        max-height: 90%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        padding: 20px;
+        @media screen and (max-width: $breakpoint-mobile) {
+            max-height: 100%;
+            height: 100%;
+        }
+        .top-area {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid $organizationsColorWhite;
+            padding-bottom: 10px;
+            .close {
+                cursor: pointer;
+                border: 2px solid $organizationsColorWhite;
+                border-radius: 6px;
+                background: transparent;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                color: $organizationsColorWhite;
+                font-size: 26px;
+                &:hover, &:focus {
+                    background-color: rgba($organizationsColorWhite, 0.2);
+                }
+            }
+            h1 {
+                font-size: 32px;
+                font-weight: 600;
+                font-family: $font-title;
+                letter-spacing: -1.2px;
+                margin: 0;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    font-size: 20px;
+                }
+            }
+        }
+        .organizations-logo-container {
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            @media screen and (max-width: $breakpoint-mobile) {
+                height: auto;
+                flex: 1;
+                margin: 80px 0 40px 0;
+            }
+            .logo {
+                width: 400px;
+                max-width: 100%;
+                max-height: 400px;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    max-height: none;
+                }
+            }
+        }
+        .organizations-top-bar {
+            border-bottom: none;
+            .affiliation {
+                color: white;
+                &.Union {
+                    color: $color-sunset-red;
+                }
+                &.Coalition {
+                    color: $color-sunset-aqua;
+                }
+                &.Pact {
+                    color: $color-sunset-orange;
+                }
+            }
+        }
+        .noetic {
+            border: 1px solid $color-spooky;
+            padding: 10px;
+            border-radius: 3px;
+            color: $color-spooky;
+            margin-top: 0;
+            width: 100%;
+            box-sizing: border-box;
+            
+            p {
+                margin: 0;
+                font-family: $font-code;
+            }
+            .head {
+                color: $color-spooky-light;
+                font-size: 14px;
+                text-transform: uppercase;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    font-size: 12px;
+                }
+            }
+            span.based-on {
+                color: $color-spooky-light;
+            }
+        }
+        .type {
+            color: $organizationsColorWhite;
+        }
+        .description {
+            font-family: $font-code;
+            font-weight: 400;
+            margin-top: 5px;
+            font-size: 16px;
+            @media screen and (max-width: $breakpoint-mobile) {
+                font-size: 14px;
+            }
+        }
+        .markdown {
+            h2 {
+                color: $organizationsColorWhite;
+                padding-top: 10px;
+                border-bottom: 1px solid $organizationsColorWhite;
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .diagonal {
+        position: absolute;
+        width: 30px;
+        top: 25%;
+        transform: translateY(-50%);
+        @media screen and (max-width: $breakpoint-mobile) {
+            display: none;
+        }
+        &.left {
+            left: 0;
+        }
+        &.right {
+            right: 0;
+        }
+    }
+}
+
+.organizations-top-bar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid $organizationsColorFaded;
+    p {
+        margin: 0;
+    }
+    .affiliation {
+        font-family: $font-code;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    .type {
+        font-family: $font-code;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: $organizationsColorFaded;
+    }
+}
+
+.organizations-logo-container {
+    .no-logo {
+        font-family: $font-code;
+        text-transform: uppercase;
+        font-size: 16px;
+        color: $color-sunset-red;
+    }
+}

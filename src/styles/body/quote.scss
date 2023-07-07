@@ -19,6 +19,9 @@ $quoteMobileSidePadding: 20px;
         }
         a {
             color: $color-highlight;
+            &::before {
+                background-color: rgba($color-highlight, 0.2);
+            }
             &:hover, &:focus {
                 background-color: $color-highlight;
                 color: $color-background;

@@ -8,7 +8,14 @@ export const loadAnyPost = async () => {
   const introductionPosts = await getCollection("introduction");
   const announcementPosts = await getCollection("announcement");
   const secretPosts = await getCollection("secret");
-  const combinedPosts = [...posts, ...introductionPosts, ...announcementPosts, ...secretPosts];
+  const databasePosts = await getCollection("database");
+  const combinedPosts = [
+    ...posts, 
+    ...introductionPosts, 
+    ...announcementPosts, 
+    ...secretPosts, 
+    ...databasePosts
+  ];
 
   return combinedPosts.map((post) => ({
     params: { slug: post.slug },
@@ -29,37 +36,31 @@ export const getProcessedPost = async (
   return await processPost(post);
 };
 
-// getAllPosts: Returns a collection of all posts on the website (processed).
-export const getAllPosts = async () => {
-  // Load in every post type (must be done using the Astro way).
-  // LORE
-  const lorePosts = await getCollection(PostType.Lore, ({ data }) => {
+const getCollectionWrapper = async (postType: PostType) => {
+  return await getCollection(postType, ({ data }) => {
     return data.draft !== true && data.hidden !== true;
-  });
-  const lorePostsProcessed = await processPosts(lorePosts);
+  })
+}
+const getProcessedCollection = async (postType: PostType) => {
+  const posts = await getCollectionWrapper(postType)
+  const postsProcessed = await processPosts(posts);
+  return postsProcessed
+}
+const getUnprocessedCollection = async (postType: PostType) => {
+  return await getCollectionWrapper(postType)
+}
 
-  // INTRODUCTION
-  const introductionPosts = await getCollection(
-    PostType.Introduction,
-    ({ data }) => {
-      return data.draft !== true && data.hidden !== true;
-    }
-  );
-  const introductionPostsProcessed = await processPosts(introductionPosts);
-
-  const announcementPosts = await getCollection(
-    PostType.Announcement,
-    ({ data }) => {
-      return data.draft !== true && data.hidden !== true;
-    }
-  );
-  const announcementPostsProcessed = await processPosts(announcementPosts);
-
-  // Combine all of the above.
+// PROCESSED
+export const getAllPosts = async () => {
+  const lorePosts = await getProcessedCollection(PostType.Lore)
+  const introductionPosts = await getProcessedCollection(PostType.Introduction)
+  const announcementPosts = await getProcessedCollection(PostType.Announcement)
+  const databasePosts = await getProcessedCollection(PostType.Database)
   const processedPosts: ProcessedPost[] = [
-    ...lorePostsProcessed,
-    ...introductionPostsProcessed,
-    ...announcementPostsProcessed
+    ...lorePosts,
+    ...introductionPosts,
+    ...announcementPosts,
+    ...databasePosts
   ];
 
   // Sort collection by date.
@@ -68,31 +69,17 @@ export const getAllPosts = async () => {
   return sortedPosts;
 };
 
+// UNPROCESSED
 export const getAllCollections = async () => {
-   // Load in every post type (must be done using the Astro way).
-  // LORE
-  const lorePosts = await getCollection(PostType.Lore, ({ data }) => {
-    return data.draft !== true && data.hidden !== true;
-  });
-  // INTRODUCTION
-  const introductionPosts = await getCollection(
-    PostType.Introduction,
-    ({ data }) => {
-      return data.draft !== true && data.hidden !== true;
-    }
-  );
-  const announcementPosts = await getCollection(
-    PostType.Announcement,
-    ({ data }) => {
-      return data.draft !== true && data.hidden !== true;
-    }
-  );
-
-  // Combine all of the above.
+   const lorePosts = await getUnprocessedCollection(PostType.Lore)
+   const introductionPosts = await getUnprocessedCollection(PostType.Introduction)
+   const announcementPosts = await getUnprocessedCollection(PostType.Announcement)
+   const databasePosts = await getUnprocessedCollection(PostType.Database)
   const allPosts = [
     ...lorePosts,
     ...introductionPosts,
-    ...announcementPosts
+    ...announcementPosts,
+    ...databasePosts
   ];
 
   return allPosts;

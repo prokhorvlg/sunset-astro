@@ -1,3 +1,5 @@
+import './BuildABot.scss'
+
 const BuildABotForm = () => {
     return (
         <div className="build-a-bot-container">

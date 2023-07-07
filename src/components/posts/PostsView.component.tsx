@@ -4,6 +4,8 @@ import PostsGrid from "@/components/posts/PostsGrid.component"
 import SpookyView from "@/components/posts/SpookyView.component"
 import { useEffect, useState } from "react"
 
+import "./PostsView.scss"
+
 interface Props {
     title: string
     subtext: string

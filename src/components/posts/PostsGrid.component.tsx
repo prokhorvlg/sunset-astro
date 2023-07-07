@@ -3,6 +3,7 @@ import FullWidthWrapper from "@/components/wrappers/FullWidthWrapper.component"
 import { faArrowDown, faArrowUp, faBoxOpen, faCircleXmark, faSearch } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { CollectionEntry } from "astro:content"
+import React from "react"
 import { useEffect, useState } from "react"
 
 export enum PostType {
@@ -10,7 +11,8 @@ export enum PostType {
     Introduction = 'introduction',
 	Game = 'game',
 	Announcement = 'announcement',
-    Secret = 'secret'
+    Secret = 'secret',
+    Database = 'database'
 }
 
 export interface ProcessedPost {
@@ -32,7 +34,8 @@ const POST_TYPES = [
     PostType.Lore,
     PostType.Announcement,
     //PostType.Game,
-    PostType.Introduction
+    PostType.Introduction,
+    PostType.Database
 ]
 
 export const PILLAR_TAGS = [
@@ -78,9 +81,7 @@ const PostsGrid = ({
     }, [searchString, activeCollection, activePillar, additionalTags])
 
     useEffect(() => {
-        console.log(filteredPosts[0]?.post.data.pubDate.getFullYear())
         const splitByYear = reduceByYear(filteredPosts)
-        console.log(splitByYear)
         setSplitPosts(splitByYear)
     }, [filteredPosts])
 
@@ -223,14 +224,14 @@ const PostsGrid = ({
 
             {splitPosts.map((splitPostObject) => 
                 (
-                    <>
+                    <React.Fragment key={splitPostObject.year}>
                         <h2 className="post-grid-year-title">{splitPostObject.year}</h2>
                         <PostGrid
                             galleryMode={galleryMode}
                             filteredPosts={splitPostObject.posts}
                             onCardTagClick={onCardTagClick}
                         />
-                    </>
+                    </React.Fragment>
                 )
             )}
         </div>
@@ -247,7 +248,12 @@ const PostGrid = ({
             {filteredPosts
                 .map((filteredPost) => {
                     return (
-                        <PostCard key={filteredPost.post.slug} processedPost={filteredPost} onCardTagClick={onCardTagClick} galleryMode={galleryMode}/>
+                        <PostCard 
+                            key={filteredPost.post.slug} 
+                            processedPost={filteredPost} 
+                            onCardTagClick={onCardTagClick} 
+                            galleryMode={galleryMode}
+                        />
                     )
                 })
             }

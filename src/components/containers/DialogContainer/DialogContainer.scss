@@ -1,0 +1,257 @@
+@import 'src/styles/imports.scss';
+
+// - DIALOG WRAP
+.dialog-wrap {
+    position: relative;
+    width: calc(100% - $dialog-wrap-distance);
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-decoration: none;
+    //margin-left: -2px;
+    margin-right: 2px;
+    
+    &.hover:hover, &.hover:focus {
+        .dialog-wrap-slot {
+            //border-color: $dialog-main-color;
+            left: $dialog-wrap-distance-hover;
+            top: $dialog-wrap-distance-hover;
+            .title {
+                //color: $dialog-main-color;
+            }
+        }
+    }
+
+    @mixin simpleDialog {
+
+    }
+    &.simple {
+        @include simpleDialog;
+    }
+    &.simple-on-mobile {
+        @include simpleDialog;
+    }
+
+    .dialog-wrap-slot {
+        position: relative;
+        border: $dialog-wrap-border-width solid $dialog-main-color;
+        left: 0px;
+        top: 0px;
+
+        background-color: $color-ultradark-red;
+        transition: $dialog-transition-time ease-in-out;
+        height: calc(100% - 4px);
+        @if $chicanery-mode {
+            border-radius: $chicanery-border-radius;
+        }
+    }
+
+    .border {
+        position: absolute;
+        border: $dialog-wrap-border-width solid $dialog-main-color;
+        transition: $dialog-transition-time ease-in-out;
+        border-style: solid;
+        user-select: none;
+        pointer-events: none;
+        //z-index:-99;
+
+        @if $chicanery-mode {
+            border-top: none;
+            border-left: none;
+            border-radius: $chicanery-border-radius;
+            //border-bottom-right-radius: 8px;
+        }
+
+        top: $dialog-wrap-distance;
+        bottom: -$dialog-wrap-distance;
+        left: $dialog-wrap-distance;
+        right: -$dialog-wrap-distance;
+
+        /*&.right {
+            right: -$dialog-wrap-distance;
+            bottom: -$dialog-wrap-distance;
+            top: $dialog-wrap-distance;
+            width: $dialog-wrap-distance;
+            border-left: none;
+
+        }
+
+        &.bottom {
+            right: -$dialog-wrap-distance;
+            bottom: -$dialog-wrap-distance;
+            left: $dialog-wrap-distance;
+            height: $dialog-wrap-distance;
+            border-top: none;
+        }*/
+    }
+
+    &.filled {
+        .border {
+            background: $dialog-main-color;
+        }
+    }
+
+    &.light-dark-orange {
+
+        .dialog-wrap-slot,
+        .border {
+            border-color: $dialog-main-color;
+        }
+
+        .dialog-wrap-slot {
+            background-color: rgba($color-ultradark-red, 0.5);
+        }
+
+        .dialog-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        h2 {
+            font-family: $font-title;
+            color: $dialog-main-color;
+            font-size: 3.2rem;
+            text-align: center;
+
+            margin-bottom: 20px;
+            letter-spacing: -0.1rem;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2.5rem;
+            width: 1000px;
+            max-width: 90%;
+            padding-bottom: 50px;
+        }
+
+        .flavor-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+
+            div {
+                font-family: $font-code;
+                font-size: 0.9rem;
+                letter-spacing: 0.1rem;
+                color: $dialog-main-color;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.macintosh-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: $size-line-width solid $dialog-main-color;
+
+    $spaceAroundTitle: 10px;
+    .macintosh-header-title {
+        text-transform: uppercase;
+        margin: 0 $spaceAroundTitle 0 $spaceAroundTitle;
+
+        span {
+            font-family: $font-code;
+            font-size: 1.1rem;
+            color: $color-background-dark;
+            font-weight: 600;
+        }
+    }
+
+    .macintosh-header-lines {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin: 0 6px;
+
+        .line {
+            height: 2px;
+            width: 100%;
+            border-radius: 2px;
+            background: $dialog-main-color;
+            margin: 1px 0 1px 0;
+        }
+    }
+
+    .macintosh-header-close {
+        margin-right: 6px;
+        margin-left: 0;
+    }
+
+    $filledOpacity: 1;
+    &.filled {
+        background: $dialog-main-color;
+        margin-top: 0;
+        padding-top: 5px;
+        .line {
+            background: rgba($color-ultradark-red, $filledOpacity);
+            height: $size-line-width;
+        }
+    }
+}
+
+.caution-diagonal-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: -3px;
+    right: -3px;
+    padding: 5px;
+
+    border: $size-line-width solid $color-sunset-orange;
+}
+
+.diagonal-lines-container {
+    .header-title {
+        font-family: $font-code;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 2px;
+
+        span {
+            color: $color-sunset-orange;
+        }
+    }
+}
+.diagonal-lines {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+
+    .line {
+        transform: rotate(45deg);
+        background-color: $color-sunset-orange;
+        height: 25px;
+        width: $size-line-width;
+        border-radius: 50px;
+        margin-right: 7px;
+
+        &.first {
+            height: 10px;
+            margin-right: 3px;
+            margin-top: 3px;
+        }
+
+        &.last {
+            height: 10px;
+            margin-left: -5px;
+            margin-top: 13px;
+        }
+    }
+}

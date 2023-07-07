@@ -1,0 +1,163 @@
+@import 'src/styles/imports.scss';
+
+// - POSTS VIEW
+.posts-grid-container {
+    width: 100%;
+    max-width: 100%;
+    //max-width: $width-1400;
+    width: 2000px;
+    max-width: 90%;
+    margin: 0 auto 100px auto;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin-top: 100px;
+
+    @media screen and (max-width: calc($width-1400 + 20px)) {
+        width: 90%;
+        margin-top: 10px;
+    }
+}
+
+.open-filters {
+    @media screen and (min-width: $breakpoint-tablet) {
+        display: none;
+    }
+    border: 2px solid $color-sunset-red;
+    border-radius: $chicanery-border-radius;
+    background: $color-background-dark;
+    color: $color-sunset-red;
+    font-size: 16px;
+    padding: 20px;
+    font-family: $font-code;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    &.filters-open {
+        background: rgba($color-sunset-red, 0.2);
+        color: $color-sunset-orange;
+    }
+}
+
+// - POSTS FILTERS
+.posts-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @media screen and (max-width: $breakpoint-tablet) {
+        flex-direction: column;
+        gap: 30px;
+        padding: 20px 10px;
+        margin-top: 4px;
+        border: 2px solid $color-sunset-red;
+        border-radius: $chicanery-border-radius;
+        background: rgba($color-sunset-red, 0.1);
+
+        &.filters-closed {
+            display: none;
+        }
+    }
+    .tag-clouds {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        @media screen and (max-width: $breakpoint-tablet) {
+            gap: 20px;
+        }
+        .filter-row {
+            .row-heading {
+                margin-top: 3px;
+                width: 80px;
+                font-family: $font-code;
+                color: $color-sunset-orange;
+                @media screen and (max-width: $breakpoint-tablet) {
+                    width: 100%;
+                }
+            }
+            .none {
+                margin-top: 3px;
+                color: $color-sunset-red;
+                font-family: $font-code;
+            }
+        }
+        
+    }
+
+    .post-string {
+        position: relative;
+        width: 100%;
+        max-width: 443px;
+        display: flex;
+        input {
+            position: relative;
+            border: $size-line-width solid $color-sunset-red;
+            border-radius: $chicanery-border-radius;
+            background: $color-background-dark;
+            padding: 20px;
+            padding-right: 60px;
+            flex:1;
+
+            color: $color-sunset-orange;
+            font-size: 16px;
+            font-family: $font-code;
+            &::placeholder {
+                color: $color-sunset-red;
+                opacity: 0.6;
+            }
+        }
+        .search-icon {
+            position: absolute;
+            color: $color-sunset-red;
+            font-size: 22px;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+    }
+}
+
+// - POSTS GRID
+.post-grid-year-title {
+    font-family: $font-title;
+    color: $color-sunset-orange;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 100px;
+    line-height: 42px;
+    border-bottom: 2px dotted $color-sunset-red;
+    @media screen and (max-width: $breakpoint-mobile) {
+        margin-top: 60px;
+    }
+}
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    grid-gap: 25px;
+
+    margin: 40px 0 20px 0;
+    transition: 0.1s ease-in-out;
+
+    width: 100%;
+    max-width: 100%;
+
+    @media screen and (max-width: 900px) {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    @media screen and (max-width: 500px) {
+        grid-template-columns: fit-content(100%);
+    }
+    
+    &.gallery-mode {
+        @media screen and (max-width: $postsGalleryCutoff) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

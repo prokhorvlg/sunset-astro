@@ -13,6 +13,7 @@ import { lock, unlock } from 'tua-body-scroll-lock'
 
 import LinksSegment from "@/components/layout/common/LinksSegment.component";
 import SocialsSegment from "@/components/layout/common/SocialsSegment.component";
+import './Header.scss'
 
 interface PropTypes {
     currentPage?: string;

@@ -4,6 +4,7 @@ import { faFloppyDisk, faLocationDot, faQuestionCircle, faXmark } from "@fortawe
 import {faFile}  from "@fortawesome/free-regular-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
+import './SpookyView.scss'
 
 interface Props {
     secretPosts: {

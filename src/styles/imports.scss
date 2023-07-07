@@ -1,0 +1,20 @@
+// COMMON
+// Things common to the entire website and stylesheet.
+// This file is imported in other components.
+
+@import './common/fonts.scss';
+@import './common/colors.scss';
+@import './common/breakpoints.scss';
+@import './common/mixins.scss';
+@import './common/global.scss';
+@import './common/markdown.scss';
+@import './common/animations.scss';
+
+$dialog-wrap-border-width: $size-line-width;
+$dialog-wrap-distance: 4px;
+$dialog-wrap-distance-hover: 4px;
+
+$dialog-transition-time: 0.1s;
+$dialog-main-color: $color-sunset-red;
+
+$postsGalleryCutoff: 768px;

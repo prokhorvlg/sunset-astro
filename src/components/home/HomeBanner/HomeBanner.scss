@@ -1,0 +1,237 @@
+@import 'src/styles/imports.scss';
+
+// - BANNER
+.sunset-banner-container {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 92px - 84px); // - header height - bottom peek
+    //background: $color-background-dark;
+    background: linear-gradient(0deg, rgba(36,21,14,0) 30%, rgba(36,21,14,1) 100%);
+
+    min-height: 500px;
+        max-height: 3000px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+        height: calc(100vh - 92px - 84px - 34px);
+    }
+    
+    .sunset-banner {
+        height: 100%;
+        width: 100%;
+        max-width: calc($width-2000 + 4px);
+        overflow: hidden;
+        position: relative;
+        margin: 0px 2px;
+        @if $chicanery-mode {
+            border-radius: $chicanery-border-radius;
+        }
+    
+        .floating-header {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            text-shadow: $color-sunset-red 0 0 100px;
+            @media screen and (max-width: $breakpoint-mobile) {
+                top: 30%;
+                left: 12px;
+                right: 12px;
+                transform: none;
+                //display: none;
+            }
+
+            h1 {
+                margin: 0;
+                text-transform: uppercase;
+                font-size: 86px;
+                font-size: 5rem;
+                color: $color-ultradark-red;
+                font-weight:800;
+                letter-spacing:10px;
+                white-space: nowrap;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    font-size: 46px;
+                    letter-spacing:-1px;
+                }
+                @media screen and (max-width: 250px) {
+                    font-size: 36px;
+                    letter-spacing:-1px;
+                }
+            }
+            .subtext {
+                display: block;
+                background: $color-ultradark-red;
+                margin-top: -20px;
+                font-family: $font-code;
+                color: $color-sunset-aqua;
+                font-weight: 500;
+                font-size: 20px;
+                padding: 4px 0px;
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+                white-space: nowrap;
+                border: 2px solid $color-sunset-aqua;
+                text-transform: uppercase;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                @if $chicanery-mode {
+                    border-radius: $chicanery-border-radius;
+                }
+                @media screen and (max-width: $breakpoint-mobile) {
+                    margin: -12px 0px 0 0px;
+                    width: 400px;
+                    max-width: 100%;
+                    font-size: 14px;
+                    .slashes {
+                        display: none;
+                    }
+                }
+            }
+
+            // If screen too flat, shrink title a bit
+            @media screen and (orientation: landscape) {
+                @media screen and (max-height: $breakpoint-tablet) {
+                    top: 5%;
+                    h1 {
+                        font-size: 4.5rem;
+                        letter-spacing: 0;
+                    }
+                }
+            }
+        }
+       
+        // LAYERS
+
+        .layer {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        // Deepest background, just orange
+        .sunset-banner-deep-background {
+            background: orange;
+            transform: scale(2.5);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 1;
+        }
+
+        // Overlay of the sunset image
+        .sunset-hero-overlay {
+            background-size: cover;
+            background-position: center;
+            mix-blend-mode: overlay;
+            opacity: 0.4;
+        }
+        
+        // gradient overlay layer
+        .sunset-under-front {
+            background: linear-gradient(0deg, $color-sunset-red 0%, $color-sunset-orange 100%);
+            opacity: 0.6;
+            &.deep {
+                opacity: 0.2;
+                @media screen and (max-width: $breakpoint-mobile) {
+                    display: none;
+                }
+            }
+        }
+
+        // The computers at the bottom nearest us
+        .foreground {
+            @media screen and (max-width: $breakpoint-mobile) {
+                opacity: 0;
+            }
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            bottom: 0px;
+        }
+
+        // A noise layer over all of it
+        .noise {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom center;
+            mix-blend-mode: overlay;
+            opacity: 0.1;
+        }
+
+        .parallaxing-image {
+            background-repeat: no-repeat;
+            background-position: center;
+
+            position: absolute;
+            width: 5000px;
+            height: 5000px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-lazarus {
+            background-size: 170vh;
+            // On landscape, lazarus is on the left side.
+            @media screen and (orientation: landscape) {
+                margin-top: 2vh;
+                margin-left: -20vw;
+                // If too wide, cap the distance lazarus goes.
+                @media screen and (min-width: 2100px) {
+                    margin-left: -400px;
+                }
+                // If too short, don't downscale laz any more
+                @media screen and (max-height: 900px) {
+                    background-size: 1600px;
+                }
+                // Too tall and too thin are portrait problems.
+            }
+            // On portrait, lazarus looms over the title.
+            @media screen and (orientation: portrait) {
+                background-size: 180vh;
+                margin-left: 20vh;
+            }
+        }
+
+        .hero-shroomy {
+            background-size: 150vh;
+            @media screen and (orientation: landscape) {
+                margin-top: 0vh;
+                margin-left: 12vw;
+                // If too short, don't downscale any more
+                @media screen and (max-height: 900px) {
+                    background-size: 1500px;
+                }
+            }
+            // On portrait, shroomy says bye.
+            @media screen and (orientation: portrait) {
+                display: none;
+            }
+        }
+
+        .hero-marvin {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            background-position: bottom;
+            background-repeat: no-repeat;
+
+            // If too short, shrink a bit
+            @media screen and (orientation: landscape) {
+                @media screen and (max-height: 1100px) {
+                    background-size: 160vh;
+                }
+            }
+        }
+
+    }
+}

@@ -3,10 +3,15 @@ import DialogContainer from "@/components/containers/DialogContainer/DialogConta
 import { PostType, ProcessedPost } from "@/components/posts/PostsGrid.component"
 import { getImageObjectById } from "@/utils/astroHelpers"
 import { getDateString } from "@/utils/date"
-import { faArrowRight, faBullhorn } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBullhorn, faDatabase, faMicrochip } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { CollectionEntry } from "astro:content"
 import { useState, useEffect } from "react"
+
+import './PostCard.scss'
+
+export const MapStringToIcon = {
+    "faMicrochip": faMicrochip
+}
 
 interface PropTypes {
     processedPost: ProcessedPost
@@ -78,7 +83,8 @@ const PostCard = ({
                     { galleryMode && 
                         mobileMode && 
                         collection !== PostType.Introduction &&
-                        collection !== PostType.Announcement 
+                        collection !== PostType.Announcement &&
+                        collection !== PostType.Database
                         ? 
                         <img src={imageSrc || ""} 
                             height={imageHeight} 
@@ -108,9 +114,20 @@ const PostCard = ({
                 }
                 {(collection === PostType.Announcement) ? 
                     <div className="post-card-content">
-                        <FontAwesomeIcon icon={faBullhorn} className="icon" />
+                        <FontAwesomeIcon icon={faBullhorn} className="main-icon" />
                         <h3 className="title">{post.data.title}</h3>
                         <p className="description">{post.data.description}</p>
+                    </div> : null
+                }
+                {(collection === PostType.Database) ? 
+                    <div className="post-card-content">
+                        <div className="icon-pack small">
+                            <FontAwesomeIcon icon={faDatabase} className="main-icon" />
+                            <FontAwesomeIcon className="sub-icon" icon={MapStringToIcon[post.data.icon || ""]} />
+                        </div>
+                        <h3 className="title">{post.data.title}</h3>
+                        <p className="description">{post.data.subText}</p>
+                        <TagCloud tags={post.data.tags || []} onCardTagClick={onCardTagClick} />
                     </div> : null
                 }
 
