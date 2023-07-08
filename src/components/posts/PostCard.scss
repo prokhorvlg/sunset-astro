@@ -5,15 +5,33 @@
     width: 100%;
     max-width: 100%;
     //overflow: hidden;
-    .collection {
-        display: block;
-        text-transform: uppercase;
-        font-family: $font-code;
-        letter-spacing: 1px;
-        margin: 0 0 2px 4px;
-        user-select: none;
-        color: $color-sunset-red;
+    .above-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .above-message {
+            display: block;
+            text-transform: uppercase;
+            font-family: $font-code;
+            letter-spacing: 1px;
+            margin: 0 0 2px 4px;
+            user-select: none;
+            z-index: 50;
+        }
+        .collection {
+            color: $color-sunset-red;
+        }
+        .patreon-exclusive {
+            color: $color-patreon;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .icon {
+                margin-right: 4px;
+            }
+        }
     }
+    
     .post-card {
         width: 100%;
         max-width: 100%;
@@ -87,7 +105,6 @@
 
                     z-index: 10;
                     .post-card-image {
-                        //margin: 3px;
                         height: 100%;
                         background-size: cover;
                         background-position: top;
@@ -99,10 +116,45 @@
                         border-radius: 3px;
     
                         @include abg(0.2);
-                        //@include softGradient();
+                    }
+                    
+                    .post-card-image, .post-card-image-mobile {
+                        &.patreon-exclusive {
+                            position: relative;
+                            .patreon-exclusive-overlay {
+                                background: rgba(darken($color-patreon, 60%), 0.7);
+                                border: 2px dotted $color-patreon;
+                                box-sizing: border-box;
+                                border-radius: 4px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                flex-direction: column;
 
-                        //background-size: contain;
-                        //background-position: center;
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                bottom: 0;
+                                right: 0;
+                                p, .main-icon, .icon {
+                                    color: $color-patreon;
+                                }
+                                .main-icon {
+                                    font-size: 60px;
+                                    margin-bottom: 20px;
+                                }
+                                p {
+                                    margin-top: 5px;
+                                    margin-bottom: 0;
+                                    .icon {
+                                        margin-left: 5px;
+                                    }
+                                    span {
+                                        color: white;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
                 .post-card-content {

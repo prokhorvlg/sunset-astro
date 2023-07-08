@@ -26,6 +26,7 @@ export interface DialogWrapStyle {
 
     isLink?: boolean
     linkURL?: string
+    isExternal?: boolean
 
     isButton?: boolean
     onButtonClick?: Function
@@ -48,6 +49,7 @@ const DialogContainer = ({
                     ${wrapStyle.classes}
                 `}
                 href={wrapStyle.linkURL}
+                target={wrapStyle.isExternal ? "_blank" : "_self"}
             >
                 <DialogInner wrapStyle={wrapStyle} children={children}/>
             </a>

@@ -3,7 +3,8 @@ import DialogContainer from "@/components/containers/DialogContainer/DialogConta
 import { PostType, ProcessedPost } from "@/components/posts/PostsGrid.component"
 import { getImageObjectById } from "@/utils/astroHelpers"
 import { getDateString } from "@/utils/date"
-import { faArrowRight, faBullhorn, faDatabase, faMicrochip } from "@fortawesome/free-solid-svg-icons"
+import { faPatreon } from "@fortawesome/free-brands-svg-icons"
+import { faArrowRight, faArrowRight, faArrowUpRightFromSquare, faBullhorn, faDatabase, faKey, faLock, faMicrochip } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
 
@@ -41,13 +42,15 @@ const PostCard = ({
         processedPost.processedThumbImage.src :
         post.data.thumbImage
 
+    const isPatreonExclusive = post.data.patreonLocked
+    const target = isPatreonExclusive ? post.data.target : `/posts/${post.slug}`
+
     const originalWidth = Number(processedPost.processedThumbImage?.width) || 100
     const originalHeight = Number(processedPost.processedThumbImage?.height) || 100
     const imageRatio = originalWidth / originalHeight
 
     // DYNAMIC CALCULATIONS
     const [mobileMode, setMobileMode] = useState(false)
-
     const [imageHeight, setImageHeight] = useState(500)
     const [imageWidth, setImageWidth] = useState(500)
 
@@ -73,11 +76,20 @@ const PostCard = ({
 
     return (
         <div className={`post-card-container ${collection} ${classes ? classes : ''} ${galleryMode ? 'gallery-mode' : ''}`}>
-            <span className="collection">{collection}</span>
+            <div className="above-card">
+                <span className="above-message collection">{collection}</span>
+                {post.data.patreonLocked &&
+                    <div className="patreon-exclusive">
+                        <FontAwesomeIcon icon={faPatreon} className="icon" />
+                        <span className="above-message patreon-locked">Patreon Exclusive</span>
+                    </div>
+                }
+            </div>
             <DialogContainer wrapStyle={{
                 isLink: true,
-                linkURL: `/posts/${post.slug}`,
-                classes: `post-card`
+                linkURL: target,
+                classes: `post-card`,
+                isExternal: isPatreonExclusive
             }}>
                 <div className="post-card-top">
                     { galleryMode && 
@@ -86,15 +98,22 @@ const PostCard = ({
                         collection !== PostType.Announcement &&
                         collection !== PostType.Database
                         ? 
-                        <img src={imageSrc || ""} 
-                            height={imageHeight} 
-                            width={imageWidth}
-                        />
+                        <div
+                            className={`post-card-image-mobile ${isPatreonExclusive ? "patreon-exclusive" : ""}`}
+                        >
+                            <img src={imageSrc || ""} 
+                                height={imageHeight} 
+                                width={imageWidth}
+                            />
+                            {isPatreonExclusive && <PatreonExclusiveOverlay />}
+                        </div>
                         : 
-                        <div className="post-card-image" style={{
+                        <div className={`post-card-image ${isPatreonExclusive ? "patreon-exclusive" : ""}`} style={{
                             backgroundImage: `url(${imageSrc})`,
                             backgroundPosition: post.data.thumbAlignment ? post.data.thumbAlignment : 'top'
-                        }}></div>
+                        }}>
+                            {isPatreonExclusive && <PatreonExclusiveOverlay />}
+                        </div>
                     }
                 </div>
                 {(collection === PostType.Lore) ? 
@@ -130,7 +149,6 @@ const PostCard = ({
                         <TagCloud tags={post.data.tags || []} onCardTagClick={onCardTagClick} />
                     </div> : null
                 }
-
                 <div className="post-card-bottom">
                     <span className="date code">{dateString}</span>
                     <FontAwesomeIcon icon={faArrowRight} className="arrow" />
@@ -140,8 +158,14 @@ const PostCard = ({
     )
 }
 
-const IntroductionContents = () => {
-    return null
+const PatreonExclusiveOverlay = () => {
+    return (
+        <div className="patreon-exclusive-overlay">
+            <FontAwesomeIcon icon={faKey} className="main-icon" />
+            <p>This is a <span>Patreon exclusive</span> post.</p>
+            <p>Become a backer to view! <FontAwesomeIcon icon={faArrowRight} className="icon" /></p>
+        </div>
+    )
 }
 
 export default PostCard

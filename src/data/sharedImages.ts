@@ -979,9 +979,15 @@ export const Images: ImageDetails[] = [
     {
         id: 'kaizen-robots-ad',
         src: "/images/content/pact-android-min.png",
-        alt: "German robot designed by Klaus holding Kaizen TV",
+        alt: "Pair of kaizen robots",
         width: 2265,
-        height: 2830,
-        caption: "A Klaus 4096 Meister carries a Kaizen television set."
+        height: 2830
+    },
+    {
+        id: 'kaizen-robots-ad-locked',
+        src: "/images/content/pact-android-locked.png",
+        alt: "Pair of kaizen robots",
+        width: 2265,
+        height: 2830
     },
 ]

@@ -24,7 +24,10 @@ const collectionSetup = {
 		noTableOfContents: z.boolean().optional(),
 		tags: z.array(z.string()).optional(),
 		id: z.string().optional(),
-		icon: z.string().optional()
+		icon: z.string().optional(),
+		// patreon/external link
+		patreonLocked: z.boolean().optional(),
+		target: z.string().optional(),
 	}),
 }
 

@@ -128,13 +128,25 @@ export const processPost = async (post) => {
     );
   }
   let processedImageObject;
+  let minifiedImageObject;
   if (imageObject) {
+
+    // image-rendering: pixelated
+    // render at 80 for patreon-locked posts if state
+
     processedImageObject = await getImage({
       src: imageObject.src,
       alt: imageObject.alt || "",
       aspectRatio: `${imageObject.width}:${imageObject.height}`,
       width: 1000,
-      format: "webp",
+      format: "webp"
+    });
+    minifiedImageObject = await getImage({
+      src: imageObject.src,
+      alt: imageObject.alt || "",
+      aspectRatio: `${imageObject.width}:${imageObject.height}`,
+      width: 50,
+      format: "webp"
     });
   }
 
@@ -142,6 +154,7 @@ export const processPost = async (post) => {
   return {
     post: post,
     processedThumbImage: processedImageObject ? processedImageObject : null,
+    minifiedImageObject: minifiedImageObject ? minifiedImageObject : null,
     searchData: `
     ${post.data.title.toLowerCase()} 
     ${post.data.mainText?.toLowerCase()} 
