@@ -18,7 +18,7 @@ const PostsView = ({
     subtext,
     secretPosts,
     processedPosts
-}) => {
+}: Props) => {
     const [isSpookyMode, setIsSpookyMode] = useState(false)
 
     useEffect(()=> {

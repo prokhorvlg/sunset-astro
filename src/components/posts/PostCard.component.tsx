@@ -1,10 +1,9 @@
 import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer from "@/components/containers/DialogContainer/DialogContainer.component"
 import { PostType, ProcessedPost } from "@/components/posts/PostsGrid.component"
-import { getImageObjectById } from "@/utils/astroHelpers"
 import { getDateString } from "@/utils/date"
 import { faPatreon } from "@fortawesome/free-brands-svg-icons"
-import { faArrowRight, faArrowRight, faArrowUpRightFromSquare, faBullhorn, faDatabase, faKey, faLock, faMicrochip } from "@fortawesome/free-solid-svg-icons"
+import { faArrowRight, faBullhorn, faDatabase, faKey, faMicrochip } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
 
