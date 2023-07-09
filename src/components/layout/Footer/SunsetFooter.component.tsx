@@ -71,6 +71,8 @@ const SunsetFooter = ({
                     <div className="input-area">
                         <h3>Newsletter</h3>
                         <div className="divider"></div>
+                        <p>Still working on getting this set up!</p>
+                        <p>For now, consider using the <a href="/rss.xml">RSS feed</a>, or join the Discord server to get pinged for exhibit updates.</p>
                         {/*<p>Get updated for every post.</p>
                         <div className="input-row">
                             <input type="text" placeholder="Email Address"/>

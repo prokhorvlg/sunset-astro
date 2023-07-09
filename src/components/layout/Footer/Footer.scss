@@ -274,6 +274,15 @@ $breakpoint-footer: $breakpoint-tablet;
                         }
                     }
                 }
+
+                p {
+                    width: 80%;
+                    margin: 10px auto;
+                    z-index: 1;
+                    a {
+                        color: $color-sunset-orange;
+                    }
+                }
                 
             }
         }
