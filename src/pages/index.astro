@@ -18,6 +18,7 @@ import { GetImageTransform } from "@astrojs/image/dist/lib/get-image";
 import PostCard from "@/components/posts/PostCard.component";
 import { getProcessedPost } from "@/utils/astroHelpers";
 import PostCardContentRow from "@/components/common/ContentRow/PostCardContentRow.component";
+import ScriptsAfterBody from "@/components/ScriptsAfterBody.astro";
 
 // Switch to "true" to load images faster, as they aren't being compressed.
 const DEBUGGING = false
@@ -158,5 +159,7 @@ const getImageSrcById = (id) => {
         </ul></div>-->
     </main>
     <SunsetFooter client:only currentPage={Astro.url.pathname} />
+
+    <ScriptsAfterBody />
   </body>
 </html>

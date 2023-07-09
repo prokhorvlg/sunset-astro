@@ -6,6 +6,7 @@ import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
 import PageHeading from '@/components/page/PageHeading.component';
 import { getAllPosts, getAllSecretPosts } from '@/utils/astroHelpers';
 import PostsView from '@/components/posts/PostsView.component';
+import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
 
 const posts = await getAllPosts()
 const SUBTEXT = "A collection of every post made for the Sunset System project."
@@ -35,5 +36,7 @@ const secretPosts = await getAllSecretPosts()
 			currentPage={"/posts"} 
 			noGradient 
 		/>
+
+		<ScriptsAfterBody />
 	</body>
 </html>

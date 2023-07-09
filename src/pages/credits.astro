@@ -1,16 +1,14 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getCollection } from 'astro:content';
+import { SITE_DESCRIPTION } from '../consts';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
-import PostsView, { PostType } from '@/components/posts/PostGrid.component';
 import PageHeading from '@/components/page/PageHeading.component';
-import TextContentRow from '@/components/common/ContentRow/TextContentRow.component';
 
 import { Content } from '@/data/supporters-content.mdx';
 import * as post from '@/data/supporters-content.mdx';
 import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
+import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
 ---
 
 <!DOCTYPE html>
@@ -27,5 +25,7 @@ import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 			</MarkdownWrapper>
 		</main>
 		<SunsetFooter client:only currentPage={"/credits"} />
+		
+		<ScriptsAfterBody />
 	</body>
 </html>

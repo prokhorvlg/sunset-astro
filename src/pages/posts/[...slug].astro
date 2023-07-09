@@ -1,4 +1,5 @@
 ---
+import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
 import PostLayout from '@/layouts/PostLayout.astro';
 import { getProcessedImageById, loadAnyPost } from '@/utils/astroHelpers';
 
@@ -15,3 +16,4 @@ const image = await getProcessedImageById(post.data.thumbImage, 1500)
 <PostLayout post={post} image={image?.src} >
 	<Content />
 </PostLayout>
+

@@ -10,6 +10,7 @@ import { findAdjacentProcessedPosts } from '@/utils/posts';
 import { processPost, sortProcessedPostsByPubDate, getAllPosts, processPosts } from '@/utils/astroHelpers';
 import TableOfContents from '@/components/common/TableOfContents/TableOfContents.component';
 import RedirectSecret from '@/components/layout/common/RedirectSecret.component';
+import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
 
 const { post, image = null } = Astro.props;
 const posts = await getAllPosts();
@@ -67,5 +68,7 @@ if (isIntroduction) {
 			currentPage={Astro.url.pathname}
 			postType={post.collection}
 		/>
+
+		<ScriptsAfterBody />
 	</body>
 </html>
