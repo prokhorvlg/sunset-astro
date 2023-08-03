@@ -76,3 +76,14 @@ export const AuthorOperatorCobalt: QuoteAuthor = {
     description: "Lord of Order. The strategic one.",
     theme: "cobalt"
 }
+
+export const AuthorRYUJIN: QuoteAuthor = {
+    id: "ryujin",
+    name: "J-1108 RYUJIN",
+    description: "Experienced interfacer, travelled the world."
+}
+export const AuthorTOSHI: QuoteAuthor = {
+    id: "toshi",
+    name: "TUK-240 TOSHI",
+    description: "A warbot recently broken from their routine."
+}

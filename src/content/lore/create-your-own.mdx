@@ -16,8 +16,11 @@ import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.
 import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
 import PostCardContentRowRender from "@/components/common/ContentRow/PostCardContentRowRender.astro"
 import BuildABotForm from '@/components/special/BuildABotForm'
+import SystemMap from '@/components/special/SystemMap/SystemMap'
 import { faSignal, faPowerOff, faCircleNodes, faRadiation } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { AuthorCAN, AuthorTerminal, AuthorUniserve, AuthorUnknown } from '@/data/Authors.ts'
 
-<BuildABotForm />
+<BuildABotForm client:only />
+
+<SystemMap client:only />

@@ -990,4 +990,20 @@ export const Images: ImageDetails[] = [
         width: 2265,
         height: 2830
     },
+    {
+        id: 'ryujin-toshi-setting-out-text',
+        src: "/images/content/toshi-text-2-adobe.jpg",
+        alt: "Small robot riding a large warbot",
+        width: 2615,
+        height: 2208,
+        caption: "RYUJIN, a caretaker interfacer, mounts TOSHI, a recently-awakened warbot. They are somewhere in the vicinity of a cynosure tower, an interplanetary communication and networking hub."
+    },
+    {
+        id: 'ryujin-toshi-setting-out-notext',
+        src: "/images/content/toshi-notext-adobe.jpg",
+        alt: "Small robot riding a large warbot",
+        width: 2615,
+        height: 2208,
+        caption: "A version of the image without text."
+    },
 ]

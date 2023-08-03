@@ -5,17 +5,32 @@
     max-width: 1800px;
     margin: 0 auto;
     height: 2000px;
-    background: $color-sunset-manila;
+    background: #fff1dc;
 
-    h1, p {
-        color: $color-background-dark;
+    .strip {
+        padding: 40px 100px;
     }
 
-    input {
+    h1, p, label {
+        color: $color-background-dark;
+        font-family: $font-code;
+    }
+
+    h1.main-title {
+        font-family: $font-code;
+        font-size: 60px;
+        letter-spacing: -3px;
+        text-transform: uppercase;
+    }
+    .subtext {
+
+    }
+
+    input[type=text] {
         border-radius: 0;
         background: transparent;
         border: none;
-        border-bottom: 2px solid $color-background-dark;
+        border: 2px solid $color-background-dark;
         color: $color-background-dark;
     }
 }
