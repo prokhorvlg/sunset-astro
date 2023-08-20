@@ -23,6 +23,15 @@ const SunsetHeader = ({ currentPage = "" }: PropTypes) => {
     const [isNavOpen, setIsNavOpen] = useState<boolean>(false);
     const targetRef = useRef(null);
 
+    const onLoginWithPatreon = () => {
+        // OAuth with patreon
+
+        // Check pledges
+
+        // Save authenticated mode to global state object
+
+    }
+
     useEffect(() => {
         if (!targetRef.current) return
         if (isNavOpen) {
@@ -89,6 +98,12 @@ const SunsetHeader = ({ currentPage = "" }: PropTypes) => {
                         <div className="bottom-curve"></div>
                     </div>
                 </div>
+                {/*<Button
+                    type={ButtonType.Dialog}
+                    onClickHandler={onLoginWithPatreon}
+                >
+                    <p>Unlock Patreon Content</p>
+                    </Button>*/}
                 <div className={`mobile-background ${isNavOpen ? "open" : ""}`}></div>
             </div>
         </div>

@@ -63,6 +63,10 @@ main {
 .highlight-spooky {
     color: $color-spooky;
 }
+.spooky-code {
+    font-family: $font-code;
+    background: rgba($color-spooky, 0.2);
+}
 
 :root {
     font-family: $font-body;

@@ -1006,4 +1006,18 @@ export const Images: ImageDetails[] = [
         height: 2208,
         caption: "A version of the image without text."
     },
+    {
+        id: 'ryujin-avatar',
+        src: "/images/content/author-images/ryujin.jpg",
+        alt: "",
+        width: 1030,
+        height: 608
+    },
+    {
+        id: 'toshi-avatar',
+        src: "/images/content/author-images/toshi.jpg",
+        alt: "",
+        width: 1814,
+        height: 981
+    },
 ]

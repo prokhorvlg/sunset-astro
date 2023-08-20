@@ -80,10 +80,16 @@ export const AuthorOperatorCobalt: QuoteAuthor = {
 export const AuthorRYUJIN: QuoteAuthor = {
     id: "ryujin",
     name: "J-1108 RYUJIN",
-    description: "Experienced interfacer, travelled the world."
+    image: "ryujin-avatar",
+    originalPage: "/posts/ryujin-and-toshi-setting-out",
+    description: "Experienced interfacer, travelled the world.",
+    theme: "ryujin"
 }
 export const AuthorTOSHI: QuoteAuthor = {
     id: "toshi",
     name: "TUK-240 TOSHI",
-    description: "A warbot recently broken from their routine."
+    image: "toshi-avatar",
+    originalPage: "/posts/ryujin-and-toshi-setting-out",
+    description: "A warbot recently broken from their routine.",
+    theme: "toshi"
 }

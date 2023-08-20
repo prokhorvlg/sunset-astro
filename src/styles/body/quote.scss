@@ -115,6 +115,28 @@ $quoteMobileSidePadding: 20px;
             text-transform: uppercase;
         }
     }
+    &.ryujin {
+        .quote-box p {
+            &::before {
+                content: "[ ";
+            }
+            &::after {
+                content: " ]";
+            }
+        }
+    }
+    &.toshi {
+        .quote-box p {
+            text-transform: uppercase;
+            &::before {
+                content: "« ";
+            }
+            &::after {
+                content: " »";
+            }
+        }
+    }
+
 
 }
 
