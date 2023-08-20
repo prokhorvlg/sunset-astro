@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import react from "@astrojs/react";
 import image from "@astrojs/image";
 import markdownConfig from './markdown.config'
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/static';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +16,6 @@ export default defineConfig({
       'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`
     }
   },
-  output: "hybrid",
-  adapter: vercel()
+  //output: "hybrid",
+  //adapter: vercel()
 });
