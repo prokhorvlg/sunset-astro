@@ -1,4 +1,6 @@
 ---
+export const prerender = true
+
 import BaseHead from "../components/BaseHead.astro";
 import HomeBanner from "../components/home/HomeBanner/HomeBanner.component";
 import IntroSection from "../components/home/IntroSection/IntroSection.component";
@@ -141,22 +143,6 @@ const getImageSrcById = (id) => {
       <PostCardContentRow processedPosts={[
         nextPost
       ]} />
-
-      <!--
-        graphics initialized
-        
-        <FullWidthWrapper>
-					<SimpleContainer classes="under-construction">
-						<FontAwesomeIcon icon={faWrench} />
-						<p class="highlight-orange">The full introduction is <span class="highlight-aqua">under construction :)</span></p>
-					</SimpleContainer>
-				</FullWidthWrapper>-->
-        <!--<div><ul>
-          <li>Hello and Welcome // An introduction from a robotic mastermind</li>
-          <li>World of Retrofuturistic Dreams // The world of mankind before their disappearance</li>
-          <li>The Sunset Research Initiative // How they set out to solve the problem</li>
-          <li>Post-Mankind Existentialism // The state of the world in this strange time</li>
-        </ul></div>-->
     </main>
     <SunsetFooter client:only currentPage={Astro.url.pathname} />
 
