@@ -188,14 +188,16 @@ article.markdown {
     // Code blocks ( ` ` )
     > pre {
         word-wrap: normal;
-        padding: 20px;
-        border: 2px solid $color-sunset-orange;
+        padding: 25px;
+        border: 2px solid $color-sunset-red;
         border-radius: $chicanery-border-radius;
         
         line-height: 24px;
         margin-top: 40px;
         margin-bottom: 40px;
         max-width: 960px;
+        @include abg(0.1);
+        @include abg-red-diagonal();
         @include standardBoxShadow();
         @media screen and (max-width: $breakpoint-tablet) {
             width: 80%;

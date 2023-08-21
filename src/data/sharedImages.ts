@@ -966,7 +966,16 @@ export const Images: ImageDetails[] = [
         width: 2100,
         height: 1700,
         classes: "border-red",
-        caption: "A Hokota J-1108 interfacer stands guard at the base of SANGUINE HAZE, somewhere inside of a complex under the Martian Sands."
+        //caption: "A Hokota J-1108 interfacer stands guard at the base of SANGUINE HAZE, somewhere inside of a complex under the Martian Sands."
+    },
+    {
+        id: 'cobalt',
+        src: "/images/content/cobalt-full.jpg",
+        alt: "Coalition wood-paneled mastermind with tanky bodyguard",
+        width: 2238,
+        height: 1700,
+        classes: "border-uniserve-blue",
+        //caption: `Operator COBALT and their bodyguard, STONEWALL. COBALT doesn't seem to be very fond of STONEWALL, or SANGUINE HAZE, or anyone really. SANGUINE assures us it's just their hard, wood-paneled exterior concealing a heart of gold.`
     },
     {
         id: 'klaus-meister',

@@ -89,7 +89,13 @@ export const Organizations: Organization[] = [
 Maxwell produced products in most other industries, such as standardized intelligent parts for autohomes, vehicles, and construction. They often competed for government contracts with their primary direct rival Dynatek. Their designers were also fond of wood-paneling.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"],
-        basedOn: "Honeywell, Xerox"
+        basedOn: "Honeywell, Xerox",
+        examples: [{
+            name: "Operator COBALT and STONEWALL",
+            type: RobotExampleType.Link,
+            target: "/posts/two-lords-cobalt",
+            description: "A mastermind and their walker bodyguard."
+        }]
     },
     {
         id: "redmond",
@@ -316,7 +322,7 @@ Hokota stood out against its competitors with its culture of extreme risk-taking
         examples: [{
             name: "SANGUINE HAZE & J-1108",
             type: RobotExampleType.Link,
-            target: "/posts/two-lords-origin",
+            target: "/posts/two-lords-sanguine",
             description: "A mastermind and an interfacer standing guard."
         }]
     },

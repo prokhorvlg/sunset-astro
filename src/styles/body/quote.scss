@@ -100,6 +100,11 @@ $quoteMobileSidePadding: 20px;
             $cobalt
         );
         @include whiteBGQuote();
+        .author-box .image {
+            background-size: 150%;
+            background-position-x: 0%;
+            background-position-y: 80%;
+        }
     }
 
     // Themes for specific characters
