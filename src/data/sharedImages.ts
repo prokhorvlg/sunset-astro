@@ -1029,4 +1029,11 @@ export const Images: ImageDetails[] = [
         width: 1814,
         height: 981
     },
+    {
+        id: 'union-vehicles-1',
+        src: "/images/content/union_vehicles_1.png",
+        alt: "",
+        width: 2389,
+        height: 1835
+    },
 ]
