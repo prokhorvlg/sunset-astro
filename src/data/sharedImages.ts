@@ -1036,4 +1036,11 @@ export const Images: ImageDetails[] = [
         width: 2389,
         height: 1835
     },
+    {
+        id: 'data-storage-devices-locked',
+        src: "/images/content/data-storage-devices-locked.jpg",
+        alt: "",
+        width: 2598,
+        height: 2027
+    },
 ]
