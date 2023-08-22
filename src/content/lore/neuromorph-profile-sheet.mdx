@@ -1,0 +1,78 @@
+---
+title: "Neuromorph Profile Sheet"
+mainText: "Want to register your own original character? Use the profile sheet to create a robot!"
+subText: "Shortly after the Repair, the Consensus of Order distributed a standardized form to survey the machine population of the System, and assess damage caused by the Interrupt. They learned that the machine world had drastically changed."
+pubDate: "Aug 21 2023"
+thumbImage: "profile-sheet-thumb"
+thumbAlignment: "55% 0%"
+thumbSize: "145%"
+tags:
+  - post-mankind existentialism
+  - robots
+  - semi-canon
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import ContentRow from '@/components/common/ContentRow/ContentRow.component.tsx'
+import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
+import DownloadLink from '@/components/common/DownloadLink/DownloadLink.tsx'
+import { CommonLinks } from '@/data/Common.ts'
+import { AuthorCAN, AuthorUniserve, AuthorSanguineHaze, AuthorOperatorCobalt } from '@/data/Authors.ts'
+
+<ImageContentRowRender 
+  images={['shocked-emerson']}
+/>
+
+On May 5 2095, civilization ended in an instant as each living human vanished from existence. The *Unexpected Interrupt*, as it would be eventually known by the remaining machines, was followed by several decades of total destruction and chaos as automated systems scrambled to resolve the problems left by man's disapparance. These were massive infrastructural and existential undertakings for these as-of-yet unconscious machines, but they persevered.
+
+Half a century later, the `Great Repair` was well on its way. Energy, communications, and material chains were slowly rebuilt, although in a much more limited capacity than during the human era. A newly-formed *Consensus of Order*, determined to stabilize the System, began an extensive data collection operation to assess the damage. With assistance from the *Remembering of Human Articles*, they began to compile a database of neuromorphs and their current status.
+
+As the operation continued over the following decades, the Lords of Order learned that the System had changed far more than expected since the last human documentation. Not only was the System filled with new, entirely emergent infrastructural systems, but the neuromorphs themselves were beginning to break out of their original roles, finding new ways to fulfill their core directives that could never have been predicted by mankind.
+
+<QuoteContentRowRender author={AuthorOperatorCobalt} left>
+  ░ SENTIENCE is UNPREDICTABLE + UNSUSTAINABLE ░
+  ░ CANNOT allow phenomenon to spread without supervision !! ░
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorSanguineHaze} right>
+  Performing the same actions for millenia is far more unsustainable~
+</QuoteContentRowRender>
+
+For the time being, the Order remains neutral on the position of the increasing autonomy of the machine world. On one hand, autonomy creates massive difficulties for planning and future simulation. On the other... it seems to work?
+
+<SpacingRow extraSpacing={"calc(5vw + 20px)"} />
+
+<QuoteContentRowRender author={AuthorUniserve} left >
+Please ENJOY this complementary printout of the current edition of NEUROMORPH_PROFILE_SHEET. Use it to indicate your appearance, role, and post-Interrupt status.
+
+* The `HINTS version` includes questions and examples to help guide you through the character creation process.
+* The `NO HINTS version` is a clean slate for those who already have a great understanding of SUNSET SYSTEM.
+
+Feel free to share your NEUROMORPH_PROFILE_SHEET on the <a href={CommonLinks.discord} target="_blank">DISCORD SERVER</a>!
+</QuoteContentRowRender>
+
+<ContentRow
+  classes="profile-sheet-downloads">
+  <DownloadLink
+    linkURL="/images/content/neuromorph-profile-sheet/neuromorph-worksheet-hint.jpg"
+  >
+    Download `HINTS Profile Sheet`
+  </DownloadLink>
+  <DownloadLink
+    linkURL="/images/content/neuromorph-profile-sheet/neuromorph-worksheet-nohint.jpg"
+  >
+    Download `NO HINTS Profile Sheet`
+  </DownloadLink>
+</ContentRow>
+
+---
+
+<ImageContentRowRender 
+  images={['profile-sheet-hint']}
+/>
+
+<ImageContentRowRender 
+  images={['profile-sheet-nohint']}
+/>

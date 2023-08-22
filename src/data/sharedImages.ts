@@ -1043,4 +1043,36 @@ export const Images: ImageDetails[] = [
         width: 2598,
         height: 2027
     },
+    {
+        id: 'shocked-emerson',
+        src: "/images/content/shocked-emerson.jpg",
+        alt: "A pointing robot asking if they should be concerned",
+        width: 1896,
+        height: 1274,
+        caption: "This Emerson 3051D asks a pretty good question."
+    },
+    {
+        id: 'profile-sheet-nohint',
+        src: "/images/content/neuromorph-profile-sheet/neuromorph-worksheet-nohint.jpg",
+        alt: "Neuromorph profile worksheet without hints.",
+        width: 2550,
+        height: 3300,
+        caption: "The neuromorph profile sheet, WITHOUT hints. Be sure to use the download version as the one displayed here is compressed unless opened."
+    },
+    {
+        id: 'profile-sheet-hint',
+        src: "/images/content/neuromorph-profile-sheet/neuromorph-worksheet-hint.jpg",
+        alt: "Neuromorph profile worksheet with hints.",
+        width: 2550,
+        height: 3300,
+        caption: "The neuromorph profile sheet, WITH hints. Be sure to use the download version as the one displayed here is compressed unless opened."
+    },
+    {
+        id: 'profile-sheet-thumb',
+        src: "/images/content/neuromorph-profile-sheet/neuromorph-worksheet-thumb.jpg",
+        alt: "",
+        width: 1513,
+        height: 1038,
+        caption: ""
+    },
 ]

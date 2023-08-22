@@ -109,7 +109,8 @@ const PostCard = ({
                         : 
                         <div className={`post-card-image ${isPatreonExclusive ? "patreon-exclusive" : ""}`} style={{
                             backgroundImage: `url(${imageSrc})`,
-                            backgroundPosition: post.data.thumbAlignment ? post.data.thumbAlignment : 'top'
+                            backgroundPosition: post.data.thumbAlignment ? post.data.thumbAlignment : 'top',
+                            backgroundSize: post.data.thumbSize ? post.data.thumbSize : undefined,
                         }}>
                             {isPatreonExclusive && <PatreonExclusiveOverlay />}
                         </div>

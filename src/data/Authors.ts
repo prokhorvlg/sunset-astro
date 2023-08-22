@@ -65,7 +65,7 @@ export const CharacterBROKENDATA: QuoteAuthor = {
 export const AuthorSanguineHaze: QuoteAuthor = {
     id: "sanguine-haze",
     name: "SANGUINE HAZE",
-    description: "Lord of Order. The erratic and friendly one.",
+    description: "Lord of Order; erratic and friendly one.",
     theme: "sanguine",
     image: "sanguine-haze",
     originalPage: "/posts/two-lords-sanguine"
@@ -73,7 +73,7 @@ export const AuthorSanguineHaze: QuoteAuthor = {
 export const AuthorOperatorCobalt: QuoteAuthor = {
     id: "operator-cobalt",
     name: "OPERATOR COBALT",
-    description: "Lord of Order. The strategic and reserved one.",
+    description: "Lord of Order; strategic and reserved one.",
     theme: "cobalt",
     image: "cobalt",
     originalPage: "/posts/two-lords-cobalt"

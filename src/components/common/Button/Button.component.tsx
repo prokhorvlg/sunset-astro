@@ -6,6 +6,7 @@ interface PropTypes {
     onClickHandler?: Function
     type?: ButtonType | string
     linkURL?: string
+    isDownload?: boolean
 }
 
 export enum ButtonType {
@@ -20,7 +21,8 @@ const Button = ({
     classes = "",
     onClickHandler = () => { console.log("clicked!") },
     type = "dialog",
-    linkURL = ''
+    linkURL = '',
+    isDownload
 }: PropTypes) => {
     if (type === "dialog") {
         return (
@@ -38,6 +40,7 @@ const Button = ({
             <DialogContainer wrapStyle={{
                 isHoverable: true,
                 isLink: true,
+                isDownload: isDownload,
                 linkURL: linkURL,
                 classes: `sunset-button link ${classes}`
             }}>

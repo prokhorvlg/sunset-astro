@@ -2697,3 +2697,21 @@ $aside-sticky-breakpoint: 1800px;
         width: 95%;
     }
 }
+
+.profile-sheet-downloads {
+    width: 90%;
+    margin: 0 auto;
+    > .full-width-wrapper-inner {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-around;
+        @media screen and (max-width: $breakpoint-tablet) {
+            flex-direction: column;
+        }
+        .sunset-button {
+            flex: 1;
+        }
+    }
+    
+}
