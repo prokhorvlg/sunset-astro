@@ -1075,4 +1075,12 @@ export const Images: ImageDetails[] = [
         height: 1038,
         caption: ""
     },
+    {
+        id: 'number-beacon-locked',
+        src: "/images/content/number-beacon-locked.png",
+        alt: "",
+        width: 2388,
+        height: 1668,
+        caption: ""
+    },
 ]
