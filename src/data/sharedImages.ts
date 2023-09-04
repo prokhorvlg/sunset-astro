@@ -1083,4 +1083,21 @@ export const Images: ImageDetails[] = [
         height: 1668,
         caption: ""
     },
+    {
+        id: 'sri-directors',
+        src: "/images/content/sri-directors.png",
+        alt: "",
+        width: 1936,
+        height: 1085,
+        caption: "",
+        classes: "border-red",
+    },
+    {
+        id: 'behemoths-1',
+        src: "/images/content/behemoths-1-ps.png",
+        alt: "",
+        width: 2441,
+        height: 1673,
+        caption: ""
+    },
 ]
