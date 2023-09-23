@@ -95,3 +95,12 @@ export const AuthorTOSHI: QuoteAuthor = {
     description: "A warbot recently broken from their routine.",
     theme: "toshi"
 }
+
+export const AuthorRADIUS: QuoteAuthor = {
+    id: "radius",
+    name: "RADIUS",
+    image: "radius",
+    originalPage: "/posts/radius",
+    description: "The Silent Observer.",
+    theme: "radius"
+}

@@ -115,6 +115,16 @@ $quoteMobileSidePadding: 20px;
             background-position-y: 80%;
         }
     }
+    &.radius {
+        .quote-box p {
+            text-transform: uppercase;
+        }
+        .author-box .image {
+            background-size: 200%;
+            background-position-x: 50%;
+            background-position-y: 30%;
+        }
+    }
     &.machine-end-of-time {
         .quote-box {
             text-transform: uppercase;

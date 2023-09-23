@@ -1100,4 +1100,29 @@ export const Images: ImageDetails[] = [
         height: 1673,
         caption: ""
     },
+    {
+        id: 'radius',
+        src: "/images/content/radius.png",
+        alt: "",
+        width: 3000,
+        height: 1688,
+        caption: "RADIUS contemplates within the white room within Interbeacon. They are surrounded by millions of lights, each representing"
+    },
+    {
+        id: 'interbeacon',
+        src: "/images/content/interbeacon-final-1.jpg",
+        alt: "",
+        width: 5000,
+        height: 2939,
+        caption: "A nuclear-pulsed thumper, patrolling the region around the enormous statite, is dwarfed by the incredible scale of Interbeacon. The megastructure hovers about 5 Solar radii over the northern pole of the Sun.",
+        classes: "border-red",
+    },
+    {
+        id: 'interbeacon-components',
+        src: "/images/content/interbeacon-components.jpg",
+        alt: "",
+        width: 2500,
+        height: 1470,
+        classes: "border-red",
+    },
 ]

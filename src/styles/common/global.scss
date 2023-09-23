@@ -61,7 +61,7 @@ main {
     color: $color-sunset-red;
 }
 .highlight-spooky {
-    color: $color-spooky;
+    color: $color-spooky !important;
 }
 .spooky-code {
     font-family: $font-code;
