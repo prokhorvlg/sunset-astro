@@ -115,21 +115,13 @@ $quoteMobileSidePadding: 20px;
             background-position-y: 80%;
         }
     }
-    &.radius {
-        .quote-box p {
-            text-transform: uppercase;
-        }
-        .author-box .image {
-            background-size: 200%;
-            background-position-x: 50%;
-            background-position-y: 30%;
-        }
-    }
     &.machine-end-of-time {
         .quote-box {
             text-transform: uppercase;
         }
     }
+
+    // RYUJIN & TOSHI
     &.ryujin {
         .quote-box p {
             &::before {
@@ -152,7 +144,76 @@ $quoteMobileSidePadding: 20px;
         }
     }
 
+    @mixin WrapTextCharacter($left, $right) {
+        p {
+            //text-transform: uppercase;
+            &::before {
+                content: $left + " ";
+            }
+            &::after {
+                content: " " + $right;
+            }
+        }
+    }
+    @mixin MinimalistAuthorBox($gradientLeftColor, $gradientRightColor) {
+        .author-box {
+            user-select: none;
+            flex-direction: row;
+            align-items: center;
+            background: linear-gradient(to right, $gradientLeftColor 0%, $gradientRightColor 100%);
+            border-radius: 6px;
 
+            .description {
+                display: none;
+            }
+            .image {
+                width: 80px;
+                height: 80px;
+                margin: 0;
+                border: none;
+                box-shadow: none;
+                //background-size: 200%;
+                //background-position-x: 50%;
+                //background-position-y: 30%;
+            }
+        }
+    }
+
+    // RADIUS AND THE SILENCES
+    &.silence {
+        //᠁
+        .quote-box {
+            padding: 5px 30px;
+            @include WrapTextCharacter("〈", "〉");
+        }
+        @include MinimalistAuthorBox(rgba(187, 42, 16, 0.05), rgba(187, 42, 16, 0.2));
+
+        &.center {
+            @include WrapTextCharacter("⦑", "⦒");
+        }
+        &.globe {
+            @include WrapTextCharacter("《", "》");
+        }
+        &.tangent {
+            //@include WrapTextCharacter("᚜", "᚛");
+        }
+        &.orbit {
+            //@include WrapTextCharacter("﴾", "﴿");
+        }
+    }
+    
+    &.akula {
+        $color-akula: #c22de0;
+        @include recolorQuote(
+            lighten($color-akula, 20%),
+            darken($color-akula, 05%),
+            darken($color-akula, 40%),
+            $color-akula,
+            $color-akula
+        );
+        @include MinimalistAuthorBox(#30113f42, #c22de042);
+        @include whiteBGQuote();
+    }
 }
 
 // MAIN STYLING

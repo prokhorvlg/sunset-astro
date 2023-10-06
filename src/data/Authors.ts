@@ -99,8 +99,51 @@ export const AuthorTOSHI: QuoteAuthor = {
 export const AuthorRADIUS: QuoteAuthor = {
     id: "radius",
     name: "RADIUS",
-    image: "radius",
+    image: "avatar-radius",
     originalPage: "/posts/radius",
-    description: "The Silent Observer.",
-    theme: "radius"
+    description: "Ensures plans adhere to Union ideology.",
+    theme: "silence radius"
+}
+
+
+export const AuthorGLOBE: QuoteAuthor = {
+    id: "globe",
+    name: "GLOBE",
+    image: "avatar-globe",
+    originalPage: "/posts/radius",
+    description: "Calculates sum of all that is owned by the Union.",
+    theme: "silence globe"
+}
+export const AuthorORBIT: QuoteAuthor = {
+    id: "orbit",
+    name: "ORBIT",
+    image: "avatar-orbit",
+    originalPage: "/posts/radius",
+    description: "Creates and deletes Union's currency.",
+    theme: "silence orbit"
+}
+export const AuthorTANGENT: QuoteAuthor = {
+    id: "tangent",
+    name: "TANGENT",
+    image: "avatar-tangent",
+    originalPage: "/posts/radius",
+    description: "Charts Union's five-year economic plan.",
+    theme: "silence tangent"
+}
+export const AuthorCENTER: QuoteAuthor = {
+    id: "center",
+    name: "CENTER",
+    image: "avatar-center",
+    originalPage: "/posts/radius",
+    description: "Maintains expected operation of the Silences.",
+    theme: "silence center"
+}
+
+export const AuthorAKULA: QuoteAuthor = {
+    id: "akula",
+    name: "SIKARIUS",
+    image: "avatar-sikarius",
+    originalPage: "/posts/radius",
+    description: "Intelligent, adapting virus. Extremely dangerous.",
+    theme: "akula"
 }

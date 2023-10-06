@@ -1102,11 +1102,11 @@ export const Images: ImageDetails[] = [
     },
     {
         id: 'radius',
-        src: "/images/content/radius.png",
+        src: "/images/content/radius.jpg",
         alt: "",
         width: 3000,
         height: 1688,
-        caption: "RADIUS contemplates within the white room within Interbeacon. They are surrounded by millions of lights, each representing"
+        caption: "RADIUS silently meditates within the White Room of Interbeacon space station. They are surrounded by millions of lights, each representing thousands of processes and data clusters across the Solar System. Occasionally, a drone or interfacer comes in to wipe the surfaces, but decades of Cuban cigars depositing ash have left a permanent hue."
     },
     {
         id: 'interbeacon',
@@ -1124,5 +1124,48 @@ export const Images: ImageDetails[] = [
         width: 2500,
         height: 1470,
         classes: "border-red",
+    },
+
+    {
+        id: 'avatar-globe',
+        src: "/images/content/author-images/logo-globe.png",
+        alt: "",
+        width: 280,
+        height: 280,
+    },
+    {
+        id: 'avatar-center',
+        src: "/images/content/author-images/logo-center.png",
+        alt: "",
+        width: 280,
+        height: 280,
+    },
+    {
+        id: 'avatar-orbit',
+        src: "/images/content/author-images/logo-orbit.png",
+        alt: "",
+        width: 280,
+        height: 280,
+    },
+    {
+        id: 'avatar-tangent',
+        src: "/images/content/author-images/logo-tangent.png",
+        alt: "",
+        width: 280,
+        height: 280,
+    },
+    {
+        id: 'avatar-radius',
+        src: "/images/content/author-images/logo-radius.png",
+        alt: "",
+        width: 280,
+        height: 280,
+    },
+    {
+        id: 'avatar-sikarius',
+        src: "/images/content/author-images/logo-sikarius.png",
+        alt: "",
+        width: 280,
+        height: 280,
     },
 ]
