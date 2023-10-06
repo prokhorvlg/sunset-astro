@@ -163,6 +163,9 @@ $quoteMobileSidePadding: 20px;
             background: linear-gradient(to right, $gradientLeftColor 0%, $gradientRightColor 100%);
             border-radius: 6px;
 
+            .name {
+                padding: 10px 25px 10px 5px;
+            }
             .description {
                 display: none;
             }
