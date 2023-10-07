@@ -1168,4 +1168,14 @@ export const Images: ImageDetails[] = [
         width: 280,
         height: 280,
     },
+
+    {
+        id: 'manipulators-comic',
+        src: "/images/content/manipulators-final.jpg",
+        alt: "",
+        width: 2580,
+        height: 2680,
+        classes: "border",
+        caption: "RYUJIN and TOSHI have a meaningful discussion about manipulators."
+    },
 ]
