@@ -32,6 +32,7 @@ export interface ImageDetails {
     format?: string
     originalPost?: string
     borderColor?: string // Style applied to image border color in image gallery
+    isVideo?: boolean
 }
 
 export enum ImageId {
@@ -1177,5 +1178,14 @@ export const Images: ImageDetails[] = [
         height: 2680,
         classes: "border",
         caption: "RYUJIN and TOSHI have a meaningful discussion about manipulators."
+    },
+
+    {
+        id: 'eye-screens',
+        src: "/images/content/eye_screens.jpg",
+        alt: "",
+        width: 3330,
+        height: 2198,
+        caption: "Image version with all three bots depicted, no animations."
     },
 ]

@@ -22,6 +22,8 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
   // Check if image is smaller than crunch size
   const isSmall = imageObject.width < CRUNCH_WIDTH
 
+  //const isVideo = imageObject.isVideo
+
   // Generate an image of the correct size
   return {
     originalObject: imageObject,

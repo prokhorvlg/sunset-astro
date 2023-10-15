@@ -320,4 +320,19 @@ article.markdown {
             }
         }
     }
+
+    // html video tag
+    > video {
+        display: block;
+        margin: 0 auto;
+        //width: 1000px;
+        max-width: 95%;
+        max-height: 95vh;
+        
+        filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.8));
+        &.border-red {
+            border: 2px solid rgba($color-sunset-red, 0.2);
+            border-radius: 6px;
+        }
+    }
 }
