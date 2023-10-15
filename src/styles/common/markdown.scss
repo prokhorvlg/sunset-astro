@@ -165,6 +165,10 @@ article.markdown {
     // Lists ( - xyz )
     > ul, > ol {
         li {
+            > p {
+                font-size: 18px;
+                line-height: 32px;
+            }
             font-size: 18px;
             line-height: 32px;
             margin-bottom: 10px;
@@ -178,9 +182,11 @@ article.markdown {
                 width: 80%;
             }
             @media screen and (max-width: $breakpoint-mobile) {
-                font-size: 18px;
-                line-height: 28px;
                 width: 90%;
+                > p {
+                    font-size: 18px;
+                    line-height: 28px;
+                }
             }
         }
     }
