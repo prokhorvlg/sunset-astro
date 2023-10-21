@@ -1188,4 +1188,12 @@ export const Images: ImageDetails[] = [
         height: 2198,
         caption: "Image version with all three bots depicted, no animations."
     },
+    {
+        id: 'appliance-class-robots-locked',
+        src: "/images/content/appliance_class_bots_locked.jpg",
+        alt: "",
+        width: 2416,
+        height: 1360,
+        caption: ""
+    },
 ]
