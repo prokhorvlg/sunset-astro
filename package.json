@@ -64,6 +64,7 @@
     "yet-another-react-lightbox": "^3.3.0"
   },
   "devDependencies": {
+    "@types/d3": "^7.4.2",
     "@vanilla-extract/vite-plugin": "^3.8.2",
     "prettier": "^2.8.7",
     "prettier-plugin-astro": "^0.8.0",

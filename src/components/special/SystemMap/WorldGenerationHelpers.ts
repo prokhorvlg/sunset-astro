@@ -1,5 +1,8 @@
-export const findNewPoint = (x, y, angle, distance) => {
-    const result = {} as any;
+export const findNewPoint = (x: number, y: number, angle: number, distance: number) => {
+    const result = {
+        x: 0, 
+        y: 0
+    }
 
     result.x = Math.round(Math.cos(angle * Math.PI / 180) * distance + x);
     result.y = Math.round(Math.sin(angle * Math.PI / 180) * distance + y);
@@ -7,7 +10,7 @@ export const findNewPoint = (x, y, angle, distance) => {
     return result;
 }
 
-export const increaseBrightness = (hex, percent) => {
+export const increaseBrightness = (hex: string, percent: number) => {
     // strip the leading # if it's there
     hex = hex.replace(/^\s*#|\s*$/g, '');
 
@@ -16,7 +19,7 @@ export const increaseBrightness = (hex, percent) => {
         hex = hex.replace(/(.)/g, '$1$1');
     }
 
-    var r = parseInt(hex.substr(0, 2), 16),
+    const r = parseInt(hex.substr(0, 2), 16),
         g = parseInt(hex.substr(2, 2), 16),
         b = parseInt(hex.substr(4, 2), 16);
 
@@ -26,12 +29,12 @@ export const increaseBrightness = (hex, percent) => {
        ((0|(1<<8) + b + (256 - b) * percent / 100).toString(16)).substr(1);
 }
 
-export const hashCode = s => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)
+export const hashCode = (s: string) => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)
 
-export const convertTreeToArray = (object) => {
-    let visited = [],
-    queue = [],
-    current = object;
+export const convertTreeToArray = (object: object) => {
+    let visited: object[] = [];
+    let queue: object[] = []; 
+    let current: any = object;
 
     current.parent = null;
     queue.push(current);

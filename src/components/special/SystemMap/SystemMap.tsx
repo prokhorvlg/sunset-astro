@@ -31,12 +31,17 @@ interface LocationOnMap extends Location {
     crafts: (LocationOnMap)[]
 }
 
-// Data for generation of objects
-/*
+const enum ObjectType {
+    Sun,
+    Planet,
+    Moon,
+    AsteroidBelt
+}
 
-const data: Location = {
+// Data for generation of objects
+const data = {
     name: "Sol",
-    typeOnMap: LocationTypeOnMap.Sun,
+    type: ObjectType.Sun,
     distance: 0,
     radius: 35,
     color: "#ffca2a",
@@ -51,7 +56,7 @@ const data: Location = {
     children: [
         {
             name: "Mercury",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#f47f00",
             distance: 125,
             radius: 8,
@@ -60,7 +65,6 @@ const data: Location = {
             crafts: [
                 {
                     name: "Odyssey United Orbital",
-                    typeOnMap: LocationTypeOnMap.Satellite
                     distance: 22,
                     startingAngle: 25,
                     alignment: "right"
@@ -70,7 +74,7 @@ const data: Location = {
         },
         {
             name: "Venus",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#b8ff30",
             distance: 165,
             radius: 15,
@@ -79,7 +83,7 @@ const data: Location = {
             children: [
                 {
                     name: "Klios",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     color: "#152bf7",
                     distance: 66,
                     radius: 5,
@@ -91,7 +95,7 @@ const data: Location = {
         },
         {
             name: "Earth",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#0dcfff",
             distance: 205,
             radius: 14,
@@ -100,7 +104,7 @@ const data: Location = {
             children: [
                 {
                     name: "Luna",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     distance: 66,
                     radius: 5,
                     speed: -3.2,
@@ -111,7 +115,7 @@ const data: Location = {
         },
         {
             name: "Mars",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#ff4817",
             distance: 245,
             radius: 11,
@@ -121,7 +125,7 @@ const data: Location = {
         },
         {
             name: "Asteroid Belt",
-            typeOnMap: LocationTypeOnMap.AsteroidBelt,
+            type: ObjectType.AsteroidBelt,
             distance: 295,
             radius: 11,
             speed: -1.17,
@@ -130,7 +134,7 @@ const data: Location = {
         },
         {
             name: "Jupiter",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#ffe4b6",
             distance: 355,
             radius: 29,
@@ -139,7 +143,7 @@ const data: Location = {
             children: [
                 {
                     name: "Io",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     color: "#ff8b19",
                     distance: 86,
                     radius: 4,
@@ -149,7 +153,7 @@ const data: Location = {
                 },
                 {
                     name: "Europa",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     color: "#1cffd7",
                     distance: 115,
                     radius: 5,
@@ -159,7 +163,7 @@ const data: Location = {
                 },
                 {
                     name: "Ganymede",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     distance: 145,
                     radius: 6,
                     speed: -3.2,
@@ -168,7 +172,7 @@ const data: Location = {
                 },
                 {
                     name: "Callisto",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     distance: 175,
                     radius: 5,
                     speed: -3.2,
@@ -179,7 +183,7 @@ const data: Location = {
         },
         {
             name: "Saturn",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#ffc698",
             distance: 435,
             radius: 26,
@@ -188,7 +192,7 @@ const data: Location = {
             children: [
                 {
                     name: "Titan",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     color: "#f78a15",
                     distance: 105,
                     radius: 5,
@@ -200,7 +204,7 @@ const data: Location = {
         },
         {
             name: "Uranus",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#38f3ff",
             distance: 545,
             radius: 19,
@@ -210,7 +214,7 @@ const data: Location = {
         },
         {
             name: "Neptune",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#087bdd",
             distance: 655,
             radius: 18,
@@ -220,7 +224,7 @@ const data: Location = {
         },
         {
             name: "Pluto",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             distance: 725,
             radius: 5,
             speed: -1.17,
@@ -228,7 +232,7 @@ const data: Location = {
             children: [
                 {
                     name: "Charon",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     distance: 65,
                     radius: 3,
                     speed: -3.2,
@@ -239,7 +243,7 @@ const data: Location = {
         },
         {
             name: "Kuiper Belt",
-            typeOnMap: LocationTypeOnMap.AsteroidBelt,
+            type: ObjectType.AsteroidBelt,
             distance: 955,
             radius: 5,
             speed: -1.17,
@@ -248,7 +252,7 @@ const data: Location = {
         },
         {
             name: "Nibiru",
-            typeOnMap: LocationTypeOnMap.Planet,
+            type: ObjectType.Planet,
             color: "#ff1bc1",
             distance: 1205,
             radius: 36,
@@ -257,7 +261,7 @@ const data: Location = {
             children: [
                 {
                     name: "Marduk",
-                    typeOnMap: LocationTypeOnMap.Moon,
+                    type: ObjectType.Moon,
                     color: "#b003c5",
                     distance: 135,
                     radius: 4,
@@ -286,8 +290,8 @@ const data: Location = {
 
 
 const handleMap = (element) => {
-    const w = window.innerWidth - 20;
-    const h = window.innerHeight - 20;
+    const w = window.innerWidth - 500;
+    const h = window.innerHeight - 100;
 
     // Generate SVG element
     const svgEl = d3.select(element);
@@ -330,15 +334,14 @@ const handleMap = (element) => {
     function zoomed(event) {
         const transform = event.transform
         container.attr("transform", transform);
-        const zoom = 1 + (transform.k * 0.3)
-        const itemScale = ( 1 / zoom ) * 1.3
-        itemGroups.forEach(function(itemGroup) {
-            //console.log(itemGroup)
-            const name = itemGroup?.attr("data-name")
-            const storeEntry = objectInfo[name]
-            itemGroup.attr("transform", "translate(" + ( storeEntry?.x || 0) + ", " + (storeEntry?.y || 0) + ") scale(" + itemScale + ")")
+        // const zoom = 1 + (transform.k * 0.3)
+        // const itemScale = ( 1 / zoom ) * 1.3
+        // itemGroups.forEach(itemGroup => {
+        //     const name = itemGroup?.attr("data-name")
+        //     const storeEntry = objectInfo[name]
+        //     itemGroup.attr("transform", "translate(" + ( storeEntry?.x || 0) + ", " + (storeEntry?.y || 0) + ") scale(" + itemScale + ")")
  
-        });
+        // });
             
     }
 }
