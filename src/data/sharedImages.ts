@@ -1196,4 +1196,13 @@ export const Images: ImageDetails[] = [
         height: 1360,
         caption: ""
     },
+    {
+        id: 'alien-life-slugma',
+        src: "/images/content/alien-life-slugma.jpg",
+        alt: "An infograph about the slugma.",
+        width: 2732,
+        height: 2189,
+        classes: "border-aqua",
+        artist: ArtistProkhor
+    },
 ]
