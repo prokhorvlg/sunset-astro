@@ -31,15 +31,39 @@ export const increaseBrightness = (hex: string, percent: number) => {
 
 export const hashCode = (s: string) => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)
 
-export const convertTreeToArray = (object: object) => {
-    let visited: object[] = [];
-    let queue: object[] = []; 
-    let current: any = object;
+const enum ObjectType {
+    Sun,
+    Planet,
+    Moon,
+    AsteroidBelt
+}
+interface Node {
+    name: string;
+    type: ObjectType;
+    distance: number;
+    radius: number;
+    color: string;
+    crafts: {
+        name: string;
+        distance: number;
+        startingAngle: number;
+        alignment: string;
+    }[];
+    children: Node[]; 
+    parent: string
+}
 
-    current.parent = null;
+export const convertTreeToArray = (object: Node) => {
+    let visited: Node[] = [];
+    let queue: Node[] = []; 
+    let current: Node = object;
+
+    current.parent = '';
     queue.push(current);
     while (queue.length) {
-        current = queue.shift();
+        const nextCurrent: Node | undefined = queue.shift(); 
+        if (nextCurrent === undefined) return visited; 
+        current = nextCurrent;
         visited.push(current);
 
         if (current.children) {
