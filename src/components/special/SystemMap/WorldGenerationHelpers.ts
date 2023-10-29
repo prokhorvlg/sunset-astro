@@ -1,3 +1,5 @@
+import { Node } from './SystemMap'
+
 export const findNewPoint = (x: number, y: number, angle: number, distance: number) => {
     const result = {
         x: 0, 
@@ -30,28 +32,6 @@ export const increaseBrightness = (hex: string, percent: number) => {
 }
 
 export const hashCode = (s: string) => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)
-
-const enum ObjectType {
-    Sun,
-    Planet,
-    Moon,
-    AsteroidBelt
-}
-interface Node {
-    name: string;
-    type: ObjectType;
-    distance: number;
-    radius: number;
-    color: string;
-    crafts: {
-        name: string;
-        distance: number;
-        startingAngle: number;
-        alignment: string;
-    }[];
-    children: Node[]; 
-    parent: string
-}
 
 export const convertTreeToArray = (object: Node) => {
     let visited: Node[] = [];

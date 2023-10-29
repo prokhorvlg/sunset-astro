@@ -1,6 +1,32 @@
 import * as d3 from "d3";
 import { DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
 import './SystemMap.scss'
+import { SVGProps } from "react";
+
+export const enum ObjectType {
+    Sun,
+    Planet,
+    Moon,
+    AsteroidBelt
+}
+
+export interface Node {
+    name: string, 
+    type: ObjectType, 
+    distance: number, 
+    radius: number, 
+    speed?: number, 
+    startingAngle: number, 
+    color?: string, 
+    crafts?: {
+        name: string, 
+        distance: number, 
+        startingAngle: number, 
+        alignment: string
+    }[], 
+    children: Node[], 
+    parent?: string
+}
 
 const enum LocationType {
 
@@ -13,7 +39,6 @@ const enum LocationTypeOnMap {
     AsteroidBelt,
     Satellite
 }
-
 interface Location {
     name: string,
     type: LocationType,
@@ -31,19 +56,14 @@ interface LocationOnMap extends Location {
     crafts: (LocationOnMap)[]
 }
 
-const enum ObjectType {
-    Sun,
-    Planet,
-    Moon,
-    AsteroidBelt
-}
-
 // Data for generation of objects
-const data = {
+const data: Node = {
     name: "Sol",
     type: ObjectType.Sun,
     distance: 0,
     radius: 35,
+    speed: 0,
+    startingAngle: 0,
     color: "#ffca2a",
     crafts: [
         {
@@ -288,8 +308,9 @@ const data = {
         .attr("class", "orbit-asteroid-belt");
 }*/
 
-
+// Maybe seclare element type
 const handleMap = (element) => {
+    console.log(element); 
     const w = window.innerWidth - 500;
     const h = window.innerHeight - 100;
 

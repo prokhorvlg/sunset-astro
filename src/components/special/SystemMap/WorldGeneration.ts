@@ -1,15 +1,25 @@
 import * as d3 from "d3";
 import { convertTreeToArray, findNewPoint, hashCode, increaseBrightness } from "./WorldGenerationHelpers";
+import { Node } from './SystemMap'
+
+type D3Container = d3.Selection<SVGGElement, unknown, null, undefined>; 
+interface ObjectInfo {
+    x: number, 
+    y: number, 
+    firstMoon: string, 
+    lastMoonDistance: number, 
+    color: string
+}
 
 export const DISTANCE_FACTOR = 1.1;
 export const SCALE_FACTOR = 1.8;
 export const DEFAULT_COLOR = "#fff";
 
-let itemGroups = []
-let objectInfo = {}
+let itemGroups: D3Container[] = []
+let objectInfo: Record<string, ObjectInfo> = {}
 
 // Takes set of data. Generates an orbiting system, recursively.
-export const generateWorlds = (container, data) => {
+export const generateWorlds = (container: D3Container, data: Node) => {
 
     //let textContainer;
 
@@ -32,9 +42,7 @@ export const generateWorlds = (container, data) => {
     return { itemGroups, objectInfo }
 }
 
-const generateInfo = (
-    objects
-) => {
+const generateInfo = (objects: Node[]) => {
     objects.forEach((object) => {
         // Get parent, if it exists.
         const parentName = object.parent || ''
@@ -51,16 +59,13 @@ const generateInfo = (
             x: objectPoint.x || 0,
             y: objectPoint.y || 0,
             firstMoon: object.children[0]?.name || '',
-            lastMoonDistance: object.children[object.children.length - 1]?.distance || '',
+            lastMoonDistance: object.children[object.children.length - 1]?.distance || 0,
             color: objectColor
         }
     })
 }
 
-const generateOrbitPaths = (
-    objects,
-    container
-) => {
+const generateOrbitPaths = (objects: Node[], container: D3Container) => {
     objects.forEach((object) => {
         const parentName = object.parent || ''
         const parent = objectInfo[parentName]
@@ -88,10 +93,7 @@ const generateOrbitPaths = (
     })
 }
 
-const generateContent = (
-    objects,
-    container
-) => {
+const generateContent = (objects: Node[], container: D3Container) => {
     objects.forEach((object) => {
         const parentName = object.parent || ''
         const parent = objectInfo[parentName]
