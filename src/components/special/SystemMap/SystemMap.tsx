@@ -2,6 +2,8 @@ import * as d3 from "d3";
 import { DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
 import './SystemMap.scss'
 
+const PAN_MULTIPLIER = 1300; 
+
 const enum ObjectType {
     Sun,
     Planet,
@@ -340,7 +342,7 @@ const handleMap = (element: any) => {
     }, 40);*/
 
     // Enable zoom component
-    const panLimitX = w * DISTANCE_FACTOR;
+    const panLimitX = PAN_MULTIPLIER * DISTANCE_FACTOR;
     const panLimitY = panLimitX * 0.65;
     const zoom = d3.zoom()
         .extent([[0, 0], [w, h]])
