@@ -1,23 +1,42 @@
+@import 'src/styles/imports.scss';
 
 text {
-    /*fill: #fff;*/
-  }
+  /*fill: #fff;*/
+}
+
+.sunset-map-container {
   
-  #sun {
-  }
-  
-  .orbit {
-    stroke: #333;
-    fill: transparent;
-  }
-  
-  .orbit-asteroid-belt {
-    stroke: #222;
-    fill: transparent;
-  }
-  
-  .planet {
-  }
-  
-  .moon {
-  }
+}
+
+.sunset-map-div {
+  position: relative;
+  margin: 0px auto 0 auto;
+  max-width: 2004px;
+  display: flex; 
+  justify-content: center; 
+  height: 1000px; 
+}
+.sunset-map-svg {
+  width: 100%; 
+  border: $color-sunset-red solid 2px; 
+  border-radius: 6px; 
+}
+
+#sun {
+}
+
+.orbit {
+  stroke: #333;
+  fill: transparent;
+}
+
+.orbit-asteroid-belt {
+  stroke: #222;
+  fill: transparent;
+}
+
+.planet {
+}
+
+.moon {
+}

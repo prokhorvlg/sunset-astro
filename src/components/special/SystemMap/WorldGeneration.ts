@@ -14,6 +14,7 @@ interface ObjectInfo {
 export const DISTANCE_FACTOR = 1.1;
 export const SCALE_FACTOR = 1.8;
 export const DEFAULT_COLOR = "#fff";
+export const BACKGROUND_COLOR = '#111'; 
 
 let itemGroups: D3Container[] = []
 let objectInfo: Record<string, ObjectInfo> = {}
@@ -36,7 +37,6 @@ export const generateWorlds = (container: D3Container, data: Node) => {
     // Generate the worlds, images, text.
     const worldsContainer = container.append("g").attr("class", "worlds-container");
     generateContent(worldsInOrder, worldsContainer);
-
     //generateCrafts(worldsInOrder, worldsContainer)
 
     return { itemGroups, objectInfo }

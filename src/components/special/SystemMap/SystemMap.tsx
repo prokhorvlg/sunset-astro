@@ -1,9 +1,8 @@
 import * as d3 from "d3";
 import { DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
 import './SystemMap.scss'
-import { SVGProps } from "react";
 
-export const enum ObjectType {
+const enum ObjectType {
     Sun,
     Planet,
     Moon,
@@ -309,22 +308,26 @@ const data: Node = {
 }*/
 
 // Maybe seclare element type
-const handleMap = (element) => {
-    console.log(element); 
-    const w = window.innerWidth - 500;
-    const h = window.innerHeight - 100;
+const handleMap = (element: any) => {
+    // const w = window.innerWidth - 500;
+    // const h = window.innerHeight - 100;
 
     // Generate SVG element
     const svgEl = d3.select(element);
+    
+    const w = svgEl.node().getBoundingClientRect().width; 
+    const h = svgEl.node().getBoundingClientRect().height; 
+
     svgEl.selectAll("*").remove();
     const svg = svgEl
         .attr("width", w)
-        .attr("height", h)
+        .attr("height", h);
 
     // GENERATE COSMIC OBJECTS
     // Generate container for all cosmic objects
-    const container = svg.append("g")
+    const container = svgEl.append("g")
         .attr("id", "orbit_container");
+    
     const { itemGroups, objectInfo } = generateWorlds(container, data);
 
     // Rotation about orbit
@@ -337,7 +340,7 @@ const handleMap = (element) => {
     }, 40);*/
 
     // Enable zoom component
-    const panLimitX = 1300 * DISTANCE_FACTOR;
+    const panLimitX = w * DISTANCE_FACTOR;
     const panLimitY = panLimitX * 0.65;
     const zoom = d3.zoom()
         .extent([[0, 0], [w, h]])
@@ -368,7 +371,11 @@ const handleMap = (element) => {
 }
 
 const SystemMap = () => {
-    return <svg xmlns="http://www.w3.org/2000/svg" ref={handleMap}></svg>
+    return <div className='sunset-map-container'>
+        <div className='sunset-map-div'>
+            <svg xmlns="http://www.w3.org/2000/svg" ref={handleMap} className='sunset-map-svg'></svg>
+        </div>
+    </div>
 };
  
 export default SystemMap;
