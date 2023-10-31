@@ -2,7 +2,7 @@ import * as d3 from "d3";
 import { DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
 import './SystemMap.scss'
 
-const PAN_MULTIPLIER = 2000; 
+const PAN_MULTIPLIER = 1500; 
 //bugs
 //1) pan limit broken when shrunk
 //2) size messed uop when refreshed small
@@ -325,8 +325,8 @@ const handleMap = (element: any) => {
 
     svgEl.selectAll("*").remove();
     const svg = svgEl
-        .attr("width", w)
-        .attr("height", h);
+        //.attr("width", w)
+        //.attr("height", h);
 
     // GENERATE COSMIC OBJECTS
     // Generate container for all cosmic objects
@@ -363,14 +363,14 @@ const handleMap = (element: any) => {
     function zoomed(event) {
         const transform = event.transform
         container.attr("transform", transform);
-        // const zoom = 1 + (transform.k * 0.3)
-        // const itemScale = ( 1 / zoom ) * 1.3
-        // itemGroups.forEach(itemGroup => {
-        //     const name = itemGroup?.attr("data-name")
-        //     const storeEntry = objectInfo[name]
-        //     itemGroup.attr("transform", "translate(" + ( storeEntry?.x || 0) + ", " + (storeEntry?.y || 0) + ") scale(" + itemScale + ")")
- 
-        // });
+
+        const zoom = 1 + (transform.k * 0.3)
+        const itemScale = ( 1 / zoom ) * 1.3
+        itemGroups.forEach(itemGroup => {
+            const name = itemGroup?.attr("data-name")
+            const storeEntry = objectInfo[name]
+            itemGroup.attr("transform", "translate(" + ( storeEntry?.x || 0) + ", " + (storeEntry?.y || 0) + ") scale(" + itemScale + ")")
+        });
             
     }
 }
