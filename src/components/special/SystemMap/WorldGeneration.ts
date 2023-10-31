@@ -14,7 +14,7 @@ interface ObjectInfo {
 
 export const DISTANCE_FACTOR = 1.1;
 export const SCALE_FACTOR = 1.8;
-export const DEFAULT_COLOR = "#fff";
+export const DEFAULT_COLOR = "#ffb64e";
 export const BACKGROUND_COLOR = '#111'; 
 
 let itemGroups: D3Container[] = []
@@ -52,7 +52,7 @@ const generateInfo = (objects: Node[]) => {
         const parentY = parent?.y || 0
 
         // Save some data.
-        const objectColor = object.color ? increaseBrightness(object.color, 50) : DEFAULT_COLOR;
+        const objectColor = object.color ? increaseBrightness(object.color, 40) : DEFAULT_COLOR;
         const objectPoint = findNewPoint(parentX, parentY, object.startingAngle, object.distance * DISTANCE_FACTOR);
 
         // Save your point information.
@@ -78,11 +78,11 @@ const generateOrbitPaths = (objects: Node[], container: D3Container) => {
             // Generate DOTTED LINE for ASTEROIDS
             container.append("circle")
                 .attr("r", object.distance * DISTANCE_FACTOR)
-                .attr("stroke", "rgba(255,255,255,0.1)")
+                .attr("stroke", DEFAULT_COLOR)
                 .attr("stroke-width", "30px")
                 .attr("stroke-dasharray", "3 3")
                 .attr("fill", "transparent")
-                .attr("class", "asteroid-belt spin")
+                .attr("class", "orbit asteroid-belt spin")
                 .attr("data-name", object.name);
         } 
         else {
@@ -101,8 +101,9 @@ const generateOrbitPaths = (objects: Node[], container: D3Container) => {
                 .attr("cx", parentX)
                 .attr("cy", parentY)
                 .attr("r", object.distance * DISTANCE_FACTOR)
-                .attr("stroke-color", objectInfo[object.name].color)
-                .attr("class", "orbit")
+                .attr("stroke", DEFAULT_COLOR)
+                .attr("stroke-width", "2px")
+                .attr("class", "orbit planet-path")
                 .attr("data-name", object.name);
         }
     })
@@ -132,10 +133,10 @@ const generateContent = (objects: Node[], container: D3Container) => {
             worldItemGroup.append("text")
                 .attr("x", 0)
                 .attr("y", object.radius * SCALE_FACTOR + 15)
-                //.attr("y", -object.radius * SCALE_FACTOR - 15)
                 .attr("dy", ".35em")
                 .attr("text-anchor", "middle")
                 .attr("class", "name planet-name")
+                .attr("font-size", "14px")
                 .attr("fill", info.color)
                 .text(object.name);
 
@@ -161,6 +162,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
                     .attr("dy", ".25em")
                     .attr("text-anchor", "middle")
                     .attr("class", "name craft-name")
+                    .attr("font-size", "9px")
                     .attr("fill", "white")
                     .text(craft.name);
 

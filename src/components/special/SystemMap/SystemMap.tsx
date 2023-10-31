@@ -68,7 +68,7 @@ const data: Node = {
     radius: 35,
     speed: 0,
     startingAngle: 0,
-    color: "#ffca2a",
+    color: "#ffc919",
     crafts: [
         {
             name: "Interbeacon",
