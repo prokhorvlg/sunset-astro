@@ -3,33 +3,32 @@ import { DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
 import './SystemMap.scss'
 
 const PAN_MULTIPLIER = 1500; 
+const ZOOM_DETAIL_LEVEL_2 = 3;
 //bugs
 //1) pan limit broken when shrunk
 //2) size messed uop when refreshed small
 
-const enum ObjectType {
+export const enum ObjectType {
     Sun,
     Planet,
     Moon,
-    AsteroidBelt
+    AsteroidBelt,
+    Site // specific locations
 }
 
 export interface Node {
     name: string, 
     type: ObjectType, 
     distance: number, 
-    radius: number, 
+    radius?: number, 
     speed?: number, 
     startingAngle: number, 
     color?: string, 
-    crafts?: {
-        name: string, 
-        distance: number, 
-        startingAngle: number, 
-        alignment: string
-    }[], 
-    children: Node[], 
-    parent?: string
+    crafts?: Node[], 
+    children?: Node[], 
+    parent?: string,
+    classes?: string
+    zoomLevel?: number
 }
 
 const enum LocationType {
@@ -57,6 +56,7 @@ interface LocationOnMap extends Location {
     speed: number
     startingAngle: number
     alignment: string // text alignment
+    zoomLevel?: number // 1 always visible, 2 reveals on level 2
     crafts: (LocationOnMap)[]
 }
 
@@ -71,10 +71,11 @@ const data: Node = {
     color: "#ffca2a",
     crafts: [
         {
-            name: "Interbeacon statite",
-            distance: 75,
+            name: "Interbeacon Statite",
+            type: ObjectType.Site,
+            distance: 95,
             startingAngle: 270,
-            alignment: "right"
+            zoomLevel: 2,
         }
     ],
     children: [
@@ -87,12 +88,12 @@ const data: Node = {
             speed: -1.60,
             startingAngle: 35,
             crafts: [
-                {
+                /*{
                     name: "Odyssey United Orbital",
                     distance: 22,
                     startingAngle: 25,
-                    alignment: "right"
-                }
+                    //alignment: "right"
+                }*/
             ],
             children: []
         },
@@ -154,7 +155,8 @@ const data: Node = {
             radius: 11,
             speed: -1.17,
             startingAngle: 44,
-            children: []
+            children: [],
+            classes: "asteroid-belt"
         },
         {
             name: "Jupiter",
@@ -361,7 +363,9 @@ const handleMap = (element: any) => {
     svg.call(zoom.transform, initialTransform);
     
     function zoomed(event) {
+        //console.log("event", event)
         const transform = event.transform
+        const currentZoomScale = transform.k
         container.attr("transform", transform);
 
         const zoom = 1 + (transform.k * 0.3)
@@ -370,6 +374,14 @@ const handleMap = (element: any) => {
             const name = itemGroup?.attr("data-name")
             const storeEntry = objectInfo[name]
             itemGroup.attr("transform", "translate(" + ( storeEntry?.x || 0) + ", " + (storeEntry?.y || 0) + ") scale(" + itemScale + ")")
+
+            // Record zoom level on SVG 
+            
+            if (currentZoomScale > ZOOM_DETAIL_LEVEL_2) {
+                svgEl.attr("data-zoom-level", 2)
+            } else {
+                svgEl.attr("data-zoom-level", 1)
+            }
         });
             
     }

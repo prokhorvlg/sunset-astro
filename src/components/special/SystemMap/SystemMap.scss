@@ -16,19 +16,37 @@ text {
 
   display: flex;
   justify-content: center;
-}
-.sunset-map-svg {
-  width: 1850px;
-  max-width: 100%;
-  border: $color-sunset-red solid 2px; 
-  border-radius: 6px;
-  height: 90vh; 
-  
-  
-  @media screen and (max-width: $breakpoint-mobile) {
-    height: 80vh; 
+
+  svg {
+    width: 1850px;
+    max-width: 100%;
+    border: $color-sunset-red solid 2px; 
+    border-radius: 6px;
+    height: 90vh;
+    
+    @media screen and (max-width: $breakpoint-mobile) {
+      height: 80vh; 
+    }
+
+    .zoom-level-2 {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &[data-zoom-level="1"] {
+      .zoom-level-2 {
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+    }
+    &[data-zoom-level="2"] {
+      .zoom-level-2 {
+        opacity: 1;
+      }
+    }
   }
 }
+
 
 /*
 .sunset-map-div {
@@ -71,5 +89,13 @@ text {
 .planet {
 }
 
-.moon {
+.spin {
+  animation: spin 160s linear infinite;
 }
+@keyframes spin { 
+  100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+  } 
+}
+

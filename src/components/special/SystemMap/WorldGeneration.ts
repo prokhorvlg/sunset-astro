@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { convertTreeToArray, findNewPoint, hashCode, increaseBrightness } from "./WorldGenerationHelpers";
-import { Node } from './SystemMap'
+import { Node, ObjectType } from './SystemMap'
 
 type D3Container = d3.Selection<SVGGElement, unknown, null, undefined>; 
 interface ObjectInfo {
@@ -8,7 +8,8 @@ interface ObjectInfo {
     y: number, 
     firstMoon: string, 
     lastMoonDistance: number, 
-    color: string
+    color: string,
+    zoomLevel?: number
 }
 
 export const DISTANCE_FACTOR = 1.1;
@@ -58,8 +59,9 @@ const generateInfo = (objects: Node[]) => {
         objectInfo[object.name] = {
             x: objectPoint.x || 0,
             y: objectPoint.y || 0,
-            firstMoon: object.children[0]?.name || '',
-            lastMoonDistance: object.children[object.children.length - 1]?.distance || 0,
+            zoomLevel: object.zoomLevel ? object.zoomLevel : 0,
+            firstMoon: object.children ? object.children[0]?.name : "",
+            lastMoonDistance: object.children ? object.children[object.children.length - 1]?.distance : 0,
             color: objectColor
         }
     })
@@ -72,24 +74,37 @@ const generateOrbitPaths = (objects: Node[], container: D3Container) => {
         const parentX = parent?.x || 0
         const parentY = parent?.y || 0
 
-        // If this is the first moon, generate a blob.
-        if (object.name === parent?.firstMoon) {
-            const lastMoonDistance = parent.lastMoonDistance
+        if (object.type === ObjectType.AsteroidBelt) {
+            // Generate DOTTED LINE for ASTEROIDS
+            container.append("circle")
+                .attr("r", object.distance * DISTANCE_FACTOR)
+                .attr("stroke", "rgba(255,255,255,0.1)")
+                .attr("stroke-width", "30px")
+                .attr("stroke-dasharray", "3 3")
+                .attr("fill", "transparent")
+                .attr("class", "asteroid-belt spin")
+                .attr("data-name", object.name);
+        } 
+        else {
+            // If this is the first moon, generate a blob.
+            if (object.name === parent?.firstMoon) {
+                const lastMoonDistance = parent.lastMoonDistance
+                container.append("circle")
+                    .attr("cx", parentX)
+                    .attr("cy", parentY)
+                    .attr("r", lastMoonDistance * DISTANCE_FACTOR)
+                    .attr("fill", "#111");
+            }
+
+            // Generate the orbit path for this object.
             container.append("circle")
                 .attr("cx", parentX)
                 .attr("cy", parentY)
-                .attr("r", lastMoonDistance * DISTANCE_FACTOR)
-                .attr("fill", "#111");
+                .attr("r", object.distance * DISTANCE_FACTOR)
+                .attr("stroke-color", objectInfo[object.name].color)
+                .attr("class", "orbit")
+                .attr("data-name", object.name);
         }
-
-        // Generate the orbit path for this object.
-        container.append("circle")
-            .attr("cx", parentX)
-            .attr("cy", parentY)
-            .attr("r", object.distance * DISTANCE_FACTOR)
-            .attr("stroke-color", objectInfo[object.name].color)
-            .attr("class", "orbit")
-            .attr("data-name", object.name);
     })
 }
 
@@ -98,29 +113,45 @@ const generateContent = (objects: Node[], container: D3Container) => {
         const parentName = object.parent || ''
         const parent = objectInfo[parentName]
         const info = objectInfo[object.name]
-        const worldItemGroup = container.append("g").attr("class", "world-group").attr("data-name", object.name); // Positioned at coordinates
 
-        // Generate NAME
-        worldItemGroup.append("text")
-            .attr("x", 0)
-            .attr("y", -object.radius * SCALE_FACTOR - 15)
-            .attr("dy", ".35em")
-            .attr("text-anchor", "middle")
-            .attr("class", "planet-name")
-            .attr("fill", info.color)
-            .text(object.name);
+        const worldItemGroup = container
+            .append("g")
+            .attr("class", `world-group ${object.zoomLevel === 2 ? "zoom-level-2" : ""}`)
+            .attr("data-name", object.name); // Positioned at coordinates
 
-        // Generate WORLD
-        worldItemGroup.append("circle")
-            .attr("r", object.radius * SCALE_FACTOR)
-            .attr("stroke-width", "2")
-            .attr("fill", info.color)
-            .attr("class", "planet");
+        if (object.type === ObjectType.AsteroidBelt) {
+            const parentX = parent?.x || 0
+            const parentY = parent?.y || 0
+
+            // TODO: Generate text tag for asteroid belt above
+        } 
+        else {
+            if (!object.radius) return;
+
+            // Generate NAME
+            worldItemGroup.append("text")
+                .attr("x", 0)
+                .attr("y", -object.radius * SCALE_FACTOR - 15)
+                .attr("dy", ".35em")
+                .attr("text-anchor", "middle")
+                .attr("class", "planet-name")
+                .attr("fill", info.color)
+                .text(object.name);
+
+            // Generate WORLD
+            worldItemGroup.append("circle")
+                .attr("r", object.radius * SCALE_FACTOR)
+                .attr("stroke-width", "2")
+                .attr("fill", info.color)
+                .attr("class", `planet ${object.classes ? object.classes : ""}`);
+        }        
 
         if (object.crafts && object.crafts.length) {
             object.crafts.forEach((craft) => {
                 const craftPoint = findNewPoint(0, 0, craft.startingAngle, craft.distance * DISTANCE_FACTOR);
-                const craftItemGroup = worldItemGroup.append("g")
+                const craftItemGroup = worldItemGroup
+                    .append("g")
+                    .attr("class", `craft-group ${craft.zoomLevel === 2 ? "zoom-level-2" : ""}`)
 
                 /*craftItemGroup.append("text")
                     .attr("x", 0)
@@ -153,7 +184,11 @@ const generateContent = (objects: Node[], container: D3Container) => {
         }
 
         // Send item group to coordinates
-        worldItemGroup.attr("transform", "translate(" + (info.x || 0) + "," + (info.y || 0) + ")");
+        if (object.type === ObjectType.AsteroidBelt) {
+            worldItemGroup.attr("transform", "translate(0, 0)");
+        } else {
+            worldItemGroup.attr("transform", "translate(" + (info.x || 0) + "," + (info.y || 0) + ")");
+        }
     
         itemGroups.push(worldItemGroup)
     })
