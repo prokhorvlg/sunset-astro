@@ -10,16 +10,26 @@ text {
 
 .sunset-map-div {
   position: relative;
-  margin: 0px auto 0 auto;
+  margin: 0 auto 0 auto;
   max-width: 2004px;
   display: flex; 
   justify-content: center; 
   height: 1000px; 
 }
 .sunset-map-svg {
+  margin: 0 100px 0 100px; 
   width: 100%; 
   border: $color-sunset-red solid 2px; 
   border-radius: 6px; 
+}
+
+@media (orientation: portrait) {
+  .sunset-map-div {
+    width: 100%; 
+  }
+  .sunset-map-svg {
+    margin: 0; 
+  }
 }
 
 #sun {

@@ -2,7 +2,10 @@ import * as d3 from "d3";
 import { DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
 import './SystemMap.scss'
 
-const PAN_MULTIPLIER = 1300; 
+const PAN_MULTIPLIER = 2000; 
+//bugs
+//1) pan limit broken when shrunk
+//2) size messed uop when refreshed small
 
 const enum ObjectType {
     Sun,
