@@ -71,7 +71,7 @@ const data: Node = {
     color: "#ffca2a",
     crafts: [
         {
-            name: "Interbeacon Statite",
+            name: "Interbeacon",
             type: ObjectType.Site,
             distance: 95,
             startingAngle: 270,

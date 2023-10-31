@@ -131,10 +131,11 @@ const generateContent = (objects: Node[], container: D3Container) => {
             // Generate NAME
             worldItemGroup.append("text")
                 .attr("x", 0)
-                .attr("y", -object.radius * SCALE_FACTOR - 15)
+                .attr("y", object.radius * SCALE_FACTOR + 15)
+                //.attr("y", -object.radius * SCALE_FACTOR - 15)
                 .attr("dy", ".35em")
                 .attr("text-anchor", "middle")
-                .attr("class", "planet-name")
+                .attr("class", "name planet-name")
                 .attr("fill", info.color)
                 .text(object.name);
 
@@ -153,15 +154,18 @@ const generateContent = (objects: Node[], container: D3Container) => {
                     .append("g")
                     .attr("class", `craft-group ${craft.zoomLevel === 2 ? "zoom-level-2" : ""}`)
 
-                /*craftItemGroup.append("text")
+                // Generate NAME
+                craftItemGroup.append("text")
                     .attr("x", 0)
                     .attr("y", -1 * SCALE_FACTOR - 15)
                     .attr("dy", ".25em")
                     .attr("text-anchor", "middle")
-                    .attr("class", "craft-name")
+                    .attr("class", "name craft-name")
                     .attr("fill", "white")
-                    .text(craft.name);*/
+                    .text(craft.name);
 
+                /*
+                RIGHT LEANING TEXT
                 craftItemGroup.append("text")
                     .attr("x", 10)
                     .attr("y", -2)
@@ -170,7 +174,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
                     .attr("dominant-baseline", "middle")
                     .attr("class", "craft-name")
                     .attr("fill", "white")
-                    .text(craft.name);
+                    .text(craft.name);*/
 
                 craftItemGroup.append("circle")
                     .attr("cx", 0)

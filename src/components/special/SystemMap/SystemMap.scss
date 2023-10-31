@@ -28,6 +28,7 @@ text {
       height: 80vh; 
     }
 
+    // ZOOM LEVEL HANDLERS
     .zoom-level-2 {
       transition: opacity 0.3s ease-in-out;
     }
@@ -43,6 +44,21 @@ text {
       .zoom-level-2 {
         opacity: 1;
       }
+    }
+
+    .name {
+      font-family: $font-code;
+      font-weight: 500;
+      
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .planet-name {
+      font-size: 14px;
+    }
+    .craft-name {
+      font-size: 9px;
+      
     }
   }
 }
