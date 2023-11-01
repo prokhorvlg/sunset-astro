@@ -85,9 +85,8 @@ $defaultColor: #ffb64e;
   }
 }
 
-.sunset-map-tools {
 
-}
+
 .sunset-map-dynamic {
   width: 100%;
   height: 90%;
@@ -97,24 +96,31 @@ $defaultColor: #ffb64e;
   top: 86px; bottom: 10px; left: 0; right: 0;
 
   background: #1a110c;
-  .sunset-map-inner-container {
-    //padding: 500px;
-  }
-  .map-orbit-ring {
-    z-index: 100;
+
+  .sunset-map-inner-container {}
+
+  .map-orbit-ring-container {
     position: absolute;
-    border: 2px solid white;
-    border-radius: 5000px;
-    transform: translate(-50%, -50%);
+    .map-orbit-ring {
+      position: absolute;
+      z-index: 100;
+      transform: translate(-50%, -50%);
+      
+      border: 2px solid rgba(#ffb64e, 0.2);
+      border-radius: 5000px;
+      background: rgba(#1a110c, 0.95);
+    }
   }
-  .map-location {
-    z-index: 200;
+  
+  .map-location-container {
     position: absolute;
-    //height: 20px;
-    //width: 20px;
-    border-radius: 5000px;
-    background: white;
-    transform: translate(-50%, -50%);
+    .map-location {
+      position: absolute;
+      z-index: 300;
+      transform: translate(-50%, -50%);
+      border-radius: 5000px;
+      background: white;
+    }
   }
 }
 
