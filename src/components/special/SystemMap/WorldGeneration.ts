@@ -41,8 +41,6 @@ export const generateWorlds = (container: D3Container, data: Node) => {
         .attr("filter", "url('#huge-sun-overlay-filter')")
         .attr("class", "huge-sun-overlay");
 
-    
-
     // CONTENT
     // Generate the worlds, images, text.
     const worldsContainer = container.append("g").attr("class", "worlds-container");
@@ -163,6 +161,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
             // Generate WORLD
             worldItemGroup.append("circle")
                 .attr("r", object.radius * SCALE_FACTOR)
+                .attr("stroke", info.color)
                 .attr("stroke-width", "2")
                 .attr("fill", info.color)
                 .attr("class", `planet ${object.classes ? object.classes : ""}`);

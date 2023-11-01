@@ -349,9 +349,10 @@ const handleMap = (element: any) => {
     // Enable zoom component
     const panLimitX = PAN_MULTIPLIER * DISTANCE_FACTOR;
     const panLimitY = panLimitX * 0.65;
+    // TODO: scale extent lower bound 0.5 on small screens, and start more outzoomed
     const zoom = d3.zoom()
         .extent([[0, 0], [w, h]])
-        .scaleExtent([1, 10])
+        .scaleExtent([0.9, 10])
         .translateExtent([[-panLimitX, -panLimitY], [panLimitX, panLimitY]])
         .on("zoom", zoomed)
     svg.call(zoom);
@@ -420,6 +421,9 @@ const SystemMap = () => {
                         <feBlend mode="screen" in="SourceGraphic" in2="maskedflood" result="blend"></feBlend>
                     </filter>
                 </defs>
+
+
+
             </svg>
         </div>
     </div>
