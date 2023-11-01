@@ -1,6 +1,6 @@
 import { MAP_DISTANCE_FACTOR, MAP_SCALE_FACTOR, MAP_DEFAULT_COLOR } from '@/components/special/SystemMap/data/constants';
 import { locationsData } from '@/components/special/SystemMap/data/locationsData';
-import { LocationNode } from '@/components/special/SystemMap/types';
+import { LocationNode, LocationType } from '@/components/special/SystemMap/types';
 import { findNewPoint, increaseBrightness } from '@/components/special/SystemMap/WorldGenerationHelpers';
 import { useState } from 'react';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
@@ -86,27 +86,43 @@ const SystemMapLocation = ({
     // for rings
     const zIndexCurrent = zIndex ? zIndex + 1 : 200
 
+    const isWorld = location.type === LocationType.Planet || 
+        location.type === LocationType.Moon ||
+        location.type === LocationType.Sun
+
     return (
         <>
-            <div className="map-orbit-ring" style={{
-                height: location.distance * MAP_DISTANCE_FACTOR * 2,
-                width: location.distance * MAP_DISTANCE_FACTOR * 2,
-                zIndex: zIndexCurrent
-            }} />
+            {isWorld &&
+                <div className="map-orbit-ring" style={{
+                    height: location.distance * MAP_DISTANCE_FACTOR * 2,
+                    width: location.distance * MAP_DISTANCE_FACTOR * 2,
+                    zIndex: zIndexCurrent
+                }} />
+            }
+            {location.type === LocationType.AsteroidBelt &&
+                <div className="map-asteroid-belt" style={{
+                    height: location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
+                    width: location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
+                    zIndex: zIndexCurrent
+                }} />
+            }
             <div className="map-location-container" style={{
-                //position:  ? "relative" : "absolute",
                 left: isRootElement ?  "50%" : objectPoint.x,
                 top: isRootElement ? "50%" : objectPoint.y,
             }}>
-                <div className="map-location excluded" style={{
-                    height: radius,
-                    width: radius,
-                    backgroundColor: color
-                }} />
-                <h2 className="name excluded" style={{
-                    top: `${radius * 0.5 + 5}px`,
-                    color: color
-                }}>{location.name}</h2>
+                {isWorld &&
+                    <>
+                        <div className="map-world" style={{
+                            height: radius,
+                            width: radius,
+                            backgroundColor: color
+                        }} />
+                        <h2 className="name" style={{
+                            top: `${radius * 0.5 + 5}px`,
+                            color: color
+                        }}>{location.name}</h2>
+                    </>
+                }
                 
                 {location.children?.slice(0).reverse().map((child) => {
                     return (

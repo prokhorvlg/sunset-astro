@@ -111,7 +111,7 @@ $defaultColor: #ffb64e;
 
   * {
     user-select: none;
-    pointer-events: none;
+    //pointer-events: none;
   }
 
   .sunset-map-bounding-block {
@@ -160,13 +160,19 @@ $defaultColor: #ffb64e;
       border-radius: 5000px;
       background: rgba(#1a110c, 0.95);
     }
-    .map-location {
+    .map-asteroid-belt {
+      position: absolute;
+      transform: translate(-50%, -50%);
+
+      border: 50px solid rgba(#ffb64e, 0.1);
+      border-radius: 5000px;
+    }
+    .map-world {
       position: absolute;
       z-index: 500;
       transform: translate(-50%, -50%);
       border-radius: 5000px;
       background: white;
-      
     }
     .name {
       position: absolute;
