@@ -2,8 +2,8 @@ import { MAP_DISTANCE_FACTOR, MAP_SCALE_FACTOR, MAP_DEFAULT_COLOR } from '@/comp
 import { locationsData } from '@/components/special/SystemMap/data/locationsData';
 import { LocationNode, LocationType } from '@/components/special/SystemMap/types';
 import { findNewPoint, increaseBrightness } from '@/components/special/SystemMap/WorldGenerationHelpers';
-import { useState } from 'react';
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { useEffect, useState } from 'react';
+import { TransformWrapper, TransformComponent, ReactZoomPanPinchContentRef, useTransformEffect } from "react-zoom-pan-pinch";
 import './SystemMap.scss'
 
 const SystemMapReact = () => {
@@ -18,49 +18,46 @@ const SystemMapReact = () => {
             initialPositionY={0}
             minScale={0.5}
             maxScale={8}
-            //limitToBounds={false}
             smooth={false}
             centerOnInit
             wheel={{
-                smoothStep: 0.003,
-                excluded: ["excluded"]
+                smoothStep: 0.003
             }}
-            panning={{
-                excluded: ["excluded"]
-            }}
-            pinch={{
-                excluded: ["excluded"]
-            }}
-
-
-            // alignmentAnimation={{
-            //     sizeX: 10000,
-            //     sizeY: 10000
-            // }}
-            // minPositionX={90000}
-            // maxPositionX={90000}
-            // minPositionY={90000}
-            // maxPositionY={90000}
         >
-            {({ zoomIn, zoomOut, resetTransform, ...rest }) => {
-                console.log(rest)
+            {(transform: ReactZoomPanPinchContentRef) => {
                 return (
-                    <>
-                        {/* tools go here */}
-                        <TransformComponent wrapperClass="sunset-map-dynamic">
-                            <div className="sunset-map-bounding-block"></div>
-                            <div className="sunset-map-large-glowing-background excluded"></div>
-                            <div className="sunset-map-glowing-sun"></div>
-                            <div className="sunset-map-inner-container">
-                                <SystemMapLocation location={locationsData} isRootElement />
-                            </div>
-                        </TransformComponent>
-                    </>
+                    <SystemMapTransformContainer transform={transform}/>
                 )
             }}
         </TransformWrapper>
     )
 };
+
+const SystemMapTransformContainer = ({
+    transform
+}: {
+    transform: ReactZoomPanPinchContentRef
+}) => {
+    const [zoom, setZoom] = useState<number>(1)
+
+    useTransformEffect(({ state, instance }) => {
+        setZoom(state.scale)
+    });
+    
+    return (
+        <>
+            {/* tools go here */}
+            <TransformComponent wrapperClass="sunset-map-dynamic">
+                <div className="sunset-map-bounding-block"></div>
+                <div className="sunset-map-large-glowing-background excluded"></div>
+                <div className="sunset-map-glowing-sun"></div>
+                <div className="sunset-map-inner-container">
+                    <SystemMapLocation location={locationsData} zoom={zoom} isRootElement />
+                </div>
+            </TransformComponent>
+        </>
+    )
+}
 
 // Generates each individual location.
 const SystemMapLocation = ({
@@ -68,7 +65,8 @@ const SystemMapLocation = ({
     parent,
     parentCoordinates,
     zIndex,
-    isRootElement
+    isRootElement,
+    zoom
 }: {
     location: LocationNode
     parent?: LocationNode
@@ -78,6 +76,7 @@ const SystemMapLocation = ({
     },
     zIndex?: number
     isRootElement?: boolean
+    zoom: number
 }) => {
     const objectPoint = findNewPoint(0, 0, location.startingAngle, location.distance * MAP_DISTANCE_FACTOR);
     const radius = location.radius ? location.radius * MAP_SCALE_FACTOR * 2.2 : 0
@@ -112,7 +111,9 @@ const SystemMapLocation = ({
                 top: isRootElement ? "50%" : objectPoint.y,
             }}>
                 {isWorld &&
-                    <div className="map-world">
+                    <div className="map-world" style={{
+                        transform: `scale(${1 / zoom})`
+                    }}>
                         <div className="map-world-circle" style={{
                             height: radius,
                             width: radius,
@@ -136,10 +137,12 @@ const SystemMapLocation = ({
                 {location.children?.slice(0).reverse().map((child) => {
                     return (
                         <SystemMapLocation 
+                            key={child.name}
                             location={child} 
                             parent={parent}
                             parentCoordinates={objectPoint}
                             zIndex={zIndexCurrent}
+                            zoom={zoom}
                         />
                     )
                 })}
