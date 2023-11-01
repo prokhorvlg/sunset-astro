@@ -16,20 +16,28 @@ const SystemMapReact = () => {
             initialPositionY={0}
             minScale={0.5}
             maxScale={8}
-            limitToBounds={false}
+            //limitToBounds={false}
             smooth={false}
             centerOnInit
             wheel={{
                 smoothStep: 0.003
             }}
+            // alignmentAnimation={{
+            //     sizeX: 10000,
+            //     sizeY: 10000
+            // }}
+            // minPositionX={90000}
+            // maxPositionX={90000}
+            // minPositionY={90000}
+            // maxPositionY={90000}
         >
             {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
             <>
                 {/* tools go here */}
                 <TransformComponent wrapperClass="sunset-map-dynamic">
+                    <div className="sunset-map-bounding-block"></div>
                     <div className="sunset-map-inner-container">
-                        <SystemMapOrbit location={locationsData} />
-                        <SystemMapLocation location={locationsData} />
+                        <SystemMapLocation location={locationsData} isRootElement />
                     </div>
                 </TransformComponent>
             </>
@@ -38,12 +46,13 @@ const SystemMapReact = () => {
     )
 };
 
-// Generates the orbit paths for each major object.
-const SystemMapOrbit = ({
+// Generates each individual location.
+const SystemMapLocation = ({
     location,
     parent,
     parentCoordinates,
-    zIndex
+    zIndex,
+    isRootElement
 }: {
     location: LocationNode
     parent?: LocationNode
@@ -52,69 +61,40 @@ const SystemMapOrbit = ({
         y: number
     },
     zIndex?: number
-}) => {
-    const objectPoint = findNewPoint(0, 0, location.startingAngle, location.distance * MAP_DISTANCE_FACTOR);
-    const zIndexCurrent = zIndex ? zIndex + 1 : 200
-
-    return (
-        <div className="map-orbit-ring-container" style={{
-            left: parentCoordinates?.x || 0,
-            top: parentCoordinates?.y || 0,
-        }}>
-            <div className="map-orbit-ring" style={{
-                height: location.distance * MAP_DISTANCE_FACTOR * 2,
-                width: location.distance * MAP_DISTANCE_FACTOR * 2,
-                //borderColor: location.color,
-                zIndex: zIndexCurrent
-            }} />
-            {location.children?.slice(0).reverse().map((child) => {
-                return (
-                    <SystemMapOrbit 
-                        location={child} 
-                        parent={parent}
-                        parentCoordinates={objectPoint}
-                        zIndex={zIndexCurrent}
-                    />
-                )
-            })}
-        </div>
-    )
-}
-
-// Generates each individual location.
-const SystemMapLocation = ({
-    location,
-    parent,
-    parentCoordinates
-}: {
-    location: LocationNode
-    parent?: LocationNode
-    parentCoordinates?: {
-        x: number,
-        y: number
-    }
+    isRootElement?: boolean
 }) => {
     const objectPoint = findNewPoint(0, 0, location.startingAngle, location.distance * MAP_DISTANCE_FACTOR);
     const radius = location.radius ? location.radius * MAP_SCALE_FACTOR * 2.2 : 5
     const color = location.color ? increaseBrightness(location.color, 20) : MAP_DEFAULT_COLOR
 
+    // for rings
+    const zIndexCurrent = zIndex ? zIndex + 1 : 200
+
     return (
         <>
+            <div className="map-orbit-ring" style={{
+                height: location.distance * MAP_DISTANCE_FACTOR * 2,
+                width: location.distance * MAP_DISTANCE_FACTOR * 2,
+                zIndex: zIndexCurrent
+            }} />
             <div className="map-location-container" style={{
-                left: objectPoint.x,
-                top: objectPoint.y,
+                //position:  ? "relative" : "absolute",
+                left: isRootElement ?  "50%" : objectPoint.x,
+                top: isRootElement ? "50%" : objectPoint.y,
             }}>
                 <div className="map-location" style={{
                     height: radius,
                     width: radius,
                     backgroundColor: color
                 }} />
-                {location.children?.map((child) => {
+                
+                {location.children?.slice(0).reverse().map((child) => {
                     return (
                         <SystemMapLocation 
                             location={child} 
                             parent={parent}
                             parentCoordinates={objectPoint}
+                            zIndex={zIndexCurrent}
                         />
                     )
                 })}
