@@ -22,8 +22,17 @@ const SystemMapReact = () => {
             smooth={false}
             centerOnInit
             wheel={{
-                smoothStep: 0.003
+                smoothStep: 0.003,
+                excluded: ["excluded"]
             }}
+            panning={{
+                excluded: ["excluded"]
+            }}
+            pinch={{
+                excluded: ["excluded"]
+            }}
+
+
             // alignmentAnimation={{
             //     sizeX: 10000,
             //     sizeY: 10000
@@ -33,19 +42,22 @@ const SystemMapReact = () => {
             // minPositionY={90000}
             // maxPositionY={90000}
         >
-            {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-            <>
-                {/* tools go here */}
-                <TransformComponent wrapperClass="sunset-map-dynamic">
-                    <div className="sunset-map-bounding-block"></div>
-                    <div className="sunset-map-large-glowing-background"></div>
-                    <div className="sunset-map-glowing-sun"></div>
-                    <div className="sunset-map-inner-container">
-                        <SystemMapLocation location={locationsData} isRootElement />
-                    </div>
-                </TransformComponent>
-            </>
-        )}
+            {({ zoomIn, zoomOut, resetTransform, ...rest }) => {
+                console.log(rest)
+                return (
+                    <>
+                        {/* tools go here */}
+                        <TransformComponent wrapperClass="sunset-map-dynamic">
+                            <div className="sunset-map-bounding-block"></div>
+                            <div className="sunset-map-large-glowing-background excluded"></div>
+                            <div className="sunset-map-glowing-sun"></div>
+                            <div className="sunset-map-inner-container">
+                                <SystemMapLocation location={locationsData} isRootElement />
+                            </div>
+                        </TransformComponent>
+                    </>
+                )
+            }}
         </TransformWrapper>
     )
 };
@@ -86,12 +98,12 @@ const SystemMapLocation = ({
                 left: isRootElement ?  "50%" : objectPoint.x,
                 top: isRootElement ? "50%" : objectPoint.y,
             }}>
-                <div className="map-location" style={{
+                <div className="map-location excluded" style={{
                     height: radius,
                     width: radius,
                     backgroundColor: color
                 }} />
-                <h2 className="name" style={{
+                <h2 className="name excluded" style={{
                     top: `${radius * 0.5 + 5}px`,
                     color: color
                 }}>{location.name}</h2>

@@ -109,6 +109,11 @@ $defaultColor: #ffb64e;
 
   background: #1a110c;
 
+  * {
+    user-select: none;
+    pointer-events: none;
+  }
+
   .sunset-map-bounding-block {
     position: relative;
     height: 2100px;
