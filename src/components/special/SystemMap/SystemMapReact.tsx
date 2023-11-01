@@ -126,7 +126,9 @@ const SystemMapLocation = ({
                     </div>
                 }
                 {isSite && 
-                    <div className="map-site">
+                    <div className="map-site" style={{
+                        transform: `scale(${1 / zoom})`
+                    }}>
                         <div className="map-site-circle"></div>
                         <h2 className="name" style={{
                             bottom: `${radius * 0.5 + 5}px`,
