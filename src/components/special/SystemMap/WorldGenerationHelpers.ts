@@ -1,4 +1,4 @@
-import { Node } from './SystemMap'
+import { LocationNode } from "@/components/special/SystemMap/types";
 
 export const findNewPoint = (x: number, y: number, angle: number, distance: number) => {
     const result = {
@@ -33,15 +33,15 @@ export const increaseBrightness = (hex: string, percent: number) => {
 
 export const hashCode = (s: string) => s.split('').reduce((a,b)=>{a=((a<<5)-a)+b.charCodeAt(0);return a&a},0)
 
-export const convertTreeToArray = (object: Node) => {
-    let visited: Node[] = [];
-    let queue: Node[] = []; 
-    let current: Node = object;
+export const convertTreeToArray = (object: LocationNode) => {
+    let visited: LocationNode[] = [];
+    let queue: LocationNode[] = []; 
+    let current: LocationNode = object;
 
     current.parent = '';
     queue.push(current);
     while (queue.length) {
-        const nextCurrent: Node | undefined = queue.shift(); 
+        const nextCurrent: LocationNode | undefined = queue.shift(); 
         if (nextCurrent === undefined) return visited; 
         current = nextCurrent;
         visited.push(current);

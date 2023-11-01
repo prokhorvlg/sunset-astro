@@ -1,304 +1,16 @@
 import * as d3 from "d3";
-import { BACKGROUND_COLOR, DEFAULT_COLOR, DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
 import './SystemMap.scss'
+import { useState } from "react";
+import { locationsData } from "@/components/special/SystemMap/data/locationsData";
+import { generateWorlds } from "@/components/special/SystemMap/WorldGeneration";
+import { MAP_PAN_MULTIPLIER, MAP_DISTANCE_FACTOR, MAP_ZOOM_DETAIL_LEVEL_2 } from "@/components/special/SystemMap/data/constants";
 
-const PAN_MULTIPLIER = 1500; 
-const ZOOM_DETAIL_LEVEL_2 = 3;
+
 //bugs
 //1) pan limit broken when shrunk
 //2) size messed uop when refreshed small
 
-export const enum ObjectType {
-    Sun,
-    Planet,
-    Moon,
-    AsteroidBelt,
-    Site // specific locations
-}
 
-export interface Node {
-    name: string, 
-    type: ObjectType, 
-    distance: number, 
-    radius?: number, 
-    speed?: number, 
-    startingAngle: number, 
-    color?: string, 
-    crafts?: Node[], 
-    children?: Node[], 
-    parent?: string,
-    classes?: string
-    zoomLevel?: number
-}
-
-const enum LocationType {
-
-}
-
-const enum LocationTypeOnMap {
-    Sun,
-    Planet,
-    Moon,
-    AsteroidBelt,
-    Satellite
-}
-interface Location {
-    name: string,
-    type: LocationType,
-    color: string
-    children: (LocationOnMap | Location)[]
-}
-
-interface LocationOnMap extends Location {
-    typeOnMap: LocationTypeOnMap,
-    distance: number,
-    radius: number
-    speed: number
-    startingAngle: number
-    alignment: string // text alignment
-    zoomLevel?: number // 1 always visible, 2 reveals on level 2
-    crafts: (LocationOnMap)[]
-}
-
-// Data for generation of objects
-const data: Node = {
-    name: "Sol",
-    type: ObjectType.Sun,
-    distance: 0,
-    radius: 35,
-    speed: 0,
-    startingAngle: 0,
-    color: "#ffc919",
-    crafts: [
-        {
-            name: "Interbeacon",
-            type: ObjectType.Site,
-            distance: 95,
-            startingAngle: 270,
-            zoomLevel: 2,
-        }
-    ],
-    children: [
-        {
-            name: "Mercury",
-            type: ObjectType.Planet,
-            color: "#f47f00",
-            distance: 125,
-            radius: 8,
-            speed: -1.60,
-            startingAngle: 35,
-            crafts: [
-                /*{
-                    name: "Odyssey United Orbital",
-                    distance: 22,
-                    startingAngle: 25,
-                    //alignment: "right"
-                }*/
-            ],
-            children: []
-        },
-        {
-            name: "Venus",
-            type: ObjectType.Planet,
-            color: "#b8ff30",
-            distance: 165,
-            radius: 15,
-            speed: -1.17,
-            startingAngle: 195,
-            children: [
-                {
-                    name: "Klios",
-                    type: ObjectType.Moon,
-                    color: "#717fff",
-                    distance: 66,
-                    radius: 5,
-                    speed: -3.2,
-                    startingAngle: 320,
-                    children: []
-                }
-            ]
-        },
-        {
-            name: "Earth",
-            type: ObjectType.Planet,
-            color: "#0dcfff",
-            distance: 205,
-            radius: 14,
-            speed: -1.17,
-            startingAngle: 280,
-            children: [
-                {
-                    name: "Luna",
-                    type: ObjectType.Moon,
-                    distance: 66,
-                    radius: 5,
-                    speed: -3.2,
-                    startingAngle: 119,
-                    children: []
-                }
-            ]
-        },
-        {
-            name: "Mars",
-            type: ObjectType.Planet,
-            color: "#ff4817",
-            distance: 245,
-            radius: 11,
-            speed: -1.17,
-            startingAngle: 64,
-            children: []
-        },
-        {
-            name: "Asteroid Belt",
-            type: ObjectType.AsteroidBelt,
-            distance: 295,
-            radius: 11,
-            speed: -1.17,
-            startingAngle: 44,
-            children: [],
-            classes: "asteroid-belt"
-        },
-        {
-            name: "Jupiter",
-            type: ObjectType.Planet,
-            color: "#ffe4b6",
-            distance: 355,
-            radius: 29,
-            speed: -1.17,
-            startingAngle: 145,
-            children: [
-                {
-                    name: "Io",
-                    type: ObjectType.Moon,
-                    color: "#ff8b19",
-                    distance: 86,
-                    radius: 4,
-                    speed: -3.2,
-                    startingAngle: 22,
-                    children: []
-                },
-                {
-                    name: "Europa",
-                    type: ObjectType.Moon,
-                    color: "#1cffd7",
-                    distance: 115,
-                    radius: 5,
-                    speed: -3.2,
-                    startingAngle: 259,
-                    children: []
-                },
-                {
-                    name: "Ganymede",
-                    type: ObjectType.Moon,
-                    distance: 145,
-                    radius: 6,
-                    speed: -3.2,
-                    startingAngle: 155,
-                    children: []
-                },
-                {
-                    name: "Callisto",
-                    type: ObjectType.Moon,
-                    distance: 175,
-                    radius: 5,
-                    speed: -3.2,
-                    startingAngle: 43,
-                    children: []
-                }
-            ]
-        },
-        {
-            name: "Saturn",
-            type: ObjectType.Planet,
-            color: "#ffc698",
-            distance: 435,
-            radius: 26,
-            speed: -1.17,
-            startingAngle: 310,
-            children: [
-                {
-                    name: "Titan",
-                    type: ObjectType.Moon,
-                    color: "#1a9efa",
-                    distance: 105,
-                    radius: 5,
-                    speed: -3.2,
-                    startingAngle: 73,
-                    children: []
-                }
-            ]
-        },
-        {
-            name: "Uranus",
-            type: ObjectType.Planet,
-            color: "#38f3ff",
-            distance: 545,
-            radius: 19,
-            speed: -1.17,
-            startingAngle: 340,
-            children: []
-        },
-        {
-            name: "Neptune",
-            type: ObjectType.Planet,
-            color: "#087bdd",
-            distance: 655,
-            radius: 18,
-            speed: -1.17,
-            startingAngle: 224,
-            children: []
-        },
-        {
-            name: "Pluto",
-            type: ObjectType.Planet,
-            distance: 725,
-            radius: 5,
-            speed: -1.17,
-            startingAngle: 11,
-            children: [
-                {
-                    name: "Charon",
-                    type: ObjectType.Moon,
-                    distance: 65,
-                    radius: 3,
-                    speed: -3.2,
-                    startingAngle: 165,
-                    children: []
-                }
-            ]
-        },
-        {
-            name: "Kuiper Belt",
-            type: ObjectType.AsteroidBelt,
-            distance: 955,
-            radius: 5,
-            speed: -1.17,
-            startingAngle: 0,
-            children: []
-        },
-        {
-            name: "Nibiru",
-            type: ObjectType.Planet,
-            color: "#ff1bc1",
-            distance: 1205,
-            radius: 36,
-            speed: -1.17,
-            startingAngle: 32,
-            children: [
-                {
-                    name: "Marduk",
-                    type: ObjectType.Moon,
-                    color: "#b003c5",
-                    distance: 135,
-                    radius: 4,
-                    speed: -3.2,
-                    startingAngle: 73,
-                    children: []
-                }
-            ]
-        },
-    ]
-}
 
 /*const generateAsteroidBelt = (worldGroup, worldData, coordsX = 0, coordsY = 0, parentX = 0, parentY = 0) => {
     const worldOrbitGroup = worldGroup.append("g"); // Positioned at center (orbit line)
@@ -315,55 +27,52 @@ const data: Node = {
 }*/
 
 // Maybe seclare element type
-const handleMap = (element: any) => {
-    // const w = window.innerWidth - 500;
-    // const h = window.innerHeight - 100;
 
-    // Generate SVG element
-    const svgEl = d3.select(element);
+
+const SystemMap = () => {
+    const [zoom, setZoom] = useState(null)
+
+    const handleMap = (element: any) => {
+        // const w = window.innerWidth - 500;
+        // const h = window.innerHeight - 100;
     
-    const w = svgEl.node().getBoundingClientRect().width; 
-    const h = svgEl.node().getBoundingClientRect().height; 
-
-    //svgEl.selectAll("*").remove();
-    const svg = svgEl
-        //.attr("width", w)
-        //.attr("height", h);
-
-    // GENERATE COSMIC OBJECTS
-    // Generate container for all cosmic objects
-    const container = svgEl.append("g")
-        .attr("id", "orbit_container");
+        // Generate SVG element
+        const svgEl = d3.select(element);
+        
+        const w = svgEl.node().getBoundingClientRect().width; 
+        const h = svgEl.node().getBoundingClientRect().height; 
     
-    const { itemGroups, objectInfo } = generateWorlds(container, data);
-
-    // Rotation about orbit
-    /*setInterval(function() {
-    //setTimeout(function() {
-        var delta = (Date.now() - t0);
-        svg.selectAll(".planet_cluster, .moon_cluster").attr("transform", function(d) {
-            return "rotate(" + (d.startingAngle + (delta * (d.speed/100))) + ")";
-        });
-    }, 40);*/
-
-    // Enable zoom component
-    const panLimitX = PAN_MULTIPLIER * DISTANCE_FACTOR;
-    const panLimitY = panLimitX * 0.65;
-    // TODO: scale extent lower bound 0.5 on small screens, and start more outzoomed
-    const zoom = d3.zoom()
-        .extent([[0, 0], [w, h]])
-        .scaleExtent([0.9, 10])
-        .translateExtent([[-panLimitX, -panLimitY], [panLimitX, panLimitY]])
-        .on("zoom", zoomed)
-    svg.call(zoom);
-
-    // Initial zoom and scale
-    const initialTransform = d3.zoomIdentity
-        .translate(w/2, h/2)
-        .scale(1);
-    svg.call(zoom.transform, initialTransform);
+        //svgEl.selectAll("*").remove();
+        const svg = svgEl
+            //.attr("width", w)
+            //.attr("height", h);
     
-    function zoomed(event) {
+        // GENERATE COSMIC OBJECTS
+        // Generate container for all cosmic objects
+        const container = svgEl.append("g")
+            .attr("id", "orbit_container");
+        
+        const { itemGroups, objectInfo } = generateWorlds(container, locationsData);
+    
+        // Enable zoom component
+        const panLimitX = MAP_PAN_MULTIPLIER * MAP_DISTANCE_FACTOR;
+        const panLimitY = panLimitX * 0.65;
+        // TODO: scale extent lower bound 0.5 on small screens, and start more outzoomed
+        const zoom = d3.zoom()
+            .extent([[0, 0], [w, h]])
+            .scaleExtent([0.9, 10])
+            .translateExtent([[-panLimitX, -panLimitY], [panLimitX, panLimitY]])
+            .on("zoom", (e) => handleZoom(e, container, itemGroups, objectInfo, svgEl))
+        svg.call(zoom);
+    
+        // Initial zoom and scale
+        const initialTransform = d3.zoomIdentity
+            .translate(w/2, h/2)
+            .scale(1);
+        svg.call(zoom.transform, initialTransform);
+    }
+
+    const handleZoom = (event, container, itemGroups, objectInfo, svgEl) => {
         //console.log("event", event)
         const transform = event.transform
         const currentZoomScale = transform.k
@@ -377,7 +86,7 @@ const handleMap = (element: any) => {
             const storeEntry = objectInfo[name]
             itemGroup.attr("transform", "translate(" + ( storeEntry?.x || 0) + ", " + (storeEntry?.y || 0) + ") scale(" + itemScale + ")")
             
-            if (currentZoomScale > ZOOM_DETAIL_LEVEL_2) {
+            if (currentZoomScale > MAP_ZOOM_DETAIL_LEVEL_2) {
                 svgEl.attr("data-zoom-level", 2)
             } else {
                 svgEl.attr("data-zoom-level", 1)
@@ -385,12 +94,12 @@ const handleMap = (element: any) => {
         });
 
         // Reduce line width of orbit paths on higher zoom scale
-            
     }
-}
 
-const SystemMap = () => {
     return <div className='sunset-map-container'>
+        <button onClick={() => {
+            console.log(zoom)
+        }}>zoom level 2</button>
         <div className='sunset-map-div'>
             <svg xmlns="http://www.w3.org/2000/svg" ref={handleMap} className='sunset-map-svg'>
                 <defs>

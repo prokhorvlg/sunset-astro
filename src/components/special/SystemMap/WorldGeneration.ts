@@ -1,6 +1,7 @@
+import { MAP_BACKGROUND_COLOR, MAP_DEFAULT_COLOR, MAP_DISTANCE_FACTOR, MAP_SCALE_FACTOR } from "@/components/special/SystemMap/data/constants";
+import { LocationNode, LocationType } from "@/components/special/SystemMap/types";
 import * as d3 from "d3";
 import { convertTreeToArray, findNewPoint, hashCode, increaseBrightness } from "./WorldGenerationHelpers";
-import { Node, ObjectType } from './SystemMap'
 
 type D3Container = d3.Selection<SVGGElement, unknown, null, undefined>; 
 interface ObjectInfo {
@@ -12,16 +13,11 @@ interface ObjectInfo {
     zoomLevel?: number
 }
 
-export const DISTANCE_FACTOR = 1.1;
-export const SCALE_FACTOR = 1.8;
-export const DEFAULT_COLOR = "#ffb64e";
-export const BACKGROUND_COLOR = '#1a110c'; 
-
 let itemGroups: D3Container[] = []
 let objectInfo: Record<string, ObjectInfo> = {}
 
 // Takes set of data. Generates an orbiting system, recursively.
-export const generateWorlds = (container: D3Container, data: Node) => {
+export const generateWorlds = (container: D3Container, data: LocationNode) => {
 
     //let textContainer;
 
@@ -36,7 +32,7 @@ export const generateWorlds = (container: D3Container, data: Node) => {
 
     // Generate HUGE OVERLAY GRADIENT CIRCLE at center
     container.append("circle")
-        .attr("r", 1200 * DISTANCE_FACTOR)
+        .attr("r", 1200 * MAP_DISTANCE_FACTOR)
         .attr("fill", "url('#huge-sun-overlay-gradient')")
         .attr("filter", "url('#huge-sun-overlay-filter')")
         .attr("class", "huge-sun-overlay");
@@ -49,7 +45,7 @@ export const generateWorlds = (container: D3Container, data: Node) => {
 
     // Generate SMALL HEAT GRADIENT CIRCLE around sun
     container.append("circle")
-        .attr("r", 100 * DISTANCE_FACTOR)
+        .attr("r", 100 * MAP_DISTANCE_FACTOR)
         .attr("fill", "url('#sun-heat-gradient')")
         .attr("filter", "url('#sun-heat-filter')")
         .attr("class", "sun-heat-overlay");
@@ -57,7 +53,7 @@ export const generateWorlds = (container: D3Container, data: Node) => {
     return { itemGroups, objectInfo }
 }
 
-const generateInfo = (objects: Node[]) => {
+const generateInfo = (objects: LocationNode[]) => {
     objects.forEach((object) => {
         // Get parent, if it exists.
         const parentName = object.parent || ''
@@ -66,8 +62,8 @@ const generateInfo = (objects: Node[]) => {
         const parentY = parent?.y || 0
 
         // Save some data.
-        const objectColor = object.color ? increaseBrightness(object.color, 20) : DEFAULT_COLOR;
-        const objectPoint = findNewPoint(parentX, parentY, object.startingAngle, object.distance * DISTANCE_FACTOR);
+        const objectColor = object.color ? increaseBrightness(object.color, 20) : MAP_DEFAULT_COLOR;
+        const objectPoint = findNewPoint(parentX, parentY, object.startingAngle, object.distance * MAP_DISTANCE_FACTOR);
 
         // Save your point information.
         objectInfo[object.name] = {
@@ -81,7 +77,7 @@ const generateInfo = (objects: Node[]) => {
     })
 }
 
-const generateOrbitPaths = (objects: Node[], container: D3Container) => {
+const generateOrbitPaths = (objects: LocationNode[], container: D3Container) => {
     
 
     objects.forEach((object) => {
@@ -90,11 +86,11 @@ const generateOrbitPaths = (objects: Node[], container: D3Container) => {
         const parentX = parent?.x || 0
         const parentY = parent?.y || 0
 
-        if (object.type === ObjectType.AsteroidBelt) {
+        if (object.type === LocationType.AsteroidBelt) {
             // Generate DOTTED LINE for ASTEROIDS
             container.append("circle")
-                .attr("r", object.distance * DISTANCE_FACTOR)
-                .attr("stroke", DEFAULT_COLOR)
+                .attr("r", object.distance * MAP_DISTANCE_FACTOR)
+                .attr("stroke", MAP_DEFAULT_COLOR)
                 .attr("stroke-width", "30px")
                 .attr("stroke-dasharray", "3 3")
                 .attr("fill", "transparent")
@@ -108,17 +104,19 @@ const generateOrbitPaths = (objects: Node[], container: D3Container) => {
                 container.append("circle")
                     .attr("cx", parentX)
                     .attr("cy", parentY)
-                    .attr("r", lastMoonDistance * DISTANCE_FACTOR)
-                    .attr("fill", BACKGROUND_COLOR);
+                    .attr("r", lastMoonDistance * MAP_DISTANCE_FACTOR)
+                    .attr("fill", MAP_BACKGROUND_COLOR);
             }
 
             // Generate the orbit path for this object.
             container.append("circle")
                 .attr("cx", parentX)
                 .attr("cy", parentY)
-                .attr("r", object.distance * DISTANCE_FACTOR)
-                .attr("stroke", DEFAULT_COLOR)
+                .attr("r", object.distance * MAP_DISTANCE_FACTOR)
+                .attr("stroke", MAP_DEFAULT_COLOR)
                 .attr("stroke-width", "2px")
+                .attr("stroke-dasharray", "4 5")
+                .attr("stroke-linecap", "round")
                 .attr("class", "orbit planet-path")
                 .attr("data-name", object.name);
         }
@@ -127,7 +125,7 @@ const generateOrbitPaths = (objects: Node[], container: D3Container) => {
     
 }
 
-const generateContent = (objects: Node[], container: D3Container) => {
+const generateContent = (objects: LocationNode[], container: D3Container) => {
     objects.forEach((object) => {
         const parentName = object.parent || ''
         const parent = objectInfo[parentName]
@@ -138,7 +136,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
             .attr("class", `world-group ${object.zoomLevel === 2 ? "zoom-level-2" : ""}`)
             .attr("data-name", object.name); // Positioned at coordinates
 
-        if (object.type === ObjectType.AsteroidBelt) {
+        if (object.type === LocationType.AsteroidBelt) {
             const parentX = parent?.x || 0
             const parentY = parent?.y || 0
 
@@ -150,7 +148,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
             // Generate NAME
             worldItemGroup.append("text")
                 .attr("x", 0)
-                .attr("y", object.radius * SCALE_FACTOR + 15)
+                .attr("y", object.radius * MAP_SCALE_FACTOR + 15)
                 .attr("dy", ".35em")
                 .attr("text-anchor", "middle")
                 .attr("class", "name planet-name")
@@ -160,7 +158,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
 
             // Generate WORLD
             worldItemGroup.append("circle")
-                .attr("r", object.radius * SCALE_FACTOR)
+                .attr("r", object.radius * MAP_SCALE_FACTOR)
                 .attr("stroke", info.color)
                 .attr("stroke-width", "2")
                 .attr("fill", info.color)
@@ -169,7 +167,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
 
         if (object.crafts && object.crafts.length) {
             object.crafts.forEach((craft) => {
-                const craftPoint = findNewPoint(0, 0, craft.startingAngle, craft.distance * DISTANCE_FACTOR);
+                const craftPoint = findNewPoint(0, 0, craft.startingAngle, craft.distance * MAP_DISTANCE_FACTOR);
                 const craftItemGroupMaxFar = worldItemGroup
                     .append("g")
                     .attr("class", `craft-group-far`)
@@ -180,7 +178,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
                 // Generate NAME
                 craftItemGroupDetailed.append("text")
                     .attr("x", 0)
-                    .attr("y", -1 * SCALE_FACTOR - 15)
+                    .attr("y", -1 * MAP_SCALE_FACTOR - 15)
                     .attr("dy", ".25em")
                     .attr("text-anchor", "middle")
                     .attr("class", "name craft-name")
@@ -204,7 +202,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
                 craftItemGroupMaxFar.append("circle")
                     .attr("cx", 0)
                     .attr("cy", 0)
-                    .attr("r", 1 * SCALE_FACTOR)
+                    .attr("r", 1 * MAP_SCALE_FACTOR)
                     .attr("fill", "white")
                     .attr("class", "craft");
 
@@ -215,7 +213,7 @@ const generateContent = (objects: Node[], container: D3Container) => {
         }
 
         // Send item group to coordinates
-        if (object.type === ObjectType.AsteroidBelt) {
+        if (object.type === LocationType.AsteroidBelt) {
             worldItemGroup.attr("transform", "translate(0, 0)");
         } else {
             worldItemGroup.attr("transform", "translate(" + (info.x || 0) + "," + (info.y || 0) + ")");
