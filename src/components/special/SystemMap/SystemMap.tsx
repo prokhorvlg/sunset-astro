@@ -403,22 +403,21 @@ const SystemMap = () => {
                         <stop offset="10%" stop-color="#ffc445" />
                         <stop offset="85%" stop-color="rgba(255,196,69,0)" />
                     </radialGradient>
-                    <filter id="huge-sun-overlay-filter" x="0%" y="0%" width="100%" height="100%" 
+                    <filter id="huge-sun-overlay-filter"
                         filterUnits="objectBoundingBox" 
                         primitiveUnits="userSpaceOnUse" 
                         color-interpolation-filters="sRGB"
                     >
                         <feComposite in="flood" in2="SourceAlpha" operator="atop" result="maskedflood"/>
-                        <feBlend mode="overlay" x="-100%" y="-100%" width="200%" height="200%" in="SourceGraphic" in2="blur" result="blend"></feBlend>
+                        <feBlend mode="overlay"in="SourceGraphic" in2="blur" result="blend"></feBlend>
                     </filter>
-                    <filter id="sun-heat-filter" x="0%" y="0%" width="100%" height="100%" 
+                    <filter id="sun-heat-filter"
                         filterUnits="objectBoundingBox" 
                         primitiveUnits="userSpaceOnUse" 
                         color-interpolation-filters="sRGB"
                     >
-                            <feComposite in="flood" in2="SourceAlpha" operator="atop" result="maskedflood"/>
-
-                            <feBlend mode="screen" x="-100%" y="-100%" width="200%" height="200%" in="SourceGraphic" in2="maskedflood" result="blend"></feBlend>
+                        <feComposite in="flood" in2="SourceAlpha" operator="atop" result="maskedflood"/>
+                        <feBlend mode="screen" in="SourceGraphic" in2="maskedflood" result="blend"></feBlend>
                     </filter>
                 </defs>
             </svg>
