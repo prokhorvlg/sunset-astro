@@ -25,6 +25,10 @@ $defaultColor: #ffb64e;
     border: $color-sunset-red solid 2px; 
     border-radius: 6px;
     height: 90vh;
+
+    * {
+      user-select: none;
+    }
     
     @media screen and (max-width: $breakpoint-mobile) {
       height: 80vh; 
@@ -50,14 +54,9 @@ $defaultColor: #ffb64e;
 
     .huge-sun-overlay {
       opacity:0.25;
-      //fill: #972c14
-      //fill: $defaultColor;
-      //fill: radial-gradient(#ff6d4e 0%, transparent 20%, salmon 40%);
-      //mix-blend-mode: soft-light;
     }
     .sun-heat-overlay {
-      //opacity: 0.1;
-      //mix-blend-mode: soft-light;
+      opacity: 0.1;
     }
 
     .orbit {

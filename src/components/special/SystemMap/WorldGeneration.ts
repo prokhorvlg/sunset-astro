@@ -171,12 +171,15 @@ const generateContent = (objects: Node[], container: D3Container) => {
         if (object.crafts && object.crafts.length) {
             object.crafts.forEach((craft) => {
                 const craftPoint = findNewPoint(0, 0, craft.startingAngle, craft.distance * DISTANCE_FACTOR);
-                const craftItemGroup = worldItemGroup
+                const craftItemGroupMaxFar = worldItemGroup
+                    .append("g")
+                    .attr("class", `craft-group-far`)
+                const craftItemGroupDetailed = worldItemGroup
                     .append("g")
                     .attr("class", `craft-group ${craft.zoomLevel === 2 ? "zoom-level-2" : ""}`)
 
                 // Generate NAME
-                craftItemGroup.append("text")
+                craftItemGroupDetailed.append("text")
                     .attr("x", 0)
                     .attr("y", -1 * SCALE_FACTOR - 15)
                     .attr("dy", ".25em")
@@ -198,14 +201,17 @@ const generateContent = (objects: Node[], container: D3Container) => {
                     .attr("fill", "white")
                     .text(craft.name);*/
 
-                craftItemGroup.append("circle")
+                // Generate TINY CIRCLE WHEN FAR AWAY
+                craftItemGroupMaxFar.append("circle")
                     .attr("cx", 0)
                     .attr("cy", 0)
                     .attr("r", 1 * SCALE_FACTOR)
                     .attr("fill", "white")
                     .attr("class", "craft");
 
-                craftItemGroup.attr("transform", "translate(" + (craftPoint.x || 0) + "," + (craftPoint.y || 0) + ")");
+                const translate = "translate(" + (craftPoint.x || 0) + "," + (craftPoint.y || 0) + ")"
+                craftItemGroupMaxFar.attr("transform", translate);
+                craftItemGroupDetailed.attr("transform", translate);
             })
         }
 
