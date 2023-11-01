@@ -131,7 +131,7 @@ $defaultColor: #ffb64e;
     width: $largeGlowingBackgroundWidth;
     z-index: 280;
     border-radius: 99999px;
-    background: radial-gradient(rgb(255, 195, 28) 0%, rgb(119, 28, 16) 40%, black 70%);
+    background: radial-gradient(rgb(255, 189, 6) 0%, rgb(131, 21, 7) 30%, black 70%);
     mix-blend-mode: screen;
     opacity: 0.2;
     user-select: none;
@@ -148,6 +148,7 @@ $defaultColor: #ffb64e;
       rgba(230, 83, 15, 0.1) 50%, 
       rgba(255, 195, 28, 0) 65%);
     mix-blend-mode: screen;
+    opacity: 0.5;
   }
 
   .map-location-container {
@@ -171,6 +172,7 @@ $defaultColor: #ffb64e;
       position: absolute;
       z-index: 500;
       transform: translate(-50%, -50%);
+      transition: 0.1s;
       .map-world-circle {
         position: absolute;
         transform: translate(-50%, -50%);

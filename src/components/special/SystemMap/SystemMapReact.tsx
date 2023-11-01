@@ -16,12 +16,13 @@ const SystemMapReact = () => {
             initialScale={1}
             initialPositionX={0}
             initialPositionY={0}
-            minScale={0.5}
+            minScale={1}
             maxScale={8}
-            smooth={false}
+            smooth={true}
             centerOnInit
             wheel={{
-                smoothStep: 0.003
+                step: 1,
+                smoothStep:0.005
             }}
         >
             {(transform: ReactZoomPanPinchContentRef) => {
@@ -96,7 +97,8 @@ const SystemMapLocation = ({
                 <div className="map-orbit-ring" style={{
                     height: location.distance * MAP_DISTANCE_FACTOR * 2,
                     width: location.distance * MAP_DISTANCE_FACTOR * 2,
-                    zIndex: zIndexCurrent
+                    zIndex: zIndexCurrent,
+                    borderWidth: `${2 / zoom}px`
                 }} />
             }
             {location.type === LocationType.AsteroidBelt &&
@@ -132,6 +134,7 @@ const SystemMapLocation = ({
                         <div className="map-site-circle"></div>
                         <h2 className="name" style={{
                             bottom: `${radius * 0.5 + 5}px`,
+                            opacity: zoom < 4 ? "0" : "1"
                         }}>{location.name}</h2>
                     </div>
                 }
