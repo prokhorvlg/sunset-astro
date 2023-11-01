@@ -51,6 +51,7 @@
     "react-photoswipe-gallery": "^2.2.7",
     "react-scroll-parallax": "^3.3.2",
     "react-sticky-box": "^2.0.4",
+    "react-zoom-pan-pinch": "^3.3.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
     "rehype-stringify": "^9.0.3",

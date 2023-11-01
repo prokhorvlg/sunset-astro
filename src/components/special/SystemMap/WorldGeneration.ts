@@ -115,7 +115,7 @@ const generateOrbitPaths = (objects: LocationNode[], container: D3Container) => 
                 .attr("r", object.distance * MAP_DISTANCE_FACTOR)
                 .attr("stroke", MAP_DEFAULT_COLOR)
                 .attr("stroke-width", "2px")
-                .attr("stroke-dasharray", "4 5")
+                //.attr("stroke-dasharray", "4 5")
                 .attr("stroke-linecap", "round")
                 .attr("class", "orbit planet-path")
                 .attr("data-name", object.name);

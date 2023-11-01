@@ -5,30 +5,6 @@ import { locationsData } from "@/components/special/SystemMap/data/locationsData
 import { generateWorlds } from "@/components/special/SystemMap/WorldGeneration";
 import { MAP_PAN_MULTIPLIER, MAP_DISTANCE_FACTOR, MAP_ZOOM_DETAIL_LEVEL_2 } from "@/components/special/SystemMap/data/constants";
 
-
-//bugs
-//1) pan limit broken when shrunk
-//2) size messed uop when refreshed small
-
-
-
-/*const generateAsteroidBelt = (worldGroup, worldData, coordsX = 0, coordsY = 0, parentX = 0, parentY = 0) => {
-    const worldOrbitGroup = worldGroup.append("g"); // Positioned at center (orbit line)
-
-    // Generate ORBIT PATH of BELT
-    worldOrbitGroup.append("circle")
-        .attr("cx", parentX)
-        .attr("cy", parentY)
-        .attr("r", worldData.distance * DISTANCE_FACTOR)
-        //.attr("stroke-linecap", "round")
-        //.attr("stroke-dasharray", "0,4")
-        .attr("stroke-width", "58")
-        .attr("class", "orbit-asteroid-belt");
-}*/
-
-// Maybe seclare element type
-
-
 const SystemMap = () => {
     const [zoom, setZoom] = useState(null)
 
@@ -97,9 +73,9 @@ const SystemMap = () => {
     }
 
     return <div className='sunset-map-container'>
-        <button onClick={() => {
+        {/* <button onClick={() => {
             console.log(zoom)
-        }}>zoom level 2</button>
+        }}>zoom level 2</button> */}
         <div className='sunset-map-div'>
             <svg xmlns="http://www.w3.org/2000/svg" ref={handleMap} className='sunset-map-svg'>
                 <defs>
@@ -130,8 +106,6 @@ const SystemMap = () => {
                         <feBlend mode="screen" in="SourceGraphic" in2="maskedflood" result="blend"></feBlend>
                     </filter>
                 </defs>
-
-
 
             </svg>
         </div>
