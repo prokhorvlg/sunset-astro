@@ -73,7 +73,7 @@ export const locationsData: LocationNode = {
                     distance: 66,
                     radius: 5,
                     speed: -3.2,
-                    startingAngle: 119,
+                    startingAngle: 169,
                     children: []
                 }
             ]
@@ -114,7 +114,7 @@ export const locationsData: LocationNode = {
                     distance: 86,
                     radius: 4,
                     speed: -3.2,
-                    startingAngle: 22,
+                    startingAngle: 10,
                     children: []
                 },
                 {

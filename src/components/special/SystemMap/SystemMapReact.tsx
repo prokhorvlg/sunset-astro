@@ -9,9 +9,11 @@ import './SystemMap.scss'
 const SystemMapReact = () => {
     const [zoom, setZoom] = useState()
 
+    // TODO: Unique bounds on mobile scale devices. Desktop should be more limited.
+
     return (
         <TransformWrapper
-            //initialScale={1}
+            initialScale={1}
             initialPositionX={0}
             initialPositionY={0}
             minScale={0.5}
@@ -36,6 +38,8 @@ const SystemMapReact = () => {
                 {/* tools go here */}
                 <TransformComponent wrapperClass="sunset-map-dynamic">
                     <div className="sunset-map-bounding-block"></div>
+                    <div className="sunset-map-large-glowing-background"></div>
+                    <div className="sunset-map-glowing-sun"></div>
                     <div className="sunset-map-inner-container">
                         <SystemMapLocation location={locationsData} isRootElement />
                     </div>
@@ -64,7 +68,7 @@ const SystemMapLocation = ({
     isRootElement?: boolean
 }) => {
     const objectPoint = findNewPoint(0, 0, location.startingAngle, location.distance * MAP_DISTANCE_FACTOR);
-    const radius = location.radius ? location.radius * MAP_SCALE_FACTOR * 2.2 : 5
+    const radius = location.radius ? location.radius * MAP_SCALE_FACTOR * 2.2 : 0
     const color = location.color ? increaseBrightness(location.color, 20) : MAP_DEFAULT_COLOR
 
     // for rings
@@ -87,6 +91,10 @@ const SystemMapLocation = ({
                     width: radius,
                     backgroundColor: color
                 }} />
+                <h2 className="name" style={{
+                    top: `${radius * 0.5 + 5}px`,
+                    color: color
+                }}>{location.name}</h2>
                 
                 {location.children?.slice(0).reverse().map((child) => {
                     return (
