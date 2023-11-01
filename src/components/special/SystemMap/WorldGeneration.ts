@@ -15,7 +15,7 @@ interface ObjectInfo {
 export const DISTANCE_FACTOR = 1.1;
 export const SCALE_FACTOR = 1.8;
 export const DEFAULT_COLOR = "#ffb64e";
-export const BACKGROUND_COLOR = '#111'; 
+export const BACKGROUND_COLOR = '#1a110c'; 
 
 let itemGroups: D3Container[] = []
 let objectInfo: Record<string, ObjectInfo> = {}
@@ -34,11 +34,27 @@ export const generateWorlds = (container: D3Container, data: Node) => {
     const orbitsContainer = container.append("g").attr("class", "orbits-container");
     generateOrbitPaths(worldsInOrder, orbitsContainer);
 
+    // Generate HUGE OVERLAY GRADIENT CIRCLE at center
+    container.append("circle")
+        .attr("r", 1200 * DISTANCE_FACTOR)
+        .attr("fill", "url('#huge-sun-overlay-gradient')")
+        .attr("filter", "url('#huge-sun-overlay-filter')")
+        .attr("class", "huge-sun-overlay");
+
+    
+
     // CONTENT
     // Generate the worlds, images, text.
     const worldsContainer = container.append("g").attr("class", "worlds-container");
     generateContent(worldsInOrder, worldsContainer);
     //generateCrafts(worldsInOrder, worldsContainer)
+
+    // Generate SMALL HEAT GRADIENT CIRCLE around sun
+    container.append("circle")
+        .attr("r", 100 * DISTANCE_FACTOR)
+        .attr("fill", "url('#sun-heat-gradient')")
+        .attr("filter", "url('#sun-heat-filter')")
+        .attr("class", "sun-heat-overlay");
 
     return { itemGroups, objectInfo }
 }
@@ -52,7 +68,7 @@ const generateInfo = (objects: Node[]) => {
         const parentY = parent?.y || 0
 
         // Save some data.
-        const objectColor = object.color ? increaseBrightness(object.color, 40) : DEFAULT_COLOR;
+        const objectColor = object.color ? increaseBrightness(object.color, 20) : DEFAULT_COLOR;
         const objectPoint = findNewPoint(parentX, parentY, object.startingAngle, object.distance * DISTANCE_FACTOR);
 
         // Save your point information.
@@ -68,6 +84,8 @@ const generateInfo = (objects: Node[]) => {
 }
 
 const generateOrbitPaths = (objects: Node[], container: D3Container) => {
+    
+
     objects.forEach((object) => {
         const parentName = object.parent || ''
         const parent = objectInfo[parentName]
@@ -93,7 +111,7 @@ const generateOrbitPaths = (objects: Node[], container: D3Container) => {
                     .attr("cx", parentX)
                     .attr("cy", parentY)
                     .attr("r", lastMoonDistance * DISTANCE_FACTOR)
-                    .attr("fill", "#111");
+                    .attr("fill", BACKGROUND_COLOR);
             }
 
             // Generate the orbit path for this object.
@@ -107,6 +125,8 @@ const generateOrbitPaths = (objects: Node[], container: D3Container) => {
                 .attr("data-name", object.name);
         }
     })
+
+    
 }
 
 const generateContent = (objects: Node[], container: D3Container) => {

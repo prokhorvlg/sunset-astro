@@ -14,7 +14,7 @@ $defaultColor: #ffb64e;
   //height: 1000px; 
   width: 95%;
   margin: 0 auto;
-  //background: red;
+  background: #1a110c;
 
   display: flex;
   justify-content: center;
@@ -48,6 +48,18 @@ $defaultColor: #ffb64e;
       }
     }
 
+    .huge-sun-overlay {
+      opacity:0.25;
+      //fill: #972c14
+      //fill: $defaultColor;
+      //fill: radial-gradient(#ff6d4e 0%, transparent 20%, salmon 40%);
+      //mix-blend-mode: soft-light;
+    }
+    .sun-heat-overlay {
+      //opacity: 0.1;
+      //mix-blend-mode: soft-light;
+    }
+
     .orbit {
       stroke: $defaultColor;
       fill: transparent;
@@ -60,6 +72,7 @@ $defaultColor: #ffb64e;
       
       text-transform: uppercase;
       letter-spacing: 1px;
+      //fill: #85190b;
     }
     
   }

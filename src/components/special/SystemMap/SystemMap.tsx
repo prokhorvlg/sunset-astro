@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
+import { BACKGROUND_COLOR, DEFAULT_COLOR, DISTANCE_FACTOR, generateWorlds } from "./WorldGeneration";
 import './SystemMap.scss'
 
 const PAN_MULTIPLIER = 1500; 
@@ -109,7 +109,7 @@ const data: Node = {
                 {
                     name: "Klios",
                     type: ObjectType.Moon,
-                    color: "#152bf7",
+                    color: "#717fff",
                     distance: 66,
                     radius: 5,
                     speed: -3.2,
@@ -219,7 +219,7 @@ const data: Node = {
                 {
                     name: "Titan",
                     type: ObjectType.Moon,
-                    color: "#f78a15",
+                    color: "#1a9efa",
                     distance: 105,
                     radius: 5,
                     speed: -3.2,
@@ -325,7 +325,7 @@ const handleMap = (element: any) => {
     const w = svgEl.node().getBoundingClientRect().width; 
     const h = svgEl.node().getBoundingClientRect().height; 
 
-    svgEl.selectAll("*").remove();
+    //svgEl.selectAll("*").remove();
     const svg = svgEl
         //.attr("width", w)
         //.attr("height", h);
@@ -370,12 +370,11 @@ const handleMap = (element: any) => {
 
         const zoom = 1 + (transform.k * 0.3)
         const itemScale = ( 1 / zoom ) * 1.3
+
         itemGroups.forEach(itemGroup => {
             const name = itemGroup?.attr("data-name")
             const storeEntry = objectInfo[name]
             itemGroup.attr("transform", "translate(" + ( storeEntry?.x || 0) + ", " + (storeEntry?.y || 0) + ") scale(" + itemScale + ")")
-
-            // Record zoom level on SVG 
             
             if (currentZoomScale > ZOOM_DETAIL_LEVEL_2) {
                 svgEl.attr("data-zoom-level", 2)
@@ -383,6 +382,8 @@ const handleMap = (element: any) => {
                 svgEl.attr("data-zoom-level", 1)
             }
         });
+
+        // Reduce line width of orbit paths on higher zoom scale
             
     }
 }
@@ -390,7 +391,37 @@ const handleMap = (element: any) => {
 const SystemMap = () => {
     return <div className='sunset-map-container'>
         <div className='sunset-map-div'>
-            <svg xmlns="http://www.w3.org/2000/svg" ref={handleMap} className='sunset-map-svg'></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" ref={handleMap} className='sunset-map-svg'>
+                <defs>
+                    <radialGradient id="huge-sun-overlay-gradient">
+                        <stop offset="5%" stop-color="rgba(255,173,67,0.9)" />
+                        <stop offset="35%" stop-color="rgba(245,128,50,0.5)" />
+                        <stop offset="65%" stop-color="rgba(133,25,11,0.4)" />
+                        <stop offset="100%" stop-color="rgba(0,0,0,0)" />
+                    </radialGradient>
+                    <radialGradient id="sun-heat-gradient">
+                        <stop offset="10%" stop-color="#ffc445" />
+                        <stop offset="85%" stop-color="rgba(255,196,69,0)" />
+                    </radialGradient>
+                    <filter id="huge-sun-overlay-filter" x="0%" y="0%" width="100%" height="100%" 
+                        filterUnits="objectBoundingBox" 
+                        primitiveUnits="userSpaceOnUse" 
+                        color-interpolation-filters="sRGB"
+                    >
+                        <feComposite in="flood" in2="SourceAlpha" operator="atop" result="maskedflood"/>
+                        <feBlend mode="overlay" x="-100%" y="-100%" width="200%" height="200%" in="SourceGraphic" in2="blur" result="blend"></feBlend>
+                    </filter>
+                    <filter id="sun-heat-filter" x="0%" y="0%" width="100%" height="100%" 
+                        filterUnits="objectBoundingBox" 
+                        primitiveUnits="userSpaceOnUse" 
+                        color-interpolation-filters="sRGB"
+                    >
+                            <feComposite in="flood" in2="SourceAlpha" operator="atop" result="maskedflood"/>
+
+                            <feBlend mode="screen" x="-100%" y="-100%" width="200%" height="200%" in="SourceGraphic" in2="maskedflood" result="blend"></feBlend>
+                    </filter>
+                </defs>
+            </svg>
         </div>
     </div>
 };
