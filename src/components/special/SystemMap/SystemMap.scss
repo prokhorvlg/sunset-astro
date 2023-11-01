@@ -171,8 +171,32 @@ $defaultColor: #ffb64e;
       position: absolute;
       z-index: 500;
       transform: translate(-50%, -50%);
-      border-radius: 5000px;
-      background: white;
+      .map-world-circle {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        border-radius: 5000px;
+        background: white;
+      }
+      .name {
+        font-size: 14px;
+      }
+    }
+    .map-site {
+      position: absolute;
+      z-index: 600;
+      transform: translate(-50%, -50%);
+      .map-site-circle {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        border-radius: 5000px;
+        height: 3px;
+        width: 3px;
+        background: white;
+      }
+      .name {
+        color: white;
+        font-size: 10px;
+      }
     }
     .name {
       position: absolute;
@@ -186,9 +210,10 @@ $defaultColor: #ffb64e;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 1px;
-      font-size: 14px;
       text-align: center;
       margin: 0;
+      white-space: nowrap;
+
     }
   }
   

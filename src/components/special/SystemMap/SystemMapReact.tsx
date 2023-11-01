@@ -89,6 +89,7 @@ const SystemMapLocation = ({
     const isWorld = location.type === LocationType.Planet || 
         location.type === LocationType.Moon ||
         location.type === LocationType.Sun
+    const isSite = location.type === LocationType.Site
 
     return (
         <>
@@ -111,8 +112,8 @@ const SystemMapLocation = ({
                 top: isRootElement ? "50%" : objectPoint.y,
             }}>
                 {isWorld &&
-                    <>
-                        <div className="map-world" style={{
+                    <div className="map-world">
+                        <div className="map-world-circle" style={{
                             height: radius,
                             width: radius,
                             backgroundColor: color
@@ -121,7 +122,15 @@ const SystemMapLocation = ({
                             top: `${radius * 0.5 + 5}px`,
                             color: color
                         }}>{location.name}</h2>
-                    </>
+                    </div>
+                }
+                {isSite && 
+                    <div className="map-site">
+                        <div className="map-site-circle"></div>
+                        <h2 className="name" style={{
+                            bottom: `${radius * 0.5 + 5}px`,
+                        }}>{location.name}</h2>
+                    </div>
                 }
                 
                 {location.children?.slice(0).reverse().map((child) => {

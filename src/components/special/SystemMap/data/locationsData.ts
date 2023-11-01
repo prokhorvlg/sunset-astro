@@ -9,16 +9,13 @@ export const locationsData: LocationNode = {
     speed: 0,
     startingAngle: 0,
     color: "#ffc919",
-    crafts: [
+    children: [
         {
             name: "Interbeacon",
             type: LocationType.Site,
             distance: 95,
             startingAngle: 270,
-            zoomLevel: 2,
-        }
-    ],
-    children: [
+        },
         {
             name: "Mercury",
             type: LocationType.Planet,
@@ -27,15 +24,14 @@ export const locationsData: LocationNode = {
             radius: 8,
             speed: -1.60,
             startingAngle: 35,
-            crafts: [
-                /*{
-                    name: "Odyssey United Orbital",
+            children: [
+                {
+                    name: "Inner Eye Orbital",
+                    type: LocationType.Site,
                     distance: 22,
                     startingAngle: 25,
-                    //alignment: "right"
-                }*/
-            ],
-            children: []
+                }
+            ]
         },
         {
             name: "Venus",

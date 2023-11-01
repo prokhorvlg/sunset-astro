@@ -8,7 +8,8 @@ export const enum LocationType {
 }
 
 export interface LocationNode {
-    name: string, 
+    name: string,
+    description?: string
     type: LocationType, 
     distance: number, 
     radius?: number, 
