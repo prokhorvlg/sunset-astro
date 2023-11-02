@@ -114,6 +114,8 @@ $defaultColor: #ffb64e;
     //pointer-events: none;
   }
 
+
+
   .sunset-map-bounding-block {
     position: relative;
     height: 2100px;
@@ -153,11 +155,14 @@ $defaultColor: #ffb64e;
 
   .map-location-container {
     position: absolute;
+    
     .map-orbit-ring {
       position: absolute;
       transform: translate(-50%, -50%);
       
-      border: 2px solid rgba(#ffb64e, 0.2);
+      //border-width: 2px;
+      border-style: solid;
+      border-color: rgba(#ffb64e, 0.2);
       border-radius: 5000px;
       background: rgba(#1a110c, 0.95);
     }
@@ -172,7 +177,7 @@ $defaultColor: #ffb64e;
       position: absolute;
       z-index: 500;
       transform: translate(-50%, -50%);
-      transition: 0.1s;
+      //transition: 0.1s;
       .map-world-circle {
         position: absolute;
         transform: translate(-50%, -50%);
@@ -200,13 +205,12 @@ $defaultColor: #ffb64e;
         font-size: 10px;
       }
     }
-    .name {
+    .text-under {
       position: absolute;
       display: block;
-      //top: 20px;
-      //left: 50%;
       transform: translate(-50%, 0);
-      //color: white;
+    }
+    .name {
       z-index: 600;
       font-family: $font-code;
       font-weight: 500;
@@ -215,8 +219,8 @@ $defaultColor: #ffb64e;
       text-align: center;
       margin: 0;
       white-space: nowrap;
-
     }
+    
   }
   
   .map-location-container {

@@ -27,6 +27,7 @@ export const locationsData: LocationNode = {
             children: [
                 {
                     name: "Inner Eye Orbital",
+                    description: "Where it all began.",
                     type: LocationType.Site,
                     distance: 22,
                     startingAngle: 25,
@@ -235,3 +236,5 @@ export const locationsData: LocationNode = {
         },
     ]
 }
+
+// 
