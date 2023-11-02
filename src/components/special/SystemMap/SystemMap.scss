@@ -166,13 +166,24 @@ $defaultColor: #ffb64e;
       border-radius: 5000px;
       background: rgba(#1a110c, 0.95);
     }
-    .map-asteroid-belt {
+
+    .map-asteroid-belt-container {
       position: absolute;
       transform: translate(-50%, -50%);
 
-      border: 50px solid rgba(#ffb64e, 0.1);
-      border-radius: 5000px;
+      .map-asteroid-belt {
+        $beltWidth: 3px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: -$beltWidth; top: -$beltWidth;
+        border: $beltWidth dashed rgba(#ffb64e, 0.1);
+        border-radius: 5000px;
+        animation: spin 160s linear infinite;
+        will-change: contents;
+      }
     }
+    
     .map-world {
       position: absolute;
       z-index: 500;
@@ -239,40 +250,6 @@ $defaultColor: #ffb64e;
     position: absolute;
     
   }
-}
-
-
-/*
-.sunset-map-div {
-  position: relative;
-  margin: 0 auto 0 auto;
-  max-width: 2004px;
-  display: flex; 
-  justify-content: center; 
-  height: 1000px; 
-}
-.sunset-map-svg {
-  margin: 0 100px 0 100px; 
-  width: 100%; 
-  border: $color-sunset-red solid 2px; 
-  border-radius: 6px; 
-}*/
-
-/*@media screen and (max-width: $breakpoint-mobile) {
-  .sunset-map-div {
-    width: 100%; 
-  }
-  .sunset-map-svg {
-    margin: 0; 
-  }
-}*/
-
-#sun {
-}
-
-
-
-.planet {
 }
 
 .spin {

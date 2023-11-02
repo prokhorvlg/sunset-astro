@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 import { TransformWrapper, TransformComponent, ReactZoomPanPinchContentRef, useTransformEffect } from "react-zoom-pan-pinch";
 import './SystemMap.scss'
 
-const MAP_MIN_SCALE = 1
+const MAP_MIN_SCALE = 0.9
 const MAP_MAX_SCALE = 12
 const MAP_SCALE_STEP = 0.5
 
@@ -160,11 +160,13 @@ const SystemMapLocation = ({
                 }} />
             }
             {location.type === LocationType.AsteroidBelt &&
-                <div className="map-asteroid-belt" style={{
+                <div className="map-asteroid-belt-container" style={{
                     height: location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
                     width: location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
                     zIndex: zIndexCurrent
-                }} />
+                }}>
+                    <div className="map-asteroid-belt" />
+                </div>
             }
             <div className="map-location-container" style={{
                 left: isRootElement ?  "50%" : objectPoint.x,

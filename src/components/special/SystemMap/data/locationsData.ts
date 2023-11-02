@@ -99,7 +99,7 @@ export const locationsData: LocationNode = {
         {
             name: "Asteroid Belt",
             type: LocationType.AsteroidBelt,
-            distance: 295,
+            distance: 310,
             radius: 11,
             speed: -1.17,
             startingAngle: 44,
