@@ -26,6 +26,11 @@ export interface LocationNode {
     zoomLevel?: number
 }
 
+// human population pre-interrupt
+// machine population current day
+// world affiliation: human-era, machine-era, machines of glass, century of progress
+// human faction affiliation: union, coalition, pact, none
+
 /*
 export const enum LocationTypeOnMap {
     Sun,

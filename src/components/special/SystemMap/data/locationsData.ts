@@ -54,6 +54,9 @@ export const locationsData: LocationNode = {
                 {
                     name: "Klios",
                     type: LocationType.Moon,
+                    typeText: "Frozen Moonlet",
+                    flavorText: "It was always here.",
+                    description: "A tiny moon consisting primarily of frozen carbon dioxide. It was an ideal location for several data centers.",
                     color: "#717fff",
                     distance: 66,
                     radius: 5,
