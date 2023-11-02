@@ -92,6 +92,15 @@ $defaultColor: #ffb64e;
   transform: translate(-50%, -50%);
 }
 
+.controls-test {
+  position: absolute;
+  background: rgba(0,0,0,0.8);
+  z-index: 1000;
+  left: 10px;
+  top: 10px;
+  height: 100px;
+  width: 600px;
+}
 .sunset-map-dynamic {
   width: 97%;
   height: 85vh;
@@ -151,6 +160,8 @@ $defaultColor: #ffb64e;
       rgba(255, 195, 28, 0) 65%);
     mix-blend-mode: screen;
     opacity: 0.5;
+    user-select: none;
+    pointer-events: none;
   }
 
   .map-location-container {
@@ -184,6 +195,11 @@ $defaultColor: #ffb64e;
       }
     }
     
+    .map-singular-location {
+      &:hover {
+        border: 2px solid white;
+      }
+    }
     .map-world {
       position: absolute;
       z-index: 500;
@@ -217,12 +233,16 @@ $defaultColor: #ffb64e;
       }
     }
     .text-under {
+      user-select: none;
+      pointer-events: none;
       position: absolute;
       display: block;
       transform: translate(-50%, 0);
     }
 
     .name {
+      user-select: none;
+      pointer-events: none;
       z-index: 600;
       font-family: $font-code;
       font-weight: 500;
@@ -233,6 +253,8 @@ $defaultColor: #ffb64e;
       white-space: nowrap;
     }
     .flavor-text {
+      user-select: none;
+      pointer-events: none;
       font-family: $font-code;
       font-weight: 400;
       font-size: 14px;

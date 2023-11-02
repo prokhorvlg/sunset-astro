@@ -2,7 +2,7 @@ import { MAP_DISTANCE_FACTOR, MAP_SCALE_FACTOR, MAP_DEFAULT_COLOR } from '@/comp
 import { locationsData } from '@/components/special/SystemMap/data/locationsData';
 import { LocationNode, LocationType } from '@/components/special/SystemMap/types';
 import { findNewPoint, increaseBrightness } from '@/components/special/SystemMap/WorldGenerationHelpers';
-import { useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { TransformWrapper, TransformComponent, ReactZoomPanPinchContentRef, useTransformEffect } from "react-zoom-pan-pinch";
 import './SystemMap.scss'
 
@@ -13,6 +13,7 @@ const MAP_SCALE_STEP = 0.5
 const SystemMapReact = () => {
     const transformComponentRef = useRef<ReactZoomPanPinchContentRef | null>(null);
     const [scale, setScale] = useState(1)
+    const [selectedLocation, setSelectedLocation] = useState<LocationNode | null>(null)
 
     // TODO: Unique bounds on mobile scale devices. Desktop should be more limited.
 
@@ -34,6 +35,8 @@ const SystemMapReact = () => {
         updateScaleFromExternalInput(parseFloat(e.target.value))
     };
 
+    
+
     return (
         <TransformWrapper
             ref={transformComponentRef}
@@ -54,33 +57,45 @@ const SystemMapReact = () => {
             onZoomStop={(e) => {
                 setScale(e.state.scale);
             }}
+            onTransformed={(e) => {
+                setScale(e.state.scale);
+            }}
         >
             {(transform: ReactZoomPanPinchContentRef) => {
                 return (
                     <>
-                        <input 
-                            type="range" 
-                            value={scale} 
-                            min={MAP_MIN_SCALE} 
-                            max={MAP_MAX_SCALE} 
-                            step={MAP_SCALE_STEP}
-                            style={{
-                                position: "absolute",
-                                zIndex: "900"
-                            }}
-                            onChange={updateScale} 
+                        <div className="controls-test">
+                            <input 
+                                type="range" 
+                                value={scale} 
+                                min={MAP_MIN_SCALE} 
+                                max={MAP_MAX_SCALE} 
+                                step={MAP_SCALE_STEP}
+                                style={{
+                                    position: "absolute",
+                                    zIndex: "900"
+                                }}
+                                onChange={updateScale} 
+                            />
+                            <button
+                                onClick={(e) => {
+                                    updateScaleFromExternalInput(1)
+                                }}
+                            >level 1</button>
+                            <button
+                                onClick={(e) => {
+                                    updateScaleFromExternalInput(5)
+                                }}
+                            >level 2</button>
+                            <p>{selectedLocation?.name}</p>
+                            <p>{selectedLocation?.flavorText}</p>
+                            <p>{selectedLocation?.description}</p>
+                        </div>
+                        <SystemMapTransformContainer 
+                            transform={transform} 
+                            selectedLocation={selectedLocation}
+                            setSelectedLocation={setSelectedLocation} 
                         />
-                        <button
-                            onClick={(e) => {
-                                updateScaleFromExternalInput(1)
-                            }}
-                        >level 1</button>
-                        <button
-                            onClick={(e) => {
-                                updateScaleFromExternalInput(5)
-                            }}
-                        >level 2</button>
-                        <SystemMapTransformContainer transform={transform}/>
                     </>
                     
                 )
@@ -90,11 +105,20 @@ const SystemMapReact = () => {
 };
 
 const SystemMapTransformContainer = ({
-    transform
+    transform,
+    selectedLocation,
+    setSelectedLocation
 }: {
-    transform: ReactZoomPanPinchContentRef
+    transform: ReactZoomPanPinchContentRef,
+    selectedLocation: LocationNode | null
+    setSelectedLocation: Dispatch<SetStateAction<LocationNode | null>>
 }) => {
     const [zoom, setZoom] = useState<number>(1)
+
+    useEffect(() => {
+        if (!selectedLocation) return
+        transform.zoomToElement(selectedLocation.name)
+    }, [selectedLocation])
 
     useTransformEffect(({ state, instance }) => {
         setZoom(state.scale)
@@ -108,7 +132,13 @@ const SystemMapTransformContainer = ({
             <div className="sunset-map-large-glowing-background excluded"></div>
             <div className="sunset-map-glowing-sun"></div>
             <div className="sunset-map-inner-container">
-                <SystemMapLocation location={locationsData} zoom={zoom} isRootElement rescale={rescale} />
+                <SystemMapLocation 
+                    location={locationsData} 
+                    zoom={zoom} 
+                    isRootElement 
+                    rescale={rescale}
+                    setSelectedLocation={setSelectedLocation}
+                />
             </div>
         </TransformComponent>
     )
@@ -122,7 +152,8 @@ const SystemMapLocation = ({
     zIndex,
     isRootElement,
     zoom,
-    rescale
+    rescale,
+    setSelectedLocation
 }: {
     location: LocationNode
     parent?: LocationNode
@@ -134,6 +165,7 @@ const SystemMapLocation = ({
     isRootElement?: boolean
     zoom: number
     rescale: number
+    setSelectedLocation: Dispatch<SetStateAction<LocationNode | null>>
 }) => {
     const objectPoint = findNewPoint(0, 0, location.startingAngle, location.distance * MAP_DISTANCE_FACTOR);
     const radius = location.radius ? location.radius * MAP_SCALE_FACTOR * 2.2 : 0
@@ -173,10 +205,14 @@ const SystemMapLocation = ({
                 top: isRootElement ? "50%" : objectPoint.y,
             }}>
                 {isWorld &&
-                    <div className="map-world" style={{
-                        transform: `scale(${rescale})`
-                    }}>
-                        <div className="map-world-circle" style={{
+                    <div className="map-world" id={location.name} 
+                        
+                        style={{
+                            transform: `scale(${rescale})`
+                        }}>
+                        <div className="map-world-circle map-singular-location" 
+                            onClick={() => setSelectedLocation(location)}
+                        style={{
                             height: radius,
                             width: radius,
                             backgroundColor: color
@@ -190,17 +226,18 @@ const SystemMapLocation = ({
                                 <>
                                     <p className="typeText">{location.typeText}</p>
                                     <p className="flavor-text">{location.flavorText}</p>
-                                    <p className="description">{location.description}</p>
                                 </>
                             }
                         </div>
                     </div>
                 }
                 {isSite && 
-                    <div className="map-site" style={{
-                        transform: `scale(${rescale})`
-                    }}>
-                        <div className="map-site-circle"></div>
+                    <div className="map-site "  id={location.name} 
+                        
+                        style={{
+                            transform: `scale(${rescale})`
+                        }}>
+                        <div className="map-site-circle map-singular-location" onClick={() => setSelectedLocation(location)}></div>
                         <div className="text-under" style={{
                             bottom: `${radius * 0.5 + 5}px`,
                             opacity: isZoomLevel2 ? "1" : "0"
@@ -208,7 +245,6 @@ const SystemMapLocation = ({
                             <h2 className="name">{location.name}</h2>
                             <p className="typeText">{location.typeText}</p>
                             <p className="flavor-text">{location.flavorText}</p>
-                            <p className="description">{location.description}</p>
                         </div>
                         
                     </div>
@@ -224,6 +260,7 @@ const SystemMapLocation = ({
                             zIndex={zIndexCurrent}
                             zoom={zoom}
                             rescale={rescale}
+                            setSelectedLocation={setSelectedLocation}
                         />
                     )
                 })}
