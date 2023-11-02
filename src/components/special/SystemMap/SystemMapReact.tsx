@@ -2,31 +2,35 @@ import { MAP_DISTANCE_FACTOR, MAP_SCALE_FACTOR, MAP_DEFAULT_COLOR } from '@/comp
 import { locationsData } from '@/components/special/SystemMap/data/locationsData';
 import { LocationNode, LocationType } from '@/components/special/SystemMap/types';
 import { findNewPoint, increaseBrightness } from '@/components/special/SystemMap/WorldGenerationHelpers';
-import { useEffect, useRef, useState } from 'react';
-import { TransformWrapper, TransformComponent, ReactZoomPanPinchContentRef, useTransformEffect, ReactZoomPanPinchState } from "react-zoom-pan-pinch";
+import { useRef, useState } from 'react';
+import { TransformWrapper, TransformComponent, ReactZoomPanPinchContentRef, useTransformEffect } from "react-zoom-pan-pinch";
 import './SystemMap.scss'
 
 const MAP_MIN_SCALE = 1
 const MAP_MAX_SCALE = 8
 
 const SystemMapReact = () => {
-    const transformComponentRef = useRef(null);
+    const transformComponentRef = useRef<ReactZoomPanPinchContentRef | null>(null);
     const [scale, setScale] = useState(1)
 
     // TODO: Unique bounds on mobile scale devices. Desktop should be more limited.
 
-    const updateScale = (e) => {
-        const targetScale = parseFloat(e.target.value);
-        const factor = Math.log(targetScale / scale);
+    const updateScaleFromExternalInput = (newScale: number) => {
+        if (!transformComponentRef.current) return
         const { zoomIn, zoomOut } = transformComponentRef.current;
-    
+
+        const targetScale = parseFloat(newScale);
+        const factor = Math.log(targetScale / scale) * 5;
         if (targetScale > scale) {
           zoomIn(factor, 0);
         } else {
           zoomOut(-factor, 0);
         }
-    
         setScale(targetScale);
+    }
+
+    const updateScale = (e) => {
+        updateScaleFromExternalInput(e.target.value)
     };
 
     return (
@@ -37,10 +41,10 @@ const SystemMapReact = () => {
             initialPositionY={0}
             minScale={MAP_MIN_SCALE}
             maxScale={MAP_MAX_SCALE}
-            smooth={true}
+            smooth={false}
             centerOnInit
             wheel={{
-                //step: 1,
+                step: 0.5,
                 //smoothStep:0.005
             }}
             onZoom={(e) => {
@@ -58,13 +62,23 @@ const SystemMapReact = () => {
                             value={scale} 
                             min={MAP_MIN_SCALE} 
                             max={MAP_MAX_SCALE} 
-                            step="0.001"
+                            step="0.5"
                             style={{
                                 position: "absolute",
                                 zIndex: "900"
                             }}
                             onChange={updateScale} 
                         />
+                        <button
+                            onClick={(e) => {
+                                updateScaleFromExternalInput(1)
+                            }}
+                        >level 1</button>
+                        <button
+                            onClick={(e) => {
+                                updateScaleFromExternalInput(5)
+                            }}
+                        >level 2</button>
                         <SystemMapTransformContainer transform={transform}/>
                     </>
                     
@@ -80,37 +94,22 @@ const SystemMapTransformContainer = ({
     transform: ReactZoomPanPinchContentRef
 }) => {
     const [zoom, setZoom] = useState<number>(1)
-    
-
-    
 
     useTransformEffect(({ state, instance }) => {
         setZoom(state.scale)
     });
+
     const rescale = (0.9 / zoom)
     
     return (
-        <>
-            
-            <button
-                onClick={(e) => {
-                    transform.zoomIn(0.8)
-                }}
-            >zoom in</button>
-            <button
-                onClick={(e) => {
-                    transform.zoomOut(0.8)
-                }}
-            >zoom out</button>
-            <TransformComponent wrapperClass="sunset-map-dynamic">
-                <div className="sunset-map-bounding-block"></div>
-                <div className="sunset-map-large-glowing-background excluded"></div>
-                <div className="sunset-map-glowing-sun"></div>
-                <div className="sunset-map-inner-container">
-                    <SystemMapLocation location={locationsData} zoom={zoom} isRootElement rescale={rescale} />
-                </div>
-            </TransformComponent>
-        </>
+        <TransformComponent wrapperClass="sunset-map-dynamic">
+            <div className="sunset-map-bounding-block"></div>
+            <div className="sunset-map-large-glowing-background excluded"></div>
+            <div className="sunset-map-glowing-sun"></div>
+            <div className="sunset-map-inner-container">
+                <SystemMapLocation location={locationsData} zoom={zoom} isRootElement rescale={rescale} />
+            </div>
+        </TransformComponent>
     )
 }
 
@@ -179,6 +178,7 @@ const SystemMapLocation = ({
                         }} />
                         <div className="text-under" style={{
                             top: `${radius * 0.5 + 5}px`,
+                            color: color
                         }}>
                             <h2 className="name">{location.name}</h2>
                         </div>
