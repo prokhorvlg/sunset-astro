@@ -7,7 +7,8 @@ import { TransformWrapper, TransformComponent, ReactZoomPanPinchContentRef, useT
 import './SystemMap.scss'
 
 const MAP_MIN_SCALE = 1
-const MAP_MAX_SCALE = 8
+const MAP_MAX_SCALE = 12
+const MAP_SCALE_STEP = 0.5
 
 const SystemMapReact = () => {
     const transformComponentRef = useRef<ReactZoomPanPinchContentRef | null>(null);
@@ -19,7 +20,7 @@ const SystemMapReact = () => {
         if (!transformComponentRef.current) return
         const { zoomIn, zoomOut } = transformComponentRef.current;
 
-        const targetScale = parseFloat(newScale);
+        const targetScale = newScale;
         const factor = Math.log(targetScale / scale) * 5;
         if (targetScale > scale) {
           zoomIn(factor, 0);
@@ -30,7 +31,7 @@ const SystemMapReact = () => {
     }
 
     const updateScale = (e) => {
-        updateScaleFromExternalInput(e.target.value)
+        updateScaleFromExternalInput(parseFloat(e.target.value))
     };
 
     return (
@@ -44,7 +45,7 @@ const SystemMapReact = () => {
             smooth={false}
             centerOnInit
             wheel={{
-                step: 0.5,
+                step: MAP_SCALE_STEP,
                 //smoothStep:0.005
             }}
             onZoom={(e) => {
@@ -62,7 +63,7 @@ const SystemMapReact = () => {
                             value={scale} 
                             min={MAP_MIN_SCALE} 
                             max={MAP_MAX_SCALE} 
-                            step="0.5"
+                            step={MAP_SCALE_STEP}
                             style={{
                                 position: "absolute",
                                 zIndex: "900"
@@ -138,6 +139,8 @@ const SystemMapLocation = ({
     const radius = location.radius ? location.radius * MAP_SCALE_FACTOR * 2.2 : 0
     const color = location.color ? increaseBrightness(location.color, 20) : MAP_DEFAULT_COLOR
 
+    const isZoomLevel2 = zoom > 5
+
     // for rings
     const zIndexCurrent = zIndex ? zIndex + 1 : 200
 
@@ -181,6 +184,13 @@ const SystemMapLocation = ({
                             color: color
                         }}>
                             <h2 className="name">{location.name}</h2>
+                            {isZoomLevel2 &&
+                                <>
+                                    <p className="typeText">{location.typeText}</p>
+                                    <p className="flavor-text">{location.flavorText}</p>
+                                    <p className="description">{location.description}</p>
+                                </>
+                            }
                         </div>
                     </div>
                 }
@@ -191,9 +201,11 @@ const SystemMapLocation = ({
                         <div className="map-site-circle"></div>
                         <div className="text-under" style={{
                             bottom: `${radius * 0.5 + 5}px`,
-                            opacity: zoom < 4 ? "0" : "1"
+                            opacity: isZoomLevel2 ? "1" : "0"
                         }}>
                             <h2 className="name">{location.name}</h2>
+                            <p className="typeText">{location.typeText}</p>
+                            <p className="flavor-text">{location.flavorText}</p>
                             <p className="description">{location.description}</p>
                         </div>
                         

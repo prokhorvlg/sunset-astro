@@ -12,8 +12,11 @@ export const locationsData: LocationNode = {
     children: [
         {
             name: "Interbeacon",
+            typeText: "Telecommunications Statite",
+            flavorText: "Glory to the Union, even in death.",
+            description: "Interbeacon was an enormous statite built to syncronize the Aggregate, the Union's interplanetery datanet. Today, it hosts RADIUS, the final remnant of the Union's automated economic planning system. Their voice booms across the skies, visible from all points in the System.",
             type: LocationType.Site,
-            distance: 95,
+            distance: 20,
             startingAngle: 270,
         },
         {
@@ -27,7 +30,9 @@ export const locationsData: LocationNode = {
             children: [
                 {
                     name: "Inner Eye Orbital",
-                    description: "Where it all began.",
+                    typeText: "Noetic Research Station",
+                    flavorText: "The beginning, the end, and all that came in between.",
+                    description: "The Inner Eye was the final orbital-class space station to be built by humans. The noetic altar built into its core, Project WHITE SERAPH, was activated on the same day the Unexpected Interrupt occured: May 5, 2095, the day mankind vanished from the System.",
                     type: LocationType.Site,
                     distance: 22,
                     startingAngle: 25,
@@ -37,6 +42,9 @@ export const locationsData: LocationNode = {
         {
             name: "Venus",
             type: LocationType.Planet,
+            typeText: "Hot Jungle World",
+            flavorText: "Welcome, comrade! Here, our people work as hard as the machines to build our Communist future- ALERT. ALERT. Hive invasion detected. Seek shelter.",
+            description: "",
             color: "#b8ff30",
             distance: 165,
             radius: 15,
@@ -237,4 +245,6 @@ export const locationsData: LocationNode = {
     ]
 }
 
-// 
+// THERE IS NOTHING ON THE SUN.
+// THE SURFACE IS TOO HOT FOR ANYTHING TO EXIST HERE.
+// *STOP LOOKING AT THE SURFACE OF THE SUN.*
