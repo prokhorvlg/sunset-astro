@@ -20,6 +20,15 @@ export const locationsData: LocationNode = {
             startingAngle: 270,
         },
         {
+            name: "Axiom",
+            typeText: "Solar Array",
+            flavorText: "Power to the System first, power to the universe next.",
+            description: "",
+            type: LocationType.Site,
+            distance: 45,
+            startingAngle: 190,
+        },
+        {
             name: "Mercury",
             type: LocationType.Planet,
             color: "#f47f00",
@@ -76,6 +85,15 @@ export const locationsData: LocationNode = {
             startingAngle: 280,
             children: [
                 {
+                    name: "The Seventh Orbital",
+                    typeText: "Stellar home of the Machine World",
+                    flavorText: "The fractal labyrinth is the most efficient structure ever designed by conscious beings.",
+                    description: "",
+                    type: LocationType.Site,
+                    distance: 35,
+                    startingAngle: 150,
+                },
+                {
                     name: "Luna",
                     type: LocationType.Moon,
                     distance: 66,
@@ -99,11 +117,21 @@ export const locationsData: LocationNode = {
         {
             name: "Asteroid Belt",
             type: LocationType.AsteroidBelt,
-            distance: 310,
-            radius: 11,
+            distance: 340,
+            radius: 15,
             speed: -1.17,
             startingAngle: 44,
-            children: [],
+            children: [
+                {
+                    name: "Heavenbreaker Cache 80-IV",
+                    typeText: "Bundle of nuclear missiles",
+                    flavorText: "Sleeping nuclear missiles, waiting for the final order.",
+                    description: "",
+                    type: LocationType.Site,
+                    distance: 35,
+                    startingAngle: 150,
+                },
+            ],
             classes: "asteroid-belt"
         },
         {
@@ -219,7 +247,7 @@ export const locationsData: LocationNode = {
             name: "Kuiper Belt",
             type: LocationType.AsteroidBelt,
             distance: 955,
-            radius: 5,
+            radius: 50,
             speed: -1.17,
             startingAngle: 0,
             children: []

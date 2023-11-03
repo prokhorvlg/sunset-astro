@@ -124,7 +124,11 @@ const SystemMapTransformContainer = ({
         setZoom(state.scale)
     });
 
-    const rescale = (0.9 / zoom)
+    const zoomExponential = zoom * zoom
+    const zoomMultiplier = zoomExponential * 0.005
+
+    const rescale = 0.8 / (zoom) // remains consistent across all zoom levels
+    const growingRescale = rescale + zoomMultiplier // grows as you zoom in
     
     return (
         <TransformComponent wrapperClass="sunset-map-dynamic">
@@ -137,6 +141,7 @@ const SystemMapTransformContainer = ({
                     zoom={zoom} 
                     isRootElement 
                     rescale={rescale}
+                    growingRescale={growingRescale}
                     setSelectedLocation={setSelectedLocation}
                 />
             </div>
@@ -153,6 +158,7 @@ const SystemMapLocation = ({
     isRootElement,
     zoom,
     rescale,
+    growingRescale,
     setSelectedLocation
 }: {
     location: LocationNode
@@ -165,6 +171,7 @@ const SystemMapLocation = ({
     isRootElement?: boolean
     zoom: number
     rescale: number
+    growingRescale: number
     setSelectedLocation: Dispatch<SetStateAction<LocationNode | null>>
 }) => {
     const objectPoint = findNewPoint(0, 0, location.startingAngle, location.distance * MAP_DISTANCE_FACTOR);
@@ -180,6 +187,7 @@ const SystemMapLocation = ({
         location.type === LocationType.Moon ||
         location.type === LocationType.Sun
     const isSite = location.type === LocationType.Site
+    const isBelt = location.type === LocationType.AsteroidBelt
 
     return (
         <>
@@ -197,7 +205,17 @@ const SystemMapLocation = ({
                     width: location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
                     zIndex: zIndexCurrent
                 }}>
-                    <div className="map-asteroid-belt" />
+                    <div className="map-asteroid-belt" style={{
+                        borderWidth: `${radius}px`,
+                        backgroundSize: `${growingRescale * 100}px`
+                    }}>
+                        <div className="map-asteroid-belt-cover" style={{
+                            top: `${radius}px`,
+                            left: `${radius}px`,
+                            right: `${radius}px`,
+                            bottom: `${radius}px`,
+                        }}></div>
+                    </div>
                 </div>
             }
             <div className="map-location-container" style={{
@@ -206,7 +224,33 @@ const SystemMapLocation = ({
             }}>
                 {isWorld &&
                     <div className="map-world" id={location.name} 
-                        
+                        style={{
+                            transform: `scale(${rescale})`
+                        }}
+                    >
+                        <div className="map-world-circle map-singular-location" 
+                            onClick={() => setSelectedLocation(location)}
+                            style={{
+                                height: radius,
+                                width: radius,
+                                backgroundColor: color,
+                        }} />
+                        <div className="text-under" style={{
+                            top: `${radius * 0.5 + 5}px`,
+                            color: color
+                        }}>
+                            <h2 className="name">{location.name}</h2>
+                            {isZoomLevel2 &&
+                                <>
+                                    <p className="typeText">{location.typeText}</p>
+                                    <p className="flavor-text">{location.flavorText}</p>
+                                </>
+                            }
+                        </div>
+                    </div>
+                }
+                {isBelt &&
+                    <div className="map-world" id={location.name} 
                         style={{
                             transform: `scale(${rescale})`
                         }}>
@@ -232,8 +276,7 @@ const SystemMapLocation = ({
                     </div>
                 }
                 {isSite && 
-                    <div className="map-site "  id={location.name} 
-                        
+                    <div className="map-site" id={location.name} 
                         style={{
                             transform: `scale(${rescale})`
                         }}>
@@ -260,6 +303,7 @@ const SystemMapLocation = ({
                             zIndex={zIndexCurrent}
                             zoom={zoom}
                             rescale={rescale}
+                            growingRescale={growingRescale}
                             setSelectedLocation={setSelectedLocation}
                         />
                     )

@@ -9,11 +9,13 @@ text {
 }
 
 $defaultColor: #ffb64e;
+$map-reddish-color: #ff4111;
+$map-background-color: #1a110c;
 
 .sunset-map-div {
   width: 95%;
   margin: 0 auto;
-  background: #1a110c;
+  background: $map-background-color;
 
   display: flex;
   justify-content: center;
@@ -116,7 +118,7 @@ $defaultColor: #ffb64e;
   }
   overflow: hidden;
 
-  background: #1a110c;
+  background: $map-background-color;
 
   * {
     user-select: none;
@@ -175,23 +177,31 @@ $defaultColor: #ffb64e;
       border-style: solid;
       border-color: rgba(#ffb64e, 0.2);
       border-radius: 5000px;
-      background: rgba(#1a110c, 0.95);
+      background: rgba($map-background-color, 0.95);
     }
 
     .map-asteroid-belt-container {
       position: absolute;
       transform: translate(-50%, -50%);
-
       .map-asteroid-belt {
-        $beltWidth: 3px;
         width: 100%;
         height: 100%;
         position: absolute;
-        left: -$beltWidth; top: -$beltWidth;
-        border: $beltWidth dashed rgba(#ffb64e, 0.1);
+
+        background: url("/images/patterns/map-asteroid-belt-pattern.svg");
+        background-size: 80px;
+        opacity: 0.4;
+
         border-radius: 5000px;
         animation: spin 160s linear infinite;
         will-change: contents;
+        box-sizing: border-box;
+        .map-asteroid-belt-cover {
+          position: absolute;
+          top: 60px; left: 60px; right: 60px; bottom: 60px;
+          border-radius: 5000px;
+          background: $map-background-color;
+        }
       }
     }
     
@@ -261,6 +271,7 @@ $defaultColor: #ffb64e;
       line-height: 18px;
       width: 500px;
       text-align: center;
+      transition: 0.2s ease-in-out;
       &::before, &::after {
         content: "\"";
       }
