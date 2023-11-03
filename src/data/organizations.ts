@@ -64,19 +64,22 @@ export const Organizations: Organization[] = [
             }
         ]
     },
-    /*{
+    {
         id: "dynatek",
         name: "Dynatek Technologies",
-        type: "Defense and Security Contractor",
+        color: '#ff2d36',
+        type: "Defense Industry Corporation",
+        image: "/images/logos/dynatek.png",
         sortType: SortType.RobotManufacturer,
+        basedOn: "Raytheon",
         specialization: "",
         description: 
-`One of the first companies to be born in the Titan tech boom, \`Dynatek\` was an advanced cybernetics company known for its intelligent security robots and mastermind designs. 
+`One of the first corporations to be born in the Titan technology boom of the 21st century, **Dynatek** would become known for its highly-intelligent combat robots and masterminds used mainly by the Coalition's Heavenbreaker Initiative. They are the definition of "military-industrial complex". 
 
-*Fun fact*: Dynatek began as the Dynamic Heating Company, but pivoted into cybernetics after a lucrative government contract. Since then, they were a major contractor for the Coalition military. UNISERVE was designed during one of these contracts.`,
+Dynatek started as an HVAC installation company known as the *Dynamic Heating Company*, but pivoted into robotics after being offered a lucrative government contract.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"]
-    },*/
+    },
     {
         id: "maxwell",
         name: "Maxwell Control Systems",
@@ -232,15 +235,20 @@ Kelso products often incorporated wood-paneling in their design, considered luxu
             }
         ]
     },
-    /*{
+    {
         id: "emerson",
-        name: "Emerson",
-        type: "Industrial and Office Electronics Company",
+        name: "Emerson Powered Industrial Solutions",
+        type: "Industrial Robotics Company",
+        image: "/images/logos/emerson.svg",
+        color: "#74931f",
+        basedOn: "John Deere",
         description:
-        `While they were best known for their ubiquitous industrial systems, often found in warehouses across the System, Emerson also dabbled in rugged consumer robots.`,
+        `While they were best known for their ubiquitous industrial systems, ranging from agricultural combines to warehouse stackers, **Emerson** also dabbled in rugged consumer robots. 
+        
+Around the time of the Unexpected Interrupt, the corporation was attempting to break through to the consumer market with offerings such as the Emerson 3051D, a rugged interfacer based on the classic BBM design.`,
         affiliation: Affiliation.Coalition,
         tags: ["robot manufacturer"]
-    },*/
+    },
     {
         id: "insite",
         name: "Integrated Silicon Technologies",
