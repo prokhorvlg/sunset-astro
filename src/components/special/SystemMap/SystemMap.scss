@@ -233,26 +233,36 @@ $map-background-color: #1a110c;
         position: absolute;
         transform: translate(-50%, -50%);
         border-radius: 5000px;
-        height: 3px;
-        width: 3px;
+        height: 5px;
+        width: 5px;
         background: white;
       }
       .name {
+        position: absolute;
+        transform: translate(-50%, -50%);
+
         color: white;
         font-size: 14px;
+        
       }
     }
     .text-under {
+      position: absolute;
+      transform: translate(-50%, 0);
+
       user-select: none;
       pointer-events: none;
-      position: absolute;
-      display: block;
-      transform: translate(-50%, 0);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
 
     .name {
       user-select: none;
       pointer-events: none;
+
       z-index: 600;
       font-family: $font-code;
       font-weight: 500;
@@ -262,6 +272,15 @@ $map-background-color: #1a110c;
       margin: 0;
       white-space: nowrap;
     }
+    .type-text {
+      text-align: center;
+      font-family: $font-code;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      margin: 10px 0 5px 0;
+      color: white;
+    }
     .flavor-text {
       user-select: none;
       pointer-events: none;
@@ -269,9 +288,11 @@ $map-background-color: #1a110c;
       font-weight: 400;
       font-size: 14px;
       line-height: 18px;
-      width: 500px;
+      width: 350px;
+      margin: 0;
       text-align: center;
       transition: 0.2s ease-in-out;
+      color: white;
       &::before, &::after {
         content: "\"";
       }
