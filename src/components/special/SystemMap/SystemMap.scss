@@ -57,6 +57,10 @@
   cursor: grab;
   background: $map-background-color;
 
+  &:hover:active {
+    cursor: grabbing;
+  }
+
   &::after {
     content: '';
     position: absolute;

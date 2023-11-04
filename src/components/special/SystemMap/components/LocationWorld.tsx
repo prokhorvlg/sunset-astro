@@ -34,7 +34,7 @@ const LocationWorld = ({
 
   // VISIBILITY CULLING
   const visibleRef = useRef(null)
-  const isVisible = useIsVisible(visibleRef)
+  const isInView = useIsVisible(visibleRef)
 
   const isSun = location.type === LocationType.Sun
 
@@ -46,7 +46,7 @@ const LocationWorld = ({
         transform: `scale(${rescale})`,
       }}
     >
-      {isVisible && (
+      {isInView && (
         <>
           {/* PLANET CIRCLE */}
           <div
