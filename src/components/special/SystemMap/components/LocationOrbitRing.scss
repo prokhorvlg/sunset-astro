@@ -1,0 +1,11 @@
+@import 'src/styles/imports.scss';
+
+.map-orbit-ring {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  
+  border-style: solid;
+  border-color: rgba(#ffb64e, 0.2);
+  border-radius: 5000px;
+  background: rgba($map-background-color, 1);
+}

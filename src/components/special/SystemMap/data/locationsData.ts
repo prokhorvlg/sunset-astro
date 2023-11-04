@@ -1,4 +1,4 @@
-import { LocationNode, LocationType } from "@/components/special/SystemMap/types";
+import { LocationNode, LocationType } from "@/components/special/SystemMap/data/types";
 
 // Data for generation of objects
 export const locationsData: LocationNode = {

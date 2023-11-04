@@ -1,4 +1,4 @@
-import { LocationNode } from "@/components/special/SystemMap/types";
+import { LocationNode } from "@/components/special/SystemMap/data/types";
 
 export const findNewPoint = (x: number, y: number, angle: number, distance: number) => {
     const result = {

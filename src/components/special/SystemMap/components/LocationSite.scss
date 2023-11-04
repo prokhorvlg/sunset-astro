@@ -1,0 +1,23 @@
+@import 'src/styles/imports.scss';
+
+.map-site {
+  position: absolute;
+  z-index: 600;
+  transform: translate(-50%, -50%);
+  .map-site-circle {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 5000px;
+    height: 15px;
+    width: 15px;
+    opacity: 1;
+    background: $map-amber-color;
+  }
+  .name {
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    color: $map-amber-color;
+    font-size: 18px;
+  }
+}

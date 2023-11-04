@@ -1,0 +1,74 @@
+@import 'src/styles/imports.scss';
+
+.map-world {
+  position: absolute;
+  z-index: 500;
+  transform: translate(-50%, -50%);
+
+  .map-world-circle {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 5000px;
+    
+    border: 2px solid $map-reddish-color;
+    .inner-sun-border {
+      border-radius: 5000px;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%; top: 50%;
+      border: 2px dotted;
+    }
+    .inner-circle {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%; top: 50%;
+      border-radius: 5000px;
+      //height: 100%; width: 100%;
+
+      //@include abg(1);
+      //@include abg-red-diagonal();
+
+      background-color: yellow;
+      //mask-image: url('/images/patterns/red-diagonal-pattern.svg');
+      
+      -webkit-mask: url('/images/patterns/map-planet-pattern.svg') 0 50%/5px 5px;
+      mask: url('/images/patterns/map-planet-pattern.svg') repeat 50% 50%;
+
+      &::after {
+        border-radius: 5000px;
+      }
+
+      
+    }
+    .symbol {
+      position: absolute;
+      display: block;
+      display: none;
+      transform: translate(-50%, -50%);
+      left: 50%; top: 50%;
+      z-index: 2000;
+      color: $map-amber-color;
+      font-family: $font-code;
+      font-size: 25px;
+      margin: 0;
+      $strokeWidth: 3px;
+      text-shadow:
+        -2px -2px 0 #000,  
+          2px -2px 0 #000,
+          -2px 2px 0 #000,
+          2px 2px 0 #000;
+    }
+    .important {
+      position: absolute;
+      //transform: translate(-50%, -50%);
+      bottom: calc(90%); left: calc(90%);
+      z-index: 700;
+      color: rgb(255, 76, 22);
+      font-family: $font-code;
+      font-size: 25px;
+    }
+  }
+  .name {
+    font-size: 14px;
+  }
+}

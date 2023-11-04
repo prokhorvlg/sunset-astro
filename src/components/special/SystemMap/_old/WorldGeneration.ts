@@ -1,5 +1,5 @@
 import { MAP_BACKGROUND_COLOR, MAP_DEFAULT_COLOR, MAP_DISTANCE_FACTOR, MAP_SCALE_FACTOR } from "@/components/special/SystemMap/data/constants";
-import { LocationNode, LocationType } from "@/components/special/SystemMap/types";
+import { LocationNode, LocationType } from "@/components/special/SystemMap/data/types";
 import * as d3 from "d3";
 import { convertTreeToArray, findNewPoint, hashCode, increaseBrightness } from "./WorldGenerationHelpers";
 

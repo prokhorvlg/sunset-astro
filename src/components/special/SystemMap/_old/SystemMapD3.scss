@@ -1,0 +1,74 @@
+@import 'src/styles/imports.scss';
+
+.sunset-map-div {
+  width: 95%;
+  margin: 0 auto;
+  background: $map-background-color;
+
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  //height: 100%;
+  max-width: 2000px;
+  position: absolute;
+  top: 86px; bottom: 10px; left: 0; right: 0;
+
+  svg {
+    //width: 1850px;
+    //max-width: 100%;
+    border: $color-sunset-red solid 2px; 
+    border-radius: 6px;
+    //height: 90vh;
+
+    height: 100%;
+    width: 100%;
+
+    * {
+      user-select: none;
+    }
+    
+    @media screen and (max-width: $breakpoint-mobile) {
+      height: 80vh; 
+    }
+
+    // ZOOM LEVEL HANDLERS
+    .zoom-level-2 {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &[data-zoom-level="1"] {
+      .zoom-level-2 {
+        opacity: 0;
+        pointer-events: none;
+        user-select: none;
+      }
+    }
+    &[data-zoom-level="2"] {
+      .zoom-level-2 {
+        opacity: 1;
+      }
+    }
+
+    .huge-sun-overlay {
+      opacity:0.2;
+    }
+    .sun-heat-overlay {
+      opacity: 0.1;
+    }
+
+    .orbit {
+      stroke: $map-amber-color;
+      fill: transparent;
+      opacity: 0.2;
+    }
+
+    .name {
+      font-family: $font-code;
+      font-weight: 500;
+      
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}

@@ -4,31 +4,38 @@ export const enum LocationType {
     Planet,
     Moon,
     AsteroidBelt,
-    Site // specific locations
+    Site,            // Specific location eg. Space Station
+}
+
+export const enum RelativePosition {
+  Local,    // Object remains constant in relation to parent
+  Deep      // Object remains in static position on map (default)
 }
 
 export interface LocationNode {
-    name: string,
-    typeText?: string
-    description?: string
-    flavorText?: string
-
+    name: string,         // eg. Sol
+    typeText?: string     // eg. Main Sequence Star
+    description?: string  // eg. The sun is a ...
+    flavorText?: string   // eg Don't step on it.
+    
     color?: string, 
     colorSecondary?: string
 
-    isImportant?: boolean
+    isImportant?: boolean // Has special indicator on map
 
-    type: LocationType, 
+    type: LocationType,
+    relativePosition?: RelativePosition
+
     distance: number, 
     radius?: number, 
     speed?: number, 
     startingAngle: number, 
     
-    crafts?: LocationNode[], 
+    crafts?: LocationNode[], // unused
     children?: LocationNode[], 
     parent?: string,
     classes?: string
-    zoomLevel?: number
+    zoomLevel?: number // unused
 }
 
 // human population pre-interrupt

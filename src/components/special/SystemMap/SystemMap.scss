@@ -1,91 +1,6 @@
 @import 'src/styles/imports.scss';
 
-text {
-  /*fill: #fff;*/
-}
 
-.sunset-map-container {
-  
-}
-
-$map-amber-color: #ffb64e;
-$map-reddish-color: #ff4111;
-$map-background-color: #1a110c;
-
-.sunset-map-div {
-  width: 95%;
-  margin: 0 auto;
-  background: $map-background-color;
-
-  display: flex;
-  justify-content: center;
-
-  width: 100%;
-  //height: 100%;
-  max-width: 2000px;
-  position: absolute;
-  top: 86px; bottom: 10px; left: 0; right: 0;
-
-  svg {
-    //width: 1850px;
-    //max-width: 100%;
-    border: $color-sunset-red solid 2px; 
-    border-radius: 6px;
-    //height: 90vh;
-
-    height: 100%;
-    width: 100%;
-
-    * {
-      user-select: none;
-    }
-    
-    @media screen and (max-width: $breakpoint-mobile) {
-      height: 80vh; 
-    }
-
-    // ZOOM LEVEL HANDLERS
-    .zoom-level-2 {
-      transition: opacity 0.3s ease-in-out;
-    }
-
-    &[data-zoom-level="1"] {
-      .zoom-level-2 {
-        opacity: 0;
-        pointer-events: none;
-        user-select: none;
-      }
-    }
-    &[data-zoom-level="2"] {
-      .zoom-level-2 {
-        opacity: 1;
-      }
-    }
-
-    .huge-sun-overlay {
-      opacity:0.2;
-    }
-    .sun-heat-overlay {
-      opacity: 0.1;
-    }
-
-    .orbit {
-      stroke: $map-amber-color;
-      fill: transparent;
-      opacity: 0.2;
-    }
-
-    .name {
-      font-family: $font-code;
-      font-weight: 500;
-      
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      //fill: #85190b;
-    }
-    
-  }
-}
 
 @mixin centeredObject() {
   position: absolute;
@@ -102,7 +17,18 @@ $map-background-color: #1a110c;
   left: 0;
   right: 0;
 }
-.sunset-map-dynamic {
+.noise-rectangle {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  mix-blend-mode: color-dodge;
+  opacity: 0.2;
+  display: none;
+}
+.sunset-map-container {
   width: 97%;
   height: 85vh;
   max-width: 2000px;
@@ -112,11 +38,24 @@ $map-background-color: #1a110c;
 
   position: absolute;
   top: 86px; bottom: 0px; left: 0; right: 0;
+  overflow: hidden;
   @media screen and (max-width: $breakpoint-mobile) {
     top: 64px;
   }
-  overflow: hidden;
-
+  .system-map-context-menu-container {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+.sunset-map-dynamic {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  height: 100%;
+  width: 100%;
+  cursor: grab;
+  background: $map-background-color;
 
   &::after {
     content: '';
@@ -127,7 +66,7 @@ $map-background-color: #1a110c;
     opacity: 0.3;
     pointer-events: none;
   }
-  background: $map-background-color;
+  
 
   .sunset-map-dynamic-content {
     background: $map-background-color;
@@ -146,6 +85,7 @@ $map-background-color: #1a110c;
     user-select: none;
     pointer-events: none;
   }
+
   .sunset-map-large-glowing-background {
     $largeGlowingBackgroundWidth: 2000px;
     @include centeredObject();
@@ -159,6 +99,7 @@ $map-background-color: #1a110c;
     user-select: none;
     pointer-events: none;
   }
+
   .sunset-map-large-outer-fade-background {
     display: none;
     $largeGlowingBackgroundWidth: 3000px;
@@ -173,6 +114,7 @@ $map-background-color: #1a110c;
     //background: radial-gradient(rgb(255, 235, 59) 0%, rgb(255, 123, 47) 60%, rgb(117, 29, 2) 100%);
     pointer-events: none;
   }
+
   .sunset-map-glowing-sun {
     @include centeredObject();
     height: 250px;
@@ -188,271 +130,33 @@ $map-background-color: #1a110c;
     user-select: none;
     pointer-events: none;
   }
+
   .sunset-map-grid-container {
     position: absolute;
     z-index: 260;
-  }
-  .sunset-map-grid {
-    @include abg(0.1);
-    //@include abg-red-plus();
-    height: 10000px;
-    width: 10000px;
-    z-index: 260;
-    left: 50%;
-    top: 50%;
-    position: absolute;
-    //transform: translate(-50%, -50%);
-    mix-blend-mode: lighten;
-    &::after {
-      background-image: url('/images/patterns/map-bg-grid-pattern.svg');
-      background-size: 4px;
-      pointer-events: none;
-      
-    }
-  }
-
-  .map-location-container {
-    position: absolute;
-    
-    .map-orbit-ring {
+    .sunset-map-grid {
+      @include abg(0.07);
+      //@include abg-red-plus();
+      height: 10000px;
+      width: 10000px;
+      z-index: 260;
+      left: 50%;
+      top: 50%;
       position: absolute;
-      transform: translate(-50%, -50%);
-      
-      border-style: solid;
-      border-color: rgba(#ffb64e, 0.2);
-      border-radius: 5000px;
-      background: rgba($map-background-color, 1);
-    }
-
-    .map-asteroid-belt-container {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      .map-asteroid-belt {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-
-        background: url("/images/patterns/map-asteroid-belt-pattern.svg");
-        background-size: 80px;
-        opacity: 0.8;
-
-        border-radius: 5000px;
-        animation: spin 160s linear infinite;
-        will-change: contents;
-        box-sizing: border-box;
-        .map-asteroid-belt-cover {
-          position: absolute;
-          top: 60px; left: 60px; right: 60px; bottom: 60px;
-          border-radius: 5000px;
-          background: $map-background-color;
-        }
-      }
-      .map-asteroid-belt-name {
-        position: absolute;
-        top: 50%;
-        left: 100%;
-        opacity: 0.9;
-        color: $map-reddish-color;
-        .name {
-          text-align: left;
-        }
+      //transform: translate(-50%, -50%);
+      mix-blend-mode: lighten;
+      &::after {
+        background-image: url('/images/patterns/map-bg-grid-pattern.svg');
+        background-size: 4px;
+        pointer-events: none;
       }
     }
-    
-    .map-singular-location {
-      &:hover {
-        border: 2px solid $map-amber-color;
-      }
-    }
-    .selection-button-container {
-      position: absolute;
-      z-index: 700;
-      .selection-button {
-        position: absolute;
-        transform: translate(-50%, -50%) scale(0.8);
-        border-radius: 5000px;
-        z-index: 700;
-        background: rgba($map-reddish-color, 0);
-        border: 2px solid transparent;
-        transition: transform 0.1s ease-in-out;
-        &:hover {
-          cursor: pointer;
-          border: 2px solid $map-amber-color;
-          transform: translate(-50%, -50%) scale(1);
-          //background-color: rgba($map-reddish-color, 0.5);
-        }
-      }
-    }
-    
-    .map-world {
-      position: absolute;
-      z-index: 500;
-      transform: translate(-50%, -50%);
-
-      //transition: 0.1s;
-      .map-world-circle {
-        position: absolute;
-        transform: translate(-50%, -50%);
-        border-radius: 5000px;
-        
-        border: 2px solid $map-reddish-color;
-        //box-shadow: 0 0 10px 2px rgba($map-reddish-color, 0.2);
-        //background: white;
-        .inner-sun-border {
-          border-radius: 5000px;
-          position: absolute;
-          transform: translate(-50%, -50%);
-          left: 50%; top: 50%;
-          border: 2px dotted;
-          //animation: spin 100s linear infinite;
-        }
-        .inner-circle {
-          position: absolute;
-          transform: translate(-50%, -50%);
-          left: 50%; top: 50%;
-          border-radius: 5000px;
-          //height: 100%; width: 100%;
-
-          //@include abg(1);
-          //@include abg-red-diagonal();
-
-          background-color: yellow;
-          //mask-image: url('/images/patterns/red-diagonal-pattern.svg');
-          
-          -webkit-mask: url('/images/patterns/map-planet-pattern.svg') 0 50%/5px 5px;
-          mask: url('/images/patterns/map-planet-pattern.svg') repeat 50% 50%;
-
-          &::after {
-            border-radius: 5000px;
-          }
-
-          
-        }
-        .symbol {
-          
-          position: absolute;
-          display: block;
-          display: none;
-          transform: translate(-50%, -50%);
-          left: 50%; top: 50%;
-          z-index: 2000;
-          color: $map-amber-color;
-          font-family: $font-code;
-          font-size: 25px;
-          margin: 0;
-          //-webkit-text-stroke: 1px white;
-          $strokeWidth: 3px;
-          text-shadow:
-            -2px -2px 0 #000,  
-              2px -2px 0 #000,
-              -2px 2px 0 #000,
-              2px 2px 0 #000;
-        }
-        .important {
-          position: absolute;
-          //transform: translate(-50%, -50%);
-          bottom: calc(90%); left: calc(90%);
-          z-index: 700;
-          color: rgb(255, 76, 22);
-          font-family: $font-code;
-          font-size: 25px;
-          // text-shadow:
-          //   -2px -2px 0 #fff,  
-          //     2px -2px 0 #fff,
-          //     -2px 2px 0 #fff,
-          //     2px 2px 0 #fff;
-          
-        }
-      }
-      .name {
-        font-size: 14px;
-      }
-    }
-    .map-site {
-      position: absolute;
-      z-index: 600;
-      transform: translate(-50%, -50%);
-      .map-site-circle {
-        position: absolute;
-        transform: translate(-50%, -50%);
-        border-radius: 5000px;
-        height: 15px;
-        width: 15px;
-        opacity: 1;
-        background: $map-amber-color;
-      }
-      .name {
-        position: absolute;
-        transform: translate(-50%, -50%);
-
-        color: $map-amber-color;
-        font-size: 18px;
-        
-      }
-    }
-    .text-under {
-      position: absolute;
-      transform: translate(-50%, 0);
-
-      user-select: none;
-      pointer-events: none;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .name {
-      user-select: none;
-      pointer-events: none;
-
-      z-index: 600;
-      font-family: $font-code;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      text-align: center;
-      margin: 0;
-      white-space: nowrap;
-    }
-    .type-text {
-      text-align: center;
-      font-family: $font-code;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 18px;
-      margin: 20px 0 15px 0;
-      color: $map-amber-color;
-    }
-    .flavor-text {
-      user-select: none;
-      pointer-events: none;
-      font-family: $font-code;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 22px;
-      width: 350px;
-      margin: 0;
-      text-align: center;
-      transition: 0.2s ease-in-out;
-      color: $map-amber-color;
-      &::before, &::after {
-        content: "\"";
-      }
-    }
-    
   }
   
-  .map-location-container {
-    position: absolute;
-    
-  }
 }
 
 .spin {
-  //animation: spin 160s steps(160, step-end) infinite;
-  //animation-timing-function: steps(5, end);
+  animation: spin 160s steps(160, step-end) infinite;
 }
 @keyframes spin { 
   100% { 
@@ -460,4 +164,3 @@ $map-background-color: #1a110c;
       transform:rotate(360deg); 
   } 
 }
-

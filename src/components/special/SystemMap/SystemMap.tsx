@@ -1,115 +1,241 @@
-import * as d3 from "d3";
-import './SystemMap.scss'
-import { useState } from "react";
-import { locationsData } from "@/components/special/SystemMap/data/locationsData";
-import { generateWorlds } from "@/components/special/SystemMap/WorldGeneration";
-import { MAP_PAN_MULTIPLIER, MAP_DISTANCE_FACTOR, MAP_ZOOM_DETAIL_LEVEL_2 } from "@/components/special/SystemMap/data/constants";
+import {
+  MAP_MAX_SCALE,
+  MAP_MIN_SCALE,
+} from "@/components/special/SystemMap/data/constants"
+import { locationsData } from "@/components/special/SystemMap/data/locationsData"
+import { useEffect, useRef } from "react"
+import {
+  TransformWrapper,
+  TransformComponent,
+  ReactZoomPanPinchContentRef,
+} from "react-zoom-pan-pinch"
+import "./SystemMap.scss"
+import { useAtom } from "jotai"
+import SystemMapLocation from "@/components/special/SystemMap/components/SystemMapLocation"
+import {
+  scaleAtom,
+  usePosXAtom,
+  usePosYAtom,
+  selectedLocationAtom,
+  rescaleAtom,
+  opacityFadeInAtom,
+  transformAtom,
+} from "@/components/special/SystemMap/state/atoms"
 
 const SystemMap = () => {
-    const [zoom, setZoom] = useState(null)
+  const transformComponentRef =
+    useRef<ReactZoomPanPinchContentRef | null>(null)
 
-    const handleMap = (element: any) => {
-        // const w = window.innerWidth - 500;
-        // const h = window.innerHeight - 100;
-    
-        // Generate SVG element
-        const svgEl = d3.select(element);
-        
-        const w = svgEl.node().getBoundingClientRect().width; 
-        const h = svgEl.node().getBoundingClientRect().height; 
-    
-        //svgEl.selectAll("*").remove();
-        const svg = svgEl
-            //.attr("width", w)
-            //.attr("height", h);
-    
-        // GENERATE COSMIC OBJECTS
-        // Generate container for all cosmic objects
-        const container = svgEl.append("g")
-            .attr("id", "orbit_container");
-        
-        const { itemGroups, objectInfo } = generateWorlds(container, locationsData);
-    
-        // Enable zoom component
-        const panLimitX = MAP_PAN_MULTIPLIER * MAP_DISTANCE_FACTOR;
-        const panLimitY = panLimitX * 0.65;
-        // TODO: scale extent lower bound 0.5 on small screens, and start more outzoomed
-        const zoom = d3.zoom()
-            .extent([[0, 0], [w, h]])
-            .scaleExtent([0.9, 10])
-            .translateExtent([[-panLimitX, -panLimitY], [panLimitX, panLimitY]])
-            .on("zoom", (e) => handleZoom(e, container, itemGroups, objectInfo, svgEl))
-        svg.call(zoom);
-    
-        // Initial zoom and scale
-        const initialTransform = d3.zoomIdentity
-            .translate(w/2, h/2)
-            .scale(1);
-        svg.call(zoom.transform, initialTransform);
+  // Global state of map
+  const [transform, setTransform] = useAtom(transformAtom)
+  const [scale, setScale] = useAtom(scaleAtom)
+  const [rescale, setRescale] = useAtom(rescaleAtom)
+
+  const [posX, setPosX] = useAtom(usePosXAtom)
+  const [posY, setPosY] = useAtom(usePosYAtom)
+  const [selectedLocation, setSelectedLocation] = useAtom(
+    selectedLocationAtom
+  )
+
+  useEffect(() => {
+    if (!transformComponentRef.current) return
+    setTransform(transformComponentRef.current)
+  }, [transformComponentRef])
+
+  //const zoomExponential = scale * scale;
+  //const zoomMultiplier = zoomExponential * 0.005;
+
+  //const rescale = 0.8 / scale; // remains consistent across all zoom levels
+  //const growingRescale = rescale + zoomMultiplier; // grows as you zoom in
+
+  // TODO: Unique bounds on mobile scale devices. Desktop should be more limited.
+
+  const updateScaleFromExternalInput = (
+    newScale: number
+  ) => {
+    if (!transformComponentRef.current) return
+    const { zoomIn, zoomOut } =
+      transformComponentRef.current
+
+    const targetScale = newScale
+    const factor =
+      Math.log(targetScale / scale) / (1 / MAP_MAX_SCALE)
+    if (targetScale > scale) {
+      zoomIn(factor, 0)
+    } else {
+      zoomOut(-factor, 0)
+    }
+    setScale(targetScale)
+  }
+
+  const updateScale = (e) => {
+    updateScaleFromExternalInput(parseFloat(e.target.value))
+  }
+  const reset = () => {
+    if (selectedLocation) {
+      transformComponentRef.current?.zoomToElement(
+        selectedLocation.name,
+        1,
+        500
+      )
+    } else {
+      transformComponentRef.current?.zoomToElement(
+        "Sol",
+        1,
+        500
+      )
     }
 
-    const handleZoom = (event, container, itemGroups, objectInfo, svgEl) => {
-        //console.log("event", event)
-        const transform = event.transform
-        const currentZoomScale = transform.k
-        container.attr("transform", transform);
+    setSelectedLocation(null)
+  }
 
-        const zoom = 1 + (transform.k * 0.3)
-        const itemScale = ( 1 / zoom ) * 1.3
+  return (
+    <TransformWrapper
+      ref={transformComponentRef}
+      initialScale={scale}
+      initialPositionX={0}
+      initialPositionY={0}
+      minScale={MAP_MIN_SCALE}
+      maxScale={MAP_MAX_SCALE}
+      smooth={false}
+      centerOnInit
+      onZoom={(e) => {
+        setScale(e.state.scale)
+      }}
+      onZoomStop={(e) => {
+        setScale(e.state.scale)
+      }}
+      onTransformed={(e) => {
+        setScale(e.state.scale)
+        setPosX(e.state.positionX)
+        setPosY(e.state.positionY)
+      }}
+    >
+      {(transform: ReactZoomPanPinchContentRef) => {
+        return (
+          <>
+            {/* <div className="controls-test">
+              <input
+                type="range"
+                value={scale}
+                min={MAP_MIN_SCALE}
+                max={MAP_MAX_SCALE}
+                step={MAP_SCALE_STEP}
+                style={{
+                  position: "absolute",
+                  zIndex: "900",
+                }}
+                onChange={updateScale}
+              />
+              <button
+                onClick={(e) => {
+                  updateScaleFromExternalInput(1);
+                }}
+              >
+                level 1
+              </button>
+              <button
+                onClick={(e) => {
+                  updateScaleFromExternalInput(5);
+                }}
+              >
+                level 2
+              </button>
+              <button
+                onClick={(e) => {
+                  reset()
+                }}
+              >
+                reset
+              </button>
+              <p>{selectedLocation?.name}</p>
+              <p>{selectedLocation?.flavorText}</p>
+              <p>{selectedLocation?.description}</p>
+            </div> */}
+            <div className="sunset-map-container">
+              {/* <svg className="noise-rectangle" xmlns='http://www.w3.org/2000/svg'>
+                  <filter id='noiseFilter'>
+                    <feTurbulence 
+                      type='fractalNoise' 
+                      result="noiseResult"
+                      baseFrequency='0.65' 
+                      numOctaves='3' 
+                      stitchTiles='stitch'>
+                    </feTurbulence>
+                    <feColorMatrix in="noiseResult" type="hueRotate" values="0" result="noiseRotated">
+                      <animate attributeName="values" from="0" to="360" dur="20s" repeatCount="indefinite"/>
+                    </feColorMatrix>
+                  </filter>
+                  
+                  <rect width='100%' height='100%' filter='url(#noiseFilter)'/>
+                </svg> */}
+              <div
+                className="system-map-context-menu-container"
+                onContextMenu={(e) => {
+                  e.preventDefault()
+                  reset()
+                }}
+                onClick={(e) => {
+                  if (e.button === 1) {
+                    transform.zoomIn()
+                  }
+                }}
+              >
+                <SystemMapTransformContainer
+                  transform={transform}
+                />
+              </div>
+            </div>
+          </>
+        )
+      }}
+    </TransformWrapper>
+  )
+}
 
-        itemGroups.forEach(itemGroup => {
-            const name = itemGroup?.attr("data-name")
-            const storeEntry = objectInfo[name]
-            itemGroup.attr("transform", "translate(" + ( storeEntry?.x || 0) + ", " + (storeEntry?.y || 0) + ") scale(" + itemScale + ")")
-            
-            if (currentZoomScale > MAP_ZOOM_DETAIL_LEVEL_2) {
-                svgEl.attr("data-zoom-level", 2)
-            } else {
-                svgEl.attr("data-zoom-level", 1)
-            }
-        });
+const SystemMapTransformContainer = ({
+  transform,
+}: {
+  transform: ReactZoomPanPinchContentRef
+}) => {
+  return (
+    <TransformComponent
+      wrapperClass="sunset-map-dynamic"
+      contentClass="sunset-map-dynamic-content"
+    >
+      <div className="sunset-map-bounding-block"></div>
+      <div className="sunset-map-large-glowing-background"></div>
+      <div className="sunset-map-large-outer-fade-background"></div>
+      <div className="sunset-map-glowing-sun"></div>
+      <SystemGrid />
+      <div className="sunset-map-inner-container">
+        <SystemMapLocation
+          location={locationsData}
+          isRootElement
+          transform={transform}
+        />
+      </div>
+    </TransformComponent>
+  )
+}
 
-        // Reduce line width of orbit paths on higher zoom scale
-    }
+const SystemGrid = () => {
+  const [opacityFadeIn, setOpacityFadeIn] = useAtom(
+    opacityFadeInAtom
+  )
 
-    return <div className='sunset-map-container'>
-        {/* <button onClick={() => {
-            console.log(zoom)
-        }}>zoom level 2</button> */}
-        <div className='sunset-map-div'>
-            <svg xmlns="http://www.w3.org/2000/svg" ref={handleMap} className='sunset-map-svg'>
-                <defs>
-                    <radialGradient id="huge-sun-overlay-gradient">
-                        <stop offset="5%" stop-color="rgba(255,173,67,0.9)" />
-                        <stop offset="35%" stop-color="rgba(245,128,50,0.5)" />
-                        <stop offset="65%" stop-color="rgba(133,25,11,0.4)" />
-                        <stop offset="100%" stop-color="rgba(0,0,0,0)" />
-                    </radialGradient>
-                    <radialGradient id="sun-heat-gradient">
-                        <stop offset="10%" stop-color="#ffc445" />
-                        <stop offset="85%" stop-color="rgba(255,196,69,0)" />
-                    </radialGradient>
-                    <filter id="huge-sun-overlay-filter"
-                        filterUnits="objectBoundingBox" 
-                        primitiveUnits="userSpaceOnUse" 
-                        color-interpolation-filters="sRGB"
-                    >
-                        <feComposite in="flood" in2="SourceAlpha" operator="atop" result="maskedflood"/>
-                        <feBlend mode="overlay"in="SourceGraphic" in2="blur" result="blend"></feBlend>
-                    </filter>
-                    <filter id="sun-heat-filter"
-                        filterUnits="objectBoundingBox" 
-                        primitiveUnits="userSpaceOnUse" 
-                        color-interpolation-filters="sRGB"
-                    >
-                        <feComposite in="flood" in2="SourceAlpha" operator="atop" result="maskedflood"/>
-                        <feBlend mode="screen" in="SourceGraphic" in2="maskedflood" result="blend"></feBlend>
-                    </filter>
-                </defs>
-
-            </svg>
-        </div>
+  return (
+    <div
+      className="sunset-map-grid-container"
+      style={{
+        //marginLeft: -(posX * rescale / 5),
+        //marginTop: -(posY * rescale / 5)
+        opacity: opacityFadeIn,
+      }}
+    >
+      <div className="sunset-map-grid"></div>
     </div>
-};
- 
-export default SystemMap;
+  )
+}
+
+export default SystemMap

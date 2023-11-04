@@ -2,14 +2,9 @@
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_DESCRIPTION } from '../consts';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
-import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
-import PageHeading from '@/components/page/PageHeading.component';
 
-import { Content } from '@/data/supporters-content.mdx';
-import * as post from '@/data/supporters-content.mdx';
 import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
-import SystemMap from '@/components/special/SystemMap/SystemMap';
-import SystemMapReact from '@/components/special/SystemMap/SystemMapReact';
+import SystemMapD3 from '@/components/special/SystemMap/_old/SystemMapD3';
 ---
 
 <!DOCTYPE html>
@@ -20,7 +15,7 @@ import SystemMapReact from '@/components/special/SystemMap/SystemMapReact';
 	<body>
 		<SunsetHeader client:only="react" currentPage={"/map"} />
 		<main>
-			<SystemMapReact client:only="react" />
+			<SystemMapD3 client:only="react" />
 		</main>
 		
 		<ScriptsAfterBody />
