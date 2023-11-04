@@ -112,7 +112,6 @@ const SystemMapLocation = ({
           id={location.name}
         ></div>
 
-        {isVisible && (
           <>
             <div
               style={{
@@ -132,7 +131,8 @@ const SystemMapLocation = ({
                 }}
               ></button>
             </div>
-
+                
+            {/* WORLD (sun, moon, planet) */}
             {isWorld && (
               <LocationWorld
                 location={location}
@@ -140,6 +140,8 @@ const SystemMapLocation = ({
                 color={color}
               />
             )}
+
+            {/* SITE (space station, etc) */}
             {isSite && (
               <LocationSite 
                 location={location}
@@ -147,7 +149,6 @@ const SystemMapLocation = ({
               />
             )}
           </>
-        )}
 
         {location.children
           ?.slice(0)

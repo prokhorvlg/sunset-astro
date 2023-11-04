@@ -65,7 +65,7 @@ export const locationsData: LocationNode = {
             distance: 165,
             radius: 15,
             speed: -1.17,
-            startingAngle: 195,
+            startingAngle: 205,
             isImportant: true,
             children: [
                 {
@@ -99,7 +99,7 @@ export const locationsData: LocationNode = {
             distance: 205,
             radius: 14,
             speed: -1.17,
-            startingAngle: 280,
+            startingAngle: 340,
             isImportant: true,
             children: [
                 {
@@ -117,7 +117,7 @@ export const locationsData: LocationNode = {
                     distance: 66,
                     radius: 5,
                     speed: -3.2,
-                    startingAngle: 169,
+                    startingAngle: 50,
                     children: []
                 }
             ]
@@ -131,7 +131,7 @@ export const locationsData: LocationNode = {
             distance: 245,
             radius: 11,
             speed: -1.17,
-            startingAngle: 64,
+            startingAngle: 74,
             isImportant: true,
             children: [
                 {
@@ -232,10 +232,10 @@ export const locationsData: LocationNode = {
                     type: LocationType.Moon,
                     color: "#49f2fd",
                     colorSecondary: "#1a9efa",
-                    distance: 105,
+                    distance: 135,
                     radius: 8,
                     speed: -3.2,
-                    startingAngle: 73,
+                    startingAngle: 33,
                     isImportant: true,
                     children: []
                 }
@@ -248,7 +248,7 @@ export const locationsData: LocationNode = {
             distance: 545,
             radius: 19,
             speed: -1.17,
-            startingAngle: 340,
+            startingAngle: 210,
             children: []
         },
         {
