@@ -8,7 +8,7 @@ text {
   
 }
 
-$defaultColor: #ffb64e;
+$map-amber-color: #ffb64e;
 $map-reddish-color: #ff4111;
 $map-background-color: #1a110c;
 
@@ -70,7 +70,7 @@ $map-background-color: #1a110c;
     }
 
     .orbit {
-      stroke: $defaultColor;
+      stroke: $map-amber-color;
       fill: transparent;
       opacity: 0.2;
     }
@@ -95,13 +95,12 @@ $map-background-color: #1a110c;
 }
 
 .controls-test {
-  position: absolute;
+  position: fixed;
   background: rgba(0,0,0,0.8);
   z-index: 1000;
-  left: 10px;
-  top: 10px;
-  height: 100px;
-  width: 600px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
 }
 .sunset-map-dynamic {
   width: 97%;
@@ -118,20 +117,30 @@ $map-background-color: #1a110c;
   }
   overflow: hidden;
 
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    mix-blend-mode: overlay;
+    background: linear-gradient(to bottom, rgb(255, 191, 17) 0%, rgba(218, 68, 8, 1) 100%);
+    opacity: 0.3;
+    pointer-events: none;
+  }
   background: $map-background-color;
+
+  .sunset-map-dynamic-content {
+    background: $map-background-color;
+  }
 
   * {
     user-select: none;
-    //pointer-events: none;
   }
-
-
 
   .sunset-map-bounding-block {
     position: relative;
     height: 2100px;
     width: 3200px;
-    //background: rgba(green, 0.2);
     z-index: 999;
     overflow: hidden;
     user-select: none;
@@ -150,6 +159,20 @@ $map-background-color: #1a110c;
     user-select: none;
     pointer-events: none;
   }
+  .sunset-map-large-outer-fade-background {
+    display: none;
+    $largeGlowingBackgroundWidth: 3000px;
+    @include centeredObject();
+    height: 2100px;
+    width: 3200px;
+    padding: 400px;
+    z-index: 900;
+    mix-blend-mode: hard-light;
+    opacity:0.1;
+    //background: radial-gradient(rgb(0,0,0) 0%, rgb(214, 76, 168) 70%, rgb(88, 3, 74) 100%);
+    //background: radial-gradient(rgb(255, 235, 59) 0%, rgb(255, 123, 47) 60%, rgb(117, 29, 2) 100%);
+    pointer-events: none;
+  }
   .sunset-map-glowing-sun {
     @include centeredObject();
     height: 250px;
@@ -165,6 +188,28 @@ $map-background-color: #1a110c;
     user-select: none;
     pointer-events: none;
   }
+  .sunset-map-grid-container {
+    position: absolute;
+    z-index: 260;
+  }
+  .sunset-map-grid {
+    @include abg(0.1);
+    //@include abg-red-plus();
+    height: 10000px;
+    width: 10000px;
+    z-index: 260;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    //transform: translate(-50%, -50%);
+    mix-blend-mode: lighten;
+    &::after {
+      background-image: url('/images/patterns/map-bg-grid-pattern.svg');
+      background-size: 4px;
+      pointer-events: none;
+      
+    }
+  }
 
   .map-location-container {
     position: absolute;
@@ -173,11 +218,10 @@ $map-background-color: #1a110c;
       position: absolute;
       transform: translate(-50%, -50%);
       
-      //border-width: 2px;
       border-style: solid;
       border-color: rgba(#ffb64e, 0.2);
       border-radius: 5000px;
-      background: rgba($map-background-color, 0.95);
+      background: rgba($map-background-color, 1);
     }
 
     .map-asteroid-belt-container {
@@ -190,7 +234,7 @@ $map-background-color: #1a110c;
 
         background: url("/images/patterns/map-asteroid-belt-pattern.svg");
         background-size: 80px;
-        opacity: 0.4;
+        opacity: 0.8;
 
         border-radius: 5000px;
         animation: spin 160s linear infinite;
@@ -203,23 +247,122 @@ $map-background-color: #1a110c;
           background: $map-background-color;
         }
       }
+      .map-asteroid-belt-name {
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        opacity: 0.9;
+        color: $map-reddish-color;
+        .name {
+          text-align: left;
+        }
+      }
     }
     
     .map-singular-location {
       &:hover {
-        border: 2px solid white;
+        border: 2px solid $map-amber-color;
       }
     }
+    .selection-button-container {
+      position: absolute;
+      z-index: 700;
+      .selection-button {
+        position: absolute;
+        transform: translate(-50%, -50%) scale(0.8);
+        border-radius: 5000px;
+        z-index: 700;
+        background: rgba($map-reddish-color, 0);
+        border: 2px solid transparent;
+        transition: transform 0.1s ease-in-out;
+        &:hover {
+          cursor: pointer;
+          border: 2px solid $map-amber-color;
+          transform: translate(-50%, -50%) scale(1);
+          //background-color: rgba($map-reddish-color, 0.5);
+        }
+      }
+    }
+    
     .map-world {
       position: absolute;
       z-index: 500;
       transform: translate(-50%, -50%);
+
       //transition: 0.1s;
       .map-world-circle {
         position: absolute;
         transform: translate(-50%, -50%);
         border-radius: 5000px;
-        background: white;
+        
+        border: 2px solid $map-reddish-color;
+        //box-shadow: 0 0 10px 2px rgba($map-reddish-color, 0.2);
+        //background: white;
+        .inner-sun-border {
+          border-radius: 5000px;
+          position: absolute;
+          transform: translate(-50%, -50%);
+          left: 50%; top: 50%;
+          border: 2px dotted;
+          //animation: spin 100s linear infinite;
+        }
+        .inner-circle {
+          position: absolute;
+          transform: translate(-50%, -50%);
+          left: 50%; top: 50%;
+          border-radius: 5000px;
+          //height: 100%; width: 100%;
+
+          //@include abg(1);
+          //@include abg-red-diagonal();
+
+          background-color: yellow;
+          //mask-image: url('/images/patterns/red-diagonal-pattern.svg');
+          
+          -webkit-mask: url('/images/patterns/map-planet-pattern.svg') 0 50%/5px 5px;
+          mask: url('/images/patterns/map-planet-pattern.svg') repeat 50% 50%;
+
+          &::after {
+            border-radius: 5000px;
+          }
+
+          
+        }
+        .symbol {
+          
+          position: absolute;
+          display: block;
+          display: none;
+          transform: translate(-50%, -50%);
+          left: 50%; top: 50%;
+          z-index: 2000;
+          color: $map-amber-color;
+          font-family: $font-code;
+          font-size: 25px;
+          margin: 0;
+          //-webkit-text-stroke: 1px white;
+          $strokeWidth: 3px;
+          text-shadow:
+            -2px -2px 0 #000,  
+              2px -2px 0 #000,
+              -2px 2px 0 #000,
+              2px 2px 0 #000;
+        }
+        .important {
+          position: absolute;
+          //transform: translate(-50%, -50%);
+          bottom: calc(90%); left: calc(90%);
+          z-index: 700;
+          color: rgb(255, 76, 22);
+          font-family: $font-code;
+          font-size: 25px;
+          // text-shadow:
+          //   -2px -2px 0 #fff,  
+          //     2px -2px 0 #fff,
+          //     -2px 2px 0 #fff,
+          //     2px 2px 0 #fff;
+          
+        }
       }
       .name {
         font-size: 14px;
@@ -233,16 +376,17 @@ $map-background-color: #1a110c;
         position: absolute;
         transform: translate(-50%, -50%);
         border-radius: 5000px;
-        height: 5px;
-        width: 5px;
-        background: white;
+        height: 15px;
+        width: 15px;
+        opacity: 1;
+        background: $map-amber-color;
       }
       .name {
         position: absolute;
         transform: translate(-50%, -50%);
 
-        color: white;
-        font-size: 14px;
+        color: $map-amber-color;
+        font-size: 18px;
         
       }
     }
@@ -276,23 +420,23 @@ $map-background-color: #1a110c;
       text-align: center;
       font-family: $font-code;
       font-weight: 400;
-      font-size: 14px;
+      font-size: 18px;
       line-height: 18px;
-      margin: 10px 0 5px 0;
-      color: white;
+      margin: 20px 0 15px 0;
+      color: $map-amber-color;
     }
     .flavor-text {
       user-select: none;
       pointer-events: none;
       font-family: $font-code;
       font-weight: 400;
-      font-size: 14px;
-      line-height: 18px;
+      font-size: 16px;
+      line-height: 22px;
       width: 350px;
       margin: 0;
       text-align: center;
       transition: 0.2s ease-in-out;
-      color: white;
+      color: $map-amber-color;
       &::before, &::after {
         content: "\"";
       }
@@ -307,7 +451,8 @@ $map-background-color: #1a110c;
 }
 
 .spin {
-  animation: spin 160s linear infinite;
+  //animation: spin 160s steps(160, step-end) infinite;
+  //animation-timing-function: steps(5, end);
 }
 @keyframes spin { 
   100% { 

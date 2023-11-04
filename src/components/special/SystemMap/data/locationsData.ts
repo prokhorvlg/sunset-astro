@@ -3,12 +3,17 @@ import { LocationNode, LocationType } from "@/components/special/SystemMap/types
 // Data for generation of objects
 export const locationsData: LocationNode = {
     name: "Sol",
+    flavorText: `THERE IS NOTHING ON THE SUN.
+    THE SURFACE IS TOO HOT FOR ANYTHING TO EXIST HERE.
+    STOP LOOKING AT THE SURFACE OF THE SUN.`,
     type: LocationType.Sun,
     distance: 0,
     radius: 35,
     speed: 0,
     startingAngle: 0,
     color: "#ffc919",
+    colorSecondary: "#fff38e",
+    isImportant: true,
     children: [
         {
             name: "Interbeacon",
@@ -32,6 +37,7 @@ export const locationsData: LocationNode = {
             name: "Mercury",
             type: LocationType.Planet,
             color: "#f47f00",
+            colorSecondary: "#ffc75a",
             distance: 125,
             radius: 8,
             speed: -1.60,
@@ -39,7 +45,7 @@ export const locationsData: LocationNode = {
             children: [
                 {
                     name: "Inner Eye Orbital",
-                    typeText: "Noetic Research Station",
+                    typeText: "Noetic Research Orbital City",
                     flavorText: "The beginning, the end, and all that came in between.",
                     description: "The Inner Eye was the final orbital-class space station to be built by humans. The noetic altar built into its core, Project WHITE SERAPH, was activated on the same day the Unexpected Interrupt occured: May 5, 2095, the day mankind vanished from the System.",
                     type: LocationType.Site,
@@ -55,11 +61,22 @@ export const locationsData: LocationNode = {
             flavorText: "Welcome, comrade! Here, our people work as hard as the machines to build our Communist future- ALERT. ALERT. Hive invasion detected. Seek shelter.",
             description: "",
             color: "#b8ff30",
+            colorSecondary: "#ccda2c",
             distance: 165,
             radius: 15,
             speed: -1.17,
             startingAngle: 195,
+            isImportant: true,
             children: [
+                {
+                    name: "Tolkiy-Merdem People's Orbital",
+                    typeText: "Food Processing Orbital City",
+                    flavorText: "First an orbital gulag, then a revolution, finally a nuclear stalemate. A political nightmare.",
+                    description: "Interbeacon was an enormous statite built to syncronize the Aggregate, the Union's interplanetery datanet. Today, it hosts RADIUS, the final remnant of the Union's automated economic planning system. Their voice booms across the skies, visible from all points in the System.",
+                    type: LocationType.Site,
+                    distance: 25,
+                    startingAngle: 140,
+                },
                 {
                     name: "Klios",
                     type: LocationType.Moon,
@@ -83,6 +100,7 @@ export const locationsData: LocationNode = {
             radius: 14,
             speed: -1.17,
             startingAngle: 280,
+            isImportant: true,
             children: [
                 {
                     name: "The Seventh Orbital",
@@ -107,12 +125,25 @@ export const locationsData: LocationNode = {
         {
             name: "Mars",
             type: LocationType.Planet,
+            typeText: "Arid Desert World",
+            flavorText: "Remains true to its namesake. Arrive only on business: war, profit, exploration.",
             color: "#ff4817",
             distance: 245,
             radius: 11,
             speed: -1.17,
             startingAngle: 64,
-            children: []
+            isImportant: true,
+            children: [
+                {
+                    name: "Tojo Terminus",
+                    typeText: "Tactical Military Station",
+                    flavorText: "Mars was their dominion.",
+                    description: "",
+                    type: LocationType.Site,
+                    distance: 15,
+                    startingAngle: 240,
+                },
+            ]
         },
         {
             name: "Asteroid Belt",
@@ -146,21 +177,25 @@ export const locationsData: LocationNode = {
                 {
                     name: "Io",
                     type: LocationType.Moon,
-                    color: "#ff8b19",
+                    color: "#e24608",
+                    colorSecondary: "#ffba35",
                     distance: 86,
-                    radius: 4,
+                    radius: 6,
                     speed: -3.2,
                     startingAngle: 10,
+                    isImportant: true,
                     children: []
                 },
                 {
                     name: "Europa",
                     type: LocationType.Moon,
                     color: "#1cffd7",
+                    colorSecondary: "#a2ffc7",
                     distance: 115,
-                    radius: 5,
+                    radius: 7,
                     speed: -3.2,
                     startingAngle: 259,
+                    isImportant: true,
                     children: []
                 },
                 {
@@ -176,7 +211,7 @@ export const locationsData: LocationNode = {
                     name: "Callisto",
                     type: LocationType.Moon,
                     distance: 175,
-                    radius: 5,
+                    radius: 7,
                     speed: -3.2,
                     startingAngle: 43,
                     children: []
@@ -195,11 +230,13 @@ export const locationsData: LocationNode = {
                 {
                     name: "Titan",
                     type: LocationType.Moon,
-                    color: "#1a9efa",
+                    color: "#49f2fd",
+                    colorSecondary: "#1a9efa",
                     distance: 105,
-                    radius: 5,
+                    radius: 8,
                     speed: -3.2,
                     startingAngle: 73,
+                    isImportant: true,
                     children: []
                 }
             ]

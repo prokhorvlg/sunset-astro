@@ -13,12 +13,17 @@ export interface LocationNode {
     description?: string
     flavorText?: string
 
+    color?: string, 
+    colorSecondary?: string
+
+    isImportant?: boolean
+
     type: LocationType, 
     distance: number, 
     radius?: number, 
     speed?: number, 
     startingAngle: number, 
-    color?: string, 
+    
     crafts?: LocationNode[], 
     children?: LocationNode[], 
     parent?: string,

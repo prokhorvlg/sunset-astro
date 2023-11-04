@@ -12,16 +12,18 @@ import {
   findNewPoint,
   increaseBrightness,
 } from "@/components/special/SystemMap/WorldGenerationHelpers";
+import { useIsVisible } from "@/utils/hooks/useIsVisible";
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 import {
   TransformWrapper,
   TransformComponent,
   ReactZoomPanPinchContentRef,
   useTransformEffect,
+  ReactZoomPanPinchState,
 } from "react-zoom-pan-pinch";
 import "./SystemMap.scss";
 
-const MAP_MIN_SCALE = 0.9;
+const MAP_MIN_SCALE = 0.7;
 const MAP_MAX_SCALE = 12;
 const MAP_SCALE_STEP = 0.5;
 
@@ -41,7 +43,7 @@ const SystemMapReact = () => {
     const { zoomIn, zoomOut } = transformComponentRef.current;
 
     const targetScale = newScale;
-    const factor = Math.log(targetScale / scale) * 5;
+    const factor = Math.log(targetScale / scale) / (1/(MAP_MAX_SCALE));
     if (targetScale > scale) {
       zoomIn(factor, 0);
     } else {
@@ -53,6 +55,15 @@ const SystemMapReact = () => {
   const updateScale = (e) => {
     updateScaleFromExternalInput(parseFloat(e.target.value));
   };
+  const reset = () => {
+    if (selectedLocation) {
+      transformComponentRef.current?.zoomToElement(selectedLocation.name, 1, 500);
+    } else {
+      transformComponentRef.current?.zoomToElement("Sol", 1, 500);
+    }
+    
+    setSelectedLocation(null)
+  }
 
   return (
     <TransformWrapper
@@ -65,8 +76,9 @@ const SystemMapReact = () => {
       smooth={false}
       centerOnInit
       wheel={{
-        step: MAP_SCALE_STEP,
-        //smoothStep:0.005
+        //step: MAP_SCALE_STEP,
+        //smoothStep:0.005,
+        
       }}
       onZoom={(e) => {
         setScale(e.state.scale);
@@ -108,15 +120,31 @@ const SystemMapReact = () => {
               >
                 level 2
               </button>
+              <button
+                onClick={(e) => {
+                  reset()
+                }}
+              >
+                reset
+              </button>
               <p>{selectedLocation?.name}</p>
               <p>{selectedLocation?.flavorText}</p>
               <p>{selectedLocation?.description}</p>
             </div>
-            <SystemMapTransformContainer
-              transform={transform}
-              selectedLocation={selectedLocation}
-              setSelectedLocation={setSelectedLocation}
-            />
+            <div onContextMenu={(e) => { 
+              e.preventDefault();
+
+              //updateScaleFromExternalInput(1)
+              reset()
+              //console.log("context menu!") 
+            }}>
+              <SystemMapTransformContainer
+                transform={transform}
+                selectedLocation={selectedLocation}
+                setSelectedLocation={setSelectedLocation}
+
+              />
+            </div>
           </>
         );
       }}
@@ -133,15 +161,14 @@ const SystemMapTransformContainer = ({
   selectedLocation: LocationNode | null;
   setSelectedLocation: Dispatch<SetStateAction<LocationNode | null>>;
 }) => {
-  const [zoom, setZoom] = useState<number>(1);
-
-  useEffect(() => {
-    if (!selectedLocation) return;
-    transform.zoomToElement(selectedLocation.name);
-  }, [selectedLocation]);
+  const [zoom, setZoom] = useState<number>(1)
+  const [posX, setPosX] = useState<number>(0)
+  const [posY, setPosY] = useState<number>(0)
 
   useTransformEffect(({ state, instance }) => {
-    setZoom(state.scale);
+    setZoom(state.scale)
+    setPosX(state.positionX)
+    setPosY(state.positionY)
   });
 
   const zoomExponential = zoom * zoom;
@@ -150,12 +177,21 @@ const SystemMapTransformContainer = ({
   const rescale = 0.8 / zoom; // remains consistent across all zoom levels
   const growingRescale = rescale + zoomMultiplier; // grows as you zoom in
 
+  const opacityStepOne = MAP_MAX_SCALE - 4 - zoom
+  const opacityStepTwo = opacityStepOne <= 1 ? 1 : (1 / opacityStepOne)
+  const fadedOpacity = 1 - opacityStepTwo
+  const increasingOpacity = opacityStepTwo
+
   return (
-    <TransformComponent wrapperClass="sunset-map-dynamic">
+    <TransformComponent wrapperClass="sunset-map-dynamic" contentClass="sunset-map-dynamic-content">
       <div className="sunset-map-bounding-block"></div>
-      <div className="sunset-map-large-glowing-background excluded"></div>
+      <div className="sunset-map-large-glowing-background"></div>
+      <div className="sunset-map-large-outer-fade-background"></div>
       <div className="sunset-map-glowing-sun"></div>
-      <div className="sunset-map-inner-container">
+
+      <SystemGrid posX={posX} posY={posY} rescale={rescale} fadedOpacity={increasingOpacity} />
+
+      <div className="sunset-map-inner-container" >
         <SystemMapLocation
           location={locationsData}
           zoom={zoom}
@@ -163,11 +199,25 @@ const SystemMapTransformContainer = ({
           rescale={rescale}
           growingRescale={growingRescale}
           setSelectedLocation={setSelectedLocation}
+          fadedOpacity={fadedOpacity}
+          transform={transform}
         />
       </div>
     </TransformComponent>
   );
 };
+
+const SystemGrid = ({ posX, posY, rescale, fadedOpacity }) => {
+  return (
+    <div className="sunset-map-grid-container" style={{
+      //marginLeft: -(posX * rescale / 5),
+      //marginTop: -(posY * rescale / 5)
+      opacity: fadedOpacity
+    }}>
+      <div className="sunset-map-grid"></div>
+    </div>
+  )
+}
 
 // Generates each individual location.
 const SystemMapLocation = ({
@@ -180,20 +230,27 @@ const SystemMapLocation = ({
   rescale,
   growingRescale,
   setSelectedLocation,
+  fadedOpacity,
+  transform
 }: {
-  location: LocationNode;
-  parent?: LocationNode;
+  location: LocationNode
+  parent?: LocationNode
   parentCoordinates?: {
-    x: number;
-    y: number;
-  };
-  zIndex?: number;
-  isRootElement?: boolean;
-  zoom: number;
-  rescale: number;
-  growingRescale: number;
-  setSelectedLocation: Dispatch<SetStateAction<LocationNode | null>>;
+    x: number
+    y: number
+  }
+  zIndex?: number
+  isRootElement?: boolean
+  zoom: number
+  rescale: number
+  growingRescale: number
+  setSelectedLocation: Dispatch<SetStateAction<LocationNode | null>>
+  fadedOpacity: number
+  transform: ReactZoomPanPinchContentRef;
 }) => {
+  const someRef = useRef(null);
+  const isVisible = useIsVisible(someRef);
+
   const objectPoint = findNewPoint(
     0,
     0,
@@ -205,7 +262,7 @@ const SystemMapLocation = ({
     ? increaseBrightness(location.color, 20)
     : MAP_DEFAULT_COLOR;
 
-  const isZoomLevel2 = zoom > 5;
+  const isZoomLevel2 = zoom > 4;
 
   // for rings
   const zIndexCurrent = zIndex ? zIndex + 1 : 200;
@@ -214,6 +271,7 @@ const SystemMapLocation = ({
     location.type === LocationType.Planet ||
     location.type === LocationType.Moon ||
     location.type === LocationType.Sun;
+  const isSun = location.type === LocationType.Sun;
   const isSite = location.type === LocationType.Site;
   const isBelt = location.type === LocationType.AsteroidBelt;
 
@@ -227,6 +285,7 @@ const SystemMapLocation = ({
             width: location.distance * MAP_DISTANCE_FACTOR * 2,
             zIndex: zIndexCurrent,
             borderWidth: `${rescale * 0.5}px`,
+            //opacity: fadedOpacity
           }}
         />
       )}
@@ -236,14 +295,14 @@ const SystemMapLocation = ({
           style={{
             height: location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
             width: location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
-            zIndex: zIndexCurrent,
+            zIndex: zIndexCurrent
           }}
         >
           <div
             className="map-asteroid-belt"
             style={{
               borderWidth: `${radius}px`,
-              backgroundSize: `${growingRescale * 100}px`,
+              backgroundSize: `${growingRescale * 100}px`
             }}
           >
             <div
@@ -256,113 +315,142 @@ const SystemMapLocation = ({
               }}
             ></div>
           </div>
+          {isBelt && (
+          <div
+            className="map-asteroid-belt-name"
+            id={location.name}
+            style={{
+              transform: `scale(${rescale})`,
+              left: `calc(100% + ${rescale * 90 - 80}px)`
+            }}
+          >
+            <h2 className="name">{location.name}</h2>
+          </div>
+        )}
         </div>
       )}
       <div
         className="map-location-container"
+        ref={someRef}
         style={{
           left: isRootElement ? "50%" : objectPoint.x,
           top: isRootElement ? "50%" : objectPoint.y,
         }}
       >
-        {isWorld && (
-          <div
-            className="map-world"
-            id={location.name}
-            style={{
-              transform: `scale(${rescale})`,
+        <div className="zoom-to-marker" id={location.name}></div>
+        { isVisible && (<>
+          
+          <div style={{
+              transform: `scale(${rescale})`
             }}
-          >
-            <div
-              className="map-world-circle map-singular-location"
-              onClick={() => setSelectedLocation(location)}
+            className="selection-button-container">
+            <button 
+              className="selection-button"
               style={{
-                height: radius,
-                width: radius,
-                backgroundColor: color,
+                height: radius + 22,
+                width: radius + 22,
               }}
-            />
+              onClick={() => {
+                setSelectedLocation(location)
+                transform.zoomToElement(location.name);
+              }}></button>
+          </div>
+          
+          {isWorld && (
             <div
-              className="text-under"
+              className="map-world"
               style={{
-                top: `${radius * 0.5 + 5}px`,
-                color: color,
+                transform: `scale(${rescale})`,
               }}
             >
-              <h2 className="name">{location.name}</h2>
-              {isZoomLevel2 && (
-                <>
-                  <p className="type-text">{location.typeText}</p>
-                  <p className="flavor-text">{location.flavorText}</p>
-                </>
-              )}
+              <div
+                className="map-world-circle map-singular-location"
+                onClick={() => {
+                  setSelectedLocation(location)
+                  transform.zoomToElement(location.name);
+                }}
+                style={{
+                  height: radius,
+                  width: radius,
+                  //border: location.isImportant ? "2px solid" : "none",
+                  borderColor: location.colorSecondary ? location.colorSecondary : color,
+                  //borderImage: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 0%, ${location.color} 100%)` : undefined
+                }}
+              >
+                {isSun &&
+                  <div className="inner-sun-border" style={{
+                    height: radius + 6,
+                    width: radius + 6,
+                    borderColor: color,
+                    display: "none"
+                  }}></div>
+                }
+                <div className="inner-circle"
+                  style={{
+                    height: radius - 5,
+                    width: radius - 5,
+                    backgroundColor: color,
+                  }}
+                >
+                  
+                </div>
+                {/* <p className="symbol">V</p> */}
+                {/* {location.isImportant && <div className="important">!</div>} */}
+              </div>
+              <div
+                className="text-under"
+                style={{
+                  top: `${radius * 0.5 + 5}px`,
+                  color: color,
+                }}
+              >
+                <h2 className="name">{location.name}</h2>
+                {isZoomLevel2 && (
+                  <>
+                    <p className="type-text" style={{
+                      color: color
+                    }}>{location.typeText}</p>
+                    <p className="flavor-text">{location.flavorText}</p>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        )}
-        {isBelt && (
-          <div
-            className="map-world"
-            id={location.name}
-            style={{
-              transform: `scale(${rescale})`,
-            }}
-          >
-            <h2 className="name">{location.name}</h2>
+          )}
+          {isSite && (
             <div
-              className="map-world-circle map-singular-location"
-              onClick={() => setSelectedLocation(location)}
+              className="map-site"
+              
               style={{
-                height: radius,
-                width: radius,
-                backgroundColor: color,
-              }}
-            />
-            <div
-              className="text-under"
-              style={{
-                top: `${radius * 0.5 + 5}px`,
-                color: color,
+                transform: `scale(${rescale})`,
+                display: isZoomLevel2 ? "block" : "none",
               }}
             >
-              {isZoomLevel2 && (
-                <>
-                  <p className="type-text">{location.typeText}</p>
-                  <p className="flavor-text">{location.flavorText}</p>
-                </>
-              )}
+              <h2 className="name"
+                style={{
+                  bottom: `${radius * 0.5 + 10}px`,
+                }}
+              >{location.name}</h2>
+              <div
+                className="map-site-circle map-singular-location"
+                onClick={() => {
+                  setSelectedLocation(location)
+                  transform.zoomToElement(location.name);
+                }}
+              ></div>
+              <div
+                className="text-under"
+                style={{
+                  top: `${radius * 0.5 + 10}px`,
+                  //opacity: isZoomLevel2 ? "1" : "0",
+                }}
+              >
+                <p className="type-text">{location.typeText}</p>
+                <p className="flavor-text">{location.flavorText}</p>
+              </div>
             </div>
-          </div>
-        )}
-        {isSite && (
-          <div
-            className="map-site"
-            id={location.name}
-            style={{
-              transform: `scale(${rescale})`,
-            }}
-          >
-            <h2 className="name"
-              style={{
-                bottom: `${radius * 0.5 + 10}px`,
-                opacity: isZoomLevel2 ? "1" : "0",
-              }}
-            >{location.name}</h2>
-            <div
-              className="map-site-circle map-singular-location"
-              onClick={() => setSelectedLocation(location)}
-            ></div>
-            <div
-              className="text-under"
-              style={{
-                top: `${radius * 0.5 + 10}px`,
-                opacity: isZoomLevel2 ? "1" : "0",
-              }}
-            >
-              <p className="type-text">{location.typeText}</p>
-              <p className="flavor-text">{location.flavorText}</p>
-            </div>
-          </div>
-        )}
+          )}
+
+        </>)}
 
         {location.children
           ?.slice(0)
@@ -379,6 +467,8 @@ const SystemMapLocation = ({
                 rescale={rescale}
                 growingRescale={growingRescale}
                 setSelectedLocation={setSelectedLocation}
+                fadedOpacity={fadedOpacity}
+                transform={transform}
               />
             );
           })}
