@@ -1,4 +1,4 @@
-import { LocationNode } from "@/components/special/SystemMap/data/types"
+import { LocationNode, SiteSubtype } from "@/components/special/SystemMap/data/types"
 import {
   transformAtom,
   rescaleAtom,
@@ -7,8 +7,37 @@ import {
 } from "@/components/special/SystemMap/state/atoms"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import "./LocationSite.scss"
+import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData } from "react-icons/cg";
+
+const getIconFromSubType = (subType?: SiteSubtype) => {
+  switch (subType) {
+    case SiteSubtype.Orbital: 
+      return (
+        <CgShapeCircle />
+      )
+    case SiteSubtype.Outpost:
+      return (
+        <CgShapeRhombus />
+      )
+    case SiteSubtype.Beacon: 
+      return (
+        <CgData />
+      )
+    case SiteSubtype.MachineMade:
+      return (
+        <CgShapeSquare />
+      )
+    case SiteSubtype.Danger:
+      return (
+        <CgAsterisk />
+      )        
+  }
+  return (
+    <CgClose />
+  )
+}
 
 const LocationSite = ({
   location,
@@ -30,13 +59,14 @@ const LocationSite = ({
   const visibleRef = useRef(null)
   const isInView = useIsVisible(visibleRef)
 
+  const [icon] = useState(getIconFromSubType(location.subType))
+
   return (
     <div
       ref={visibleRef}
-      className="map-site"
+      className={`map-site ${location.worldAffiliation}`}
       style={{
         transform: `scale(${rescale})`,
-        //display: isDetailLevel ? "block" : "none",
       }}
     >
       {isInView && (
@@ -44,7 +74,7 @@ const LocationSite = ({
 
           {/* NAME */}
           <h2
-            className="name"
+            className={`name`}
             style={{
               bottom: `${radius * 0.5 + 10}px`,
               opacity: isDetailLevel ? "1" : "0",
@@ -55,13 +85,17 @@ const LocationSite = ({
 
           {/* ICON */}
           <div
-            className="map-site-circle map-singular-location"
+            className="map-site-icon"
             onClick={() => {
               if (!transform) return
               setSelectedLocation(location)
               transform.zoomToElement(location.name)
             }}
-          ></div>
+          >
+            <div className={`icon-container ${location.subType}`}>
+              {icon}
+            </div>
+          </div>
 
           {/* TYPE, FLAVOR TEXT */}
           <div
@@ -72,9 +106,11 @@ const LocationSite = ({
             }}
           >
             <p className="type-text">{location.typeText}</p>
-            <p className="flavor-text">
-              {location.flavorText}
-            </p>
+            {location.flavorText && 
+              <p className="flavor-text">
+                {location.flavorText}
+              </p>
+            }
           </div>
         </>
       )}

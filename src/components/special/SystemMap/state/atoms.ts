@@ -25,6 +25,10 @@ export const opacityFadeInAtom = atom((get) => {
   const opacityFadeIn = currentLevel <= 1 ? 1 : (1 / currentLevel)
   return opacityFadeIn
 })
+export const opacityFadeOutAtom = atom((get) => {
+  const scale = get(scaleAtom)
+  return 1 / scale
+})
 
 // Contains current coordinate state of map.
 export const usePosXAtom = atom(0)

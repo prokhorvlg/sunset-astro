@@ -1,20 +1,35 @@
 @import 'src/styles/imports.scss';
 
 .map-site {
-  position: absolute;
+  @include absoluteCentered();
   z-index: 600;
-  transform: translate(-50%, -50%);
-  .map-site-circle {
-    position: absolute;
-    transform: translate(-50%, -50%);
+  .map-site-icon {
+    @include absoluteCentered();
     border-radius: 5000px;
 
     $dimensions: 5px;
     height: $dimensions;
     width: $dimensions;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     opacity: 1;
-    background: white;
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        // rotate(180deg);
+        //color: $map-reddish-color;
+      }
+
+      // SUBTYPE -> ICON STYLE
+      &.beacon {
+        transform: scale(1.3);
+      }
+    }
   }
   .name {
     position: absolute;
@@ -22,5 +37,19 @@
 
     color: $map-amber-color;
     font-size: 18px;
+    background: rgba($map-background-color, 0.8);
+  }
+
+  
+
+  // WORLD AFFILIATION -> COLOR
+  svg {
+    color: $map-reddish-color;
+  }
+  
+  &.anomaly {
+    svg, .name {
+      color: magenta;
+    }
   }
 }

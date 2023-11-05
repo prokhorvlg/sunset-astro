@@ -20,6 +20,7 @@ import {
   rescaleAtom,
   opacityFadeInAtom,
   transformAtom,
+  opacityFadeOutAtom,
 } from "@/components/special/SystemMap/state/atoms"
 
 const SMOOTH_SCROLL_MODE = false
@@ -214,6 +215,10 @@ const SystemMapTransformContainer = ({
 }: {
   transform: ReactZoomPanPinchContentRef
 }) => {
+  const [opacityFadeOut, setOpacityFadeOut] = useAtom(
+    opacityFadeOutAtom
+  )
+
   return (
     <TransformComponent
       wrapperClass="sunset-map-dynamic"
@@ -222,7 +227,9 @@ const SystemMapTransformContainer = ({
       <div className="sunset-map-bounding-block"></div>
       <div className="sunset-map-large-glowing-background"></div>
       <div className="sunset-map-large-outer-fade-background"></div>
-      <div className="sunset-map-glowing-sun"></div>
+      <div className="sunset-map-glowing-sun" style={{
+        opacity: opacityFadeOut * 0.4
+      }}></div>
       <SystemGrid />
       <div className="sunset-map-inner-container">
         <SystemMapLocation

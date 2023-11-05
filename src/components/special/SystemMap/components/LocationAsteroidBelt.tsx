@@ -1,6 +1,7 @@
 import { MAP_DISTANCE_FACTOR } from "@/components/special/SystemMap/data/constants"
 import { LocationNode } from "@/components/special/SystemMap/data/types"
-import { rescaleAtom } from "@/components/special/SystemMap/state/atoms"
+import { opacityFadeOutAtom, rescaleAtom } from "@/components/special/SystemMap/state/atoms"
+import { mathClamp } from "@/components/special/SystemMap/utils/math"
 import { useAtom } from "jotai"
 import './LocationAsteroidBelt.scss'
 
@@ -14,6 +15,9 @@ const LocationAsteroidBelt = ({
   radius: number
 }) => {
   const [rescale, setRescale] = useAtom(rescaleAtom)
+  const [opacityFadeOut, setOpacityFadeOut] = useAtom(
+    opacityFadeOutAtom
+  )
 
   return (
     <div
@@ -30,7 +34,8 @@ const LocationAsteroidBelt = ({
         className="map-asteroid-belt"
         style={{
           borderWidth: `${radius}px`,
-          backgroundSize: `${rescale * 100}px`,
+          backgroundSize: `${mathClamp(rescale * 100, 50, 200)}px`,
+          opacity: mathClamp(opacityFadeOut * 0.8, 0.3, 0.8)
         }}
       >
         <div

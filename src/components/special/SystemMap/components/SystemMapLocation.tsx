@@ -1,4 +1,5 @@
 import LocationAsteroidBelt from "@/components/special/SystemMap/components/LocationAsteroidBelt"
+import LocationField from "@/components/special/SystemMap/components/LocationField"
 import LocationOrbitRing from "@/components/special/SystemMap/components/LocationOrbitRing"
 import LocationSite from "@/components/special/SystemMap/components/LocationSite"
 import LocationWorld from "@/components/special/SystemMap/components/LocationWorld"
@@ -57,12 +58,25 @@ const SystemMapLocation = ({
     selectedLocationAtom
   )
 
+  const [isWorld] = useState(
+    location.type === LocationType.Planet ||
+    location.type === LocationType.Moon ||
+    location.type === LocationType.Sun)
+  const [isSun] = useState(location.type === LocationType.Sun)
+  const [isSite] = useState(location.type === LocationType.Site)
+  const [isBelt] = useState(location.type === LocationType.AsteroidBelt)
+  const [isField] = useState(location.type === LocationType.Field)
+
+  const [isParentBelt] = useState(parentLocation?.type === LocationType.AsteroidBelt)
+
   // NEW COORDINATES FOR THIS LOCATION
   const [objectPoint] = useState(findNewPoint(
     0,
     0,
     location.startingAngle,
-    location.distance * MAP_DISTANCE_FACTOR
+    isParentBelt ? 
+      ((parentLocation?.distance || 0) + location.distance) * MAP_DISTANCE_FACTOR :
+      location.distance * MAP_DISTANCE_FACTOR
   ))
   const [objectPointNoDistance] = useState(findNewPoint(
     0,
@@ -74,8 +88,8 @@ const SystemMapLocation = ({
   const [parentRadius] = useState(getProcessedRadius(parentLocation?.radius))
   const [hypotenuseRatio] = useState(parentRadius / objectPointHypotenuse)
   const [objectPointFromParentRadius] = useState({
-    x: objectPoint.x * hypotenuseRatio * 0.5 + (objectPointNoDistance.x * 10),
-    y: objectPoint.y * hypotenuseRatio * 0.5 + (objectPointNoDistance.y * 10)
+    x: objectPoint.x * hypotenuseRatio * 0.55 + (objectPointNoDistance.x * 10),
+    y: objectPoint.y * hypotenuseRatio * 0.55 + (objectPointNoDistance.y * 10)
   })
 
   const [radius] = useState(getProcessedRadius(location.radius))
@@ -85,28 +99,38 @@ const SystemMapLocation = ({
 
   // Makes sure inner rings are stacked over
   const ringsBeginningZIndex = 200
-  const ringsCurrentZIndex = zIndex
+  const [ringsCurrentZIndex] = useState(zIndex
     ? zIndex + 1
-    : ringsBeginningZIndex
+    : ringsBeginningZIndex)
 
-  const isWorld =
-    location.type === LocationType.Planet ||
-    location.type === LocationType.Moon ||
-    location.type === LocationType.Sun
-  const isSun = location.type === LocationType.Sun
-  const isSite = location.type === LocationType.Site
-  const isBelt = location.type === LocationType.AsteroidBelt
+  const getChildrenElements = () => {
+    return (<>
+      {location.children
+        ?.slice(0)
+        .reverse()
+        .map((childLocation) => {
+          return (
+            <SystemMapLocation
+              key={childLocation.name}
+              location={childLocation}
+              parentLocation={location}
+              zIndex={ringsCurrentZIndex}
+              transform={transform}
+            />
+          )
+        })}
+    </>)
+  }
 
   const getDimensionOffset = (dimension: Dimension) => {
     // Sun needs to be in direct center of div.
     if (isRootElement) return "50%"
 
     // Sites need to remain at least as far as the parent's radius.
-    if (isSite) {
+    if (!isParentBelt && isSite) {
       const rescaledParentRadius = parentRadius * rescale
       
       if (location.distance * MAP_DISTANCE_FACTOR < rescaledParentRadius) {
-      //if (true){
         return objectPointFromParentRadius[dimension] * rescale
       } else {
         return objectPoint[dimension]
@@ -187,21 +211,18 @@ const SystemMapLocation = ({
           />
         )}
 
-        {location.children
-          ?.slice(0)
-          .reverse()
-          .map((childLocation) => {
-            return (
-              <SystemMapLocation
-                key={childLocation.name}
-                location={childLocation}
-                parentLocation={location}
-                zIndex={ringsCurrentZIndex}
-                transform={transform}
-              />
-            )
-          })}
+        {/* FIELD (reality field, asteroids, weather) */}
+        {isField && (
+          <LocationField 
+            location={location}
+            radius={radius}
+            color={color}
+          />
+        )}
+
+        {!isBelt && getChildrenElements()}
       </div>
+      {isBelt && getChildrenElements()}
     </>
   )
 }

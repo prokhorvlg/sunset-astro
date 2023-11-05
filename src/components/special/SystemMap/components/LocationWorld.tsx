@@ -8,6 +8,7 @@ import {
   isDetailLevelAtom,
   selectedLocationAtom,
 } from "@/components/special/SystemMap/state/atoms"
+import { mathClamp } from "@/components/special/SystemMap/utils/math"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef } from "react"
@@ -32,6 +33,8 @@ const LocationWorld = ({
     selectedLocationAtom
   )
 
+  console.log("rescale", rescale)
+
   // VISIBILITY CULLING
   const visibleRef = useRef(null)
   const isInView = useIsVisible(visibleRef)
@@ -40,12 +43,16 @@ const LocationWorld = ({
 
   return (
     <div
-      ref={visibleRef}
       className="map-world"
       style={{
         transform: `scale(${rescale})`,
       }}
     >
+      <div className="culling-radius" ref={visibleRef}
+        style={{
+          height: radius,
+          width: radius }}
+      ></div>
       {isInView && (
         <>
           {/* PLANET CIRCLE */}
@@ -96,7 +103,9 @@ const LocationWorld = ({
               color: color,
             }}
           >
-            <h2 className="name">{location.name}</h2>
+            <h2 className="name" style={{
+              fontSize: `${mathClamp((1 / rescale) * 10, 10, 30)}px`,
+            }}>{location.name}</h2>
             {isDetailLevel && (
               <>
                 <p

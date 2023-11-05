@@ -9,6 +9,6 @@ export const MAP_DEFAULT_COLOR = "#ffb64e";
 export const MAP_BACKGROUND_COLOR = '#1a110c'; 
 
 export const MAP_INITIAL_SCALE = 1;
-export const MAP_MIN_SCALE = 0.7;
+export const MAP_MIN_SCALE = 1; // 0.7 on mobile
 export const MAP_MAX_SCALE = 12;
 export const MAP_SCALE_STEP = 0.5;

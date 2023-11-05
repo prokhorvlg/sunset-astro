@@ -1,6 +1,7 @@
 import { MAP_DISTANCE_FACTOR } from "@/components/special/SystemMap/data/constants"
 import { LocationNode } from "@/components/special/SystemMap/data/types"
 import { rescaleAtom } from "@/components/special/SystemMap/state/atoms"
+import { mathClamp } from "@/components/special/SystemMap/utils/math"
 import { useAtom } from "jotai"
 import './LocationOrbitRing.scss'
 
