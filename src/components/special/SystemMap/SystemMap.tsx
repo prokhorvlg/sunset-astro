@@ -22,6 +22,8 @@ import {
   transformAtom,
 } from "@/components/special/SystemMap/state/atoms"
 
+const SMOOTH_SCROLL_MODE = false
+
 const SystemMap = () => {
   const transformComponentRef =
     useRef<ReactZoomPanPinchContentRef | null>(null)
@@ -98,6 +100,9 @@ const SystemMap = () => {
       minScale={MAP_MIN_SCALE}
       maxScale={MAP_MAX_SCALE}
       smooth={false}
+      wheel={{
+        disabled: SMOOTH_SCROLL_MODE
+      }}
       centerOnInit
       onZoom={(e) => {
         setScale(e.state.scale)
@@ -152,7 +157,18 @@ const SystemMap = () => {
               <p>{selectedLocation?.flavorText}</p>
               <p>{selectedLocation?.description}</p>
             </div> */}
-            <div className="sunset-map-container">
+            <div className="sunset-map-container" onWheel={(e) => {
+                if (SMOOTH_SCROLL_MODE) {
+                  console.log(transformComponentRef.current)
+                  const x = e.nativeEvent.offsetX
+                  const y = e.nativeEvent.offsetY
+                  console.log(e.pageX)
+                  //setScale(scale)
+                  const mod = -1000
+                  transformComponentRef.current?.setTransform(x + mod,y + mod,scale + 1, 200)
+                  //transformComponentRef.current?.zoomIn(1 / rescale / 2, 200, "easeInOutCubic")
+                }
+              }}>
               {/* <svg className="noise-rectangle" xmlns='http://www.w3.org/2000/svg'>
                   <filter id='noiseFilter'>
                     <feTurbulence 

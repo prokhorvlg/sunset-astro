@@ -2,6 +2,8 @@
 
 .map-location-container {
   position: absolute;
+  //height: 1px; width: 1px;
+  //border: 20px solid red;
   
   .map-singular-location {
     &:hover {

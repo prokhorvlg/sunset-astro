@@ -8,10 +8,13 @@
     position: absolute;
     transform: translate(-50%, -50%);
     border-radius: 5000px;
-    height: 15px;
-    width: 15px;
+
+    $dimensions: 5px;
+    height: $dimensions;
+    width: $dimensions;
+
     opacity: 1;
-    background: $map-amber-color;
+    background: white;
   }
   .name {
     position: absolute;

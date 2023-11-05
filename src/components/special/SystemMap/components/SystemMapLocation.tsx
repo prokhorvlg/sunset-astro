@@ -22,9 +22,20 @@ import {
 } from "@/components/special/SystemMap/_old/WorldGenerationHelpers"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
-import { useRef } from "react"
+import { useMemo, useRef, useState } from "react"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import './SystemMapLocation.scss'
+
+enum Dimension {
+  x = 'x',
+  y = 'y'
+}
+
+const getProcessedRadius = (radius?: number) => {
+  return radius
+    ? radius * MAP_SCALE_FACTOR * 2.2
+    : 0
+}
 
 // Generates each individual location.
 const SystemMapLocation = ({
@@ -46,23 +57,31 @@ const SystemMapLocation = ({
     selectedLocationAtom
   )
 
-  const someRef = useRef(null)
-  const isVisible = useIsVisible(someRef)
-
-  const objectPoint = findNewPoint(
+  // NEW COORDINATES FOR THIS LOCATION
+  const [objectPoint] = useState(findNewPoint(
     0,
     0,
     location.startingAngle,
     location.distance * MAP_DISTANCE_FACTOR
-  )
-  const radius = location.radius
-    ? location.radius * MAP_SCALE_FACTOR * 2.2
-    : 0
-  const color = location.color
-    ? increaseBrightness(location.color, 20)
-    : MAP_DEFAULT_COLOR
+  ))
+  const [objectPointNoDistance] = useState(findNewPoint(
+    0,
+    0,
+    location.startingAngle,
+    1
+  ))
+  const [objectPointHypotenuse] = useState(Math.sqrt(objectPoint.x ** 2 + objectPoint.y ** 2))
+  const [parentRadius] = useState(getProcessedRadius(parentLocation?.radius))
+  const [hypotenuseRatio] = useState(parentRadius / objectPointHypotenuse)
+  const [objectPointFromParentRadius] = useState({
+    x: objectPoint.x * hypotenuseRatio * 0.5 + (objectPointNoDistance.x * 10),
+    y: objectPoint.y * hypotenuseRatio * 0.5 + (objectPointNoDistance.y * 10)
+  })
 
-  const isZoomLevel2 = scale > 4
+  const [radius] = useState(getProcessedRadius(location.radius))
+  const [color] = useState(location.color
+    ? increaseBrightness(location.color, 20)
+    : MAP_DEFAULT_COLOR)
 
   // Makes sure inner rings are stacked over
   const ringsBeginningZIndex = 200
@@ -78,9 +97,28 @@ const SystemMapLocation = ({
   const isSite = location.type === LocationType.Site
   const isBelt = location.type === LocationType.AsteroidBelt
 
+  const getDimensionOffset = (dimension: Dimension) => {
+    // Sun needs to be in direct center of div.
+    if (isRootElement) return "50%"
+
+    // Sites need to remain at least as far as the parent's radius.
+    if (isSite) {
+      const rescaledParentRadius = parentRadius * rescale
+      
+      if (location.distance * MAP_DISTANCE_FACTOR < rescaledParentRadius) {
+      //if (true){
+        return objectPointFromParentRadius[dimension] * rescale
+      } else {
+        return objectPoint[dimension]
+      }
+    }
+
+    // Anything else gets its normal offset.
+    return objectPoint[dimension]
+  }
+
   return (
     <>
-
       {/* ORBIT RING (if this is a world) */}
       {isWorld && (
         <LocationOrbitRing
@@ -101,54 +139,53 @@ const SystemMapLocation = ({
       {/* Container to shift location relative to parent */}
       <div
         className="map-location-container"
-        ref={someRef}
         style={{
-          left: isRootElement ? "50%" : objectPoint.x,
-          top: isRootElement ? "50%" : objectPoint.y,
+          left: getDimensionOffset(Dimension.x),
+          top: getDimensionOffset(Dimension.y),
         }}
       >
+        {/* ZOOM MARKER (map zooms to this div) */}
         <div
           className="zoom-to-marker"
           id={location.name}
         ></div>
 
-          <>
-            <div
-              style={{
-                transform: `scale(${rescale})`,
-              }}
-              className="selection-button-container"
-            >
-              <button
-                className="selection-button"
-                style={{
-                  height: radius + 22,
-                  width: radius + 22,
-                }}
-                onClick={() => {
-                  setSelectedLocation(location)
-                  transform.zoomToElement(location.name)
-                }}
-              ></button>
-            </div>
-                
-            {/* WORLD (sun, moon, planet) */}
-            {isWorld && (
-              <LocationWorld
-                location={location}
-                radius={radius}
-                color={color}
-              />
-            )}
+        {/* SELECTION BUTTON */}
+        <div
+          style={{
+            transform: `scale(${rescale})`,
+          }}
+          className="selection-button-container"
+        >
+          <button
+            className="selection-button"
+            style={{
+              height: radius + 22,
+              width: radius + 22,
+            }}
+            onClick={() => {
+              setSelectedLocation(location)
+              transform.zoomToElement(location.name)
+            }}
+          ></button>
+        </div>
+            
+        {/* WORLD (sun, moon, planet) */}
+        {isWorld && (
+          <LocationWorld
+            location={location}
+            radius={radius}
+            color={color}
+          />
+        )}
 
-            {/* SITE (space station, etc) */}
-            {isSite && (
-              <LocationSite 
-                location={location}
-                radius={radius}
-              />
-            )}
-          </>
+        {/* SITE (space station, etc) */}
+        {isSite && (
+          <LocationSite 
+            location={location}
+            radius={radius}
+          />
+        )}
 
         {location.children
           ?.slice(0)
