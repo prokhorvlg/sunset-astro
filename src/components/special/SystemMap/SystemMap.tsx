@@ -99,6 +99,9 @@ const SystemMap = () => {
       wheel={{
         disabled: true
       }}
+      doubleClick={{
+        disabled: true
+      }}
       centerOnInit
       onZoom={(e) => {
         setScale(e.state.scale)
@@ -111,6 +114,7 @@ const SystemMap = () => {
         setPosX(e.state.positionX)
         setPosY(e.state.positionY)
       }}
+      
     >
       {(transform: ReactZoomPanPinchContentRef) => {
         return (
@@ -168,6 +172,7 @@ const SystemMap = () => {
               >
                 <SystemMapTransformContainer
                   transform={transform}
+                  reset={reset}
                 />
               </div>
             </div>
@@ -180,8 +185,10 @@ const SystemMap = () => {
 
 const SystemMapTransformContainer = ({
   transform,
+  reset
 }: {
   transform: ReactZoomPanPinchContentRef
+  reset: () => void
 }) => {
   const [opacityFadeIn] = useAtom(
     opacityFadeInAtom
@@ -193,9 +200,13 @@ const SystemMapTransformContainer = ({
   const [posX, setPosX] = useAtom(usePosXAtom)
   const [posY, setPosY] = useAtom(usePosYAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
+  const [selectedLocation, setSelectedLocation] = useAtom(
+    selectedLocationAtom
+  )
 
-  const myRef = useRef<HTMLDivElement>(null);
+  const boundingBlockRef = useRef<HTMLDivElement>(null);
 
+  // WHEEL: Zoom in/out
   const onWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     // Zooming in is negative, zooming out is positive
     const isZoomingIn = e.deltaY < 0
@@ -207,7 +218,7 @@ const SystemMapTransformContainer = ({
     setScale(newScale)
     const scaleDifference = newScale - scale
 
-    const mousePosition = getMousePosition(e as any, myRef.current as HTMLDivElement, scale)
+    const mousePosition = getMousePosition(e as any, boundingBlockRef.current as HTMLDivElement, scale)
     const { positionX, positionY } = transform.instance.transformState;
 
     const calculatedPositionX = positionX - mousePosition.x * scaleDifference;
@@ -218,28 +229,49 @@ const SystemMapTransformContainer = ({
     transform.zoomIn(0)
   }
 
+  // CLICK: Reset selected location
+  const onClick = (e) => {
+    setSelectedLocation(null)
+  }
+
+  // DOUBLE CLICK: Reset the map
+  const onDoubleClick = (e) => {
+    reset()
+  }
+
   return (
     <TransformComponent
       wrapperClass="sunset-map-dynamic"
       contentClass="sunset-map-dynamic-content"
     >
-      <div className="sunset-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
+      {/* BOUNDING BLOCK */}
+      <div className="sunset-map-bounding-block" 
+        onWheel={(e) => onWheel(e)}
+        onClick={(e) => onClick(e)}
+        onDoubleClick={(e) => {onDoubleClick(e)}}
+        ref={boundingBlockRef} 
+      ></div>
+
+      {/* BACKGROUND GLOWS */}
       <div className="sunset-map-large-glowing-background"></div>
       <div className="sunset-map-large-outer-fade-background"></div>
-     
       <div className="sunset-map-glowing-sun" style={{
         opacity: opacityFadeOut * 0.4
       }}></div>
-        <div className="sunset-map-starry-container">
-          <div className="sunset-map-starry-pattern" style={{
-            transform: `transform(-50%, -50%)`,
-            backgroundSize: `${rescale * 800}px`,
-            backgroundPosition: `${posX * 0.3}px ${posY * 0.3}px`,
-            //opacity: mathClamp(opacityFadeOut * 0.1, 0, 0.06),
-          }}></div>
-        </div>
-      
+
+      {/* PARALLAXING STARS */}
+      <div className="sunset-map-starry-container">
+        <div className="sunset-map-starry-pattern" style={{
+          transform: `transform(-50%, -50%)`,
+          backgroundSize: `${rescale * 800}px`,
+          backgroundPosition: `${posX * 0.3}px ${posY * 0.3}px`,
+        }}></div>
+      </div>
+        
+      {/* GRID AT HIGH ZOOM */}
       <SystemGrid />
+
+      {/* ROOT LOCATION */}
       <div className="sunset-map-inner-container">
         <SystemMapLocation
           location={locationsData}
@@ -261,8 +293,6 @@ const SystemGrid = () => {
     <div
       className="sunset-map-grid-container"
       style={{
-        //marginLeft: -(posX * rescale / 5),
-        //marginTop: -(posY * rescale / 5)
         opacity: opacityFadeIn,
       }}
     >

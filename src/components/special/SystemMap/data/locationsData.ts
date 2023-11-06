@@ -73,8 +73,8 @@ export const locationsData: LocationNode = {
       startingAngle: 35,
       children: [
         {
-          name: "Inner Eye Orbital",
-          typeText: "Noetic Research Laboratory",
+          name: "Inner Eye",
+          typeText: "Noetic Research Orbital",
           flavorText:
             "The beginning, the end, and all that came in between. The gargantuan noetic system rests untouched since the Interrupt, amidst a field of stars and signals.",
           description:
@@ -199,7 +199,7 @@ export const locationsData: LocationNode = {
       type: LocationType.Planet,
       typeText: "Arid Desert World",
       flavorText:
-        "Remains true to its namesake. Arrive only on business: war, profit, exploration.",
+        "Remains true to its namesake, so arrive only on business.",
       color: "#ff241a",
       colorSecondary: "#ff8143",
       distance: 245,
@@ -219,6 +219,19 @@ export const locationsData: LocationNode = {
           worldAffiliation: WorldAffiliation.HumanEra,
           distance: 21,
           startingAngle: 240,
+        },
+        {
+          name: "Prometheus",
+          typeText: "Joint Venture Orbital",
+          flavorText:
+            "Yet the ark hovers silent, waiting for a nuclear armageddon that may never come.",
+          description:
+            "Split-design Orbital built by an unprecedented Union & Coalition partnership. Contains the classified Horizon Protocol, a re-population system in the event of nuclear apocalypse. The system has not been triggered.",
+          type: LocationType.Site,
+          subType: SiteSubtype.Orbital,
+          worldAffiliation: WorldAffiliation.HumanEra,
+          distance: 38,
+          startingAngle: 360,
         },
       ],
     },
@@ -265,12 +278,12 @@ export const locationsData: LocationNode = {
       startingAngle: 145,
       children: [
         {
-          name: "Gorsk People's Orbital",
-          typeText: "Social Experimentation Orbital",
+          name: "Gorsk",
+          typeText: "Monolithic People's Orbital",
           flavorText:
-            "Hear me, Collector of Melodies.",
+            "Hear us, Collector of Melodies...",
           description:
-            "",
+            "The Union's enormous, encapsulated Gorsk provides the System with much of its fusion fuel. Gorsk served a dual purpose as the site of numerous collectivist experiments, including the moneyless program. The mastermind in charge, known as VOLOS to the simulant robot population, has been deluded into believing mankind still exists. The entire system is slowly collapsing into Jupiter.",
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
           distance: 45,
@@ -371,6 +384,19 @@ export const locationsData: LocationNode = {
           worldAffiliation: WorldAffiliation.HumanEra,
           distance: 30,
           startingAngle: 310,
+        },
+        {
+          name: "Sanket Star",
+          typeText: "Assembled Orbital",
+          flavorText:
+            "Orbital assembled from multiple private ventures purchased by Coalition's Heavenbreaker. Source of all the System's processed tetradite.",
+          description:
+            "",
+          type: LocationType.Site,
+          subType: SiteSubtype.Orbital,
+          worldAffiliation: WorldAffiliation.HumanEra,
+          distance: 34,
+          startingAngle: 140,
         },
         {
           name: "Titan",

@@ -1,9 +1,10 @@
 // Contains commonly shared text.
 
 export const CommonText = {
-    home: "What is Sunset System?",
-    posts: "View the art and lore for Sunset System",
+    home: "Introduction to a world of retrofuturistic machines",
+    posts: "View the art and lore of the setting",
     game: "Learn about the metroidvania we're making",
+    map: "An interactable map of the System",
     patreon: "Support my work and get early post access",
     prints: "Buy posters of Sunset artwork",
     discord: "Chat about retrofuturism, worldbuilding, etc",
@@ -17,6 +18,7 @@ export const CommonLinks = {
     home: '/',
     posts: '/posts',
     game: '/game',
+    map: '/map',
     supporters: '/credits',
     patreon: "https://www.patreon.com/prokhorvlg",
     prints: "https://www.inprnt.com/gallery/prokhorvlg/",

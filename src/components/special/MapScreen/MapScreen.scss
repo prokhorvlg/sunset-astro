@@ -1,0 +1,47 @@
+@import 'src/styles/imports.scss';
+
+.map-screen {
+  position: absolute;
+  top: 85px; 
+  bottom: 0px; 
+  left: 0px; 
+  right: 0px;
+
+  max-width: 2000px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @media screen and (max-width: 2000px) {
+    left: 2px; 
+    right: 2px;
+  }
+  @media screen and (max-width: $breakpoint-tablet) {
+    top: 65px;
+  }
+
+  .map-header {
+    position: relative;
+    height: 60px;
+    background: green;
+    margin-bottom: 3px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      font-size: 16px;
+    }
+  }
+  .map-body {
+    height: calc(100% - 130px);
+    left: 0; right: 0;
+  }
+
+  .map-selected {
+    position: absolute;
+    bottom: 0; left: 10px; right: 10px;
+    height: 60px;
+    background: red;
+  }
+}

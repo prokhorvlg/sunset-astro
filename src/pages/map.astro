@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import { SITE_DESCRIPTION } from '../consts';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
-import SystemMap from '@/components/special/SystemMap/SystemMap';
+import MapScreen from '@/components/special/MapScreen/MapScreen';
 ---
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@ import SystemMap from '@/components/special/SystemMap/SystemMap';
 	<body>
 		<SunsetHeader client:only="react" currentPage={"/map"} />
 		<main>
-			<SystemMap client:only="react" />
+			<MapScreen client:only="react" />
 		</main>
 		
 		<ScriptsAfterBody />

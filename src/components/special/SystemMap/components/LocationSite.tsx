@@ -115,6 +115,11 @@ const LocationSite = ({
                 {location.flavorText}
               </p>
             }
+            {location.description && 
+              <p className="description">
+                {location.description}
+              </p>
+            }
           </div>
         </>
       )}

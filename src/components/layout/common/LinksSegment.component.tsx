@@ -1,6 +1,6 @@
 import HeaderLink from "@/components/layout/Header/components/HeaderLink.component"
 import { CommonLinks, CommonText } from "@/data/Common"
-import { faHome, faList, faGamepad } from "@fortawesome/free-solid-svg-icons"
+import { faHome, faList, faGamepad, faMap } from "@fortawesome/free-solid-svg-icons"
 
 export const LinksSegment = ({ currentPage = '', isFooter = false }) => {
     return (
@@ -22,14 +22,14 @@ export const LinksSegment = ({ currentPage = '', isFooter = false }) => {
                     dropText={CommonText.posts}
                     isFooter={isFooter}
                 />
-                {/*<HeaderLink
-                    title="Game"
-                    active={currentPage === "/game"}
-                    icon={faGamepad}
-                    target={CommonLinks.game}
-                    dropText={CommonText.game}
+                <HeaderLink
+                    title="Map"
+                    active={currentPage === "/map"}
+                    icon={faMap}
+                    target={CommonLinks.map}
+                    dropText={CommonText.map}
                     isFooter={isFooter}
-    />*/}
+                />
                 <HeaderLink
                     title="Credits"
                     active={currentPage === "/credits"}

@@ -11,27 +11,8 @@ $map-width: 3200px;
   transform: translate(-50%, -50%);
 }
 
-.controls-test {
-  position: fixed;
-  background: rgba(0,0,0,0.8);
-  z-index: 1000;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-}
-.noise-rectangle {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1000;
-  pointer-events: none;
-  mix-blend-mode: color-dodge;
-  opacity: 0.2;
-  display: none;
-}
 .sunset-map-container {
-  width: 97%;
+  /*width: 97%;
   height: 85vh;
   max-width: 2000px;
   margin: 0 auto;
@@ -40,24 +21,36 @@ $map-width: 3200px;
 
   position: absolute;
   top: 86px; bottom: 0px; left: 0; right: 0;
-  overflow: hidden;
+  overflow: hidden;*/
+
+  border: $color-sunset-red solid 2px; 
+  border-radius: 6px;
+
+  position: relative;
+  height: 100%;
+  left: 0;
+  right: 0;
+
+  //box-sizing: content-box;
+
   @media screen and (max-width: $breakpoint-mobile) {
-    top: 64px;
+    //top: 64px;
   }
   .system-map-context-menu-container {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     height: 100%;
     width: 100%;
+    border-radius: 6px;
 
     .sunset-map-dynamic {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      //left: -50%; top: -50%;
       height: 100%;
       width: 100%;
       cursor: grab;
       background: $map-background-color;
+      border-radius: 6px;
     
       &:hover:active {
         cursor: grabbing;
