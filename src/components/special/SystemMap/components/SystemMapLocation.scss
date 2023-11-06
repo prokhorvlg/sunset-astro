@@ -70,8 +70,11 @@
     text-align: center;
     transition: 0.2s ease-in-out;
     color: $map-amber-color;
-    &::before, &::after {
-      content: "\"";
+    &::before {
+      content: "| ";
+    }
+    &::after {
+      content: " |";
     }
   }
   

@@ -9,7 +9,7 @@ import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef, useState } from "react"
 import "./LocationSite.scss"
-import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData } from "react-icons/cg";
+import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel } from "react-icons/cg";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {
@@ -25,13 +25,17 @@ const getIconFromSubType = (subType?: SiteSubtype) => {
       return (
         <CgData />
       )
+    case SiteSubtype.Vessel: 
+      return (
+        <CgShapeTriangle />
+      )
     case SiteSubtype.MachineMade:
       return (
         <CgShapeSquare />
       )
     case SiteSubtype.Danger:
       return (
-        <CgAsterisk />
+        <CgVercel />
       )        
   }
   return (

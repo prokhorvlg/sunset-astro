@@ -7,6 +7,7 @@ import {
   rescaleAtom,
   isDetailLevelAtom,
   selectedLocationAtom,
+  scaleAtom,
 } from "@/components/special/SystemMap/state/atoms"
 import { mathClamp } from "@/components/special/SystemMap/utils/math"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
@@ -25,6 +26,7 @@ const LocationWorld = ({
 }) => {
   // STATE ATOMS
   const [transform, setTransform] = useAtom(transformAtom)
+  const [scale, setScale] = useAtom(scaleAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
   const [isDetailLevel, setIsDetailLevel] = useAtom(
     isDetailLevelAtom
@@ -32,8 +34,6 @@ const LocationWorld = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
-
-  console.log("rescale", rescale)
 
   // VISIBILITY CULLING
   const visibleRef = useRef(null)
@@ -51,7 +51,8 @@ const LocationWorld = ({
       <div className="culling-radius" ref={visibleRef}
         style={{
           height: radius,
-          width: radius }}
+          width: radius 
+        }}
       ></div>
       {isInView && (
         <>
@@ -64,20 +65,20 @@ const LocationWorld = ({
               transform.zoomToElement(location.name)
             }}
             style={{
-              height: radius,
-              width: radius,
+              height: isDetailLevel ? radius + 30 : radius,
+              width: isDetailLevel ? radius + 30 : radius,
               borderColor: location.colorSecondary
                 ? location.colorSecondary
                 : color,
-              // background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 0%, ${location.color} 100%)` : undefined
+              //background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 0%, ${location.color} 100%)` : location.color
             }}
           >
             {isSun && (
               <div
                 className="inner-sun-border"
                 style={{
-                  height: radius + 6,
-                  width: radius + 6,
+                  height: isDetailLevel ? radius + 26 : radius + 6,
+                  width: isDetailLevel ? radius + 26 : radius + 6,
                   borderColor: color,
                   display: "none",
                 }}
@@ -86,9 +87,10 @@ const LocationWorld = ({
             <div
               className="inner-circle"
               style={{
-                height: radius - 5,
-                width: radius - 5,
-                backgroundColor: color,
+                height: isDetailLevel ? radius + 25 : radius - 5,
+                width: isDetailLevel ? radius + 25 : radius - 5,
+                //backgroundColor: color,
+                background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 40%, ${color} 60%)` : color
               }}
             ></div>
             {/* <p className="symbol">V</p> */}
@@ -104,7 +106,7 @@ const LocationWorld = ({
             }}
           >
             <h2 className="name" style={{
-              fontSize: `${mathClamp((1 / rescale) * 10, 10, 30)}px`,
+              fontSize: isDetailLevel ? "22px" : "14px",
             }}>{location.name}</h2>
             {isDetailLevel && (
               <>

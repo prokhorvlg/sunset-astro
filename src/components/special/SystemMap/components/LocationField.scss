@@ -2,7 +2,7 @@
 
 .map-field {
   @include absoluteCentered();
-  z-index: 300;
+  z-index: 270;
   
   .map-field-container {
     @include absoluteCentered();

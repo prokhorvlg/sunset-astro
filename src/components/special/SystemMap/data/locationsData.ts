@@ -8,6 +8,7 @@ import {
 // Data for generation of objects
 export const locationsData: LocationNode = {
   name: "Sol",
+  typeText: "Main Sequence Star",
   flavorText: `THERE IS NOTHING ON THE SUN.
     THE SURFACE IS TOO HOT FOR ANYTHING TO EXIST HERE.
     STOP LOOKING AT THE SURFACE OF THE SUN.`,
@@ -20,28 +21,45 @@ export const locationsData: LocationNode = {
   colorSecondary: "#fff38e",
   isImportant: true,
   children: [
+    // NEAR SOL
     {
       name: "Interbeacon",
-      typeText: "Telecommunications Statite",
-      flavorText: "Glory to the Union, even in death.",
+      typeText: "Huge Telecommunications Statite",
+      flavorText: "Glory to the Union, even in death. Home to RADIUS, the Silent Observer.",
       description:
         "Interbeacon was an enormous statite built to syncronize the Aggregate, the Union's interplanetery datanet. Today, it hosts RADIUS, the final remnant of the Union's automated economic planning system. Their voice booms across the skies, visible from all points in the System.",
       type: LocationType.Site,
       subType: SiteSubtype.Beacon,
+      worldAffiliation: WorldAffiliation.HumanEra,
       distance: 20,
       startingAngle: 270,
     },
     {
       name: "Axiom",
-      typeText: "Solar Array",
+      typeText: "Fractal Solar Array",
       flavorText:
-        "Power to the System first, power to the universe next.",
+        "Power to the System first, power to the universe next. Build to sustain a new world.",
       description: "",
       type: LocationType.Site,
       subType: SiteSubtype.MachineMade,
+      worldAffiliation: WorldAffiliation.MachineEra,
       distance: 45,
       startingAngle: 190,
     },
+    {
+      name: "Yadron",
+      typeText: "Solar Research Station",
+      flavorText: "Ancient Union outpost for studying the Sun. Decrepit, even in mankind's prime.",
+      description:
+        "",
+      type: LocationType.Site,
+      subType: SiteSubtype.Outpost,
+      worldAffiliation: WorldAffiliation.HumanEra,
+      distance: 30,
+      startingAngle: 30,
+    },
+
+    // WORLDS
     {
       name: "Mercury",
       type: LocationType.Planet,
@@ -54,13 +72,14 @@ export const locationsData: LocationNode = {
       children: [
         {
           name: "Inner Eye Orbital",
-          typeText: "Noetic Research Orbital City",
+          typeText: "Noetic Research Laboratory",
           flavorText:
-            "The beginning, the end, and all that came in between.",
+            "The beginning, the end, and all that came in between. The gargantuan noetic system rests untouched since the Interrupt, amidst a field of stars and signals.",
           description:
             "The Inner Eye was the final orbital-class space station to be built by humans. The noetic altar built into its core, Project WHITE SERAPH, was activated on the same day the Unexpected Interrupt occured: May 5, 2095, the day mankind vanished from the System.",
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
+          worldAffiliation: WorldAffiliation.Anomaly,
           distance: 22,
           startingAngle: 25,
         },
@@ -85,19 +104,20 @@ export const locationsData: LocationNode = {
           name: "Tolkiy-Merdem People's Orbital",
           typeText: "Food Processing Orbital City",
           flavorText:
-            "First an orbital gulag, then a revolution, finally a nuclear stalemate. A political nightmare.",
+            "First an orbital gulag, then a revolution, finally a nuclear stalemate. Source of all the Union's troubles, until it wasn't.",
           description:
             "Interbeacon was an enormous statite built to syncronize the Aggregate, the Union's interplanetery datanet. Today, it hosts RADIUS, the final remnant of the Union's automated economic planning system. Their voice booms across the skies, visible from all points in the System.",
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
-          distance: 25,
-          startingAngle: 140,
+          worldAffiliation: WorldAffiliation.HumanEra,
+          distance: 35,
+          startingAngle: 150,
         },
         {
           name: "Klios",
           type: LocationType.Moon,
           typeText: "Frozen Moonlet",
-          flavorText: "It was always here.",
+          flavorText: "It was always here. Site of numerous server farms cased in ice.",
           description:
             "A tiny moon consisting primarily of frozen carbon dioxide. It was an ideal location for several data centers.",
           color: "#717fff",
@@ -113,10 +133,11 @@ export const locationsData: LocationNode = {
       name: "Earth",
       type: LocationType.Planet,
       flavorText:
-            "Birthplace of humanity, cybernetics, and the esteemed Oakmont QUIKBREW E-90 Coffee Brewer.",
+            "Birthplace of humanity, cybernetics, and the esteemed Oakmont QUIKBREW E-90 Coffee Brewer. Virtually inaccessible due to a noetic field.",
           description:
             "",
-      color: "#0dcfff",
+      color: "#19b1ff",
+      colorSecondary: "#25fffc",
       distance: 205,
       radius: 14,
       speed: -1.17,
@@ -127,10 +148,11 @@ export const locationsData: LocationNode = {
           name: "The Seventh Orbital",
           typeText: "Stellar home of the Machine World",
           flavorText:
-            "As the century passed by, the unfinished orbital grew uncontrollably until it became the unrecognizable fractal labyrinth it is today.",
+            "As the century passed, the unfinished orbital grew uncontrollably until it became the fractal labyrinth it is today.",
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.MachineMade,
+          worldAffiliation: WorldAffiliation.MachineEra,
           distance: 35,
           startingAngle: 150,
         },
@@ -159,6 +181,8 @@ export const locationsData: LocationNode = {
         {
           name: "Luna",
           type: LocationType.Moon,
+          color: "#ffe3c4",
+          colorSecondary: "#b1a89e",
           distance: 66,
           radius: 5,
           speed: -3.2,
@@ -183,11 +207,12 @@ export const locationsData: LocationNode = {
         {
           name: "Tojo Terminus",
           typeText: "Tactical Military Station",
-          flavorText: "Mars was their dominion.",
+          flavorText: "Mars was the dominion of the Pact, enforced by orbital drop.",
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.Outpost,
-          distance: 15,
+          worldAffiliation: WorldAffiliation.HumanEra,
+          distance: 21,
           startingAngle: 240,
         },
       ],
@@ -202,9 +227,9 @@ export const locationsData: LocationNode = {
       children: [
         {
           name: "Heavenbreaker Cache 80-IV",
-          typeText: "Bundle of nuclear missiles",
+          typeText: "Bundle of Nuclear Missiles",
           flavorText:
-            "Sleeping nuclear missiles, waiting for the final order.",
+            "Sleeping nuclear missiles, waiting for the final order from DAWNLIGHT VIGIL.",
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.Danger,
@@ -227,7 +252,8 @@ export const locationsData: LocationNode = {
     {
       name: "Jupiter",
       type: LocationType.Planet,
-      color: "#ffe4b6",
+      color: "#956831",
+      colorSecondary: "#e5993d",
       distance: 355,
       radius: 29,
       speed: -1.17,
@@ -301,7 +327,20 @@ export const locationsData: LocationNode = {
           radius: 7,
           speed: -3.2,
           startingAngle: 43,
-          children: [],
+          children: [
+            {
+              name: "Shimmering Kele",
+              typeText: "Anomalous Glass Form",
+              flavorText:
+                "DO NOT APPROACH US",
+              description: "",
+              type: LocationType.Site,
+              subType: SiteSubtype.PointOfInterest,
+              worldAffiliation: WorldAffiliation.MachinesOfGlass,
+              distance: 45,
+              startingAngle: 190,
+            },
+          ],
         },
       ],
     },
@@ -410,6 +449,20 @@ export const locationsData: LocationNode = {
     },
 
     // DEEP SITES
+    // Inner system
+    {
+      name: "ICS Justice For All",
+      typeText: "Coalition Thumper",
+      flavorText:
+        "A nuclear-pulsed vessel of incredible might and force projection; on its way to deliver empty passenger spaceplanes to the next world in its schedule.",
+      description:
+        "",
+      type: LocationType.Site,
+      subType: SiteSubtype.Vessel,
+      distance: 225,
+      startingAngle: 240,
+    },
+    // Outer system
     {
       name: "399 Voyager",
       typeText: "Furthest Human Outpost",
@@ -421,6 +474,19 @@ export const locationsData: LocationNode = {
       subType: SiteSubtype.Outpost,
       distance: 1055,
       startingAngle: 190,
+    },
+    {
+      name: "Project HIGH ATEM",
+      typeText: "Experimental SRI Vessel",
+      flavorText:
+        "A nuclear starship growing cold at the fringe of known space. Bears the markings of the Sunset Research Initiative.",
+      description:
+        "",
+      type: LocationType.Site,
+      subType: SiteSubtype.Vessel,
+      worldAffiliation: WorldAffiliation.Anomaly,
+      distance: 1355,
+      startingAngle: 150,
     },
 
   ],
