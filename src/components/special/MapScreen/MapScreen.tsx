@@ -1,3 +1,4 @@
+import PageHeading from "@/components/page/PageHeading.component"
 import { selectedLocationAtom } from "@/components/special/SystemMap/state/atoms"
 import SystemMap from "@/components/special/SystemMap/SystemMap"
 import { useAtom } from "jotai"
@@ -12,7 +13,9 @@ const MapScreen = () => {
     <div className="map-screen">
 
       <div className="map-header">
-        <h1>Map {">"}{">"} Solar System</h1>
+        <button>Back</button>
+        <h1>Map | Solar System</h1>
+        <button>?</button>
       </div>
 
       <div className="map-body">
@@ -20,7 +23,6 @@ const MapScreen = () => {
       </div>
 
       <div className="map-selected">
-        more data
         {selectedLocation?.name}
       </div>
 

@@ -1,8 +1,11 @@
 @import 'src/styles/imports.scss';
 
+$map-header-height: 40px;
+$map-selected-peek-height: 50px;
+
 .map-screen {
   position: absolute;
-  top: 85px; 
+  top: 86px; 
   bottom: 0px; 
   left: 0px; 
   right: 0px;
@@ -21,27 +24,54 @@
 
   .map-header {
     position: relative;
-    height: 60px;
-    background: green;
+    height: $map-header-height;
     margin-bottom: 3px;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+
+    margin-top: 0px;
+    border: 2px solid $color-sunset-red;
+    background: $color-sunset-red;
+    border-radius: 6px;
 
     h1 {
       font-size: 16px;
+      font-family: $font-code;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $color-background-dark;
+    }
+    button {
+      width: 60px;
+      height: 100%;
+      background: none;
+      border: 2px solid red;
+      text-align: center;
     }
   }
   .map-body {
-    height: calc(100% - 130px);
+    height: calc(100% - $map-header-height - $map-selected-peek-height - 14px);
     left: 0; right: 0;
   }
 
   .map-selected {
     position: absolute;
-    bottom: 0; left: 10px; right: 10px;
-    height: 60px;
-    background: red;
+    z-index: 900;
+
+    left: 0px; right: 0px; bottom: -100%;
+    top: calc(100% - $map-selected-peek-height);
+    //height: 100%;
+
+    transition: 0.1s;
+    border: 2px solid $color-sunset-red;
+    border-radius: 6px;
+    background: $color-background-dark;
+
+    &:hover {
+      top: 0;
+      bottom: 2px;
+    }
   }
 }
