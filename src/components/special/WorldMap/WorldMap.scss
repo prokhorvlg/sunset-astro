@@ -1,6 +1,6 @@
 @import 'src/styles/imports.scss';
 
-.terrestial-map-container {
+.world-map-container {
   width: 97%;
   height: 85vh;
   max-width: 2000px;
@@ -20,7 +20,7 @@
     height: 100%;
     width: 100%;
 
-    .terrestial-map-dynamic {
+    .world-map-dynamic {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       height: 100%;
@@ -43,7 +43,7 @@
       }
       
     
-      .terrestial-map-dynamic-content {
+      .world-map-dynamic-content {
         background: $map-background-color;
       }
     
@@ -51,7 +51,7 @@
         user-select: none;
       }
     
-      .terrestial-map-bounding-block {
+      .world-map-bounding-block {
         position: relative;
         height: $map-height;
         width: $map-width;
@@ -59,10 +59,10 @@
         z-index: 290; 
       }
     
-      .terrestial-map-grid-container {
+      .world-map-grid-container {
         position: absolute;
         z-index: 260;
-        .terrestial-map-grid {
+        .world-map-grid {
           @include abg(0.07);
           height: 10000px;
           width: 10000px;

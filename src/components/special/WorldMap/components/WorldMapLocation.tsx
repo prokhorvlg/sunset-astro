@@ -3,11 +3,11 @@ import {
   MAP_DISTANCE_FACTOR,
   MAP_SCALE_FACTOR,
   MAP_DEFAULT_COLOR,
-} from "@/components/special/TerrestialMap/data/constants"
+} from "@/components/special/WorldMap/data/constants"
 import {
   LocationNode,
   LocationType,
-} from "@/components/special/TerrestialMap/data/types"
+} from "@/components/special/WorldMap/data/types"
 import {
   scaleAtom,
   rescaleAtom,
@@ -15,7 +15,7 @@ import {
 } from "@/components/special/SystemMap/state/atoms"
 import { useAtom } from "jotai"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
-import './TerrestialMapLocation.scss'
+import './WorldMapLocation.scss'
 
 enum Dimension {
   x = 'x',
@@ -23,7 +23,7 @@ enum Dimension {
 }
 
 // Generates each individual location.
-const TerrestialMapLocation = ({
+const WorldMapLocation = ({
   location,
   zIndex,
   transform,
@@ -47,4 +47,4 @@ const TerrestialMapLocation = ({
   const [isLabel] = useState(location.type === LocationType.Label); 
 }
 
-export default TerrestialMapLocation
+export default WorldMapLocation

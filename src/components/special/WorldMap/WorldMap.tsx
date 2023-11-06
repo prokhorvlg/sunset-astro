@@ -1,14 +1,14 @@
 import {
   MAP_MAX_SCALE,
   MAP_MIN_SCALE,
-} from "@/components/special/TerrestialMap/data/constants"
+} from "@/components/special/WorldMap/data/constants"
 import { useEffect, useRef } from "react"
 import {
   TransformWrapper,
   TransformComponent,
   ReactZoomPanPinchContentRef,
 } from "react-zoom-pan-pinch"
-import "./TerrestialMap.scss"
+import "./WorldMap.scss"
 import { useAtom } from "jotai"
 import {
   scaleAtom,
@@ -20,10 +20,10 @@ import {
   transformAtom,
   opacityFadeOutAtom,
 } from "@/components/special/SystemMap/state/atoms"
-import { locationsData } from "@/components/special/TerrestialMap/data/locationsData"
-import TerrestialMapLocation from "@/components/special/TerrestialMap/components/TerrestialMapLocation"
+import { locationsData } from "@/components/special/WorldMap/data/locationsData"
+import WorldMapLocation from "@/components/special/WorldMap/components/WorldMapLocation"
 
-const TerrestialMap = () => {
+const WorldMap = () => {
   const transformComponentRef =
     useRef<ReactZoomPanPinchContentRef | null>(null)
   const mapContainerRef = useRef<HTMLDivElement | null>(null)
@@ -180,10 +180,10 @@ const SystemMapTransformContainer = ({
   // Needs updating here \/
   return (
     <TransformComponent
-      wrapperClass="terrestial-map-dynamic"
-      contentClass="terrestial-map-dynamic-content"
+      wrapperClass="world-map-dynamic"
+      contentClass="world-map-dynamic-content"
     >
-      <div className="terrestial-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
+      <div className="world-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
      
       <div className="sunset-map-glowing-sun" style={{
         opacity: opacityFadeOut * 0.4
@@ -198,7 +198,7 @@ const SystemMapTransformContainer = ({
       
       <SystemGrid />
       <div className="sunset-map-inner-container">
-        <TerrestialMapLocation
+        <WorldMapLocation
           location={locationsData}
           isRootElement
           transform={transform}
@@ -257,4 +257,4 @@ export function getMousePosition(
   };
 }
 
-export default TerrestialMap
+export default WorldMap
