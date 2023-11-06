@@ -36,36 +36,33 @@ const LocationField = ({
 
   return (
     <div className="map-field">
+      {/* FIELD */}
+      <div className="map-field-container">
+        <div className="field-clipped" style={{
+          height: "96px",
+          width: "150px",
+          WebkitClipPath: 'url(#maskBlob)',
+          WebkitMaskSize: `${mathClamp(rescale * 50, 20, 60)}px`,
+          WebkitMaskImage: isDetailLevel ? "none" : undefined,
+          opacity: mathClamp(opacityFadeOut * 0.8, 0.2, 0.7)
+        }}></div>
+        <svg width="100%" height="100%">
+          <defs>
+            <clipPath id="maskBlob">
+              <path fillRule="evenodd" transform="scale(0.5)"
+                d="M285.1000,116.1000 C256.402,121.166 264.211,98.485 269.000,83.1000 C275.377,64.714 290.868,50.931 293.1000,67.000 C297.132,83.069 315.598,112.834 285.1000,116.1000 ZM140.1000,161.000 C110.805,137.213 89.074,130.577 65.000,126.1000 C37.640,122.935 37.382,82.1000 75.1000,82.1000 C102.097,82.1000 138.278,86.534 151.000,46.1000 C169.852,-11.583 238.574,-9.235 259.1000,22.000 C287.029,61.402 248.432,70.652 247.000,127.1000 C245.301,196.041 180.946,192.469 140.1000,161.000 ZM1.000,107.1000 C2.309,85.998 33.728,89.968 32.000,105.000 C29.947,122.862 -0.309,130.002 1.000,107.1000 Z"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
 
-          {/* FIELD */}
-          <div className="map-field-container">
-            <div className="field-clipped" style={{
-              height: "96px",
-              width: "150px",
-              WebkitClipPath: 'url(#maskBlob)',
-              WebkitMaskSize: `${mathClamp(rescale * 50, 20, 60)}px`,
-              WebkitMaskImage: isDetailLevel ? "none" : undefined,
-              opacity: mathClamp(opacityFadeOut * 0.8, 0.2, 0.7)
-            }}></div>
-            <svg width="100%" height="100%">
-              <defs>
-                <clipPath id="maskBlob">
-                  <path fillRule="evenodd" transform="scale(0.5)"
-                    d="M285.1000,116.1000 C256.402,121.166 264.211,98.485 269.000,83.1000 C275.377,64.714 290.868,50.931 293.1000,67.000 C297.132,83.069 315.598,112.834 285.1000,116.1000 ZM140.1000,161.000 C110.805,137.213 89.074,130.577 65.000,126.1000 C37.640,122.935 37.382,82.1000 75.1000,82.1000 C102.097,82.1000 138.278,86.534 151.000,46.1000 C169.852,-11.583 238.574,-9.235 259.1000,22.000 C287.029,61.402 248.432,70.652 247.000,127.1000 C245.301,196.041 180.946,192.469 140.1000,161.000 ZM1.000,107.1000 C2.309,85.998 33.728,89.968 32.000,105.000 C29.947,122.862 -0.309,130.002 1.000,107.1000 Z"/>
-                </clipPath>
-              </defs>
-            </svg>
-          </div>
-
-          {/* PLANET TEXT */}
-          <div
-            className="text-under"
-          >
-            <h2 className="name" style={{
-              transform: `scale(${rescale})`,
-              fontSize: `${mathClamp(1 / rescale * 5, 15, 35)}px`,
-            }}>{location.name}</h2>
-          </div>
+      {/* FIELD TEXT */}
+      <div className="text-under">
+        <h2 className="name" style={{
+          transform: `scale(${rescale})`,
+          fontSize: `${mathClamp(1 / rescale * 5, 15, 35)}px`,
+        }}>{location.name}</h2>
+      </div>
     </div>
   )
 }

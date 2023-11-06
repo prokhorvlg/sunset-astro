@@ -1,0 +1,21 @@
+// Z-index for layering
+
+// UNDERLYING
+$map-zindex-orbitRing: 200;
+$map-zindex-field: 350;
+$map-zindex-underlyingOverlay: 400; // Make sure to clear all the stacking rings
+
+// ICONS
+$map-zindex-world: 500;
+$map-zindex-site: 600;
+$map-zindex-iconOverlay: 650;
+
+// TEXT
+$map-zindex-label: 800;
+$map-zindex-labelOverlay: 850;
+
+// INTERACTIVE
+$map-zindex-boundingBlock: 1500;
+$map-zindex-selectionButton: 1600;
+
+
