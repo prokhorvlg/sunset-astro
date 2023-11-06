@@ -35,6 +35,7 @@ export interface LocationNode {
   radius?: number
   speed?: number
   startingAngle: number
+  ringWidth?: number  // If planet has rings, filling this out gives it one
 
   // DOM
   parent?: string

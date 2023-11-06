@@ -1,8 +1,8 @@
 import { MAP_DISTANCE_FACTOR } from "@/components/special/SystemMap/data/constants"
 import { LocationNode } from "@/components/special/SystemMap/data/types"
-import { rescaleAtom } from "@/components/special/SystemMap/state/atoms"
-import { mathClamp } from "@/components/special/SystemMap/utils/math"
+import { isDetailLevelAtom, rescaleAtom } from "@/components/special/SystemMap/state/atoms"
 import { useAtom } from "jotai"
+import { useState } from "react"
 import './LocationOrbitRing.scss'
 
 const LocationOrbitRing = ({
@@ -13,18 +13,28 @@ const LocationOrbitRing = ({
   ringsCurrentZIndex: number
 }) => {
   const [rescale, setRescale] = useAtom(rescaleAtom)
+  const [isDetailLevel, setIsDetailLevel] = useAtom(
+    isDetailLevelAtom
+  )
+
+  const [size] = useState(location.distance * MAP_DISTANCE_FACTOR * 2)
 
   return (
     <div
       className="map-orbit-ring"
       style={{
-        height: location.distance * MAP_DISTANCE_FACTOR * 2,
-        width: location.distance * MAP_DISTANCE_FACTOR * 2,
+        height: size,
+        width: size,
         zIndex: ringsCurrentZIndex,
-        borderWidth: `${rescale * 0.5}px`,
-        //opacity: fadedOpacity
+        opacity: isDetailLevel ? "0.2" : "1"
       }}
-    />
+    >
+      <div className="cover" style={{
+        height: isDetailLevel ? size - 2 : size - 2,
+        width: isDetailLevel ? size - 2 : size - 2,
+        zIndex: ringsCurrentZIndex,
+      }}></div>
+    </div>
   )
 }
 

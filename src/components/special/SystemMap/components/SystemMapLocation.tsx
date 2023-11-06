@@ -45,12 +45,14 @@ const SystemMapLocation = ({
   zIndex,
   isRootElement,
   transform,
+  onWheel
 }: {
   location: LocationNode
   parentLocation?: LocationNode
   zIndex?: number
   isRootElement?: boolean
   transform: ReactZoomPanPinchContentRef
+  onWheel: (e: React.WheelEvent<HTMLDivElement>) => void
 }) => {
   const [scale, setScale] = useAtom(scaleAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
@@ -116,6 +118,7 @@ const SystemMapLocation = ({
               parentLocation={location}
               zIndex={ringsCurrentZIndex}
               transform={transform}
+              onWheel={onWheel}
             />
           )
         })}
@@ -187,9 +190,10 @@ const SystemMapLocation = ({
               height: radius + 22,
               width: radius + 22,
             }}
+            onWheel={(e) => onWheel(e as any)}
             onClick={() => {
               setSelectedLocation(location)
-              transform.zoomToElement(location.name)
+              transform.zoomToElement(location.name, 10, 400)
             }}
           ></button>
         </div>

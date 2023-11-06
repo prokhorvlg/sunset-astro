@@ -62,6 +62,8 @@ export const locationsData: LocationNode = {
     // WORLDS
     {
       name: "Mercury",
+      typeText: "Lifeless Mining World",
+      flavorText: "A rock deep with precious minerals and strange melted cities.",
       type: LocationType.Planet,
       color: "#f47f00",
       colorSecondary: "#ffc75a",
@@ -80,7 +82,7 @@ export const locationsData: LocationNode = {
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
           worldAffiliation: WorldAffiliation.Anomaly,
-          distance: 22,
+          distance: 28,
           startingAngle: 25,
         },
       ],
@@ -131,6 +133,7 @@ export const locationsData: LocationNode = {
     },
     {
       name: "Earth",
+      typeText: "Temperate Living World",
       type: LocationType.Planet,
       flavorText:
             "Birthplace of humanity, cybernetics, and the esteemed Oakmont QUIKBREW E-90 Coffee Brewer. Virtually inaccessible due to a noetic field.",
@@ -197,11 +200,13 @@ export const locationsData: LocationNode = {
       typeText: "Arid Desert World",
       flavorText:
         "Remains true to its namesake. Arrive only on business: war, profit, exploration.",
-      color: "#ff4817",
+      color: "#ff241a",
+      colorSecondary: "#ff8143",
       distance: 245,
       radius: 11,
       speed: -1.17,
       startingAngle: 74,
+      ringWidth: 40,
       isImportant: true,
       children: [
         {
@@ -252,8 +257,8 @@ export const locationsData: LocationNode = {
     {
       name: "Jupiter",
       type: LocationType.Planet,
-      color: "#956831",
-      colorSecondary: "#e5993d",
+      color: "#b97b44",
+      colorSecondary: "#f2dbc0",
       distance: 355,
       radius: 29,
       speed: -1.17,
@@ -321,7 +326,7 @@ export const locationsData: LocationNode = {
           name: "Callisto",
           typeText: "Dark Oil World",
           type: LocationType.Moon,
-          color: "#56417a",
+          color: "#a48fca",
           colorSecondary: "#af51ff",
           distance: 175,
           radius: 7,
@@ -347,12 +352,26 @@ export const locationsData: LocationNode = {
     {
       name: "Saturn",
       type: LocationType.Planet,
-      color: "#ffc698",
+      color: "#f2c080",
+      colorSecondary: "#fdf1bd",
       distance: 435,
       radius: 26,
       speed: -1.17,
       startingAngle: 310,
+      ringWidth: 90,
       children: [
+        {
+          name: "Goldspire Archival Complex",
+          typeText: "ALTITUDE Network Hub",
+          flavorText: "You like information, correct? There is much information here. Home of UNISERVE, the Curator.",
+          description:
+            "",
+          type: LocationType.Site,
+          subType: SiteSubtype.Beacon,
+          worldAffiliation: WorldAffiliation.HumanEra,
+          distance: 30,
+          startingAngle: 310,
+        },
         {
           name: "Titan",
           type: LocationType.Moon,
@@ -427,23 +446,41 @@ export const locationsData: LocationNode = {
       children: [],
     },
     {
-      name: "Nibiru",
+      name: "Marduk",
+      typeText: "Strange Gas Giant",
       type: LocationType.Planet,
-      color: "#ff1bc1",
+      color: "#ae5395",
+      colorSecondary: "#895082",
       distance: 1205,
       radius: 36,
       speed: -1.17,
       startingAngle: 32,
       children: [
         {
-          name: "Marduk",
+          name: "Nibiru",
+          typeText: "Umbral Living World",
           type: LocationType.Moon,
           color: "#b003c5",
+          colorSecondary: "#9c285e",
           distance: 135,
-          radius: 4,
+          radius: 12,
           speed: -3.2,
           startingAngle: 73,
-          children: [],
+          children: [
+            {
+              name: "Unusual Marker Stone A0019",
+              typeText: "Prehistoric Monument",
+              flavorText:
+                "It reads - WELCOME TO THE WORLD. WE MADE IT FOR YOU.",
+              description:
+                "",
+              type: LocationType.Site,
+              subType: SiteSubtype.PointOfInterest,
+              worldAffiliation: WorldAffiliation.Anomaly,
+              distance: 35,
+              startingAngle: 150,
+            },
+          ],
         },
       ],
     },
@@ -454,7 +491,7 @@ export const locationsData: LocationNode = {
       name: "ICS Justice For All",
       typeText: "Coalition Thumper",
       flavorText:
-        "A nuclear-pulsed vessel of incredible might and force projection; on its way to deliver empty passenger spaceplanes to the next world in its schedule.",
+        "Nuclear-pulsed vessel of incredible might on its way to deliver empty passenger spaceplanes.",
       description:
         "",
       type: LocationType.Site,

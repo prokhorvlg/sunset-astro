@@ -24,8 +24,6 @@ import {
 } from "@/components/special/SystemMap/state/atoms"
 import { mathClamp } from "@/components/special/SystemMap/utils/math"
 
-const SMOOTH_SCROLL_MODE = false
-
 const SystemMap = () => {
   const transformComponentRef =
     useRef<ReactZoomPanPinchContentRef | null>(null)
@@ -41,10 +39,6 @@ const SystemMap = () => {
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
-
-  useEffect(() => {
-    //console.log(posX * (scale), posY * (scale))
-  }, [posX])
 
   useEffect(() => {
     if (!transformComponentRef.current) return
@@ -75,20 +69,18 @@ const SystemMap = () => {
     updateScaleFromExternalInput(parseFloat(e.target.value))
   }
 
-  
-
   const reset = () => {
     if (selectedLocation) {
       transformComponentRef.current?.zoomToElement(
         selectedLocation.name,
         1,
-        500
+        400
       )
     } else {
       transformComponentRef.current?.zoomToElement(
         "Sol",
         1,
-        500
+        400
       )
     }
 
@@ -105,7 +97,7 @@ const SystemMap = () => {
       maxScale={MAP_MAX_SCALE}
       smooth={false}
       wheel={{
-        disabled: SMOOTH_SCROLL_MODE
+        disabled: true
       }}
       centerOnInit
       onZoom={(e) => {
@@ -162,22 +154,6 @@ const SystemMap = () => {
               <p>{selectedLocation?.description}</p>
             </div> */}
             <div className="sunset-map-container" ref={mapContainerRef} >
-              {/* <svg className="noise-rectangle" xmlns='http://www.w3.org/2000/svg'>
-                  <filter id='noiseFilter'>
-                    <feTurbulence 
-                      type='fractalNoise' 
-                      result="noiseResult"
-                      baseFrequency='0.65' 
-                      numOctaves='3' 
-                      stitchTiles='stitch'>
-                    </feTurbulence>
-                    <feColorMatrix in="noiseResult" type="hueRotate" values="0" result="noiseRotated">
-                      <animate attributeName="values" from="0" to="360" dur="20s" repeatCount="indefinite"/>
-                    </feColorMatrix>
-                  </filter>
-                  
-                  <rect width='100%' height='100%' filter='url(#noiseFilter)'/>
-                </svg> */}
               <div
                 className="system-map-context-menu-container"
                 onContextMenu={(e) => {
@@ -207,6 +183,9 @@ const SystemMapTransformContainer = ({
 }: {
   transform: ReactZoomPanPinchContentRef
 }) => {
+  const [opacityFadeIn] = useAtom(
+    opacityFadeInAtom
+  )
   const [opacityFadeOut, setOpacityFadeOut] = useAtom(
     opacityFadeOutAtom
   )
@@ -214,69 +193,51 @@ const SystemMapTransformContainer = ({
   const [posX, setPosX] = useAtom(usePosXAtom)
   const [posY, setPosY] = useAtom(usePosYAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
-  
-  const [realX, setRealX] = useState(0)
-  useEffect(() => {
-    //console.log("posX", posX)
-    setRealX(posX)
-  }, [posX])
 
-  const onWheel = (e) => {
-    console.log("ewf")
-    if (SMOOTH_SCROLL_MODE) {
-      
+  const myRef = useRef<HTMLDivElement>(null);
 
-      const wrapper = document.getElementsByClassName('react-transform-wrapper')?.[0];
-      if (!wrapper) return
-      //console.log(wrapper?.getBoundingClientRect().left)
-      const x = wrapper?.getBoundingClientRect().left || 0;
-      const y = wrapper?.getBoundingClientRect().top || 0;
-      const coordinates = {
-          x: x - e.clientX,
-          y: y - e.clientY,
-        };
+  const onWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    // Zooming in is negative, zooming out is positive
+    const isZoomingIn = e.deltaY < 0
 
-      
-      const newScale = scale - 1
+    let newScale = isZoomingIn ? scale + 1 : scale - 1
+    
+    if (newScale >= MAP_MAX_SCALE) newScale = MAP_MAX_SCALE;
+    else if (newScale <= MAP_MIN_SCALE) newScale = MAP_MIN_SCALE;
+    setScale(newScale)
+    const scaleDifference = newScale - scale
 
-      transform.setTransform(
-        (coordinates.x + wrapper?.clientWidth / (newScale * 2)) * newScale,
-        (coordinates.y + wrapper?.clientHeight / (newScale * 2)) * newScale,
-        newScale
-      );
-      //const x = e.nativeEvent.offsetX
-      //const y = e.nativeEvent.offsetY
-      //console.log(e.pageX)
-      //setScale(scale)
-      const mod = 0
-      //transformComponentRef.current?.setTransform(x + mod,y + mod,scale + 1, 200)
-      //transformComponentRef.current?.zoomIn(1 / rescale / 2, 200, "easeInOutCubic")
-    }
+    const mousePosition = getMousePosition(e as any, myRef.current as HTMLDivElement, scale)
+    const { positionX, positionY } = transform.instance.transformState;
+
+    const calculatedPositionX = positionX - mousePosition.x * scaleDifference;
+    const calculatedPositionY = positionY - mousePosition.y * scaleDifference;
+
+    // Set new state, then ensure it's in bound with a zoom in call
+    transform.instance.setTransformState(newScale, calculatedPositionX, calculatedPositionY);
+    transform.zoomIn(0)
   }
 
   return (
     <TransformComponent
       wrapperClass="sunset-map-dynamic"
       contentClass="sunset-map-dynamic-content"
-      
     >
-      <div className="sunset-map-bounding-block" onWheel={(e) => onWheel(e)}></div>
+      <div className="sunset-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
       <div className="sunset-map-large-glowing-background"></div>
       <div className="sunset-map-large-outer-fade-background"></div>
      
       <div className="sunset-map-glowing-sun" style={{
         opacity: opacityFadeOut * 0.4
       }}></div>
-      { scale < 4 &&
         <div className="sunset-map-starry-container">
           <div className="sunset-map-starry-pattern" style={{
             transform: `transform(-50%, -50%)`,
-            //backgroundSize: `${rescale * 800}px`,
-            backgroundPosition: `${posX * 0.3}px ${posY * 0.3}px`, //scale(${rescale})
+            backgroundSize: `${rescale * 800}px`,
+            backgroundPosition: `${posX * 0.3}px ${posY * 0.3}px`,
             //opacity: mathClamp(opacityFadeOut * 0.1, 0, 0.06),
           }}></div>
         </div>
-      }
       
       <SystemGrid />
       <div className="sunset-map-inner-container">
@@ -284,6 +245,7 @@ const SystemMapTransformContainer = ({
           location={locationsData}
           isRootElement
           transform={transform}
+          onWheel={onWheel}
         />
       </div>
     </TransformComponent>
@@ -309,4 +271,50 @@ const SystemGrid = () => {
   )
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+export function getMousePosition(
+  event: WheelEvent | MouseEvent | TouchEvent,
+  contentComponent: HTMLDivElement,
+  scale: number,
+) {
+  const contentRect = contentComponent.getBoundingClientRect();
+
+  let mouseX = 0;
+  let mouseY = 0;
+
+  if ("clientX" in event) {
+    // mouse position x, y over wrapper component
+    mouseX = (event.clientX - contentRect.left) / scale;
+    mouseY = (event.clientY - contentRect.top) / scale;
+  } else {
+    const touch = event.touches[0];
+    mouseX = (touch.clientX - contentRect.left) / scale;
+    mouseY = (touch.clientY - contentRect.top) / scale;
+  }
+
+  if (Number.isNaN(mouseX) || Number.isNaN(mouseY))
+    console.error("No mouse or touch offset found");
+
+  return {
+    x: mouseX,
+    y: mouseY,
+  };
+}
+
 export default SystemMap
+
+
+
+

@@ -1,6 +1,6 @@
 import { MAP_DISTANCE_FACTOR } from "@/components/special/SystemMap/data/constants"
 import { LocationNode } from "@/components/special/SystemMap/data/types"
-import { opacityFadeOutAtom, rescaleAtom } from "@/components/special/SystemMap/state/atoms"
+import { isDetailLevelAtom, opacityFadeOutAtom, rescaleAtom } from "@/components/special/SystemMap/state/atoms"
 import { mathClamp } from "@/components/special/SystemMap/utils/math"
 import { useAtom } from "jotai"
 import './LocationAsteroidBelt.scss'
@@ -18,6 +18,9 @@ const LocationAsteroidBelt = ({
   const [opacityFadeOut, setOpacityFadeOut] = useAtom(
     opacityFadeOutAtom
   )
+  const [isDetailLevel, setIsDetailLevel] = useAtom(
+    isDetailLevelAtom
+  )
 
   return (
     <div
@@ -34,8 +37,9 @@ const LocationAsteroidBelt = ({
         className="map-asteroid-belt"
         style={{
           borderWidth: `${radius}px`,
-          backgroundSize: `${mathClamp(rescale * 100, 50, 200)}px`,
-          opacity: mathClamp(opacityFadeOut * 0.8, 0.3, 0.8)
+          backgroundSize: `${mathClamp(rescale * 100, 80, 200)}px`,
+          background: isDetailLevel ? "#ff4111" : undefined,
+          opacity: isDetailLevel ? "0.1" : mathClamp(opacityFadeOut * 0.8, 0.3, 0.8)
         }}
       >
         <div

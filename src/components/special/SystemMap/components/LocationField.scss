@@ -13,10 +13,14 @@
     //width: 100px;
     .field-clipped {
       @include absoluteCentered();
-      background: red;
-      background-image: linear-gradient(to bottom, purple 0%, magenta 100%);
+      background-image: linear-gradient(to bottom, rgb(120, 0, 189), rgb(255, 23, 224));
       background-size: 100px;
+      mix-blend-mode: color-burn;
+
+      //animation: rotateGradient 2s linear infinite;
+
       -webkit-mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
+      mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
     }
     svg {
       @include absoluteCentered();
@@ -36,4 +40,10 @@
       background: rgba($map-background-color, 0.8);
     }
   }
+}
+
+@keyframes rotateGradient {
+  0%{background-position:10% 0%}
+  50%{background-position:91% 100%}
+  100%{background-position:10% 0%} 
 }

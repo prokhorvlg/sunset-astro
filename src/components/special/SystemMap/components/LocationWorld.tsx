@@ -18,7 +18,7 @@ import "./LocationWorld.scss"
 const LocationWorld = ({
   location,
   radius,
-  color,
+  color
 }: {
   location: LocationNode
   radius: number
@@ -43,6 +43,7 @@ const LocationWorld = ({
 
   return (
     <div
+    
       className="map-world"
       style={{
         transform: `scale(${rescale})`,
@@ -59,11 +60,6 @@ const LocationWorld = ({
           {/* PLANET CIRCLE */}
           <div
             className="map-world-circle map-singular-location"
-            onClick={() => {
-              if (!transform) return
-              setSelectedLocation(location)
-              transform.zoomToElement(location.name)
-            }}
             style={{
               height: isDetailLevel ? radius + 30 : radius,
               width: isDetailLevel ? radius + 30 : radius,
@@ -92,9 +88,16 @@ const LocationWorld = ({
                 //backgroundColor: color,
                 background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 40%, ${color} 60%)` : color
               }}
-            ></div>
-            {/* <p className="symbol">V</p> */}
-            {/* {location.isImportant && <div className="important">!</div>} */}
+            >
+              
+            </div>
+            {location.ringWidth &&
+              <div className="ring" style={{
+                backgroundColor: location.colorSecondary,
+                width: `${location.ringWidth * 2}px`
+              }}></div>
+            }
+            
           </div>
 
           {/* PLANET TEXT */}
