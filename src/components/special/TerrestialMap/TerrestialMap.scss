@@ -1,0 +1,83 @@
+@import 'src/styles/imports.scss';
+
+.terrestial-map-container {
+  width: 97%;
+  height: 85vh;
+  max-width: 2000px;
+  margin: 0 auto;
+  border: $color-sunset-red solid 2px; 
+  border-radius: 6px;
+
+  position: absolute;
+  top: 86px; bottom: 0px; left: 0; right: 0;
+  overflow: hidden;
+  @media screen and (max-width: $breakpoint-mobile) {
+    top: 64px;
+  }
+  .system-map-context-menu-container {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    height: 100%;
+    width: 100%;
+
+    .terrestial-map-dynamic {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      height: 100%;
+      width: 100%;
+      cursor: grab;
+      background: $map-background-color;
+    
+      &:hover:active {
+        cursor: grabbing;
+      }
+    
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        mix-blend-mode: overlay;
+        background: linear-gradient(to bottom, $map-amber-color 20%, $map-reddish-color 100%);
+        opacity: 0.4;
+        pointer-events: none;
+      }
+      
+    
+      .terrestial-map-dynamic-content {
+        background: $map-background-color;
+      }
+    
+      * {
+        user-select: none;
+      }
+    
+      .terrestial-map-bounding-block {
+        position: relative;
+        height: $map-height;
+        width: $map-width;
+        top:0; left: 0;
+        z-index: 290; 
+      }
+    
+      .terrestial-map-grid-container {
+        position: absolute;
+        z-index: 260;
+        .terrestial-map-grid {
+          @include abg(0.07);
+          height: 10000px;
+          width: 10000px;
+          z-index: 260;
+          left: 50%;
+          top: 50%;
+          position: absolute;
+          mix-blend-mode: lighten;
+          &::after {
+            background-image: url('/images/patterns/map-bg-grid-pattern.svg');
+            background-size: 4px;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+}
