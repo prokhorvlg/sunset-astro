@@ -19,8 +19,8 @@ import {
   opacityFadeInAtom,
   transformAtom,
   opacityFadeOutAtom,
-} from "@/components/special/SystemMap/state/atoms"
-import { locationsData } from "@/components/special/LocalMap/data/locationsData"
+} from "@/components/special/LocalMap/state/atoms"
+import { locationsData, middleLocation } from "@/components/special/LocalMap/data/locationsData"
 import LocalMapLocation from "@/components/special/LocalMap/components/LocalMapLocation"
 
 const LocalMap = () => {
@@ -75,7 +75,7 @@ const LocalMap = () => {
       )
     } else {
       transformComponentRef.current?.zoomToElement(
-        "Middle",
+        "middle",
         1,
         400
       )
@@ -177,7 +177,6 @@ const SystemMapTransformContainer = ({
     transform.zoomIn(0)
   }
 
-  // Needs updating here \/
   return (
     <TransformComponent
       wrapperClass="local-map-dynamic"
@@ -185,9 +184,8 @@ const SystemMapTransformContainer = ({
     >
       <div className="local-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
       
-      <SystemGrid />
-      <div className="sunset-map-inner-container">
-        <div></div>
+      <div className="local-map-inner-container">
+        <LocalMapLocation location={middleLocation} onWheel={onWheel} />
         {locationsData.map(loc => {
           return <LocalMapLocation 
             location={loc}
@@ -196,25 +194,6 @@ const SystemMapTransformContainer = ({
         })}
       </div>
     </TransformComponent>
-  )
-}
-
-const SystemGrid = () => {
-  const [opacityFadeIn, setOpacityFadeIn] = useAtom(
-    opacityFadeInAtom
-  )
-
-  return (
-    <div
-      className="sunset-map-grid-container"
-      style={{
-        //marginLeft: -(posX * rescale / 5),
-        //marginTop: -(posY * rescale / 5)
-        opacity: opacityFadeIn,
-      }}
-    >
-      <div className="sunset-map-grid"></div>
-    </div>
   )
 }
 
