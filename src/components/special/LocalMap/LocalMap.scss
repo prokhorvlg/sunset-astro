@@ -1,6 +1,6 @@
 @import 'src/styles/imports.scss';
 
-.world-map-container {
+.local-map-container {
   width: 97%;
   height: 85vh;
   max-width: 2000px;
@@ -20,7 +20,7 @@
     height: 100%;
     width: 100%;
 
-    .world-map-dynamic {
+    .local-map-dynamic {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       height: 100%;
@@ -43,7 +43,7 @@
       }
       
     
-      .world-map-dynamic-content {
+      .local-map-dynamic-content {
         background: $map-background-color;
       }
     
@@ -51,7 +51,7 @@
         user-select: none;
       }
     
-      .world-map-bounding-block {
+      .local-map-bounding-block {
         position: relative;
         height: $map-height;
         width: $map-width;
@@ -59,10 +59,10 @@
         z-index: 290; 
       }
     
-      .world-map-grid-container {
+      .local-map-grid-container {
         position: absolute;
         z-index: 260;
-        .world-map-grid {
+        .local-map-grid {
           @include abg(0.07);
           height: 10000px;
           width: 10000px;

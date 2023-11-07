@@ -1,14 +1,14 @@
 import {
   MAP_MAX_SCALE,
   MAP_MIN_SCALE,
-} from "@/components/special/WorldMap/data/constants"
+} from "@/components/special/LocalMap/data/constants"
 import { useEffect, useRef } from "react"
 import {
   TransformWrapper,
   TransformComponent,
   ReactZoomPanPinchContentRef,
 } from "react-zoom-pan-pinch"
-import "./WorldMap.scss"
+import "./LocalMap.scss"
 import { useAtom } from "jotai"
 import {
   scaleAtom,
@@ -20,10 +20,10 @@ import {
   transformAtom,
   opacityFadeOutAtom,
 } from "@/components/special/SystemMap/state/atoms"
-import { locationsData } from "@/components/special/WorldMap/data/locationsData"
-import WorldMapLocation from "@/components/special/WorldMap/components/WorldMapLocation"
+import { locationsData } from "@/components/special/LocalMap/data/locationsData"
+import LocalMapLocation from "@/components/special/LocalMap/components/LocalMapLocation"
 
-const WorldMap = () => {
+const LocalMap = () => {
   const transformComponentRef =
     useRef<ReactZoomPanPinchContentRef | null>(null)
   const mapContainerRef = useRef<HTMLDivElement | null>(null)
@@ -180,10 +180,10 @@ const SystemMapTransformContainer = ({
   // Needs updating here \/
   return (
     <TransformComponent
-      wrapperClass="world-map-dynamic"
-      contentClass="world-map-dynamic-content"
+      wrapperClass="local-map-dynamic"
+      contentClass="local-map-dynamic-content"
     >
-      <div className="world-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
+      <div className="local-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
      
       <div className="sunset-map-glowing-sun" style={{
         opacity: opacityFadeOut * 0.4
@@ -198,7 +198,7 @@ const SystemMapTransformContainer = ({
       
       <SystemGrid />
       <div className="sunset-map-inner-container">
-        <WorldMapLocation
+        <LocalMapLocation
           location={locationsData}
           isRootElement
           transform={transform}
@@ -257,4 +257,4 @@ export function getMousePosition(
   };
 }
 
-export default WorldMap
+export default LocalMap
