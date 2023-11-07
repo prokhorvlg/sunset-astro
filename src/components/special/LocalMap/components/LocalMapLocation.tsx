@@ -3,11 +3,11 @@ import {
   MAP_DISTANCE_FACTOR,
   MAP_SCALE_FACTOR,
   MAP_DEFAULT_COLOR,
-} from "@/components/special/WorldMap/data/constants"
+} from "@/components/special/LocalMap/data/constants"
 import {
   LocationNode,
   LocationType,
-} from "@/components/special/WorldMap/data/types"
+} from "@/components/special/LocalMap/data/types"
 import {
   scaleAtom,
   rescaleAtom,
@@ -15,7 +15,7 @@ import {
 } from "@/components/special/SystemMap/state/atoms"
 import { useAtom } from "jotai"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
-import './WorldMapLocation.scss'
+import './LocalMapLocation.scss'
 
 enum Dimension {
   x = 'x',
@@ -23,7 +23,7 @@ enum Dimension {
 }
 
 // Generates each individual location.
-const WorldMapLocation = ({
+const LocalMapLocation = ({
   location,
   zIndex,
   transform,
@@ -47,4 +47,4 @@ const WorldMapLocation = ({
   const [isLabel] = useState(location.type === LocationType.Label); 
 }
 
-export default WorldMapLocation
+export default LocalMapLocation

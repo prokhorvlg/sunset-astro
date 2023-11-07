@@ -3,7 +3,7 @@ import {
   LocationType,
   SiteSubtype,
   WorldAffiliation,
-} from "@/components/special/WorldMap/data/types"
+} from "@/components/special/LocalMap/data/types"
 
 export const locationsData: LocationNode[] = [
   {
