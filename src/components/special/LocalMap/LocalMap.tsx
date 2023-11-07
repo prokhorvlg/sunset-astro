@@ -75,7 +75,7 @@ const LocalMap = () => {
       )
     } else {
       transformComponentRef.current?.zoomToElement(
-        "Sol",
+        "Middle",
         1,
         400
       )
@@ -184,26 +184,16 @@ const SystemMapTransformContainer = ({
       contentClass="local-map-dynamic-content"
     >
       <div className="local-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
-     
-      <div className="sunset-map-glowing-sun" style={{
-        opacity: opacityFadeOut * 0.4
-      }}></div>
-        <div className="sunset-map-starry-container">
-          <div className="sunset-map-starry-pattern" style={{
-            transform: `transform(-50%, -50%)`,
-            backgroundSize: `${rescale * 800}px`,
-            backgroundPosition: `${posX * 0.3}px ${posY * 0.3}px`,
-          }}></div>
-        </div>
       
       <SystemGrid />
       <div className="sunset-map-inner-container">
-        <LocalMapLocation
-          location={locationsData}
-          isRootElement
-          transform={transform}
-          onWheel={onWheel}
-        />
+        <div></div>
+        {locationsData.map(loc => {
+          return <LocalMapLocation 
+            location={loc}
+            onWheel={onWheel}
+          />
+        })}
       </div>
     </TransformComponent>
   )

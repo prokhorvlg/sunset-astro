@@ -17,23 +17,23 @@ import { useAtom } from "jotai"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import './LocalMapLocation.scss'
 
-enum Dimension {
-  x = 'x',
-  y = 'y'
-}
+// enum Dimension {
+//   x = 'x',
+//   y = 'y'
+// }
 
 // Generates each individual location.
 const LocalMapLocation = ({
   location,
-  zIndex,
-  transform,
+  //zIndex,
+  //transform,
   onWheel
 }: {
   location: LocationNode
-  parentLocation?: LocationNode
-  zIndex?: number
-  isRootElement?: boolean
-  transform: ReactZoomPanPinchContentRef
+  //parentLocation?: LocationNode
+  //zIndex?: number
+  //isRootElement?: boolean
+  //transform: ReactZoomPanPinchContentRef
   onWheel: (e: React.WheelEvent<HTMLDivElement>) => void
 }) => {
   const [scale, setScale] = useAtom(scaleAtom)
@@ -42,9 +42,13 @@ const LocalMapLocation = ({
     selectedLocationAtom
   )
 
+  const [isMiddle] = useState(location.type === LocationType.Middle); 
   const [isSite] = useState(location.type === LocationType.Site); 
   const [isField] = useState(location.type === LocationType.Field); 
   const [isLabel] = useState(location.type === LocationType.Label); 
+
+  if (isMiddle) return <div style={{ left: '50%', top: '50%' }}>{location.type}</div>
+  return <div style={{ left: location.x, top: -location.y }}>{location.type}</div>
 }
 
 export default LocalMapLocation
