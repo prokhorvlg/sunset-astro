@@ -22,6 +22,7 @@ import {
   transformAtom,
   opacityFadeOutAtom,
 } from "@/components/special/SystemMap/state/atoms"
+import {debounce} from 'debounce'
 import { mathClamp } from "@/components/special/SystemMap/utils/math"
 
 const SystemMap = () => {
@@ -70,6 +71,7 @@ const SystemMap = () => {
   }
 
   const reset = () => {
+    console.log("reset", selectedLocation)
     if (selectedLocation) {
       transformComponentRef.current?.zoomToElement(
         selectedLocation.name,
@@ -231,7 +233,9 @@ const SystemMapTransformContainer = ({
 
   // CLICK: Reset selected location
   const onClick = (e) => {
-    setSelectedLocation(null)
+    debounce(() => {
+      setSelectedLocation(null)
+    }, 200)
   }
 
   // DOUBLE CLICK: Reset the map

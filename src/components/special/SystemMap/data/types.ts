@@ -37,6 +37,11 @@ export interface LocationNode {
   startingAngle: number
   ringWidth?: number  // If planet has rings, filling this out gives it one
 
+  // FIELD-SPECIFIC
+  fieldShape?: FieldShape // If field, defines the SVG used for the shape
+  fieldLabelOffset?: {x: number, y: number} // offset label from origin
+  fieldClass?: string // css class to define colors and such
+
   // DOM
   parent?: string
   classes?: string
@@ -79,11 +84,17 @@ export enum SiteSubtype {
   Weapon = "weapon",    // Outposts designed as some sort of weapon
   Vessel = "vessel",    // Moving spacecraft
   MachineMade = "machine",  // A machine world structure, fractal and multifaceted
-  PointOfInterest = "poi",  // 
+  PointOfInterest = "poi",  
   Danger = "danger",
   Asteroid = "asteroid",
   Wreck = "wreck",
   Ruin = "ruin",
+}
+
+export enum FieldShape {
+  Earth = "Earth",
+  DistantBottomLeft = "DistantBottomLeft",
+  SunWeather = "SunWeather"
 }
 
 // human population pre-interrupt

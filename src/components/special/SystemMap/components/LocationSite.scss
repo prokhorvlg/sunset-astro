@@ -73,12 +73,13 @@
   }
   &.machine-era {
     svg, .name {
-      color: $map-amber-color;
+      color: lighten($color-sunset-aqua, 2%);
+      
     }
   }
   &.machines-of-glass {
     svg, .name {
-      color: $color-sunset-aqua;
+      color: #b8ff5a;
     }
   }
 }

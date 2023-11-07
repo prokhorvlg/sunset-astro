@@ -9,7 +9,7 @@ import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef, useState } from "react"
 import "./LocationSite.scss"
-import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel } from "react-icons/cg";
+import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel, CgMinimize, CgMathPlus } from "react-icons/cg";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {
@@ -35,8 +35,8 @@ const getIconFromSubType = (subType?: SiteSubtype) => {
       )
     case SiteSubtype.Danger:
       return (
-        <CgVercel />
-      )        
+        <CgMathPlus />
+      )
   }
   return (
     <CgClose />
@@ -122,11 +122,6 @@ const LocationSite = ({
               {location.flavorText && 
                 <p className="flavor-text">
                   {location.flavorText}
-                </p>
-              }
-              {location.description && 
-                <p className="description">
-                  {location.description}
                 </p>
               }
             </div>

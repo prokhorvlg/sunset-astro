@@ -1,4 +1,5 @@
 import {
+  FieldShape,
   LocationNode,
   LocationType,
   SiteSubtype,
@@ -35,10 +36,10 @@ export const locationsData: LocationNode = {
       startingAngle: 270,
     },
     {
-      name: "Axiom",
+      name: "The Axiom",
       typeText: "Fractal Solar Array",
       flavorText:
-        "Power to the System first, power to the universe next. Build to sustain a new world.",
+        "First, energy to the System. Next, energy to the universe.",
       description: "",
       type: LocationType.Site,
       subType: SiteSubtype.MachineMade,
@@ -159,26 +160,26 @@ export const locationsData: LocationNode = {
           distance: 35,
           startingAngle: 150,
         },
+        
         {
-          name: "Broadcast W-01108",
-          typeText: "Transmission of unknown origin",
-          description: "",
-          type: LocationType.Site,
-          subType: SiteSubtype.MachineMade,
-          worldAffiliation: WorldAffiliation.Anomaly,
-          distance: 45,
-          startingAngle: 20,
-        },
-        {
-          name: "BROKENDATA Reality Field",
+          name: "BROKENDATA",
           typeText: "Reality Field",
-          flavorText: "x",
-          description: "x",
           type: LocationType.Field,
+          fieldShape: FieldShape.Earth,
+          fieldLabelOffset: {x: 0, y: -60},
           distance: 22,
           startingAngle: 25,
           children: [
-            
+            {
+              name: "Broadcast W-01108",
+              typeText: "Transmission of unknown origin",
+              description: "",
+              type: LocationType.Site,
+              subType: SiteSubtype.Beacon,
+              worldAffiliation: WorldAffiliation.Anomaly,
+              distance: 25,
+              startingAngle: 20,
+            },
           ]
         },
         {
@@ -233,12 +234,22 @@ export const locationsData: LocationNode = {
           distance: 38,
           startingAngle: 360,
         },
+        {
+          name: "Hikari Lightwave 901",
+          typeText: "Laser Relay Satellite",
+          flavorText: "Data courses through the system like coolant through an interfacer's body.",
+          description: "",
+          type: LocationType.Site,
+          subType: SiteSubtype.Beacon,
+          distance: 50,
+          startingAngle: 130,
+        },
       ],
     },
     {
       name: "Asteroid Belt",
       type: LocationType.AsteroidBelt,
-      distance: 340,
+      distance: 350,
       radius: 15,
       speed: -1.17,
       startingAngle: 44,
@@ -261,7 +272,7 @@ export const locationsData: LocationNode = {
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.Outpost,
-          distance: 1,
+          distance: -45,
           startingAngle: 290,
         },
       ],
@@ -272,11 +283,12 @@ export const locationsData: LocationNode = {
       type: LocationType.Planet,
       color: "#b97b44",
       colorSecondary: "#f2dbc0",
-      distance: 355,
-      radius: 29,
+      distance: 385,
+      radius: 31,
       speed: -1.17,
-      startingAngle: 145,
+      startingAngle: 132,
       children: [
+        // stations
         {
           name: "Gorsk",
           typeText: "Monolithic People's Orbital",
@@ -289,6 +301,18 @@ export const locationsData: LocationNode = {
           distance: 45,
           startingAngle: 190,
         },
+        {
+          name: "The Search For Everything",
+          typeText: "Self-Replicating Interstellar Vessel",
+          flavorText: "This is the first step towards an answer to the great mystery of the Everything... and ultimately, a conclusion to my hunt for the perfect efficiency of the valves at junction 54-889B.",
+          description: "",
+          worldAffiliation: WorldAffiliation.MachineEra,
+          type: LocationType.Site,
+          subType: SiteSubtype.Vessel,
+          distance: 25,
+          startingAngle: 340,
+        },
+        // moons
         {
           name: "Io",
           typeText: "Volcanic World",
@@ -367,12 +391,13 @@ export const locationsData: LocationNode = {
       type: LocationType.Planet,
       color: "#f2c080",
       colorSecondary: "#fdf1bd",
-      distance: 435,
+      distance: 475,
       radius: 26,
       speed: -1.17,
-      startingAngle: 310,
-      ringWidth: 90,
+      startingAngle: 320,
+      ringWidth: 110,
       children: [
+        // stations
         {
           name: "Goldspire Archival Complex",
           typeText: "ALTITUDE Network Hub",
@@ -398,6 +423,7 @@ export const locationsData: LocationNode = {
           distance: 34,
           startingAngle: 140,
         },
+        // moons
         {
           name: "Titan",
           type: LocationType.Moon,
@@ -406,7 +432,7 @@ export const locationsData: LocationNode = {
           distance: 135,
           radius: 8,
           speed: -3.2,
-          startingAngle: 33,
+          startingAngle: 40,
           isImportant: true,
           children: [
             {
@@ -427,10 +453,11 @@ export const locationsData: LocationNode = {
       name: "Uranus",
       type: LocationType.Planet,
       color: "#38f3ff",
-      distance: 545,
+      colorSecondary: "#bafcfb",
+      distance: 575,
       radius: 19,
       speed: -1.17,
-      startingAngle: 210,
+      startingAngle: 200,
       children: [],
     },
     {
@@ -446,15 +473,26 @@ export const locationsData: LocationNode = {
     {
       name: "Pluto",
       type: LocationType.Planet,
-      distance: 725,
+      distance: 745,
       radius: 5,
       speed: -1.17,
-      startingAngle: 11,
+      startingAngle: 63,
       children: [
+        {
+          name: "Thousand Eyes",
+          typeText: "Sprawling Orbital Complex",
+          flavorText: "Only one has ever returned from this place. They felt as though the past was gazing upon them.",
+          description: "",
+          worldAffiliation: WorldAffiliation.Anomaly,
+          type: LocationType.Site,
+          subType: SiteSubtype.Danger,
+          distance: 25,
+          startingAngle: 230,
+        },
         {
           name: "Charon",
           type: LocationType.Moon,
-          distance: 65,
+          distance: 64,
           radius: 3,
           speed: -3.2,
           startingAngle: 165,
@@ -465,7 +503,7 @@ export const locationsData: LocationNode = {
     {
       name: "Kuiper Belt",
       type: LocationType.AsteroidBelt,
-      distance: 955,
+      distance: 1025,
       radius: 50,
       speed: -1.17,
       startingAngle: 0,
@@ -477,7 +515,7 @@ export const locationsData: LocationNode = {
       type: LocationType.Planet,
       color: "#ae5395",
       colorSecondary: "#895082",
-      distance: 1205,
+      distance: 1245,
       radius: 36,
       speed: -1.17,
       startingAngle: 32,
@@ -511,6 +549,44 @@ export const locationsData: LocationNode = {
       ],
     },
 
+    // NEAR FIELDS
+    {
+      name: "REONIS",
+      typeText: "Particle Storm",
+      type: LocationType.Field,
+      fieldShape: FieldShape.SunWeather,
+      fieldLabelOffset: {x: -725, y: -180},
+      fieldClass: "magnetic-storm",
+      distance: 100,
+      startingAngle: 70
+    },
+
+    // DEEP FIELDS
+    {
+      name: "ATEM",
+      typeText: "Reality Field",
+      type: LocationType.Field,
+      fieldShape: FieldShape.DistantBottomLeft,
+      fieldLabelOffset: {x: -25, y: -150},
+      distance: 1320,
+      startingAngle: 144,
+      children: [
+        {
+          name: "Project HIGH ATEM",
+          typeText: "Experimental SRI Vessel",
+          flavorText:
+            "A nuclear starship growing cold at the fringe of known space. Bears the markings of the Sunset Research Initiative.",
+          description:
+            "",
+          type: LocationType.Site,
+          subType: SiteSubtype.Vessel,
+          worldAffiliation: WorldAffiliation.Anomaly,
+          distance: 150,
+          startingAngle: 200,
+        },
+      ]
+    },
+
     // DEEP SITES
     // Inner system
     {
@@ -537,20 +613,7 @@ export const locationsData: LocationNode = {
       subType: SiteSubtype.Outpost,
       distance: 1055,
       startingAngle: 190,
-    },
-    {
-      name: "Project HIGH ATEM",
-      typeText: "Experimental SRI Vessel",
-      flavorText:
-        "A nuclear starship growing cold at the fringe of known space. Bears the markings of the Sunset Research Initiative.",
-      description:
-        "",
-      type: LocationType.Site,
-      subType: SiteSubtype.Vessel,
-      worldAffiliation: WorldAffiliation.Anomaly,
-      distance: 1355,
-      startingAngle: 150,
-    },
+    }
 
   ],
 }
