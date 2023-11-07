@@ -12,17 +12,6 @@ $map-width: 3200px;
 }
 
 .sunset-map-container {
-  /*width: 97%;
-  height: 85vh;
-  max-width: 2000px;
-  margin: 0 auto;
-  border: $color-sunset-red solid 2px; 
-  border-radius: 6px;
-
-  position: absolute;
-  top: 86px; bottom: 0px; left: 0; right: 0;
-  overflow: hidden;*/
-
   border: $color-sunset-red solid 2px; 
   border-radius: 6px;
 
@@ -31,11 +20,6 @@ $map-width: 3200px;
   left: 0;
   right: 0;
 
-  //box-sizing: content-box;
-
-  @media screen and (max-width: $breakpoint-mobile) {
-    //top: 64px;
-  }
   .system-map-context-menu-container {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -76,19 +60,11 @@ $map-width: 3200px;
       }
     
       .sunset-map-bounding-block {
-    
         position: relative;
         height: $map-height;
         width: $map-width;
         top:0; left: 0;
-        //top: -50%; left: -50%;
-        z-index: 290; //290;
-        //overflow: hidden;
-        //user-select: none;
-        //pointer-events: none;
-
-        //background: rgba(green, 0.5);
-        //border: 4px solid blue;
+        z-index: $map-zindex-boundingBlock;
       }
     
       .sunset-map-large-glowing-background {
@@ -96,7 +72,7 @@ $map-width: 3200px;
         @include centeredObject();
         height: $largeGlowingBackgroundWidth;
         width: $largeGlowingBackgroundWidth;
-        z-index: 280;
+        z-index: $map-zindex-underlyingOverlay;
         border-radius: 9999px;
         background: radial-gradient(rgb(255, 189, 6) 0%, rgb(131, 21, 7) 30%, black 70%);
         mix-blend-mode: screen;
@@ -112,7 +88,7 @@ $map-width: 3200px;
         height: 2100px;
         width: 3200px;
         padding: 400px;
-        z-index: 900;
+        z-index: $map-zindex-underlyingOverlay;
         mix-blend-mode: hard-light;
         opacity:0.1;
         //background: radial-gradient(rgb(0,0,0) 0%, rgb(214, 76, 168) 70%, rgb(88, 3, 74) 100%);
@@ -125,7 +101,7 @@ $map-width: 3200px;
         height: 250px;
         width: 250px;
         border-radius: 99999px;
-        z-index: 600;
+        z-index: $map-zindex-iconOverlay;
         background: radial-gradient(rgb(255, 214, 101) 10%, 
           rgb(255, 177, 32) 20%, 
           rgba(230, 83, 15, 0.1) 50%, 
@@ -138,13 +114,13 @@ $map-width: 3200px;
     
       .sunset-map-grid-container {
         position: absolute;
-        z-index: 260;
+        z-index: $map-zindex-underlyingOverlay;
         .sunset-map-grid {
           @include abg(0.07);
           //@include abg-red-plus();
           height: 10000px;
           width: 10000px;
-          z-index: 260;
+          z-index: $map-zindex-underlyingOverlay;
           left: 50%;
           top: 50%;
           position: absolute;
@@ -159,7 +135,7 @@ $map-width: 3200px;
       }
       .sunset-map-starry-container { 
         @include absoluteCentered();
-        z-index: 250;
+        z-index: $map-zindex-underlyingOverlay;
           .sunset-map-starry-pattern {
             @include absoluteCentered();
             height: calc($map-height + 200px);

@@ -66,64 +66,74 @@ const LocationSite = ({
   const [icon] = useState(getIconFromSubType(location.subType))
 
   return (
-    <div
-      ref={visibleRef}
-      className={`map-site ${location.worldAffiliation}`}
-      style={{
-        transform: `scale(${rescale})`,
-      }}
-    >
-      {isInView && (
-        <>
+    <>
+      {/* DARK CIRCLE under the icon */}
+      <div className="map-site-dark-container" style={{
+          transform: `scale(${rescale})`,
+        }}>
+          <div className="dark-container-circle"></div>
+      </div>
 
-          {/* NAME */}
-          <h2
-            className={`name`}
-            style={{
-              bottom: `${radius * 0.5 + 10}px`,
-              opacity: isDetailLevel ? "1" : "0",
-            }}
-          >
-            {location.name}
-          </h2>
+      {/* ICON, TEXT */}
+      <div
+        ref={visibleRef}
+        className={`map-site ${location.worldAffiliation}`}
+        style={{
+          transform: `scale(${rescale})`,
+        }}
+      >
+        {isInView && (
+          <>
 
-          {/* ICON */}
-          <div
-            className="map-site-icon"
-            onClick={() => {
-              if (!transform) return
-              setSelectedLocation(location)
-              transform.zoomToElement(location.name)
-            }}
-          >
-            <div className={`icon-container ${location.subType}`}>
-              {icon}
+            {/* NAME */}
+            <h2
+              className={`name`}
+              style={{
+                bottom: `${radius * 0.5 + 10}px`,
+                opacity: isDetailLevel ? "1" : "0",
+              }}
+            >
+              {location.name}
+            </h2>
+
+            {/* ICON */}
+            <div
+              className="map-site-icon"
+              onClick={() => {
+                if (!transform) return
+                setSelectedLocation(location)
+                transform.zoomToElement(location.name)
+              }}
+            >
+              <div className={`icon-container ${location.subType}`}>
+                {icon}
+              </div>
             </div>
-          </div>
 
-          {/* TYPE, FLAVOR TEXT */}
-          <div
-            className="text-under"
-            style={{
-              top: `${radius * 0.5 + 10}px`,
-              opacity: isDetailLevel ? "1" : "0",
-            }}
-          >
-            <p className="type-text">{location.typeText}</p>
-            {location.flavorText && 
-              <p className="flavor-text">
-                {location.flavorText}
-              </p>
-            }
-            {location.description && 
-              <p className="description">
-                {location.description}
-              </p>
-            }
-          </div>
-        </>
-      )}
-    </div>
+            {/* TYPE, FLAVOR TEXT */}
+            <div
+              className="text-under"
+              style={{
+                top: `${radius * 0.5 + 10}px`,
+                opacity: isDetailLevel ? "1" : "0",
+              }}
+            >
+              <p className="type-text">{location.typeText}</p>
+              {location.flavorText && 
+                <p className="flavor-text">
+                  {location.flavorText}
+                </p>
+              }
+              {location.description && 
+                <p className="description">
+                  {location.description}
+                </p>
+              }
+            </div>
+          </>
+        )}
+      </div>
+    </>
   )
 }
 
