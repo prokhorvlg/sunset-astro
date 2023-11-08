@@ -35,39 +35,45 @@ $map-width: 3200px;
     .ruler {
       position: absolute;
       z-index: 9000;
-      left: 0;
-      right: 0;
+      left: 2px;
+      right: 2px;
       height: 12px;
-      //background: red;
 
       overflow: hidden;
       .ruler-pattern {
         position: absolute;
         left: -50%;
-        top: 0;
+        top: 2px;
         height: 100%;
-        //background: rgba($map-background-color, 0.8);
-        
 
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
 
-        .ruler-block {
-          height: 100%;
+        .ruler-border {
+          width: 100%;
+          height: 2px;
+          background: $map-amber-color;
+        }
+        .ruler-blocks {
           display: flex;
           flex-direction: row;
-          .ruler-block-width {}
-          .ruler-block-marker {
-            height: 50%;
-            width: 2px;
-            background: $map-amber-color;
-            border-bottom-left-radius: 1px;
-            border-bottom-right-radius: 1px;
-          }
-
-          &:nth-child(10n) {
+          height: 100%;
+          .ruler-block {
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            .ruler-block-width {}
             .ruler-block-marker {
-              height: 100%;
+              height: 50%;
+              width: 2px;
+  
+              background: $map-amber-color;
+            }
+  
+            &:nth-child(10n) {
+              .ruler-block-marker {
+                height: 100%;
+              }
             }
           }
         }

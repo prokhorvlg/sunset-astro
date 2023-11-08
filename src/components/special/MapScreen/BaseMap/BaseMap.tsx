@@ -144,14 +144,17 @@ const BaseMap = ({
                 <div className="ruler-pattern" style={{
                   transform: `translate(${posX}px, 0px)`,
                 }}>
-                  {Array.from({length: 400}).map((item, i) => (
-                    <div className="ruler-block" key={i}>
-                      <div className="ruler-block-width" style={{
-                        width: `${scale * 10}px`
-                      }}></div>
-                      <div className="ruler-block-marker"></div>
-                    </div>
-                  ))}
+                  <div className="ruler-border"></div>
+                  <div className="ruler-blocks">
+                    {Array.from({length: 400}).map((item, i) => (
+                      <div className="ruler-block" key={i}>
+                        <div className="ruler-block-width" style={{
+                          width: `${scale * 10}px`
+                        }}></div>
+                        <div className="ruler-block-marker"></div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
