@@ -139,6 +139,22 @@ const BaseMap = ({
                 }
               }}
             >
+              {/* PANNING RULER */}
+              <div className="ruler">
+                <div className="ruler-pattern" style={{
+                  transform: `translate(${posX}px, 0px)`,
+                }}>
+                  {Array.from({length: 400}).map((item, i) => (
+                    <div className="ruler-block" key={i}>
+                      <div className="ruler-block-width" style={{
+                        width: `${scale * 10}px`
+                      }}></div>
+                      <div className="ruler-block-marker"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <BaseMapTransformContainer
                 transform={transform}
                 reset={reset}
