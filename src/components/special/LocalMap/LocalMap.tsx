@@ -94,7 +94,7 @@ const LocalMap = () => {
       maxScale={MAP_MAX_SCALE}
       smooth={false}
       wheel={{
-        disabled: true
+        disabled: false
       }}
       centerOnInit
       onZoom={(e) => {
@@ -112,9 +112,9 @@ const LocalMap = () => {
       {(transform: ReactZoomPanPinchContentRef) => {
         return (
           <>
-            <div className="sunset-map-container" ref={mapContainerRef} >
+            <div className="local-map-container" ref={mapContainerRef} >
               <div
-                className="system-map-context-menu-container"
+                className="local-map-context-menu-container"
                 onContextMenu={(e) => {
                   e.preventDefault()
                   reset()
@@ -155,41 +155,18 @@ const SystemMapTransformContainer = ({
 
   const myRef = useRef<HTMLDivElement>(null);
 
-  const onWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    // Zooming in is negative, zooming out is positive
-    const isZoomingIn = e.deltaY < 0
-
-    let newScale = isZoomingIn ? scale + 1 : scale - 1
-    
-    if (newScale >= MAP_MAX_SCALE) newScale = MAP_MAX_SCALE;
-    else if (newScale <= MAP_MIN_SCALE) newScale = MAP_MIN_SCALE;
-    setScale(newScale)
-    const scaleDifference = newScale - scale
-
-    const mousePosition = getMousePosition(e as any, myRef.current as HTMLDivElement, scale)
-    const { positionX, positionY } = transform.instance.transformState;
-
-    const calculatedPositionX = positionX - mousePosition.x * scaleDifference;
-    const calculatedPositionY = positionY - mousePosition.y * scaleDifference;
-
-    // Set new state, then ensure it's in bound with a zoom in call
-    transform.instance.setTransformState(newScale, calculatedPositionX, calculatedPositionY);
-    transform.zoomIn(0)
-  }
-
   return (
     <TransformComponent
       wrapperClass="local-map-dynamic"
       contentClass="local-map-dynamic-content"
     >
-      <div className="local-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
+      <div className="local-map-bounding-block" ref={myRef} ></div>
       
       <div className="local-map-inner-container">
-        <LocalMapLocation location={middleLocation} onWheel={onWheel} />
+        {/* <LocalMapLocation location={middleLocation} /> */}
         {locationsData.map(loc => {
           return <LocalMapLocation 
             location={loc}
-            onWheel={onWheel}
           />
         })}
       </div>

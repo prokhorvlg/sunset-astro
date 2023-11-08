@@ -5,14 +5,16 @@ import SystemMap from "@/components/special/SystemMap/SystemMap"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './MapScreen.scss'
+import LocalMap from "../LocalMap/LocalMap"
 
 const MapScreen = (props) => {
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
 
-  const [isIntroOpen, setIsIntroOpen] = useState(false);
+  const [isIntroOpen, setIsIntroOpen] = useState(false)
   const [isExpanded, setIsExpended] = useState(false)
+  const [isSystemMapOn, setIsSystemMapOn] = useState(false)
 
   return (
     <div className="map-screen">
@@ -24,11 +26,12 @@ const MapScreen = (props) => {
       <div className="map-header">
         <button>Back</button>
         <h1>Map | Solar System</h1>
+        <button onClick={e => setIsSystemMapOn(prev => !prev)}>System Map On</button>
         <button onClick={(e) => setIsIntroOpen(true)}>?</button>
       </div>
 
       <div className="map-body">
-        <SystemMap />
+        {isSystemMapOn ? <SystemMap /> : <LocalMap />}
       </div>
 
       <div className={`map-selected ${isExpanded ? "expanded" : ""}`}>

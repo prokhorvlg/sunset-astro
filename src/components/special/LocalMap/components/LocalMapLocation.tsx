@@ -27,14 +27,14 @@ const LocalMapLocation = ({
   location,
   //zIndex,
   //transform,
-  onWheel
+  //onWheel
 }: {
   location: LocationNode
   //parentLocation?: LocationNode
   //zIndex?: number
   //isRootElement?: boolean
   //transform: ReactZoomPanPinchContentRef
-  onWheel: (e: React.WheelEvent<HTMLDivElement>) => void
+  //onWheel: (e: React.WheelEvent<HTMLDivElement>) => void
 }) => {
   const [scale, setScale] = useAtom(scaleAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
@@ -48,8 +48,8 @@ const LocalMapLocation = ({
   const [isLabel] = useState(location.type === LocationType.Label); 
 
   // Placeholder output
-  if (isMiddle) return <div style={{ left: '50%', top: '50%' }}>{location.type}</div>
-  return <div style={{ left: location.x, top: -location.y }}>{location.type}</div>
+  //if (isMiddle) return <div style={{ left: '50%', top: '50%' }} className='poop'>{location.type}</div>
+  return <div style={{ left: location.x, top: location.y }} className='poop'>{location.name}</div>
 }
 
 export default LocalMapLocation

@@ -17,6 +17,12 @@ export const locationsData: LocationNode[] = [
   {
     name: 'example', 
     type: LocationType.Site, 
+    x: 150, 
+    y: 200
+  }, 
+  {
+    name: 'origin', 
+    type: LocationType.Site, 
     x: 0, 
     y: 0
   }
