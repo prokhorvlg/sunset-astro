@@ -1,6 +1,6 @@
 import { MapComponentProps } from "@/components/special/MapScreen/BaseMap/BaseMap"
 import { locationsData } from "@/components/special/MapScreen/BaseMap/data/locationsData"
-import { scaleAtom, usePosXAtom, usePosYAtom, rescaleAtom, opacityFadeOutAtom, opacityFadeInAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { scaleAtom, usePosXAtom, usePosYAtom, rescaleAtom, opacityFadeOutAtom, opacityFadeInAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMapLocation from "@/components/special/MapScreen/BaseMap/SystemMap/components/SystemMapLocation"
 import { useAtom } from "jotai"
 import './SystemMap.scss'
@@ -16,9 +16,14 @@ const SystemMap = (props: MapComponentProps) => {
   const [opacityFadeIn, setOpacityFadeIn] = useAtom(
     opacityFadeInAtom
   )
+  const [isDetailLevel, setIsDetailLevel] = useAtom(
+    isDetailLevelAtom
+  )
+
+  const starryPositionModifier = isDetailLevel ? 0.5 : 0.5
 
   return (
-    <div className="system-map">
+    <>
       {/* BACKGROUND GLOWS */}
       <div className="sunset-map-large-glowing-background"></div>
       <div className="sunset-map-large-outer-fade-background"></div>
@@ -32,8 +37,9 @@ const SystemMap = (props: MapComponentProps) => {
           transform: `transform(-50%, -50%)`,
           width: 3200 + 200,
           height: 2000 + 200,
-          backgroundSize: `${rescale * 800}px`,
-          backgroundPosition: `${posX * 0.3}px ${posY * 0.3}px`,
+          backgroundSize: isDetailLevel ? "200px" : `${rescale * 800}px`,
+         // backgroundSize: isDetailLevel ? "200px" : "600px",
+          backgroundPosition: `${posX * rescale * starryPositionModifier}px ${posY * rescale * starryPositionModifier}px`,
         }}></div>
       </div>
         
@@ -54,7 +60,7 @@ const SystemMap = (props: MapComponentProps) => {
           onWheel={props.onWheel}
         />
       </div>
-    </div>
+    </>
   )
 }
 

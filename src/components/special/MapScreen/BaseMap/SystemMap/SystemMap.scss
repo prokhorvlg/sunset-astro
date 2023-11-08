@@ -7,7 +7,6 @@
   transform: translate(-50%, -50%);
 }
 
-.system-map {
   .sunset-map-large-glowing-background {
     $largeGlowingBackgroundWidth: 2000px;
     @include centeredObject();
@@ -76,4 +75,3 @@
       background-position: 50% 50%;
     }
   }
-}
