@@ -24,7 +24,7 @@ $map-width: 3200px;
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      box-shadow: 0px 0px 60px 10px rgba(0,0,0,0.6) inset;
+      box-shadow: 0px 0px 80px 10px rgba(0,0,0,0.5) inset;
       pointer-events: none;
 
       @media screen and (max-width: $breakpoint-mobile) {
