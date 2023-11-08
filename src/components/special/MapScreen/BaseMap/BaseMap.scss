@@ -13,6 +13,10 @@ $map-width: 3200px;
   left: 0;
   right: 0;
 
+  @media screen and (max-width: $breakpoint-mobile) {
+    border: none;
+  }
+
   .base-map-context-menu-container {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -43,7 +47,7 @@ $map-width: 3200px;
       .ruler-pattern {
         position: absolute;
         left: -50%;
-        top: 2px;
+        top: -2px;
         height: 100%;
 
         display: flex;
@@ -52,7 +56,7 @@ $map-width: 3200px;
         .ruler-border {
           width: 100%;
           height: 2px;
-          background: $map-amber-color;
+          background: $map-reddish-color;
         }
         .ruler-blocks {
           display: flex;
@@ -67,7 +71,7 @@ $map-width: 3200px;
               height: 50%;
               width: 2px;
   
-              background: $map-amber-color;
+              background: $map-reddish-color;
             }
   
             &:nth-child(10n) {
