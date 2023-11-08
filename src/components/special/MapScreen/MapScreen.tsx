@@ -29,9 +29,7 @@ const MapScreen = (props) => {
       </div>
 
       <div className="map-body">
-        {isSystemMapOn ? 
-          <BaseMap map={MapComponent.System} /> : 
-          <BaseMap map={MapComponent.Titan} />}
+        <BaseMap map={isSystemMapOn ? MapComponent.System : MapComponent.Titan} />
       </div>
 
       <div className={`map-selected ${isExpanded ? "expanded" : ""}`}>

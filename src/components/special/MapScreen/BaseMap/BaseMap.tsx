@@ -26,7 +26,9 @@ export interface MapComponentProps {
   onWheel: (e: React.WheelEvent<HTMLDivElement>) => void
 }
 
-const BaseMap = (props: {
+const BaseMap = ({
+  map
+}: {
   map: MapComponent
 }) => {
   const transformComponentRef =
@@ -45,10 +47,11 @@ const BaseMap = (props: {
   )
 
   useEffect(() => {
+    console.log("triggered") // TODO reset the map position to real center when map source is switched
     if (!transformComponentRef.current) return
     setTransform(transformComponentRef.current)
     transformComponentRef.current.zoomIn(0,0)
-  }, [transformComponentRef])
+  }, [transformComponentRef, map])
 
   // TODO: Unique bounds on mobile scale devices. Desktop should be more limited.
 
@@ -123,7 +126,7 @@ const BaseMap = (props: {
     >
       {(transform: ReactZoomPanPinchContentRef) => {
         return (
-          <div className={`base-map-container ${props.map}`} ref={mapContainerRef} >
+          <div className={`base-map-container ${map}`} ref={mapContainerRef} >
             <div
               className="base-map-context-menu-container"
               onContextMenu={(e) => {
@@ -139,7 +142,7 @@ const BaseMap = (props: {
               <BaseMapTransformContainer
                 transform={transform}
                 reset={reset}
-                map={props.map}
+                map={map}
               />
             </div>
           </div>
