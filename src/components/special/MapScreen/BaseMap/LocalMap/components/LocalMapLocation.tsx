@@ -1,20 +1,7 @@
-import { useState } from 'react'
-import {
-  MAP_DISTANCE_FACTOR,
-  MAP_SCALE_FACTOR,
-  MAP_DEFAULT_COLOR,
-} from "@/components/special/LocalMap/data/constants"
-import {
-  LocationNode,
-  LocationType,
-} from "@/components/special/LocalMap/data/types"
-import {
-  scaleAtom,
-  rescaleAtom,
-  selectedLocationAtom,
-} from "@/components/special/LocalMap/state/atoms"
+import { LocalLocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
+import { scaleAtom, rescaleAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
-import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
+import { useState } from "react"
 import './LocalMapLocation.scss'
 
 // enum Dimension {
@@ -29,7 +16,7 @@ const LocalMapLocation = ({
   //transform,
   //onWheel
 }: {
-  location: LocationNode
+  location: LocalLocationNode
   //parentLocation?: LocationNode
   //zIndex?: number
   //isRootElement?: boolean
@@ -42,7 +29,6 @@ const LocalMapLocation = ({
     selectedLocationAtom
   )
 
-  const [isMiddle] = useState(location.type === LocationType.Middle); 
   const [isSite] = useState(location.type === LocationType.Site); 
   const [isField] = useState(location.type === LocationType.Field); 
   const [isLabel] = useState(location.type === LocationType.Label); 

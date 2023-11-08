@@ -1,16 +1,5 @@
-import {
-  LocationNode,
-  LocationType,
-} from "@/components/special/SystemMap/data/types"
-import {
-  transformAtom,
-  rescaleAtom,
-  isDetailLevelAtom,
-  selectedLocationAtom,
-  scaleAtom,
-  hoveredLocationAtom,
-} from "@/components/special/SystemMap/state/atoms"
-import { mathClamp } from "@/components/special/SystemMap/utils/math"
+import { LocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
+import { transformAtom, scaleAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef } from "react"

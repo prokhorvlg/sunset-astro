@@ -5,6 +5,7 @@ export enum LocationType {
   AsteroidBelt,
   Site, // Specific location eg. Space Station
   Field,
+  Label
 }
 
 export enum RelativePosition {
@@ -30,11 +31,11 @@ export interface LocationNode {
 
   isImportant?: boolean // Has special indicator on map
 
-  // POSITION
-  distance: number
+  // POSITION (on radial map)
+  distance?: number
   radius?: number
   speed?: number
-  startingAngle: number
+  startingAngle?: number
   ringWidth?: number  // If planet has rings, filling this out gives it one
 
   // FIELD-SPECIFIC
@@ -52,6 +53,12 @@ export interface LocationNode {
   // OLD UNUSED
   crafts?: LocationNode[] // unused
   zoomLevel?: number // unused
+}
+
+// Extension for local map nodes
+export interface LocalLocationNode extends LocationNode {
+  x: number
+  y: number
 }
 
 // Which faction occupied this location prior to the Interrupt

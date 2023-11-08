@@ -1,5 +1,6 @@
-import { MAP_INITIAL_SCALE, MAP_MAX_SCALE } from "@/components/special/SystemMap/data/constants"
-import { LocationNode } from "@/components/special/SystemMap/data/types"
+
+import { MAP_INITIAL_SCALE, MAP_MAX_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
+import { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { atom } from "jotai"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 
@@ -36,3 +37,4 @@ export const usePosYAtom = atom(0)
 
 // Contains current selected location of map.
 export const selectedLocationAtom = atom<LocationNode | null>(null)
+export const hoveredLocationAtom = atom<LocationNode | null>(null)

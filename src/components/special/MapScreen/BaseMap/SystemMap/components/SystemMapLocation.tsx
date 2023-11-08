@@ -1,30 +1,14 @@
-import LocationAsteroidBelt from "@/components/special/SystemMap/components/LocationAsteroidBelt"
-import LocationField from "@/components/special/SystemMap/components/LocationField"
-import LocationOrbitRing from "@/components/special/SystemMap/components/LocationOrbitRing"
-import LocationSite from "@/components/special/SystemMap/components/LocationSite"
-import LocationWorld from "@/components/special/SystemMap/components/LocationWorld"
-import {
-  MAP_DISTANCE_FACTOR,
-  MAP_SCALE_FACTOR,
-  MAP_DEFAULT_COLOR,
-} from "@/components/special/SystemMap/data/constants"
-import {
-  LocationNode,
-  LocationType,
-} from "@/components/special/SystemMap/data/types"
-import {
-  scaleAtom,
-  rescaleAtom,
-  selectedLocationAtom,
-  hoveredLocationAtom,
-} from "@/components/special/SystemMap/state/atoms"
-import {
-  findNewPoint,
-  increaseBrightness,
-} from "@/components/special/SystemMap/_old/WorldGenerationHelpers"
-import { useIsVisible } from "@/utils/hooks/useIsVisible"
+import { MAP_SCALE_FACTOR, MAP_DISTANCE_FACTOR, MAP_DEFAULT_COLOR } from "@/components/special/MapScreen/BaseMap/data/constants"
+import { LocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
+import { scaleAtom, rescaleAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import LocationAsteroidBelt from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationAsteroidBelt"
+import LocationField from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationField"
+import LocationOrbitRing from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationOrbitRing"
+import LocationSite from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationSite"
+import LocationWorld from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationWorld"
+import { findNewPoint, increaseBrightness } from "@/components/special/MapScreen/BaseMap/SystemMap/_old/WorldGenerationHelpers"
 import { useAtom } from "jotai"
-import { useMemo, useRef, useState } from "react"
+import { useState } from "react"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import './SystemMapLocation.scss'
 

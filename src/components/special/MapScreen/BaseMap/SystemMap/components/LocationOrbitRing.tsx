@@ -1,6 +1,7 @@
-import { MAP_DISTANCE_FACTOR } from "@/components/special/SystemMap/data/constants"
-import { LocationNode } from "@/components/special/SystemMap/data/types"
-import { isDetailLevelAtom, rescaleAtom } from "@/components/special/SystemMap/state/atoms"
+
+import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
+import { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
+import { rescaleAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './LocationOrbitRing.scss'

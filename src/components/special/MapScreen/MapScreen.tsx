@@ -1,20 +1,18 @@
-import PageHeading from "@/components/page/PageHeading.component"
+import BaseMap, { MapComponent } from "@/components/special/MapScreen/BaseMap/BaseMap"
+import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
+import { selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
-import { selectedLocationAtom } from "@/components/special/SystemMap/state/atoms"
-import SystemMap from "@/components/special/SystemMap/SystemMap"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './MapScreen.scss'
-import LocalMap from "../LocalMap/LocalMap"
 
 const MapScreen = (props) => {
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
-
   const [isIntroOpen, setIsIntroOpen] = useState(false)
   const [isExpanded, setIsExpended] = useState(false)
-  const [isSystemMapOn, setIsSystemMapOn] = useState(false)
+  const [isSystemMapOn, setIsSystemMapOn] = useState(true)
 
   return (
     <div className="map-screen">
@@ -31,7 +29,9 @@ const MapScreen = (props) => {
       </div>
 
       <div className="map-body">
-        {isSystemMapOn ? <SystemMap /> : <LocalMap />}
+        {isSystemMapOn ? 
+          <BaseMap map={MapComponent.System} /> : 
+          <BaseMap map={MapComponent.Titan} />}
       </div>
 
       <div className={`map-selected ${isExpanded ? "expanded" : ""}`}>

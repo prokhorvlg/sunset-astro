@@ -1,19 +1,7 @@
-import {
-  FieldShape,
-  LocationNode,
-  LocationType,
-} from "@/components/special/SystemMap/data/types"
-import {
-  transformAtom,
-  rescaleAtom,
-  isDetailLevelAtom,
-  selectedLocationAtom,
-  opacityFadeOutAtom,
-} from "@/components/special/SystemMap/state/atoms"
-import { mathClamp } from "@/components/special/SystemMap/utils/math"
-import { useIsVisible } from "@/utils/hooks/useIsVisible"
+import { LocationNode, FieldShape } from "@/components/special/MapScreen/BaseMap/data/types"
+import { transformAtom, rescaleAtom, isDetailLevelAtom, opacityFadeOutAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { mathClamp } from "@/components/special/MapScreen/BaseMap/utils/math"
 import { useAtom } from "jotai"
-import { useRef } from "react"
 import "./LocationField.scss"
 
 const LocationField = ({

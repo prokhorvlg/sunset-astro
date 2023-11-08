@@ -1,10 +1,4 @@
-import {
-  FieldShape,
-  LocationNode,
-  LocationType,
-  SiteSubtype,
-  WorldAffiliation,
-} from "@/components/special/SystemMap/data/types"
+import { LocationNode, LocationType, SiteSubtype, WorldAffiliation, FieldShape } from "@/components/special/MapScreen/BaseMap/data/types";
 
 // Data for generation of objects
 export const locationsData: LocationNode = {
@@ -251,6 +245,7 @@ export const locationsData: LocationNode = {
     {
       name: "Phaeton Belt",
       type: LocationType.AsteroidBelt,
+      flavorText: "Also known by its original name, the Asteroid Belt. The destruction of Phaeton is known to have occured some time in the last billion years.",
       distance: 350,
       radius: 15,
       speed: -1.17,
@@ -277,6 +272,18 @@ export const locationsData: LocationNode = {
           distance: -45,
           startingAngle: 290,
         },
+        {
+          name: "Phaeton",
+          typeText: "Planet Core",
+          flavorText: "The final shard of a world that fell many eons ago.",
+          description: "",
+          type: LocationType.Site,
+          subType: SiteSubtype.PointOfInterest,
+          distance: -41,
+          startingAngle: 185,
+        },
+
+        
       ],
       classes: "asteroid-belt",
     },

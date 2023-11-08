@@ -1,7 +1,7 @@
-import { MAP_DISTANCE_FACTOR } from "@/components/special/SystemMap/data/constants"
-import { LocationNode } from "@/components/special/SystemMap/data/types"
-import { isDetailLevelAtom, opacityFadeOutAtom, rescaleAtom } from "@/components/special/SystemMap/state/atoms"
-import { mathClamp } from "@/components/special/SystemMap/utils/math"
+import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
+import { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
+import { rescaleAtom, opacityFadeOutAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { mathClamp } from "@/components/special/MapScreen/BaseMap/utils/math"
 import { useAtom } from "jotai"
 import './LocationAsteroidBelt.scss'
 

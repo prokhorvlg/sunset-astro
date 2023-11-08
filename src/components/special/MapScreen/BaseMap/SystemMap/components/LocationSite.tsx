@@ -1,18 +1,13 @@
-import { LocationNode, SiteSubtype } from "@/components/special/SystemMap/data/types"
-import {
-  transformAtom,
-  rescaleAtom,
-  selectedLocationAtom,
-  isDetailLevelAtom,
-  hoveredLocationAtom,
-} from "@/components/special/SystemMap/state/atoms"
+
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef, useState } from "react"
 import "./LocationSite.scss"
 import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel, CgMinimize, CgMathPlus, CgSmartphoneChip, CgServer } from "react-icons/cg";
 
-import {AiOutlineSave } from "react-icons/ai";
+import { AiOutlineSave } from "react-icons/ai";
+import { SiteSubtype, LocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
+import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {
