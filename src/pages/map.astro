@@ -4,6 +4,9 @@ import { SITE_DESCRIPTION } from '../consts';
 import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
 import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
 import MapScreen from '@/components/special/MapScreen/MapScreen';
+
+import { Content as MapIntro } from '@/data/map/map-intro.mdx';
+import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 ---
 
 <!DOCTYPE html>
@@ -14,9 +17,14 @@ import MapScreen from '@/components/special/MapScreen/MapScreen';
 	<body>
 		<SunsetHeader client:only="react" currentPage={"/map"} />
 		<main>
-			<MapScreen client:only="react" />
+			<MapScreen client:only="react">
+
+        <MarkdownWrapper slot="mapIntro">
+          <MapIntro />
+        </MarkdownWrapper>
+
+      </MapScreen>
 		</main>
-		
 		<ScriptsAfterBody />
 	</body>
 </html>

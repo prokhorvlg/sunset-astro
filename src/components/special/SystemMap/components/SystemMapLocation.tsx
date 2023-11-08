@@ -16,6 +16,7 @@ import {
   scaleAtom,
   rescaleAtom,
   selectedLocationAtom,
+  hoveredLocationAtom,
 } from "@/components/special/SystemMap/state/atoms"
 import {
   findNewPoint,
@@ -58,6 +59,9 @@ const SystemMapLocation = ({
   const [rescale, setRescale] = useAtom(rescaleAtom)
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
+  )
+  const [hoveredLocation, setHoveredLocation] = useAtom(
+    hoveredLocationAtom
   )
 
   const [isWorld] = useState(
@@ -144,6 +148,8 @@ const SystemMapLocation = ({
     return objectPoint[dimension]
   }
 
+  const borderRadiusModifier = 20
+
   return (
     <>
       {/* ORBIT RING (if this is a world) */}
@@ -187,15 +193,22 @@ const SystemMapLocation = ({
           <button
             className="selection-button"
             style={{
-              height: radius + 22,
-              width: radius + 22,
+              height: radius + borderRadiusModifier,
+              width: radius + borderRadiusModifier,
             }}
             onWheel={(e) => onWheel(e as any)}
+            onMouseOver={(e) => setHoveredLocation(location)}
+            onMouseLeave={(e) => setHoveredLocation(null)}
             onClick={() => {
               setSelectedLocation(location)
               transform.zoomToElement(location.name, 10, 400)
             }}
-          ></button>
+          >
+            <div className={`selection-button-inner 
+              ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
+              backgroundColor: location.type !== LocationType.Site ? location.color : undefined
+            }}></div>
+          </button>
         </div>
             
         {/* WORLD (sun, moon, planet) */}

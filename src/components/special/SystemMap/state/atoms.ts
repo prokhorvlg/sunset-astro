@@ -36,3 +36,4 @@ export const usePosYAtom = atom(0)
 
 // Contains current selected location of map.
 export const selectedLocationAtom = atom<LocationNode | null>(null)
+export const hoveredLocationAtom = atom<LocationNode | null>(null)

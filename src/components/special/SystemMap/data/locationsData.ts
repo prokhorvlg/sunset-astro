@@ -164,9 +164,11 @@ export const locationsData: LocationNode = {
         {
           name: "BROKENDATA",
           typeText: "Reality Field",
+          flavorText:
+            "DOCTOR. WE ARE LEAKING SOUL AT AN ASTOUNDING RATE.",
           type: LocationType.Field,
           fieldShape: FieldShape.Earth,
-          fieldLabelOffset: {x: 0, y: -60},
+          fieldLabelOffset: {x: 0, y: -50},
           distance: 22,
           startingAngle: 25,
           children: [
@@ -247,7 +249,7 @@ export const locationsData: LocationNode = {
       ],
     },
     {
-      name: "Asteroid Belt",
+      name: "Phaeton Belt",
       type: LocationType.AsteroidBelt,
       distance: 350,
       radius: 15,
@@ -589,6 +591,7 @@ export const locationsData: LocationNode = {
 
     // DEEP SITES
     // Inner system
+    // Middle system
     {
       name: "ICS Justice For All",
       typeText: "Coalition Thumper",
@@ -598,21 +601,45 @@ export const locationsData: LocationNode = {
         "",
       type: LocationType.Site,
       subType: SiteSubtype.Vessel,
-      distance: 225,
+      distance: 525,
       startingAngle: 240,
+    },
+    {
+      name: "Dataframe 65-G",
+      typeText: "Datanet Synchronization Vessel",
+      flavorText:
+        "The dataframes continue to wander among the worlds, carrying the heaviest load known to sentience: 65 zetabytes of cat bitmaps. They search for anyone to relieve them of their burden, if only a few bytes.",
+      description:
+        "",
+      type: LocationType.Site,
+      subType: SiteSubtype.DataTrove,
+      distance: 725,
+      startingAngle: 320,
+    },
+    {
+      name: "E Heroic",
+      typeText: "Union Boomer",
+      flavorText:
+        "Nuclear-pulsed arsenal vessel on patrol, filled to the brim with armageddon.",
+      description:
+        "",
+      type: LocationType.Site,
+      subType: SiteSubtype.Vessel,
+      distance: 425,
+      startingAngle: 80,
     },
     // Outer system
     {
       name: "399 Voyager",
       typeText: "Furthest Human Outpost",
       flavorText:
-        "A nothingness so pure and black, it'll drive anyone mad.",
+        "A nothingness so pure and black, it would drive anyone mad.",
       description:
         "",
       type: LocationType.Site,
       subType: SiteSubtype.Outpost,
-      distance: 1055,
-      startingAngle: 190,
+      distance: 1155,
+      startingAngle: 210,
     }
 
   ],

@@ -8,6 +8,7 @@ import {
   isDetailLevelAtom,
   selectedLocationAtom,
   scaleAtom,
+  hoveredLocationAtom,
 } from "@/components/special/SystemMap/state/atoms"
 import { mathClamp } from "@/components/special/SystemMap/utils/math"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
@@ -34,6 +35,10 @@ const LocationWorld = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
+  const [hoveredLocation, setHoveredLocation] = useAtom(
+    hoveredLocationAtom
+  )
+  const isHovered = hoveredLocation && hoveredLocation.name === location.name
 
   // VISIBILITY CULLING
   const visibleRef = useRef(null)
@@ -63,9 +68,11 @@ const LocationWorld = ({
             style={{
               height: isDetailLevel ? radius + 30 : radius,
               width: isDetailLevel ? radius + 30 : radius,
-              borderColor: location.colorSecondary
-                ? location.colorSecondary
-                : color,
+              borderColor: (
+                location.colorSecondary
+                  ? location.colorSecondary
+                  : color
+              ),
               //background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 0%, ${location.color} 100%)` : location.color
             }}
           >
@@ -80,21 +87,28 @@ const LocationWorld = ({
                 }}
               ></div>
             )}
+
+            <div className="inner-circle-atmo" style={{
+                height: isDetailLevel ? radius + 86 : radius + 6,
+                width: isDetailLevel ? radius + 86 : radius + 6,
+                backgroundColor: color,
+              }}></div>
             <div
               className="inner-circle"
               style={{
                 height: isDetailLevel ? radius + 25 : radius - 5,
                 width: isDetailLevel ? radius + 25 : radius - 5,
                 //backgroundColor: color,
-                background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 40%, ${color} 60%)` : color
+                background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 40%, ${color} 60%)` : color,
               }}
             >
               
             </div>
+            
             {location.ringWidth &&
               <div className="ring" style={{
                 backgroundColor: location.colorSecondary,
-                width: `${location.ringWidth * 2}px`
+                width: isDetailLevel ? `${location.ringWidth * 3.2}px` : `${location.ringWidth * 2}px`,
               }}></div>
             }
             
@@ -104,12 +118,13 @@ const LocationWorld = ({
           <div
             className="text-under"
             style={{
-              top: `${radius * 0.5 + 5}px`,
+              top: isDetailLevel ? `${0}px` : `${radius * 0.5 + 5}px`,
               color: color,
             }}
           >
             <h2 className="name" style={{
               fontSize: isDetailLevel ? "22px" : "14px",
+
             }}>{location.name}</h2>
             {isDetailLevel && (
               <>

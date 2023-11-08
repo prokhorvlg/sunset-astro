@@ -1,7 +1,9 @@
 @import 'src/styles/imports.scss';
 
 $map-header-height: 40px;
+
 $map-selected-peek-height: 50px;
+$map-selected-peek-extra-height: 40px;
 
 .map-screen {
   position: absolute;
@@ -70,8 +72,26 @@ $map-selected-peek-height: 50px;
     background: $color-background-dark;
 
     &:hover {
+      top: calc(100% - $map-selected-peek-height - $map-selected-peek-extra-height);
+      //bottom: 2px;
+    }
+    &.expanded {
       top: 0;
       bottom: 2px;
+    }
+
+    button.selected-header {
+      width: 100%;
+      height: $map-selected-peek-height + $map-selected-peek-extra-height;
+
+      background: none;
+      border: none;
+      p {
+        color: white;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: $map-selected-peek-extra-height;
+      }
     }
   }
 }

@@ -49,37 +49,36 @@
       &.danger {
         transform: scale(1.2);
       }
+      &.data-trove {
+        transform: scale(1.2);
+      }
     }
   }
   .name {
     position: absolute;
     transform: translate(-50%, -50%);
-    z-index: $map-zindex-label;
 
-    color: $map-amber-color;
     font-size: 18px;
-    background: rgba($map-background-color, 0.8);
   }
 
   // WORLD AFFILIATION -> COLOR
   svg, .name {
-    color: $map-reddish-color;
+    color: $colorWorldHumanEra;
   }
 
   &.anomaly {
     svg, .name {
-      color: magenta;
+      color: $colorWorldAnomaly;
     }
   }
   &.machine-era {
     svg, .name {
-      color: lighten($color-sunset-aqua, 2%);
-      
+      color: $colorWorldMachineEra;
     }
   }
   &.machines-of-glass {
     svg, .name {
-      color: #b8ff5a;
+      color: $colorWorldMachinesOfGlass;
     }
   }
 }

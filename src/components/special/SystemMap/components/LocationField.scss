@@ -4,15 +4,19 @@
   @include absoluteCentered();
   z-index: $map-zindex-field;
 
+  //animation: opacityThrob 5s linear infinite;
+
   &.magnetic-storm {
     .field-clipped {
       background-image: radial-gradient( 
-        rgba(255, 169, 39, 0.2) 10%, 
-        rgba(255, 169, 39, 0.1) 30%, 
+        rgba(255, 169, 39, 0.3) 10%, 
+        rgba(255, 169, 39, 0.15) 30%, 
         rgba(253, 59, 0, 0.0) 100%);
       background-size: 1700px;
       background-position: 50% 50%;
-      mix-blend-mode: overlay;
+      //mix-blend-mode: overlay;
+
+      //animation: flashingThunder 5s linear infinite;
     }
   }
 
@@ -21,7 +25,7 @@
     
     background-image: linear-gradient(to bottom, rgb(120, 0, 189), rgb(255, 23, 224));
     background-size: 100px;
-    mix-blend-mode: color-burn;
+    //mix-blend-mode: color-burn;
     
     -webkit-mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
     mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
@@ -37,26 +41,75 @@
 .map-field-text {
   @include absoluteCentered();
   z-index: $map-zindex-label;
-  //top: -60px;
 
   &.magnetic-storm {
-    .name {
+    .text-under .name {
       color: gray;
     }
   }
-  
-  .name {
-    z-index: $map-zindex-label;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
 
-    font-size: 12px;
-    color: magenta;
-    padding: 2px;
-    background: rgba($map-background-color, 0.8);
+  .text-under {
+    @include absoluteCentered();
+    .name {
+      //display: none;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+  
+      font-size: 12px;
+      color: magenta;
+      padding: 2px;
+      background: rgba($map-background-color, 0.8);
+    }
   }
+}
+
+$thunderOpacityDefault: 0.5;
+@keyframes opacityThrob {
+  0% {
+    opacity: $thunderOpacityDefault;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: $thunderOpacityDefault;
+  }
+}
+
+@keyframes flashingThunder {
+  0% {
+    opacity: $thunderOpacityDefault;
+  }
+  20% {
+    opacity: $thunderOpacityDefault;
+  }
+  22% {
+    opacity: 1;
+  }
+  24% {
+    opacity: $thunderOpacityDefault;
+  }
+  26% {
+    opacity: 1;
+  }
+  28% {
+    opacity: $thunderOpacityDefault;
+  }
+  78% {
+    opacity: $thunderOpacityDefault;
+  }
+  80% {
+    opacity: 1;
+  }
+  82% {
+    opacity:  $thunderOpacityDefault;
+  }
+  100% {
+    opacity: $thunderOpacityDefault;
+  }
+
 }
 
 @keyframes rotateGradient {

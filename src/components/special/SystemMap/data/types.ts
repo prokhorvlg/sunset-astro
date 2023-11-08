@@ -89,6 +89,8 @@ export enum SiteSubtype {
   Asteroid = "asteroid",
   Wreck = "wreck",
   Ruin = "ruin",
+
+  DataTrove = "data-trove",
 }
 
 export enum FieldShape {

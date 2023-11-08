@@ -41,14 +41,22 @@ const LocationField = ({
       {mapShapeFromField(location.fieldShape || FieldShape.Earth, location)}
 
       {/* FIELD TEXT */}
-      <div className={`map-field-text text-under ${location.fieldClass}`} style={{
+      <div className={`map-field-text ${location.fieldClass}`} style={{
         left: location.fieldLabelOffset?.x,
         top: location.fieldLabelOffset?.y
       }}>
-        <h2 className="name" style={{
-          transform: `scale(${rescale})`,
-          fontSize: `${mathClamp(1 / rescale * 5, 15, 35)}px`,
-        }}>{location.typeText} «{location.name}»</h2>
+        <div className="text-under" style={{
+          transform: `translate(-50%, -50%) scale(${rescale})`,
+        }}>
+          <h2 className="name" style={{
+            fontSize: isDetailLevel ? 28: 16,
+          }}>{location.typeText} «{location.name}»</h2>
+          {isDetailLevel &&
+            <p className="flavor-text">{location.flavorText}</p>
+          }
+          
+        </div>
+        
       </div>
     </>
   )
@@ -74,7 +82,9 @@ const FieldContainer = ({
   )
 
   return (
-    <div className={`map-field-container ${location.fieldClass}`}>
+    <div className={`map-field-container ${location.fieldClass}`} style={{
+      opacity: mathClamp(opacityFadeOut * 0.8, 0.2, 0.7)
+    }}>
       <div className="field-clipped magnetic-storm" style={{
         height: `${height}px`,
         width: `${width}px`,
@@ -83,7 +93,7 @@ const FieldContainer = ({
         WebkitClipPath: `url(#${location.name.replace(/ /g, '')}_clipPath)`,
         WebkitMaskSize: `${mathClamp(rescale * 50, 20, 60)}px`,
         WebkitMaskImage: isDetailLevel ? "none" : undefined,
-        opacity: mathClamp(opacityFadeOut * 0.8, 0.2, 0.7)
+        //opacity: mathClamp(opacityFadeOut * 0.8, 0.2, 0.7)
       }}>
       </div>
       <svg width="100%" height="100%">

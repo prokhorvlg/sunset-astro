@@ -6,17 +6,40 @@
   .selection-button-container {
     position: absolute;
     z-index: $map-zindex-selectionButton;
+
     .selection-button {
       position: absolute;
-      transform: translate(-50%, -50%) scale(0.8);
-      border-radius: 5000px;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+
       z-index: $map-zindex-selectionButton;
       background: rgba($map-reddish-color, 0);
-      border: 2px solid transparent;
+      border: none;
+
       &:hover {
-        cursor: pointer;
-        border: 2px solid white;
-        transform: translate(-50%, -50%) scale(1.2);
+        .selection-button-inner {
+          opacity: 0.2;
+        }
+      }
+      
+      .selection-button-inner {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        transform: scale(1.5);
+        opacity: 0;
+        border-radius: 999px;
+        background: $map-reddish-color;
+        pointer-events: none;
+
+        &.human-era {
+          background-color: $colorWorldHumanEra;
+        }
+        &.anomaly {
+          background-color: $colorWorldAnomaly;
+        }
+        &.machine-era {
+          background-color: $colorWorldMachineEra;
+        }
       }
     }
   }
@@ -35,10 +58,10 @@
   }
 
   .name {
+    z-index: $map-zindex-label;
     user-select: none;
     pointer-events: none;
-
-    z-index: $map-zindex-label;
+    
     font-family: $font-code;
     font-weight: 500;
     text-transform: uppercase;
@@ -46,33 +69,53 @@
     text-align: center;
     margin: 0;
     white-space: nowrap;
+
+    background: rgba($map-background-color, 0.8);
   }
   .type-text {
+    z-index: $map-zindex-label;
+    user-select: none;
+    pointer-events: none;
+
     text-align: center;
     font-family: $font-code;
     font-weight: 400;
     font-size: 18px;
-    line-height: 18px;
+    line-height: 22px;
     margin: 20px 0 15px 0;
+
     color: $map-amber-color;
+    background: rgba($map-background-color, 0.8);
+
   }
   .flavor-text {
+    z-index: $map-zindex-label;
     user-select: none;
     pointer-events: none;
-    font-family: $font-code;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    width: 350px;
+
+    width: 400px;
+    max-width: 95vw;
     margin: 0;
+    padding: 10px 15px;
+    border-radius: 6px;
+
+    font-family: $font-body;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+
+    
     text-align: center;
     transition: 0.2s ease-in-out;
     color: $map-amber-color;
+    background: rgba($map-background-color, 0.8);
+
+    font-style: italic;
     &::before {
-      content: "| ";
+      content: "\"";
     }
     &::after {
-      content: " |";
+      content: "\"";
     }
   }
   

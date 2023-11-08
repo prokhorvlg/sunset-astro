@@ -20,25 +20,24 @@
       @include absoluteCentered();
       border-radius: 5000px;
       border: 2px dotted;
-      
+      display: none;
     }
     .inner-circle {
       @include absoluteCentered();
       border-radius: 5000px;
-      //height: 100%; width: 100%;
-
-      //@include abg(1);
-      //@include abg-red-diagonal();
-
-      //background-color: yellow;
-      //mask-image: url('/images/patterns/red-diagonal-pattern.svg');
       
       -webkit-mask: url('/images/patterns/map-planet-pattern.svg') 0 50%/5px 5px;
       mask: url('/images/patterns/map-planet-pattern.svg') repeat 50% 50%;
 
       &::after {
-        border-radius: 5000px;
+        border-radius: 2000px;
       }
+    }
+    .inner-circle-atmo {
+      @include absoluteCentered();
+      border-radius: 5000px;
+      opacity: 0.1;
+      //mix-blend-mode: color-burn;
     }
     .ring {
       @include absoluteCentered();

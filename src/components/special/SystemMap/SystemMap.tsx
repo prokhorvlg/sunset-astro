@@ -23,7 +23,6 @@ import {
   opacityFadeOutAtom,
 } from "@/components/special/SystemMap/state/atoms"
 import {debounce} from 'debounce'
-import { mathClamp } from "@/components/special/SystemMap/utils/math"
 
 const SystemMap = () => {
   const transformComponentRef =
@@ -66,7 +65,7 @@ const SystemMap = () => {
     setScale(targetScale)
   }
 
-  const updateScale = (e) => {
+  const updateScale = (e: { target: { value: string } }) => {
     updateScaleFromExternalInput(parseFloat(e.target.value))
   }
 
@@ -116,69 +115,28 @@ const SystemMap = () => {
         setPosX(e.state.positionX)
         setPosY(e.state.positionY)
       }}
-      
     >
       {(transform: ReactZoomPanPinchContentRef) => {
         return (
-          <>
-            {/* <div className="controls-test">
-              <input
-                type="range"
-                value={scale}
-                min={MAP_MIN_SCALE}
-                max={MAP_MAX_SCALE}
-                step={MAP_SCALE_STEP}
-                style={{
-                  position: "absolute",
-                  zIndex: "900",
-                }}
-                onChange={updateScale}
+          <div className="sunset-map-container" ref={mapContainerRef} >
+            <div
+              className="system-map-context-menu-container"
+              onContextMenu={(e) => {
+                e.preventDefault()
+                reset()
+              }}
+              onClick={(e) => {
+                if (e.button === 1) {
+                  transform.zoomIn()
+                }
+              }}
+            >
+              <SystemMapTransformContainer
+                transform={transform}
+                reset={reset}
               />
-              <button
-                onClick={(e) => {
-                  updateScaleFromExternalInput(1);
-                }}
-              >
-                level 1
-              </button>
-              <button
-                onClick={(e) => {
-                  updateScaleFromExternalInput(5);
-                }}
-              >
-                level 2
-              </button>
-              <button
-                onClick={(e) => {
-                  reset()
-                }}
-              >
-                reset
-              </button>
-              <p>{selectedLocation?.name}</p>
-              <p>{selectedLocation?.flavorText}</p>
-              <p>{selectedLocation?.description}</p>
-            </div> */}
-            <div className="sunset-map-container" ref={mapContainerRef} >
-              <div
-                className="system-map-context-menu-container"
-                onContextMenu={(e) => {
-                  e.preventDefault()
-                  reset()
-                }}
-                onClick={(e) => {
-                  if (e.button === 1) {
-                    transform.zoomIn()
-                  }
-                }}
-              >
-                <SystemMapTransformContainer
-                  transform={transform}
-                  reset={reset}
-                />
-              </div>
             </div>
-          </>
+          </div>
         )
       }}
     </TransformWrapper>
@@ -205,31 +163,45 @@ const SystemMapTransformContainer = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
-
   const boundingBlockRef = useRef<HTMLDivElement>(null);
 
+  const [newWheelScale, setNewWheelScale] = useState<{
+    scale: number,
+    event: React.WheelEvent<HTMLDivElement>
+  } | null>(null)
+
   // WHEEL: Zoom in/out
-  const onWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+  const onWheel = (event: React.WheelEvent<HTMLDivElement>) => {
     // Zooming in is negative, zooming out is positive
-    const isZoomingIn = e.deltaY < 0
+    const isZoomingIn = event.deltaY < 0
 
     let newScale = isZoomingIn ? scale + 1 : scale - 1
     
     if (newScale >= MAP_MAX_SCALE) newScale = MAP_MAX_SCALE;
     else if (newScale <= MAP_MIN_SCALE) newScale = MAP_MIN_SCALE;
-    setScale(newScale)
-    const scaleDifference = newScale - scale
+    
+    setNewWheelScale({
+      scale: newScale,
+      event: event
+    })
+  }
 
-    const mousePosition = getMousePosition(e as any, boundingBlockRef.current as HTMLDivElement, scale)
+  useEffect(() => {
+    if (!newWheelScale) return
+    const scaleDifference = newWheelScale.scale - scale
+
+    const mousePosition = getMousePosition(newWheelScale.event as any, boundingBlockRef.current as HTMLDivElement, scale)
     const { positionX, positionY } = transform.instance.transformState;
 
     const calculatedPositionX = positionX - mousePosition.x * scaleDifference;
     const calculatedPositionY = positionY - mousePosition.y * scaleDifference;
 
     // Set new state, then ensure it's in bound with a zoom in call
-    transform.instance.setTransformState(newScale, calculatedPositionX, calculatedPositionY);
+    transform.instance.setTransformState(newWheelScale.scale, calculatedPositionX, calculatedPositionY);
     transform.zoomIn(0)
-  }
+
+    setNewWheelScale(null)
+  }, [newWheelScale])
 
   // CLICK: Reset selected location
   const onClick = (e) => {
@@ -305,19 +277,7 @@ const SystemGrid = () => {
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Stolen straight from the react zoom pan library lol
 export function getMousePosition(
   event: WheelEvent | MouseEvent | TouchEvent,
   contentComponent: HTMLDivElement,

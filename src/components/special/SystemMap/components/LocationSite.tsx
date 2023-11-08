@@ -4,12 +4,15 @@ import {
   rescaleAtom,
   selectedLocationAtom,
   isDetailLevelAtom,
+  hoveredLocationAtom,
 } from "@/components/special/SystemMap/state/atoms"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef, useState } from "react"
 import "./LocationSite.scss"
-import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel, CgMinimize, CgMathPlus } from "react-icons/cg";
+import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel, CgMinimize, CgMathPlus, CgSmartphoneChip, CgServer } from "react-icons/cg";
+
+import {AiOutlineSave } from "react-icons/ai";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {
@@ -37,6 +40,10 @@ const getIconFromSubType = (subType?: SiteSubtype) => {
       return (
         <CgMathPlus />
       )
+    case SiteSubtype.DataTrove:
+      return (
+        <AiOutlineSave />
+      )
   }
   return (
     <CgClose />
@@ -58,6 +65,10 @@ const LocationSite = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
+  const [hoveredLocation, setHoveredLocation] = useAtom(
+    hoveredLocationAtom
+  )
+  const isHovered = hoveredLocation && hoveredLocation.name === location.name
 
   // VISIBILITY CULLING
   const visibleRef = useRef(null)
@@ -90,7 +101,7 @@ const LocationSite = ({
               className={`name`}
               style={{
                 bottom: `${radius * 0.5 + 10}px`,
-                opacity: isDetailLevel ? "1" : "0",
+                opacity: isDetailLevel || isHovered ? "1" : "0",
               }}
             >
               {location.name}
