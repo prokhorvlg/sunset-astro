@@ -19,8 +19,8 @@ import {
   opacityFadeInAtom,
   transformAtom,
   opacityFadeOutAtom,
-} from "@/components/special/SystemMap/state/atoms"
-import { locationsData } from "@/components/special/LocalMap/data/locationsData"
+} from "@/components/special/LocalMap/state/atoms"
+import { locationsData, middleLocation } from "@/components/special/LocalMap/data/locationsData"
 import LocalMapLocation from "@/components/special/LocalMap/components/LocalMapLocation"
 
 const LocalMap = () => {
@@ -75,7 +75,7 @@ const LocalMap = () => {
       )
     } else {
       transformComponentRef.current?.zoomToElement(
-        "Sol",
+        "middle",
         1,
         400
       )
@@ -177,54 +177,23 @@ const SystemMapTransformContainer = ({
     transform.zoomIn(0)
   }
 
-  // Needs updating here \/
   return (
     <TransformComponent
       wrapperClass="local-map-dynamic"
       contentClass="local-map-dynamic-content"
     >
       <div className="local-map-bounding-block" onWheel={(e) => onWheel(e)} ref={myRef} ></div>
-     
-      <div className="sunset-map-glowing-sun" style={{
-        opacity: opacityFadeOut * 0.4
-      }}></div>
-        <div className="sunset-map-starry-container">
-          <div className="sunset-map-starry-pattern" style={{
-            transform: `transform(-50%, -50%)`,
-            backgroundSize: `${rescale * 800}px`,
-            backgroundPosition: `${posX * 0.3}px ${posY * 0.3}px`,
-          }}></div>
-        </div>
       
-      <SystemGrid />
-      <div className="sunset-map-inner-container">
-        <LocalMapLocation
-          location={locationsData}
-          isRootElement
-          transform={transform}
-          onWheel={onWheel}
-        />
+      <div className="local-map-inner-container">
+        <LocalMapLocation location={middleLocation} onWheel={onWheel} />
+        {locationsData.map(loc => {
+          return <LocalMapLocation 
+            location={loc}
+            onWheel={onWheel}
+          />
+        })}
       </div>
     </TransformComponent>
-  )
-}
-
-const SystemGrid = () => {
-  const [opacityFadeIn, setOpacityFadeIn] = useAtom(
-    opacityFadeInAtom
-  )
-
-  return (
-    <div
-      className="sunset-map-grid-container"
-      style={{
-        //marginLeft: -(posX * rescale / 5),
-        //marginTop: -(posY * rescale / 5)
-        opacity: opacityFadeIn,
-      }}
-    >
-      <div className="sunset-map-grid"></div>
-    </div>
   )
 }
 

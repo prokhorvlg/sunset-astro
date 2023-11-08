@@ -1,7 +1,8 @@
 export enum LocationType {
   Site, // Specific location
   Field, // Area that is a location
-  Label // Text to indicate location shown in artwork that is not an existing object
+  Label, // Text to indicate location shown in artwork that is not an existing object
+  Middle // Used to find middle of page
 }
 
 export enum RelativePosition {
