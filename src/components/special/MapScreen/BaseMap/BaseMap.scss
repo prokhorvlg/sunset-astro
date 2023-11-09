@@ -121,6 +121,17 @@
         cursor: grabbing;
       }
     
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index:99999;
+        mix-blend-mode:screen;
+        background: radial-gradient(rgba($map-reddish-color,1) 1%, rgba($map-reddish-color, 0) 100%);
+        opacity: 0.3;
+        pointer-events: none;
+        display: none;
+      }
       &::after {
         content: '';
         position: absolute;

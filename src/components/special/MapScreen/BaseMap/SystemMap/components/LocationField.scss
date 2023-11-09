@@ -1,6 +1,7 @@
 @import 'src/styles/imports.scss';
 
 .map-field-container {
+  //display: none;
   @include absoluteCentered();
   z-index: $map-zindex-field;
 
@@ -25,6 +26,7 @@
     
     background-image: linear-gradient(to bottom, rgb(120, 0, 189), rgb(255, 23, 224));
     background-size: 100px;
+    //opacity: 0.4;
     
     -webkit-mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
     mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;

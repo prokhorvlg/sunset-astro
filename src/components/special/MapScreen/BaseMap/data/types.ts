@@ -33,13 +33,6 @@ export interface LocationNode {
 
   isImportant?: boolean // Has special indicator on map
 
-  // POSITION (on radial map)
-  distance?: number
-  radius?: number
-  speed?: number
-  startingAngle?: number
-  ringWidth?: number  // If planet has rings, filling this out gives it one
-
   // FIELD-SPECIFIC
   fieldShape?: FieldShape // If field, defines the SVG used for the shape
   fieldLabelOffset?: {x: number, y: number} // offset label from origin
@@ -55,6 +48,16 @@ export interface LocationNode {
   // OLD UNUSED
   crafts?: LocationNode[] // unused
   zoomLevel?: number // unused
+}
+
+export interface SystemLocationNode extends LocationNode {
+  // POSITION (on radial map)
+  distance: number
+  radius?: number // sites do not have radius
+  startingAngle: number
+
+  ringWidth?: number  // If planet has rings, filling this out gives it one
+  children?: SystemLocationNode[]
 }
 
 // Extension for local map nodes

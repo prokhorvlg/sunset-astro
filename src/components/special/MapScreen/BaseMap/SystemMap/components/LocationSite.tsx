@@ -10,8 +10,9 @@ import {IoSkullSharp} from "react-icons/io5"
 import {MdQuestionMark} from "react-icons/md"
 import { PiPlanetBold, PiSkullBold } from "react-icons/pi"
 import { AiOutlineQuestionCircle, AiOutlineSave } from "react-icons/ai";
-import { SiteSubtype, LocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
+import { SiteSubtype, LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms";
+import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Selector";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {
@@ -61,7 +62,7 @@ const LocationSite = ({
   location,
   radius,
 }: {
-  location: LocationNode
+  location: SystemLocationNode
   radius: number
 }) => {
   const [transform, setTransform] = useAtom(transformAtom)
@@ -72,10 +73,6 @@ const LocationSite = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
-  const [hoveredLocation, setHoveredLocation] = useAtom(
-    hoveredLocationAtom
-  )
-  const isHovered = hoveredLocation && hoveredLocation.name === location.name
 
   // VISIBILITY CULLING
   const visibleRef = useRef(null)
@@ -85,6 +82,8 @@ const LocationSite = ({
 
   return (
     <>
+      <Selector location={location} />
+
       {/* DARK CIRCLE under the icon */}
       <div className={`map-site-dark-container  ${isDetailLevel ? "is-detail-level" : ""}`} style={{
           transform: `scale(${rescale})`,
@@ -95,7 +94,7 @@ const LocationSite = ({
       {/* ICON, TEXT */}
       <div
         ref={visibleRef}
-        className={`map-site ${location.worldAffiliation} ${isDetailLevel ? "is-detail-level" : ""}`}
+        className={`map-site ${location.worldAffiliation ? location.worldAffiliation : ""} ${isDetailLevel ? "is-detail-level" : ""}`}
         style={{
           transform: `scale(${rescale})`,
         }}
@@ -107,7 +106,6 @@ const LocationSite = ({
               className={`name`}
               style={{
                 bottom: `${radius * 0.5 + 10}px`,
-                opacity: isDetailLevel || isHovered ? "1" : "0",
               }}
             >
               {location.name}

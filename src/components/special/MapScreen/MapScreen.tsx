@@ -65,9 +65,9 @@ const MapScreen = (props) => {
             <p>{selectedLocation?.name}</p>
         </button>
         <p>{selectedLocation?.description}</p>
-        {isExpanded &&
+        {/* {isExpanded &&
           <>{props.locationContent}</>
-        }
+        } */}
       </div>
 
     </div>

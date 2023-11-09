@@ -1,7 +1,7 @@
-import { LocationNode, LocationType, SiteSubtype, WorldAffiliation, FieldShape } from "@/components/special/MapScreen/BaseMap/data/types";
+import { LocationNode, LocationType, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 
 // Data for generation of objects
-export const locationsData: LocationNode = {
+export const locationsData: SystemLocationNode = {
   name: "Sol",
   typeText: "Main Sequence Star",
   flavorText: `THERE IS NOTHING ON THE SUN.
@@ -10,7 +10,6 @@ export const locationsData: LocationNode = {
   type: LocationType.Sun,
   distance: 0,
   radius: 35,
-  speed: 0,
   startingAngle: 0,
   color: "#ffc919",
   colorSecondary: "#fff38e",
@@ -65,7 +64,6 @@ export const locationsData: LocationNode = {
       colorSecondary: "#ffc75a",
       distance: 125,
       radius: 8,
-      speed: -1.6,
       startingAngle: 25,//35
       children: [
         {
@@ -108,7 +106,6 @@ export const locationsData: LocationNode = {
       colorSecondary: "#ccda2c",
       distance: 165,
       radius: 15,
-      speed: -1.17,
       startingAngle: 205, //205
       isImportant: true,
       children: [
@@ -129,13 +126,12 @@ export const locationsData: LocationNode = {
           name: "Klios",
           type: LocationType.Moon,
           typeText: "Frozen Moonlet",
-          flavorText: "It was always here. Site of numerous server farms cased in ice.",
+          flavorText: "What are you talking about? Of course it was always here.",
           description:
             "A tiny moon consisting primarily of frozen carbon dioxide. It was an ideal location for several data centers.",
           color: "#717fff",
           distance: 66,
           radius: 5,
-          speed: -3.2,
           startingAngle: 320,
           children: [],
         },
@@ -146,14 +142,13 @@ export const locationsData: LocationNode = {
       typeText: "Temperate Living World",
       type: LocationType.Planet,
       flavorText:
-            "Birthplace of humanity, cybernetics, and the esteemed Oakmont QUIKBREW E-90 Coffee Brewer. Virtually inaccessible due to a noetic field.",
+            "Birthplace of humanity, cybernetics, and the esteemed Oakmont QUIKBREW E-90 Coffee Brewer. We would visit more often, but her landscape has not remained the same for more than several minutes.",
           description:
             "",
       color: "#19b1ff",
       colorSecondary: "#25fffc",
       distance: 205,
       radius: 14,
-      speed: -1.17,
       startingAngle: 340,
       isImportant: true,
       children: [
@@ -193,10 +188,9 @@ export const locationsData: LocationNode = {
               startingAngle: 20,
             },
             {
-              name: "Dimensional Panopticon",
-              typeText: "Dimensional Fold",
-              flavorText: "It is said that, from a precise approach in space, Callisto transfigures into a living world.",
-              description: "",
+              name: "Convergence of Spaces",
+              typeText: "Dimensional Panopticon",
+              flavorText: "We finally reached it beyond a thousand folds: an abyss from which all could be seen, even ourselves at every stage. And at the infinite end was ░░░░░░, so incomprehensible we dared not remember it, and something else... a presence, not our own.",
               type: LocationType.Site,
               subType: SiteSubtype.PointOfInterest,
               worldAffiliation: WorldAffiliation.Anomaly,
@@ -208,11 +202,12 @@ export const locationsData: LocationNode = {
         {
           name: "Luna",
           type: LocationType.Moon,
+          typeText: "Lifeless Spaceport World",
+          flavorText: "Luna may be dead, but she serves a critical purpose to mankind nonetheless; she is our stewardess among the heavens.",
           color: "#ffe3c4",
           colorSecondary: "#b1a89e",
           distance: 66,
           radius: 5,
-          speed: -3.2,
           startingAngle: 50,
           children: [],
         },
@@ -228,7 +223,6 @@ export const locationsData: LocationNode = {
       colorSecondary: "#ff8143",
       distance: 245,
       radius: 11,
-      speed: -1.17,
       startingAngle: 74,
       ringWidth: 40,
       isImportant: true,
@@ -275,7 +269,6 @@ export const locationsData: LocationNode = {
       flavorText: "Also known by its original name, the Asteroid Belt. The destruction of Phaeton is known to have occured some time in the last billion years.",
       distance: 350,
       radius: 15,
-      speed: -1.17,
       startingAngle: 44,
       children: [
         {
@@ -292,12 +285,23 @@ export const locationsData: LocationNode = {
         {
           name: "Slingshot Express",
           typeText: "Cargo Railgun",
-          flavorText: "Hundred thousand tons of pure gun... to launch packages.",
+          flavorText: "Hundred thousand tons of pure gun... to launch parcels between worlds. Next-year shipping!",
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.Outpost,
-          distance: -45,
+          distance: -48,
           startingAngle: 290,
+        },
+        {
+          name: "Argos 51-9",
+          typeText: "Mining Machine Collective",
+          flavorText: "There are countless collectives continuing to wander the asteroids, searching for minerals to fulfill a long-forgotten quota.",
+          description: "",
+          type: LocationType.Site,
+          subType: SiteSubtype.Vessel,
+          worldAffiliation: WorldAffiliation.MachineEra,
+          distance: -30,
+          startingAngle: 285,
         },
         {
           name: "Phaeton",
@@ -317,11 +321,12 @@ export const locationsData: LocationNode = {
     {
       name: "Jupiter",
       type: LocationType.Planet,
+      typeText: "Radioactive Gas Giant",
+      flavorText: "We need its gasses.",
       color: "#b97b44",
       colorSecondary: "#f2dbc0",
       distance: 385,
       radius: 31,
-      speed: -1.17,
       startingAngle: 132,
       children: [
         // stations
@@ -351,7 +356,7 @@ export const locationsData: LocationNode = {
         {
           name: "Introspect",
           typeText: "Uncertain Reality",
-          flavorText: "It seems that it was here that the architect began their work. Unfortunately, they were somewhat indecisive.",
+          flavorText: "It seems that it was here that the architect began their work. Unfortunately, they were somewhat indecisive, and now we'll learn to live with the results.",
           type: LocationType.Field,
           fieldShape: FieldShape.Jupiter,
           fieldLabelOffset: {x: 30, y: 80},
@@ -359,10 +364,10 @@ export const locationsData: LocationNode = {
           startingAngle: 38,
           children: [
             {
-              name: "Glistening Banshee",
+              name: "Blade of Stars",
               typeText: "Anomalous Vessel of Glass",
               flavorText:
-                "A tower of soaring glass can occasionally be witnessed in the vicinity of Jupiter. It only ever responds - DO NOT APPROACH US - before vanishing.",
+                "A tower of soaring glass appears in the skies over Callisto every few months before diving back into the fold. They only ever respond: DO NOT APPROACH US.",
               description: "",
               type: LocationType.Site,
               subType: SiteSubtype.Vessel,
@@ -373,7 +378,7 @@ export const locationsData: LocationNode = {
             {
               name: "Peculiar Angle",
               typeText: "Dimensional Fold",
-              flavorText: "It is said that, from a precise approach in space, Callisto transfigures into a living world.",
+              flavorText: "From a precise angle in space known to only a few machines, Callisto and Io appear as living worlds.",
               description: "",
               type: LocationType.Site,
               subType: SiteSubtype.PointOfInterest,
@@ -392,7 +397,6 @@ export const locationsData: LocationNode = {
           colorSecondary: "#ffba35",
           distance: 86,
           radius: 6,
-          speed: -3.2,
           startingAngle: 10,
           isImportant: true,
           children: [],
@@ -405,7 +409,6 @@ export const locationsData: LocationNode = {
           colorSecondary: "#a2ffc7",
           distance: 115,
           radius: 7,
-          speed: -3.2,
           startingAngle: 259,
           isImportant: true,
           children: [
@@ -426,7 +429,6 @@ export const locationsData: LocationNode = {
           type: LocationType.Moon,
           distance: 145,
           radius: 6,
-          speed: -3.2,
           startingAngle: 155,
           children: [],
         },
@@ -438,7 +440,6 @@ export const locationsData: LocationNode = {
           colorSecondary: "#af51ff",
           distance: 175,
           radius: 7,
-          speed: -3.2,
           startingAngle: 43,
           children: [
             
@@ -449,11 +450,12 @@ export const locationsData: LocationNode = {
     {
       name: "Saturn",
       type: LocationType.Planet,
+      typeText: "Ringed Gas Giant",
+      flavorText: "Hear us, oh Golden One, rings so plentiful... please don't block the Sun's rays for just one day.",
       color: "#f2c080",
       colorSecondary: "#fdf1bd",
       distance: 475,
       radius: 26,
-      speed: -1.17,
       startingAngle: 320,
       ringWidth: 110,
       children: [
@@ -503,7 +505,6 @@ export const locationsData: LocationNode = {
           colorSecondary: "#1a9efa",
           distance: 135,
           radius: 8,
-          speed: -3.2,
           startingAngle: 40,
           isImportant: true,
           children: [
@@ -528,7 +529,6 @@ export const locationsData: LocationNode = {
       colorSecondary: "#bafcfb",
       distance: 575,
       radius: 19,
-      speed: -1.17,
       startingAngle: 200,
       children: [],
     },
@@ -538,7 +538,6 @@ export const locationsData: LocationNode = {
       color: "#087bdd",
       distance: 655,
       radius: 18,
-      speed: -1.17,
       startingAngle: 224,
       children: [],
     },
@@ -547,13 +546,12 @@ export const locationsData: LocationNode = {
       type: LocationType.Planet,
       distance: 765,
       radius: 5,
-      speed: -1.17,
       startingAngle: 63,
       children: [
         {
           name: "Thousand Eyes",
           typeText: "Sprawling Orbital Complex",
-          flavorText: "Only one has ever returned from this place. They felt as though the past was gazing upon them.",
+          flavorText: "Only one machine has ever returned from this place, although we cannot be certain of this as they vanished soon after. They spoke of a thousand pasts gazing upon them.",
           description: "",
           worldAffiliation: WorldAffiliation.Anomaly,
           type: LocationType.Site,
@@ -566,7 +564,6 @@ export const locationsData: LocationNode = {
           type: LocationType.Moon,
           distance: 64,
           radius: 3,
-          speed: -3.2,
           startingAngle: 165,
           children: [],
         },
@@ -577,7 +574,6 @@ export const locationsData: LocationNode = {
       type: LocationType.AsteroidBelt,
       distance: 1095,
       radius: 60,
-      speed: -1.17,
       startingAngle: 0,
       children: [],
     },
@@ -589,7 +585,6 @@ export const locationsData: LocationNode = {
       colorSecondary: "#895082",
       distance: 1275,
       radius: 36,
-      speed: -1.17,
       startingAngle: 32,
       children: [
         {
@@ -600,7 +595,6 @@ export const locationsData: LocationNode = {
           colorSecondary: "#9c285e",
           distance: 135,
           radius: 12,
-          speed: -3.2,
           startingAngle: 73,
           children: [
             {
@@ -637,7 +631,7 @@ export const locationsData: LocationNode = {
     {
       name: "Atrophy",
       typeText: "Disturbed Reality", // Uncertain
-      flavorText: "Are some objects never meant to exist? Were some events were never meant to transpire? Does the cosmos rid itself of these malformations?",
+      flavorText: "Are some objects never meant to exist? Some events never destined to transpire? Does the cosmos rid itself of these malformations?",
       type: LocationType.Field,
       fieldShape: FieldShape.DistantBottomLeft,
       fieldLabelOffset: {x: -25, y: -150},
@@ -660,13 +654,24 @@ export const locationsData: LocationNode = {
         {
           name: "Wälstrom Earthbreaker",
           typeText: "Mighty Vessel of a Bygone Century",
-          flavorText: "Somewhere amidst the millions of plutinos and comets of the Kuiper Belt, a tremendous vessel of brass and marble lurks between realities. It is said to devour worlds with the gnashers the size of Manhattan.",
+          flavorText: "Somewhere amidst the plutinos and millions of comets of the Kuiper Belt, a tremendous ship of bolted brass and marble inlay lurks between realities. It is said to devour worlds with the gnashers the size of Manhattan.",
           description: "",
           type: LocationType.Site,
-          subType: SiteSubtype.Vessel,
+          subType: SiteSubtype.Danger,
           worldAffiliation: WorldAffiliation.CenturyOfProgress,
           distance: 25,
           startingAngle: 20,
+        },
+        {
+          name: "Kraugerstone",
+          typeText: "Strange Biomechanical Growth",
+          flavorText:
+            "A dusty floppy disk contains the sensor readings of a misshapen Kuiper object... only it isn't an asteroid at all. Analysis reveals the object to wriggle and breath.",
+          type: LocationType.Site,
+          subType: SiteSubtype.Asteroid,
+          worldAffiliation: WorldAffiliation.Anomaly,
+          distance: 250,
+          startingAngle: 230,
         },
       ]
     },
@@ -706,7 +711,7 @@ export const locationsData: LocationNode = {
       description:
         "",
       type: LocationType.Site,
-      subType: SiteSubtype.Vessel,
+      subType: SiteSubtype.Danger,
       distance: 425,
       startingAngle: 80,
     },

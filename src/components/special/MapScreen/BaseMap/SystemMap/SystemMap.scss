@@ -35,6 +35,18 @@
     opacity: 0.5;
     user-select: none;
     pointer-events: none;
+    //animation: pulse 2s linear infinite;
+  }
+  @keyframes pulse {
+    0%{
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0.4;
+    }
   }
 
   .sunset-map-grid-container {
@@ -69,7 +81,7 @@
       @include absoluteCentered();
 
       mix-blend-mode: screen;
-      opacity: 0.08;
+      opacity: 0.11;
       background-image: url('/images/patterns/1000-dots-1000x1000.svg');
       background-size: 700px;
       background-position: 50% 50%;

@@ -1,5 +1,6 @@
 import { MapComponentProps } from "@/components/special/MapScreen/BaseMap/BaseMap"
 import { locationsData } from "@/components/special/MapScreen/BaseMap/data/locationsData"
+import { SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { scaleAtom, usePosXAtom, usePosYAtom, rescaleAtom, opacityFadeOutAtom, opacityFadeInAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMapLocation from "@/components/special/MapScreen/BaseMap/SystemMap/components/SystemMapLocation"
 import { useAtom } from "jotai"
@@ -54,10 +55,9 @@ const SystemMap = (props: MapComponentProps) => {
       {/* ROOT LOCATION */}
       <div className="sunset-map-inner-container">
         <SystemMapLocation
-          location={locationsData}
+          location={locationsData as SystemLocationNode}
           isRootElement
           transform={props.transform}
-          onWheel={props.onWheel}
         />
       </div>
     </>

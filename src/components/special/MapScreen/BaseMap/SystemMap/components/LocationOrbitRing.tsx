@@ -1,6 +1,6 @@
 
 import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
+import { LocationNode, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { rescaleAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
@@ -10,7 +10,7 @@ const LocationOrbitRing = ({
   location,
   ringsCurrentZIndex,
 }: {
-  location: LocationNode
+  location: SystemLocationNode
   ringsCurrentZIndex: number
 }) => {
   const [rescale, setRescale] = useAtom(rescaleAtom)

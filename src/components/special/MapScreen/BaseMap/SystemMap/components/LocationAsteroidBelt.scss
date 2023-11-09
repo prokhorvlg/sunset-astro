@@ -10,12 +10,12 @@
 
     background: url("/images/patterns/map-asteroid-belt-pattern.svg");
     background-size: 80px;
-    opacity: 0.8;
+    opacity: 1;
 
-    border-radius: 5000px;
-    animation: spin 160s linear infinite;
+    border-radius: 100%;
+    //animation: rotate 200s linear infinite;
     will-change: contents;
-    box-sizing: border-box;
+    //box-sizing: border-box;
     .map-asteroid-belt-cover {
       position: absolute;
       top: 60px;
@@ -30,7 +30,7 @@
     position: absolute;
     top: 50%;
     left: 100%;
-    opacity: 0.9;
+    opacity: 1;
     color: $map-reddish-color;
     .name {
       text-align: left;

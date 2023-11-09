@@ -2,47 +2,6 @@
 
 .map-location-container {
   position: absolute;
-
-  .selection-button-container {
-    position: absolute;
-    z-index: $map-zindex-selectionButton;
-
-    .selection-button {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      cursor: pointer;
-
-      z-index: $map-zindex-selectionButton;
-      background: rgba($map-reddish-color, 0);
-      border: none;
-
-      &:hover {
-        .selection-button-inner {
-          opacity: 0.2;
-        }
-      }
-      
-      .selection-button-inner {
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        transform: scale(1.5);
-        opacity: 0;
-        border-radius: 999px;
-        background: $map-reddish-color;
-        pointer-events: none;
-
-        &.human-era {
-          background-color: $colorWorldHumanEra;
-        }
-        &.anomaly {
-          background-color: $colorWorldAnomaly;
-        }
-        &.machine-era {
-          background-color: $colorWorldMachineEra;
-        }
-      }
-    }
-  }
   
   .text-under {
     position: absolute;

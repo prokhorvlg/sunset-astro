@@ -1,8 +1,9 @@
 import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
+import { LocationNode, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { rescaleAtom, opacityFadeOutAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { mathClamp } from "@/components/special/MapScreen/BaseMap/utils/math"
 import { useAtom } from "jotai"
+import { useState } from "react"
 import './LocationAsteroidBelt.scss'
 
 const LocationAsteroidBelt = ({
@@ -10,7 +11,7 @@ const LocationAsteroidBelt = ({
   ringsCurrentZIndex,
   radius,
 }: {
-  location: LocationNode
+  location: SystemLocationNode
   ringsCurrentZIndex: number
   radius: number
 }) => {
@@ -22,24 +23,23 @@ const LocationAsteroidBelt = ({
     isDetailLevelAtom
   )
 
+  const [height] = useState(location.distance * MAP_DISTANCE_FACTOR * 2 - 25)
+
   return (
     <div
       className="map-asteroid-belt-container"
       style={{
-        height:
-          location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
-        width:
-          location.distance * MAP_DISTANCE_FACTOR * 2 - 25,
+        height:height,
+        width:height,
         zIndex: ringsCurrentZIndex,
       }}
     >
       <div
         className="map-asteroid-belt"
         style={{
-          borderWidth: `${radius}px`,
-          backgroundSize: `${mathClamp(rescale * 100, 80, 200)}px`,
+          //borderWidth: `${radius}px`,
           background: isDetailLevel ? "#ff4111" : undefined,
-          opacity: isDetailLevel ? "0.1" : mathClamp(opacityFadeOut * 0.8, 0.3, 0.8)
+          opacity: isDetailLevel ? "0.1" : "0.8"
         }}
       >
         <div

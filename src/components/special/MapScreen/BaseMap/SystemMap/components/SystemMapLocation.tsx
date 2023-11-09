@@ -1,5 +1,5 @@
 import { MAP_SCALE_FACTOR, MAP_DISTANCE_FACTOR, MAP_DEFAULT_COLOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { LocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
+import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { scaleAtom, rescaleAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import LocationAsteroidBelt from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationAsteroidBelt"
 import LocationField from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationField"
@@ -8,7 +8,7 @@ import LocationSite from "@/components/special/MapScreen/BaseMap/SystemMap/compo
 import LocationWorld from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationWorld"
 import { findNewPoint, increaseBrightness } from "@/components/special/MapScreen/BaseMap/SystemMap/_old/WorldGenerationHelpers"
 import { useAtom } from "jotai"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import './SystemMapLocation.scss'
 
@@ -30,14 +30,12 @@ const SystemMapLocation = ({
   zIndex,
   isRootElement,
   transform,
-  onWheel
 }: {
-  location: LocationNode
-  parentLocation?: LocationNode
+  location: SystemLocationNode
+  parentLocation?: SystemLocationNode
   zIndex?: number
   isRootElement?: boolean
   transform: ReactZoomPanPinchContentRef
-  onWheel: (e: React.WheelEvent<HTMLDivElement>) => void
 }) => {
   const [scale, setScale] = useAtom(scaleAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
@@ -102,11 +100,10 @@ const SystemMapLocation = ({
           return (
             <SystemMapLocation
               key={childLocation.name}
-              location={childLocation}
+              location={childLocation as SystemLocationNode}
               parentLocation={location}
               zIndex={ringsCurrentZIndex}
               transform={transform}
-              onWheel={onWheel}
             />
           )
         })}
@@ -132,7 +129,8 @@ const SystemMapLocation = ({
     return objectPoint[dimension]
   }
 
-  const borderRadiusModifier = 20
+  const dimensionOffsetX = useMemo(() => getDimensionOffset(Dimension.x), [parentRadius, rescale])
+  const dimensionOffsetY = useMemo(() => getDimensionOffset(Dimension.y), [parentRadius, rescale])
 
   return (
     <>
@@ -157,8 +155,8 @@ const SystemMapLocation = ({
       <div
         className="map-location-container"
         style={{
-          left: getDimensionOffset(Dimension.x),
-          top: getDimensionOffset(Dimension.y),
+          left: dimensionOffsetX,
+          top: dimensionOffsetY,
         }}
       >
         {/* ZOOM MARKER (map zooms to this div) */}
@@ -168,32 +166,26 @@ const SystemMapLocation = ({
         ></div>
 
         {/* SELECTION BUTTON */}
-        <div
+        {/* <button
+          className="selection-button"
           style={{
-            transform: `scale(${rescale})`,
+            transform: `translate(-50%, -50%) scale(${rescale})`,
+            height: radius + borderRadiusModifier,
+            width: radius + borderRadiusModifier,
           }}
-          className="selection-button-container"
+          onWheel={(e) => onWheel(e as any)}
+          //onMouseOver={(e) => setHoveredLocation(location)}
+          //onMouseLeave={(e) => setHoveredLocation(null)}
+          onClick={() => {
+            setSelectedLocation(location)
+            transform.zoomToElement(location.name, 10, 400)
+          }}
         >
-          <button
-            className="selection-button"
-            style={{
-              height: radius + borderRadiusModifier,
-              width: radius + borderRadiusModifier,
-            }}
-            onWheel={(e) => onWheel(e as any)}
-            onMouseOver={(e) => setHoveredLocation(location)}
-            onMouseLeave={(e) => setHoveredLocation(null)}
-            onClick={() => {
-              setSelectedLocation(location)
-              transform.zoomToElement(location.name, 10, 400)
-            }}
-          >
-            <div className={`selection-button-inner 
-              ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
-              backgroundColor: location.type !== LocationType.Site ? location.color : undefined
-            }}></div>
-          </button>
-        </div>
+          <div className={`selection-button-inner 
+            ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
+            backgroundColor: location.type !== LocationType.Site ? location.color : undefined
+          }}></div>
+        </button> */}
             
         {/* WORLD (sun, moon, planet) */}
         {isWorld && (

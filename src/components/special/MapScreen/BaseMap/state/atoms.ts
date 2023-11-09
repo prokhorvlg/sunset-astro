@@ -12,6 +12,7 @@ export const adjustedScaleAtom = atom((get) => {
 })
 
 export const transformAtom = atom<ReactZoomPanPinchContentRef | null>(null)
+export const boundingBlockAtom = atom<HTMLDivElement | null>(null)
 
 export const rescaleAtom = atom((get) => {
   return 0.8 / get(scaleAtom)

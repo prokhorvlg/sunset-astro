@@ -31,6 +31,7 @@
   &.is-detail-level {
     .name {
       margin-bottom: 20px;
+      display: block;
     }
     .text-under {
       margin-top: 20px;
@@ -77,9 +78,9 @@
     }
   }
   .name {
+    display: none;
     position: absolute;
     transform: translate(-50%, -50%);
-
     font-size: 18px;
   }
 

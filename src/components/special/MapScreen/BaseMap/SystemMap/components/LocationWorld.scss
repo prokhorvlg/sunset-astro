@@ -1,6 +1,7 @@
 @import 'src/styles/imports.scss';
 
 .map-world {
+  //display: none;
   position: absolute;
   z-index: $map-zindex-world;
   top: 50%; left: 50%;
@@ -16,12 +17,6 @@
     
     border: 2px solid $map-reddish-color;
     background-color: rgba($map-background-color, 0.6);
-    .inner-sun-border {
-      @include absoluteCentered();
-      border-radius: 5000px;
-      border: 2px dotted;
-      display: none;
-    }
     .inner-circle {
       @include absoluteCentered();
       border-radius: 5000px;
@@ -34,6 +29,7 @@
       }
     }
     .inner-circle-atmo {
+      display: none;
       @include absoluteCentered();
       border-radius: 5000px;
       opacity: 0.1;
