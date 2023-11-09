@@ -7,6 +7,11 @@ import MapScreen from '@/components/special/MapScreen/MapScreen';
 
 import { Content as MapIntro } from '@/data/map/map-intro.mdx';
 import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
+import MapContent from '@/components/special/MapScreen/MapContent';
+
+const items = await Astro.glob('../data/map/locations/*.{md,mdx}')
+const itemKeys = items.map((item) => item.frontmatter.id)
+
 ---
 
 <!DOCTYPE html>
@@ -18,6 +23,16 @@ import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 		<SunsetHeader client:only="react" currentPage={"/map"} />
 		<main>
 			<MapScreen client:only="react">
+
+        <div class="location-content-items" slot="locationContent">
+          {items.map((item, i) => 
+            <div class="location-content-item" id={"content-" + item.frontmatter.id}>
+              <MarkdownWrapper >
+                <item.Content />
+              </MarkdownWrapper>
+            </div>
+          )}
+        </div>
 
         <MarkdownWrapper slot="mapIntro">
           <MapIntro />

@@ -3,7 +3,7 @@ import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
 import { selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
 import { useAtom } from "jotai"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import './MapScreen.scss'
 
 const MapScreen = (props) => {
@@ -13,6 +13,32 @@ const MapScreen = (props) => {
   const [isIntroOpen, setIsIntroOpen] = useState(false)
   const [isExpanded, setIsExpended] = useState(false)
   const [isSystemMapOn, setIsSystemMapOn] = useState(true)
+
+  
+
+  //interbeacon
+
+  console.log("props.locationContent", props.locationContent)
+
+  const renderedContent = () => {
+    return <>{props.locationContent}</>
+  }
+
+  console.log("renderedContent", renderedContent())
+
+  useEffect(() => {
+    // Whenever expanded, apply visible class only to relevant 
+  }, [isExpanded])
+
+  const locationContentRef = useRef(null)
+  const interbeaconRef = useRef<HTMLElement | null>(null)
+
+  useEffect(() => {
+    console.log("trynna")
+    if (!document.getElementById("content-interbeacon")) return
+    interbeaconRef.current = document.getElementById("content-interbeacon")
+    console.log("interbeaconRef.current", interbeaconRef.current) 
+  })
 
   return (
     <div className="map-screen">
@@ -39,7 +65,9 @@ const MapScreen = (props) => {
             <p>{selectedLocation?.name}</p>
         </button>
         <p>{selectedLocation?.description}</p>
-        {/* {props.mapIntro} */}
+        {isExpanded &&
+          <>{props.locationContent}</>
+        }
       </div>
 
     </div>

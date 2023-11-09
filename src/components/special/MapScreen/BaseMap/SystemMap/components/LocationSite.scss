@@ -4,6 +4,15 @@
   @include absoluteCentered();
   z-index: calc($map-zindex-field);
 
+  &.is-detail-level {
+    z-index: calc($map-zindex-field + 100);
+    .dark-container-circle {
+      height: 45px;
+      width: 45px;
+      background: rgba($map-background-color, 0.6);
+    }
+  }
+
   .dark-container-circle {
     @include absoluteCentered();
 
@@ -17,7 +26,17 @@
 
 .map-site {
   @include absoluteCentered();
-  z-index: $map-zindex-site;
+  z-index: $map-zindex-label;
+  
+  &.is-detail-level {
+    .name {
+      margin-bottom: 20px;
+    }
+    .text-under {
+      margin-top: 20px;
+    }
+  }
+
   .map-site-icon {
     @include absoluteCentered();
     
@@ -47,10 +66,13 @@
         transform: scale(1) rotate(180deg);
       }
       &.danger {
-        transform: scale(1.2);
+        transform: scale(1.1);
       }
       &.data-trove {
         transform: scale(1.2);
+      }
+      &.poi {
+        transform: scale(1.1);
       }
     }
   }
@@ -78,7 +100,12 @@
   }
   &.machines-of-glass {
     svg, .name {
-      color: $colorWorldMachinesOfGlass;
+      color: #e251ff//$colorWorldMachinesOfGlass;
+    }
+  }
+  &.century-of-progress {
+    svg, .name {
+      color: #ff5194 //$colorWorldAnomaly//$colorWorldCenturyOfProgress;
     }
   }
 }

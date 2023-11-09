@@ -25,7 +25,6 @@
     
     background-image: linear-gradient(to bottom, rgb(120, 0, 189), rgb(255, 23, 224));
     background-size: 100px;
-    //mix-blend-mode: color-burn;
     
     -webkit-mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
     mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
@@ -51,13 +50,11 @@
   .text-under {
     @include absoluteCentered();
     .name {
-      //display: none;
       left: 0;
       right: 0;
       top: 0;
       bottom: 0;
   
-      font-size: 12px;
       color: magenta;
       padding: 2px;
       background: rgba($map-background-color, 0.8);

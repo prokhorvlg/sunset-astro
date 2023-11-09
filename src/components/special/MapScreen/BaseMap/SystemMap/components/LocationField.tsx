@@ -30,14 +30,15 @@ const LocationField = ({
 
       {/* FIELD TEXT */}
       <div className={`map-field-text ${location.fieldClass}`} style={{
-        left: location.fieldLabelOffset?.x,
-        top: location.fieldLabelOffset?.y
+        
       }}>
         <div className="text-under" style={{
           transform: `translate(-50%, -50%) scale(${rescale})`,
+          left: location.fieldLabelOffset?.x,
+        top: location.fieldLabelOffset?.y
         }}>
           <h2 className="name" style={{
-            fontSize: isDetailLevel ? 28: 16,
+            fontSize: isDetailLevel ? 28: 13,
           }}>{location.typeText} «{location.name}»</h2>
           {isDetailLevel &&
             <p className="flavor-text">{location.flavorText}</p>
@@ -118,6 +119,26 @@ const FieldDistantBottomLeft = (props: FieldProps) => {
   )
 }
 
+const FieldMercury = (props: FieldProps) => {
+  const scale = 0.6
+  return (
+    <FieldContainer {...props} width={136*scale} height={72*scale}>
+<path fill-rule="evenodd"  fill="rgb(255, 255, 255)" transform={`scale(${scale}) translate(0, 0)`}
+ d="M133.287,71.312 C125.355,70.605 114.677,70.899 111.671,69.475 C110.287,68.818 108.892,68.115 107.524,67.391 C105.997,67.404 101.317,64.255 96.287,64.312 C51.177,64.827 53.080,50.915 39.287,42.312 C25.493,33.710 22.039,21.518 3.287,6.312 C-2.768,1.403 3.400,-0.264 6.287,0.312 C9.173,0.888 41.386,9.498 51.539,12.882 C58.829,15.312 57.541,21.593 64.259,26.096 C69.950,29.910 94.224,41.324 101.183,45.780 C108.143,50.236 122.660,62.204 128.069,65.455 C133.477,68.706 138.055,71.737 133.287,71.312 ZM86.953,34.054 C73.522,27.376 72.248,23.520 61.510,12.535 C53.027,3.856 72.812,-1.011 78.371,6.898 C83.930,14.807 91.684,22.787 105.861,36.525 C120.038,50.262 100.384,40.733 86.953,34.054 Z"/>
+    </FieldContainer>
+  )
+}
+
+const FieldJupiter = (props: FieldProps) => {
+  const scale = 1
+  return (
+    <FieldContainer {...props} width={200*scale} height={177*scale}>
+<path fill-rule="evenodd" transform={`scale(${scale}) translate(0, 0)`}
+ d="M189.771,104.538 C204.537,125.218 204.731,208.386 173.566,148.653 C156.402,115.757 100.042,68.842 102.441,141.451 C102.831,166.678 99.767,195.970 72.730,157.656 C52.339,128.760 24.687,157.779 41.1000,117.000 C64.158,64.809 -38.074,58.365 16.911,11.805 C54.054,-19.647 58.828,23.378 113.244,26.210 C146.610,27.947 154.202,54.721 189.771,104.538 Z"/>
+    </FieldContainer>
+  )
+}
+
 const FieldSunWeather = (props: FieldProps) => {
   const scale = 1.4
   return (
@@ -135,7 +156,9 @@ const mapShapeFromField = (fieldShape: FieldShape, location: LocationNode) => {
   const mapShapeFromField = {
     [FieldShape.Earth]: <FieldEarth {...props} />,
     [FieldShape.DistantBottomLeft]: <FieldDistantBottomLeft {...props} />,
-    [FieldShape.SunWeather]: <FieldSunWeather {...props} />
+    [FieldShape.SunWeather]: <FieldSunWeather {...props} />,
+    [FieldShape.Mercury]: <FieldMercury {...props} />,
+    [FieldShape.Jupiter]: <FieldJupiter {...props} />,
   }
   return mapShapeFromField[fieldShape]
 }

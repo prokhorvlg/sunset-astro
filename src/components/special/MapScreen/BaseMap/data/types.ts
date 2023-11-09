@@ -14,6 +14,8 @@ export enum RelativePosition {
 }
 
 export interface LocationNode {
+  id?: string
+
   // PRIMARY INFORMATION
   name: string // eg. Sol
   typeText?: string // eg. Main Sequence Star
@@ -103,7 +105,9 @@ export enum SiteSubtype {
 export enum FieldShape {
   Earth = "Earth",
   DistantBottomLeft = "DistantBottomLeft",
-  SunWeather = "SunWeather"
+  SunWeather = "SunWeather",
+  Mercury = "Mercury",
+  Jupiter = "Jupiter",
 }
 
 // human population pre-interrupt

@@ -96,6 +96,7 @@ const BaseMap = ({
     setSelectedLocation(null)
   }
 
+
   return (
     <TransformWrapper
       ref={transformComponentRef}
@@ -124,6 +125,7 @@ const BaseMap = ({
         setPosY(e.state.positionY)
       }}
     >
+
       {(transform: ReactZoomPanPinchContentRef) => {
         return (
           <div className={`base-map-container ${map}`} ref={mapContainerRef} >
@@ -156,6 +158,11 @@ const BaseMap = ({
                     ))}
                   </div>
                 </div>
+              </div>
+
+              <div className="floating-code-text">
+                <span className="scale">M_SCALE 00 {Math.round(scale)}</span>
+                <span className="center">{Math.round((-posX + 998) * rescale)} : {Math.round((-posY + 552) * rescale)} M_CENTER STRICT</span>
               </div>
 
               <BaseMapTransformContainer

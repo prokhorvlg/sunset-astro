@@ -18,6 +18,7 @@ export const locationsData: LocationNode = {
   children: [
     // NEAR SOL
     {
+      id: "interbeacon",
       name: "Interbeacon",
       typeText: "Huge Telecommunications Statite",
       flavorText: "Glory to the Union, even in death. Home to RADIUS, the Silent Observer.",
@@ -30,7 +31,7 @@ export const locationsData: LocationNode = {
       startingAngle: 270,
     },
     {
-      name: "The Axiom",
+      name: "Axiom",
       typeText: "Fractal Solar Array",
       flavorText:
         "First, energy to the System. Next, energy to the universe.",
@@ -65,21 +66,35 @@ export const locationsData: LocationNode = {
       distance: 125,
       radius: 8,
       speed: -1.6,
-      startingAngle: 35,
+      startingAngle: 25,//35
       children: [
         {
-          name: "Inner Eye",
-          typeText: "Noetic Research Orbital",
+          name: "Seraph",
+          typeText: "Collapsed Reality",
           flavorText:
-            "The beginning, the end, and all that came in between. The gargantuan noetic system rests untouched since the Interrupt, amidst a field of stars and signals.",
-          description:
-            "The Inner Eye was the final orbital-class space station to be built by humans. The noetic altar built into its core, Project WHITE SERAPH, was activated on the same day the Unexpected Interrupt occured: May 5, 2095, the day mankind vanished from the System.",
-          type: LocationType.Site,
-          subType: SiteSubtype.Orbital,
-          worldAffiliation: WorldAffiliation.Anomaly,
-          distance: 28,
-          startingAngle: 25,
+            "The wound left behind by an event so devastating that the universe itself winced.", //WE ARE LEAKING SOUL AT AN ASTOUNDING RATE.
+          type: LocationType.Field,
+          fieldShape: FieldShape.Mercury,
+          fieldLabelOffset: {x: 100, y: 30},
+          distance: 30,
+          startingAngle: 340,//30
+          children: [
+            {
+              name: "Inner Eye",
+              typeText: "Noetic Research Orbital",
+              flavorText:
+                "The beginning, the end, and all that came in between. The gargantuan noetic system rests untouched since the Interrupt, amidst a field of stars and signals.",
+              description:
+                "The Inner Eye was the final orbital-class space station to be built by humans. The noetic altar built into its core, Project WHITE SERAPH, was activated on the same day the Unexpected Interrupt occured: May 5, 2095, the day mankind vanished from the System.",
+              type: LocationType.Site,
+              subType: SiteSubtype.Orbital,
+              worldAffiliation: WorldAffiliation.Anomaly,
+              distance: 0,
+              startingAngle: 25,
+            },
+          ]
         },
+        
       ],
     },
     {
@@ -94,7 +109,7 @@ export const locationsData: LocationNode = {
       distance: 165,
       radius: 15,
       speed: -1.17,
-      startingAngle: 205,
+      startingAngle: 205, //205
       isImportant: true,
       children: [
         {
@@ -143,10 +158,10 @@ export const locationsData: LocationNode = {
       isImportant: true,
       children: [
         {
-          name: "The Seventh Orbital",
-          typeText: "Stellar home of the Machine World",
+          name: "Seventh Orbital",
+          typeText: "Home of the Machine World",
           flavorText:
-            "As the century passed, the unfinished orbital grew uncontrollably until it became the fractal labyrinth it is today.",
+            "When mankind vanished, they left behind an incomplete orbital near Earth. The constructors, given no signal to stop, expanded it well beyond its original specifications - until it became the fractal labyrinth, the conjunction of the machine world.",
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.MachineMade,
@@ -156,10 +171,10 @@ export const locationsData: LocationNode = {
         },
         
         {
-          name: "BROKENDATA",
-          typeText: "Reality Field",
+          name: "Deadlock",
+          typeText: "Broken Reality",
           flavorText:
-            "DOCTOR. WE ARE LEAKING SOUL AT AN ASTOUNDING RATE.",
+            "The convergence of all concepts from all realities; dissonance in material form.",
           type: LocationType.Field,
           fieldShape: FieldShape.Earth,
           fieldLabelOffset: {x: 0, y: -50},
@@ -167,14 +182,26 @@ export const locationsData: LocationNode = {
           startingAngle: 25,
           children: [
             {
-              name: "Broadcast W-01108",
-              typeText: "Transmission of unknown origin",
+              name: "Whisper W-01108",
+              typeText: "Transmission of Unknown Origin",
+              flavorText: "This is Unity Space Traffic Control, paging unknown vessel in sector T81. Your transponder codes are unknown to us. Do you read me?",
               description: "",
               type: LocationType.Site,
               subType: SiteSubtype.Beacon,
               worldAffiliation: WorldAffiliation.Anomaly,
               distance: 25,
               startingAngle: 20,
+            },
+            {
+              name: "Dimensional Panopticon",
+              typeText: "Dimensional Fold",
+              flavorText: "It is said that, from a precise approach in space, Callisto transfigures into a living world.",
+              description: "",
+              type: LocationType.Site,
+              subType: SiteSubtype.PointOfInterest,
+              worldAffiliation: WorldAffiliation.Anomaly,
+              distance: 45,
+              startingAngle: 340,
             },
           ]
         },
@@ -275,10 +302,10 @@ export const locationsData: LocationNode = {
         {
           name: "Phaeton",
           typeText: "Planet Core",
-          flavorText: "The final shard of a world that fell many eons ago.",
+          flavorText: "The final shard of a world that fell many eons ago. Rich in metals.",
           description: "",
           type: LocationType.Site,
-          subType: SiteSubtype.PointOfInterest,
+          subType: SiteSubtype.Asteroid,
           distance: -41,
           startingAngle: 185,
         },
@@ -311,15 +338,50 @@ export const locationsData: LocationNode = {
           startingAngle: 190,
         },
         {
-          name: "The Search For Everything",
+          name: "Search For Everything",
           typeText: "Self-Replicating Interstellar Vessel",
           flavorText: "This is the first step towards an answer to the great mystery of the Everything... and ultimately, a conclusion to my hunt for the perfect efficiency of the valves at junction 54-889B.",
           description: "",
           worldAffiliation: WorldAffiliation.MachineEra,
           type: LocationType.Site,
           subType: SiteSubtype.Vessel,
-          distance: 25,
+          distance: 29,
           startingAngle: 340,
+        },
+        {
+          name: "Introspect",
+          typeText: "Uncertain Reality",
+          flavorText: "It seems that it was here that the architect began their work. Unfortunately, they were somewhat indecisive.",
+          type: LocationType.Field,
+          fieldShape: FieldShape.Jupiter,
+          fieldLabelOffset: {x: 30, y: 80},
+          distance: 155,
+          startingAngle: 38,
+          children: [
+            {
+              name: "Glistening Banshee",
+              typeText: "Anomalous Vessel of Glass",
+              flavorText:
+                "A tower of soaring glass can occasionally be witnessed in the vicinity of Jupiter. It only ever responds - DO NOT APPROACH US - before vanishing.",
+              description: "",
+              type: LocationType.Site,
+              subType: SiteSubtype.Vessel,
+              worldAffiliation: WorldAffiliation.MachinesOfGlass,
+              distance: 45,
+              startingAngle: 190,
+            },
+            {
+              name: "Peculiar Angle",
+              typeText: "Dimensional Fold",
+              flavorText: "It is said that, from a precise approach in space, Callisto transfigures into a living world.",
+              description: "",
+              type: LocationType.Site,
+              subType: SiteSubtype.PointOfInterest,
+              worldAffiliation: WorldAffiliation.Anomaly,
+              distance: 45,
+              startingAngle: 340,
+            },
+          ]
         },
         // moons
         {
@@ -379,18 +441,7 @@ export const locationsData: LocationNode = {
           speed: -3.2,
           startingAngle: 43,
           children: [
-            {
-              name: "Shimmering Kele",
-              typeText: "Anomalous Glass Form",
-              flavorText:
-                "DO NOT APPROACH US",
-              description: "",
-              type: LocationType.Site,
-              subType: SiteSubtype.PointOfInterest,
-              worldAffiliation: WorldAffiliation.MachinesOfGlass,
-              distance: 45,
-              startingAngle: 190,
-            },
+            
           ],
         },
       ],
@@ -410,7 +461,7 @@ export const locationsData: LocationNode = {
         {
           name: "Goldspire Archival Complex",
           typeText: "ALTITUDE Network Hub",
-          flavorText: "You like information, correct? There is much information here. Home of UNISERVE, the Curator.",
+          flavorText: "You like information, correct? There is much information here.",
           description:
             "",
           type: LocationType.Site,
@@ -431,6 +482,18 @@ export const locationsData: LocationNode = {
           worldAffiliation: WorldAffiliation.HumanEra,
           distance: 34,
           startingAngle: 140,
+        },
+        {
+          name: "Bibliodrome",
+          typeText: "Fractal Archive",
+          flavorText:
+            "First, energy to the System. Next, energy to the universe.",
+          description: "",
+          type: LocationType.Site,
+          subType: SiteSubtype.MachineMade,
+          worldAffiliation: WorldAffiliation.MachineEra,
+          distance: 45,
+          startingAngle: 250,
         },
         // moons
         {
@@ -482,7 +545,7 @@ export const locationsData: LocationNode = {
     {
       name: "Pluto",
       type: LocationType.Planet,
-      distance: 745,
+      distance: 765,
       radius: 5,
       speed: -1.17,
       startingAngle: 63,
@@ -512,8 +575,8 @@ export const locationsData: LocationNode = {
     {
       name: "Kuiper Belt",
       type: LocationType.AsteroidBelt,
-      distance: 1025,
-      radius: 50,
+      distance: 1095,
+      radius: 60,
       speed: -1.17,
       startingAngle: 0,
       children: [],
@@ -524,7 +587,7 @@ export const locationsData: LocationNode = {
       type: LocationType.Planet,
       color: "#ae5395",
       colorSecondary: "#895082",
-      distance: 1245,
+      distance: 1275,
       radius: 36,
       speed: -1.17,
       startingAngle: 32,
@@ -572,8 +635,9 @@ export const locationsData: LocationNode = {
 
     // DEEP FIELDS
     {
-      name: "ATEM",
-      typeText: "Reality Field",
+      name: "Atrophy",
+      typeText: "Disturbed Reality", // Uncertain
+      flavorText: "Are some objects never meant to exist? Were some events were never meant to transpire? Does the cosmos rid itself of these malformations?",
       type: LocationType.Field,
       fieldShape: FieldShape.DistantBottomLeft,
       fieldLabelOffset: {x: -25, y: -150},
@@ -584,7 +648,7 @@ export const locationsData: LocationNode = {
           name: "Project HIGH ATEM",
           typeText: "Experimental SRI Vessel",
           flavorText:
-            "A nuclear starship growing cold at the fringe of known space. Bears the markings of the Sunset Research Initiative.",
+            "A nuclear-pulsed monolith grows cold at the fringe of known space, bearing the markings of the Sunset Research Initiative. Sensors detect a single analog broadcast originating from its position... what appears to be long, distorted wailing.",
           description:
             "",
           type: LocationType.Site,
@@ -592,6 +656,17 @@ export const locationsData: LocationNode = {
           worldAffiliation: WorldAffiliation.Anomaly,
           distance: 150,
           startingAngle: 200,
+        },
+        {
+          name: "Wälstrom Earthbreaker",
+          typeText: "Mighty Vessel of a Bygone Century",
+          flavorText: "Somewhere amidst the millions of plutinos and comets of the Kuiper Belt, a tremendous vessel of brass and marble lurks between realities. It is said to devour worlds with the gnashers the size of Manhattan.",
+          description: "",
+          type: LocationType.Site,
+          subType: SiteSubtype.Vessel,
+          worldAffiliation: WorldAffiliation.CenturyOfProgress,
+          distance: 25,
+          startingAngle: 20,
         },
       ]
     },

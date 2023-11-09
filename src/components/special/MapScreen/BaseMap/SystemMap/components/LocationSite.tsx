@@ -3,9 +3,13 @@ import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef, useState } from "react"
 import "./LocationSite.scss"
-import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel, CgMinimize, CgMathPlus, CgSmartphoneChip, CgServer } from "react-icons/cg";
+import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel, CgMinimize, CgMathPlus, CgSmartphoneChip, CgServer, CgSearch, CgEditHighlight } from "react-icons/cg";
 
-import { AiOutlineSave } from "react-icons/ai";
+import {LuCompass} from "react-icons/lu"
+import {IoSkullSharp} from "react-icons/io5"
+import {MdQuestionMark} from "react-icons/md"
+import { PiPlanetBold, PiSkullBold } from "react-icons/pi"
+import { AiOutlineQuestionCircle, AiOutlineSave } from "react-icons/ai";
 import { SiteSubtype, LocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms";
 
@@ -33,11 +37,19 @@ const getIconFromSubType = (subType?: SiteSubtype) => {
       )
     case SiteSubtype.Danger:
       return (
-        <CgMathPlus />
+        <IoSkullSharp />//<CgMathPlus />
       )
     case SiteSubtype.DataTrove:
       return (
         <AiOutlineSave />
+      )
+    case SiteSubtype.Asteroid:
+      return (
+        <PiPlanetBold />
+      )
+    case SiteSubtype.PointOfInterest:
+      return (
+        <MdQuestionMark /> //<LuCompass />
       )
   }
   return (
@@ -74,7 +86,7 @@ const LocationSite = ({
   return (
     <>
       {/* DARK CIRCLE under the icon */}
-      <div className="map-site-dark-container" style={{
+      <div className={`map-site-dark-container  ${isDetailLevel ? "is-detail-level" : ""}`} style={{
           transform: `scale(${rescale})`,
         }}>
           <div className="dark-container-circle"></div>
@@ -83,14 +95,13 @@ const LocationSite = ({
       {/* ICON, TEXT */}
       <div
         ref={visibleRef}
-        className={`map-site ${location.worldAffiliation}`}
+        className={`map-site ${location.worldAffiliation} ${isDetailLevel ? "is-detail-level" : ""}`}
         style={{
           transform: `scale(${rescale})`,
         }}
       >
         {isInView && (
           <>
-
             {/* NAME */}
             <h2
               className={`name`}
@@ -105,10 +116,8 @@ const LocationSite = ({
             {/* ICON */}
             <div
               className="map-site-icon"
-              onClick={() => {
-                if (!transform) return
-                setSelectedLocation(location)
-                transform.zoomToElement(location.name)
+              style={{
+                transform: isDetailLevel ? "translate(-50%, -50%) scale(1.6)" : undefined
               }}
             >
               <div className={`icon-container ${location.subType}`}>
