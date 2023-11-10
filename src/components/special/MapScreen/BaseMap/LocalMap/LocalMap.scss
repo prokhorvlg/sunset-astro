@@ -8,17 +8,16 @@
 }
 
 .local-map {
-  .poop {
-    position: absolute;
-    background-color: red; 
+  .local-map-center {
+    position: relative; 
+    @include centeredObject; 
+    width: 0px; 
+    height: 0px; 
+    background-color: blue; 
+    
+    .poop {
+      position: absolute;
+      background-color: red; 
+    }
   }
 }
-
-.center {
-  position: relative; 
-  @include centeredObject; 
-  width: 0px; 
-  height: 0px; 
-  background-color: blue; 
-}
-
