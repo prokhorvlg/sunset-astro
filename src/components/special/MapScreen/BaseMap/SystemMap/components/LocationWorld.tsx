@@ -1,6 +1,6 @@
 import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { transformAtom, scaleAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms"
-import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Selector"
+import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/Selector"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef } from "react"
@@ -24,17 +24,12 @@ const LocationWorld = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
-  const [hoveredLocation, setHoveredLocation] = useAtom(
-    hoveredLocationAtom
-  )
-  //const isHovered = hoveredLocation && hoveredLocation.name === location.name
 
   // VISIBILITY CULLING
   const visibleRef = useRef(null)
   const isInView = useIsVisible(visibleRef)
 
   const isSun = location.type === LocationType.Sun
-
   const isUranus = location.name === "Uranus"
 
   return (
@@ -53,6 +48,7 @@ const LocationWorld = ({
             width: radius 
           }}
         ></div>
+        
         {isInView && (
           <>
             {/* PLANET CIRCLE */}

@@ -22,6 +22,7 @@ const Selector = ({
   )
   const borderRadiusModifier = 20
   const usedRadius = radius ? radius : 10 // Used for sites
+  const zoomMarkerVerticalOffset = 5 // Used to slightly shift the zoom up or down
 
   const isLabel = location.type === LocationType.Field || location.type === LocationType.AsteroidBelt
 
@@ -36,7 +37,7 @@ const Selector = ({
           className="zoom-to-marker"
           style={{
             left: location.fieldLabelOffset?.x || undefined,
-            top: location.fieldLabelOffset?.y || undefined
+            top: (location.fieldLabelOffset?.y || 0) + zoomMarkerVerticalOffset
           }}
           id={location.name}
         ></div>

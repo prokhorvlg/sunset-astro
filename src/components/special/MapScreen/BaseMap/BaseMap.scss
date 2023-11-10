@@ -3,7 +3,6 @@
 .base-map-container {
   border: $color-sunset-red solid 2px; 
   border-radius: 6px;
-  
 
   position: relative;
   height: 100%;
@@ -150,6 +149,7 @@
     
       .base-transform-content {
         background: $map-background-color;
+        //will-change: transform;
 
         .bounding-block {
           position: relative;

@@ -12,7 +12,7 @@ import { PiPlanetBold, PiSkullBold } from "react-icons/pi"
 import { AiOutlineQuestionCircle, AiOutlineSave } from "react-icons/ai";
 import { SiteSubtype, LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms";
-import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Selector";
+import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/Selector";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {

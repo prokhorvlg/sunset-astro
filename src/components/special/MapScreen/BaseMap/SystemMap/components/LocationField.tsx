@@ -1,8 +1,10 @@
 import { LocationNode, FieldShape, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { transformAtom, rescaleAtom, isDetailLevelAtom, opacityFadeOutAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
-import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Selector"
+import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/Selector"
 import { mathClamp } from "@/components/special/MapScreen/BaseMap/utils/math"
+import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
+import { useEffect, useRef } from "react"
 import "./LocationField.scss"
 
 const LocationField = ({
@@ -71,27 +73,50 @@ const FieldContainer = ({
     opacityFadeOutAtom
   )
 
-  return (
-    <div className={`map-field ${location.fieldClass}`} style={{
-      //opacity: mathClamp(opacityFadeOut * 0.8, 0.2, 0.5)
-    }}>
-      <div className="field-clipped magnetic-storm" style={{
-        height: `${height}px`,
-        width: `${width}px`,
-        WebkitClipPath: `url(#${location.name.replace(/ /g, '')}_clipPath)`,
-        WebkitMaskSize: `${mathClamp(rescale * 50, 20, 60)}px`,
-        WebkitMaskImage: isDetailLevel ? "none" : undefined,
-        opacity: isDetailLevel ? 0.2 : 0.5
-      }}>
-      </div>
-      <svg width="100%" height="100%">
-        <defs>
-          <clipPath id={`${location.name.replace(/ /g, '')}_clipPath`}>
-            {children}
-          </clipPath>
-        </defs>
-      </svg>
-    </div>
+  // VISIBILITY CULLING
+  const visibleRef = useRef(null)
+  const isInView = useIsVisible(visibleRef)
+
+  useEffect(() => {
+    //console.log("visiblity changed!", location.name, isInView)
+  }, [isInView])
+
+  return (<>
+      
+        
+      
+        <div className={`map-field ${location.fieldClass}`} style={{
+          //opacity: mathClamp(opacityFadeOut * 0.8, 0.2, 0.5)
+        }}>
+          <div className="culling-radius" ref={visibleRef}
+        style={{
+          height: height,
+          width: width 
+        }}
+      ></div>
+        {isInView && 
+        <>
+          <div className="field-clipped magnetic-storm" style={{
+            height: `${height}px`,
+            width: `${width}px`,
+            WebkitClipPath: `url(#${location.name.replace(/ /g, '')}_clipPath)`, // TODO: replace this with a normal SVG. Performance of this sucks!
+            WebkitMaskSize: `${mathClamp(rescale * 50, 20, 60)}px`,
+            WebkitMaskImage: isDetailLevel ? "none" : undefined,
+            opacity: isDetailLevel ? 0.2 : 0.5
+          }}>
+          </div>
+          <svg width="100%" height="100%">
+            <defs>
+              <clipPath id={`${location.name.replace(/ /g, '')}_clipPath`}>
+                {children}
+              </clipPath>
+            </defs>
+          </svg>
+          </>
+          }
+        </div>
+      
+    </>
   )
 }
 

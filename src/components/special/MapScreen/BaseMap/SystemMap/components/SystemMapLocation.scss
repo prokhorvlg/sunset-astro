@@ -48,7 +48,6 @@
     background: rgba($map-background-color, 0.8);
   }
   .flavor-text {
-    //display: none;
     z-index: $map-zindex-label;
     user-select: none;
     pointer-events: none;
@@ -59,7 +58,7 @@
     padding: 10px 15px;
     //border-radius: 6px;
 
-    border-top: 2px solid $map-amber-color;
+    border: 2px solid $map-amber-color;
 
     font-family: $font-body;
     font-weight: 500;
@@ -69,7 +68,7 @@
     text-align: center;
     transition: 0.2s ease-in-out;
     color: $map-amber-color;
-    background: rgba($map-background-color, 0.8);
+    background: rgba($map-background-color, 0.7);
 
     font-style: italic;
     &::before {

@@ -531,7 +531,7 @@ export const locationsData: SystemLocationNode = {
     {
       name: "Uranus",
       typeText: "Tilted Ice Giant",
-      flavorText: "The impressive tilt suggests a distant, chaotic past in which the world danced with an impressive moon before she violently tore away from his gravitational grasp. This unit wonders where she is now...",
+      flavorText: "Its extreme tilt suggests a distant, chaotic past in which the world danced with an impressive moon before she violently tore away from its gravitational grasp. This unit wonders where she is now...",
       type: LocationType.Planet,
       color: "#38f3ff",
       colorSecondary: "#bafcfb",

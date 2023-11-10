@@ -6,6 +6,10 @@
   z-index: $map-zindex-field;
 
   //animation: opacityThrob 5s linear infinite;
+  
+  .culling-radius {
+    @include absoluteCentered();
+  }
 
   &.magnetic-storm {
     .field-clipped {
@@ -50,61 +54,57 @@
     }
   }
 
-  .text-under {
-    //@include absoluteCentered();
-    
-  }
 }
 
-$thunderOpacityDefault: 0.5;
-@keyframes opacityThrob {
-  0% {
-    opacity: $thunderOpacityDefault;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: $thunderOpacityDefault;
-  }
-}
+// $thunderOpacityDefault: 0.5;
+// @keyframes opacityThrob {
+//   0% {
+//     opacity: $thunderOpacityDefault;
+//   }
+//   50% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: $thunderOpacityDefault;
+//   }
+// }
 
-@keyframes flashingThunder {
-  0% {
-    opacity: $thunderOpacityDefault;
-  }
-  20% {
-    opacity: $thunderOpacityDefault;
-  }
-  22% {
-    opacity: 1;
-  }
-  24% {
-    opacity: $thunderOpacityDefault;
-  }
-  26% {
-    opacity: 1;
-  }
-  28% {
-    opacity: $thunderOpacityDefault;
-  }
-  78% {
-    opacity: $thunderOpacityDefault;
-  }
-  80% {
-    opacity: 1;
-  }
-  82% {
-    opacity:  $thunderOpacityDefault;
-  }
-  100% {
-    opacity: $thunderOpacityDefault;
-  }
+// @keyframes flashingThunder {
+//   0% {
+//     opacity: $thunderOpacityDefault;
+//   }
+//   20% {
+//     opacity: $thunderOpacityDefault;
+//   }
+//   22% {
+//     opacity: 1;
+//   }
+//   24% {
+//     opacity: $thunderOpacityDefault;
+//   }
+//   26% {
+//     opacity: 1;
+//   }
+//   28% {
+//     opacity: $thunderOpacityDefault;
+//   }
+//   78% {
+//     opacity: $thunderOpacityDefault;
+//   }
+//   80% {
+//     opacity: 1;
+//   }
+//   82% {
+//     opacity:  $thunderOpacityDefault;
+//   }
+//   100% {
+//     opacity: $thunderOpacityDefault;
+//   }
 
-}
+// }
 
-@keyframes rotateGradient {
-  0%{background-position:10% 0%}
-  50%{background-position:91% 100%}
-  100%{background-position:10% 0%} 
-}
+// @keyframes rotateGradient {
+//   0%{background-position:10% 0%}
+//   50%{background-position:91% 100%}
+//   100%{background-position:10% 0%} 
+// }

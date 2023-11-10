@@ -22,6 +22,7 @@
   }
 
   .sunset-map-glowing-sun {
+    //display: none;
     @include centeredObject();
     height: 250px;
     width: 250px;
