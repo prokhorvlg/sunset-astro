@@ -1,6 +1,6 @@
 @import 'src/styles/imports.scss';
 
-$map-header-height: 30px;
+$map-header-height: 40px;
 $map-selected-peek-height: 50px;
 $map-selected-peek-extra-height: 40px;
 
@@ -27,7 +27,6 @@ $map-selected-peek-extra-height: 40px;
     position: relative;
     height: $map-header-height;
     margin-bottom: 3px;
-    height: 40px;
 
     display: flex;
     flex-direction: row;
