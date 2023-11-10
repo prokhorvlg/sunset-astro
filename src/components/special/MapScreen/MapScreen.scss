@@ -27,31 +27,58 @@ $map-selected-peek-extra-height: 40px;
     position: relative;
     height: $map-header-height;
     margin-bottom: 3px;
+    height: 40px;
 
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
     margin-top: 0px;
-    border: 2px solid $color-sunset-red;
-    background: $color-sunset-red;
+    //border: 2px solid $color-sunset-red;
+    //background: $color-sunset-red;
     border-radius: 6px;
 
     h1 {
+      @include abg-child();
+      position: absolute;
+      left: 50%;
+      //top: 50%;
+      transform: translateX(-50%);
+
       font-size: 16px;
       font-family: $font-code;
       text-transform: uppercase;
       font-weight: 700;
       color: $color-background-dark;
+      background: $color-sunset-red;
     }
-    button {
-      width: 60px;
-      height: 100%;
-      background: none;
-      border: 2px solid red;
-      text-align: center;
+    
+    .map-header-diagonal {
+      flex: 1;
+      position: relative;
+      height: calc(100% - 4px);
+      margin-left: 2px;
+      margin-right: 2px;
+      @include abg(1);
+      @include abg-red-diagonal();
     }
+
+    .button-set {
+      @include abg-child();
+      button {
+        //width: 60px;
+        height: 100%;
+        background: none;
+        border: 2px solid red;
+        text-align: center;
+        margin: 0 2px 0 2px;
+      }
+    }
+
+    
   }
+
   .map-body {
     height: calc(100% - $map-header-height - $map-selected-peek-height - 14px);
     left: 0; right: 0;

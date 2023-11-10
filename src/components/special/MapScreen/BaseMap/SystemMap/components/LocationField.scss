@@ -1,6 +1,6 @@
 @import 'src/styles/imports.scss';
 
-.map-field-container {
+.map-field {
   //display: none;
   @include absoluteCentered();
   z-index: $map-zindex-field;
@@ -42,6 +42,7 @@
 .map-field-text {
   @include absoluteCentered();
   z-index: $map-zindex-label;
+  top: 12px;
 
   &.magnetic-storm {
     .text-under .name {
@@ -50,17 +51,8 @@
   }
 
   .text-under {
-    @include absoluteCentered();
-    .name {
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-  
-      color: magenta;
-      padding: 2px;
-      background: rgba($map-background-color, 0.8);
-    }
+    //@include absoluteCentered();
+    
   }
 }
 

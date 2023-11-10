@@ -322,7 +322,7 @@ export const locationsData: SystemLocationNode = {
       name: "Jupiter",
       type: LocationType.Planet,
       typeText: "Radioactive Gas Giant",
-      flavorText: "We need its gasses.",
+      flavorText: "Many consider it to be the gassiest of the gas giants.",
       color: "#b97b44",
       colorSecondary: "#f2dbc0",
       distance: 385,

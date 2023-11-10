@@ -159,12 +159,6 @@ const SystemMapLocation = ({
           top: dimensionOffsetY,
         }}
       >
-        {/* ZOOM MARKER (map zooms to this div) */}
-        <div
-          className="zoom-to-marker"
-          id={location.name}
-        ></div>
-
         {/* SELECTION BUTTON */}
         {/* <button
           className="selection-button"

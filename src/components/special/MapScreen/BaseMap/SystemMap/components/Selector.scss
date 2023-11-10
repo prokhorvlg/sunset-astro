@@ -1,12 +1,16 @@
 @import 'src/styles/imports.scss';
 
+.zoom-to-marker {
+  position: absolute;
+}
+
 .selection-button {
   position: absolute;
   transform: translate(-50%, -50%);
   cursor: pointer;
 
   z-index: $map-zindex-selectionButton;
-  background: rgba($map-reddish-color, 0);
+  background: none;
   border: none;
 
   &:hover {
@@ -29,17 +33,7 @@
         transform: translate(0, 6px) scale(1.4);
       }
     }
-
-    & ~ .map-field-container {
-      .field-clipped {
-        opacity: 1;
-        background: rgba($map-reddish-color, 0.6);
-      }
-      
-    }
   } 
-  
-  //border: 2px solid red;
   
   .selection-button-inner {
     position: absolute;
@@ -58,6 +52,37 @@
     }
     &.machine-era {
       background-color: $colorWorldMachineEra;
+    }
+  }
+
+  // fields, asteroid belts
+  &.label {
+    $sizeOffset: 3px;
+    border-radius: 0;
+    //z-index: $map-zindex-field;
+
+    &:hover {
+      & ~ .map-field {
+        .field-clipped {
+          //background: rgba(white, 0.6);
+          opacity: 1 !important;
+        }
+      }
+    }
+
+    .selection-button-inner {
+      border-radius: 0;
+      transform: scale(1);
+      top: -$sizeOffset; left: -$sizeOffset; right: -$sizeOffset; bottom: -$sizeOffset;
+      background-color: $colorWorldAnomaly;
+    }
+
+    .name {
+      color: $colorWorldAnomaly; //magenta;
+      
+      &.magnetic-storm {
+        color: white;
+      }
     }
   }
 }

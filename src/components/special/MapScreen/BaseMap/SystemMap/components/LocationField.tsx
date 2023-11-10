@@ -26,7 +26,11 @@ const LocationField = ({
 
   return (
     <>
-      <Selector location={location} />
+      <Selector location={location}>
+        <h2 className={`name map-field-selector ${location.fieldClass}`} style={{
+          fontSize: isDetailLevel ? 28: 13,
+        }}>{location.typeText} «{location.name}»</h2>
+      </Selector>
       
       {/* FIELD */}
       {mapShapeFromField(location.fieldShape || FieldShape.Earth, location)}
@@ -38,9 +42,7 @@ const LocationField = ({
           left: location.fieldLabelOffset?.x,
           top: location.fieldLabelOffset?.y
         }}>
-          <h2 className="name" style={{
-            fontSize: isDetailLevel ? 28: 13,
-          }}>{location.typeText} «{location.name}»</h2>
+          
           {isDetailLevel &&
             <p className="flavor-text">{location.flavorText}</p>
           }
@@ -70,7 +72,7 @@ const FieldContainer = ({
   )
 
   return (
-    <div className={`map-field-container ${location.fieldClass}`} style={{
+    <div className={`map-field ${location.fieldClass}`} style={{
       //opacity: mathClamp(opacityFadeOut * 0.8, 0.2, 0.5)
     }}>
       <div className="field-clipped magnetic-storm" style={{
