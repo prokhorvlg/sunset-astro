@@ -4,7 +4,7 @@ import { selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/sta
 import MapModal from "@/components/special/MapScreen/MapModal"
 import DiagonalPattern from "@/components/special/patterns/DiagonalPattern"
 import { useAtom } from "jotai"
-import { useEffect, useRef, useState } from "react"
+import { createRef, useEffect, useRef, useState } from "react"
 import './MapScreen.scss'
 
 const MapScreen = (props) => {
@@ -14,39 +14,32 @@ const MapScreen = (props) => {
   const [isIntroOpen, setIsIntroOpen] = useState(false)
   const [isExpanded, setIsExpended] = useState(false)
   const [isSystemMapOn, setIsSystemMapOn] = useState(true)
+  const locationContentRefs = useRef({})
 
-  
+  const refAllContentItems = () => {
+    const allLocationItems = Array.from(document.getElementsByClassName("location-content-item") as HTMLCollectionOf<HTMLElement>)
 
-  //interbeacon
-
-  console.log("props.locationContent", props.locationContent)
-
-  const renderedContent = () => {
-    return <>{props.locationContent}</>
+    allLocationItems.forEach((item) => {
+      locationContentRefs.current[item.id] = item
+    })
   }
 
-  console.log("renderedContent", renderedContent())
-
   useEffect(() => {
-    // Whenever expanded, apply visible class only to relevant 
-  }, [isExpanded])
+    // On first run, ref each element
+    if (Object.keys(locationContentRefs.current).length === 0) {
+      refAllContentItems()
+    }
 
-  const locationContentRef = useRef(null)
-  const locationContentRefs = useRef<HTMLElement[]>([])
-
-  useEffect(() => {
-    console.log("trynna")
-
-    
-    // const allLocationItems = document.getElementsByTagName("data-map-content")
-      
-    // itemsRef.current = itemsRef.current.slice(0, props.items.length);
-
-    // if (!document.getElementById("content-interbeacon")) return
-
-    // interbeaconRef.current = document.getElementById("content-interbeacon")
-    // console.log("interbeaconRef.current", interbeaconRef.current) 
-  })
+    // Apply visible class
+    //if (!selectedLocation && !selectedLocation?.id) return
+    if (!selectedLocation) return
+    const selectedId = selectedLocation?.id || ""
+    try {
+      locationContentRefs.current["content-" + selectedId].style.display = "block"
+    } catch (e) {
+      console.warn("Content not found for location with given id.")
+    }
+  }, [isExpanded, selectedLocation])
 
   return (
     <div className="map-screen">
@@ -82,12 +75,13 @@ const MapScreen = (props) => {
           onClick={(e) => setIsExpended(!isExpanded)}>
             <p>{selectedLocation?.name}</p>
         </button>
+        <p>{selectedLocation?.flavorText}</p>
         <p>{selectedLocation?.description}</p>
-        {isExpanded &&
-          <>{props.locationContent}</>
-        }
+        <p>{selectedLocation?.worldAffiliation}</p>
+        <p>{selectedLocation?.typeText}</p>
+        <p>{selectedLocation?.subType}</p>
+        <>{props.locationContent}</>
       </div>
-
     </div>
   )
 }

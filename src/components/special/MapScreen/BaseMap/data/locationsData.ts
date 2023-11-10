@@ -218,7 +218,7 @@ export const locationsData: SystemLocationNode = {
       type: LocationType.Planet,
       typeText: "Arid Desert World",
       flavorText:
-        "Remains true to its namesake, so arrive only on business.",
+        "Filled to the brim with towering combat robots and even-larger sand serpents. Mars really wants to be left alone... but their treasures are too powerful to resist.",
       color: "#ff241a",
       colorSecondary: "#ff8143",
       distance: 245,
@@ -230,7 +230,7 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Tojo Terminus",
           typeText: "Tactical Military Station",
-          flavorText: "Mars was the dominion of the Pact, enforced by orbital drop.",
+          flavorText: "The sanguine world was the dominion of the Pact, enforced by orbital drop. No longer...",
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.Outpost,
@@ -242,7 +242,7 @@ export const locationsData: SystemLocationNode = {
           name: "Prometheus",
           typeText: "Joint Venture Orbital",
           flavorText:
-            "Yet the ark hovers silent, waiting for a nuclear armageddon that may never come.",
+            "The ark remains still and silent, waiting for a nuclear armageddon that may never come.",
           description:
             "Split-design Orbital built by an unprecedented Union & Coalition partnership. Contains the classified Horizon Protocol, a re-population system in the event of nuclear apocalypse. The system has not been triggered.",
           type: LocationType.Site,
@@ -404,6 +404,7 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Europa",
           typeText: "Tropical Ocean World",
+          flavorText: "Sunshine, cigars, and renown academies! Make your next scientific conference a Europan one. Just don't go diving deeper than a kilometer, comrade.",
           type: LocationType.Moon,
           color: "#1cffd7",
           colorSecondary: "#a2ffc7",
@@ -427,6 +428,8 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Ganymede",
           type: LocationType.Moon,
+          typeText: "Unknown World",
+          flavorText: "Nothing interesting ever happens on Ganymede.",
           distance: 145,
           radius: 6,
           startingAngle: 155,
@@ -435,6 +438,7 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Callisto",
           typeText: "Dark Oil World",
+          flavorText: "This world is covered in so much oil that the Coalition claimed it twice, once for both hemispheres.",
           type: LocationType.Moon,
           color: "#a48fca",
           colorSecondary: "#af51ff",
@@ -501,6 +505,8 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Titan",
           type: LocationType.Moon,
+          typeText: "Cold Fungal World",
+          flavorText: "Your next home awaits you in the suburbs of New Providence. No radioactive particulates, clean air. A growing community of professionals. Total automation. You won't find a better deal anywhere else!",
           color: "#49f2fd",
           colorSecondary: "#1a9efa",
           distance: 135,
@@ -524,6 +530,8 @@ export const locationsData: SystemLocationNode = {
     },
     {
       name: "Uranus",
+      typeText: "Tilted Ice Giant",
+      flavorText: "The impressive tilt suggests a distant, chaotic past in which the world danced with an impressive moon before she violently tore away from his gravitational grasp. This unit wonders where she is now...",
       type: LocationType.Planet,
       color: "#38f3ff",
       colorSecondary: "#bafcfb",
@@ -534,8 +542,11 @@ export const locationsData: SystemLocationNode = {
     },
     {
       name: "Neptune",
+      typeText: "Swirling Ice Giant",
+      flavorText: "Unspectacular at first glance, perhaps. Stare into the storms long enough, however, and you may begin to see something swirling among the supersonic winds.",
       type: LocationType.Planet,
-      color: "#087bdd",
+      color: "#0f7aff",
+      colorSecondary: "#0058c4",
       distance: 655,
       radius: 18,
       startingAngle: 224,
@@ -706,7 +717,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 320,
     },
     {
-      name: "E Heroic",
+      name: "YSK Heroic",
       typeText: "Union Boomer",
       flavorText:
         "Nuclear-pulsed arsenal vessel on patrol, filled to the brim with armageddon.",

@@ -41,28 +41,30 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
-    margin: 20px 0 15px 0;
+    margin: 20px 0 0 0;
+    white-space: nowrap;
 
     color: $map-amber-color;
     background: rgba($map-background-color, 0.8);
-
   }
   .flavor-text {
+    //display: none;
     z-index: $map-zindex-label;
     user-select: none;
     pointer-events: none;
 
     width: 400px;
     max-width: 95vw;
-    margin: 0;
+    margin: 25px 0 0 0;
     padding: 10px 15px;
-    border-radius: 6px;
+    //border-radius: 6px;
+
+    border-top: 2px solid $map-amber-color;
 
     font-family: $font-body;
     font-weight: 500;
     font-size: 18px;
     line-height: 26px;
-
     
     text-align: center;
     transition: 0.2s ease-in-out;

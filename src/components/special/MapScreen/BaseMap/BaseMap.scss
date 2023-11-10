@@ -37,12 +37,14 @@
 
     .ruler {
       position: absolute;
-      z-index: 9000;
+      z-index: $map-zindex-ruler;
       left: 2px;
       right: 2px;
       height: 12px;
 
       overflow: hidden;
+
+      
       .ruler-pattern {
         position: absolute;
         left: -50%;
@@ -51,6 +53,10 @@
 
         display: flex;
         flex-direction: column;
+
+        @media screen and (max-width: $breakpoint-mobile) {
+          top: 0px;
+        }
 
         .ruler-border {
           width: 100%;
@@ -94,7 +100,7 @@
         font-weight: 700;
         margin: 0;
         padding: 0;
-        z-index: 9000;
+        z-index: $map-zindex-ruler;
       }
 
       $distanceFromEdge: 16px;

@@ -1,5 +1,5 @@
 import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
-import { transformAtom, scaleAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { transformAtom, scaleAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Selector"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
@@ -19,9 +19,8 @@ const LocationWorld = ({
   const [transform, setTransform] = useAtom(transformAtom)
   const [scale, setScale] = useAtom(scaleAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
-  const [isDetailLevel, setIsDetailLevel] = useAtom(
-    isDetailLevelAtom
-  )
+  const [isDetailLevel, setIsDetailLevel] = useAtom(isDetailLevelAtom)
+  const [isDetailLevel2, setIsDetailLevel2] = useAtom(isDetailLevel2Atom)
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
@@ -35,6 +34,8 @@ const LocationWorld = ({
   const isInView = useIsVisible(visibleRef)
 
   const isSun = location.type === LocationType.Sun
+
+  const isUranus = location.name === "Uranus"
 
   return (
     <>
@@ -78,6 +79,7 @@ const LocationWorld = ({
                   height: isDetailLevel ? radius + 25 : radius - 5,
                   width: isDetailLevel ? radius + 25 : radius - 5,
                   background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 40%, ${color} 60%)` : color,
+                  transform: isUranus ? "translate(-50%, -50%) rotate(90deg)" : undefined
                 }}
               >
               </div>
@@ -95,7 +97,7 @@ const LocationWorld = ({
             <div
               className="text-under"
               style={{
-                top: isDetailLevel ? `${0}px` : `${radius * 0.5 + 5}px`,
+                top: isDetailLevel ? `${radius * 0.8 + 8}px` : `${radius * 0.5 + 5}px`,
                 color: color,
               }}
             >
@@ -113,9 +115,12 @@ const LocationWorld = ({
                   >
                     {location.typeText}
                   </p>
-                  <p className="flavor-text">
-                    {location.flavorText}
-                  </p>
+                  {isDetailLevel2 &&
+                    <p className="flavor-text">
+                      {location.flavorText}
+                    </p>
+                  }
+                  
                 </>
               )}
             </div>

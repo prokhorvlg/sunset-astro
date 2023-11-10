@@ -26,7 +26,7 @@ const itemKeys = items.map((item) => item.frontmatter.id)
 
         <div class="location-content-items" slot="locationContent">
           {items.map((item, i) => 
-            <div class="location-content-item" id={"content-" + item.frontmatter.id} data-map-content>
+            <div class="location-content-item hidden-content" id={"content-" + item.frontmatter.id} data-map-content>
               <MarkdownWrapper >
                 <item.Content />
               </MarkdownWrapper>

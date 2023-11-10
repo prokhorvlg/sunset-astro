@@ -18,8 +18,9 @@ export const rescaleAtom = atom((get) => {
   return 0.8 / get(scaleAtom)
 })
 
-// Is the map's current scale at detail level?
+// Reveals details at different scale levels
 export const isDetailLevelAtom = atom((get) => get(scaleAtom) > 4)
+export const isDetailLevel2Atom = atom((get) => get(scaleAtom) > 8)
 
 export const opacityFadeInAtom = atom((get) => {
   const opacityFadeAwayCutoff = MAP_MAX_SCALE - 6

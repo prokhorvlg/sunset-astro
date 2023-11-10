@@ -121,14 +121,24 @@ $map-selected-peek-extra-height: 40px;
       width: 100%;
       height: $map-selected-peek-height + $map-selected-peek-extra-height;
 
-      background: none;
+      background: rgba($map-reddish-color, 0);
       border: none;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba($map-reddish-color, 0.1);
+      }
+
       p {
         color: white;
         text-align: center;
         margin-top: 0;
         margin-bottom: $map-selected-peek-extra-height;
       }
+    }
+
+    .hidden-content {
+      display: none;
     }
   }
 }

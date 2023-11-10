@@ -11,7 +11,7 @@ import {MdQuestionMark} from "react-icons/md"
 import { PiPlanetBold, PiSkullBold } from "react-icons/pi"
 import { AiOutlineQuestionCircle, AiOutlineSave } from "react-icons/ai";
 import { SiteSubtype, LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
-import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms";
+import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms";
 import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Selector";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
@@ -67,9 +67,9 @@ const LocationSite = ({
 }) => {
   const [transform, setTransform] = useAtom(transformAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
-  const [isDetailLevel, setIsDetailLevel] = useAtom(
-    isDetailLevelAtom
-  )
+  const [isDetailLevel, setIsDetailLevel] = useAtom(isDetailLevelAtom)
+  const [isDetailLevel2, setIsDetailLevel2] = useAtom(isDetailLevel2Atom)
+
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
@@ -132,7 +132,7 @@ const LocationSite = ({
               }}
             >
               <p className="type-text">{location.typeText}</p>
-              {location.flavorText && 
+              {(isDetailLevel2 && location.flavorText) &&
                 <p className="flavor-text">
                   {location.flavorText}
                 </p>
