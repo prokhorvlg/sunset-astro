@@ -56,16 +56,18 @@ const MapScreen = (props) => {
       }
 
       <div className="map-header">
-        <h1>Map | Solar System</h1>
+        <div className="map-title">
+          <h1>Map | Solar System</h1>
+        </div>
 
         <div className="button-set left">
-          <button>Back</button>
+          <button>{"<"}</button>
         </div>
 
         <div className="map-header-diagonal"></div>
 
         <div className="button-set right">
-          <button onClick={e => setIsSystemMapOn(prev => !prev)}>System Map On</button>
+          <button onClick={e => setIsSystemMapOn(prev => !prev)}>M</button>
           <button onClick={(e) => setIsIntroOpen(true)}>?</button>
         </div>
       </div>

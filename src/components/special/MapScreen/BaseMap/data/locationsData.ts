@@ -543,7 +543,9 @@ export const locationsData: SystemLocationNode = {
     },
     {
       name: "Pluto",
+      typeText: "Glorified Planetoid",
       type: LocationType.Planet,
+      flavorText: "In a rational world, there would be nothing special about Pluto, one of many similar objects in the Kuiper Belt. However, this one seems to harbor a reality field not unlike those in the inner system, causing it to feel larger and... more present.",
       distance: 765,
       radius: 5,
       startingAngle: 63,

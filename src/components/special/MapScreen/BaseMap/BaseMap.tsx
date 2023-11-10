@@ -162,7 +162,7 @@ const BaseMap = ({
 
               <div className="floating-code-text">
                 <span className="scale">M_SCALE 00 {Math.round(scale)}</span>
-                <span className="center">{Math.round((-posX + 998) * rescale)} : {Math.round((-posY + 552) * rescale)} M_CENTER STRICT</span>
+                <span className="center-coords">{Math.round((-posX + 998) * rescale)} : {Math.round((-posY + 552) * rescale)} M_CENTER STRICT</span>
               </div>
 
               <BaseMapTransformContainer
