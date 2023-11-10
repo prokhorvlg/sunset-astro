@@ -11,6 +11,11 @@
     @include absoluteCentered();
   }
 
+  .field-container {
+    @include absoluteCentered();
+    z-index: $map-zindex-field;
+  }
+
   &.magnetic-storm {
     .field-clipped {
       background-image: radial-gradient( 
@@ -38,7 +43,7 @@
   svg {
     @include absoluteCentered();
     path {
-      fill: url('/images/patterns/red-diagonal-pattern.svg');
+      //fill: url('/images/patterns/red-diagonal-pattern.svg');
     }
   }
 }
