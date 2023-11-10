@@ -6,11 +6,13 @@ import "./LocalMap.scss"
 const LocalMap = (props: MapComponentProps) => {
   return (
     <div className="local-map">
-      {titanLocations.map(loc => {
-        return <LocalMapLocation 
-          location={loc}
-        />
-      })}
+      <div className='center'>
+        {titanLocations.map(loc => {
+          return <LocalMapLocation 
+            location={loc}
+          />
+        })}
+      </div>
     </div>
   )
 }

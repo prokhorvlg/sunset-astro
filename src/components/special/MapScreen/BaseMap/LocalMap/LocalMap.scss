@@ -14,3 +14,11 @@
   }
 }
 
+.center {
+  position: relative; 
+  @include centeredObject; 
+  width: 0px; 
+  height: 0px; 
+  background-color: blue; 
+}
+
