@@ -62,9 +62,15 @@
     //z-index: $map-zindex-field;
 
     &:hover {
+      .selection-button-inner {
+        opacity: 1;
+        background: none;
+        border-bottom: 2px solid $colorWorldAnomaly;
+      }
+
       & ~ .map-field {
+        opacity: 1 !important;
         .field-clipped {
-          //background: rgba(white, 0.6);
           opacity: 1 !important;
         }
       }
@@ -73,15 +79,14 @@
     .selection-button-inner {
       border-radius: 0;
       transform: scale(1);
-      top: -$sizeOffset; left: -$sizeOffset; right: -$sizeOffset; bottom: -$sizeOffset;
+      //top: -$sizeOffset; left: -$sizeOffset; right: -$sizeOffset; bottom: -$sizeOffset;
       background-color: $colorWorldAnomaly;
     }
 
     .name {
-      color: $colorWorldAnomaly; //magenta;
-      
+      color: $colorWorldAnomaly; //magenta;      
       &.magnetic-storm {
-        color: white;
+        color: gray;
       }
     }
   }

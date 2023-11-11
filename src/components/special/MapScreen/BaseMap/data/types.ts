@@ -26,6 +26,7 @@ export interface LocationNode {
   type: LocationType // Determines basic treatment of location
   subType?: SiteSubtype // Determines icon used (if site)
   worldAffiliation?: WorldAffiliation // Determines location color
+  humanEraAffiliation?: HumanEraAffiliation
 
   // COLORS
   color?: string

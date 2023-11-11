@@ -4,18 +4,17 @@
   xmlns:svgjs="http://svgjs.dev/svgjs">
 
   <defs>
-    <radialGradient id="gradient">
+    <radialGradient id="gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="40%">
       <stop offset="10%" stop-color="rgb(255, 169, 39)" stop-opacity="0.5">
         <animate attributeName="stop-opacity" dur="4s" values="0.6;0.6;1;0.5;0.5;1;0.5;0.6" keyTimes="0; 0.25; 0.26; 0.27; 0.29; 0.3; 0.31; 1" repeatCount="indefinite"></animate>
       </stop>
-      <stop offset="30%" stop-color="rgb(255, 169, 39)" stop-opacity="0.3">
+      <stop offset="40%" stop-color="rgb(255, 169, 39)" stop-opacity="0.3">
         <animate attributeName="stop-opacity" dur="6s" values="0.3;0.3;0.7;0.3;0.3;0.7;0.3;0.3" keyTimes="0; 0.35; 0.36; 0.37; 0.39; 0.4; 0.41; 1" repeatCount="indefinite"></animate>
       </stop>
-      <stop offset="100%" stop-color="rgb(255, 169, 39)" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="rgb(255, 169, 39)" stop-opacity="0.15" />
     </radialGradient>
 
     <pattern id="stripe" patternTransform="rotate(45) scale(0.3)" width="10" height="100%" patternUnits="userSpaceOnUse" x="50%" y="50%">
-      <!-- <animate attributeName="x" begin="0s" dur="600s" from="0" to="5000px" repeatCount="indefinite" fill="freeze"></animate> -->
       <rect x="0" y="0" width="2" height="200%" fill="white"></rect>
     </pattern>
 

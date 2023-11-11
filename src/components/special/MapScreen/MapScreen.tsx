@@ -1,4 +1,5 @@
 import BaseMap, { MapComponent } from "@/components/special/MapScreen/BaseMap/BaseMap"
+import { HumanEraAffiliation } from "@/components/special/MapScreen/BaseMap/data/types"
 import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
 import { selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
@@ -73,17 +74,49 @@ const MapScreen = (props) => {
         <button 
           className="selected-header"
           onClick={(e) => setIsExpended(!isExpanded)}>
-            <p>{selectedLocation?.name}</p>
+            <div className="header-text">
+              <h2 className="name" style={{
+                color: selectedLocation?.color || undefined
+              }}>{selectedLocation?.name}</h2>
+              <p className="type">{selectedLocation?.typeText}</p>
+            </div>
         </button>
-        <p>{selectedLocation?.flavorText}</p>
-        <p>{selectedLocation?.description}</p>
-        <p>{selectedLocation?.worldAffiliation}</p>
-        <p>{selectedLocation?.typeText}</p>
-        <p>{selectedLocation?.subType}</p>
-        <>{props.locationContent}</>
+        <div className="selected-content-container">
+          
+          <div className="flavor-text-container"><p>{selectedLocation?.flavorText}</p></div>
+          {/* <p>{selectedLocation?.description}</p> */}
+          <>{props.locationContent}</>
+          <hr />
+          <SelectedDataRow label="Sub-type" content={selectedLocation?.subType} />
+          <SelectedDataRow label="Realm of Origin" content={selectedLocation?.worldAffiliation} />
+          <SelectedDataRow label="Human-Era Affiliation" content={mapHumanEraAffiliationToLabel[selectedLocation?.humanEraAffiliation || ""]} />
+          <SelectedDataRow label="Machine-Era Affiliation" content={undefined} />
+          
+          
+        </div>
       </div>
     </div>
   )
+}
+
+const SelectedDataRow = ({
+  label,
+  content
+}:{
+  label?: string
+  content?: string
+}) => {
+  return (
+    <div className="row">
+      <p className="label">{label || "NOT FOUND"}</p>
+      <div className="filler"></div>
+      <p className="content">{content || "N/A"}</p>
+    </div>
+  )
+}
+
+const mapHumanEraAffiliationToLabel = {
+  [HumanEraAffiliation.GreaterUnion]: "Greater Union"
 }
 
 export default MapScreen

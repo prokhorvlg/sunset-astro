@@ -95,26 +95,53 @@ $map-selected-peek-extra-height: 40px;
     left: 0; right: 0;
   }
 
+  $selectionTransitionTime: 0.15s;
   .map-selected {
     position: absolute;
     z-index: 900;
 
     left: 0px; right: 0px; bottom: -100%;
     top: calc(100% - $map-selected-peek-height);
-    //height: 100%;
+    overflow: auto;
+    padding: 5px;
 
-    transition: 0.1s;
+    transition: $selectionTransitionTime ease-in-out;
     border: 2px solid $color-sunset-red;
     border-radius: 6px;
     background: $color-background-dark;
 
+    //display: flex;
+    //flex-direction: column;
+
     &:hover {
       top: calc(100% - $map-selected-peek-height - $map-selected-peek-extra-height);
-      //bottom: 2px;
     }
+    @media screen and (max-width: $breakpoint-mobile) {
+      &:hover {
+        top: calc(100% - $map-selected-peek-height);
+      }
+    }
+    
     &.expanded {
       top: 0;
       bottom: 2px;
+      button.selected-header {
+        height: 200px;
+        background: rgba($map-reddish-color, 0.1);
+        .header-text {
+          h2.name {
+            margin-bottom: 10px !important;
+            //letter-spacing: 1px;
+            font-family: $font-title;
+            text-transform: none;
+            font-size: 36px;
+          }
+          p.type {
+            display: block !important;
+          }
+        }
+      }
+      
     }
 
     button.selected-header {
@@ -125,20 +152,109 @@ $map-selected-peek-extra-height: 40px;
       border: none;
       cursor: pointer;
 
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      transition: $selectionTransitionTime ease-in-out;
+
       &:hover {
         background: rgba($map-reddish-color, 0.1);
       }
 
-      p {
-        color: white;
-        text-align: center;
-        margin-top: 0;
-        margin-bottom: $map-selected-peek-extra-height;
+      .header-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2.name {
+          color: $map-amber-color;
+          text-align: center;
+          margin-top: 0;
+          margin-bottom: $map-selected-peek-extra-height;
+          text-transform: uppercase;
+          font-family: $font-code;
+          font-size: 16px;
+          font-weight: 600;
+        }
+        p.type {
+          display: none;
+          margin: 0;
+          text-transform: uppercase;
+          font-family: $font-code;
+          font-size: 14px;
+          font-weight: 500;
+          color: $map-reddish-color;
+          letter-spacing: 2px;
+        }
       }
     }
 
     .hidden-content {
       display: none;
+    }
+
+    .selected-content-container {
+      max-width: $width-1000;
+      margin: 0 auto;
+      padding: 10px 20px;
+      
+      display: flex;
+      flex-direction: column;
+
+      .flavor-text-container {
+        @include quoteBox();
+        margin: 30px auto 10px;
+        p {
+          font-family: $font-code;
+          font-weight: 500;
+          //font-style: italic;
+          color: $map-amber-color;
+          &:before, &:after {
+            content: "\"";
+          }
+          margin: 0;
+        }
+      }
+      
+      .row {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        background: rgba($map-reddish-color, 0.05);
+        margin: 4px 0;
+        padding: 15px 15px;
+        p {
+          font-family: $font-code;
+          margin: 0;
+        }
+        .filler {
+          position: relative;
+          flex: 1;
+          background: $map-reddish-color;
+          height: 1px;
+          margin: 0 30px;
+          
+        }
+        .label {
+          color: $map-reddish-color;
+        }
+        .content {
+          color: $map-amber-color;
+        }
+      }
+
+      > hr {
+        margin: 30px 0;
+        position: relative;
+        height: 20px;
+        width: 100%;
+        border: none;
+        @include abg(1);
+        @include abg-red-diagonal();
+      }
     }
   }
 }

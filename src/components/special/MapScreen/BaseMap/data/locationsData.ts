@@ -1,4 +1,4 @@
-import { LocationNode, LocationType, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
+import { LocationNode, LocationType, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode, HumanEraAffiliation } from "@/components/special/MapScreen/BaseMap/data/types";
 
 // Data for generation of objects
 export const locationsData: SystemLocationNode = {
@@ -26,6 +26,7 @@ export const locationsData: SystemLocationNode = {
       type: LocationType.Site,
       subType: SiteSubtype.Beacon,
       worldAffiliation: WorldAffiliation.HumanEra,
+      humanEraAffiliation: HumanEraAffiliation.GreaterUnion,
       distance: 20,
       startingAngle: 270,
     },
@@ -50,6 +51,7 @@ export const locationsData: SystemLocationNode = {
       type: LocationType.Site,
       subType: SiteSubtype.Outpost,
       worldAffiliation: WorldAffiliation.HumanEra,
+      humanEraAffiliation: HumanEraAffiliation.GreaterUnion,
       distance: 30,
       startingAngle: 30,
     },
@@ -87,6 +89,7 @@ export const locationsData: SystemLocationNode = {
               type: LocationType.Site,
               subType: SiteSubtype.Orbital,
               worldAffiliation: WorldAffiliation.Anomaly,
+              humanEraAffiliation: HumanEraAffiliation.SunsetResearchInitiative,
               distance: 0,
               startingAngle: 25,
             },
@@ -275,7 +278,7 @@ export const locationsData: SystemLocationNode = {
           name: "Heavenbreaker Cache 80-IV",
           typeText: "Bundle of Nuclear Missiles",
           flavorText:
-            "Sleeping nuclear missiles, waiting for the final order from DAWNLIGHT VIGIL.",
+            "They sleep amidst the cold asteroids, waiting for their final order from DAWNLIGHT VIGIL.",
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.Danger,
@@ -535,7 +538,7 @@ export const locationsData: SystemLocationNode = {
       type: LocationType.Planet,
       color: "#38f3ff",
       colorSecondary: "#bafcfb",
-      distance: 575,
+      distance: 565,
       radius: 19,
       startingAngle: 200,
       children: [],
