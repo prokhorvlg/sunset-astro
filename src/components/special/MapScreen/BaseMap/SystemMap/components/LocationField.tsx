@@ -85,9 +85,7 @@ const FieldContainer = ({
 
   return (
     <>
-      <div className={`map-field ${location.fieldClass ? location.fieldClass : ""}`} style={{
-        background: "url('/images/patterns/map-fields/field.svg')"
-      }}>
+      <div className={`map-field ${location.fieldClass ? location.fieldClass : ""}`}>
 
         {/* CULLING BLOCK */}
         <div className="culling-radius" ref={visibleRef}
