@@ -1,0 +1,20 @@
+<svg width="100%" height="100%"
+  xmlns="http://www.w3.org/2000/svg" version="1.1"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:svgjs="http://svgjs.dev/svgjs">
+
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="100%" x2="0" y2="0%" patternUnits="userSpaceOnUse" gradientTransform="scale(2)">
+      <stop class="stop1" offset="0%" stop-color="rgb(120, 0, 189)"/>
+      <stop class="stop2" offset="100%" stop-color="rgb(255, 23, 224)"/>
+    </linearGradient>
+    <pattern id="stripe" patternTransform="rotate(45) scale(0.71)" width="10" height="100%" patternUnits="userSpaceOnUse" x="0" y="0">
+      <rect x="0" y="0" width="2" height="200%" fill="url(#gradient)"></rect>
+    </pattern>
+  </defs>
+
+<path fillRule="evenodd" fill="url(#gradient)" transform="scale(0.6)"
+ d="M133.287,71.312 C125.355,70.605 114.677,70.899 111.671,69.475 C110.287,68.818 108.892,68.115 107.524,67.391 C105.997,67.404 101.317,64.255 96.287,64.312 C51.177,64.827 53.080,50.915 39.287,42.312 C25.493,33.710 22.039,21.518 3.287,6.312 C-2.768,1.403 3.400,-0.264 6.287,0.312 C9.173,0.888 41.386,9.498 51.539,12.882 C58.829,15.312 57.541,21.593 64.259,26.096 C69.950,29.910 94.224,41.324 101.183,45.780 C108.143,50.236 122.660,62.204 128.069,65.455 C133.477,68.706 138.055,71.737 133.287,71.312 ZM86.953,34.054 C73.522,27.376 72.248,23.520 61.510,12.535 C53.027,3.856 72.812,-1.011 78.371,6.898 C83.930,14.807 91.684,22.787 105.861,36.525 C120.038,50.262 100.384,40.733 86.953,34.054 Z"/>
+
+
+</svg>

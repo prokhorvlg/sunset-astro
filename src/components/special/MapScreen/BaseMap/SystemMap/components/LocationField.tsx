@@ -7,8 +7,9 @@ import { useAtom } from "jotai"
 import { useEffect, useRef } from "react"
 import "./LocationField.scss"
 
-// Clippath seems to be about as performant as fill... guess pan just really hates SVG paths.
-const FIELD_RENDER_METHOD_CLIPPATH = true
+// TRUE = clip path method, using inline SVGs
+// FALSe = uses css background method, faster but more difficult to implement
+const FIELD_RENDER_METHOD_CLIPPATH = false
 
 const LocationField = ({
   location,
@@ -80,15 +81,19 @@ const FieldContainer = ({
   const visibleRef = useRef(null)
   const isInView = useIsVisible(visibleRef)
 
+  const fieldName = location.name.replace(/ /g, '')
+
   return (
     <>
-      <div className={`map-field ${location.fieldClass ? location.fieldClass : ""}`}>
+      <div className={`map-field ${location.fieldClass ? location.fieldClass : ""}`} style={{
+        background: "url('/images/patterns/map-fields/field.svg')"
+      }}>
 
         {/* CULLING BLOCK */}
         <div className="culling-radius" ref={visibleRef}
           style={{
             height: height,
-            width: width 
+            width: width
           }}
         ></div>
 
@@ -100,7 +105,7 @@ const FieldContainer = ({
                 <div className="field-clipped" style={{
                   height: `${height}px`,
                   width: `${width}px`,
-                  WebkitClipPath: `url(#${location.name.replace(/ /g, '')}_clipPath)`,
+                  WebkitClipPath: `url(#${fieldName}_clipPath)`,
                   WebkitMaskSize: `${mathClamp(rescale * 50, 20, 60)}px`,
                   WebkitMaskImage: isDetailLevel ? "none" : undefined,
                   opacity: isDetailLevel ? 0.2 : 0.5
@@ -108,7 +113,7 @@ const FieldContainer = ({
 
                 <svg width="100%" height="100%">
                   <defs>
-                    <clipPath id={`${location.name.replace(/ /g, '')}_clipPath`}>
+                    <clipPath id={`${fieldName}_clipPath`}>
                       {children}
                     </clipPath>
                   </defs>
@@ -118,19 +123,22 @@ const FieldContainer = ({
 
             {!FIELD_RENDER_METHOD_CLIPPATH &&
               <>
+                {/* STRIPED */}
                 <div className="field-container" style={{
                   height: `${height}px`,
                   width: `${width}px`,
-                }}>
-                  <svg width="100%" height="100%">
-                    <defs>
-                      <pattern id="bg" patternUnits="userSpaceOnUse" width="10" height="10">
-                        <path fill="#A5EF8B" d="M0,12c32.5,0,32.5,12,65,12s32.5-12,65-12V0C97.5,0,92.9,12,65,12C32.5,12,20.7,0,0,0"/>
-                      </pattern>
-                    </defs>
-                    {children}
-                  </svg>
-                </div>
+                  background: `url(/images/patterns/map-fields/system/field-${location.fieldShape?.toLowerCase()}.svg)`,
+                  opacity: 0.5,
+                  display: isDetailLevel ? "none" : "block"
+                }}></div>
+
+                {/* FILLED */}
+                <div className="field-container-filled" style={{
+                  height: `${height}px`,
+                  width: `${width}px`,
+                  background: `url(/images/patterns/map-fields/system/field-${location.fieldShape?.toLowerCase()}-filled.svg)`,
+                  opacity: isDetailLevel ? 0.2 : 0.05
+                }}></div>
               </>
             }
           </>

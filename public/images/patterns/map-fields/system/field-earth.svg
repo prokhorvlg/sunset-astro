@@ -1,0 +1,23 @@
+<svg width="100%" height="100%"
+  xmlns="http://www.w3.org/2000/svg" version="1.1"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:svgjs="http://svgjs.dev/svgjs">
+
+  <defs>
+    <linearGradient id="field-gradient" x1="0" y1="100%" x2="0" y2="0%" patternUnits="userSpaceOnUse" gradientTransform="scale(2)">
+      <stop class="stop1" offset="0%" stop-color="rgb(120, 0, 189)"/>
+      <stop class="stop2" offset="100%" stop-color="rgb(255, 23, 224)"/>
+      <!-- <stop offset="0%" stop-color="red"/>
+      <stop offset="50%" stop-color="green"/>
+      <stop offset="100%" stop-color="red"/> -->
+    </linearGradient>
+    <pattern id="stripe" patternTransform="rotate(45) scale(0.8)" width="10" height="100%" patternUnits="userSpaceOnUse" x="0" y="0">
+      <!-- <animate attributeName="x" begin="0s" dur="600s" from="0" to="5000px" repeatCount="indefinite" fill="freeze"></animate> -->
+      <rect x="0" y="0" width="2" height="200%" fill="url(#field-gradient)"></rect>
+    </pattern>
+  </defs>
+
+  <path fillRule="evenodd" transform="scale(0.5)" fill="url(#stripe)" 
+    d="M285.1000,116.1000 C256.402,121.166 264.211,98.485 269.000,83.1000 C275.377,64.714 290.868,50.931 293.1000,67.000 C297.132,83.069 315.598,112.834 285.1000,116.1000 ZM140.1000,161.000 C110.805,137.213 89.074,130.577 65.000,126.1000 C37.640,122.935 37.382,82.1000 75.1000,82.1000 C102.097,82.1000 138.278,86.534 151.000,46.1000 C169.852,-11.583 238.574,-9.235 259.1000,22.000 C287.029,61.402 248.432,70.652 247.000,127.1000 C245.301,196.041 180.946,192.469 140.1000,161.000 ZM1.000,107.1000 C2.309,85.998 33.728,89.968 32.000,105.000 C29.947,122.862 -0.309,130.002 1.000,107.1000 Z"/>
+
+</svg>
