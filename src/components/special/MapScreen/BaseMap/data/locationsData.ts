@@ -81,7 +81,7 @@ export const locationsData: SystemLocationNode = {
           children: [
             {
               name: "Inner Eye",
-              typeText: "Noetic Research Orbital",
+              typeText: "SRI Noetic Research Orbital",
               flavorText:
                 "The beginning, the end, and all that came in between. The gargantuan noetic system rests untouched since the Interrupt, amidst a field of stars and signals.",
               description:
@@ -316,8 +316,6 @@ export const locationsData: SystemLocationNode = {
           distance: -41,
           startingAngle: 185,
         },
-
-        
       ],
       classes: "asteroid-belt",
     },
@@ -645,6 +643,32 @@ export const locationsData: SystemLocationNode = {
 
     // DEEP FIELDS
     {
+      name: "Eon",
+      typeText: "Managed Reality",
+      flavorText: "You see the beacon, lingering clearly before you, so you swiftly move towards it. You arrive... the beacon is directly behind you. How you got here is impossible to comprehend, but one thing is certain. The beacon wishes for you to leave immediately.",
+      type: LocationType.Field,
+      fieldShape: FieldShape.SRICircle,
+      fieldLabelOffset: {x: 0, y: 30},
+      distance: 520,
+      startingAngle: 240,
+      children: [
+        {
+          name: "Project DEEP SYNE-E",
+          typeText: "SRI Number Beacon",
+          flavorText:
+            "The enormous, deep-space satellite emits a binary representation of a string of numbers, letters, and other symbols; a sort of universal constant with no discernable pattern or meaning.",
+          description:
+            "",
+          type: LocationType.Site,
+          subType: SiteSubtype.Beacon,
+          worldAffiliation: WorldAffiliation.Anomaly,
+          humanEraAffiliation: HumanEraAffiliation.SunsetResearchInitiative,
+          distance: 0,
+          startingAngle: 0,
+        },
+      ]
+    },
+    {
       name: "Atrophy",
       typeText: "Disturbed Reality", // Uncertain
       flavorText: "Are some objects never meant to exist? Some events never destined to transpire? Does the cosmos rid itself of these malformations?",
@@ -704,8 +728,8 @@ export const locationsData: SystemLocationNode = {
         "",
       type: LocationType.Site,
       subType: SiteSubtype.Vessel,
-      distance: 525,
-      startingAngle: 240,
+      distance: 545,
+      startingAngle: 250,
     },
     {
       name: "Dataframe 65-G",

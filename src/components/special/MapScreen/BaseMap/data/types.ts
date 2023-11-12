@@ -112,6 +112,7 @@ export enum FieldShape {
   SunWeather = "SunWeather",
   Mercury = "Mercury",
   Jupiter = "Jupiter",
+  SRICircle = "SriCircle"
 }
 
 // human population pre-interrupt
