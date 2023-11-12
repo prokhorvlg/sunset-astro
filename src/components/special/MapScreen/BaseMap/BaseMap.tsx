@@ -47,7 +47,6 @@ const BaseMap = ({
   )
 
   useEffect(() => {
-    console.log("triggered") // TODO reset the map position to real center when map source is switched
     if (!transformComponentRef.current) return
     setTransform(transformComponentRef.current)
     transformComponentRef.current.zoomIn(0,0)
@@ -78,7 +77,6 @@ const BaseMap = ({
   }
 
   const reset = () => {
-    //console.log("reset", selectedLocation)
     if (selectedLocation) {
       transformComponentRef.current?.zoomToElement(
         selectedLocation.name,
@@ -125,7 +123,6 @@ const BaseMap = ({
         setPosY(e.state.positionY)
       }}
     >
-
       {(transform: ReactZoomPanPinchContentRef) => {
         return (
           <div className={`base-map-container ${map}`} ref={mapContainerRef} >
@@ -160,10 +157,14 @@ const BaseMap = ({
                 </div>
               </div>
 
+              {/* FLOATING TEXT TOP */}
               <div className="floating-code-text">
                 <span className="scale">M_SCALE 00 {Math.round(scale)}</span>
                 <span className="center-coords">{Math.round((-posX + 998) * rescale)} : {Math.round((-posY + 552) * rescale)} M_CENTER STRICT</span>
               </div>
+
+              {/* RESET BUTTON */}
+              <button className="reset-button" onClick={reset}></button>
 
               <BaseMapTransformContainer
                 transform={transform}

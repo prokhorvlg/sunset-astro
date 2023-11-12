@@ -49,7 +49,6 @@ const SystemMapD3 = () => {
     }
 
     const handleZoom = (event, container, itemGroups, objectInfo, svgEl) => {
-        //console.log("event", event)
         const transform = event.transform
         const currentZoomScale = transform.k
         container.attr("transform", transform);
@@ -73,9 +72,6 @@ const SystemMapD3 = () => {
     }
 
     return <div className='sunset-map-container'>
-        {/* <button onClick={() => {
-            console.log(zoom)
-        }}>zoom level 2</button> */}
         <div className='sunset-map-div'>
             <svg xmlns="http://www.w3.org/2000/svg" ref={handleMap} className='sunset-map-svg'>
                 <defs>

@@ -6,6 +6,7 @@ import MapModal from "@/components/special/MapScreen/MapModal"
 import DiagonalPattern from "@/components/special/patterns/DiagonalPattern"
 import { useAtom } from "jotai"
 import { createRef, useEffect, useRef, useState } from "react"
+
 import './MapScreen.scss'
 
 const MapScreen = (props) => {
@@ -16,6 +17,8 @@ const MapScreen = (props) => {
   const [isExpanded, setIsExpended] = useState(false)
   const [isSystemMapOn, setIsSystemMapOn] = useState(true)
   const locationContentRefs = useRef({})
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   const refAllContentItems = () => {
     const allLocationItems = Array.from(document.getElementsByClassName("location-content-item") as HTMLCollectionOf<HTMLElement>)
@@ -49,6 +52,12 @@ const MapScreen = (props) => {
         <MapModal introContent={props.mapIntro} />
       }
 
+      
+
+      <div className="map-body">
+        <BaseMap map={isSystemMapOn ? MapComponent.System : MapComponent.Titan} />
+      </div>
+
       <div className="map-header">
         <div className="map-title">
           <h1>Map | Solar System</h1>
@@ -66,11 +75,7 @@ const MapScreen = (props) => {
         </div>
       </div>
 
-      <div className="map-body">
-        <BaseMap map={isSystemMapOn ? MapComponent.System : MapComponent.Titan} />
-      </div>
-
-      <div className={`map-selected ${isExpanded ? "expanded" : ""}`}>
+      {/* <div className={`map-selected ${isExpanded ? "expanded" : ""}`}>
         <button 
           className="selected-header"
           onClick={(e) => setIsExpended(!isExpanded)}>
@@ -84,7 +89,6 @@ const MapScreen = (props) => {
         <div className="selected-content-container">
           
           <div className="flavor-text-container"><p>{selectedLocation?.flavorText}</p></div>
-          {/* <p>{selectedLocation?.description}</p> */}
           <>{props.locationContent}</>
           <hr />
           <SelectedDataRow label="Sub-type" content={selectedLocation?.subType} />
@@ -94,7 +98,8 @@ const MapScreen = (props) => {
           
           
         </div>
-      </div>
+      </div> */}
+      
     </div>
   )
 }

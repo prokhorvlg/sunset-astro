@@ -19,7 +19,7 @@ export enum ButtonType {
 const Button = ({
     children,
     classes = "",
-    onClickHandler = () => { console.log("clicked!") },
+    onClickHandler = () => {},
     type = "dialog",
     linkURL = '',
     isDownload

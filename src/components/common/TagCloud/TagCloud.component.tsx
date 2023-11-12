@@ -16,8 +16,6 @@ const TagCloud = ({
 }: Props) => {
     const onTagClick = (e, tag) => {
         e.preventDefault()
-        console.log("tag click!", tag)
-
         // If on posts page, affect tag list state
         if (onCardTagClick) onCardTagClick(tag)
         else {

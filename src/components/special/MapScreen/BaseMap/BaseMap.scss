@@ -113,6 +113,15 @@
       }
     }
 
+    .reset-button {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      z-index: $map-zindex-selectionButton;
+      height: 60px;
+      width: 60px;
+    }
+
     .base-transform-wrapper {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
