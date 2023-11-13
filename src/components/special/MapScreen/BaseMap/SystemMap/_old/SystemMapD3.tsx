@@ -1,9 +1,10 @@
 import * as d3 from "d3";
 import './SystemMapD3.scss'
 import { useState } from "react";
-import { locationsData } from "@/components/special/SystemMap/data/locationsData";
-import { generateWorlds } from "@/components/special/SystemMap/_old/WorldGeneration";
-import { MAP_PAN_MULTIPLIER, MAP_DISTANCE_FACTOR, MAP_ZOOM_DETAIL_LEVEL_2 } from "@/components/special/SystemMap/data/constants";
+import { MAP_PAN_MULTIPLIER, MAP_DISTANCE_FACTOR, MAP_ZOOM_DETAIL_LEVEL_2 } from "@/components/special/MapScreen/BaseMap/data/constants";
+import { locationsData } from "@/components/special/MapScreen/BaseMap/data/locationsData";
+import { generateWorlds } from "@/components/special/MapScreen/BaseMap/SystemMap/_old/WorldGeneration";
+
 
 const SystemMapD3 = () => {
     const [zoom, setZoom] = useState(null)
