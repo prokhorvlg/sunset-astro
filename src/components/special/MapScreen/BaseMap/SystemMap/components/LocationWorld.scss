@@ -29,11 +29,9 @@
       }
     }
     .inner-circle-atmo {
-      //display: none;
       @include absoluteCentered();
       border-radius: 5000px;
       opacity: 0.1;
-      //mix-blend-mode: color-burn;
     }
     .ring {
       @include absoluteCentered();
