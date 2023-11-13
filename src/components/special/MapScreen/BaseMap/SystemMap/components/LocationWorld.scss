@@ -29,7 +29,7 @@
       }
     }
     .inner-circle-atmo {
-      display: none;
+      //display: none;
       @include absoluteCentered();
       border-radius: 5000px;
       opacity: 0.1;

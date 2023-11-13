@@ -55,6 +55,52 @@
     }
   }
 
+  .selected-marker {
+    @include absoluteCentered();
+
+    height: 60px;
+    width: 60px;
+    $borderWidth: 3px;
+
+    animation: selectedMarker 1s ease-in-out infinite;
+
+    .corner {
+      height: 10px;
+      width: 10px;
+      border: 0px solid $map-amber-color;
+      position: absolute;
+      //transform: rotate(180deg);
+    }
+
+    .top-left {
+      border-top-width: $borderWidth;
+      border-left-width: $borderWidth;
+      left: 0;
+      top: 0;
+    }
+    .top-right {
+      border-top-width: $borderWidth;
+      border-right-width: $borderWidth;
+      right: 0;
+      top: 0;
+    }
+    .bottom-left {
+      border-bottom-width: $borderWidth;
+      border-left-width: $borderWidth;
+      left: 0;
+      bottom: 0;
+    }
+    .bottom-right {
+      border-bottom-width: $borderWidth;
+      border-right-width: $borderWidth;
+      right: 0;
+      bottom: 0;
+    }
+
+  }
+
+
+
   // fields, asteroid belts
   &.label {
     $sizeOffset: 3px;
@@ -92,3 +138,13 @@
   }
 }
 
+@keyframes selectedMarker {
+  0% {
+    height: 60px;
+    width: 60px;
+  }
+  50% {
+    height: 80px;
+    width: 80px;
+  }
+}

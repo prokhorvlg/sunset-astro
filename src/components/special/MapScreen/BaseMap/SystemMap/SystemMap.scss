@@ -8,14 +8,14 @@
 }
 
   .sunset-map-large-glowing-background {
+    //display: none;
     $largeGlowingBackgroundWidth: 2000px;
     @include centeredObject();
     height: $largeGlowingBackgroundWidth;
     width: $largeGlowingBackgroundWidth;
     z-index: $map-zindex-underlyingOverlay;
     border-radius: 9999px;
-    background: radial-gradient(rgb(255, 189, 6) 0%, rgb(131, 21, 7) 30%, black 70%);
-    mix-blend-mode: screen;
+    background: radial-gradient(rgb(255, 189, 6) 0%, rgb(131, 21, 7) 30%, rgba(0,0,0,0) 70%);
     opacity: 0.2;
     user-select: none;
     pointer-events: none;
@@ -32,11 +32,10 @@
         rgb(255, 177, 32) 20%,
         rgba(230, 83, 15, 0.1) 50%,
         rgba(255, 195, 28, 0) 65%);
-    mix-blend-mode: screen;
+    //mix-blend-mode: screen;
     opacity: 0.5;
     user-select: none;
     pointer-events: none;
-    //animation: pulse 2s linear infinite;
   }
   @keyframes pulse {
     0%{
@@ -51,6 +50,7 @@
   }
 
   .sunset-map-grid-container {
+    //display: none;
     position: absolute;
     z-index: $map-zindex-underlyingOverlay;
 
@@ -64,7 +64,7 @@
       top: 50%;
       position: absolute;
       //transform: translate(-50%, -50%);
-      mix-blend-mode: lighten;
+      //mix-blend-mode: lighten;
 
       &::after {
         background-image: url('/images/patterns/map-bg-grid-pattern.svg');
@@ -75,13 +75,14 @@
   }
 
   .sunset-map-starry-container {
+    //display: none;
     @include absoluteCentered();
     z-index: $map-zindex-underlyingOverlay;
 
     .sunset-map-starry-pattern {
       @include absoluteCentered();
 
-      mix-blend-mode: screen;
+      //mix-blend-mode: screen;
       opacity: 0.11;
       background-image: url('/images/patterns/1000-dots-1000x1000.svg');
       background-size: 700px;

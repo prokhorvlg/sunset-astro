@@ -8,6 +8,9 @@ import {debounce} from "debounce"
 import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
 import './BaseMap.scss'
 import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMapWheel"
+import Button, { ButtonType } from "@/components/common/Button/Button.component"
+import { faDownload } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export enum MapComponent {
   System = "system",
@@ -164,7 +167,24 @@ const BaseMap = ({
               </div>
 
               {/* RESET BUTTON */}
-              <button className="reset-button" onClick={reset}></button>
+              <button className="floating-button reset" onClick={reset}>RESET</button>
+
+              {selectedLocation &&
+              <Button 
+                  type={ButtonType.Dialog}
+                  onClickHandler={(e) => console.log(e)}
+                  classes={`floating-button selection left`}
+                  
+              >
+                  <>
+                      <span>{selectedLocation?.name}</span>
+                  </>
+              </Button>
+              }
+
+              {/* {selectedLocation &&
+                <button className="floating-button selection" onClick={reset}>{selectedLocation?.name}</button>
+              } */}
 
               <BaseMapTransformContainer
                 transform={transform}

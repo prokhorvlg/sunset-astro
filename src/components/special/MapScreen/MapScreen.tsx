@@ -64,7 +64,7 @@ const MapScreen = (props) => {
         </div>
 
         <div className="button-set left">
-          <button>{"<"}</button>
+          {/* <button>{"<"}</button> */}
         </div>
 
         <div className="map-header-diagonal"></div>

@@ -63,6 +63,14 @@ const Selector = ({
           ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
             backgroundColor: doNotApplyBackground ? undefined : location.color
         }}></div>
+        {selectedLocation?.name === location.name && 
+          <div className="selected-marker">
+            <div className="corner top-left"></div>
+            <div className="corner top-right"></div>
+            <div className="corner bottom-left"></div>
+            <div className="corner bottom-right"></div>
+          </div>
+        }
       </button>
     </>
   )
