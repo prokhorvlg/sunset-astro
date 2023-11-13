@@ -6,7 +6,7 @@ import LocationField from "@/components/special/MapScreen/BaseMap/SystemMap/comp
 import LocationOrbitRing from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationOrbitRing"
 import LocationSite from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationSite"
 import LocationWorld from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationWorld"
-import { findNewPoint, increaseBrightness } from "@/components/special/MapScreen/BaseMap/SystemMap/_old/WorldGenerationHelpers"
+import { findNewPoint, increaseBrightness } from "@/components/special/MapScreen/utils/WorldGenerationHelpers"
 import { useAtom } from "jotai"
 import { useMemo, useState } from "react"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
