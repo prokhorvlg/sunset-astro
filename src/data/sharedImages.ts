@@ -1205,4 +1205,13 @@ export const Images: ImageDetails[] = [
         classes: "border-aqua",
         artist: ArtistProkhor
     },
+    {
+        id: 'ryujin-catalog',
+        src: "/images/content/ryujin_catalog-2.jpg",
+        alt: "RYUJIN finds a floppy disk containing the Schafer's 2093 Fall and Winter catalog.",
+        width: 1793,
+        height: 2040,
+        classes: "",
+        artist: ArtistProkhor
+    },
 ]
