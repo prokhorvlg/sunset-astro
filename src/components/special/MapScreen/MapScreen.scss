@@ -96,7 +96,7 @@ $map-selected-peek-extra-height: 40px;
   $selectionTransitionTime: 0.15s;
   .map-selected {
     position: absolute;
-    z-index: 900;
+    z-index: 2000;
 
     left: 0px; right: 0px; bottom: -100%;
     top: calc(100%);

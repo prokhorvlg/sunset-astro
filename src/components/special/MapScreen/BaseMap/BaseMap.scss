@@ -113,28 +113,38 @@
       }
     }
 
-    .floating-button {
+    .bottom-controls {
       position: absolute;
-      bottom: 10px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 5px;
+    }
+    .floating-button {
+      flex: 1;
+      text-align: center;
+      margin: 2px;
+      padding: 10px;
       
       z-index: $map-zindex-selectionButton;
       border: 2px solid $map-reddish-color;
-      background-color: black;
-      .dialog-content {
-        padding: 20px;
-      }
+      background-color: rgba($map-background-color, 0.8);
+      color: $map-reddish-color;
       
-      p {
-        display: block;
-        //padding: 20px;
-      }
+      border-radius: 4px;
+      cursor: pointer;
 
-      &.reset {
-        //width: 60px;
-        right: 10px;
-      }
-      &.selection {
-        left: 5px;
+      font-family: $font-code;
+      text-transform: uppercase;
+      font-size: 12px;
+
+      &:hover {
+        border-color: $map-amber-color;
+        color: $map-amber-color;
       }
     }
 

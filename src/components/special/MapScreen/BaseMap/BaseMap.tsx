@@ -169,24 +169,13 @@ const BaseMap = ({
               </div>
 
               {/* RESET BUTTON */}
-              <button className="floating-button reset" onClick={reset}>RESET</button>
-
-              {/* {selectedLocation &&
-              <Button 
-                  type={ButtonType.Dialog}
-                  onClickHandler={(e) => console.log(e)}
-                  classes={`floating-button selection left`}
-                  
-              >
-                  <>
-                      <span>{selectedLocation?.name}</span>
-                  </>
-              </Button>
-              } */}
-
-              {selectedLocation &&
-                <button className="floating-button selection" onClick={() => setIsSelectedModalOpen(true)}>{selectedLocation?.name}</button>
-              }
+              <div className="bottom-controls">
+                
+                
+                <button className="floating-button selection" onClick={() => setIsSelectedModalOpen(true)}>Open Details</button>
+                <button className="floating-button reset" onClick={reset}>Open Local Map</button>
+                <button className="floating-button reset" onClick={reset}>Reset View</button>
+              </div>
 
               <BaseMapTransformContainer
                 transform={transform}

@@ -141,6 +141,7 @@ export const locationsData: SystemLocationNode = {
       ],
     },
     {
+      id: "earth",
       name: "Earth",
       typeText: "Temperate Living World",
       type: LocationType.Planet,
@@ -803,8 +804,8 @@ export const locationsData: SystemLocationNode = {
         "",
       type: LocationType.Site,
       subType: SiteSubtype.Danger,
-      distance: 425,
-      startingAngle: 80,
+      distance: 455,
+      startingAngle: 205,
     },
     // Outer system
     {
