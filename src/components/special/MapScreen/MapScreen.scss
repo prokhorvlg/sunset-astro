@@ -99,7 +99,7 @@ $map-selected-peek-extra-height: 40px;
     z-index: 900;
 
     left: 0px; right: 0px; bottom: -100%;
-    top: calc(100% - $map-selected-peek-height);
+    top: calc(100%);
     overflow: auto;
     padding: 5px;
 

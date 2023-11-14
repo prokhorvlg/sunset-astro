@@ -1,7 +1,7 @@
 import BaseMap, { MapComponent } from "@/components/special/MapScreen/BaseMap/BaseMap"
 import { HumanEraAffiliation } from "@/components/special/MapScreen/BaseMap/data/types"
 import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
-import { selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { isSelectedModalOpenAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
 import DiagonalPattern from "@/components/special/patterns/DiagonalPattern"
 import { useAtom } from "jotai"
@@ -14,11 +14,10 @@ const MapScreen = (props) => {
     selectedLocationAtom
   )
   const [isIntroOpen, setIsIntroOpen] = useState(false)
-  const [isExpanded, setIsExpended] = useState(false)
   const [isSystemMapOn, setIsSystemMapOn] = useState(true)
   const locationContentRefs = useRef({})
 
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const [isSelectedModalOpen, setIsSelectedModalOpen] = useAtom(isSelectedModalOpenAtom)
 
   const refAllContentItems = () => {
     const allLocationItems = Array.from(document.getElementsByClassName("location-content-item") as HTMLCollectionOf<HTMLElement>)
@@ -43,7 +42,7 @@ const MapScreen = (props) => {
     } catch (e) {
       console.warn("Content not found for location with given id.")
     }
-  }, [isExpanded, selectedLocation])
+  }, [isSelectedModalOpen, selectedLocation])
 
   return (
     <div className="map-screen">
@@ -75,10 +74,10 @@ const MapScreen = (props) => {
         </div>
       </div>
 
-      {/* <div className={`map-selected ${isExpanded ? "expanded" : ""}`}>
+      <div className={`map-selected ${isSelectedModalOpen ? "expanded" : ""}`}>
         <button 
           className="selected-header"
-          onClick={(e) => setIsExpended(!isExpanded)}>
+          onClick={(e) => setIsSelectedModalOpen(!isSelectedModalOpen)}>
             <div className="header-text">
               <h2 className="name" style={{
                 color: selectedLocation?.color || undefined
@@ -98,7 +97,7 @@ const MapScreen = (props) => {
           
           
         </div>
-      </div> */}
+      </div>
       
     </div>
   )

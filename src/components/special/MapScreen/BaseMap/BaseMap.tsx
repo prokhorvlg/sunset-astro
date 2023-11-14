@@ -1,5 +1,5 @@
 import { MAP_MAX_SCALE, MAP_MIN_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMap from "@/components/special/MapScreen/BaseMap/SystemMap/SystemMap"
 import { useAtom } from "jotai"
 import { useRef, useEffect, useState } from "react"
@@ -45,9 +45,11 @@ const BaseMap = ({
 
   const [posX, setPosX] = useAtom(usePosXAtom)
   const [posY, setPosY] = useAtom(usePosYAtom)
+  
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
+  const [isSelectedModalOpen, setIsSelectedModalOpen] = useAtom(isSelectedModalOpenAtom)
 
   useEffect(() => {
     if (!transformComponentRef.current) return
@@ -169,7 +171,7 @@ const BaseMap = ({
               {/* RESET BUTTON */}
               <button className="floating-button reset" onClick={reset}>RESET</button>
 
-              {selectedLocation &&
+              {/* {selectedLocation &&
               <Button 
                   type={ButtonType.Dialog}
                   onClickHandler={(e) => console.log(e)}
@@ -180,11 +182,11 @@ const BaseMap = ({
                       <span>{selectedLocation?.name}</span>
                   </>
               </Button>
-              }
-
-              {/* {selectedLocation &&
-                <button className="floating-button selection" onClick={reset}>{selectedLocation?.name}</button>
               } */}
+
+              {selectedLocation &&
+                <button className="floating-button selection" onClick={() => setIsSelectedModalOpen(true)}>{selectedLocation?.name}</button>
+              }
 
               <BaseMapTransformContainer
                 transform={transform}
