@@ -118,8 +118,6 @@
       bottom: 10px;
       
       z-index: $map-zindex-selectionButton;
-      //height: 60px;
-      //padding: 10px;
       border: 2px solid $map-reddish-color;
       background-color: black;
       .dialog-content {
@@ -152,17 +150,7 @@
       &:hover:active {
         cursor: grabbing;
       }
-    
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        z-index:99999;
-        background: radial-gradient(rgba($map-reddish-color,1) 1%, rgba($map-reddish-color, 0) 100%);
-        opacity: 0.3;
-        pointer-events: none;
-        display: none;
-      }
+
       &::after {
         content: '';
         position: absolute;
@@ -171,12 +159,11 @@
         background: linear-gradient(to bottom, $map-amber-color 20%, $map-reddish-color 100%);
         opacity: 0.4;
         pointer-events: none;
-        
+        display: none;
       }
     
       .base-transform-content {
         background: $map-background-color;
-        //will-change: transform;
 
         .bounding-block {
           position: relative;
@@ -195,7 +182,6 @@
     .bounding-block {
       height: 2000px;
       width: 3200px;
-      //border: 4px solid red !important;
     }
   }
   &.titan {

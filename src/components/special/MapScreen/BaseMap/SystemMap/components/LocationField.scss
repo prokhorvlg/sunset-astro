@@ -5,7 +5,7 @@
   @include absoluteCentered();
   z-index: $map-zindex-field;
 
-  opacity: 0.6;
+  opacity: 0.8;
   
   .culling-radius {
     @include absoluteCentered();

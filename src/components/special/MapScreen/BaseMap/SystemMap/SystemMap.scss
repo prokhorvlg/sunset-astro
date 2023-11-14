@@ -15,8 +15,9 @@
     width: $largeGlowingBackgroundWidth;
     z-index: $map-zindex-underlyingOverlay;
     border-radius: 9999px;
-    background: radial-gradient(rgb(255, 189, 6) 0%, rgb(131, 21, 7) 30%, rgba(0,0,0,0) 70%);
-    opacity: 0.2;
+    //background: radial-gradient(rgb(255, 189, 6) 0%, rgb(131, 21, 7) 30%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(rgba(255, 132, 18, 0.8) 0%, rgba(133, 43, 1, 0.8) 30%, rgba(24, 15, 15, 0) 70%);
+    opacity: 0.4;
     user-select: none;
     pointer-events: none;
   }
@@ -28,12 +29,12 @@
     width: 250px;
     border-radius: 99999px;
     z-index: $map-zindex-iconOverlay;
-    background: radial-gradient(rgb(255, 214, 101) 10%,
-        rgb(255, 177, 32) 20%,
-        rgba(230, 83, 15, 0.1) 50%,
+    background: radial-gradient(rgba(255, 171, 46, 1) 20%,
+        rgb(255, 152, 17) 30%,
+        rgba(230, 83, 15, 0.2) 50%,
         rgba(255, 195, 28, 0) 65%);
     //mix-blend-mode: screen;
-    opacity: 0.5;
+    opacity: 1;
     user-select: none;
     pointer-events: none;
   }
@@ -83,7 +84,7 @@
       @include absoluteCentered();
 
       //mix-blend-mode: screen;
-      opacity: 0.11;
+      opacity: 0.15;
       background-image: url('/images/patterns/1000-dots-1000x1000.svg');
       background-size: 700px;
       background-position: 50% 50%;

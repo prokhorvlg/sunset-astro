@@ -81,9 +81,10 @@ const SystemMapLocation = ({
   })
 
   const [radius] = useState(getProcessedRadius(location.radius))
-  const [color] = useState(location.color
-    ? increaseBrightness(location.color, 20)
-    : MAP_DEFAULT_COLOR)
+  // const [color] = useState(location.color
+  //   ? increaseBrightness(location.color, 20)
+  //   : MAP_DEFAULT_COLOR)
+  const color = location.color || MAP_DEFAULT_COLOR
 
   // Makes sure inner rings are stacked over
   const ringsBeginningZIndex = 200
