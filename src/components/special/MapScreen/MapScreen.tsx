@@ -1,5 +1,4 @@
-import BaseMap, { MapComponent } from "@/components/special/MapScreen/BaseMap/BaseMap"
-import { HumanEraAffiliation } from "@/components/special/MapScreen/BaseMap/data/types"
+import { HumanEraAffiliation, MapComponent } from "@/components/special/MapScreen/BaseMap/data/types"
 import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
 import { isSelectedModalOpenAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
@@ -7,7 +6,17 @@ import DiagonalPattern from "@/components/special/patterns/DiagonalPattern"
 import { useAtom } from "jotai"
 import { createRef, useEffect, useRef, useState } from "react"
 
+import Modal from 'react-modal';
+import { styled } from '@stitches/react';
+
+const ColoredButton = styled('button', {});
+const ModalContent = styled('article', {});
+
 import './MapScreen.scss'
+import ReactMarkdown from "react-markdown"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClose } from "@fortawesome/free-solid-svg-icons"
+import BaseMap from "@/components/special/MapScreen/BaseMap/BaseMap"
 
 const MapScreen = (props) => {
   const [selectedLocation, setSelectedLocation] = useAtom(
@@ -15,6 +24,7 @@ const MapScreen = (props) => {
   )
   const [isIntroOpen, setIsIntroOpen] = useState(false)
   const [isSystemMapOn, setIsSystemMapOn] = useState(true)
+  const [activeMap, setActiveMap] = useState<MapComponent>(MapComponent.System)
   const locationContentRefs = useRef({})
 
   const [isSelectedModalOpen, setIsSelectedModalOpen] = useAtom(isSelectedModalOpenAtom)
@@ -47,14 +57,59 @@ const MapScreen = (props) => {
   return (
     <div className="map-screen">
 
-      {isIntroOpen &&
+<Modal 
+                    appElement={document.getElementById('root') as HTMLElement}
+                    isOpen={isIntroOpen} 
+                    onRequestClose={() => setIsIntroOpen(false)}
+                    overlayClassName="organizations-modal-overlay"
+                    className="organizations-modal-content"
+                >
+                    <div className="top-area">
+                        <h1 style={{color: "white" }}>Name</h1>
+                        <button className="close" onClick={() => setIsIntroOpen(false)}><FontAwesomeIcon icon={faClose} /></button>
+                    </div>
+                    <div className="organizations-top-bar">
+                        <p className="type">type</p>
+                    </div>
+                    <div className="organizations-logo-container">
+                        logo
+                    </div>
+                    <ModalContent className="content markdown" css={{
+                        'strong': {
+                            color: `${"white"} !important`,
+                            filter: `brightness(110%)`
+                        },
+                        "h2": {
+                            color: `${"white"} !important`,
+                            filter: `brightness(110%)`,
+                            borderBottomColor: `${"white"} !important`
+                        },
+                        "li": {
+                            "&::marker": {
+                                color: `${"white"} !important`,
+                            }
+                        },
+                        "a": {
+                            color: `${"white"} !important`,
+                            filter: `brightness(110%)`,
+                            "&::before": {
+                                backgroundColor: `${"white"} !important`,
+                                opacity: 0.3
+                            }
+                        }
+                    }}>
+                        <ReactMarkdown>description</ReactMarkdown>
+                    </ModalContent>
+                </Modal>
+
+      {/* {isIntroOpen &&
         <MapModal introContent={props.mapIntro} />
-      }
+      } */}
 
       
 
       <div className="map-body">
-        <BaseMap map={isSystemMapOn ? MapComponent.System : MapComponent.Titan} />
+        <BaseMap map={activeMap} />
       </div>
 
       <div className="map-header">
@@ -69,7 +124,7 @@ const MapScreen = (props) => {
         <div className="map-header-diagonal"></div>
 
         <div className="button-set right">
-          <button onClick={e => setIsSystemMapOn(prev => !prev)}>M</button>
+          {/* <button onClick={e => setIsSystemMapOn(prev => !prev)}>M</button> */}
           <button onClick={(e) => setIsIntroOpen(true)}>?</button>
         </div>
       </div>

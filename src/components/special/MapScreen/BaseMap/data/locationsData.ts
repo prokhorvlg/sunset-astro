@@ -1,4 +1,4 @@
-import { LocationNode, LocationType, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode, HumanEraAffiliation } from "@/components/special/MapScreen/BaseMap/data/types";
+import { LocationNode, LocationType, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode, HumanEraAffiliation, MapComponent } from "@/components/special/MapScreen/BaseMap/data/types";
 
 // Data for generation of objects
 export const locationsData: SystemLocationNode = {
@@ -551,6 +551,7 @@ export const locationsData: SystemLocationNode = {
           radius: 8,
           startingAngle: 40,
           isImportant: true,
+          localMap: MapComponent.Titan,
           children: [
             {
               name: "Svyatagor Outpost",

@@ -13,6 +13,11 @@ export enum RelativePosition {
   Deep, // Object remains in static position on map (default)
 }
 
+export enum MapComponent {
+  System = "system",
+  Titan = "titan"
+}
+
 export interface LocationNode {
   id?: string
 
@@ -45,6 +50,9 @@ export interface LocationNode {
 
   // CHILDREN
   children?: LocationNode[]
+
+  // LOCAL MAP
+  localMap?: MapComponent
 
   // OLD UNUSED
   crafts?: LocationNode[] // unused

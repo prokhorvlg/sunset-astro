@@ -11,11 +11,7 @@ import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMap
 import Button, { ButtonType } from "@/components/common/Button/Button.component"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
-export enum MapComponent {
-  System = "system",
-  Titan = "titan"
-}
+import { MapComponent } from "@/components/special/MapScreen/BaseMap/data/types"
 
 const getMapComponent = (map: MapComponent, props: any) => {
   const mapToMap = {

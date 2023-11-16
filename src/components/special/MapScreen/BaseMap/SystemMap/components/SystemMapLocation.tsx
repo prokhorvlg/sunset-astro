@@ -11,6 +11,7 @@ import { useAtom } from "jotai"
 import { useMemo, useState } from "react"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import './SystemMapLocation.scss'
+import {FaMap} from "react-icons/fa"
 
 enum Dimension {
   x = 'x',
@@ -181,6 +182,12 @@ const SystemMapLocation = ({
             backgroundColor: location.type !== LocationType.Site ? location.color : undefined
           }}></div>
         </button> */}
+
+        {location.localMap &&
+          <div className="local-map-indicator">
+            <FaMap />
+          </div>
+        }
             
         {/* WORLD (sun, moon, planet) */}
         {isWorld && (
