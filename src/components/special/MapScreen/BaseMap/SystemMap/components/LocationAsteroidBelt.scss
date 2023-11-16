@@ -25,14 +25,4 @@
       background: $map-background-color;
     }
   }
-  .map-asteroid-belt-name {
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    opacity: 1;
-    color: $map-reddish-color;
-    .name {
-      text-align: left;
-    }
-  }
 }

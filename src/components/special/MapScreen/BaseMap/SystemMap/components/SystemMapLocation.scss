@@ -12,34 +12,7 @@
     pointer-events: none;
   }
   
-  .text-under {
-    position: absolute;
-    transform: translate(-50%, 0);
 
-    user-select: none;
-    pointer-events: none;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .name {
-    z-index: $map-zindex-label;
-    user-select: none;
-    pointer-events: none;
-    
-    font-family: $font-code;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
-    margin: 0;
-    white-space: nowrap;
-
-    background: rgba($map-background-color, 0.8);
-  }
   .type-text {
     z-index: $map-zindex-label;
     user-select: none;

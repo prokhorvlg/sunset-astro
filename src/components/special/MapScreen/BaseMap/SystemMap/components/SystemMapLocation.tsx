@@ -12,6 +12,7 @@ import { useMemo, useState } from "react"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import './SystemMapLocation.scss'
 import {FaMap} from "react-icons/fa"
+import ZoomToMarker from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ZoomToMarker"
 
 enum Dimension {
   x = 'x',
@@ -82,9 +83,6 @@ const SystemMapLocation = ({
   })
 
   const [radius] = useState(getProcessedRadius(location.radius))
-  // const [color] = useState(location.color
-  //   ? increaseBrightness(location.color, 20)
-  //   : MAP_DEFAULT_COLOR)
   const color = location.color || MAP_DEFAULT_COLOR
 
   // Makes sure inner rings are stacked over
@@ -134,6 +132,19 @@ const SystemMapLocation = ({
   const dimensionOffsetX = useMemo(() => getDimensionOffset(Dimension.x), [parentRadius, rescale])
   const dimensionOffsetY = useMemo(() => getDimensionOffset(Dimension.y), [parentRadius, rescale])
 
+  const zoomToLeft = () => {
+    if (isRootElement) return "50%"
+    else if (isBelt) return location.distance * MAP_DISTANCE_FACTOR
+    //else if (isField) return location.fieldLabelOffset?.x || 0
+    return objectPoint.x
+  } 
+  const zoomToTop = () => {
+    if (isRootElement) return "50%"
+    else if (isBelt) return "50%"
+    //else if (isField) return location.fieldLabelOffset?.y || 0
+    return objectPoint.y
+  } 
+
   return (
     <>
       {/* ORBIT RING (if this is a world) */}
@@ -153,6 +164,10 @@ const SystemMapLocation = ({
         />
       )}
 
+      <ZoomToMarker location={location} 
+        left={zoomToLeft()} 
+        top={zoomToTop()} />
+
       {/* Container to shift location relative to parent */}
       <div
         className="map-location-container"
@@ -161,28 +176,6 @@ const SystemMapLocation = ({
           top: dimensionOffsetY,
         }}
       >
-        {/* SELECTION BUTTON */}
-        {/* <button
-          className="selection-button"
-          style={{
-            transform: `translate(-50%, -50%) scale(${rescale})`,
-            height: radius + borderRadiusModifier,
-            width: radius + borderRadiusModifier,
-          }}
-          onWheel={(e) => onWheel(e as any)}
-          //onMouseOver={(e) => setHoveredLocation(location)}
-          //onMouseLeave={(e) => setHoveredLocation(null)}
-          onClick={() => {
-            setSelectedLocation(location)
-            transform.zoomToElement(location.name, 10, 400)
-          }}
-        >
-          <div className={`selection-button-inner 
-            ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
-            backgroundColor: location.type !== LocationType.Site ? location.color : undefined
-          }}></div>
-        </button> */}
-
         {location.localMap &&
           <div className="local-map-indicator">
             <FaMap />

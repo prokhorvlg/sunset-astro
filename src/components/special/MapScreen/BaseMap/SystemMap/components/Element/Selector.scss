@@ -1,26 +1,29 @@
 @import 'src/styles/imports.scss';
 
-.zoom-to-marker {
-  position: absolute;
+@keyframes selectedMarker {
+  0% {
+    height: 60px;
+    width: 60px;
+  }
+  50% {
+    height: 80px;
+    width: 80px;
+  }
 }
 
-.selection-button {
+.selection-button-offset {
   position: absolute;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-
   z-index: $map-zindex-selectionButton;
-  background: none;
-  border: none;
 
   &:hover {
-    .selection-button-inner {
-      opacity: 0.2;
+    .selection-button {
+      .selection-button-inner {
+        opacity: 0.2;
+      }
     }
 
-    // Cause names to pop up when hovering on site
     & ~ .map-site { 
-      h2.name {
+      h2.map-name {
         display: block;
       }
       .map-site-icon {
@@ -29,89 +32,128 @@
     }
 
     & ~ .map-world {
-      h2.name {
+      h2.map-name {
         transform: translate(0, 6px) scale(1.4);
       }
     }
   } 
-  
-  .selection-button-inner {
+
+  .selection-button {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    transform: scale(1.2);
-    opacity: 0;
-    border-radius: 999px;
-    background: $map-reddish-color;
-    pointer-events: none;
+    cursor: pointer;
 
-    &.human-era {
-      background-color: $colorWorldHumanEra;
-    }
-    &.anomaly {
-      background-color: $colorWorldAnomaly;
-    }
-    &.machine-era {
-      background-color: $colorWorldMachineEra;
-    }
-  }
-
-  .selected-marker {
-    @include absoluteCentered();
-
-    height: 60px;
-    width: 60px;
-    $borderWidth: 3px;
-
-    animation: selectedMarker 1s ease-in-out infinite;
-
-    .corner {
-      height: 10px;
-      width: 10px;
-      border: 0px solid $map-amber-color;
+    z-index: $map-zindex-selectionButton;
+    background: none;
+    border: none;   
+    
+    .selection-button-inner {
       position: absolute;
-      //transform: rotate(180deg);
+      top: 0; left: 0; right: 0; bottom: 0;
+      transform: scale(1.2);
+      opacity: 0;
+      border-radius: 999px;
+      background: $map-reddish-color;
+      pointer-events: none;
+
+      &.human-era {
+        background-color: $colorWorldHumanEra;
+      }
+      &.anomaly {
+        background-color: $colorWorldAnomaly;
+      }
+      &.machine-era {
+        background-color: $colorWorldMachineEra;
+      }
     }
 
-    .top-left {
-      border-top-width: $borderWidth;
-      border-left-width: $borderWidth;
-      left: 0;
-      top: 0;
-    }
-    .top-right {
-      border-top-width: $borderWidth;
-      border-right-width: $borderWidth;
-      right: 0;
-      top: 0;
-    }
-    .bottom-left {
-      border-bottom-width: $borderWidth;
-      border-left-width: $borderWidth;
-      left: 0;
-      bottom: 0;
-    }
-    .bottom-right {
-      border-bottom-width: $borderWidth;
-      border-right-width: $borderWidth;
-      right: 0;
-      bottom: 0;
-    }
+    .selected-marker {
+      @include absoluteCentered();
 
+      height: 60px;
+      width: 60px;
+      $borderWidth: 3px;
+
+      animation: selectedMarker 1s ease-in-out infinite;
+
+      .corner {
+        height: 10px;
+        width: 10px;
+        border: 0px solid $map-amber-color;
+        position: absolute;
+        //transform: rotate(180deg);
+      }
+
+      .top-left {
+        border-top-width: $borderWidth;
+        border-left-width: $borderWidth;
+        left: 0;
+        top: 0;
+      }
+      .top-right {
+        border-top-width: $borderWidth;
+        border-right-width: $borderWidth;
+        right: 0;
+        top: 0;
+      }
+      .bottom-left {
+        border-bottom-width: $borderWidth;
+        border-left-width: $borderWidth;
+        left: 0;
+        bottom: 0;
+      }
+      .bottom-right {
+        border-bottom-width: $borderWidth;
+        border-right-width: $borderWidth;
+        right: 0;
+        bottom: 0;
+      }
+
+    }
   }
 
+  &.normal {
+    .selection-button {
+      height: 100%;
+      width: 100%;
+    }
+  }
 
+  &.field {
+    .selection-button {
+      $sizeOffset: 3px;
+      transform: translate(-50%, -50%);
+      border-radius: 0;
 
-  // fields, asteroid belts
-  &.label {
-    $sizeOffset: 3px;
-    border-radius: 0;
-    //z-index: $map-zindex-field;
+      .selection-button-inner {
+        border-radius: 0;
+        transform: scale(1);
+        //top: -$sizeOffset; left: -$sizeOffset; right: -$sizeOffset; bottom: -$sizeOffset;
+        background-color: $colorWorldAnomaly;
+      }
+  
+      .map-name {
+        border: 2px solid transparent;
+        color: $colorWorldAnomaly;     
+        &.magnetic-storm {
+          color: rgb(204, 166, 116);
+        }
+      }
+    }
 
     &:hover {
-      .selection-button-inner {
-        opacity: 1;
-        background: none;
-        border-bottom: 2px solid $colorWorldAnomaly;
+      .selection-button {
+        .selection-button-inner {
+          opacity: 1;
+          background: none;
+        }
+
+        .map-name {
+          border: 2px solid $colorWorldAnomaly;
+          transform: scale(1.1);
+          &.magnetic-storm {
+            border-color: rgb(204, 166, 116);
+          }
+        }
       }
 
       & ~ .map-field {
@@ -121,30 +163,21 @@
         }
       }
     }
+  }
+
+  &.belt {
+    transform: translateY(-50%);
 
     .selection-button-inner {
       border-radius: 0;
       transform: scale(1);
-      //top: -$sizeOffset; left: -$sizeOffset; right: -$sizeOffset; bottom: -$sizeOffset;
-      background-color: $colorWorldAnomaly;
     }
 
-    .name {
-      color: $colorWorldAnomaly; //magenta;      
-      &.magnetic-storm {
-        color: rgb(204, 166, 116);
-      }
+    .map-name {
+      text-align: left;
     }
-  }
-}
-
-@keyframes selectedMarker {
-  0% {
-    height: 60px;
-    width: 60px;
-  }
-  50% {
-    height: 80px;
-    width: 80px;
+    .flavor-text {
+      text-align: left;
+    }
   }
 }

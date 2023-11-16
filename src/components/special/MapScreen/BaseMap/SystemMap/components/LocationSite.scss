@@ -27,16 +27,6 @@
 .map-site {
   @include absoluteCentered();
   z-index: $map-zindex-label;
-  
-  &.is-detail-level {
-    .name {
-      margin-bottom: 20px;
-      display: block;
-    }
-    .text-under {
-      margin-top: 20px;
-    }
-  }
 
   .map-site-icon {
     @include absoluteCentered();
@@ -46,7 +36,6 @@
     $dimensions: 20px;
     height: $dimensions;
     width: $dimensions;
-    //background: $map-background-color;
 
     display: flex;
     justify-content: center;
@@ -77,35 +66,29 @@
       }
     }
   }
-  .name {
-    display: none;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    font-size: 18px;
-  }
 
   // WORLD AFFILIATION -> COLOR
-  svg, .name {
+  svg, .map-name {
     color: $colorWorldHumanEra;
   }
 
   &.anomaly {
-    svg, .name {
+    svg, .map-name {
       color: $colorWorldAnomaly;
     }
   }
   &.machine-era {
-    svg, .name {
+    svg, .map-name {
       color: $colorWorldMachineEra;
     }
   }
   &.machines-of-glass {
-    svg, .name {
+    svg, .map-name {
       color: #e251ff//$colorWorldMachinesOfGlass;
     }
   }
   &.century-of-progress {
-    svg, .name {
+    svg, .map-name {
       color: #ff5194 //$colorWorldAnomaly//$colorWorldCenturyOfProgress;
     }
   }

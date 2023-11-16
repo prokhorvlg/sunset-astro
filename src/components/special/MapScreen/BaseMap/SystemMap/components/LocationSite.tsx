@@ -13,6 +13,8 @@ import { AiOutlineQuestionCircle, AiOutlineSave } from "react-icons/ai";
 import { SiteSubtype, LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms";
 import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/Selector";
+import ElementHeading from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementHeading";
+import ElementOffset from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementOffset";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {
@@ -102,14 +104,7 @@ const LocationSite = ({
         {isInView && (
           <>
             {/* NAME */}
-            <h2
-              className={`name`}
-              style={{
-                bottom: `${radius * 0.5 + 10}px`,
-              }}
-            >
-              {location.name}
-            </h2>
+            <ElementHeading location={location} radius={radius} />
 
             {/* ICON */}
             <div
@@ -124,20 +119,16 @@ const LocationSite = ({
             </div>
 
             {/* TYPE, FLAVOR TEXT */}
-            <div
-              className="text-under"
-              style={{
-                top: `${radius * 0.5 + 10}px`,
-                opacity: isDetailLevel ? "1" : "0",
-              }}
-            >
-              <p className="type-text">{location.typeText}</p>
-              {(isDetailLevel2 && location.flavorText) &&
-                <p className="flavor-text">
-                  {location.flavorText}
-                </p>
-              }
-            </div>
+            <ElementOffset location={location}>
+              <>
+                <p className="type-text">{location.typeText}</p>
+                {(isDetailLevel2 && location.flavorText) &&
+                  <p className="flavor-text">
+                    {location.flavorText}
+                  </p>
+                }
+              </>
+            </ElementOffset>
           </>
         )}
       </div>

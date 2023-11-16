@@ -1,5 +1,7 @@
 import { LocationNode, FieldShape, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { transformAtom, rescaleAtom, isDetailLevelAtom, opacityFadeOutAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import ElementHeading from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementHeading"
+import ElementOffset from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementOffset"
 import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/Selector"
 import { mathClamp } from "@/components/special/MapScreen/BaseMap/utils/math"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
@@ -33,27 +35,14 @@ const LocationField = ({
   return (
     <>
       <Selector location={location}>
-        <h2 className={`name map-field-selector ${location.fieldClass}`} style={{
-          fontSize: isDetailLevel ? 28: 13,
-        }}>{location.typeText} «{location.name}»</h2>
+        <ElementHeading location={location} radius={radius} />
+        {isDetailLevel &&
+          <p className="flavor-text">{location.flavorText}</p>
+        }
       </Selector>
-      
+
       {/* FIELD */}
       {mapShapeFromField(location.fieldShape || FieldShape.Earth, location)}
-
-      {/* FIELD TEXT */}
-      <div className={`map-field-text ${location.fieldClass}`}>
-        <div className="text-under" style={{
-          transform: `translate(-50%, -50%) scale(${rescale})`,
-          left: location.fieldLabelOffset?.x,
-          top: location.fieldLabelOffset?.y
-        }}>
-          
-          {isDetailLevel &&
-            <p className="flavor-text">{location.flavorText}</p>
-          }
-        </div>
-      </div>
     </>
   )
 }

@@ -40,9 +40,3 @@
     @include absoluteCentered();
   }
 }
-
-.map-field-text {
-  @include absoluteCentered();
-  z-index: $map-zindex-label;
-  top: 12px;
-}

@@ -1,5 +1,7 @@
 import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { transformAtom, scaleAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import ElementHeading from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementHeading"
+import ElementOffset from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementOffset"
 import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/Selector"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
@@ -90,36 +92,30 @@ const LocationWorld = ({
             </div>
 
             {/* PLANET TEXT */}
-            <div
-              className="text-under"
-              style={{
-                top: isDetailLevel ? `${radius * 0.8 + 8}px` : `${radius * 0.5 + 5}px`,
-                color: color,
-              }}
-            >
-              <h2 className="name" style={{
-                fontSize: isDetailLevel ? "22px" : "14px",
+            <ElementOffset location={location} radius={radius}>
+              <>
+                {/* NAME */}
+                <ElementHeading location={location} radius={radius} />
 
-              }}>{location.name}</h2>
-              {isDetailLevel && (
-                <>
-                  <p
-                    className="type-text"
-                    style={{
-                      color: color,
-                    }}
-                  >
-                    {location.typeText}
-                  </p>
-                  {isDetailLevel2 &&
-                    <p className="flavor-text">
-                      {location.flavorText}
+                {isDetailLevel && (
+                  <>
+                    <p
+                      className="type-text"
+                      style={{
+                        color: color,
+                      }}
+                    >
+                      {location.typeText}
                     </p>
-                  }
-                  
-                </>
-              )}
-            </div>
+                    {isDetailLevel2 &&
+                      <p className="flavor-text">
+                        {location.flavorText}
+                      </p>
+                    }
+                  </>
+                )}
+              </>
+            </ElementOffset>
           </>
         )}
       </div>

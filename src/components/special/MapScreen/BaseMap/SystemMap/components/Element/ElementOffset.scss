@@ -1,0 +1,28 @@
+@import 'src/styles/imports.scss';
+
+.element-offset {
+  position: absolute;
+  transform: translate(-50%, 0);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &.world {
+    z-index: $map-zindex-label;
+  }
+
+  &.site {
+    z-index: $map-zindex-label;
+    top: 30px;
+  }
+
+  &.field {
+    z-index: $map-zindex-selectionButton; // b/c name used as selector
+  }
+
+  &.belt {
+    z-index: $map-zindex-selectionButton; // b/c name used as selector
+  }
+}
