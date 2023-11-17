@@ -19,21 +19,26 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
   const imageObject = Images.find((imageItem) => imageItem.id === image)
   if (!imageObject) return null
 
-  // Check if image is smaller than crunch size
-  const isSmall = false//imageObject.width < CRUNCH_WIDTH  
-
   const importedImage = await imageObject.src()
   const importedImageInner = importedImage.default
+
+  // Check if image is smaller than crunch size
+  const isSmall = importedImageInner.width < CRUNCH_WIDTH  
 
   // Generate an image of the correct size
   return {
     originalObject: imageObject,
-    processedObject: await getImage({
+    smallImage: await getImage({
       src: importedImageInner,
       alt: imageObject.alt || "",
       format: "webp",
-      //loading: "lazy"
-      //quality: 99
+      width: isSmall ? importedImageInner.width : CRUNCH_WIDTH,
+      quality: 99
+    }),
+    processedObject: await getImage({
+      src: importedImageInner,
+      alt: imageObject.alt || "",
+      format: "webp"
     })
   } as FullImageDetails
 }))

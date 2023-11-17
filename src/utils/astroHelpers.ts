@@ -130,29 +130,20 @@ export const processPost = async (post) => {
   let processedImageObject;
   let minifiedImageObject;
   if (imageObject) {
-
-    //const imagesGlob = import.meta.glob("../../assets/images/*")
-
     const importedImage = await imageObject.src()
     const importedImageInner = importedImage.default
-
-    //console.log("importedImageInner", importedImageInner)
 
     processedImageObject = await getImage({
       src: importedImageInner,
       alt: imageObject.alt || "",
-      //aspectRatio: `${imageObject.width}:${imageObject.height}`,
       width: 1000,
-      //height: 1000,
-      //format: "webp"
+      format: "webp"
     });
     minifiedImageObject = await getImage({
       src: importedImageInner,
       alt: imageObject.alt || "",
-      //aspectRatio: `${imageObject.width}:${imageObject.height}`,
       width: 50,
-      //height: 1000,
-      //format: "webp"
+      format: "webp"
     });
   }
 
@@ -172,7 +163,6 @@ export const processPost = async (post) => {
 
 // Get a processed, minified image by id.
 export const getProcessedImageById = async (imageId: string, width?: number, format?: string) => {
-  //console.log("test2")
   // Find the image.
   const imageObject = Images.find((imageItem) => imageItem.id === imageId);
   if (!imageObject) return null
@@ -184,13 +174,10 @@ export const getProcessedImageById = async (imageId: string, width?: number, for
     src: importedImageInner,
     alt: imageObject.alt || "",
     format: "webp",
+    width: width
   });
 };
 
 export const getImageObjectById = (imageId: string) => {
   return Images.find((imageItem) => imageItem.id === imageId);
-}
-
-export const getNearestPosts = () => {
-  
 }

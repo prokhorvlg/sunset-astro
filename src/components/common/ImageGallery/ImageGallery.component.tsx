@@ -10,6 +10,7 @@ import type { GetImageResult } from 'astro';
 export interface FullImageDetails {
     originalObject: ImageDetails                        // Contains the original file source
     processedObject: GetImageResult  // Contains the webp converted file for thumb
+    smallImage: GetImageResult
 }
 
 export interface ImageItem {
@@ -41,9 +42,6 @@ const ImageGallery = ({
     color = '',
     noCap = false
 }: PropTypes) => {
-
-    
-
     return (
         <Gallery>
             <ContainerDiv 
@@ -61,8 +59,9 @@ const ImageGallery = ({
 
                     const originalWidth = Number(imageItem.processedObject.attributes.width || "1")
                     const originalHeight = Number(imageItem.processedObject.attributes.height || "1")
-                    console.log("imageItem.processedObject", imageItem.processedObject.attributes)
-                    console.log("originalWidth", originalWidth)
+
+                    const smallWidth = Number(imageItem.smallImage.attributes.width || "1")
+                    const smallHeight = Number(imageItem.smallImage.attributes.height || "1")
 
                     return (
                         <div className="gallery-item" key={imageItem.originalObject.id}>
@@ -92,7 +91,7 @@ const ImageGallery = ({
                                 }
                             </div>
                             <Item
-                                thumbnail={imageItem.processedObject.src as string}
+                                thumbnail={imageItem.smallImage.src as string}
                                 original={imageItem.processedObject.src as string}
                                 width={originalWidth}
                                 height={originalHeight}
