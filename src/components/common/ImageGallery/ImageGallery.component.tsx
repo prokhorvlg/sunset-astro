@@ -42,6 +42,7 @@ const ImageGallery = ({
     color = '',
     noCap = false
 }: PropTypes) => {
+
     return (
         <Gallery>
             <ContainerDiv 
@@ -55,13 +56,13 @@ const ImageGallery = ({
                   }}
             >
                 {imageItems.map((imageItem) => {
-                    if (!imageItem) return null
+                    if (!imageItem || !imageItem.processedObject  || !imageItem.smallImage) return null
 
                     const originalWidth = Number(imageItem.processedObject.attributes.width || "1")
                     const originalHeight = Number(imageItem.processedObject.attributes.height || "1")
 
-                    const smallWidth = Number(imageItem.smallImage.attributes.width || "1")
-                    const smallHeight = Number(imageItem.smallImage.attributes.height || "1")
+                    //const smallWidth = Number(imageItem.smallImage.attributes.width || "1")
+                    //const smallHeight = Number(imageItem.smallImage.attributes.height || "1")
 
                     return (
                         <div className="gallery-item" key={imageItem.originalObject.id}>
