@@ -91,6 +91,13 @@
         }
       }
     }
+  }
+
+  &.normal {
+    .selection-button {
+      height: 100%;
+      width: 100%;
+    }
 
     .selected-marker {
       @include absoluteCentered();
@@ -133,14 +140,63 @@
         right: 0;
         bottom: 0;
       }
-
     }
-  }
+    .selected-marker-radial-dot {
+      @include absoluteCentered();
+      height: 5px;
+      width: 5px;
+      border: 8px solid rgba($map-background-color, 0.8);
+      border-radius: 999px;
+      &::after {
+        content: "";
+        @include absoluteCentered();
+        border: 3px solid $map-amber-color;
+        height: 100%;
+        width: 100%;
+        border-radius: 999px;
+      }
+    }
+    .selected-marker-radial {
+      @include absoluteCentered();
+      z-index: -1;
+      .selected-marker-radial-inner {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 200;
 
-  &.normal {
-    .selection-button {
-      height: 100%;
-      width: 100%;
+        animation: rotate 5s linear infinite;
+        
+        .line {
+          position: absolute;
+          
+          width: 3px;
+          height: 25px;
+          background: $map-amber-color;
+
+          .subline {
+            position: absolute;
+            width: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 3px;
+            background: $map-amber-color;
+          }
+          
+          &.top {
+            top: 0;
+            .subline {
+              bottom: 0;
+            }
+          }
+          &.bottom {
+            bottom: 0;
+            .subline {
+              top: 0;
+            }
+          }
+        }
+      }
+      
     }
   }
 

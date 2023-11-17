@@ -1,5 +1,5 @@
 import { HumanEraAffiliation, MapComponent } from "@/components/special/MapScreen/BaseMap/data/types"
-import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
+import LocalMap from "@/components/special/MapScreen/BaseMap/components/LocalMap/LocalMap"
 import { isSelectedModalOpenAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
 import DiagonalPattern from "@/components/special/patterns/DiagonalPattern"

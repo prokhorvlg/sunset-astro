@@ -1,9 +1,9 @@
 import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
 import { LocationNode, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { rescaleAtom, opacityFadeOutAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
-import ElementHeading from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementHeading"
-import ElementOffset from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementOffset"
-import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/Selector"
+import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading"
+import ElementOffset from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer"
+import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './LocationAsteroidBelt.scss'

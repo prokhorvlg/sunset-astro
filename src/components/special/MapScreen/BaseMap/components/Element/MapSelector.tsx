@@ -4,9 +4,9 @@ import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMap
 import { transformAtom, rescaleAtom, selectedLocationAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
-import './Selector.scss'
+import './MapSelector.scss'
 
-const Selector = ({
+const MapSelector = ({
   location,
   radius,
   children
@@ -32,6 +32,7 @@ const Selector = ({
 
   const [isField] = useState(location.type === LocationType.Field)
   const [isBelt] = useState(location.type === LocationType.AsteroidBelt)
+  const [isSite] = useState(location.type === LocationType.Site)
 
   const noOverlayCircle = 
     location.type === LocationType.Site ||
@@ -46,6 +47,7 @@ const Selector = ({
         radius={radius}
         isField={isField} 
         isBelt={isBelt} 
+        isSite={isSite}
         onWheelHandler={onWheelHandler} 
         onClickHandler={onClickHandler}       
       >
@@ -58,21 +60,13 @@ const Selector = ({
             ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
               backgroundColor: noOverlayCircle ? undefined : location.color,
           }}></div>
+
           {/* SELECTION CIRCLE (dotted outline) */}
           <div className={`selection-button-inner dotted 
             ${isDetailLevel ? "is-detail-level" : ""} 
             ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
               borderColor: location.color || undefined
           }}></div>
-
-          {selectedLocation?.name === location.name && 
-            <div className="selected-marker">
-              <div className="corner top-left"></div>
-              <div className="corner top-right"></div>
-              <div className="corner bottom-left"></div>
-              <div className="corner bottom-right"></div>
-            </div>
-          }
         </>
       </SelectionButton>
     </>
@@ -84,11 +78,15 @@ const SelectionButton = ({
   radius,
   isField,
   isBelt,
+  isSite,
   onWheelHandler,
   onClickHandler,
   children
 }) => {
   const [rescale, setRescale] = useAtom(rescaleAtom)
+  const [selectedLocation, setSelectedLocation] = useAtom(
+    selectedLocationAtom
+  )
 
   const borderRadiusModifier = 20
   const usedRadius = radius ? radius : 10 // Used for sites
@@ -129,6 +127,34 @@ const SelectionButton = ({
     )
   }
 
+  else if (isSite) {
+    return (
+      <div className="selection-button-offset normal" style={{
+        height: usedRadius + borderRadiusModifier,
+        width: usedRadius + borderRadiusModifier,
+        transform: `translate(-50%, -50%) scale(${rescale})`,
+      }}>
+        <button
+          className={`selection-button`}
+          onWheel={onWheelHandler}
+          onClick={onClickHandler}
+        >
+          {children}
+        </button>
+  
+        {selectedLocation?.name === location.name && 
+          <div className="selected-marker">
+            <div className="corner top-left"></div>
+            <div className="corner top-right"></div>
+            <div className="corner bottom-left"></div>
+            <div className="corner bottom-right"></div>
+          </div>
+        }
+      </div>
+    )
+  }
+
+  // Normal circle for most locations
   return (
     <div className="selection-button-offset normal" style={{
       height: usedRadius + borderRadiusModifier,
@@ -142,8 +168,28 @@ const SelectionButton = ({
       >
         {children}
       </button>
+
+      {selectedLocation?.name === location.name && 
+        <>
+          <div className="selected-marker-radial-dot" style={{
+            height: usedRadius + 10,// + 35,
+            width: usedRadius + 10// + 35
+          }}></div>
+            <div className="selected-marker-radial" style={{
+              height: usedRadius + 105
+            }}>
+              <div className="selected-marker-radial-inner">
+                <div className="line top">
+                  <div className="subline"></div>
+                </div>
+                <div className="line bottom"><div className="subline"></div></div>
+              </div>
+            </div>
+          </>
+        }
+        
     </div>
   )
 }
 
-export default Selector
+export default MapSelector

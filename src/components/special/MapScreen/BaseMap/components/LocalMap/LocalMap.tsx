@@ -1,5 +1,5 @@
 import { MapComponentProps } from "@/components/special/MapScreen/BaseMap/BaseMap"
-import LocalMapLocation from "@/components/special/MapScreen/BaseMap/LocalMap/components/LocalMapLocation"
+import LocalMapLocation from "@/components/special/MapScreen/BaseMap/components/LocalMap/LocalMapLocation"
 import { titanLocations } from "@/components/special/MapScreen/BaseMap/data/localLocationsData"
 import "./LocalMap.scss"
 

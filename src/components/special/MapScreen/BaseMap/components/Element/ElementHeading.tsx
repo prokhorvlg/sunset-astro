@@ -15,11 +15,13 @@ const ElementHeading = ({
 
   // WORLD
   if (location.type === LocationType.Planet || location.type === LocationType.Moon || location.type === LocationType.Sun) {
+    if (!radius) return null
     return (
       <h2 className={`map-name world ${isDetailLevel ? "is-detail-level" : ""}`} 
         style={{
-          fontSize: isDetailLevel ? 22 : 14,
-          color: location.color
+          fontSize: isDetailLevel ? 26 : 14,
+          color: location.color,
+          //top: isDetailLevel ? -radius * 2 : undefined,
       }}>{location.name}</h2>
     )
   }

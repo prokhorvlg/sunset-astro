@@ -1,11 +1,11 @@
 import { LocationNode, LocationType } from '@/components/special/MapScreen/BaseMap/data/types'
 import { isDetailLevelAtom, rescaleAtom } from '@/components/special/MapScreen/BaseMap/state/atoms'
 import { useAtom } from 'jotai'
-import './ElementOffset.scss'
+import './DetailsContainer.scss'
 
 // Container for details, offset from the center and rescaled. 
 // Usually contains the flavor text, and occasionally the heading.
-const ElementOffset = ({
+const DetailsContainer = ({
   location,
   children,
   useRescale,
@@ -25,7 +25,7 @@ const ElementOffset = ({
     return (
       <div className="element-offset world" style={{
         // dynamic top based on radius
-        top: isDetailLevel ? `${radius * 0.8 + 8}px` : `${radius * 0.5 + 5}px`,
+        top: isDetailLevel ? `${radius / 2 + 64}px` : `${radius / 2 + 8}px`,
         // horizontal center
         transform: `translate(-50%, 0) scale(${useRescale ? rescale : "1"})`
       }}>
@@ -49,4 +49,4 @@ const ElementOffset = ({
   return null
 }
 
-export default ElementOffset
+export default DetailsContainer

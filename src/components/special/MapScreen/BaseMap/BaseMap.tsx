@@ -1,11 +1,11 @@
 import { MAP_MAX_SCALE, MAP_MIN_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
 import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
-import SystemMap from "@/components/special/MapScreen/BaseMap/SystemMap/SystemMap"
+import SystemMap from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMap"
 import { useAtom } from "jotai"
 import { useRef, useEffect, useState, MouseEventHandler } from "react"
 import { ReactZoomPanPinchContentRef, TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 import {debounce} from "debounce"
-import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
+import LocalMap from "@/components/special/MapScreen/BaseMap/components/LocalMap/LocalMap"
 import './BaseMap.scss'
 import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMapWheel"
 import Button, { ButtonType } from "@/components/common/Button/Button.component"

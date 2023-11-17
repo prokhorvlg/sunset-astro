@@ -2,7 +2,7 @@ import { MapComponentProps } from "@/components/special/MapScreen/BaseMap/BaseMa
 import { locationsData } from "@/components/special/MapScreen/BaseMap/data/locationsData"
 import { SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { scaleAtom, usePosXAtom, usePosYAtom, rescaleAtom, opacityFadeOutAtom, opacityFadeInAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
-import SystemMapLocation from "@/components/special/MapScreen/BaseMap/SystemMap/components/SystemMapLocation"
+import SystemMapLocation from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMapLocation"
 import { useAtom } from "jotai"
 import './SystemMap.scss'
 

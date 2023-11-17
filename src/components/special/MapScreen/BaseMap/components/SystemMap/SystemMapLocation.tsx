@@ -1,22 +1,21 @@
 import { MAP_SCALE_FACTOR, MAP_DISTANCE_FACTOR, MAP_DEFAULT_COLOR } from "@/components/special/MapScreen/BaseMap/data/constants"
 import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { scaleAtom, rescaleAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
-import LocationAsteroidBelt from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationAsteroidBelt"
-import LocationField from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationField"
-import LocationOrbitRing from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationOrbitRing"
-import LocationSite from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationSite"
-import LocationWorld from "@/components/special/MapScreen/BaseMap/SystemMap/components/LocationWorld"
 import { findNewPoint, increaseBrightness } from "@/components/special/MapScreen/utils/WorldGenerationHelpers"
 import { useAtom } from "jotai"
 import { useMemo, useState } from "react"
 import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import './SystemMapLocation.scss'
-import {FaMap} from "react-icons/fa"
-import ZoomToMarker from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ZoomToMarker"
+import ZoomToMarker from "@/components/special/MapScreen/BaseMap/components/Element/ZoomToMarker"
+import LocationAsteroidBelt from "@/components/special/MapScreen/BaseMap/components/Location/LocationAsteroidBelt"
+import LocationField from "@/components/special/MapScreen/BaseMap/components/Location/LocationField"
+import LocationOrbitRing from "@/components/special/MapScreen/BaseMap/components/Location/LocationOrbitRing"
+import LocationSite from "@/components/special/MapScreen/BaseMap/components/Location/LocationSite"
+import LocationWorld from "@/components/special/MapScreen/BaseMap/components/Location/LocationWorld"
 
 enum Dimension {
   x = 'x',
-  y = 'y'
+  y = 'y' 
 }
 
 const getProcessedRadius = (radius?: number) => {

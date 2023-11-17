@@ -1,8 +1,8 @@
 import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { transformAtom, scaleAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms"
-import ElementHeading from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementHeading"
-import ElementOffset from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/ElementOffset"
-import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/components/Element/Selector"
+import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading"
+import ElementOffset from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer"
+import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef } from "react"
@@ -70,6 +70,9 @@ const LocationWorld = ({
                 ),
               }}
             >
+              {/* NAME */}
+              {/* <ElementHeading location={location} radius={radius} isTop /> */}
+
               {/* INDICATOR for local map */}
               {location.localMap &&
                 <div className={`local-map-indicator ${isDetailLevel ? "is-detail-level" : ""}`} style={{
@@ -85,10 +88,19 @@ const LocationWorld = ({
 
               {/* ATMOSPHERE CIRCLE */}
               <div className="inner-circle-atmo" style={{
-                  height: isDetailLevel ? radius + 86 : radius + 6,
-                  width: isDetailLevel ? radius + 86 : radius + 6,
+                  height: isDetailLevel ? radius + 186 : radius + 6,
+                  width: isDetailLevel ? radius + 186 : radius + 6,
                   backgroundColor: color,
                 }}></div>
+
+              {/* ATMOSPHERE CIRCLE */}
+              {isDetailLevel &&
+                <div className="inner-circle-outer-ring" style={{
+                  height: isDetailLevel ? radius + 186 : radius + 6,
+                  width: isDetailLevel ? radius + 186 : radius + 6,
+                  borderColor: color,
+                }}></div>
+              }
 
               {/* PLANET CIRCLE */}
               <div
