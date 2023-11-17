@@ -17,6 +17,13 @@
     
     border: 2px solid $map-reddish-color;
     background-color: rgba($map-background-color, 0.6);
+
+    .inner-circle-atmo {
+      @include absoluteCentered();
+      border-radius: 5000px;
+      opacity: 0.1;
+    }
+
     .inner-circle {
       @include absoluteCentered();
       border-radius: 5000px;
@@ -28,11 +35,21 @@
         border-radius: 2000px;
       }
     }
-    .inner-circle-atmo {
-      @include absoluteCentered();
-      border-radius: 5000px;
-      opacity: 0.1;
+
+    .inner-symbol {
+      //@include absoluteCentered();
+      position: absolute;
+      top: -12px;
+      left: -12px;
+
+      padding: 5px;
+      line-height: 0;
+      color: $map-reddish-color;
+      background: rgba($map-background-color, 0.7);
+      border-radius: 999px;
+      font-size: 28px;
     }
+
     .ring {
       @include absoluteCentered();
       height: 2px;

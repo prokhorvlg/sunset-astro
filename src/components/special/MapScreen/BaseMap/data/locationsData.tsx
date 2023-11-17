@@ -1,4 +1,10 @@
-import { LocationNode, LocationType, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode, HumanEraAffiliation, MapComponent } from "@/components/special/MapScreen/BaseMap/data/types";
+import { LocationNode, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode, HumanEraAffiliation, MapComponent, LocationType } from "@/components/special/MapScreen/BaseMap/data/types";
+import { BsSnow } from "react-icons/bs";
+import { GiMineWagon, GiMushroomGills, GiPalmTree, GiSandSnake, GiSmokingVolcano, GiSnail } from "react-icons/gi";
+import { FaDroplet, FaHeart, FaUmbrellaBeach, FaVolcano } from "react-icons/fa6";
+import { MdDarkMode } from "react-icons/md";
+import { IoSunny } from "react-icons/io5";
+
 
 // Data for generation of objects
 export const locationsData: SystemLocationNode = {
@@ -8,6 +14,7 @@ export const locationsData: SystemLocationNode = {
     THE SURFACE IS TOO HOT FOR ANYTHING TO EXIST HERE.
     STOP LOOKING AT THE SURFACE OF THE SUN.`,
   type: LocationType.Sun,
+  icon: <IoSunny  />,
   distance: 0,
   radius: 35,
   startingAngle: 0,
@@ -60,6 +67,7 @@ export const locationsData: SystemLocationNode = {
     {
       name: "Mercury",
       typeText: "Lifeless Mining World",
+      icon: <GiMineWagon />,
       flavorText: "A rock deep with precious minerals and strange melted cities.",
       type: LocationType.Planet,
       color: "#f58f20",
@@ -112,6 +120,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 205, //205
       isImportant: true,
       localMap: MapComponent.Titan,
+      icon: <GiPalmTree />,
       children: [
         {
           name: "Tolkiy-Merdem People's Orbital",
@@ -144,7 +153,7 @@ export const locationsData: SystemLocationNode = {
     {
       id: "earth",
       name: "Earth",
-      typeText: "Temperate Living World",
+      typeText: "Wasted World",
       type: LocationType.Planet,
       flavorText:
             "Birthplace of humanity, cybernetics, and the esteemed Oakmont QUIKBREW E-90 Coffee Brewer. We would visit more often, but her landscape has not remained the same for more than several minutes.",
@@ -157,6 +166,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 340,
       isImportant: true,
       localMap: MapComponent.Titan,
+      icon: <FaHeart />,
       children: [
         {
           name: "Seventh Orbital",
@@ -234,7 +244,7 @@ export const locationsData: SystemLocationNode = {
     {
       name: "Mars",
       type: LocationType.Planet,
-      
+      icon: <GiSandSnake />,
       typeText: "Arid Desert World",
       flavorText:
         "Filled to the brim with towering combat robots and even-larger sand serpents. Mars really wants to be left alone... but their treasures are too powerful to resist.",
@@ -417,7 +427,7 @@ export const locationsData: SystemLocationNode = {
           distance: 86,
           radius: 6,
           startingAngle: 10,
-          isImportant: true,
+          icon: <FaVolcano  />,
           children: [
             {
               name: "Bunker Hawk",
@@ -454,6 +464,7 @@ export const locationsData: SystemLocationNode = {
           radius: 7,
           startingAngle: 259,
           isImportant: true,
+          icon: <FaUmbrellaBeach />,
           children: [
             {
               name: "Errin Pharmaceutical",
@@ -472,6 +483,8 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Moon,
           typeText: "Unknown World",
           flavorText: "Nothing interesting ever happens on Ganymede.",
+          color: "#e6d087",
+          colorSecondary: "#b3b07b",
           distance: 145,
           radius: 6,
           startingAngle: 155,
@@ -482,6 +495,7 @@ export const locationsData: SystemLocationNode = {
           typeText: "Dark Oil World",
           flavorText: "This world is covered in so much oil that the Coalition claimed it twice, once for both hemispheres.",
           type: LocationType.Moon,
+          icon: <FaDroplet />,
           color: "#bb76e8",
           colorSecondary: "#d442fc",
           distance: 175,
@@ -547,7 +561,7 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Titan",
           type: LocationType.Moon,
-          typeText: "Cold Fungal World",
+          typeText: "Frigid Fungal World",
           flavorText: "Your next home awaits you in the suburbs of New Providence. No radioactive particulates, clean air. A growing community of professionals. Total automation. You won't find a better deal anywhere else!",
           color: "#58d1fc",
           colorSecondary: "#1783ff",
@@ -556,6 +570,7 @@ export const locationsData: SystemLocationNode = {
           startingAngle: 40,
           isImportant: true,
           localMap: MapComponent.Titan,
+          icon: <GiSnail />,
           children: [
             {
               name: "Svyatagor Outpost",
@@ -611,7 +626,7 @@ export const locationsData: SystemLocationNode = {
           typeText: "Sprawling Orbital Complex",
           flavorText: "Only one machine has ever returned from this place, although we cannot be certain of this as they vanished soon after. They spoke of a thousand pasts gazing upon them.",
           description: "",
-          worldAffiliation: WorldAffiliation.Anomaly,
+          worldAffiliation: WorldAffiliation.MachineEra,
           type: LocationType.Site,
           subType: SiteSubtype.Danger,
           distance: 25,
@@ -622,6 +637,8 @@ export const locationsData: SystemLocationNode = {
           typeText: "Significant Moon",
           type: LocationType.Moon,
           flavorText: "Charon is large enough to qualify the two worlds as binary planets. Even so, it remains in Pluto's shadow.",
+          color: "#bf6d45",
+          colorSecondary: "#e65e1c",
           distance: 64,
           radius: 3,
           startingAngle: 165,
@@ -650,12 +667,14 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Nibiru",
           typeText: "Umbral Living World",
+          flavorText: "The world lurks just beyond our deepest sensors, right outside the reach of our thumpers, at the edge of the Kuiper. It's almost as if it's trying to remain free of man's grasp.",
+          icon: <MdDarkMode />,
           type: LocationType.Moon,
           color: "#f553af",
           colorSecondary: "#d42061",
           distance: 135,
           radius: 12,
-          startingAngle: 73,
+          startingAngle: 53,
           children: [
             {
               name: "Unusual Marker Stone A0019",
@@ -679,7 +698,7 @@ export const locationsData: SystemLocationNode = {
               subType: SiteSubtype.Wreck,
               worldAffiliation: WorldAffiliation.HumanEra,
               distance: 45,
-              startingAngle: 20,
+              startingAngle: 30,
             },
           ],
         },
@@ -796,7 +815,7 @@ export const locationsData: SystemLocationNode = {
       description:
         "",
       type: LocationType.Site,
-      subType: SiteSubtype.DataTrove,
+      subType: SiteSubtype.Vessel,
       distance: 725,
       startingAngle: 320,
     },

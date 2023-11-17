@@ -112,19 +112,13 @@ const MapScreen = (props) => {
         <BaseMap map={activeMap} />
       </div>
 
-      {/* <div className="map-header">
-        <div className="map-title">
-          <h1>Map | Solar System</h1>
-        </div>
-
-
-
+      <div className="map-header">
         <div className="map-header-diagonal"></div>
-
-        <div className="button-set right">
-          <button onClick={(e) => setIsIntroOpen(true)}>?</button>
+        <div className="map-title">
+          <h1>Map | Sunset System</h1>
         </div>
-      </div> */}
+        <div className="map-header-diagonal"></div>
+      </div>
 
       <div className={`map-selected ${isSelectedModalOpen ? "expanded" : ""}`}>
         <button 

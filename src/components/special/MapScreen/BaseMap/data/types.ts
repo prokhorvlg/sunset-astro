@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export enum LocationType {
   Sun,
   Planet,
@@ -26,6 +28,7 @@ export interface LocationNode {
   typeText?: string // eg. Main Sequence Star
   description?: string // eg. The sun is a ...
   flavorText?: string // eg Don't step on it.
+  icon?: ReactNode
 
   // CATEGORIES
   type: LocationType // Determines basic treatment of location

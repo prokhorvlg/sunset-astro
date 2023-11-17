@@ -38,6 +38,9 @@ $map-selected-peek-extra-height: 40px;
     @media screen and (max-width: $breakpoint-tablet) {
       margin-top: 3px;
     }
+    @media screen and (max-width: $breakpoint-mobile) {
+      display: none;
+    }
 
     .map-title {
       @include abg-child();
@@ -89,9 +92,11 @@ $map-selected-peek-extra-height: 40px;
   }
 
   .map-body {
-    //height: calc(100% - $map-header-height - $map-selected-peek-height - 8px);
-    height: calc(100% - 4px);
+    height: calc(100% - $map-header-height - $map-selected-peek-height - 8px);
     left: 0; right: 0;
+    @media screen and (max-width: $breakpoint-mobile) {
+      height: calc(100% - 4px);
+    }
   }
 
   $selectionTransitionTime: 0.15s;

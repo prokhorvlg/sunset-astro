@@ -8,6 +8,9 @@ import { useAtom } from "jotai"
 import { useRef } from "react"
 import { FaMap, FaPlus } from "react-icons/fa"
 import "./LocationWorld.scss"
+import { FaRegSnowflake } from "react-icons/fa";
+import { BsSnow } from "react-icons/bs";
+
 
 const LocationWorld = ({
   location,
@@ -67,6 +70,7 @@ const LocationWorld = ({
                 ),
               }}
             >
+              {/* INDICATOR for local map */}
               {location.localMap &&
                 <div className={`local-map-indicator ${isDetailLevel ? "is-detail-level" : ""}`} style={{
                   borderColor: location.color
@@ -78,11 +82,15 @@ const LocationWorld = ({
                   
                 </div>
               }
+
+              {/* ATMOSPHERE CIRCLE */}
               <div className="inner-circle-atmo" style={{
                   height: isDetailLevel ? radius + 86 : radius + 6,
                   width: isDetailLevel ? radius + 86 : radius + 6,
                   backgroundColor: color,
                 }}></div>
+
+              {/* PLANET CIRCLE */}
               <div
                 className="inner-circle"
                 style={{
@@ -91,9 +99,17 @@ const LocationWorld = ({
                   background: location.colorSecondary ? `linear-gradient(to bottom, ${location.colorSecondary} 40%, ${color} 60%)` : color,
                   transform: isUranus ? "translate(-50%, -50%) rotate(90deg)" : undefined
                 }}
-              >
-              </div>
+              ></div>
+
+              {(isDetailLevel && location.icon) &&
+                <div className="inner-symbol" style={{
+                  color: location.color
+                }}>
+                  {location.icon}
+                </div>
+              }
               
+              {/* PLANET RING */}
               {location.ringWidth &&
                 <div className="ring" style={{
                   backgroundColor: location.colorSecondary,
