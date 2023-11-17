@@ -3,7 +3,7 @@ import { BsSnow } from "react-icons/bs";
 import { GiMineWagon, GiMushroomGills, GiPalmTree, GiSandSnake, GiSmokingVolcano, GiSnail } from "react-icons/gi";
 import { FaDroplet, FaHeart, FaQuestion, FaUmbrellaBeach, FaVolcano } from "react-icons/fa6";
 import { MdDarkMode } from "react-icons/md";
-import { IoHeart, IoSunny } from "react-icons/io5";
+import { IoHeart, IoSnow, IoSunny } from "react-icons/io5";
 
 
 // Data for generation of objects
@@ -138,6 +138,7 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Klios",
           type: LocationType.Moon,
+          icon: <IoSnow />,
           typeText: "Frozen Moonlet",
           flavorText: "Of course it was always there, silly! You should stop playing so many lasercast games, they're melting your brain.",
           description:

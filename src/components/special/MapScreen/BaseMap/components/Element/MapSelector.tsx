@@ -155,40 +155,42 @@ const SelectionButton = ({
   }
 
   // Normal circle for most locations
-  return (
-    <div className="selection-button-offset normal" style={{
-      height: usedRadius + borderRadiusModifier,
-      width: usedRadius + borderRadiusModifier,
-      transform: `translate(-50%, -50%) scale(${rescale})`,
-    }}>
-      <button
-        className={`selection-button`}
-        onWheel={onWheelHandler}
-        onClick={onClickHandler}
-      >
-        {children}
-      </button>
+  return (<>
+      <div className="selection-button-offset normal" style={{
+          height: usedRadius + borderRadiusModifier,
+          width: usedRadius + borderRadiusModifier,
+          transform: `translate(-50%, -50%) scale(${rescale})`,
+      }}>
+        <button
+          className={`selection-button`}
+          onWheel={onWheelHandler}
+          onClick={onClickHandler}
+        >
+          {children}
+        </button>
+      </div>
 
       {selectedLocation?.name === location.name && 
-        <>
+        <div className="map-selected-marker-container" style={{
+          transform: `translate(-50%, -50%) scale(${rescale})`,
+        }}>
           <div className="selected-marker-radial-dot" style={{
-            height: usedRadius + 10,// + 35,
-            width: usedRadius + 10// + 35
+            height: usedRadius + 10 + 38,
+            width: usedRadius + 10 + 38
           }}></div>
-            <div className="selected-marker-radial" style={{
-              height: usedRadius + 105
-            }}>
-              <div className="selected-marker-radial-inner">
-                <div className="line top">
-                  <div className="subline"></div>
-                </div>
-                <div className="line bottom"><div className="subline"></div></div>
+          <div className="selected-marker-radial" style={{
+            height: usedRadius + 105
+          }}>
+            <div className="selected-marker-radial-inner">
+              <div className="line top">
+                <div className="subline"></div>
               </div>
+              <div className="line bottom"><div className="subline"></div></div>
             </div>
-          </>
-        }
-        
-    </div>
+          </div>
+          </div>
+      } 
+    </>
   )
 }
 

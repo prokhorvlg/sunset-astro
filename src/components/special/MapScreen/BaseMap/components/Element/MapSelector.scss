@@ -98,106 +98,6 @@
       height: 100%;
       width: 100%;
     }
-
-    .selected-marker {
-      @include absoluteCentered();
-
-      height: 60px;
-      width: 60px;
-      $borderWidth: 3px;
-
-      animation: selectedMarker 1s ease-in-out infinite;
-
-      .corner {
-        height: 10px;
-        width: 10px;
-        border: 0px solid $map-amber-color;
-        position: absolute;
-        //transform: rotate(180deg);
-      }
-
-      .top-left {
-        border-top-width: $borderWidth;
-        border-left-width: $borderWidth;
-        left: 0;
-        top: 0;
-      }
-      .top-right {
-        border-top-width: $borderWidth;
-        border-right-width: $borderWidth;
-        right: 0;
-        top: 0;
-      }
-      .bottom-left {
-        border-bottom-width: $borderWidth;
-        border-left-width: $borderWidth;
-        left: 0;
-        bottom: 0;
-      }
-      .bottom-right {
-        border-bottom-width: $borderWidth;
-        border-right-width: $borderWidth;
-        right: 0;
-        bottom: 0;
-      }
-    }
-    .selected-marker-radial-dot {
-      @include absoluteCentered();
-      height: 5px;
-      width: 5px;
-      border: 8px solid rgba($map-background-color, 0.8);
-      border-radius: 999px;
-      &::after {
-        content: "";
-        @include absoluteCentered();
-        border: 3px solid $map-amber-color;
-        height: 100%;
-        width: 100%;
-        border-radius: 999px;
-      }
-    }
-    .selected-marker-radial {
-      @include absoluteCentered();
-      z-index: -1;
-      .selected-marker-radial-inner {
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        z-index: 200;
-
-        animation: rotate 5s linear infinite;
-        
-        .line {
-          position: absolute;
-          
-          width: 3px;
-          height: 25px;
-          background: $map-amber-color;
-
-          .subline {
-            position: absolute;
-            width: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 3px;
-            background: $map-amber-color;
-          }
-          
-          &.top {
-            top: 0;
-            .subline {
-              bottom: 0;
-            }
-          }
-          &.bottom {
-            bottom: 0;
-            .subline {
-              top: 0;
-            }
-          }
-        }
-      }
-      
-    }
   }
 
   &.field {
@@ -279,4 +179,114 @@
       }
     }
   }
+}
+
+// SELECTED MARKER
+.map-selected-marker-container {
+  @include absoluteCentered();
+  z-index: 500;
+}
+.selected-marker {
+  @include absoluteCentered();
+
+  height: 60px;
+  width: 60px;
+  $borderWidth: 3px;
+
+  animation: selectedMarker 1s ease-in-out infinite;
+
+  .corner {
+    height: 10px;
+    width: 10px;
+    border: 0px solid $map-amber-color;
+    position: absolute;
+    //transform: rotate(180deg);
+  }
+
+  .top-left {
+    border-top-width: $borderWidth;
+    border-left-width: $borderWidth;
+    left: 0;
+    top: 0;
+  }
+  .top-right {
+    border-top-width: $borderWidth;
+    border-right-width: $borderWidth;
+    right: 0;
+    top: 0;
+  }
+  .bottom-left {
+    border-bottom-width: $borderWidth;
+    border-left-width: $borderWidth;
+    left: 0;
+    bottom: 0;
+  }
+  .bottom-right {
+    border-bottom-width: $borderWidth;
+    border-right-width: $borderWidth;
+    right: 0;
+    bottom: 0;
+  }
+}
+.selected-marker-radial-dot {
+  @include absoluteCentered();
+  //border: 8px solid rgba($map-background-color, 0.8);
+  border-radius: 999px;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    //@include absoluteCentered();
+    border: 3px dashed $map-amber-color;
+    //height: 100%;
+    //width: 100%;
+    border-radius: 999px;
+    animation: rotate 5s linear infinite;
+  }
+}
+
+.selected-marker-radial {
+  @include absoluteCentered();
+  //z-index: -1;
+  .selected-marker-radial-inner {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+
+    animation: rotate 5s linear infinite;
+    
+    .line {
+      position: absolute;
+      
+      width: 3px;
+      height: 15px;
+      border-radius: 5px;
+      background: $map-amber-color;
+
+      .subline {
+        display: none;
+        position: absolute;
+        width: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 3px;
+        background: $map-amber-color;
+      }
+      
+      &.top {
+        top: 0;
+        .subline {
+          bottom: 0;
+        }
+      }
+      &.bottom {
+        bottom: 0;
+        .subline {
+          top: 0;
+        }
+      }
+    }
+  }
+  
 }
