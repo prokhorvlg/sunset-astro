@@ -1,9 +1,9 @@
 import { LocationNode, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode, HumanEraAffiliation, MapComponent, LocationType } from "@/components/special/MapScreen/BaseMap/data/types";
 import { BsSnow } from "react-icons/bs";
 import { GiMineWagon, GiMushroomGills, GiPalmTree, GiSandSnake, GiSmokingVolcano, GiSnail } from "react-icons/gi";
-import { FaDroplet, FaHeart, FaUmbrellaBeach, FaVolcano } from "react-icons/fa6";
+import { FaDroplet, FaHeart, FaQuestion, FaUmbrellaBeach, FaVolcano } from "react-icons/fa6";
 import { MdDarkMode } from "react-icons/md";
-import { IoSunny } from "react-icons/io5";
+import { IoHeart, IoSunny } from "react-icons/io5";
 
 
 // Data for generation of objects
@@ -166,7 +166,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 340,
       isImportant: true,
       localMap: MapComponent.Titan,
-      icon: <FaHeart />,
+      icon: <IoHeart />,
       children: [
         {
           name: "Seventh Orbital",
@@ -481,8 +481,9 @@ export const locationsData: SystemLocationNode = {
         {
           name: "Ganymede",
           type: LocationType.Moon,
+          icon: <FaQuestion />,
           typeText: "Unknown World",
-          flavorText: "Nothing interesting ever happens on Ganymede.",
+          flavorText: "Nothing interesting ever happens on Ganymede; it's Ideal to end Talking about it. Go look at Io or Europa instead...",
           color: "#e6d087",
           colorSecondary: "#b3b07b",
           distance: 145,

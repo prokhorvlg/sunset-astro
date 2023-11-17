@@ -101,8 +101,9 @@ const LocationWorld = ({
                 }}
               ></div>
 
-              {(isDetailLevel && location.icon) &&
-                <div className="inner-symbol" style={{
+              {(location.icon) &&
+                <div className={`inner-symbol ${isDetailLevel ? "is-detail-level" : ""}`} style={{
+                  fontSize: isDetailLevel ? undefined : radius * 0.9,
                   color: location.color
                 }}>
                   {location.icon}
