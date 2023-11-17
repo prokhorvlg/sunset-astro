@@ -1,7 +1,7 @@
 import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
 import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMapWheel"
-import { transformAtom, rescaleAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { transformAtom, rescaleAtom, selectedLocationAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './Selector.scss'
@@ -28,6 +28,7 @@ const Selector = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
+  const [isDetailLevel, setIsDetailLevel] = useAtom(isDetailLevelAtom)
 
   const [isField] = useState(location.type === LocationType.Field)
   const [isBelt] = useState(location.type === LocationType.AsteroidBelt)
@@ -50,10 +51,20 @@ const Selector = ({
       >
         <>
           {children}
+
+          {/* SELECTION CIRCLE (bg faded) */}
           <div className={`selection-button-inner 
+            ${isDetailLevel ? "is-detail-level" : ""} 
             ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
-              backgroundColor: noOverlayCircle ? undefined : location.color
+              backgroundColor: noOverlayCircle ? undefined : location.color,
           }}></div>
+          {/* SELECTION CIRCLE (dotted outline) */}
+          <div className={`selection-button-inner dotted 
+            ${isDetailLevel ? "is-detail-level" : ""} 
+            ${location.worldAffiliation ? location.worldAffiliation : ""}`} style={{
+              borderColor: location.color || undefined
+          }}></div>
+
           {selectedLocation?.name === location.name && 
             <div className="selected-marker">
               <div className="corner top-left"></div>

@@ -175,13 +175,7 @@ const SystemMapLocation = ({
           left: dimensionOffsetX,
           top: dimensionOffsetY,
         }}
-      >
-        {location.localMap &&
-          <div className="local-map-indicator">
-            <FaMap />
-          </div>
-        }
-            
+      >           
         {/* WORLD (sun, moon, planet) */}
         {isWorld && (
           <LocationWorld

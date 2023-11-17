@@ -3,15 +3,48 @@
 .map-location-container {
   position: absolute;
 
+
+  // LOCAL MAP INDICATOR
   .local-map-indicator {
     position: absolute;
-    color: orange;
-    top: 0; left: 0;
-    transform: translate(-50%, -50%);
+    top: 50%; left: calc(100% - 7px);
+    transform: translate(0, -50%);
+
+    color: $map-reddish-color;
+    background: rgba($map-background-color, 0.8);
+    border: 2px solid $map-reddish-color;
+
+    border-radius: 999px;
+    padding: 2px;
+
     z-index: 2000;
     pointer-events: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    svg {
+      font-size: 12px;
+    }
+    p {
+      margin: 0 5px 0 10px;
+      white-space: nowrap;
+      font-family: $font-code;
+      color: $map-reddish-color;
+      //text-transform: uppercase;
+
+    }
+
+    &.is-detail-level {
+      padding: 4px 10px 4px 10px;
+      svg {
+        font-size: 16px;
+      }
+      left: calc(100% + 15px);
+    }
   }
-  
 
   .type-text {
     z-index: $map-zindex-label;
@@ -28,6 +61,10 @@
 
     color: $map-amber-color;
     background: rgba($map-background-color, 0.8);
+
+    &.is-detail-level {
+      padding: 3px 14px;
+    }
   }
   .flavor-text {
     z-index: $map-zindex-label;

@@ -105,12 +105,13 @@ export const locationsData: SystemLocationNode = {
       flavorText:
         "Welcome, comrade! Here, our people work as hard as the machines to build our Communist future- ALERT. ALERT. Hive invasion detected. Seek shelter.",
       description: "",
-      color: "#c2d13f",
-      colorSecondary: "#f5e536",
+      color: "#aae653",
+      colorSecondary: "#ebe654",
       distance: 165,
       radius: 15,
       startingAngle: 205, //205
       isImportant: true,
+      localMap: MapComponent.Titan,
       children: [
         {
           name: "Tolkiy-Merdem People's Orbital",
@@ -150,11 +151,12 @@ export const locationsData: SystemLocationNode = {
           description:
             "",
       color: "#19b1ff",
-      colorSecondary: "#25fffc",
+      colorSecondary: "#45ffff",
       distance: 205,
       radius: 14,
       startingAngle: 340,
       isImportant: true,
+      localMap: MapComponent.Titan,
       children: [
         {
           name: "Seventh Orbital",
@@ -232,6 +234,7 @@ export const locationsData: SystemLocationNode = {
     {
       name: "Mars",
       type: LocationType.Planet,
+      
       typeText: "Arid Desert World",
       flavorText:
         "Filled to the brim with towering combat robots and even-larger sand serpents. Mars really wants to be left alone... but their treasures are too powerful to resist.",
@@ -242,6 +245,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 74,
       ringWidth: 40,
       isImportant: true,
+      localMap: MapComponent.Titan,
       children: [
         {
           name: "Tojo Terminus",
@@ -444,8 +448,8 @@ export const locationsData: SystemLocationNode = {
           typeText: "Tropical Ocean World",
           flavorText: "Sunshine, cigars, and renown academies! Make your next scientific conference a Europan one. Just don't go diving deeper than a kilometer, comrade.",
           type: LocationType.Moon,
-          color: "#1cffd7",
-          colorSecondary: "#a2ffc7",
+          color: "#38fcb1",
+          colorSecondary: "#5cffe4",
           distance: 115,
           radius: 7,
           startingAngle: 259,
@@ -545,8 +549,8 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Moon,
           typeText: "Cold Fungal World",
           flavorText: "Your next home awaits you in the suburbs of New Providence. No radioactive particulates, clean air. A growing community of professionals. Total automation. You won't find a better deal anywhere else!",
-          color: "#49f2fd",
-          colorSecondary: "#1a9efa",
+          color: "#58d1fc",
+          colorSecondary: "#1783ff",
           distance: 135,
           radius: 8,
           startingAngle: 40,

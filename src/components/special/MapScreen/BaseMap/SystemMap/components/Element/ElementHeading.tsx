@@ -2,6 +2,7 @@ import { LocationNode, LocationType } from "@/components/special/MapScreen/BaseM
 import { isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import './ElementHeading.scss'
+import { LuOrbit } from "react-icons/lu";
 
 const ElementHeading = ({
   location,
@@ -46,7 +47,7 @@ const ElementHeading = ({
   else if (location.type === LocationType.AsteroidBelt) {
     return (
       <h2 className={`map-name belt ${isDetailLevel ? "is-detail-level" : ""}`}
-      >{location.name}</h2>
+      >{isDetailLevel && <LuOrbit />}{location.name}</h2>
     )
   }
 

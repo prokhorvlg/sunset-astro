@@ -19,6 +19,9 @@
     .selection-button {
       .selection-button-inner {
         opacity: 0.2;
+        &.dotted {
+          opacity: 0.5;
+        }
       }
     }
 
@@ -55,6 +58,11 @@
       background: $map-reddish-color;
       pointer-events: none;
 
+      &.is-detail-level {
+        $expandOut: 15px;
+        top: -$expandOut; left: -$expandOut; right: -$expandOut; bottom: -$expandOut;
+      }
+
       &.human-era {
         background-color: $colorWorldHumanEra;
       }
@@ -63,6 +71,21 @@
       }
       &.machine-era {
         background-color: $colorWorldMachineEra;
+      }
+
+      &.dotted {
+        background: none;
+        border: 2px dotted $map-reddish-color;
+        z-index: 20;
+        &.human-era {
+          border-color: $colorWorldHumanEra;
+        }
+        &.anomaly {
+          border-color: $colorWorldAnomaly;
+        }
+        &.machine-era {
+          border-color: $colorWorldMachineEra;
+        }
       }
     }
 
@@ -129,6 +152,9 @@
         transform: scale(1);
         //top: -$sizeOffset; left: -$sizeOffset; right: -$sizeOffset; bottom: -$sizeOffset;
         background-color: $colorWorldAnomaly;
+        &.dotted {
+          display: none;
+        }
       }
   
       .map-name {
@@ -148,8 +174,10 @@
         }
 
         .map-name {
-          border: 2px solid $colorWorldAnomaly;
-          transform: scale(1.1);
+          border: 2px dotted $colorWorldAnomaly;
+          font-size: 16px;
+          padding: 10px;
+          //transform: scale(1.1);
           &.magnetic-storm {
             border-color: rgb(204, 166, 116);
           }
@@ -178,6 +206,18 @@
     }
     .flavor-text {
       text-align: left;
+    }
+
+    &:hover {
+      .selection-button {
+        //padding: 10px;
+        //top: 50%;
+        //transform: translateY(-50%);
+        .map-name {
+          font-size: 30px;
+          
+        }
+      }
     }
   }
 }

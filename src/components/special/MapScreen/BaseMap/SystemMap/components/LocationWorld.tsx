@@ -6,6 +6,7 @@ import Selector from "@/components/special/MapScreen/BaseMap/SystemMap/component
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef } from "react"
+import { FaMap, FaPlus } from "react-icons/fa"
 import "./LocationWorld.scss"
 
 const LocationWorld = ({
@@ -66,6 +67,17 @@ const LocationWorld = ({
                 ),
               }}
             >
+              {location.localMap &&
+                <div className={`local-map-indicator ${isDetailLevel ? "is-detail-level" : ""}`} style={{
+                  borderColor: location.color
+                }}>
+                  <FaPlus style={{
+                    color: location.color
+                  }}/>
+                  {isDetailLevel && <p style={{ color: location.color }}>has local map</p>}
+                  
+                </div>
+              }
               <div className="inner-circle-atmo" style={{
                   height: isDetailLevel ? radius + 86 : radius + 6,
                   width: isDetailLevel ? radius + 86 : radius + 6,

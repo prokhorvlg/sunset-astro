@@ -7,9 +7,9 @@
   &.is-detail-level {
     z-index: calc($map-zindex-field + 100);
     .dark-container-circle {
-      height: 45px;
-      width: 45px;
-      background: rgba($map-background-color, 0.6);
+      height: 55px;
+      width: 55px;
+      background: rgba($map-background-color, 0.8);
     }
   }
 
