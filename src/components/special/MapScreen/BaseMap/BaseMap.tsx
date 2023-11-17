@@ -2,22 +2,16 @@ import { MAP_MAX_SCALE, MAP_MIN_SCALE } from "@/components/special/MapScreen/Bas
 import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMap from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMap"
 import { useAtom } from "jotai"
-import { useRef, useEffect, useState, MouseEventHandler } from "react"
-import { ReactZoomPanPinchContentRef, TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
+import { useRef, useEffect, useState, type MouseEventHandler } from "react"
+import { TransformWrapper, TransformComponent, type ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import {debounce} from "debounce"
 import LocalMap from "@/components/special/MapScreen/BaseMap/components/LocalMap/LocalMap"
 import './BaseMap.scss'
 import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMapWheel"
-import Button, { ButtonType } from "@/components/common/Button/Button.component"
-import { faDownload } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { MapComponent } from "@/components/special/MapScreen/BaseMap/data/types"
 import { LuOrbit } from "react-icons/lu";
-import { FaQuestion } from "react-icons/fa";
 import { PiCaretUpBold } from "react-icons/pi";
 import { TbInfoSmall, TbRefresh, TbZoomIn, TbZoomReset } from "react-icons/tb";
-
-
 
 const getMapComponent = (map: MapComponent, props: any) => {
   const mapToMap = {

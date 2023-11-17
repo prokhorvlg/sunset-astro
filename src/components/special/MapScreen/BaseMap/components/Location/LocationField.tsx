@@ -1,4 +1,3 @@
-import { LocationNode, FieldShape, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { transformAtom, rescaleAtom, isDetailLevelAtom, opacityFadeOutAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading"
 import ElementOffset from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer"
@@ -8,6 +7,7 @@ import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useEffect, useRef } from "react"
 import "./LocationField.scss"
+import { type SystemLocationNode, FieldShape, type LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 
 // TRUE = clip path method, using inline SVGs
 // FALSe = uses css background method, faster but more difficult to implement

@@ -1,14 +1,13 @@
 ---
-import { ImageDetails, ImageId, Images } from '@/data/sharedImages'
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
-import ImageGallery, { FullImageDetails } from "@/components/common/ImageGallery/ImageGallery.component";
+import ImageGallery from "@/components/common/ImageGallery/ImageGallery.component";
 import { getImageObjectById, getProcessedImageById } from '@/utils/astroHelpers';
 
 interface Props {
   classes?: string
   verticalSpacing?: number
 
-  imageId?: ImageId;
+  imageId?: string;
   imageDesktopWidth?: number
   imageMobileWidth?: number
   type?: string

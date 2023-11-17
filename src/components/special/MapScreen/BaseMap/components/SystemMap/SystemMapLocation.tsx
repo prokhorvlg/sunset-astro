@@ -1,10 +1,8 @@
 import { MAP_SCALE_FACTOR, MAP_DISTANCE_FACTOR, MAP_DEFAULT_COLOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { scaleAtom, rescaleAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { findNewPoint, increaseBrightness } from "@/components/special/MapScreen/utils/WorldGenerationHelpers"
 import { useAtom } from "jotai"
 import { useMemo, useState } from "react"
-import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import './SystemMapLocation.scss'
 import ZoomToMarker from "@/components/special/MapScreen/BaseMap/components/Element/ZoomToMarker"
 import LocationAsteroidBelt from "@/components/special/MapScreen/BaseMap/components/Location/LocationAsteroidBelt"
@@ -12,6 +10,8 @@ import LocationField from "@/components/special/MapScreen/BaseMap/components/Loc
 import LocationOrbitRing from "@/components/special/MapScreen/BaseMap/components/Location/LocationOrbitRing"
 import LocationSite from "@/components/special/MapScreen/BaseMap/components/Location/LocationSite"
 import LocationWorld from "@/components/special/MapScreen/BaseMap/components/Location/LocationWorld"
+import { type SystemLocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
+import type { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 
 enum Dimension {
   x = 'x',

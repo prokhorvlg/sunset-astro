@@ -1,9 +1,9 @@
-import { LocationNode, SiteSubtype, WorldAffiliation, FieldShape, SystemLocationNode, HumanEraAffiliation, MapComponent, LocationType } from "@/components/special/MapScreen/BaseMap/data/types";
 import { BsSnow } from "react-icons/bs";
 import { GiMineWagon, GiMushroomGills, GiPalmTree, GiSandSnake, GiSmokingVolcano, GiSnail } from "react-icons/gi";
 import { FaDroplet, FaHeart, FaQuestion, FaUmbrellaBeach, FaVolcano } from "react-icons/fa6";
 import { MdDarkMode } from "react-icons/md";
 import { IoHeart, IoSnow, IoSunny } from "react-icons/io5";
+import { type SystemLocationNode, LocationType, SiteSubtype, WorldAffiliation, HumanEraAffiliation, FieldShape, MapComponent } from "@/components/special/MapScreen/BaseMap/data/types";
 
 
 // Data for generation of objects

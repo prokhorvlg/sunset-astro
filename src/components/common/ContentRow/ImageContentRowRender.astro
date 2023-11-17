@@ -2,13 +2,13 @@
 export const prerender = true;
 
 import { FullImageDetails } from '@/components/common/ImageGallery/ImageGallery.component';
-import { ImageDetails, ImageId, Images } from '@/data/sharedImages';
-import { getImage } from '@astrojs/image';
+import { ImageDetails, Images } from '@/data/sharedImages';
+import { getImage } from 'astro:assets';
 import ImageContentRow from './ImageContentRow.component'
 
 interface Props {
   direction?: "vertical" | "horizontal"
-  images: ImageId[];
+  images: string[];
   noCap?: boolean
 }
 
@@ -20,20 +20,20 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
   if (!imageObject) return null
 
   // Check if image is smaller than crunch size
-  const isSmall = imageObject.width < CRUNCH_WIDTH
+  const isSmall = false//imageObject.width < CRUNCH_WIDTH  
 
-  //const isVideo = imageObject.isVideo
+  const importedImage = await imageObject.src()
+  const importedImageInner = importedImage.default
 
   // Generate an image of the correct size
   return {
     originalObject: imageObject,
     processedObject: await getImage({
-      src: imageObject.src,
+      src: importedImageInner,
       alt: imageObject.alt || "",
-      aspectRatio: `${imageObject.width}:${imageObject.height}`,
-      width: isSmall ? imageObject.width : CRUNCH_WIDTH,
-      format: imageObject.format ? imageObject.format as any : "webp",
-      quality: 99
+      format: "webp",
+      //loading: "lazy"
+      //quality: 99
     })
   } as FullImageDetails
 }))

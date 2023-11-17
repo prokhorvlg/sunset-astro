@@ -1,4 +1,4 @@
-import { LocalLocationNode, LocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
+import { type LocalLocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types";
 
 export const titanLocations: LocalLocationNode[] = [
   {

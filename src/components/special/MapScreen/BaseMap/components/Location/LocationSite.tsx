@@ -10,11 +10,11 @@ import {IoSkullSharp} from "react-icons/io5"
 import {MdQuestionMark} from "react-icons/md"
 import { PiPlanetBold, PiSkullBold } from "react-icons/pi"
 import { AiOutlineQuestionCircle, AiOutlineSave } from "react-icons/ai";
-import { SiteSubtype, LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms";
 import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector";
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading";
 import ElementOffset from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer";
+import { SiteSubtype, type SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {

@@ -3,23 +3,27 @@ export const prerender = true;
 
 import BaseHead from "../components/BaseHead.astro";
 import HomeBanner from "../components/home/HomeBanner/HomeBanner.component";
-import IntroSection from "../components/home/IntroSection/IntroSection.component";
 import ScrollSuggestion from "../components/home/ScrollSuggestion/ScrollSuggestion.component";
 import SunsetFooter from "@/components/layout/Footer/SunsetFooter.component";
 import SunsetHeader from "@/components/layout/Header/SunsetHeader.component";
-import { SITE_TITLE, SITE_DESCRIPTION, TITLE_SUFFIX } from "../consts";
-import Image, { getImage } from "@astrojs/image";
+import { SITE_DESCRIPTION } from "../consts";
+import { getImage } from "astro:assets";
 import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 
 import { Content as HomePageUniserve } from '@/data/home-page/home-page-uniserve.mdx';
 import { Content as HomePageSummary } from '@/data/home-page/home-page-summary.mdx';
 import HomeHub from "@/components/home/HomeHub.component";
 import TransitionGradient from "@/components/home/TransitionGradient.component";
-import { GetImageTransform } from "@astrojs/image/dist/lib/get-image";
-import PostCard from "@/components/posts/PostCard.component";
 import { getProcessedPost } from "@/utils/astroHelpers";
 import PostCardContentRow from "@/components/common/ContentRow/PostCardContentRow.component";
 import ScriptsAfterBody from "@/components/ScriptsAfterBody.astro";
+
+import LazarusImage from '@/assets/images/home-banner/lazarus-cropped.png'
+import HeroBG from '@/assets/images/home-banner/banner-hero-overlay.png'
+import ShroomyCropped from '@/assets/images/home-banner/shroomy-cropped.png'
+import MarvinCropped from '@/assets/images/home-banner/marvin-cropped.png'
+import BannerFGComputers from '@/assets/images/home-banner/banner-foreground-computers.png'
+import Noise from '@/assets/images/noise.png'
 
 // Switch to "true" to load images faster, as they aren't being compressed.
 const DEBUGGING = false
@@ -30,32 +34,28 @@ const imageSources = [
   {
     id: "lazarus",
     alt: "",
-    src: "/images/home-banner/lazarus-cropped.png",
-    aspectRatio: "3688:2294",
+    src: LazarusImage,
     width: DEFAULT_WIDTH,
     format: "webp"
   },
   {
     id: "hero-bg",
     alt: "",
-    src: "/images/home-banner/banner-hero-overlay.png",
-    aspectRatio: "5119:2387",
+    src: HeroBG,
     width: DEFAULT_WIDTH,
     format: "webp"
   },
   {
     id: "shroomy",
     alt: "",
-    src: "/images/home-banner/shroomy-cropped.png",
-    aspectRatio: "3688:2294",
+    src: ShroomyCropped,
     width: DEFAULT_WIDTH,
     format: "webp"
   },
   {
     id: "marvin",
     alt: "",
-    src: "/images/home-banner/marvin-cropped.png",
-    aspectRatio: "3500:2146",
+    src: MarvinCropped,
     width: DEFAULT_WIDTH + 500,
     format: "webp",
     quality: 98
@@ -63,8 +63,7 @@ const imageSources = [
   {
     id: "fg-bottom",
     alt: "",
-    src: "/images/home-banner/banner-foreground-computers.png",
-    aspectRatio: "3500:2146",
+    src: BannerFGComputers,
     width: DEFAULT_WIDTH + 500,
     format: "webp",
     quality: 98
@@ -72,8 +71,7 @@ const imageSources = [
   {
     id: "noise",
     alt: "",
-    src: "/images/noise.png",
-    aspectRatio: "3500:2146",
+    src: Noise,
     width: DEFAULT_WIDTH,
     format: "png"
   },
@@ -82,7 +80,7 @@ const imageSources = [
 const compiledImageSources = await Promise.all(imageSources.map(async (imageSource) => {
     return {
       id: imageSource.id,
-      img: await getImage(imageSource as GetImageTransform)
+      img: await getImage(imageSource)
     }
   }
 ))

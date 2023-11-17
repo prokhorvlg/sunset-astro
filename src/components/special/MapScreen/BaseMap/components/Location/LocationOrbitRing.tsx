@@ -1,10 +1,10 @@
 
 import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { LocationNode, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { rescaleAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './LocationOrbitRing.scss'
+import type { SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 
 const LocationOrbitRing = ({
   location,

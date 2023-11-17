@@ -1,10 +1,10 @@
 import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMapWheel"
 import { transformAtom, rescaleAtom, selectedLocationAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './MapSelector.scss'
+import { type SystemLocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
 
 const MapSelector = ({
   location,

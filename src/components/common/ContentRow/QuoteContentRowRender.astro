@@ -1,7 +1,7 @@
 ---
 import { QuoteAuthor } from '@/data/Authors';
 import { getImageById }  from '@/data/sharedImages';
-import { getImage } from '@astrojs/image';
+import { getImage } from 'astro:assets';
 import QuoteContentRow from './QuoteContentRow.component'
 
 interface Props {
@@ -17,8 +17,10 @@ let imageObject
 let imageProcessed
 if (authorImage !== undefined && authorImage !== "") {
     imageObject = getImageById(Astro.props.author.image || "")
+    const importedImage = await imageObject.src()
+    const importedImageInner = importedImage.default
     imageProcessed = await getImage({
-        src: imageObject!.src,
+        src: importedImageInner,
         width: 400,
         aspectRatio: imageObject!.width / imageObject!.height,
         format: "webp",

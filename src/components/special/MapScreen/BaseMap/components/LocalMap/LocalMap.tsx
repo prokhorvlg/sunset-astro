@@ -1,7 +1,7 @@
-import { MapComponentProps } from "@/components/special/MapScreen/BaseMap/BaseMap"
 import LocalMapLocation from "@/components/special/MapScreen/BaseMap/components/LocalMap/LocalMapLocation"
 import { titanLocations } from "@/components/special/MapScreen/BaseMap/data/localLocationsData"
 import "./LocalMap.scss"
+import type { MapComponentProps } from "@/components/special/MapScreen/BaseMap/BaseMap"
 
 const LocalMap = (props: MapComponentProps) => {
   return (

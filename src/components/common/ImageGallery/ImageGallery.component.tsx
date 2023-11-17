@@ -1,14 +1,15 @@
 import React from 'react'
 import { Gallery, Item } from "react-photoswipe-gallery";
 import 'photoswipe/dist/photoswipe.css'
-import { ImageDetails } from "@/data/sharedImages";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { styled } from '@stitches/react';
+import type { ImageDetails } from '@/data/sharedImages';
+import type { GetImageResult } from 'astro';
 
 export interface FullImageDetails {
     originalObject: ImageDetails                        // Contains the original file source
-    processedObject: astroHTML.JSX.ImgHTMLAttributes  // Contains the webp converted file for thumb
+    processedObject: GetImageResult  // Contains the webp converted file for thumb
 }
 
 export interface ImageItem {
@@ -40,6 +41,9 @@ const ImageGallery = ({
     color = '',
     noCap = false
 }: PropTypes) => {
+
+    
+
     return (
         <Gallery>
             <ContainerDiv 
@@ -54,6 +58,12 @@ const ImageGallery = ({
             >
                 {imageItems.map((imageItem) => {
                     if (!imageItem) return null
+
+                    const originalWidth = Number(imageItem.processedObject.attributes.width || "1")
+                    const originalHeight = Number(imageItem.processedObject.attributes.height || "1")
+                    console.log("imageItem.processedObject", imageItem.processedObject.attributes)
+                    console.log("originalWidth", originalWidth)
+
                     return (
                         <div className="gallery-item" key={imageItem.originalObject.id}>
                             <div className="over-image">
@@ -83,13 +93,11 @@ const ImageGallery = ({
                             </div>
                             <Item
                                 thumbnail={imageItem.processedObject.src as string}
-                                original={imageItem.originalObject.src as string}
-                                width={imageItem.originalObject.width as number}
-                                height={imageItem.originalObject.height as number}
+                                original={imageItem.processedObject.src as string}
+                                width={originalWidth}
+                                height={originalHeight}
                             >
                                 {({ ref, open }) => {
-                                    const originalWidth = imageItem.originalObject.width || 1
-                                    const originalHeight = imageItem.originalObject.height || 1
                                     return (
                                         <div className="image-content-box">
                                             <button className="image-content-image" onClick={open}>

@@ -1,6 +1,3 @@
-import { getImageById } from "@/data/sharedImages"
-import { getImage } from "astro/dist/assets"
-
 export interface QuoteAuthor {
     id: string
     name: string
