@@ -127,7 +127,7 @@ const FieldContainer = ({
                     height: `${height}px`,
                     width: `${width}px`,
                     background: `url(/images/patterns/map-fields/system/field-${location.fieldShape?.toLowerCase()}-filled.svg)`,
-                    opacity: isDetailLevel ? 0.25 : 0.1
+                    opacity: isDetailLevel ? 0.4 : 0.1
                   }}></div>
                 }
               </>

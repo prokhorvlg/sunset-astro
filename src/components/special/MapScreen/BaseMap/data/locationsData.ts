@@ -645,7 +645,7 @@ export const locationsData: SystemLocationNode = {
       colorSecondary: "#98599c",
       distance: 1275,
       radius: 36,
-      startingAngle: 32,
+      startingAngle: 29,
       children: [
         {
           name: "Nibiru",

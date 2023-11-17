@@ -113,38 +113,49 @@
       }
     }
 
-    .bottom-controls {
+    .floating-title-container {
+      //display: none;
       position: absolute;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin: 5px;
-    }
-    .floating-button {
-      flex: 1;
-      text-align: center;
-      margin: 2px;
-      padding: 10px;
-      
-      z-index: $map-zindex-selectionButton;
-      border: 2px solid $map-reddish-color;
-      background-color: rgba($map-background-color, 0.8);
-      color: $map-reddish-color;
-      
-      border-radius: 4px;
-      cursor: pointer;
-
-      font-family: $font-code;
+      top: 100px;
+      left: 10px;
+      z-index: $map-zindex-ruler;
+      pointer-events: none;
+      user-select: none;
       text-transform: uppercase;
-      font-size: 12px;
+      background: rgba($map-background-color, 0.8);
+      padding: 10px 30px 10px 10px;
 
-      &:hover {
-        border-color: $map-amber-color;
-        color: $map-amber-color;
+      @media screen and (max-width: $breakpoint-mobile) {
+        top: 50px;
+      }
+      
+      p {
+        color: $map-reddish-color;
+        font-family: $font-code;
+        margin: 0;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        @media screen and (max-width: $breakpoint-mobile) {
+          font-size: 10px;
+        }
+      }
+      h1 {
+        color: $map-reddish-color;
+        font-family: $font-code;
+        margin: 0;
+        font-weight: 500;
+        letter-spacing: 1px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @media screen and (max-width: $breakpoint-mobile) {
+          font-size: 20px;
+        }
+        svg {
+          animation: rotateCounterClockwise 5s linear infinite;
+          margin-right: 10px;
+        }
       }
     }
 
@@ -201,4 +212,111 @@
       border: 4px solid green !important;
     }
   }
+}
+
+.bottom-controls {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 2px;
+
+  width: 500px;
+  max-width: 95%;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+
+  .map-control-button {
+    padding: 10px;
+    
+    z-index: $map-zindex-selectionButton;
+    border: 2px solid $map-reddish-color;
+    background-color: rgba($map-background-color, 0.8);
+    
+    border-radius: 4px;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: $breakpoint-mobile) {
+      &:hover {
+        border-color: $map-amber-color;
+        p, svg {
+          color: $map-amber-color !important;
+        }
+      }
+    }
+    
+
+    .icon-top svg {
+      color: $map-reddish-color;
+      font-size: 20px;
+    }
+    p.text-bottom {
+      font-family: $font-code;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: $map-reddish-color;
+      text-align: center;
+      margin: 0;
+      line-height: 12px;
+      white-space: nowrap;
+    }
+
+    &.is-wide {
+      svg {
+        margin-bottom: -5px;
+        margin-right: 5px;
+      }
+    }
+
+    &.open-local-map {
+      grid-area: 1 / 2 / 2 / 3;
+      //border-top: none;
+      flex-direction: row;
+    }
+    &.about-map {
+      grid-area: 2 / 1 / 3 / 2;
+      //border-left: none;
+    }
+    &.open-details {
+      grid-area: 2 / 2 / 3 / 3;
+      flex-direction: row;
+    }
+    &.reset-view {
+      grid-area: 2 / 3 / 3 / 4;
+      //border-right: none;
+    }
+
+  }
+  
+  .open-details-none {
+    z-index: $map-zindex-selectionButton;
+    grid-area: 2 / 2 / 3 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      font-size: 12px;
+      margin: 0;
+      padding: 12px 0px;
+      width: 95%;
+      //height: 80%;
+      text-align: center;
+      font-family: $font-code;
+      color: $map-reddish-color;
+      background: rgba($map-background-color, 0.8);
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  
 }

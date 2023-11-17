@@ -2,7 +2,7 @@ import { MAP_MAX_SCALE, MAP_MIN_SCALE } from "@/components/special/MapScreen/Bas
 import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMap from "@/components/special/MapScreen/BaseMap/SystemMap/SystemMap"
 import { useAtom } from "jotai"
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, MouseEventHandler } from "react"
 import { ReactZoomPanPinchContentRef, TransformWrapper, TransformComponent } from "react-zoom-pan-pinch"
 import {debounce} from "debounce"
 import LocalMap from "@/components/special/MapScreen/BaseMap/LocalMap/LocalMap"
@@ -12,6 +12,12 @@ import Button, { ButtonType } from "@/components/common/Button/Button.component"
 import { faDownload } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { MapComponent } from "@/components/special/MapScreen/BaseMap/data/types"
+import { LuOrbit } from "react-icons/lu";
+import { FaQuestion } from "react-icons/fa";
+import { PiCaretUpBold } from "react-icons/pi";
+import { TbInfoSmall, TbRefresh, TbZoomIn, TbZoomReset } from "react-icons/tb";
+
+
 
 const getMapComponent = (map: MapComponent, props: any) => {
   const mapToMap = {
@@ -126,7 +132,10 @@ const BaseMap = ({
     >
       {(transform: ReactZoomPanPinchContentRef) => {
         return (
-          <div className={`base-map-container ${map}`} ref={mapContainerRef} >
+          <div
+            className={`base-map-container ${map}`}
+            ref={mapContainerRef}
+          >
             <div
               className="base-map-context-menu-container"
               onContextMenu={(e) => {
@@ -141,36 +150,92 @@ const BaseMap = ({
             >
               {/* PANNING RULER */}
               <div className="ruler">
-                <div className="ruler-pattern" style={{
-                  transform: `translate(${posX}px, 0px)`,
-                }}>
+                <div
+                  className="ruler-pattern"
+                  style={{
+                    transform: `translate(${posX}px, 0px)`,
+                  }}
+                >
                   <div className="ruler-border"></div>
                   <div className="ruler-blocks">
-                    {Array.from({length: 400}).map((item, i) => (
-                      <div className="ruler-block" key={i}>
-                        <div className="ruler-block-width" style={{
-                          width: `${scale * 10}px`
-                        }}></div>
-                        <div className="ruler-block-marker"></div>
-                      </div>
-                    ))}
+                    {Array.from({ length: 400 }).map(
+                      (item, i) => (
+                        <div
+                          className="ruler-block"
+                          key={i}
+                        >
+                          <div
+                            className="ruler-block-width"
+                            style={{
+                              width: `${scale * 10}px`,
+                            }}
+                          ></div>
+                          <div className="ruler-block-marker"></div>
+                        </div>
+                      )
+                    )}
                   </div>
                 </div>
               </div>
 
               {/* FLOATING TEXT TOP */}
               <div className="floating-code-text">
-                <span className="scale">M_SCALE 00 {Math.round(scale)}</span>
-                <span className="center-coords">{Math.round((-posX + 998) * rescale)} : {Math.round((-posY + 552) * rescale)} M_CENTER STRICT</span>
+                <span className="scale">
+                  M_SCALE 00 {Math.round(scale)}
+                </span>
+                <span className="center-coords">
+                  {Math.round((-posX + 998) * rescale)} :{" "}
+                  {Math.round((-posY + 552) * rescale)}{" "}
+                  M_CENTER STRICT
+                </span>
               </div>
 
-              {/* RESET BUTTON */}
+              {/* FLOATING MAP TITLE */}
+              <div className="floating-title-container">
+                <p>current map //</p>
+                <h1>
+                  <LuOrbit />
+                  solar system
+                </h1>
+              </div>
+
+              {/* CONTROLS */}
               <div className="bottom-controls">
-                
-                
-                <button className="floating-button selection" onClick={() => setIsSelectedModalOpen(true)}>Open Details</button>
-                <button className="floating-button reset" onClick={reset}>Open Local Map</button>
-                <button className="floating-button reset" onClick={reset}>Reset View</button>
+                {(selectedLocation !== null && 
+                    selectedLocation.localMap
+                  ) &&
+                  <MapControlButton
+                    classes="open-local-map"
+                    text="Open Local Map"
+                    onClick={reset}
+                    icon={<TbZoomIn />}
+                    isWide
+                  />
+                }
+                <MapControlButton
+                  classes="about-map"
+                  text="About Map"
+                  onClick={reset}
+                  icon={<TbInfoSmall />}
+                />
+                {selectedLocation !== null && 
+                  <MapControlButton
+                    classes="open-details"
+                    text="Open Details"
+                    onClick={reset}
+                    icon={<PiCaretUpBold />}
+                    isWide
+                  />
+                }
+                {selectedLocation === null && 
+                  <div className="open-details-none"><p>NO SELECTED<span className="blinking">_</span></p></div>
+                }
+                <MapControlButton
+                  classes="reset-view"
+                  text="Reset View"
+                  onClick={reset}
+                  icon={<TbRefresh />}
+                />
               </div>
 
               <BaseMapTransformContainer
@@ -237,6 +302,29 @@ const BaseMapTransformContainer = ({
         onWheel,
       })}
     </TransformComponent>
+  )
+}
+
+const MapControlButton = ({
+  text,
+  icon,
+  onClick,
+  classes,
+  isWide
+}: {
+  text?: string
+  icon?: any
+  onClick?: MouseEventHandler<HTMLButtonElement>
+  classes?: string
+  isWide?: boolean
+}) => {
+  return (
+    <button className={`map-control-button ${classes ? classes : ""} ${isWide ? "is-wide" : ""}`} onClick={onClick}>
+      <div className="icon-top">
+        {icon}
+      </div>
+      <p className="text-bottom">{text}</p>
+    </button>
   )
 }
 

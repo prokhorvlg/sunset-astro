@@ -89,7 +89,8 @@ $map-selected-peek-extra-height: 40px;
   }
 
   .map-body {
-    height: calc(100% - $map-header-height - $map-selected-peek-height - 8px);
+    //height: calc(100% - $map-header-height - $map-selected-peek-height - 8px);
+    height: calc(100% - 4px);
     left: 0; right: 0;
   }
 
