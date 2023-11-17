@@ -2,7 +2,7 @@ import PostCard from "@/components/posts/PostCard.component"
 import FullWidthWrapper from "@/components/wrappers/FullWidthWrapper.component"
 import { faArrowDown, faArrowUp, faBoxOpen, faCircleXmark, faSearch } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { CollectionEntry } from "astro:content"
+import type { CollectionEntry } from "astro:content"
 import React from "react"
 import { useEffect, useState } from "react"
 

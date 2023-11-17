@@ -1,6 +1,6 @@
-import { PostType, ProcessedPost } from "@/components/posts/PostsGrid.component";
+import { type ProcessedPost, PostType } from "@/components/posts/PostsGrid.component";
 import { Images } from "@/data/sharedImages";
-import { getImage } from "@astrojs/image";
+import { getImage } from "astro:assets";
 import { getCollection, getEntryBySlug } from "astro:content";
 
 export const loadAnyPost = async () => {
@@ -130,21 +130,18 @@ export const processPost = async (post) => {
   let processedImageObject;
   let minifiedImageObject;
   if (imageObject) {
-
-    // image-rendering: pixelated
-    // render at 80 for patreon-locked posts if state
+    const importedImage = await imageObject.src()
+    const importedImageInner = importedImage.default
 
     processedImageObject = await getImage({
-      src: imageObject.src,
+      src: importedImageInner,
       alt: imageObject.alt || "",
-      aspectRatio: `${imageObject.width}:${imageObject.height}`,
       width: 1000,
       format: "webp"
     });
     minifiedImageObject = await getImage({
-      src: imageObject.src,
+      src: importedImageInner,
       alt: imageObject.alt || "",
-      aspectRatio: `${imageObject.width}:${imageObject.height}`,
       width: 50,
       format: "webp"
     });
@@ -169,20 +166,18 @@ export const getProcessedImageById = async (imageId: string, width?: number, for
   // Find the image.
   const imageObject = Images.find((imageItem) => imageItem.id === imageId);
   if (!imageObject) return null
+
+  const importedImage = await imageObject.src()
+  const importedImageInner = importedImage.default
   // Return a processed version.
   return await getImage({
-    src: imageObject.src,
+    src: importedImageInner,
     alt: imageObject.alt || "",
-    aspectRatio: `${imageObject.width}:${imageObject.height}`,
-    width: width || 1000,
-    format: format as any || "webp",
+    format: "webp",
+    width: width
   });
 };
 
 export const getImageObjectById = (imageId: string) => {
   return Images.find((imageItem) => imageItem.id === imageId);
-}
-
-export const getNearestPosts = () => {
-  
 }

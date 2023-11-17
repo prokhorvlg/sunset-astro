@@ -1,8 +1,8 @@
-import { LocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
 import { isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import './ElementHeading.scss'
 import { LuOrbit } from "react-icons/lu";
+import { type LocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types";
 
 const ElementHeading = ({
   location,

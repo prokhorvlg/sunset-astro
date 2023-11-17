@@ -83,7 +83,7 @@ const SpookyView = ({
                     </blockquote>
 
                     <div className="muguang-pc-image">
-                        <img className="computer" src="/images/Muguang_Computer (2).png" width={1000} />
+                        <img className="computer" src="/images/Muguang_Computer.png" width={1000} />
                         { !isInsertedDisk &&
                             <img 
                                 className="screen screen-locked" 
@@ -94,7 +94,7 @@ const SpookyView = ({
                         { isInsertedDisk && foundFileSlug === "" &&
                             <img 
                                 className="screen screen-awaiting" 
-                                src="/images/Muguang_Screen_Awaiting (1).gif" 
+                                src="/images/Muguang_Screen_Awaiting.gif" 
                                 width={276} 
                             />
                         }

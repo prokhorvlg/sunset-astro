@@ -1,7 +1,7 @@
-import { LocationNode, LocationType } from '@/components/special/MapScreen/BaseMap/data/types'
 import { isDetailLevelAtom, rescaleAtom } from '@/components/special/MapScreen/BaseMap/state/atoms'
 import { useAtom } from 'jotai'
 import './DetailsContainer.scss'
+import { type LocationNode, LocationType } from '@/components/special/MapScreen/BaseMap/data/types'
 
 // Container for details, offset from the center and rescaled. 
 // Usually contains the flavor text, and occasionally the heading.

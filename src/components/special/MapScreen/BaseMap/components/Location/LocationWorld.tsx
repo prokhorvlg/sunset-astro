@@ -1,15 +1,13 @@
-import { LocationNode, LocationType, SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
-import { transformAtom, scaleAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { LocationType, type SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
+import { transformAtom, scaleAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading"
 import ElementOffset from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer"
 import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef } from "react"
-import { FaMap, FaPlus } from "react-icons/fa"
+import { FaPlus } from "react-icons/fa"
 import "./LocationWorld.scss"
-import { FaRegSnowflake } from "react-icons/fa";
-import { BsSnow } from "react-icons/bs";
 
 
 const LocationWorld = ({

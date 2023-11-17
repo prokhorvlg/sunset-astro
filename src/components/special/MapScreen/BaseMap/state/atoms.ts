@@ -1,8 +1,8 @@
 
 import { MAP_INITIAL_SCALE, MAP_MAX_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
+import type { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { atom } from "jotai"
-import { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
+import type { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 
 // Contains current real scale of map.
 export const scaleAtom = atom(MAP_INITIAL_SCALE)

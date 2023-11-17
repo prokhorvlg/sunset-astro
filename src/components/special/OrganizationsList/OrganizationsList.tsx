@@ -1,7 +1,6 @@
 import ReactMarkdown from 'react-markdown'
 import Modal from 'react-modal';
 
-import { Organization, Organizations, RobotExample, RobotExampleType } from "@/data/organizations"
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +8,7 @@ import { styled } from '@stitches/react';
 
 import './OrganizationsList.scss'
 import DiagonalPattern from '@/components/special/patterns/DiagonalPattern';
+import { Organizations, RobotExampleType, type Organization, type RobotExample } from '@/data/organizations';
 
 // sort by:
 // - affiliation

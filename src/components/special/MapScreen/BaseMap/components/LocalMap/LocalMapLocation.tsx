@@ -1,8 +1,8 @@
-import { LocalLocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
 import { scaleAtom, rescaleAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './LocalMapLocation.scss'
+import { type LocalLocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
 
 // enum Dimension {
 //   x = 'x',

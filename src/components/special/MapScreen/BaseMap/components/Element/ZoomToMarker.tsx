@@ -1,4 +1,4 @@
-import { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
+import type { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 
 const ZoomToMarker = ({
   location,

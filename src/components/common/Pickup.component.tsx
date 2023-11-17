@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { getImageById }  from '@/data/sharedImages';
+import MuguangDisc from '@/assets/images/Muguang_Disc.png'
 
 export const PICKUP_ID = "pickup"
 
@@ -21,7 +23,7 @@ const Pickup = () => {
         return (
             <div className="pickup-disc-container picked-up">
                 <button className="pickup-disc-button">
-                    <img src="/images/Muguang_Disc (3).png" className="pickup-disc-image" width="800" />
+                    <img src={MuguangDisc.src} className="pickup-disc-image" width="800" />
                     <span className="pickup-disc-title">You took the floppy disk</span>
                     <span className="pickup-disc-title bottom">well done</span>
                 </button>
@@ -31,7 +33,7 @@ const Pickup = () => {
         return (
             <div className="pickup-disc-container">
                 <button onClick={() => onClick()} className="pickup-disc-button">
-                    <img src="/images/Muguang_Disc (3).png" className="pickup-disc-image" width="800" />
+                    <img src={MuguangDisc.src} className="pickup-disc-image" width="800" />
                     <span className="pickup-disc-title">Take the floppy disk</span>
                     <span className="pickup-disc-title bottom">You must take it</span>
                 </button>

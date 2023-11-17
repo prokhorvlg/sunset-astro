@@ -1,5 +1,6 @@
 ---
 import { TITLE_SUFFIX } from '@/consts';
+import SunsetLogo from '@/assets/images/meta/main-logo-favicon.png'
 import 'src/styles/main.scss';
 
 export interface Props {
@@ -13,13 +14,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image, isLargeImage = false } = Astro.props;
 
-const finalImage = (image) ? new URL(image, Astro.url) : '/images/meta/main-logo-favicon.png'
+const finalImage = (image) ? new URL(image, Astro.url) : SunsetLogo.src
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/images/meta/main-logo-favicon.png" />
+<link rel="icon" type="image/svg+xml" href={SunsetLogo.src} />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->

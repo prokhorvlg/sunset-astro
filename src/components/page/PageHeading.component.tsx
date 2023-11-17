@@ -76,8 +76,8 @@ const PageHeading = ({
                     <div className="heading-content">
                         {(image === 'computer-blinking') ?
                             <div className="heading-image posts">
-                                <img src='/images/Micro_Posts_Screen (4).gif' className="screen-gif" width="208" />
-                                <img src='/images/Micro_Posts (11).png' className="computer" width="800" />
+                                <img src='/images/Micro_Posts_Screen.gif' className="screen-gif" width="208" />
+                                <img src='/images/Micro_Posts.png' className="computer" width="800" />
                             </div>
                             : null
                         }
