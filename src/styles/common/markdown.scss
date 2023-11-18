@@ -164,6 +164,8 @@ article.markdown {
 
     // Lists ( - xyz )
     > ul, > ol {
+      //margin: 50px auto;
+      //list-style: ;
         li {
             > p {
                 font-size: 18px;
@@ -258,10 +260,12 @@ article.markdown {
         margin-top: -20px;
         border-top: 2px dotted $color-sunset-red;
         margin-bottom: 35px;
+        //box-sizing: content-box;
         @media screen and (max-width: $breakpoint-tablet) {
             width: 90%;
         }
         p {
+          //margin-top: 10px;
             color: $color-sunset-orange;
             font-family: $font-code;
             font-style: italic;

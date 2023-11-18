@@ -1,45 +1,76 @@
+// import Modal from "react-modal"
+import "./MapModal.scss"
+import { Dialog, Transition } from "@headlessui/react"
+import { Fragment } from "react"
+
+import { FaQuestionCircle } from "react-icons/fa"
+import { IoClose } from "react-icons/io5"
+
 const MapModal = ({
-  introContent
+  children,
+  isOpen,
+  setIsOpen,
+}: {
+  children: any
+  isOpen: boolean
+  setIsOpen: Function
 }) => {
+  const onClose = () => {
+    setIsOpen(false)
+  }
+
   return (
-    <div className="map-modal">
-      {introContent}
-    </div>
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog
+        as="div"
+        className="map-dialog"
+        onClose={onClose}
+      >
+        <Transition.Child
+          as={Fragment}
+          enter="tw-ease-out tw-duration-200"
+          enterFrom="tw-opacity-0"
+          enterTo="tw-opacity-100"
+          leave="tw-ease-in tw-duration-200"
+          leaveFrom="tw-opacity-100"
+          leaveTo="tw-opacity-0"
+        >
+          <div className="map-overlay" />
+        </Transition.Child>
+
+        <Transition.Child
+          as={Fragment}
+          enter="tw-ease-out tw-duration-200"
+          enterFrom="tw-opacity-0 tw-scale-95"
+          enterTo="tw-opacity-100 tw-scale-100"
+          leave="tw-ease-in tw-duration-100"
+          leaveFrom="tw-opacity-100 tw-scale-100"
+          leaveTo="tw-opacity-0 tw-scale-95"
+        >
+          <div className="map-panel-container">
+            <div className="map-dialog-header">
+              <h2>
+                <FaQuestionCircle />
+                About the map
+              </h2>
+              <div className="map-header-diagonal"></div>
+              <button className="close" onClick={onClose}>
+                <IoClose />
+              </button>
+            </div>
+
+            <Dialog.Panel className="map-dialog-content">
+              <div className="content-child">{children}</div>
+            </Dialog.Panel>
+
+            <div className="map-dialog-footer">
+              <button>close</button>
+            </div>
+          </div>
+        </Transition.Child>
+      </Dialog>
+    </Transition>
   )
 }
 
 export default MapModal
-
-
-      {/* 
-      modal stuff
-
-
-      Location
-      MAP IN WESTON
-
-      At the center of Weston Mission Control, you dust off an old, unused defense terminal. It is simply labeled VIEWER, and appears to be linked.
-
-      Dynatek VIEWER
-
-You've found at the Observatory, a representation of local reality in the post-mankind age. The system is directly linked to Goldspire Complex's advanced sensors, so dig deep and log your findings.
-
-(If you're confused, an introduction can be found on the home page.)
-
-Major worlds also link to regional maps. Explore them too - terrestrial locations are just as critical.
-
-Mobile controls
-
-Pinch to zoom.
-Swipe to pan.
-Tap to select.
-Double tap to reset selection, then center your view.
-
-Desktop controls
-
-Scroll to zoom.
-Grab to pan.
-Click to select.
-Right click to reset selection, then center your view.
-
-Enter map | Continue introduction */}

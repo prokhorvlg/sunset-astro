@@ -1,5 +1,5 @@
 import { MAP_MAX_SCALE, MAP_MIN_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom, isIntroOpenAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMap from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMap"
 import { useAtom } from "jotai"
 import { useRef, useEffect, useState, type MouseEventHandler } from "react"
@@ -46,6 +46,7 @@ const BaseMap = ({
     selectedLocationAtom
   )
   const [isSelectedModalOpen, setIsSelectedModalOpen] = useAtom(isSelectedModalOpenAtom)
+  const [isIntroOpen, setIsIntroOpen] = useAtom(isIntroOpenAtom)
 
   useEffect(() => {
     if (!transformComponentRef.current) return
@@ -209,14 +210,14 @@ const BaseMap = ({
                 <MapControlButton
                   classes="about-map"
                   text="About Map"
-                  onClick={reset}
+                  onClick={() => setIsIntroOpen(true)}
                   icon={<TbInfoSmall />}
                 />
                 {selectedLocation !== null && 
                   <MapControlButton
                     classes="open-details"
                     text="Open Details"
-                    onClick={reset}
+                    onClick={() => setIsSelectedModalOpen(true)}
                     icon={<PiCaretUpBold />}
                     isWide
                   />

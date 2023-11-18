@@ -42,3 +42,5 @@ export const selectedLocationAtom = atom<LocationNode | null>(null)
 export const hoveredLocationAtom = atom<LocationNode | null>(null)
 
 export const isSelectedModalOpenAtom = atom<boolean>(false)
+
+export const isIntroOpenAtom = atom<boolean>(false)
