@@ -140,6 +140,7 @@ const SystemMapLocation = ({
   const zoomToTop = () => {
     if (isRootElement) return "50%"
     else if (isBelt) return "50%"
+    //else if (isWorld) return "calc(50% + 5px)"
     //else if (isField) return location.fieldLabelOffset?.y || 0
     return objectPoint.y
   } 

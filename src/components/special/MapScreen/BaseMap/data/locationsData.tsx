@@ -35,7 +35,7 @@ export const locationsData: SystemLocationNode = {
       subType: SiteSubtype.Beacon,
       worldAffiliation: WorldAffiliation.HumanEra,
       humanEraAffiliation: HumanEraAffiliation.GreaterUnion,
-      distance: 20,
+      distance: 25,
       startingAngle: 270,
     },
     {
@@ -49,7 +49,7 @@ export const locationsData: SystemLocationNode = {
       subType: SiteSubtype.MachineMade,
       worldAffiliation: WorldAffiliation.MachineEra,
       distance: 45,
-      startingAngle: 190,
+      startingAngle: 140,
     },
     {
       id: "yadron",
@@ -62,8 +62,8 @@ export const locationsData: SystemLocationNode = {
       subType: SiteSubtype.Outpost,
       worldAffiliation: WorldAffiliation.HumanEra,
       humanEraAffiliation: HumanEraAffiliation.GreaterUnion,
-      distance: 30,
-      startingAngle: 30,
+      distance: 32,
+      startingAngle: 5,
     },
 
     // WORLDS
@@ -136,7 +136,7 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
           worldAffiliation: WorldAffiliation.HumanEra,
-          distance: 35,
+          distance: 38,
           startingAngle: 150,
         },
         {

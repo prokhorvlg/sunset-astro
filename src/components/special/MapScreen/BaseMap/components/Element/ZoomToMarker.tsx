@@ -9,7 +9,7 @@ const ZoomToMarker = ({
   left
   top
 }) => {
-  const zoomMarkerVerticalOffset = 5 // Used to slightly shift the zoom up or down
+  const zoomMarkerVerticalOffset = 10 // Used to slightly shift the zoom up or down
   
   return (
     <div className="zoom-to-marker-container" style={{
