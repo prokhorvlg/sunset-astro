@@ -2,16 +2,18 @@
 import "./MapModal.scss"
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment } from "react"
-
-import { FaQuestionCircle } from "react-icons/fa"
 import { IoClose } from "react-icons/io5"
 
 const MapModal = ({
   children,
+  headerText,
+  headerIcon,
   isOpen,
   setIsOpen,
 }: {
   children: any
+  headerText?: string
+  headerIcon?: any
   isOpen: boolean
   setIsOpen: Function
 }) => {
@@ -50,8 +52,8 @@ const MapModal = ({
           <div className="map-panel-container">
             <div className="map-dialog-header">
               <h2>
-                <FaQuestionCircle />
-                About the map
+                {headerIcon}
+                {headerText}
               </h2>
               <div className="map-header-diagonal"></div>
               <button className="close" onClick={onClose}>

@@ -8,6 +8,7 @@ import { type SystemLocationNode, LocationType, SiteSubtype, WorldAffiliation, H
 
 // Data for generation of objects
 export const locationsData: SystemLocationNode = {
+  id: "sol",
   name: "Sol",
   typeText: "Main Sequence Star",
   flavorText: `THERE IS NOTHING ON THE SUN.
@@ -38,6 +39,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 270,
     },
     {
+      id: "axiom",
       name: "Axiom",
       typeText: "Fractal Solar Array",
       flavorText:
@@ -50,6 +52,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 190,
     },
     {
+      id: "yadron",
       name: "Yadron",
       typeText: "Solar Research Station",
       flavorText: "Ancient Union outpost for studying the Sun. Decrepit, even in mankind's prime.",
@@ -65,6 +68,7 @@ export const locationsData: SystemLocationNode = {
 
     // WORLDS
     {
+      id: "mercury",
       name: "Mercury",
       typeText: "Lifeless Mining World",
       icon: <GiMineWagon />,

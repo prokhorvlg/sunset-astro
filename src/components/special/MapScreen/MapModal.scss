@@ -32,7 +32,7 @@
     align-items: center;
  
     width: 1200px;
-    max-width: 100%;
+    max-width: 98%;
 
     .map-dialog-header {
       display: flex;
@@ -43,6 +43,10 @@
       position: relative;
       width: 100%;
       margin: 50px 0 10px 0;
+
+      @media screen and (max-width: $breakpoint-mobile) {
+        margin-top: 20px;
+      }
 
       h2 {
         font-family: $font-code;
@@ -113,6 +117,10 @@
         padding: 40px 120px;
         box-sizing: border-box;
 
+        @media screen and (max-width: $breakpoint-mobile) {
+          padding: 20px 20px;
+        }
+
         @include abg(0.5);
         @include abg-red-dot-grid;
         &::after {
@@ -140,6 +148,9 @@
 
     .map-dialog-footer {
       margin: 20px 0 40px 0;
+      @media screen and (max-width: $breakpoint-mobile) {
+        margin-bottom: 20px;
+      }
     }
   }
 }

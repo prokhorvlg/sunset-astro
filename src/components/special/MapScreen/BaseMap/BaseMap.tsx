@@ -12,6 +12,7 @@ import { MapComponent } from "@/components/special/MapScreen/BaseMap/data/types"
 import { LuOrbit } from "react-icons/lu";
 import { PiCaretUpBold } from "react-icons/pi";
 import { TbInfoSmall, TbRefresh, TbZoomIn, TbZoomReset } from "react-icons/tb";
+import { FaQuestionCircle } from "react-icons/fa"
 
 const getMapComponent = (map: MapComponent, props: any) => {
   const mapToMap = {
@@ -211,7 +212,7 @@ const BaseMap = ({
                   classes="about-map"
                   text="About Map"
                   onClick={() => setIsIntroOpen(true)}
-                  icon={<TbInfoSmall />}
+                  icon={<FaQuestionCircle />}
                 />
                 {selectedLocation !== null && 
                   <MapControlButton
@@ -223,7 +224,7 @@ const BaseMap = ({
                   />
                 }
                 {selectedLocation === null && 
-                  <div className="open-details-none"><p>NO SELECTED<span className="blinking">_</span></p></div>
+                  <div className="open-details-none"><p>AWAITING SELECTION<span className="blinking">_</span></p></div>
                 }
                 <MapControlButton
                   classes="reset-view"

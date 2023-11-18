@@ -29,6 +29,8 @@ import ReactMarkdown from "react-markdown"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClose } from "@fortawesome/free-solid-svg-icons"
 import BaseMap from "@/components/special/MapScreen/BaseMap/BaseMap"
+import { FaQuestionCircle } from "react-icons/fa"
+import { MdLocationPin } from "react-icons/md"
 
 const MapScreen = (props) => {
   const [selectedLocation, setSelectedLocation] = useAtom(
@@ -82,6 +84,8 @@ const MapScreen = (props) => {
   return (
     <div className="map-screen">
       <MapModal
+        headerIcon={<FaQuestionCircle />}
+        headerText="About the map"
         isOpen={isIntroOpen}
         setIsOpen={setIsIntroOpen}
       >
@@ -100,76 +104,9 @@ const MapScreen = (props) => {
         <div className="map-header-diagonal"></div>
       </div>
 
-      <MapModal
-        isOpen={isSelectedModalOpen}
-        setIsOpen={setIsSelectedModalOpen}
-      >
-        <div className="map-selected-content">
-          <div className="header-text">
-            <h2
-              className="name"
-              style={{
-                color: selectedLocation?.color || undefined,
-              }}
-            >
-              {selectedLocation?.name}
-            </h2>
-            <p className="type">
-              {selectedLocation?.typeText}
-            </p>
-          </div>
-          <div className="selected-content-container">
-            <div className="flavor-text-container">
-              <p>{selectedLocation?.flavorText}</p>
-            </div>
-            <>{props.locationContent}</>
-            <hr />
-            <SelectedDataRow
-              label="Sub-type"
-              content={selectedLocation?.subType}
-            />
-            <SelectedDataRow
-              label="Realm of Origin"
-              content={selectedLocation?.worldAffiliation}
-            />
-            <SelectedDataRow
-              label="Human-Era Affiliation"
-              content={
-                mapHumanEraAffiliationToLabel[
-                  selectedLocation?.humanEraAffiliation ||
-                    ""
-                ]
-              }
-            />
-            <SelectedDataRow
-              label="Machine-Era Affiliation"
-              content={undefined}
-            />
-          </div>
-        </div>
-      </MapModal>
+      
     </div>
   )
-}
-
-const SelectedDataRow = ({
-  label,
-  content,
-}: {
-  label?: string
-  content?: string
-}) => {
-  return (
-    <div className="row">
-      <p className="label">{label || "NOT FOUND"}</p>
-      <div className="filler"></div>
-      <p className="content">{content || "N/A"}</p>
-    </div>
-  )
-}
-
-const mapHumanEraAffiliationToLabel = {
-  [HumanEraAffiliation.GreaterUnion]: "Greater Union",
 }
 
 export default MapScreen

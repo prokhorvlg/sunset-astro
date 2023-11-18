@@ -8,9 +8,25 @@ import MapScreen from '@/components/special/MapScreen/MapScreen';
 import { Content as MapIntro } from '@/data/map/map-intro.mdx';
 import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 import MapContent from '@/components/special/MapScreen/MapContent';
+import MapDetailsModal from '@/components/special/MapScreen/MapDetailsModal';
 
-const items = await Astro.glob('../data/map/locations/*.{md,mdx}')
-const itemKeys = items.map((item) => item.frontmatter.id)
+import { locationsData } from '@/components/special/MapScreen/BaseMap/data/locationsData';
+
+const markdownFiles = await Astro.glob('../data/map/locations/*.{md,mdx}')
+const markdownKeys = markdownFiles.map((item) => item.frontmatter.id)
+
+const getDeepLocations = (location) => {
+  const hasId = location.id !== undefined
+  const effectiveId = hasId ? location.id : location.name
+  const hasChildren = location.children !== undefined
+  if (hasChildren) {
+    return [effectiveId, ...location.children.map((child) => { return getDeepLocations(child) })].flat(100)
+  }
+  return [effectiveId]
+}
+
+const allLocations = getDeepLocations(locationsData)
+//console.log(allLocations)
 
 ---
 
@@ -22,23 +38,29 @@ const itemKeys = items.map((item) => item.frontmatter.id)
 	<body>
 		<SunsetHeader client:only="react" currentPage={"/map"} />
 		<main>
+
 			<MapScreen client:only="react">
-
-        <div class="location-content-items" slot="locationContent">
-          {items.map((item, i) => 
-            <div class="location-content-item hidden-content" id={"content-" + item.frontmatter.id} data-map-content>
-              <MarkdownWrapper >
-                <item.Content />
-              </MarkdownWrapper>
-            </div>
-          )}
-        </div>
-
         <MarkdownWrapper slot="mapIntro">
           <MapIntro />
         </MarkdownWrapper>
-
       </MapScreen>
+
+      {allLocations.map((location, i) => {
+        const matchingFile = markdownFiles.find((file) => file.frontmatter.id === location)
+
+        return (
+          <MapDetailsModal client:only="react" id={location}>
+            <div class="location-content">
+              <MarkdownWrapper >
+                {matchingFile && <matchingFile.Content />}
+              </MarkdownWrapper>
+            </div>
+          </MapDetailsModal>
+        )
+      }
+        
+      )}
+      
 		</main>
 		<ScriptsAfterBody />
 	</body>

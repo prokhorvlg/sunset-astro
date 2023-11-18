@@ -4,6 +4,8 @@ import type { LocationNode } from "@/components/special/MapScreen/BaseMap/data/t
 import { atom } from "jotai"
 import type { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 
+//const store = unstable_createStore()
+
 // Contains current real scale of map.
 export const scaleAtom = atom(MAP_INITIAL_SCALE)
 // Contains the adjusted scale of map (to shrink elements).
