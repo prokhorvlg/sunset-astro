@@ -13,7 +13,7 @@ import { AiOutlineQuestionCircle, AiOutlineSave } from "react-icons/ai";
 import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms";
 import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector";
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading";
-import ElementOffset from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer";
+import DetailsContainer from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer";
 import { SiteSubtype, type SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
@@ -87,7 +87,9 @@ const LocationSite = ({
       <Selector location={location} />
 
       {/* DARK CIRCLE under the icon */}
-      <div className={`map-site-dark-container  ${isDetailLevel ? "is-detail-level" : ""}`} style={{
+      <div className={`map-site-dark-container 
+        ${location.worldAffiliation ? location.worldAffiliation : ""} 
+        ${isDetailLevel ? "is-detail-level" : ""}`} style={{
           transform: `scale(${rescale})`,
         }}>
           <div className="dark-container-circle"></div>
@@ -119,16 +121,16 @@ const LocationSite = ({
             </div>
 
             {/* TYPE, FLAVOR TEXT */}
-            <ElementOffset location={location}>
+            <DetailsContainer location={location}>
               <>
-                <p className="type-text">{location.typeText}</p>
+                <p className={`type-text ${isDetailLevel ? "is-detail-level" : ""}`}>{location.typeText}</p>
                 {(isDetailLevel2 && location.flavorText) &&
                   <p className="flavor-text">
                     {location.flavorText}
                   </p>
                 }
               </>
-            </ElementOffset>
+            </DetailsContainer>
           </>
         )}
       </div>

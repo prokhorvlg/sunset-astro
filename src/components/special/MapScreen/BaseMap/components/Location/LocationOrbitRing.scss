@@ -11,6 +11,12 @@
   
   border-radius: 5000px;
   background: rgba(#ff8d0b, 0.35);
+
+  &.is-detail-level {
+    background: rgba($map-reddish-color, 0.2);
+
+  }
+
   .cover {
     border-radius: 5000px;
     background: rgba($map-background-color, 1);

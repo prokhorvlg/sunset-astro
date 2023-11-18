@@ -7,9 +7,11 @@
   &.is-detail-level {
     z-index: calc($map-zindex-field + 100);
     .dark-container-circle {
-      height: 55px;
-      width: 55px;
-      background: rgba($map-background-color, 0.8);
+      $diameter: 60px;
+      height: $diameter;
+      width: $diameter;
+      background: rgba($map-background-color, 0.5);
+      border: 2px solid rgba($map-amber-color, 0.3);
     }
   }
 
@@ -20,7 +22,7 @@
     width: 24px;
 
     border-radius: 5000px;
-    background: $map-background-color;
+    background: rgba($map-background-color, 1);
   }
 }
 

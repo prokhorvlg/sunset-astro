@@ -1,5 +1,5 @@
 import { MAP_MAX_SCALE, MAP_MIN_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom, isIntroOpenAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom, isIntroOpenAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMap from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMap"
 import { useAtom } from "jotai"
 import { useRef, useEffect, useState, type MouseEventHandler } from "react"
@@ -144,7 +144,8 @@ const BaseMap = ({
                 }
               }}
             >
-              <div className="bg-noise"></div>
+              {/* <div className="bg-noise"></div> */}
+              
 
               {/* PANNING RULER */}
               <div className="ruler">
@@ -261,6 +262,9 @@ const BaseMapTransformContainer = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
+  const [isDetailLevel, setIsDetailLevel] = useAtom(
+    isDetailLevelAtom
+  )
   
   const boundingBlockRef = useRef<HTMLDivElement>(null);
   const [boundingBlock, setBoundingBlock] = useAtom(boundingBlockAtom)
@@ -284,16 +288,25 @@ const BaseMapTransformContainer = ({
 
   return (
     <TransformComponent
-      wrapperClass="base-transform-wrapper"
+      wrapperClass={`base-transform-wrapper ${isDetailLevel ? "is-detail-level" : ""}`}
       contentClass="base-transform-content"
     >
       {/* BOUNDING BLOCK */}
-      <div className="bounding-block" 
+      <div
+        className="bounding-block"
         onWheel={(e) => onWheel(e)}
         onClick={(e) => onClick(e)}
-        onDoubleClick={(e) => {onDoubleClick(e)}}
+        onDoubleClick={(e) => {
+          onDoubleClick(e)
+        }}
         ref={boundingBlockRef}
       ></div>
+
+        <div
+          className="map-bg-pattern" style={{
+            display: isDetailLevel ? "block" : "none"
+          }}
+        ></div>
 
       {getMapComponent(map, {
         transform,

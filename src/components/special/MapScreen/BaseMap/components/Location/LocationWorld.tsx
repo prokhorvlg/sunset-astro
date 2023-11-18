@@ -139,7 +139,7 @@ const LocationWorld = ({
                 {isDetailLevel && (
                   <>
                     <p
-                      className="type-text"
+                      className={`type-text ${isDetailLevel ? "is-detail-level" : ""}`}
                       style={{
                         color: color,
                       }}

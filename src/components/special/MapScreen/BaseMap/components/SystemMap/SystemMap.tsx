@@ -26,8 +26,13 @@ const SystemMap = (props: MapComponentProps) => {
   return (
     <>
       {/* BACKGROUND GLOWS */}
-      <div className="sunset-map-large-glowing-background"></div>
+      <div className="sunset-map-large-glowing-background" style={{
+        opacity: isDetailLevel ? 0.2 : undefined
+        // height: 1 / scale * 2000,
+        // width: 1 / scale * 2000,
+      }}></div>
       <div className="sunset-map-large-outer-fade-background"></div>
+
       <div className="sunset-map-glowing-sun" style={{
         opacity: opacityFadeOut * 0.4
       }}></div>
@@ -41,16 +46,17 @@ const SystemMap = (props: MapComponentProps) => {
           backgroundSize: isDetailLevel ? "200px" : `${rescale * 800}px`,
          // backgroundSize: isDetailLevel ? "200px" : "600px",
           backgroundPosition: `${posX * rescale * starryPositionModifier}px ${posY * rescale * starryPositionModifier}px`,
+          //display: isDetailLevel ? "none" : "block"
         }}></div>
       </div>
         
       {/* GRID AT HIGH ZOOM */}
-      <div className="sunset-map-grid-container"
+      {/* <div className="sunset-map-grid-container"
         style={{
           opacity: opacityFadeIn
         }}>
         <div className="sunset-map-grid"></div>
-      </div>
+      </div> */}
       
       {/* ROOT LOCATION */}
       <div className="sunset-map-inner-container">

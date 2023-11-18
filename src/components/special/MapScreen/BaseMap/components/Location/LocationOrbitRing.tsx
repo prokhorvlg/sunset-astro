@@ -22,12 +22,12 @@ const LocationOrbitRing = ({
 
   return (
     <div
-      className="map-orbit-ring"
+      className={`map-orbit-ring ${isDetailLevel ? "is-detail-level" : ""}`}
       style={{
         height: size,
         width: size,
         zIndex: ringsCurrentZIndex,
-        opacity: isDetailLevel ? "0.2" : "1"
+        opacity: isDetailLevel ? "0.8" : "1"
       }}
     >
       <div className="cover" style={{
