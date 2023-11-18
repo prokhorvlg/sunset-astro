@@ -144,7 +144,7 @@ const BaseMap = ({
                 }
               }}
             >
-              <div class="bg-noise"></div>
+              <div className="bg-noise"></div>
 
               {/* PANNING RULER */}
               <div className="ruler">
