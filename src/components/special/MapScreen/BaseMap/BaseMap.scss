@@ -256,9 +256,12 @@
       &:hover {
         border-color: $map-amber-color;
         transform: translate(0, -5px);
-        background-color: rgba(darken($map-reddish-color, 42%), 0.9);
-        @include abg(0.3);
+        background-color: rgba(darken($map-reddish-color, 45%), 0.9);
+        @include abg(0.5);
         @include abg-red-diagonal;
+        &::after {
+          background-size: 80px;
+        }
         p, svg {
           color: $map-amber-color !important;
         }

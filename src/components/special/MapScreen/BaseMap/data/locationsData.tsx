@@ -274,6 +274,7 @@ export const locationsData: SystemLocationNode = {
           startingAngle: 240,
         },
         {
+          id: "prometheus",
           name: "Prometheus",
           typeText: "Joint Venture Orbital",
           flavorText:
@@ -730,7 +731,7 @@ export const locationsData: SystemLocationNode = {
       flavorText: "You see the beacon, lingering clearly before you, so you swiftly move towards it. You arrive... the beacon is directly behind you. How you got here is impossible to comprehend, but one thing is certain. The beacon wishes for you to leave immediately.",
       type: LocationType.Field,
       fieldShape: FieldShape.SRICircle,
-      fieldLabelOffset: {x: 0, y: 30},
+      fieldLabelOffset: {x: 0, y: 50},
       distance: 520,
       startingAngle: 240,
       children: [

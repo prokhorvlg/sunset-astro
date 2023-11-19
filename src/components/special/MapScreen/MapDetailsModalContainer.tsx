@@ -4,8 +4,9 @@ import MapModal from "@/components/special/MapScreen/MapModal"
 import { useAtom } from "jotai"
 import { useEffect } from "react"
 import { MdLocationPin } from "react-icons/md"
+import './MapDetailsModalContainer.scss'
 
-const MapDetailsModal = ({
+const MapDetailsModalContainer = ({
   children,
   id
 }) => {
@@ -30,25 +31,30 @@ const MapDetailsModal = ({
         setIsOpen={setIsSelectedModalOpen}
       >
         <div className="map-selected-content">
-          <div className="header-text">
-            <h2
-              className="name"
-              style={{
-                color: selectedLocation?.color || undefined,
-              }}
-            >
-              {selectedLocation?.name}
-            </h2>
-            <p className="type">
-              {selectedLocation?.typeText}
-            </p>
-          </div>
           <div className="selected-content-container">
+
+            <div className="header-text">
+              <h2
+                className="name"
+                style={{
+                  color: selectedLocation?.color || undefined,
+                }}
+              >
+                {selectedLocation?.name}
+              </h2>
+              <p className="type">
+                {selectedLocation?.typeText}
+              </p>
+            </div>
+
             <div className="flavor-text-container">
               <p>{selectedLocation?.flavorText}</p>
             </div>
+            
             <>{children}</>
+
             <hr />
+
             <SelectedDataRow
               label="Sub-type"
               content={selectedLocation?.subType}
@@ -70,6 +76,7 @@ const MapDetailsModal = ({
               label="Machine-Era Affiliation"
               content={undefined}
             />
+
           </div>
         </div>
       </MapModal>
@@ -97,4 +104,4 @@ const mapHumanEraAffiliationToLabel = {
   [HumanEraAffiliation.GreaterUnion]: "Greater Union",
 }
 
-export default MapDetailsModal
+export default MapDetailsModalContainer

@@ -76,6 +76,8 @@ const LocationSite = ({
     selectedLocationAtom
   )
 
+  const isSelected = selectedLocation && location.name === selectedLocation.name
+
   // VISIBILITY CULLING
   const visibleRef = useRef(null)
   const isInView = useIsVisible(visibleRef)
@@ -90,9 +92,12 @@ const LocationSite = ({
       <div className={`map-site-dark-container 
         ${location.worldAffiliation ? location.worldAffiliation : ""} 
         ${isDetailLevel ? "is-detail-level" : ""}`} style={{
+          
           transform: `scale(${rescale})`,
         }}>
-          <div className="dark-container-circle"></div>
+          <div className="dark-container-circle" style={{
+            borderColor: isSelected ? "rgba(0,0,0,0)" : undefined,
+          }}></div>
       </div>
 
       {/* ICON, TEXT */}

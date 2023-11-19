@@ -8,7 +8,7 @@ import MapScreen from '@/components/special/MapScreen/MapScreen';
 import { Content as MapIntro } from '@/data/map/map-intro.mdx';
 import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 import MapContent from '@/components/special/MapScreen/MapContent';
-import MapDetailsModal from '@/components/special/MapScreen/MapDetailsModal';
+import MapDetailsModalContainer from '@/components/special/MapScreen/MapDetailsModalContainer';
 
 import { locationsData } from '@/components/special/MapScreen/BaseMap/data/locationsData';
 
@@ -49,13 +49,13 @@ const allLocations = getDeepLocations(locationsData)
         const matchingFile = markdownFiles.find((file) => file.frontmatter.id === location)
 
         return (
-          <MapDetailsModal client:only="react" id={location}>
+          <MapDetailsModalContainer client:only="react" id={location}>
             <div class="location-content">
               <MarkdownWrapper >
                 {matchingFile && <matchingFile.Content />}
               </MarkdownWrapper>
             </div>
-          </MapDetailsModal>
+          </MapDetailsModalContainer>
         )
       }
         
@@ -65,3 +65,4 @@ const allLocations = getDeepLocations(locationsData)
 		<ScriptsAfterBody />
 	</body>
 </html>
+@/components/special/MapScreen/MapDetailsModalContainer

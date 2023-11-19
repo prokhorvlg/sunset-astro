@@ -11,7 +11,33 @@
       height: $diameter;
       width: $diameter;
       background: rgba($map-background-color, 0.5);
-      border: 2px solid rgba($map-amber-color, 0.3);
+      border: 2px solid rgba($map-amber-color, 1);
+
+      &::before {
+        //content: '';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 5px);
+        transform: translate(0, -50%);
+
+        height: 4px;
+        width: 4px;
+        z-index: 2000;
+        border-radius: 4px;
+        background: rgba($map-amber-color, 1);
+      }
+      &::after {
+        //content: '';
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 5px);
+        transform: translate(0, -50%);
+        height: 4px;
+        width: 4px;
+        z-index: 2000;
+        border-radius: 4px;
+        background: rgba($map-amber-color, 1);
+      }
     }
   }
 
