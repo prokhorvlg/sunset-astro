@@ -701,7 +701,7 @@ export const locationsData: SystemLocationNode = {
               id: "horizons-trail",
               name: "Horizon's Trail",
               typeText: "Spacecraft Debris",
-              flavorText: "Portions of the wreckage can be traced to the Horizon, an international research vessel destined for the world of Nibiru. The fragments ",
+              flavorText: "The suspended remains of the Horizon, an international vessel destined for Nibiru, trailing to the world's surface. Is it trying to tell us something in the transient form? [Is the message: don't come here?]",
               description: "",
               type: LocationType.Site,
               subType: SiteSubtype.Wreck,
