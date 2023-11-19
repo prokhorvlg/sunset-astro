@@ -31,7 +31,7 @@
     justify-content: center;
     align-items: center;
  
-    width: 1200px;
+    width: 1400px;
     max-width: 98%;
 
     .map-dialog-header {
@@ -110,14 +110,12 @@
 
       .content-child {
         position: relative;
-        //inset: 5px;
         height: 100%;
-        //width: 100%;
         overflow-y: auto;
-        padding: 40px 120px;
-        box-sizing: border-box;
+        padding: 40px 220px;
+        //box-sizing: border-box;
 
-        @media screen and (max-width: $breakpoint-mobile) {
+        @media screen and (max-width: $breakpoint-tablet) {
           padding: 20px 20px;
         }
 

@@ -279,8 +279,6 @@ export const locationsData: SystemLocationNode = {
           typeText: "Joint Venture Orbital",
           flavorText:
             "The ark remains still and silent, waiting for a nuclear armageddon that may never come.",
-          description:
-            "Split-design Orbital built by an unprecedented Union & Coalition partnership. Contains the classified Horizon Protocol, a re-population system in the event of nuclear apocalypse. The system has not been triggered.",
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
           worldAffiliation: WorldAffiliation.HumanEra,
@@ -662,8 +660,10 @@ export const locationsData: SystemLocationNode = {
       children: [],
     },
     {
+      id: "marduk",
       name: "Marduk",
       typeText: "Strange Gas Giant",
+      flavorText: "There was no second attempt.",
       type: LocationType.Planet,
       color: "#c955c5",
       colorSecondary: "#98599c",
@@ -672,6 +672,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 29,
       children: [
         {
+          id: "nibiru",
           name: "Nibiru",
           typeText: "Umbral Living World",
           flavorText: "The world lurks just beyond our deepest sensors, right outside the reach of our thumpers, at the edge of the Kuiper. It's almost as if it's trying to remain free of man's grasp.",
@@ -697,9 +698,10 @@ export const locationsData: SystemLocationNode = {
               startingAngle: 150,
             },
             {
+              id: "horizons-trail",
               name: "Horizon's Trail",
               typeText: "Spacecraft Debris",
-              flavorText: "Portions of the wreckage can be traces to the Horizon, an international research vessel destined for the world of Nibiru.",
+              flavorText: "Portions of the wreckage can be traced to the Horizon, an international research vessel destined for the world of Nibiru. The fragments ",
               description: "",
               type: LocationType.Site,
               subType: SiteSubtype.Wreck,
