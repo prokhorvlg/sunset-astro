@@ -13,20 +13,17 @@ import MapDetailsModalContainer from '@/components/special/MapScreen/MapDetailsM
 import { locationsData } from '@/components/special/MapScreen/BaseMap/data/locationsData';
 
 const markdownFiles = await Astro.glob('../data/map/locations/*.{md,mdx}')
-const markdownKeys = markdownFiles.map((item) => item.frontmatter.id)
 
 const getDeepLocations = (location) => {
   const hasId = location.id !== undefined
-  const effectiveId = hasId ? location.id : location.name
+  const effectiveId = hasId ? location.id : location.name.toLowerCase()
   const hasChildren = location.children !== undefined
   if (hasChildren) {
     return [effectiveId, ...location.children.map((child) => { return getDeepLocations(child) })].flat(100)
   }
   return [effectiveId]
 }
-
 const allLocations = getDeepLocations(locationsData)
-//console.log(allLocations)
 
 ---
 
@@ -46,7 +43,8 @@ const allLocations = getDeepLocations(locationsData)
       </MapScreen>
 
       {allLocations.map((location, i) => {
-        const matchingFile = markdownFiles.find((file) => file.frontmatter.id === location)
+        const getSlugFromUrl = (url) => url.split('/').pop().replace('.mdx', '')
+        const matchingFile = markdownFiles.find((file) => getSlugFromUrl(file.url) === location)
 
         return (
           <MapDetailsModalContainer client:only="react" id={location}>

@@ -1,5 +1,5 @@
 import { MAP_MAX_SCALE, MAP_MIN_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom, isIntroOpenAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom, isIntroOpenAtom, isDetailLevelAtom, activeMapAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMap from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMap"
 import { useAtom } from "jotai"
 import { useRef, useEffect, useState, type MouseEventHandler } from "react"
@@ -11,7 +11,7 @@ import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMap
 import { MapComponent } from "@/components/special/MapScreen/BaseMap/data/types"
 import { LuOrbit } from "react-icons/lu";
 import { PiCaretUpBold } from "react-icons/pi";
-import { TbInfoSmall, TbRefresh, TbZoomIn, TbZoomReset } from "react-icons/tb";
+import { TbInfoSmall, TbRefresh, TbZoomIn, TbZoomOut, TbZoomReset } from "react-icons/tb";
 import { FaQuestionCircle } from "react-icons/fa"
 
 const getMapComponent = (map: MapComponent, props: any) => {
@@ -47,6 +47,7 @@ const BaseMap = ({
     selectedLocationAtom
   )
   const [isSelectedModalOpen, setIsSelectedModalOpen] = useAtom(isSelectedModalOpenAtom)
+  const [activeMap, setActiveMap] = useAtom(activeMapAtom)
   const [isIntroOpen, setIsIntroOpen] = useAtom(isIntroOpenAtom)
 
   useEffect(() => {
@@ -79,24 +80,31 @@ const BaseMap = ({
     updateScaleFromExternalInput(parseFloat(e.target.value))
   }
 
+  const resetToSelected = () => {
+    if (!selectedLocation) return
+    transformComponentRef.current?.zoomToElement(
+      selectedLocation.name,
+      1,
+      400
+    )
+  }
+  const resetToCenter = () => {
+    transformComponentRef.current?.zoomToElement(
+      "Sol",
+      1,
+      400
+    )
+  }
+
   const reset = () => {
     if (selectedLocation) {
-      transformComponentRef.current?.zoomToElement(
-        selectedLocation.name,
-        1,
-        400
-      )
+      resetToSelected()
     } else {
-      transformComponentRef.current?.zoomToElement(
-        "Sol",
-        1,
-        400
-      )
+      resetToCenter()
     }
 
     setSelectedLocation(null)
   }
-
 
   return (
     <TransformWrapper
@@ -206,8 +214,26 @@ const BaseMap = ({
                   <MapControlButton
                     classes="open-local-map"
                     text="Open Local Map"
-                    onClick={reset}
+                    onClick={() => {
+                      if (!selectedLocation.localMap) return
+                      setActiveMap(selectedLocation.localMap)
+                      resetToCenter()
+                    }}
                     icon={<TbZoomIn />}
+                    isWide
+                  />
+                }
+                {(selectedLocation === null && 
+                    activeMap !== MapComponent.System
+                  ) &&
+                  <MapControlButton
+                    classes="open-local-map"
+                    text="Return to System"
+                    onClick={() => {
+                      setActiveMap(MapComponent.System)
+                      resetToCenter()
+                    }}
+                    icon={<TbZoomOut />}
                     isWide
                   />
                 }

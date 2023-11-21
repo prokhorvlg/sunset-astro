@@ -18,7 +18,7 @@ const MapDetailsModalContainer = ({
 
   const hasSelection = selectedLocation !== null
   const effectiveId = hasSelection ? 
-    (selectedLocation.id ? selectedLocation.id : selectedLocation.name) :
+    (selectedLocation.id ? selectedLocation.id : selectedLocation.name.toLowerCase()) :
     ""
   
   const locationIsOpen = hasSelection && isSelectedModalOpen && effectiveId === id

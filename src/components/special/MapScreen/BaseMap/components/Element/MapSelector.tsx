@@ -87,6 +87,7 @@ const SelectionButton = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
+  const [isDetailLevel, setIsDetailLevel] = useAtom(isDetailLevelAtom)
 
   const borderRadiusModifier = 20
   const usedRadius = radius ? radius : 10 // Used for sites
@@ -129,13 +130,13 @@ const SelectionButton = ({
 
   else if (isSite) {
     return (
-      <div className="selection-button-offset normal" style={{
+      <div className={`selection-button-offset normal ${isDetailLevel ? "is-detail-level" : ""} `} style={{
         height: usedRadius + borderRadiusModifier,
         width: usedRadius + borderRadiusModifier,
         transform: `translate(-50%, -50%) scale(${rescale})`,
       }}>
         <button
-          className={`selection-button`}
+          className={`selection-button ${isDetailLevel ? "is-detail-level" : ""}`}
           onWheel={onWheelHandler}
           onClick={onClickHandler}
         >
@@ -162,7 +163,7 @@ const SelectionButton = ({
           transform: `translate(-50%, -50%) scale(${rescale})`,
       }}>
         <button
-          className={`selection-button`}
+          className={`selection-button ${isDetailLevel ? "is-detail-level" : ""}`}
           onWheel={onWheelHandler}
           onClick={onClickHandler}
         >
