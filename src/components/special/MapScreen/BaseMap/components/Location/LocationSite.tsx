@@ -14,7 +14,7 @@ import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, ho
 import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector";
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading";
 import DetailsContainer from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer";
-import { SiteSubtype, type SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
+import { SiteSubtype, type LocationNode, type SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 
 const getIconFromSubType = (subType?: SiteSubtype) => {
   switch (subType) {
@@ -64,7 +64,7 @@ const LocationSite = ({
   location,
   radius,
 }: {
-  location: SystemLocationNode
+  location: LocationNode
   radius: number
 }) => {
   const [transform, setTransform] = useAtom(transformAtom)

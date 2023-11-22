@@ -1,9 +1,8 @@
-import { scaleAtom, usePosXAtom, usePosYAtom, rescaleAtom, opacityFadeOutAtom, opacityFadeInAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { scaleAtom, usePosXAtom, usePosYAtom, rescaleAtom, opacityFadeOutAtom, isDetailLevelAtom, activeMapMetaAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import SystemMapLocation from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMapLocation"
 import { useAtom } from "jotai"
 import './SystemMap.scss'
 import type { MapComponentProps } from "@/components/special/MapScreen/BaseMap/BaseMap"
-import { locationsData } from "@/components/special/MapScreen/BaseMap/data/locationsData"
 import type { SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 
 const SystemMap = (props: MapComponentProps) => {
@@ -14,14 +13,13 @@ const SystemMap = (props: MapComponentProps) => {
   const [opacityFadeOut, setOpacityFadeOut] = useAtom(
     opacityFadeOutAtom
   )
-  const [opacityFadeIn, setOpacityFadeIn] = useAtom(
-    opacityFadeInAtom
-  )
   const [isDetailLevel, setIsDetailLevel] = useAtom(
     isDetailLevelAtom
   )
 
   const starryPositionModifier = isDetailLevel ? 0.5 : 0.5
+
+  const [activeMapMeta, setActiveMapMeta] = useAtom(activeMapMetaAtom)
 
   return (
     <>
@@ -61,7 +59,7 @@ const SystemMap = (props: MapComponentProps) => {
       {/* ROOT LOCATION */}
       <div className="sunset-map-inner-container">
         <SystemMapLocation
-          location={locationsData as SystemLocationNode}
+          location={activeMapMeta.locations as SystemLocationNode}
           isRootElement
           transform={props.transform}
         />

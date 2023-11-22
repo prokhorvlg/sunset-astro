@@ -1,10 +1,10 @@
 
 import { MAP_INITIAL_SCALE, MAP_MAX_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { MapComponent, type LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
+import { ActiveMap, ActiveMapType, type ActiveMapMeta } from "@/components/special/MapScreen/BaseMap/data/mapTypes"
+import { mapActiveMapToMeta } from "@/components/special/MapScreen/BaseMap/data/maps"
+import type { LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 import { atom } from "jotai"
 import type { ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
-
-//const store = unstable_createStore()
 
 // Contains current real scale of map.
 export const scaleAtom = atom(MAP_INITIAL_SCALE)
@@ -21,15 +21,15 @@ export const rescaleAtom = atom((get) => {
 })
 
 // Reveals details at different scale levels
-export const isDetailLevelAtom = atom((get) => get(scaleAtom) > 4)
-export const isDetailLevel2Atom = atom((get) => get(scaleAtom) > 8)
-
-export const opacityFadeInAtom = atom((get) => {
-  const opacityFadeAwayCutoff = MAP_MAX_SCALE - 6
-  const currentLevel = opacityFadeAwayCutoff - get(scaleAtom)
-  const opacityFadeIn = currentLevel <= 1 ? 1 : (1 / currentLevel)
-  return opacityFadeIn
+export const isDetailLevelAtom = atom((get) => {
+  const activeMapMeta = get(activeMapMetaAtom)
+  return get(scaleAtom) > activeMapMeta.detailLevelScale
 })
+export const isDetailLevel2Atom = atom((get) => {
+  const activeMapMeta = get(activeMapMetaAtom)
+  return get(scaleAtom) > activeMapMeta.detailLevel2Scale
+})
+
 export const opacityFadeOutAtom = atom((get) => {
   const scale = get(scaleAtom)
   return 1 / scale
@@ -42,7 +42,12 @@ export const usePosYAtom = atom(0)
 // Contains current selected location of map.
 export const selectedLocationAtom = atom<LocationNode | null>(null)
 export const hoveredLocationAtom = atom<LocationNode | null>(null)
-export const activeMapAtom = atom<MapComponent>(MapComponent.System)
+
+export const activeMapAtom = atom<ActiveMap>(ActiveMap.Titan)
+export const activeMapMetaAtom = atom<ActiveMapMeta>((get) => {
+  const activeMap = get(activeMapAtom)
+  return mapActiveMapToMeta[activeMap]
+})
 
 export const isSelectedModalOpenAtom = atom<boolean>(false)
 

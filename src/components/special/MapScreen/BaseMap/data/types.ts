@@ -1,3 +1,4 @@
+import type { ActiveMap } from "@/components/special/MapScreen/BaseMap/data/mapTypes"
 import type { ReactNode } from "react"
 
 export enum LocationType {
@@ -13,11 +14,6 @@ export enum LocationType {
 export enum RelativePosition {
   Local, // Object remains constant in relation to parent
   Deep, // Object remains in static position on map (default)
-}
-
-export enum MapComponent {
-  System = "system",
-  Titan = "titan"
 }
 
 export interface LocationNode {
@@ -55,7 +51,7 @@ export interface LocationNode {
   children?: LocationNode[]
 
   // LOCAL MAP
-  localMap?: MapComponent
+  localMap?: ActiveMap
 
   // OLD UNUSED
   crafts?: LocationNode[] // unused

@@ -4,14 +4,14 @@ import { transformAtom, rescaleAtom, selectedLocationAtom, isDetailLevelAtom } f
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './MapSelector.scss'
-import { type SystemLocationNode, LocationType } from "@/components/special/MapScreen/BaseMap/data/types"
+import { type SystemLocationNode, LocationType, type LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 
 const MapSelector = ({
   location,
   radius,
   children
 }: {
-  location: SystemLocationNode
+  location: LocationNode
   radius?: number // For worlds with preprocessed radius
   children?: any
 }) => {

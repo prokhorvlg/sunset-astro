@@ -3,8 +3,8 @@ import { GiMineWagon, GiMushroomGills, GiPalmTree, GiSandSnake, GiSmokingVolcano
 import { FaDroplet, FaHeart, FaQuestion, FaUmbrellaBeach, FaVolcano } from "react-icons/fa6";
 import { MdDarkMode } from "react-icons/md";
 import { IoHeart, IoSnow, IoSunny } from "react-icons/io5";
-import { type SystemLocationNode, LocationType, SiteSubtype, WorldAffiliation, HumanEraAffiliation, FieldShape, MapComponent } from "@/components/special/MapScreen/BaseMap/data/types";
-
+import { FieldShape, HumanEraAffiliation, LocationType, SiteSubtype, WorldAffiliation, type SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
+import { ActiveMap, type ActiveMapMeta, ActiveMapType } from "@/components/special/MapScreen/BaseMap/data/mapTypes";
 
 // Data for generation of objects
 export const locationsData: SystemLocationNode = {
@@ -92,6 +92,7 @@ export const locationsData: SystemLocationNode = {
           startingAngle: 340,//30
           children: [
             {
+              id: "inner-eye",
               name: "Inner Eye",
               typeText: "SRI Noetic Research Orbital",
               flavorText:
@@ -123,14 +124,13 @@ export const locationsData: SystemLocationNode = {
       radius: 15,
       startingAngle: 205, //205
       isImportant: true,
-      localMap: MapComponent.Titan,
+      localMap: ActiveMap.Titan,
       icon: <GiPalmTree />,
       children: [
         {
-          name: "Tolkiy-Merdem People's Orbital",
-          typeText: "Food Processing Orbital City",
-          flavorText:
-            "First an orbital gulag, then a revolution, finally a nuclear stalemate. Source of all the Union's troubles, until it wasn't.",
+          name: "Tolkiy-Merdem",
+          typeText: "Messy People's Orbital",
+          flavorText: "First an orbital gulag, then a revolution, finally a nuclear stalemate. Source of all the Union's troubles, until it wasn't.",
           description:
             "Interbeacon was an enormous statite built to syncronize the Aggregate, the Union's interplanetery datanet. Today, it hosts RADIUS, the final remnant of the Union's automated economic planning system. Their voice booms across the skies, visible from all points in the System.",
           type: LocationType.Site,
@@ -170,7 +170,7 @@ export const locationsData: SystemLocationNode = {
       radius: 14,
       startingAngle: 340,
       isImportant: true,
-      localMap: MapComponent.Titan,
+      localMap: ActiveMap.Titan,
       icon: <IoHeart />,
       children: [
         {
@@ -260,7 +260,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 74,
       ringWidth: 40,
       isImportant: true,
-      localMap: MapComponent.Titan,
+      localMap: ActiveMap.Titan,
       children: [
         {
           name: "Tojo Terminus",
@@ -574,7 +574,7 @@ export const locationsData: SystemLocationNode = {
           radius: 8,
           startingAngle: 40,
           isImportant: true,
-          localMap: MapComponent.Titan,
+          localMap: ActiveMap.Titan,
           icon: <GiSnail />,
           children: [
             {
@@ -855,4 +855,20 @@ export const locationsData: SystemLocationNode = {
     }
 
   ],
+}
+
+export const systemMapMeta: ActiveMapMeta = {
+  id: ActiveMap.System,
+  mapType: ActiveMapType.System,
+  dimensions: {
+    x: 3200,
+    y: 2000
+  },
+  minScale: 0.8,
+  maxScale: 12,
+  detailLevelScale: 4,
+  detailLevel2Scale: 8,
+  centerOffset: 0,
+  distanceMultiplier: 1,
+  locations: locationsData
 }

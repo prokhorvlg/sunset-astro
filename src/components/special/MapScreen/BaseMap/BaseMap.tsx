@@ -1,110 +1,61 @@
 import { MAP_MAX_SCALE, MAP_MIN_SCALE } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { transformAtom, scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom, isIntroOpenAtom, isDetailLevelAtom, activeMapAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
-import SystemMap from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMap"
+import { scaleAtom, rescaleAtom, usePosXAtom, usePosYAtom, selectedLocationAtom, boundingBlockAtom, isSelectedModalOpenAtom, isIntroOpenAtom, isDetailLevelAtom, activeMapAtom, activeMapMetaAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
-import { useRef, useEffect, useState, type MouseEventHandler } from "react"
+import { useRef, useEffect, type MouseEventHandler } from "react"
 import { TransformWrapper, TransformComponent, type ReactZoomPanPinchContentRef } from "react-zoom-pan-pinch"
 import {debounce} from "debounce"
-import LocalMap from "@/components/special/MapScreen/BaseMap/components/LocalMap/LocalMap"
 import './BaseMap.scss'
 import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMapWheel"
-import { MapComponent } from "@/components/special/MapScreen/BaseMap/data/types"
 import { LuOrbit } from "react-icons/lu";
 import { PiCaretUpBold } from "react-icons/pi";
-import { TbInfoSmall, TbRefresh, TbZoomIn, TbZoomOut, TbZoomReset } from "react-icons/tb";
+import { TbRefresh, TbZoomIn, TbZoomOut } from "react-icons/tb";
 import { FaQuestionCircle } from "react-icons/fa"
-
-const getMapComponent = (map: MapComponent, props: any) => {
-  const mapToMap = {
-    [MapComponent.System]: <SystemMap {...props} />,
-    [MapComponent.Titan]: <LocalMap {...props} />
-  }
-  return mapToMap[map]
-}
+import { ActiveMap, ActiveMapType } from "@/components/special/MapScreen/BaseMap/data/mapTypes"
+import { useMapControls } from "@/components/special/MapScreen/BaseMap/hooks/useMapControls"
+import LocalMap from "@/components/special/MapScreen/BaseMap/components/LocalMap/LocalMap"
+import SystemMap from "@/components/special/MapScreen/BaseMap/components/SystemMap/SystemMap"
 
 export interface MapComponentProps {
   transform: ReactZoomPanPinchContentRef
 }
 
-const BaseMap = ({
-  map
-}: {
-  map: MapComponent
-}) => {
-  const transformComponentRef =
-    useRef<ReactZoomPanPinchContentRef | null>(null)
-  const mapContainerRef = useRef<HTMLDivElement | null>(null)
+const getMapComponent = (mapType: ActiveMapType, props: any) => {
+  const mapToMap = {
+    [ActiveMapType.System]: <SystemMap {...props} />,
+    [ActiveMapType.Local]: <LocalMap {...props} />
+  }
+  return mapToMap[mapType]
+}
 
-  // Global state of map
-  const [transform, setTransform] = useAtom(transformAtom)
+const BaseMap = () => {
+  // BASE MAP STATE
   const [scale, setScale] = useAtom(scaleAtom)
-  const [rescale, setRescale] = useAtom(rescaleAtom)
-
   const [posX, setPosX] = useAtom(usePosXAtom)
   const [posY, setPosY] = useAtom(usePosYAtom)
-  
+  const [rescale, setRescale] = useAtom(rescaleAtom)
+
+  // MAP SCREEN STATE
+  const [isSelectedModalOpen, setIsSelectedModalOpen] =
+  useAtom(isSelectedModalOpenAtom)
+  const [isIntroOpen, setIsIntroOpen] =
+  useAtom(isIntroOpenAtom)
+
+  // SELECTION STATE
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
-  const [isSelectedModalOpen, setIsSelectedModalOpen] = useAtom(isSelectedModalOpenAtom)
+
+  const {
+    transformComponentRef,
+    mapContainerRef,
+    reset,
+    resetToSelected,
+    resetToCenter
+  } = useMapControls()
+
+  // CURRENT ACTIVE MAP STATE
   const [activeMap, setActiveMap] = useAtom(activeMapAtom)
-  const [isIntroOpen, setIsIntroOpen] = useAtom(isIntroOpenAtom)
-
-  useEffect(() => {
-    if (!transformComponentRef.current) return
-    setTransform(transformComponentRef.current)
-    transformComponentRef.current.zoomIn(0,0)
-  }, [transformComponentRef, map])
-
-  // TODO: Unique bounds on mobile scale devices. Desktop should be more limited.
-
-  const updateScaleFromExternalInput = (
-    newScale: number
-  ) => {
-    if (!transformComponentRef.current) return
-    const { zoomIn, zoomOut } =
-      transformComponentRef.current
-
-    const targetScale = newScale
-    const factor =
-      Math.log(targetScale / scale) / (1 / MAP_MAX_SCALE)
-    if (targetScale > scale) {
-      zoomIn(factor, 0)
-    } else {
-      zoomOut(-factor, 0)
-    }
-    setScale(targetScale)
-  }
-
-  const updateScale = (e: { target: { value: string } }) => {
-    updateScaleFromExternalInput(parseFloat(e.target.value))
-  }
-
-  const resetToSelected = () => {
-    if (!selectedLocation) return
-    transformComponentRef.current?.zoomToElement(
-      selectedLocation.name,
-      1,
-      400
-    )
-  }
-  const resetToCenter = () => {
-    transformComponentRef.current?.zoomToElement(
-      "Sol",
-      1,
-      400
-    )
-  }
-
-  const reset = () => {
-    if (selectedLocation) {
-      resetToSelected()
-    } else {
-      resetToCenter()
-    }
-
-    setSelectedLocation(null)
-  }
+  const [activeMapMeta, setActiveMapMeta] = useAtom(activeMapMetaAtom)
 
   return (
     <TransformWrapper
@@ -112,9 +63,10 @@ const BaseMap = ({
       initialScale={scale}
       initialPositionX={0}
       initialPositionY={0}
-      minScale={MAP_MIN_SCALE}
-      maxScale={MAP_MAX_SCALE}
+      minScale={activeMapMeta.minScale}
+      maxScale={activeMapMeta.maxScale}
       smooth={false}
+      disablePadding={activeMapMeta.mapType === ActiveMapType.Local}
       wheel={{
         disabled: true
       }}
@@ -137,7 +89,7 @@ const BaseMap = ({
       {(transform: ReactZoomPanPinchContentRef) => {
         return (
           <div
-            className={`base-map-container ${map}`}
+            className={`base-map-container ${activeMap}`}
             ref={mapContainerRef}
           >
             <div
@@ -152,9 +104,6 @@ const BaseMap = ({
                 }
               }}
             >
-              {/* <div className="bg-noise"></div> */}
-              
-
               {/* PANNING RULER */}
               <div className="ruler">
                 <div
@@ -224,13 +173,13 @@ const BaseMap = ({
                   />
                 }
                 {(selectedLocation === null && 
-                    activeMap !== MapComponent.System
+                    activeMap !== ActiveMap.System
                   ) &&
                   <MapControlButton
                     classes="open-local-map"
                     text="Return to System"
                     onClick={() => {
-                      setActiveMap(MapComponent.System)
+                      setActiveMap(ActiveMap.System)
                       resetToCenter()
                     }}
                     icon={<TbZoomOut />}
@@ -266,7 +215,6 @@ const BaseMap = ({
               <BaseMapTransformContainer
                 transform={transform}
                 reset={reset}
-                map={map}
               />
             </div>
           </div>
@@ -279,11 +227,9 @@ const BaseMap = ({
 const BaseMapTransformContainer = ({
   transform,
   reset,
-  map,
 }: {
   transform: ReactZoomPanPinchContentRef
   reset: () => void
-  map: MapComponent
 }) => {
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
@@ -291,6 +237,7 @@ const BaseMapTransformContainer = ({
   const [isDetailLevel, setIsDetailLevel] = useAtom(
     isDetailLevelAtom
   )
+  const [activeMapMeta, setActiveMapMeta] = useAtom(activeMapMetaAtom)
   
   const boundingBlockRef = useRef<HTMLDivElement>(null);
   const [boundingBlock, setBoundingBlock] = useAtom(boundingBlockAtom)
@@ -320,6 +267,10 @@ const BaseMapTransformContainer = ({
       {/* BOUNDING BLOCK */}
       <div
         className="bounding-block"
+        style={{
+          height: activeMapMeta.dimensions.y,
+          width: activeMapMeta.dimensions.x,
+        }}
         onWheel={(e) => onWheel(e)}
         onClick={(e) => onClick(e)}
         onDoubleClick={(e) => {
@@ -334,7 +285,7 @@ const BaseMapTransformContainer = ({
           }}
         ></div>
 
-      {getMapComponent(map, {
+      {getMapComponent(activeMapMeta.mapType, {
         transform,
         onWheel,
       })}

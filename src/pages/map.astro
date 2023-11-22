@@ -7,10 +7,9 @@ import MapScreen from '@/components/special/MapScreen/MapScreen';
 
 import { Content as MapIntro } from '@/data/map/map-intro.mdx';
 import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
-import MapContent from '@/components/special/MapScreen/MapContent';
 import MapDetailsModalContainer from '@/components/special/MapScreen/MapDetailsModalContainer';
 
-import { locationsData } from '@/components/special/MapScreen/BaseMap/data/locationsData';
+import { locationsData } from '@/components/special/MapScreen/BaseMap/data/maps/systemMapData';
 
 const markdownFiles = await Astro.glob('../data/map/locations/*.{md,mdx}')
 
