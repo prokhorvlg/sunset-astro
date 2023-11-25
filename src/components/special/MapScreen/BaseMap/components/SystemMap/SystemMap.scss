@@ -7,87 +7,92 @@
   transform: translate(-50%, -50%);
 }
 
-  .sunset-map-large-glowing-background {
-    //display: none;
-    $largeGlowingBackgroundWidth: 2000px;
-    @include centeredObject();
-    height: $largeGlowingBackgroundWidth;
-    width: $largeGlowingBackgroundWidth;
-    z-index: $map-zindex-underlyingOverlay;
-    border-radius: 9999px;
-    //background: radial-gradient(rgb(255, 189, 6) 0%, rgb(131, 21, 7) 30%, rgba(0,0,0,0) 70%);
-    background: radial-gradient(rgba(255, 132, 18, 0.8) 0%, rgba(133, 43, 1, 0.8) 30%, rgba(24, 15, 15, 0) 70%);
+.sunset-map-large-glowing-background {
+  //display: none;
+  $largeGlowingBackgroundWidth: 2000px;
+  @include centeredObject();
+  height: $largeGlowingBackgroundWidth;
+  width: $largeGlowingBackgroundWidth;
+  z-index: $map-zindex-underlyingOverlay;
+  border-radius: 9999px;
+  //background: radial-gradient(rgb(255, 189, 6) 0%, rgb(131, 21, 7) 30%, rgba(0,0,0,0) 70%);
+  background: radial-gradient(rgba(255, 132, 18, 0.8) 0%, rgba(133, 43, 1, 0.8) 30%, rgba(24, 15, 15, 0) 70%);
+  opacity: 0.4;
+  user-select: none;
+  pointer-events: none;
+}
+
+.sunset-map-glowing-sun {
+  //display: none;
+  @include centeredObject();
+  height: 250px;
+  width: 250px;
+  border-radius: 99999px;
+  z-index: $map-zindex-iconOverlay;
+  background: radial-gradient(rgba(255, 171, 46, 1) 20%,
+      rgb(255, 152, 17) 30%,
+      rgba(230, 83, 15, 0.2) 50%,
+      rgba(255, 195, 28, 0) 65%);
+  //mix-blend-mode: screen;
+  opacity: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0% {
     opacity: 0.4;
-    user-select: none;
-    pointer-events: none;
   }
 
-  .sunset-map-glowing-sun {
-    //display: none;
-    @include centeredObject();
-    height: 250px;
-    width: 250px;
-    border-radius: 99999px;
-    z-index: $map-zindex-iconOverlay;
-    background: radial-gradient(rgba(255, 171, 46, 1) 20%,
-        rgb(255, 152, 17) 30%,
-        rgba(230, 83, 15, 0.2) 50%,
-        rgba(255, 195, 28, 0) 65%);
-    //mix-blend-mode: screen;
-    opacity: 1;
-    user-select: none;
-    pointer-events: none;
-  }
-  @keyframes pulse {
-    0%{
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.6;
-    }
-    100% {
-      opacity: 0.4;
-    }
+  50% {
+    opacity: 0.6;
   }
 
-  .sunset-map-grid-container {
-    display: none;
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.sunset-map-grid-container {
+  display: none;
+  position: absolute;
+  z-index: $map-zindex-underlyingOverlay;
+
+  .sunset-map-grid {
+    @include abg(0.07);
+    //@include abg-red-plus();
+    height: 10000px;
+    width: 10000px;
+    z-index: $map-zindex-underlyingOverlay;
+    left: 50%;
+    top: 50%;
     position: absolute;
-    z-index: $map-zindex-underlyingOverlay;
+    //transform: translate(-50%, -50%);
+    //mix-blend-mode: lighten;
 
-    .sunset-map-grid {
-      @include abg(0.07);
-      //@include abg-red-plus();
-      height: 10000px;
-      width: 10000px;
-      z-index: $map-zindex-underlyingOverlay;
-      left: 50%;
-      top: 50%;
-      position: absolute;
-      //transform: translate(-50%, -50%);
-      //mix-blend-mode: lighten;
-
-      &::after {
-        background-image: url('/images/patterns/map-bg-grid-pattern.svg');
-        background-size: 4px;
-        pointer-events: none;
-      }
+    &::after {
+      background-image: url('/images/patterns/map-bg-grid-pattern.svg');
+      background-size: 4px;
+      pointer-events: none;
     }
   }
+}
 
-  .sunset-map-starry-container {
-    //display: none;
+.sunset-map-starry-container {
+  //display: none;
+  @include absoluteCentered();
+  z-index: $map-zindex-underlyingOverlay;
+
+  .sunset-map-starry-pattern {
     @include absoluteCentered();
-    z-index: $map-zindex-underlyingOverlay;
 
-    .sunset-map-starry-pattern {
-      @include absoluteCentered();
-
-      //mix-blend-mode: screen;
-      opacity: 0.15;
-      background-image: url('/images/patterns/1000-dots-1000x1000.svg');
-      background-repeat: repeat;
-      background-size: 700px;
-      background-position: 50% 50%;
-    }
+    //mix-blend-mode: screen;
+    opacity: 0.15;
+    background-image: url('/images/patterns/1000-dots-1000x1000.svg');
+    background-repeat: repeat;
+    background-size: 700px;
+    background-position: 50% 50%;
   }
+
+}
+

@@ -8,16 +8,19 @@ export enum ActiveMap {
 
 export interface ActiveMapMeta {
   id: string
+  name: string
   mapType: ActiveMapType
   image?: ImageMetadata
   dimensions: {
     x: number
     y: number
   }
+  centerLocationId: string
   minScale: number
   maxScale: number
   detailLevelScale: number // type gets revealed
   detailLevel2Scale: number // flavor text gets revealed
+  diagPatternScale: string // size of diagonal pattern
   centerOffset: number
   distanceMultiplier: number
   locations: SystemLocationNode | LocalLocationNode[]

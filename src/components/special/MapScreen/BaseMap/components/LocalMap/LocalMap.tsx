@@ -8,29 +8,27 @@ import type { LocalLocationNode } from "@/components/special/MapScreen/BaseMap/d
 const LocalMap = (props: MapComponentProps) => {
   const [activeMapMeta, setActiveMapMeta] = useAtom(activeMapMetaAtom)
 
-  return (
-    <div className="local-map" style={{
-      //top: -activeMapMeta.dimensions.y
-    }}>
+  if (!activeMapMeta.image) return null
+  const heightToBoundingRatio = activeMapMeta.dimensions.x / activeMapMeta.image.width
 
+  return (
+    <>
       {activeMapMeta.image &&
-        <div className="map-bg" style={{
+        <div className="local-map-bg" style={{
           backgroundImage: `url(${activeMapMeta.image.src})`,
-          height: activeMapMeta.dimensions.y,
-          width: activeMapMeta.dimensions.x
+          height: activeMapMeta.image.height,
+          width: activeMapMeta.image.width,
+          transform: `translate(-50%, -50%) scale(${heightToBoundingRatio})`
         }}></div>
       }
 
-      <div className='local-map-center'>
-        {(activeMapMeta.locations as LocalLocationNode[]).map((location) => {
-          return <LocalMapLocation
-            key={location.name}
-            location={location}
-          />
-        })}
-      </div>
-
-    </div>
+      {(activeMapMeta.locations as LocalLocationNode[]).map((location) => {
+        return <LocalMapLocation
+          key={location.name}
+          location={location}
+        />
+      })}
+    </>
   )
 }
 

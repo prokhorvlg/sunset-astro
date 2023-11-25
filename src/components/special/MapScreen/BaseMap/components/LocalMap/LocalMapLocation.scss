@@ -1,13 +1,5 @@
 @import 'src/styles/imports.scss';
 
-@mixin centeredObject() {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .local-location-container {
   position: absolute;
-  transform: translate(-50%, -50%);
 }

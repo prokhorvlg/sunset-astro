@@ -23,11 +23,11 @@ export const rescaleAtom = atom((get) => {
 // Reveals details at different scale levels
 export const isDetailLevelAtom = atom((get) => {
   const activeMapMeta = get(activeMapMetaAtom)
-  return get(scaleAtom) > activeMapMeta.detailLevelScale
+  return get(scaleAtom) >= activeMapMeta.detailLevelScale
 })
 export const isDetailLevel2Atom = atom((get) => {
   const activeMapMeta = get(activeMapMetaAtom)
-  return get(scaleAtom) > activeMapMeta.detailLevel2Scale
+  return get(scaleAtom) >= activeMapMeta.detailLevel2Scale
 })
 
 export const opacityFadeOutAtom = atom((get) => {

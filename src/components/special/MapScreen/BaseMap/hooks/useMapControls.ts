@@ -5,6 +5,7 @@ import {
   rescaleAtom,
   selectedLocationAtom,
   activeMapAtom,
+  activeMapMetaAtom,
 } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useEffect, useRef } from "react"
@@ -29,6 +30,7 @@ export const useMapControls = () => {
 
   // CURRENT ACTIVE MAP STATE
   const [activeMap, setActiveMap] = useAtom(activeMapAtom)
+  const [activeMapMeta, setActiveMapMeta] = useAtom(activeMapMetaAtom)
   
   // Whenever active map changes, update the transform ref
   useEffect(() => {
@@ -69,7 +71,7 @@ export const useMapControls = () => {
   // Reset view to center.
   const resetToCenter = () => {
     transformComponentRef.current?.zoomToElement(
-      "Sol",
+      activeMapMeta.centerLocationId,
       1,
       400
     )

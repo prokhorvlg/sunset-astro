@@ -1,7 +1,9 @@
 // Z-index for layering
 
 // UNDERLYING
+$map-zindex-bgImage: 190;
 $map-zindex-orbitRing: 200;
+$map-zindex-diagPattern: 250;
 $map-zindex-field: 350;
 $map-zindex-underlyingOverlay: 400; // Make sure to clear all the stacking rings
 
@@ -13,6 +15,7 @@ $map-zindex-iconOverlay: 650;
 // TEXT
 $map-zindex-label: 800;
 $map-zindex-labelOverlay: 850;
+$map-zindex-localIndicator: 860;
 
 // OTHER FEATURES
 $map-zindex-ruler: 900;

@@ -151,7 +151,7 @@ const BaseMap = () => {
                 <p>current map //</p>
                 <h1>
                   <LuOrbit />
-                  solar system
+                  {activeMapMeta.name}
                 </h1>
               </div>
 
@@ -279,11 +279,12 @@ const BaseMapTransformContainer = ({
         ref={boundingBlockRef}
       ></div>
 
-        <div
-          className="map-bg-pattern" style={{
-            display: isDetailLevel ? "block" : "none"
-          }}
-        ></div>
+      <div
+        className="map-bg-pattern" style={{
+          display: isDetailLevel ? "block" : "none",
+          backgroundSize: activeMapMeta.diagPatternScale
+        }}
+      ></div>
 
       {getMapComponent(activeMapMeta.mapType, {
         transform,

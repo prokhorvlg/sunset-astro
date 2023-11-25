@@ -859,15 +859,18 @@ export const locationsData: SystemLocationNode = {
 
 export const systemMapMeta: ActiveMapMeta = {
   id: ActiveMap.System,
+  name: "Solar System",
   mapType: ActiveMapType.System,
   dimensions: {
     x: 3200,
     y: 2000
   },
+  centerLocationId: "sol",
   minScale: 0.8,
   maxScale: 12,
   detailLevelScale: 4,
   detailLevel2Scale: 8,
+  diagPatternScale: "1px",
   centerOffset: 0,
   distanceMultiplier: 1,
   locations: locationsData

@@ -7,16 +7,8 @@
   transform: translate(-50%, -50%);
 }
 
-.local-map {
-  position: absolute;
-  inset: 0;
-
-  .map-bg {
-    @include centeredObject;
-    background-size: contain;
-  }
-  .local-map-center {
-    @include centeredObject;
-    position: absolute;
-  }
+.local-map-bg {
+  @include centeredObject;
+  background-size: contain;
+  z-index: $map-zindex-bgImage;
 }
