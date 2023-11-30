@@ -1,7 +1,5 @@
 const imagesGlob = import.meta.glob("../assets/images/**/*")
 
-//console.log(imagesGlob)
-
 export interface ImageArtist {
     id: string
     link: string
@@ -41,9 +39,6 @@ export const getImageById = (id: string) => {
 // '../assets/images/content/11b2-k_yashkin.png
 const IMAGE_FILEPATH_PREFIX = '../assets/images/'
 const getImageFromGlob = (fileName: string) => {
-  //console.log("the glob", imagesGlob)
-  //console.log("globbing!!", IMAGE_FILEPATH_PREFIX + fileName)
-  //console.log(imagesGlob[IMAGE_FILEPATH_PREFIX + fileName])
   return imagesGlob[IMAGE_FILEPATH_PREFIX + fileName]
 }
 

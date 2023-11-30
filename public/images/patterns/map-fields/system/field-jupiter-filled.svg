@@ -4,16 +4,16 @@
   xmlns:svgjs="http://svgjs.dev/svgjs">
 
   <defs>
-    <linearGradient id="gradient" x1="0" y1="100%" x2="0" y2="0%" patternUnits="userSpaceOnUse" gradientTransform="scale(2)">
-      <stop class="stop1" offset="0%" stop-color="rgb(172, 2, 214)"/>
-      <stop class="stop2" offset="100%" stop-color="rgb(255, 23, 178)"/>
+    <linearGradient id="field-gradient" x1="0" y1="100%" x2="0" y2="0%" patternUnits="userSpaceOnUse" gradientTransform="scale(2)">
+      <stop class="stop1" offset="0%" stop-color="rgb(172, 2, 214)" stop-opacity="0.1"/>
+      <stop class="stop2" offset="100%" stop-color="rgb(255, 23, 178)" stop-opacity="0.5"/>
     </linearGradient>
-    <pattern id="stripe" patternTransform="rotate(45) scale(0.4)" width="10" height="100%" patternUnits="userSpaceOnUse" x="0" y="0">
-      <rect x="0" y="0" width="2" height="200%" fill="url(#gradient)"></rect>
+    <pattern id="stripe" patternTransform="rotate(45) scale(0.8)" width="10" height="100%" patternUnits="userSpaceOnUse" x="0" y="0">
+      <rect x="0" y="0" width="2" height="200%" fill="url(#field-gradient)"></rect>
     </pattern>
   </defs>
 
-<path fillRule="evenodd" fill="url(#gradient)"
+<path fillRule="evenodd" fill="url(#field-gradient)" stroke="rgb(172, 2, 214)" stroke-width="0.2"
  d="M189.771,104.538 C204.537,125.218 204.731,208.386 173.566,148.653 C156.402,115.757 100.042,68.842 102.441,141.451 C102.831,166.678 99.767,195.970 72.730,157.656 C52.339,128.760 24.687,157.779 41.1000,117.000 C64.158,64.809 -38.074,58.365 16.911,11.805 C54.054,-19.647 58.828,23.378 113.244,26.210 C146.610,27.947 154.202,54.721 189.771,104.538 Z"/>
 
 </svg>

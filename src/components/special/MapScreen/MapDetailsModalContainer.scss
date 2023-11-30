@@ -104,13 +104,18 @@
         @media screen and (max-width: $breakpoint-mobile) {
           flex-direction: row;
           margin-top: 60px;
+          margin-left: 10px;
+          margin-right: 10px;
           flex-wrap: wrap;
+          gap: 20px;
         }
         > div {
           display: flex;
           justify-content: center;
           align-items: center;
           white-space: nowrap;
+          background: rgba($map-reddish-color, 0.05);
+          padding: 3px;
           svg {
             margin-right: 10px;
           }

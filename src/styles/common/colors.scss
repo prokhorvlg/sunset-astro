@@ -21,12 +21,16 @@ $color-spooky-secondary: #ff4ac3;
 
 $color-patreon: #0effaf;
 
+$color-union: #e90000;
+$color-coalition: #007bd2;
+$color-pact: #f8cd00;
+
 // MAP
 $map-amber-color: $color-sunset-orange;//#ffb64e;
 $map-reddish-color: $color-sunset-red;//#ff4111;
 $map-background-color: #220a06;
 
-// site colors
+// MAP site colors
 $colorWorldHumanEra: $map-reddish-color;
 $colorWorldAnomaly: #fc43b5;
 $colorWorldMachineEra: $color-sunset-aqua;
@@ -39,11 +43,11 @@ $colorWorldCenturyOfProgress: #ff5194; //#fff67e;
   @include mapColorSubType(".machine-era", $colorWorldMachineEra, $selector);
   @include mapColorSubType(".machines-of-glass", $colorWorldMachinesOfGlass, $selector);
   @include mapColorSubType(".century-of-progress", $colorWorldCenturyOfProgress, $selector);
+  @include mapColorSubType(".natural", $map-reddish-color, $selector);
 }
 
 @mixin mapColorSubType($subTypeClass, $color, $selector) {
   &#{$subTypeClass} {
-
     @if $selector {
       #{$selector} {
         color: $color;
@@ -52,6 +56,5 @@ $colorWorldCenturyOfProgress: #ff5194; //#fff67e;
     @else {
       color: $color;
     }
-
   }
 }

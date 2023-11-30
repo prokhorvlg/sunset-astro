@@ -1,11 +1,11 @@
-import { HumanEraAffiliation, LocationType, mapHumanEraAffiliationToText, mapTypeToText, mapWorldAffiliationToText } from "@/components/special/MapScreen/BaseMap/data/types"
+import { HumanEraAffiliation, LocationType, mapHumanEraAffiliationToText, mapSiteSubTypeToText, mapTypeToText, mapWorldAffiliationToText } from "@/components/special/MapScreen/BaseMap/data/types"
 import { isSelectedModalOpenAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
 import { useAtom } from "jotai"
 import { useEffect } from "react"
 import { MdLocationPin } from "react-icons/md"
 import './MapDetailsModalContainer.scss'
-import { getIconFromSubType, getIconFromType, getIconFromWorldAffiliation } from "@/components/special/MapScreen/BaseMap/data/icons"
+import { getIconFromHumanEraAffiliation, getIconFromSubType, getIconFromType, getIconFromWorldAffiliation } from "@/components/special/MapScreen/BaseMap/data/icons"
 
 const MapDetailsModalContainer = ({
   children,
@@ -28,8 +28,6 @@ const MapDetailsModalContainer = ({
   const isWorld = (selectedLocation?.type === LocationType.Planet ||
     selectedLocation?.type === LocationType.Moon ||
     selectedLocation?.type === LocationType.Sun)
-
-    console.log(matchingFile)
 
   return (
     <MapModal
@@ -70,18 +68,26 @@ const MapDetailsModalContainer = ({
                     
               {/* TYPES */}
               <div className="header-types">
-                <div className={`type`}>
+                {!selectedLocation?.subType &&
+                  <div className={`type`}>
                     {getIconFromType(selectedLocation?.type)} {selectedLocation?.type}
                   </div>
+                }
                 {selectedLocation?.subType &&
                   <div className={`sub-type`}>
-                    {getIconFromSubType(selectedLocation?.subType)} {selectedLocation?.subType}
+                    {getIconFromSubType(selectedLocation?.subType)} {mapSiteSubTypeToText[selectedLocation?.subType] ?? selectedLocation?.subType}
                   </div>
                 }
                 {selectedLocation?.worldAffiliation &&
                   <div className={`world-affiliation ${selectedLocation?.worldAffiliation}`}>
                     {getIconFromWorldAffiliation(selectedLocation?.worldAffiliation)} {mapWorldAffiliationToText[selectedLocation?.worldAffiliation || ""]} 
                   </div>
+                }
+                {selectedLocation?.humanEraAffiliation &&
+                  <div className={`human-era-affiliation ${selectedLocation?.humanEraAffiliation}`}>
+                    {getIconFromHumanEraAffiliation(selectedLocation?.humanEraAffiliation)} 
+                    {mapHumanEraAffiliationToText[selectedLocation?.humanEraAffiliation || ""]} 
+                </div>
                 }
               </div>
             </div>

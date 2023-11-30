@@ -90,7 +90,9 @@
 
         font-size: 30px;
         &:hover {
-          border-color: $color-sunset-red;;
+          background: rgba($color-sunset-red, 0.2);
+          border-color: $color-sunset-orange;
+          color: $color-sunset-orange;
         }
       }
     }
@@ -157,6 +159,41 @@
       margin: 20px 0 40px 0;
       @media screen and (max-width: $breakpoint-mobile) {
         margin-bottom: 20px;
+      }
+
+      button {
+        position: relative;
+        background: none;
+        border: none;
+        //border-bottom: 2px solid $color-sunset-red;
+        cursor: pointer;
+        color: $color-sunset-red;
+        padding: 10px 20px;
+        border-radius: 6px;
+
+        font-family: $font-code;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 2px;
+          right: 2px;
+          height: 2px;
+          background: $color-sunset-red;
+        }
+
+        &:hover {
+          color: $color-sunset-orange;
+          border-color: $color-sunset-orange;
+          background: rgba($color-sunset-red, 0.1);
+          &::after {
+            background: $color-sunset-orange;
+          }
+        }
       }
     }
   }

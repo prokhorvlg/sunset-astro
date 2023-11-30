@@ -110,7 +110,7 @@ export enum SiteSubtype {
   Asteroid = "asteroid",
   Wreck = "wreck",
   Ruin = "ruin",
-
+  Factory = "factory",
   DataTrove = "data-trove",
 }
 
@@ -139,7 +139,12 @@ export const mapTypeToText = {
 }
 
 export const mapSiteSubTypeToText = {
-  [SiteSubtype.Orbital]: "Orbital",
+  [SiteSubtype.Orbital]: "Orbital Station",
+  [SiteSubtype.Outpost]: "Outpost",
+  [SiteSubtype.MachineMade]: "Construct",
+  [SiteSubtype.PointOfInterest]: "Point of Interest",
+  [SiteSubtype.Asteroid]: "Celestial Body",
+
 }
 
 export const mapWorldAffiliationToText = {

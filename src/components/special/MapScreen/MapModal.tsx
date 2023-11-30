@@ -71,7 +71,7 @@ const MapModal = ({
             </Dialog.Panel>
 
             <div className="map-dialog-footer">
-              <button>close</button>
+              <button onClick={onClose}>close</button>
             </div>
           </div>
         </Transition.Child>
