@@ -20,7 +20,8 @@ const MapSelector = ({
   const onWheelHandler = (e) => onWheel(e)
   const onClickHandler = (e) => {
     setSelectedLocation(location)
-    transform?.zoomToElement(location.name, 10, 400)
+    const effectiveId = location.id ? location.id : location.name
+    transform?.zoomToElement(effectiveId, 10, 400)
   }
 
   const [transform, setTransform] = useAtom(transformAtom)

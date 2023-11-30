@@ -10,6 +10,7 @@ const ZoomToMarker = ({
   top
 }) => {
   const zoomMarkerVerticalOffset = 10 // Used to slightly shift the zoom up or down
+  const effectiveId = location.id ? location.id : location.name
   
   return (
     <div className="zoom-to-marker-container" style={{
@@ -25,7 +26,7 @@ const ZoomToMarker = ({
           left: location.fieldLabelOffset?.x || undefined,
           top: (location.fieldLabelOffset?.y || 0) + zoomMarkerVerticalOffset
         }}
-        id={location.name}
+        id={effectiveId}
       ></div>
     </div>
   )

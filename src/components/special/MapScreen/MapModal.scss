@@ -31,7 +31,8 @@
     justify-content: center;
     align-items: center;
  
-    width: 1400px;
+    width: 1200px;
+    //width: 1600px;
     max-width: 98%;
 
     .map-dialog-header {
@@ -104,31 +105,39 @@
       //padding: 40px 120px;
       padding: 5px;
       height: auto;
+      width: 100%;
+      @media screen and (max-width: $breakpoint-mobile) {
+        width: auto;
+      }
 
       // @include abg(0.5);
       // @include abg-red-dot-grid;
 
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   top: 0;
+      //   left: 0;
+      //   right: 0;
+      //   height: 1000px;
+      //   pointer-events: none;
+      //   background: linear-gradient(to bottom, rgba($map-background-color, 0.5) 0px, rgba($map-reddish-color, 0.1) 60px, rgba($map-reddish-color, 0) 900px);
+      // }
+
       .content-child {
         position: relative;
         height: 100%;
+        width: 100%;
         overflow-y: auto;
-        padding: 40px 220px;
-        //box-sizing: border-box;
+        //padding: 0 220px;
 
         @media screen and (max-width: $breakpoint-tablet) {
-          padding: 20px 20px;
+          //padding: 20px 20px;
         }
 
-        @include abg(0.5);
-        @include abg-red-dot-grid;
-        &::after {
-          //height: 100%;
-          bottom: 0;
-        }
-
-        // background: url('/images/patterns/bg-dot-pattern.svg');
-        // background-size: 110px;
-        // background-attachment: local;
+        background: url('/images/patterns/bg-dot-pattern-0.5.svg');
+        background-size: 110px;
+        background-attachment: local;
 
         &::-webkit-scrollbar {
           width: 6px;

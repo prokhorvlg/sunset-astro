@@ -30,5 +30,28 @@ $map-background-color: #220a06;
 $colorWorldHumanEra: $map-reddish-color;
 $colorWorldAnomaly: #fc43b5;
 $colorWorldMachineEra: $color-sunset-aqua;
-$colorWorldMachinesOfGlass: #93e725;
-$colorWorldCenturyOfProgress: #fff67e;
+$colorWorldMachinesOfGlass: #e251ff; //#93e725;
+$colorWorldCenturyOfProgress: #ff5194; //#fff67e;
+
+@mixin mapWorldToColor($selector: null) {
+  @include mapColorSubType(".human-era", $colorWorldHumanEra, $selector);
+  @include mapColorSubType(".anomaly", $colorWorldAnomaly, $selector);
+  @include mapColorSubType(".machine-era", $colorWorldMachineEra, $selector);
+  @include mapColorSubType(".machines-of-glass", $colorWorldMachinesOfGlass, $selector);
+  @include mapColorSubType(".century-of-progress", $colorWorldCenturyOfProgress, $selector);
+}
+
+@mixin mapColorSubType($subTypeClass, $color, $selector) {
+  &#{$subTypeClass} {
+
+    @if $selector {
+      #{$selector} {
+        color: $color;
+      }
+    }
+    @else {
+      color: $color;
+    }
+
+  }
+}

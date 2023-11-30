@@ -62,7 +62,7 @@ export const useMapControls = () => {
   const resetToSelected = () => {
     if (!selectedLocation) return
     transformComponentRef.current?.zoomToElement(
-      selectedLocation.name,
+      selectedLocation.id ?? selectedLocation.name,
       1,
       400
     )

@@ -283,10 +283,11 @@ $quoteMobileSidePadding: 20px;
         display: flex;
         justify-content: flex-end;
         @media screen and (max-width: $breakpoint-quote) {
-            justify-content: flex-start;
+          justify-content: flex-start;
+          margin-left: $quoteMobileSidePadding;
+          margin-right: $quoteMobileSidePadding;
         }
-        margin-left: $quoteMobileSidePadding;
-        margin-right: $quoteMobileSidePadding;
+        
     
         .quote-container {
             display: inline-block;

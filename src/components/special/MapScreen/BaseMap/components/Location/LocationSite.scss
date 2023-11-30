@@ -93,31 +93,18 @@
         transform: scale(1.1);
       }
     }
+    .icon-container-custom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        //width: 30px;
+        //height: 30px;
+        transform: scale(0.3);
+      }
+    }
   }
 
   // WORLD AFFILIATION -> COLOR
-  svg, .map-name {
-    color: $colorWorldHumanEra;
-  }
-
-  &.anomaly {
-    svg, .map-name {
-      color: $colorWorldAnomaly;
-    }
-  }
-  &.machine-era {
-    svg, .map-name {
-      color: $colorWorldMachineEra;
-    }
-  }
-  &.machines-of-glass {
-    svg, .map-name {
-      color: #e251ff//$colorWorldMachinesOfGlass;
-    }
-  }
-  &.century-of-progress {
-    svg, .map-name {
-      color: #ff5194 //$colorWorldAnomaly//$colorWorldCenturyOfProgress;
-    }
-  }
+  @include mapWorldToColor("svg, .map-name");
 }

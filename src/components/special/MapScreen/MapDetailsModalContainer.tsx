@@ -1,14 +1,16 @@
-import { HumanEraAffiliation } from "@/components/special/MapScreen/BaseMap/data/types"
+import { HumanEraAffiliation, LocationType, mapHumanEraAffiliationToText, mapTypeToText, mapWorldAffiliationToText } from "@/components/special/MapScreen/BaseMap/data/types"
 import { isSelectedModalOpenAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
 import { useAtom } from "jotai"
 import { useEffect } from "react"
 import { MdLocationPin } from "react-icons/md"
 import './MapDetailsModalContainer.scss'
+import { getIconFromSubType, getIconFromType, getIconFromWorldAffiliation } from "@/components/special/MapScreen/BaseMap/data/icons"
 
 const MapDetailsModalContainer = ({
   children,
-  id
+  id,
+  matchingFile
 }) => {
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
@@ -23,28 +25,65 @@ const MapDetailsModalContainer = ({
   
   const locationIsOpen = hasSelection && isSelectedModalOpen && effectiveId === id
 
+  const isWorld = (selectedLocation?.type === LocationType.Planet ||
+    selectedLocation?.type === LocationType.Moon ||
+    selectedLocation?.type === LocationType.Sun)
+
+    console.log(matchingFile)
+
   return (
     <MapModal
         headerIcon={<MdLocationPin />}
         headerText="Selected location"
         isOpen={locationIsOpen}
         setIsOpen={setIsSelectedModalOpen}
+        desiredWidth={matchingFile !== undefined ? 1600 : 1200}
       >
         <div className="map-selected-content">
           <div className="selected-content-container">
 
-            <div className="header-text">
-              <h2
-                className="name"
-                style={{
-                  color: selectedLocation?.color || undefined,
-                }}
-              >
-                {selectedLocation?.name}
-              </h2>
-              <p className="type">
-                {selectedLocation?.typeText}
-              </p>
+            {/* {mapTypeToText[selectedLocation?.type || ""]} */}
+            <div className="header-types-title-container">
+              {/* TITLE */}
+              <div className="header-text-container">
+                {selectedLocation?.icon &&
+                  <div className={`header-main-icon ${isWorld ? "is-world" : ""}`} style={{
+                    color: selectedLocation?.color
+                  }}>
+                    {selectedLocation?.icon}
+                  </div>
+                }
+                <div className="header-text">
+                  <h2
+                    className={`name ${selectedLocation?.worldAffiliation}`}
+                    style={{
+                      color: selectedLocation?.color || undefined,
+                    }}
+                  >
+                    {selectedLocation?.name}
+                  </h2>
+                  <p className="type">
+                    {selectedLocation?.typeText}
+                  </p>
+                </div>
+              </div>
+                    
+              {/* TYPES */}
+              <div className="header-types">
+                <div className={`type`}>
+                    {getIconFromType(selectedLocation?.type)} {selectedLocation?.type}
+                  </div>
+                {selectedLocation?.subType &&
+                  <div className={`sub-type`}>
+                    {getIconFromSubType(selectedLocation?.subType)} {selectedLocation?.subType}
+                  </div>
+                }
+                {selectedLocation?.worldAffiliation &&
+                  <div className={`world-affiliation ${selectedLocation?.worldAffiliation}`}>
+                    {getIconFromWorldAffiliation(selectedLocation?.worldAffiliation)} {mapWorldAffiliationToText[selectedLocation?.worldAffiliation || ""]} 
+                  </div>
+                }
+              </div>
             </div>
 
             <div className="flavor-text-container">
@@ -53,7 +92,7 @@ const MapDetailsModalContainer = ({
             
             <>{children}</>
 
-            <hr />
+            {/* <hr />
 
             <SelectedDataRow
               label="Sub-type"
@@ -61,12 +100,12 @@ const MapDetailsModalContainer = ({
             />
             <SelectedDataRow
               label="Realm of Origin"
-              content={selectedLocation?.worldAffiliation}
+              content={mapWorldAffiliationToText[selectedLocation?.worldAffiliation || ""]}
             />
             <SelectedDataRow
               label="Human-Era Affiliation"
               content={
-                mapHumanEraAffiliationToLabel[
+                mapHumanEraAffiliationToText[
                   selectedLocation?.humanEraAffiliation ||
                     ""
                 ]
@@ -75,7 +114,7 @@ const MapDetailsModalContainer = ({
             <SelectedDataRow
               label="Machine-Era Affiliation"
               content={undefined}
-            />
+            /> */}
 
           </div>
         </div>
@@ -98,10 +137,6 @@ const SelectedDataRow = ({
       <p className="content">{content || "N/A"}</p>
     </div>
   )
-}
-
-const mapHumanEraAffiliationToLabel = {
-  [HumanEraAffiliation.GreaterUnion]: "Greater Union",
 }
 
 export default MapDetailsModalContainer

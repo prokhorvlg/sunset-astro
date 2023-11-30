@@ -2,13 +2,13 @@ import type { ActiveMap } from "@/components/special/MapScreen/BaseMap/data/mapT
 import type { ReactNode } from "react"
 
 export enum LocationType {
-  Sun,
-  Planet,
-  Moon,
-  AsteroidBelt,
-  Site, // Specific location eg. Space Station
-  Field,
-  Label
+  Sun = "sun",
+  Planet = "planet",
+  Moon = "moon",
+  AsteroidBelt = "belt",
+  Site = "site", // Specific location eg. Space Station
+  Field = "field",
+  Label = "label"
 }
 
 export enum RelativePosition {
@@ -94,6 +94,7 @@ export enum WorldAffiliation {
   MachineEra = "machine-era",
   MachinesOfGlass = "machines-of-glass",
   CenturyOfProgress = "century-of-progress",
+  Natural = "natural"
 }
 
 // Dictates the icon used
@@ -103,9 +104,9 @@ export enum SiteSubtype {
   Beacon = "beacon",   // Outposts designed to emit or capture signals
   Weapon = "weapon",    // Outposts designed as some sort of weapon
   Vessel = "vessel",    // Moving spacecraft
-  MachineMade = "machine",  // A machine world structure, fractal and multifaceted
+  MachineMade = "construct",  // A machine world structure, fractal and multifaceted
   PointOfInterest = "poi",  
-  Danger = "danger",
+  Danger = "threat",
   Asteroid = "asteroid",
   Wreck = "wreck",
   Ruin = "ruin",
@@ -126,3 +127,34 @@ export enum FieldShape {
 // machine population current day
 // world affiliation: human-era, machine-era, machines of glass, century of progress
 // human faction affiliation: union, coalition, pact, none
+
+export const mapTypeToText = {
+  [LocationType.Sun]: "Sun",
+  [LocationType.Planet]: "Planet",
+  [LocationType.Moon]: "Moon",
+  [LocationType.AsteroidBelt]: "Asteroid Belt",
+  [LocationType.Site]: "Site",
+  [LocationType.Field]: "Field",
+  [LocationType.Label]: "Label",
+}
+
+export const mapSiteSubTypeToText = {
+  [SiteSubtype.Orbital]: "Orbital",
+}
+
+export const mapWorldAffiliationToText = {
+  [WorldAffiliation.Anomaly]: "Anomalous",
+  [WorldAffiliation.HumanEra]: "Human-Built",
+  [WorldAffiliation.MachineEra]: "Machine-Built",
+  [WorldAffiliation.MachinesOfGlass]: "Glass-Timeline",
+  [WorldAffiliation.CenturyOfProgress]: "Progress-Timeline",
+  [WorldAffiliation.Natural]: "Natural"
+}
+
+export const mapHumanEraAffiliationToText = {
+  [HumanEraAffiliation.GreaterUnion]: "Greater Union",
+  [HumanEraAffiliation.EnduringCoalition]: "Enduring Coalition",
+  [HumanEraAffiliation.RisingPact]: "Rising Pact",
+  [HumanEraAffiliation.None]: "None",
+  [HumanEraAffiliation.SunsetResearchInitiative]: "Sunset Research Initiative",
+}

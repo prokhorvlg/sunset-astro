@@ -46,7 +46,7 @@ const allLocations = getDeepLocations(locationsData)
         const matchingFile = markdownFiles.find((file) => getSlugFromUrl(file.url) === location)
 
         return (
-          <MapDetailsModalContainer client:only="react" id={location}>
+          <MapDetailsModalContainer client:only="react" id={location} matchingFile={matchingFile}>
             <div class="location-content">
               <MarkdownWrapper >
                 {matchingFile && <matchingFile.Content />}

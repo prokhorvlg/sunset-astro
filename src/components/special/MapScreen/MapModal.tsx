@@ -10,12 +10,14 @@ const MapModal = ({
   headerIcon,
   isOpen,
   setIsOpen,
+  desiredWidth
 }: {
   children: any
   headerText?: string
   headerIcon?: any
   isOpen: boolean
   setIsOpen: Function
+  desiredWidth?: number // What is the desired internal width of this modal
 }) => {
   const onClose = () => {
     setIsOpen(false)
@@ -49,7 +51,10 @@ const MapModal = ({
           leaveFrom="tw-opacity-100 tw-scale-100"
           leaveTo="tw-opacity-0 tw-scale-95"
         >
-          <div className="map-panel-container">
+          <div className="map-panel-container" style={{
+            width: desiredWidth ? desiredWidth : undefined
+          }}
+          >
             <div className="map-dialog-header">
               <h2>
                 {headerIcon}

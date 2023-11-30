@@ -1,42 +1,142 @@
 @import 'src/styles/imports.scss';
 
 .map-selected-content {
-
-  
-
+  width: 100%;
+  background: linear-gradient(to bottom, rgba($map-reddish-color, 0.1) 0px, rgba($map-reddish-color, 0.15) 60px, rgba($map-reddish-color, 0) 600px);
+  border-radius: 4px;
   .selected-content-container {
     max-width: $width-1000;
-    margin: 0 auto;
+    margin: 0 auto 0px auto;
     padding: 10px 20px;
     
     display: flex;
     flex-direction: column;
 
-    .header-text {
-      h2 {
+    @media screen and (max-width: $breakpoint-mobile) {
+      padding: 0;
+    }
+
+    .header-types-title-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 80px;
+      @media screen and (max-width: $breakpoint-mobile) {
+        flex-direction: column;
+        margin-top: 70px;
+      }
+
+      .header-text-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @media screen and (max-width: $breakpoint-mobile) {
+          flex-direction: column;
+        }
+  
+        .header-main-icon {
+          height: 120px;
+          width: 120px;
+  
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 20px;
+          padding: 10px;
+  
+          background: rgba($map-reddish-color, 0.05);
+          border-radius: 100px;
+          @media screen and (max-width: $breakpoint-mobile) {
+            margin: 0;
+          }
+          &.is-world {
+            svg {
+              font-size: 100px;
+            }
+          }
+        }
+        
+        .header-text {
+          margin-right: 10px;
+          @media screen and (max-width: $breakpoint-mobile) {
+            margin-right: 0;
+            margin-top: 25px;
+          }
+          h2 {
+            font-family: $font-code;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 50px;
+            margin: 0;
+            line-height: 50px;
+            color: $map-reddish-color;
+            @include mapWorldToColor();
+            @media screen and (max-width: $breakpoint-mobile) {
+              font-size: 35px;
+              text-align: center;
+            }
+          }
+          p.type {
+            margin: 0 0 0 2px;
+            font-family: $font-code;
+            color: $map-amber-color;
+            @media screen and (max-width: $breakpoint-mobile) {
+              text-align: center;
+            }
+          }
+        }
+      }
+
+      .header-types {
         font-family: $font-code;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 50px;
-        margin: 80px 0 0 0;
-        line-height: 50px;
-      }
-      p.type {
-        margin: 0 0 0 2px;
-        font-family: $font-code;
-        color: $map-amber-color;
+        letter-spacing: 1px;
+        color: $map-reddish-color;
+        font-weight: 600;
+  
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        gap: 10px;
+
+        flex: 1;
+        @media screen and (max-width: $breakpoint-mobile) {
+          flex-direction: row;
+          margin-top: 60px;
+          flex-wrap: wrap;
+        }
+        > div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          white-space: nowrap;
+          svg {
+            margin-right: 10px;
+          }
+        }
+        .world-affiliation {
+          @include mapWorldToColor();
+        }
       }
     }
 
     .flavor-text-container {
-      @include quoteBox();
-      margin: 60px 10px;
+      margin: 40px 10px 60px;
       align-self: flex-start;
-      //width: 100%;
+      border: 1px solid $map-amber-color;
+      padding: 20px;
+      border-radius: 6px;
+      background: rgba($map-reddish-color, 0.05);
+
+      align-self: center;
+      @media screen and (max-width: $breakpoint-mobile) {
+        flex-direction: column;
+        margin: 40px 10px 30px;
+      }
       p {
-        font-family: $font-code;
         font-weight: 500;
-        //font-style: italic;
+        font-style: italic;
         color: $map-amber-color;
         &:before, &:after {
           content: "\"";
@@ -82,6 +182,16 @@
       border: none;
       @include abg(1);
       @include abg-red-diagonal();
+    }
+
+    .location-content {
+      margin-bottom: 30px;
+      .quote-content-row {
+        .full-width-wrapper-inner {
+          // margin-left: 0;
+          // margin-right: 0;
+        }
+      }
     }
   }
 }

@@ -15,50 +15,7 @@ import Selector from "@/components/special/MapScreen/BaseMap/components/Element/
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading";
 import DetailsContainer from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer";
 import { SiteSubtype, type LocationNode, type SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
-
-const getIconFromSubType = (subType?: SiteSubtype) => {
-  switch (subType) {
-    case SiteSubtype.Orbital: 
-      return (
-        <CgShapeCircle />
-      )
-    case SiteSubtype.Outpost:
-      return (
-        <CgShapeRhombus />
-      )
-    case SiteSubtype.Beacon: 
-      return (
-        <CgData />
-      )
-    case SiteSubtype.Vessel: 
-      return (
-        <CgShapeTriangle />
-      )
-    case SiteSubtype.MachineMade:
-      return (
-        <CgShapeSquare />
-      )
-    case SiteSubtype.Danger:
-      return (
-        <IoSkullSharp />//<CgMathPlus />
-      )
-    case SiteSubtype.DataTrove:
-      return (
-        <AiOutlineSave />
-      )
-    case SiteSubtype.Asteroid:
-      return (
-        <PiPlanetBold />
-      )
-    case SiteSubtype.PointOfInterest:
-      return (
-        <MdQuestionMark /> //<LuCompass />
-      )
-  }
-  return (
-    <CgClose />
-  )
-}
+import { getIconFromSubType } from "@/components/special/MapScreen/BaseMap/data/icons";
 
 const LocationSite = ({
   location,
@@ -82,7 +39,9 @@ const LocationSite = ({
   const visibleRef = useRef(null)
   const isInView = useIsVisible(visibleRef)
 
-  const [icon] = useState(getIconFromSubType(location.subType))
+  const [subTypeIcon] = useState(getIconFromSubType(location.subType))
+
+  const showBorderOnBgCircle = isDetailLevel && !location.icon
 
   return (
     <>
@@ -96,6 +55,7 @@ const LocationSite = ({
           transform: `scale(${rescale})`,
         }}>
           <div className="dark-container-circle" style={{
+            borderWidth: showBorderOnBgCircle ? undefined : "0px",
             borderColor: isSelected ? "rgba(0,0,0,0)" : undefined,
           }}></div>
       </div>
@@ -120,9 +80,15 @@ const LocationSite = ({
                 transform: isDetailLevel ? "translate(-50%, -50%) scale(1.6)" : undefined
               }}
             >
-              <div className={`icon-container ${location.subType}`}>
-                {icon}
-              </div>
+              {(isDetailLevel && location.icon) ?
+                <div className={`icon-container-custom ${location.subType}`}>
+                  {location.icon}
+                </div>
+                :
+                <div className={`icon-container ${location.subType}`}>
+                  {subTypeIcon}
+                </div>
+              }
             </div>
 
             {/* TYPE, FLAVOR TEXT */}
