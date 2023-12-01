@@ -146,20 +146,25 @@ export const locationsData: SystemLocationNode = {
       radius: 15,
       startingAngle: 205, //205
       isImportant: true,
-      localMap: ActiveMap.Titan,
       icon: <GiPalmTree />,
       children: [
         {
-          name: "Tolkiy-Merdem",
-          typeText: "Messy People's Orbital",
-          flavorText: "First an orbital gulag, then a revolution, finally a nuclear stalemate. Source of all the Union's troubles, until it wasn't.",
+          name: "Merdem's Ring",
+          typeText: "Independent Orbital",
+          flavorText: "The most tense military stalemate in human history. Things seem to have cooled down since the Unexpected Interrupt, though.",
           description:
-            "Interbeacon was an enormous statite built to syncronize the Aggregate, the Union's interplanetery datanet. Today, it hosts RADIUS, the final remnant of the Union's automated economic planning system. Their voice booms across the skies, visible from all points in the System.",
+            "Tolkiy Began as an orbital gulag until a revolution turned it into stalemate. Source of many Union troubles.",
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
           worldAffiliation: WorldAffiliation.HumanEra,
           distance: 38,
           startingAngle: 150,
+          icon: <svg 
+          viewBox="0 0 91 89"
+          width="91px" height="89px">
+         <path fill-rule="evenodd"  fill="rgb(255, 78, 24)"
+          d="M90.957,39.655 C88.959,40.212 86.960,40.769 84.963,41.326 C84.787,41.139 84.718,41.069 84.609,40.684 C84.267,40.220 84.146,38.467 84.120,37.780 C83.694,35.349 83.267,32.918 82.841,30.487 C81.760,30.803 80.679,31.118 79.598,31.434 C78.962,34.677 76.650,38.134 74.670,40.638 C73.156,42.552 71.970,44.756 70.369,46.643 C67.002,50.613 62.542,54.015 57.131,56.751 C57.319,57.467 57.508,58.184 57.697,58.900 C58.139,59.310 58.303,60.850 58.485,61.542 C58.906,63.024 59.328,64.506 59.749,65.989 C59.979,66.399 60.232,66.777 60.415,67.468 C60.666,68.417 61.317,69.938 60.624,70.354 C60.573,70.276 60.521,70.197 60.470,70.119 C60.114,69.878 59.187,67.398 59.175,66.600 C59.173,66.455 59.282,66.057 59.274,65.930 C59.043,65.286 58.812,64.642 58.581,63.998 C57.950,61.644 57.197,59.440 56.574,57.081 C54.930,57.619 53.406,58.634 51.621,59.214 C52.491,62.049 53.361,64.884 54.230,67.719 C54.199,68.273 53.531,68.754 53.471,69.022 C53.614,69.566 53.758,70.111 53.901,70.655 C54.484,71.201 54.584,73.343 55.024,74.220 C56.373,76.903 56.577,80.422 57.919,83.109 C58.418,84.108 58.077,84.964 57.191,85.231 C57.018,85.096 56.709,85.083 56.562,84.937 C55.629,84.008 55.564,81.615 54.864,80.237 C54.286,79.101 54.178,77.558 53.564,76.351 C53.181,75.599 53.124,74.586 52.690,73.732 C52.120,72.613 51.748,71.181 51.390,69.846 C50.917,69.717 50.224,69.521 49.915,69.132 C48.967,66.349 48.018,63.565 47.070,60.781 C47.013,60.796 46.956,60.812 46.898,60.827 C46.779,60.784 46.736,60.798 46.532,60.831 C47.009,62.509 48.065,64.053 48.018,65.771 C47.991,66.727 48.940,67.670 48.200,68.205 C47.991,68.476 47.851,68.423 47.449,68.495 C46.453,67.551 44.970,63.045 44.704,61.221 C41.989,61.917 39.417,62.138 37.086,62.310 C36.452,62.356 35.029,63.493 34.539,63.808 C33.779,64.298 33.004,64.689 32.314,65.130 C31.935,65.322 31.557,65.513 31.178,65.705 C31.005,65.875 31.002,66.190 30.907,66.420 C30.471,67.479 29.644,68.502 29.180,69.633 C28.877,70.111 28.574,70.589 28.271,71.067 C28.212,71.208 28.284,71.343 28.190,71.457 C27.977,71.715 27.086,72.256 26.996,72.507 C27.072,72.793 27.147,73.080 27.223,73.366 C27.820,73.928 27.921,75.123 28.355,75.917 C29.059,77.209 29.453,78.732 30.198,80.120 C30.618,80.902 31.067,81.783 31.352,82.757 C30.406,84.630 29.459,86.504 28.513,88.377 C28.348,88.363 28.425,88.383 28.319,88.336 C27.854,88.362 27.506,88.305 27.341,87.767 C26.717,87.163 26.396,85.336 25.987,84.722 C25.085,83.369 24.584,81.497 23.551,79.665 C21.626,76.248 20.111,71.899 18.236,68.565 C17.104,66.552 16.582,64.295 15.510,62.757 C15.324,62.285 15.139,61.813 14.953,61.341 C14.520,60.553 14.059,59.528 13.626,58.749 C13.417,58.372 13.573,58.143 13.400,57.889 C12.916,57.179 10.413,56.076 9.576,55.588 C7.784,54.544 6.693,53.187 5.150,51.699 C4.534,51.106 3.696,50.302 3.267,49.437 C3.227,49.357 3.345,49.171 3.240,48.985 C2.857,48.308 2.203,47.127 1.872,46.588 C1.820,46.502 1.984,46.393 1.868,46.221 C1.530,45.722 0.469,44.015 0.491,43.091 C0.527,41.636 -0.189,39.784 0.127,38.223 C1.332,32.276 2.599,26.244 5.496,21.273 C5.770,20.802 6.237,20.525 6.559,20.074 C6.616,19.993 6.585,19.776 6.640,19.685 C6.925,19.215 7.359,18.602 7.721,18.205 C7.976,17.924 8.336,17.827 8.553,17.526 C8.617,17.437 8.549,17.223 8.634,17.137 C8.749,17.107 8.863,17.076 8.978,17.046 C8.984,16.953 8.990,16.859 8.996,16.766 C9.110,16.736 9.225,16.705 9.340,16.675 C9.423,16.589 9.672,16.079 9.720,16.023 C9.965,15.739 10.329,15.719 10.574,15.430 C10.580,15.337 10.586,15.243 10.592,15.150 C10.757,15.076 10.921,15.002 11.085,14.928 C11.091,14.835 11.097,14.741 11.103,14.648 C11.353,14.357 11.888,13.932 12.148,13.729 C12.291,13.691 12.435,13.653 12.578,13.615 C12.979,13.196 13.241,12.731 13.921,12.434 C13.277,9.893 11.906,7.397 11.046,5.011 C11.124,4.960 11.202,4.908 11.281,4.857 C11.419,4.685 11.639,4.596 11.923,4.504 C12.741,5.245 13.946,5.539 14.769,6.236 C14.952,6.390 14.933,6.795 15.145,6.964 C15.414,7.178 16.393,7.054 16.765,7.180 C17.378,7.389 17.332,7.765 18.321,7.506 C18.383,7.220 19.142,6.877 19.262,6.890 C20.125,6.843 20.458,7.765 21.321,7.726 C21.387,7.535 23.328,6.513 23.546,6.404 C23.726,6.388 23.905,6.371 24.085,6.354 C25.142,5.577 27.455,5.028 28.672,4.226 C29.063,3.968 29.527,4.328 29.984,3.972 C29.968,3.915 29.953,3.858 29.938,3.800 C30.075,3.705 30.649,3.705 30.649,3.705 C30.849,3.652 31.050,3.599 31.250,3.547 C31.235,3.489 31.220,3.432 31.205,3.375 C31.486,3.178 32.660,3.144 33.245,2.745 C33.931,2.277 35.101,2.490 35.611,2.305 C37.237,1.718 39.125,1.610 40.750,1.227 C40.794,1.114 41.393,1.275 41.741,1.149 C42.757,0.782 43.891,0.888 44.863,0.786 C44.888,0.718 45.476,0.777 45.767,0.732 C45.802,0.642 46.375,0.752 46.672,0.677 C46.722,0.627 49.085,0.536 49.581,0.554 C54.531,0.728 58.996,1.592 63.069,3.250 C63.402,3.468 63.736,3.687 64.069,3.905 C65.555,4.516 67.090,5.441 68.327,6.460 C69.030,7.038 70.100,8.218 70.898,8.540 C71.730,8.876 72.558,9.055 73.409,9.349 C74.002,9.553 74.714,10.071 75.359,10.122 C76.124,10.183 78.755,9.424 79.336,9.166 C79.271,8.879 79.245,8.631 79.327,8.433 C79.490,8.248 79.998,8.153 80.335,8.075 C80.846,8.236 81.617,7.716 82.226,7.577 C82.816,7.441 84.447,7.332 84.913,6.960 C84.898,6.903 84.883,6.846 84.868,6.788 C85.241,6.690 85.613,6.592 85.986,6.494 C86.088,6.567 85.981,6.503 86.094,6.557 C86.701,8.173 87.079,10.777 87.142,12.624 C87.202,14.400 87.797,16.103 87.854,17.768 C88.238,20.271 88.622,22.774 89.006,25.278 C89.063,26.977 89.679,28.706 89.741,30.507 C89.840,33.418 90.559,36.712 90.957,39.655 Z"/>
+         </svg>,
         },
         {
           name: "Klios",
@@ -171,6 +176,7 @@ export const locationsData: SystemLocationNode = {
           description:
             "A tiny moon consisting primarily of frozen carbon dioxide. It was an ideal location for several data centers.",
           color: "#8fbeff",
+          colorSecondary: "#b0e6ff",
           distance: 66,
           radius: 5,
           startingAngle: 320,
@@ -189,12 +195,11 @@ export const locationsData: SystemLocationNode = {
           description:
             "",
       color: "#19b1ff",
-      colorSecondary: "#45ffff",
+      colorSecondary: "#83fbff",
       distance: 205,
       radius: 14,
       startingAngle: 340,
       isImportant: true,
-      localMap: ActiveMap.Titan,
       icon: <IoHeart />,
       children: [
         {
@@ -290,10 +295,9 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 74,
       ringWidth: 40,
       isImportant: true,
-      localMap: ActiveMap.Titan,
       children: [
         {
-          name: "Tojo Terminus",
+          name: "Kojo Terminus",
           typeText: "Tactical Military Station",
           flavorText: "The sanguine world was the dominion of the Pact, overseen by all-seeing Terminus, enforced by orbital drop.",
           description: "",
@@ -331,7 +335,12 @@ export const locationsData: SystemLocationNode = {
           name: "Hikari Lightwave 901",
           typeText: "Laser Relay Satellite",
           flavorText: "Data courses through the system like coolant through an interfacer's body.",
-          description: "",
+          icon: <svg 
+          viewBox="0 0 73 89"
+          width="73px" height="89px">
+         <path fill-rule="evenodd"  fill="rgb(255, 78, 24)"
+          d="M14.877,45.302 L16.634,40.031 L4.919,42.081 L0.818,41.788 L0.818,40.909 L1.697,40.323 L19.563,36.223 L37.721,32.416 L38.014,31.830 L43.700,30.658 L42.821,30.365 L42.821,27.144 L45.164,26.265 L50.729,2.078 L50.729,1.199 L51.608,0.613 L72.109,5.299 L72.109,8.228 L71.231,9.107 L70.938,10.571 L65.838,37.980 L66.130,41.788 L61.151,49.645 L60.000,49.1000 L60.000,48.1000 L60.244,50.453 L62.001,59.875 L62.001,61.340 L63.465,61.632 L68.151,78.912 L68.737,79.205 L69.030,80.962 L51.486,88.356 L49.436,88.063 L49.143,86.598 L50.608,86.013 L51.194,85.134 L47.386,75.469 L46.800,73.419 L42.114,59.946 L41.529,57.018 L42.700,53.796 L37.721,55.260 L31.278,78.983 L29.813,79.276 L28.642,78.105 L28.935,75.469 L34.914,57.189 L34.207,55.553 L19.563,58.189 L18.684,57.310 L14.877,46.767 L14.877,45.302 Z"/>
+         </svg>,
           type: LocationType.Site,
           subType: SiteSubtype.Beacon,
           worldAffiliation: WorldAffiliation.HumanEra,
@@ -351,9 +360,15 @@ export const locationsData: SystemLocationNode = {
       children: [
         {
           name: "Heavenbreaker Cache 80-IV",
-          typeText: "Bundle of Nuclear Missiles",
+          typeText: "Stockpile of Nuclear Missiles",
           flavorText:
             "They sleep amidst the cold asteroids, waiting for their final order from DAWNLIGHT VIGIL.",
+          icon: <svg 
+          viewBox="0 0 101 75"
+          width="101px" height="75px">
+         <path fill-rule="evenodd"  fill="rgb(255, 78, 24)"
+          d="M99.910,4.375 C100.534,5.654 96.601,10.460 96.601,10.460 L90.681,13.879 L89.783,15.968 L89.230,15.554 C89.328,15.877 89.407,16.182 89.460,16.462 C89.015,16.435 88.604,16.393 88.210,16.343 L88.441,16.743 L87.737,17.672 L85.172,19.677 L85.149,21.784 L76.685,31.383 L68.931,35.860 L67.857,35.432 L61.964,38.835 L61.797,39.978 L56.456,43.062 C56.498,43.220 56.542,43.375 56.587,43.524 C54.888,44.368 53.178,44.347 51.504,43.644 L51.138,47.179 L48.160,48.375 L46.503,51.950 L53.326,48.010 L54.173,48.045 L54.089,48.617 L44.785,53.988 L44.618,55.132 L37.795,59.071 L37.699,59.004 C35.029,59.415 32.560,59.724 30.052,58.870 L23.566,66.239 C23.566,66.239 21.787,66.961 20.080,65.634 C20.080,68.002 17.182,69.925 17.182,69.925 L17.033,69.705 C16.213,69.858 14.125,69.978 12.786,67.658 C11.091,64.722 11.518,61.462 11.518,61.462 L11.985,61.192 C12.407,60.748 13.100,60.085 13.794,59.713 C13.450,59.428 13.129,59.134 12.832,58.830 L12.135,59.751 L11.992,59.694 L11.884,60.096 C11.884,60.096 10.206,59.189 9.018,57.132 C7.830,55.075 7.884,53.167 7.884,53.167 L8.022,53.344 L7.744,52.862 L7.828,52.290 L8.985,52.146 L9.340,51.756 C9.265,51.328 9.207,50.907 9.166,50.493 C8.377,51.301 6.499,51.714 6.020,51.808 L6.018,51.935 C6.018,51.935 2.595,52.007 0.920,49.105 C-0.453,46.728 1.070,43.999 1.665,43.090 L1.540,42.832 C1.540,42.832 4.656,41.284 6.707,42.467 C6.412,40.325 7.926,39.145 7.926,39.145 L18.227,37.076 C18.966,33.223 20.952,30.813 21.258,30.460 L21.253,30.404 L28.079,26.463 L29.153,26.890 L38.461,21.516 L38.998,21.730 L38.604,22.481 L31.778,26.421 L35.704,26.772 L38.232,24.790 L42.918,26.883 C43.423,24.804 44.252,23.305 44.505,22.876 L44.218,22.380 L49.803,19.156 L50.877,19.583 L56.772,16.179 L56.939,15.036 L64.695,10.558 L77.247,8.023 L79.084,9.056 L82.103,7.837 L83.261,7.692 L83.633,8.337 C84.215,7.215 84.826,6.435 84.826,6.435 L85.141,6.980 L86.863,7.183 L92.786,3.763 C92.786,3.763 98.915,2.761 99.710,3.941 C100.619,5.158 100.133,4.894 99.910,4.375 ZM45.077,10.150 C43.883,10.012 44.023,9.208 44.023,9.208 C44.023,9.208 45.300,7.377 47.850,5.990 C50.399,4.602 62.401,-0.249 62.548,0.163 C62.695,0.575 46.159,9.486 45.077,10.150 ZM39.708,68.531 C41.539,67.359 53.149,61.703 53.411,62.105 C54.288,63.450 41.137,71.313 38.099,73.005 C35.061,74.698 34.072,75.141 33.059,73.964 C32.046,72.788 36.359,70.677 39.708,68.531 Z"/>
+         </svg>,
           type: LocationType.Site,
           subType: SiteSubtype.Danger,
           worldAffiliation: WorldAffiliation.HumanEra,
@@ -437,7 +452,8 @@ export const locationsData: SystemLocationNode = {
       children: [
         // stations
         {
-          name: "Gorsk",
+          id: "gorsk",
+          name: "Great Gorsk",
           typeText: "Monolithic People's Orbital",
           flavorText:
             "Hush! Do not disturb the Celestial Gardener, they are busy with the collection of melodies.",
@@ -628,7 +644,7 @@ export const locationsData: SystemLocationNode = {
           startingAngle: 310,
         },
         {
-          name: "Sanket Star",
+          name: "Equinox Tower",
           typeText: "Assembled Orbital",
           flavorText:
             "Orbital assembled from multiple private ventures purchased by Coalition's Heavenbreaker. Source of all the System's processed tetradite.",
@@ -644,7 +660,7 @@ export const locationsData: SystemLocationNode = {
           name: "Bibliodrome",
           typeText: "Fractal Archive",
           flavorText:
-            "First, energy to the System. Next, energy to the universe.",
+            ".",
           description: "",
           type: LocationType.Site,
           subType: SiteSubtype.MachineMade,
@@ -658,13 +674,13 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Moon,
           typeText: "Frigid Fungal World",
           flavorText: "Your next home awaits you in the suburbs of New Providence. No radioactive particulates, clean air. A growing community of professionals. Total automation. You won't find a better deal anywhere else!",
-          color: "#58d1fc",
-          colorSecondary: "#1783ff",
+          color: "#74bfff",
+          colorSecondary: "#6977fe",
           distance: 135,
           radius: 8,
           startingAngle: 40,
           isImportant: true,
-          localMap: ActiveMap.Titan,
+          //localMap: ActiveMap.Titan,
           icon: <GiSnail />,
           children: [
             {
@@ -680,6 +696,17 @@ export const locationsData: SystemLocationNode = {
             },
           ],
         },
+        {
+          name: "Enceladus",
+          type: LocationType.Moon,
+          typeText: "Ice World",
+          flavorText: "The icy shell is so reflective that it's actually risky to look at it with the naked eye.",
+          color: "#1ee4dd",
+          colorSecondary: "#d4f3ff",
+          distance: 165,
+          radius: 5,
+          startingAngle: 340,
+        }
       ],
     },
     {
@@ -704,7 +731,22 @@ export const locationsData: SystemLocationNode = {
       distance: 655,
       radius: 18,
       startingAngle: 224,
-      children: [],
+      children: [
+        {
+          name: "Sanket Star",
+          typeText: "Particle Collider Facility",
+          flavorText:
+            "The tube is long and contains many fast particles.",
+          description:
+            "",
+          type: LocationType.Site,
+          subType: SiteSubtype.Outpost,
+          worldAffiliation: WorldAffiliation.HumanEra,
+          humanEraAffiliation: HumanEraAffiliation.None,
+          distance: 28,
+          startingAngle: 210,
+        }
+      ],
     },
     {
       name: "Pluto",
@@ -717,17 +759,7 @@ export const locationsData: SystemLocationNode = {
       radius: 5,
       startingAngle: 63,
       children: [
-        {
-          name: "Thousand Eyes",
-          typeText: "Sprawling Orbital Complex",
-          flavorText: "Only one machine has ever returned from this place, although we cannot be certain of this as they vanished soon after. They spoke of a thousand pasts gazing upon them.",
-          description: "",
-          worldAffiliation: WorldAffiliation.MachineEra,
-          type: LocationType.Site,
-          subType: SiteSubtype.Danger,
-          distance: 25,
-          startingAngle: 230,
-        },
+        
         {
           name: "Charon",
           typeText: "Significant Moon",
@@ -739,6 +771,28 @@ export const locationsData: SystemLocationNode = {
           radius: 3,
           startingAngle: 165,
           children: [],
+        },
+        {
+          name: "Thousand Eyes Field",
+          typeText: "Horrific Reality",
+          type: LocationType.Field,
+          fieldShape: FieldShape.SRICircle,
+          fieldLabelOffset: {x: 0, y: -40},
+          distance: 48,
+          startingAngle: 225,
+          hideLabel: true,
+          children: [
+            {
+              name: "Thousand Eyes",
+              typeText: "Sprawling Orbital Complex",
+              flavorText: "Only one machine has ever returned from this place, although we cannot be certain of this as they vanished soon after. They spoke of a thousand pasts gazing upon them.",
+              worldAffiliation: WorldAffiliation.MachineEra,
+              type: LocationType.Site,
+              subType: SiteSubtype.Danger,
+              distance: 0,
+              startingAngle: 0,
+            },
+          ]
         },
       ],
     },
@@ -934,7 +988,7 @@ export const locationsData: SystemLocationNode = {
       description:
         "",
       type: LocationType.Site,
-      subType: SiteSubtype.Danger,
+      subType: SiteSubtype.Vessel,
       worldAffiliation: WorldAffiliation.HumanEra,
       distance: 455,
       startingAngle: 205,
@@ -953,22 +1007,7 @@ export const locationsData: SystemLocationNode = {
       humanEraAffiliation: HumanEraAffiliation.None,
       distance: 1155,
       startingAngle: 210,
-    },
-    {
-      name: "Hardlight Loop",
-      typeText: "Large Particle Collider",
-      flavorText:
-        "The tube is long and contains many fast particles.",
-      description:
-        "",
-      type: LocationType.Site,
-      subType: SiteSubtype.Outpost,
-      worldAffiliation: WorldAffiliation.HumanEra,
-      humanEraAffiliation: HumanEraAffiliation.None,
-      distance: 925,
-      startingAngle: 240,
     }
-
   ],
 }
 
@@ -977,8 +1016,8 @@ export const systemMapMeta: ActiveMapMeta = {
   name: "Solar System",
   mapType: ActiveMapType.System,
   dimensions: {
-    x: 3200,
-    y: 2000
+    x: 3400,
+    y: 2100
   },
   centerLocationId: "sol",
   minScale: 0.8,
@@ -987,6 +1026,6 @@ export const systemMapMeta: ActiveMapMeta = {
   detailLevel2Scale: 8,
   diagPatternScale: "1px",
   centerOffset: 0,
-  distanceMultiplier: 1,
+  distanceMultiplier: 1.2,
   locations: locationsData
 }

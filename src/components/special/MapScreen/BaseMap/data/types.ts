@@ -37,6 +37,8 @@ export interface LocationNode {
   colorSecondary?: string
 
   isImportant?: boolean // Has special indicator on map
+  hideLabel?: boolean
+  isHighDetail?: boolean
 
   // FIELD-SPECIFIC
   fieldShape?: FieldShape // If field, defines the SVG used for the shape
@@ -149,10 +151,10 @@ export const mapSiteSubTypeToText = {
 
 export const mapWorldAffiliationToText = {
   [WorldAffiliation.Anomaly]: "Anomalous",
-  [WorldAffiliation.HumanEra]: "Human-Built",
-  [WorldAffiliation.MachineEra]: "Machine-Built",
-  [WorldAffiliation.MachinesOfGlass]: "Glass-Timeline",
-  [WorldAffiliation.CenturyOfProgress]: "Progress-Timeline",
+  [WorldAffiliation.HumanEra]: "Human-Designed",
+  [WorldAffiliation.MachineEra]: "Machine-Designed",
+  [WorldAffiliation.MachinesOfGlass]: "Machines of Glass",
+  [WorldAffiliation.CenturyOfProgress]: "Century of Progress",
   [WorldAffiliation.Natural]: "Natural"
 }
 

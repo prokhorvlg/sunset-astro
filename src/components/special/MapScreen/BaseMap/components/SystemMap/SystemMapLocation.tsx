@@ -1,5 +1,5 @@
-import { MAP_SCALE_FACTOR, MAP_DISTANCE_FACTOR, MAP_DEFAULT_COLOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { scaleAtom, rescaleAtom, selectedLocationAtom, hoveredLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { MAP_SCALE_FACTOR, MAP_DEFAULT_COLOR } from "@/components/special/MapScreen/BaseMap/data/constants"
+import { scaleAtom, rescaleAtom, selectedLocationAtom, hoveredLocationAtom, activeMapMetaAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { findNewPoint, increaseBrightness } from "@/components/special/MapScreen/utils/WorldGenerationHelpers"
 import { useAtom } from "jotai"
 import { useMemo, useState } from "react"
@@ -46,6 +46,9 @@ const SystemMapLocation = ({
   const [hoveredLocation, setHoveredLocation] = useAtom(
     hoveredLocationAtom
   )
+  const [activeMapMeta, setActiveMapMeta] = useAtom(
+    activeMapMetaAtom
+  )
 
   const [isWorld] = useState(
     location.type === LocationType.Planet ||
@@ -64,8 +67,8 @@ const SystemMapLocation = ({
     0,
     location.startingAngle,
     isParentBelt ? 
-      ((parentLocation?.distance || 0) + location.distance) * MAP_DISTANCE_FACTOR :
-      location.distance * MAP_DISTANCE_FACTOR
+      ((parentLocation?.distance || 0) + location.distance) * activeMapMeta.distanceMultiplier :
+      location.distance * activeMapMeta.distanceMultiplier
   ))
   const [objectPointNoDistance] = useState(findNewPoint(
     0,
@@ -117,7 +120,7 @@ const SystemMapLocation = ({
     if (!isParentBelt && isSite) {
       const rescaledParentRadius = parentRadius * rescale
       
-      if (location.distance * MAP_DISTANCE_FACTOR < rescaledParentRadius) {
+      if (location.distance * activeMapMeta.distanceMultiplier < rescaledParentRadius) {
         return objectPointFromParentRadius[dimension] * rescale
       } else {
         return objectPoint[dimension]
@@ -133,7 +136,7 @@ const SystemMapLocation = ({
 
   const zoomToLeft = () => {
     if (isRootElement) return "50%"
-    else if (isBelt) return location.distance * MAP_DISTANCE_FACTOR
+    else if (isBelt) return location.distance * activeMapMeta.distanceMultiplier
     //else if (isField) return location.fieldLabelOffset?.x || 0
     return objectPoint.x
   } 

@@ -35,8 +35,13 @@
       @include absoluteCentered();
       border-radius: 5000px;
       
-      -webkit-mask: url('/images/patterns/map-planet-pattern.svg') 0 50%/5px 5px;
-      mask: url('/images/patterns/map-planet-pattern.svg') repeat 50% 50%;
+      $maskSize: 5px;
+      //-webkit-mask: url('/images/patterns/map-planet-pattern-2.svg') 0 50%/5px 5px;
+      -webkit-mask: url('/images/patterns/map-planet-pattern.svg');
+      -webkit-mask-position: 50% 50%;
+      -webkit-mask-size: $maskSize $maskSize;
+
+      mask: url('/images/patterns/map-planet-pattern.svg') 0 50%/5px 5px;
 
       &::after {
         border-radius: 2000px;

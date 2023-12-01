@@ -34,12 +34,14 @@ const LocationField = ({
 
   return (
     <>
-      <Selector location={location}>
-        <ElementHeading location={location} radius={radius} />
-        {isDetailLevel &&
-          <p className="flavor-text">{location.flavorText}</p>
-        }
-      </Selector>
+      {!location.hideLabel && 
+        <Selector location={location}>
+          <ElementHeading location={location} radius={radius} />
+          {isDetailLevel &&
+            <p className="flavor-text">{location.flavorText}</p>
+          }
+        </Selector>
+      }
 
       {/* FIELD */}
       {mapShapeFromField(location.fieldShape || FieldShape.Earth, location)}

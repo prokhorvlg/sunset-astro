@@ -1,6 +1,5 @@
-import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
 import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMapWheel"
-import { transformAtom, rescaleAtom, selectedLocationAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { transformAtom, rescaleAtom, selectedLocationAtom, isDetailLevelAtom, activeMapMetaAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './MapSelector.scss'
@@ -89,6 +88,9 @@ const SelectionButton = ({
     selectedLocationAtom
   )
   const [isDetailLevel, setIsDetailLevel] = useAtom(isDetailLevelAtom)
+  const [activeMapMeta, setActiveMapMeta] = useAtom(
+    activeMapMetaAtom
+  )
 
   const borderRadiusModifier = 20
   const usedRadius = radius ? radius : 10 // Used for sites
@@ -115,7 +117,7 @@ const SelectionButton = ({
     return (
       <div className="selection-button-offset belt" style={{
         top: '50%',
-        left: `calc(${location.distance * MAP_DISTANCE_FACTOR}px)`,
+        left: `calc(${location.distance * activeMapMeta.distanceMultiplier}px)`,
         transform: `translate(-50%, -50%) scale(${rescale})`,
       }}>
         <button

@@ -1,5 +1,4 @@
-import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { rescaleAtom, opacityFadeOutAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { rescaleAtom, opacityFadeOutAtom, isDetailLevelAtom, activeMapMetaAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading"
 import ElementOffset from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer"
 import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector"
@@ -24,8 +23,11 @@ const LocationAsteroidBelt = ({
   const [isDetailLevel, setIsDetailLevel] = useAtom(
     isDetailLevelAtom
   )
+  const [activeMapMeta, setActiveMapMeta] = useAtom(
+    activeMapMetaAtom
+  )
 
-  const [height] = useState(location.distance * MAP_DISTANCE_FACTOR * 2 - 25)
+  const [height] = useState(location.distance * activeMapMeta.distanceMultiplier * 2 - 25)
 
   return (
     <>

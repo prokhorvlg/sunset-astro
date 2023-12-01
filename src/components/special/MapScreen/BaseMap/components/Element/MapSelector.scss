@@ -32,10 +32,12 @@ $endDimensions: 75px;
     }
 
     & ~ .map-site { 
+      
       h2.map-name {
         display: block;
       }
       .map-site-icon {
+        opacity: 1;
         transform: translate(-50%, -50%) scale(1.3)
       }
     }

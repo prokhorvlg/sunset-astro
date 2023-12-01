@@ -1,6 +1,5 @@
 
-import { MAP_DISTANCE_FACTOR } from "@/components/special/MapScreen/BaseMap/data/constants"
-import { rescaleAtom, isDetailLevelAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { rescaleAtom, isDetailLevelAtom, activeMapMetaAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './LocationOrbitRing.scss'
@@ -17,8 +16,11 @@ const LocationOrbitRing = ({
   const [isDetailLevel, setIsDetailLevel] = useAtom(
     isDetailLevelAtom
   )
+  const [activeMapMeta, setActiveMapMeta] = useAtom(
+    activeMapMetaAtom
+  )
 
-  const [size] = useState(location.distance * MAP_DISTANCE_FACTOR * 2)
+  const [size] = useState(location.distance * activeMapMeta.distanceMultiplier * 2)
 
   return (
     <div

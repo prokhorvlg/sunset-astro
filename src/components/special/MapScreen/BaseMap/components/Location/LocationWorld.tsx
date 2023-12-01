@@ -68,9 +68,6 @@ const LocationWorld = ({
                 ),
               }}
             >
-              {/* NAME */}
-              {/* <ElementHeading location={location} radius={radius} isTop /> */}
-
               {/* INDICATOR for local map */}
               {location.localMap &&
                 <div className={`local-map-indicator ${isDetailLevel ? "is-detail-level" : ""}`} style={{
@@ -141,7 +138,7 @@ const LocationWorld = ({
                     <p
                       className={`type-text ${isDetailLevel ? "is-detail-level" : ""}`}
                       style={{
-                        color: color,
+                        color: location.colorSecondary ?? location.color,
                       }}
                     >
                       {location.typeText}
