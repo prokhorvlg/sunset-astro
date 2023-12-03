@@ -68,8 +68,6 @@
     left: 50%;
     top: 50%;
     position: absolute;
-    //transform: translate(-50%, -50%);
-    //mix-blend-mode: lighten;
 
     &::after {
       background-image: url('/images/patterns/map-bg-grid-pattern.svg');
@@ -85,15 +83,11 @@
   z-index: $map-zindex-underlyingOverlay;
 
   .sunset-map-starry-pattern {
-    @include absoluteCentered(1.05);
-
-    //mix-blend-mode: screen;
+    @include absoluteCentered();
     opacity: 0.15;
     background-image: url('/images/patterns/1000-dots-1000x1000.svg');
     background-repeat: repeat;
-    background-size: 700px;
     background-position: 50% 50%;
   }
-
 }
 

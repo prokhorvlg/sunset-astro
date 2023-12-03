@@ -5,7 +5,7 @@
 
   <defs>
     <radialGradient id="gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="40%">
-      <stop offset="10%" stop-color="rgb(255, 169, 39)" stop-opacity="0.5">
+      <stop offset="10%" stop-color="rgb(255, 169, 39)" stop-opacity="1">
         <animate attributeName="stop-opacity" dur="4s" values="0.6;0.6;1;0.5;0.5;1;0.5;0.6" keyTimes="0; 0.25; 0.26; 0.27; 0.29; 0.3; 0.31; 1" repeatCount="indefinite"></animate>
       </stop>
       <stop offset="40%" stop-color="rgb(255, 169, 39)" stop-opacity="0.3">

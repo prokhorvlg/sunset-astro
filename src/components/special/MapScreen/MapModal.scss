@@ -157,8 +157,12 @@
 
     .map-dialog-footer {
       margin: 20px 0 40px 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
       @media screen and (max-width: $breakpoint-mobile) {
         margin-bottom: 20px;
+        justify-content: flex-end;
       }
 
       button {

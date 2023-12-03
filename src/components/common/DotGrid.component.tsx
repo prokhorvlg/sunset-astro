@@ -7,7 +7,7 @@ interface Props {
   dotSpacing?: number
 }
 
-// TODO: Replace this garbage with a normal SVG pattern, wtf lol
+// Replace this garbage with a normal SVG pattern, wtf lol
 function DotGrid({ numRowsInitial = 10, numRowsMobile = 8, dotRadius = 1.5, dotSpacing = 6 }: Props) {
   /*const [numRows, setNumRows] = useState<number>(numRowsInitial);
   const [gridWidth, setGridWidth] = useState<number>(0);

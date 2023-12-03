@@ -41,8 +41,10 @@ export const locationsData: SystemLocationNode = {
       subType: SiteSubtype.Beacon,
       worldAffiliation: WorldAffiliation.HumanEra,
       humanEraAffiliation: HumanEraAffiliation.GreaterUnion,
+      humanEraPopulation: 20000,
       distance: 25,
       startingAngle: 270,
+      isWideContent: true
     },
     {
       id: "axiom",
@@ -76,6 +78,7 @@ export const locationsData: SystemLocationNode = {
       subType: SiteSubtype.Outpost,
       worldAffiliation: WorldAffiliation.HumanEra,
       humanEraAffiliation: HumanEraAffiliation.GreaterUnion,
+      humanEraPopulation: 500,
       distance: 32,
       startingAngle: 5,
     },
@@ -124,6 +127,7 @@ export const locationsData: SystemLocationNode = {
               subType: SiteSubtype.Orbital,
               worldAffiliation: WorldAffiliation.Anomaly,
               humanEraAffiliation: HumanEraAffiliation.SunsetResearchInitiative,
+              humanEraPopulation: 100000,
               distance: 0,
               startingAngle: 25,
             },
@@ -144,11 +148,12 @@ export const locationsData: SystemLocationNode = {
       colorSecondary: "#ebe654",
       distance: 165,
       radius: 15,
-      startingAngle: 220, //205
+      startingAngle: 220,
       isImportant: true,
       icon: <GiPalmTree />,
       children: [
         {
+          id: "merdem",
           name: "Merdem's Ring",
           typeText: "Independent Orbital",
           flavorText: "The most tense military stalemate in human history. Things seem to have cooled down since the Unexpected Interrupt, though.",
@@ -177,6 +182,7 @@ export const locationsData: SystemLocationNode = {
             "A tiny moon consisting primarily of frozen carbon dioxide. It was an ideal location for several data centers.",
           color: "#8fbeff",
           colorSecondary: "#b0e6ff",
+          humanEraPopulation: 250,
           distance: 66,
           radius: 5,
           startingAngle: 320,
@@ -273,6 +279,8 @@ export const locationsData: SystemLocationNode = {
               type: LocationType.Site,
               subType: SiteSubtype.Outpost,
               worldAffiliation: WorldAffiliation.HumanEra,
+              humanEraAffiliation: HumanEraAffiliation.None,
+              humanEraPopulation: 50000,
               distance: 29,
               startingAngle: 20,
             },
@@ -297,6 +305,7 @@ export const locationsData: SystemLocationNode = {
       isImportant: true,
       children: [
         {
+          id: "kojo-terminus",
           name: "Kojo Terminus",
           typeText: "Tactical Military Station",
           flavorText: "The sanguine world was the dominion of the Pact, overseen by all-seeing Terminus, enforced by orbital drop.",
@@ -311,11 +320,13 @@ export const locationsData: SystemLocationNode = {
           subType: SiteSubtype.Outpost,
           worldAffiliation: WorldAffiliation.HumanEra,
           humanEraAffiliation: HumanEraAffiliation.RisingPact,
+          humanEraPopulation: 9000,
           distance: 21,
           startingAngle: 240,
         },
         {
           id: "prometheus",
+          isWideContent: true,
           name: "Prometheus Tower",
           typeText: "Joint Venture Orbital",
           flavorText:
@@ -328,6 +339,7 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
           worldAffiliation: WorldAffiliation.HumanEra,
+          humanEraPopulation: 270000,
           distance: 38,
           startingAngle: 360,
         },
@@ -359,10 +371,11 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 44,
       children: [
         {
-          name: "Heavenbreaker Cache 80-IV",
+          id: "cache-80-iv",
+          name: "Cold Cache 80-IV",
           typeText: "Stockpile of Nuclear Missiles",
           flavorText:
-            "They sleep amidst the cold asteroids, waiting for their final order from DAWNLIGHT VIGIL.",
+            "They sleep amidst the asteroids, waiting for their final order from DAWNLIGHT VIGIL.",
           icon: <svg 
           viewBox="0 0 101 75"
           width="101px" height="75px">
@@ -465,6 +478,7 @@ export const locationsData: SystemLocationNode = {
         // stations
         {
           id: "gorsk",
+          isWideContent: true,
           name: "Great Gorsk",
           typeText: "Monolithic People's Orbital",
           flavorText:
@@ -567,6 +581,8 @@ export const locationsData: SystemLocationNode = {
               d="M96.059,38.039 C96.059,38.039 96.137,43.878 94.750,47.197 C93.363,50.516 88.209,54.262 88.209,54.262 L81.667,55.832 L76.958,54.000 L73.294,50.599 L63.875,43.272 L62.043,44.319 L61.520,44.580 L60.735,45.889 L59.688,56.617 L59.165,57.402 L59.427,58.972 L58.903,59.495 L58.642,63.943 C58.642,63.943 57.864,66.135 56.548,66.298 C55.233,66.461 54.717,66.821 54.717,66.821 L54.717,75.194 C54.717,75.194 54.362,76.466 53.932,76.502 C53.502,76.539 52.624,76.241 52.624,76.241 L52.362,69.176 L51.839,69.176 C51.839,69.176 51.270,90.401 51.362,91.155 C51.454,91.910 50.959,92.807 50.315,92.725 C49.672,92.643 48.745,91.417 48.745,91.417 L48.175,69.699 C48.175,69.699 48.093,71.072 47.390,71.008 C46.688,70.944 45.323,70.297 45.036,67.345 C44.749,64.392 44.774,64.205 44.774,64.205 C44.774,64.205 42.449,63.811 42.157,63.158 C41.866,62.505 39.522,60.683 39.541,57.925 C39.560,55.167 39.541,55.047 39.541,55.047 L39.017,52.692 L39.017,50.860 L37.709,49.029 L37.186,48.244 L35.093,48.244 C35.093,48.244 33.673,53.306 32.999,53.738 C36.153,58.469 45.036,71.269 45.036,71.269 C45.036,71.269 45.219,72.639 44.512,72.578 C43.805,72.516 42.942,71.531 42.942,71.531 L31.429,55.308 L28.813,54.785 L28.290,52.953 L27.505,52.953 L26.458,54.000 L23.318,54.262 L21.487,52.953 L16.253,58.448 C16.253,58.448 15.546,58.169 15.468,57.925 C15.390,57.681 16.515,56.093 16.515,56.093 L20.440,52.168 C20.440,52.168 19.360,47.398 19.393,44.842 C13.275,45.346 0.554,46.935 0.554,46.935 C0.554,46.935 0.414,46.743 0.292,45.889 C0.171,45.034 0.039,43.880 1.339,43.534 L19.132,40.917 C19.132,40.917 19.598,31.067 22.010,30.713 C24.421,30.358 24.365,30.451 24.365,30.451 C24.365,30.451 22.761,11.202 20.440,2.977 C20.921,1.956 20.148,0.801 20.963,1.407 C21.778,2.014 21.748,2.192 21.748,2.192 C21.748,2.192 26.154,22.267 26.196,29.666 C26.582,30.032 26.458,30.189 26.458,30.189 L29.860,30.189 C29.860,30.189 32.679,31.340 33.261,32.544 C33.843,33.749 34.046,33.852 34.046,33.852 L36.924,34.114 L36.924,23.386 L36.139,22.340 C36.139,22.340 35.805,21.866 36.139,21.031 C36.474,20.197 37.971,19.461 37.971,19.461 L38.494,18.153 L39.481,17.956 C37.931,16.060 37.000,13.639 37.000,11.000 C37.000,4.925 41.925,0.000 47.1000,0.000 C54.075,0.000 59.000,4.925 59.000,11.000 C59.000,13.443 58.194,15.692 56.847,17.518 L57.857,17.630 L58.380,18.938 L58.903,19.461 L59.688,31.236 L58.903,31.759 L59.950,31.759 L60.212,30.974 L61.258,30.713 L62.043,31.236 L72.248,25.218 C72.248,25.218 74.069,21.442 75.126,21.293 C76.183,21.144 77.526,20.230 79.051,20.246 C80.576,20.262 89.517,21.816 89.517,21.816 C89.517,21.816 95.687,25.284 96.059,32.806 C96.898,33.986 97.472,34.471 97.367,35.684 C97.262,36.897 96.059,38.039 96.059,38.039 ZM63.352,32.544 C65.214,32.761 65.968,35.422 65.968,35.422 L70.416,35.684 C70.416,35.684 70.385,35.661 70.416,35.161 C70.317,31.628 71.201,28.096 71.201,28.096 L63.352,32.544 ZM70.678,40.394 L65.183,40.917 L64.921,41.441 L64.921,41.702 L71.201,46.412 C71.201,46.412 71.381,46.707 71.725,46.412 C70.898,43.908 70.678,40.394 70.678,40.394 Z"/>
              </svg>,
               worldAffiliation: WorldAffiliation.HumanEra,
+              humanEraAffiliation: HumanEraAffiliation.GreaterUnion,
+              humanEraPopulation: 1200,
               type: LocationType.Site,
               subType: SiteSubtype.Danger,
               distance: 28,
@@ -645,6 +661,8 @@ export const locationsData: SystemLocationNode = {
       children: [
         // stations
         {
+          id: "goldspire",
+          isWideContent: true,
           name: "Goldspire Archive",
           typeText: "Intelligence Network Hub",
           flavorText: "You like information, correct? There is much information here.",
@@ -653,6 +671,8 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Site,
           subType: SiteSubtype.Beacon,
           worldAffiliation: WorldAffiliation.HumanEra,
+          humanEraAffiliation: HumanEraAffiliation.EnduringCoalition,
+          humanEraPopulation: 10000,
           distance: 30,
           startingAngle: 310,
           icon: <svg 
@@ -664,15 +684,17 @@ export const locationsData: SystemLocationNode = {
         },
         {
           id: "gemini",
+          isWideContent: true,
           name: "Gemini Five",
           typeText: "Assembled Orbital Stack",
           flavorText:
-            "",
+            "The quaint industrial orbital from which most of the System's tetradite alloy comes from. Go Gemini Spinners!... well, if they were still around.",
           description:
             "Orbital assembled from multiple private ventures purchased by the Coalition. Source of all the System's processed tetradite.",
           type: LocationType.Site,
           subType: SiteSubtype.Orbital,
           worldAffiliation: WorldAffiliation.HumanEra,
+          humanEraPopulation: 180000,
           distance: 34,
           startingAngle: 140,
           icon: <svg 

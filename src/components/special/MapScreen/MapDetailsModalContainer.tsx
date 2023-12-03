@@ -35,7 +35,8 @@ const MapDetailsModalContainer = ({
         headerText="Selected location"
         isOpen={locationIsOpen}
         setIsOpen={setIsSelectedModalOpen}
-        desiredWidth={matchingFile !== undefined ? 1600 : 1200}
+        //desiredWidth={matchingFile !== undefined ? 1600 : 1200}
+        desiredWidth={selectedLocation?.isWideContent ? 1600 : 1200}
       >
         <div className="map-selected-content">
           <div className="selected-content-container">
@@ -91,7 +92,7 @@ const MapDetailsModalContainer = ({
                 }
                 {selectedLocation?.humanEraPopulation &&
                   <div className={`human-era-population`}>
-                    human pop. ~{selectedLocation.humanEraPopulation} 
+                    human pop. ~{selectedLocation.humanEraPopulation.toLocaleString()} 
                 </div>
                 }
               </div>

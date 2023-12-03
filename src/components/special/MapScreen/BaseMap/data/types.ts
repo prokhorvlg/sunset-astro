@@ -39,7 +39,7 @@ export interface LocationNode {
 
   isImportant?: boolean // Has special indicator on map
   hideLabel?: boolean
-  isHighDetail?: boolean
+  isWideContent?: boolean
 
   // FIELD-SPECIFIC
   fieldShape?: FieldShape // If field, defines the SVG used for the shape

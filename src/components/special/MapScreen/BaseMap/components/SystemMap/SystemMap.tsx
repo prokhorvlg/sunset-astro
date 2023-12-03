@@ -18,6 +18,7 @@ const SystemMap = (props: MapComponentProps) => {
   )
 
   const starryPositionModifier = isDetailLevel ? 0.5 : 0.5
+  // const starryPositionModifier2 = 0.1
 
   const [activeMapMeta, setActiveMapMeta] = useAtom(activeMapMetaAtom)
 
@@ -37,15 +38,23 @@ const SystemMap = (props: MapComponentProps) => {
       
       {/* PARALLAXING STARS */}
       <div className="sunset-map-starry-container">
+
         <div className="sunset-map-starry-pattern" style={{
           transform: `transform(-50%, -50%)`,
-          width: 3200 + 200,
-          height: 2000 + 200,
+          width: activeMapMeta.dimensions.x + 200,
+          height: activeMapMeta.dimensions.y + 200,
           backgroundSize: isDetailLevel ? "200px" : `${rescale * 800}px`,
-         // backgroundSize: isDetailLevel ? "200px" : "600px",
           backgroundPosition: `${posX * rescale * starryPositionModifier}px ${posY * rescale * starryPositionModifier}px`,
-          //display: isDetailLevel ? "none" : "block"
         }}></div>
+
+        {/* <div className="sunset-map-starry-pattern second" style={{
+          transform: `transform(-50%, -50%)`,
+          width: activeMapMeta.dimensions.x + 200,
+          height: activeMapMeta.dimensions.y + 200,
+          backgroundSize: isDetailLevel ? "200px" : `${rescale * 400}px`,
+          backgroundPosition: `${posX * rescale * starryPositionModifier2}px ${posY * rescale * starryPositionModifier2}px`,
+        }}></div> */}
+
       </div>
         
       {/* GRID AT HIGH ZOOM */}
@@ -62,6 +71,7 @@ const SystemMap = (props: MapComponentProps) => {
           location={activeMapMeta.locations as SystemLocationNode}
           isRootElement
           transform={props.transform}
+          parentRootVector={{x: 0, y: 0}}
         />
       </div>
     </>
