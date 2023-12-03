@@ -76,7 +76,9 @@ const FieldContainer = ({
 
   return (
     <>
-      <div className={`map-field ${location.fieldClass ? location.fieldClass : ""}`}>
+      <div className={`map-field ${location.fieldClass ? location.fieldClass : ""}`} style={{
+
+      }}>
 
         {/* CULLING BLOCK */}
         <div className="culling-radius" ref={visibleRef}
@@ -118,7 +120,7 @@ const FieldContainer = ({
                     height: `${height}px`,
                     width: `${width}px`,
                     background: `url(/images/patterns/map-fields/system/field-${location.fieldShape?.toLowerCase()}.svg)`,
-                    opacity: 0.8,
+                    opacity: 1,
                     display: isDetailLevel ? "none" : "block"
                   }}></div>
                 }
@@ -129,7 +131,7 @@ const FieldContainer = ({
                     height: `${height}px`,
                     width: `${width}px`,
                     background: `url(/images/patterns/map-fields/system/field-${location.fieldShape?.toLowerCase()}-filled.svg)`,
-                    opacity: isDetailLevel ? 0.8 : 0.1
+                    opacity: isDetailLevel ? 0.7 : 0.1
                   }}></div>
                 }
               </>

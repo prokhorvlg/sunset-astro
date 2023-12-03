@@ -11,7 +11,7 @@
       <stop offset="40%" stop-color="rgb(255, 169, 39)" stop-opacity="0.3">
         <animate attributeName="stop-opacity" dur="6s" values="0.3;0.3;0.7;0.3;0.3;0.7;0.3;0.3" keyTimes="0; 0.35; 0.36; 0.37; 0.39; 0.4; 0.41; 1" repeatCount="indefinite"></animate>
       </stop>
-      <stop offset="100%" stop-color="rgb(255, 169, 39)" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="rgb(255, 169, 39)" stop-opacity="0" />
     </radialGradient>
 
     <pattern id="stripe" patternTransform="rotate(45) scale(0.3)" width="10" height="100%" patternUnits="userSpaceOnUse" x="50%" y="50%">

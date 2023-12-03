@@ -9,15 +9,21 @@ import { useRef } from "react"
 import { FaPlus } from "react-icons/fa"
 import "./LocationWorld.scss"
 
-
 const LocationWorld = ({
   location,
   radius,
-  color
+  color,
+  isRootElement,
+  rootVector
 }: {
   location: SystemLocationNode
   radius: number
   color: string
+  isRootElement: boolean
+  rootVector: {
+    x: number
+    y: number
+  }
 }) => {
   // STATE ATOMS
   const [transform, setTransform] = useAtom(transformAtom)
@@ -35,6 +41,10 @@ const LocationWorld = ({
 
   const isSun = location.type === LocationType.Sun
   const isUranus = location.name === "Uranus"
+
+  const angleFromSun = Math.atan2(rootVector.y, rootVector.x) * 180 / Math.PI;
+
+  console.log("angleFromSun", angleFromSun)
 
   return (
     <>
@@ -87,6 +97,19 @@ const LocationWorld = ({
                   width: isDetailLevel ? radius + 186 : radius + 6,
                   backgroundColor: color,
                 }}></div>
+
+              {/* SHADOW */}
+              {(!isRootElement && !isDetailLevel) &&
+                <div className="world-shadow-container" style={{
+                  transform: `translate(-50%, -50%) rotate(${angleFromSun}deg)`
+                }}>
+                  <div className="world-shadow" style={{
+                    height: radius + 6,
+                    width: radius * 5
+                  }}></div>
+                </div>
+              }
+              
 
               {/* ATMOSPHERE CIRCLE */}
               {isDetailLevel &&

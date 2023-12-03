@@ -25,6 +25,7 @@ export interface LocationNode {
   description?: string // eg. The sun is a ...
   flavorText?: string // eg Don't step on it.
   icon?: ReactNode
+  humanEraPopulation?: number | string
 
   // CATEGORIES
   type: LocationType // Determines basic treatment of location

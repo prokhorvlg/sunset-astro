@@ -89,6 +89,11 @@ const MapDetailsModalContainer = ({
                     {mapHumanEraAffiliationToText[selectedLocation?.humanEraAffiliation || ""]} 
                 </div>
                 }
+                {selectedLocation?.humanEraPopulation &&
+                  <div className={`human-era-population`}>
+                    human pop. ~{selectedLocation.humanEraPopulation} 
+                </div>
+                }
               </div>
             </div>
 

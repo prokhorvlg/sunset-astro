@@ -31,12 +31,17 @@ const SystemMapLocation = ({
   zIndex,
   isRootElement,
   transform,
+  parentRootVector
 }: {
   location: SystemLocationNode
   parentLocation?: SystemLocationNode
   zIndex?: number
   isRootElement?: boolean
   transform: ReactZoomPanPinchContentRef
+  parentRootVector: {
+    x: number
+    y: number
+  }
 }) => {
   const [scale, setScale] = useAtom(scaleAtom)
   const [rescale, setRescale] = useAtom(rescaleAtom)
@@ -93,24 +98,9 @@ const SystemMapLocation = ({
     ? zIndex + 1
     : ringsBeginningZIndex)
 
-  const getChildrenElements = () => {
-    return (<>
-      {location.children
-        ?.slice(0)
-        .reverse()
-        .map((childLocation) => {
-          return (
-            <SystemMapLocation
-              key={childLocation.name}
-              location={childLocation as SystemLocationNode}
-              parentLocation={location}
-              zIndex={ringsCurrentZIndex}
-              transform={transform}
-            />
-          )
-        })}
-    </>)
-  }
+  
+
+  
 
   const getDimensionOffset = (dimension: Dimension) => {
     // Sun needs to be in direct center of div.
@@ -133,6 +123,34 @@ const SystemMapLocation = ({
 
   const dimensionOffsetX = useMemo(() => getDimensionOffset(Dimension.x), [parentRadius, rescale])
   const dimensionOffsetY = useMemo(() => getDimensionOffset(Dimension.y), [parentRadius, rescale])
+
+  const rootVector = isRootElement ? {
+    x: 0,
+    y: 0
+  } : {
+    x: parentRootVector.x + objectPoint[Dimension.x],
+    y: parentRootVector.y + objectPoint[Dimension.y]
+  }
+
+  const getChildrenElements = () => {
+    return (<>
+      {location.children
+        ?.slice(0)
+        .reverse()
+        .map((childLocation) => {
+          return (
+            <SystemMapLocation
+              key={childLocation.name}
+              location={childLocation as SystemLocationNode}
+              parentLocation={location}
+              zIndex={ringsCurrentZIndex}
+              transform={transform}
+              parentRootVector={rootVector}
+            />
+          )
+        })}
+    </>)
+  }
 
   const zoomToLeft = () => {
     if (isRootElement) return "50%"
@@ -182,6 +200,8 @@ const SystemMapLocation = ({
         {/* WORLD (sun, moon, planet) */}
         {isWorld && (
           <LocationWorld
+            isRootElement={isRootElement ?? false}
+            rootVector={rootVector}
             location={location}
             radius={radius}
             color={color}

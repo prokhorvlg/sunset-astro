@@ -29,14 +29,15 @@
   width: 250px;
   border-radius: 99999px;
   z-index: $map-zindex-iconOverlay;
-  background: radial-gradient(rgba(255, 171, 46, 1) 20%,
+  background: radial-gradient(rgba(255, 171, 46, 1) 10%,
       rgb(255, 152, 17) 30%,
-      rgba(230, 83, 15, 0.2) 50%,
-      rgba(255, 195, 28, 0) 65%);
+      rgba(230, 83, 15, 0.2) 55%,
+      rgba(255, 195, 28, 0) 75%);
   //mix-blend-mode: screen;
   opacity: 1;
   user-select: none;
   pointer-events: none;
+
 }
 
 @keyframes pulse {
@@ -84,7 +85,7 @@
   z-index: $map-zindex-underlyingOverlay;
 
   .sunset-map-starry-pattern {
-    @include absoluteCentered();
+    @include absoluteCentered(1.05);
 
     //mix-blend-mode: screen;
     opacity: 0.15;

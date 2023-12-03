@@ -24,6 +24,22 @@
       opacity: 0.1;
     }
 
+    .world-shadow-container {
+      @include absoluteCentered();
+      position: absolute;
+      //z-index: -1;
+
+      .world-shadow {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(0, -50%);
+        width: 150px;
+        background: linear-gradient(to right, rgba($map-background-color,0.3), rgba($map-background-color,0));
+      }
+    }
+
     .inner-circle-outer-ring {
       @include absoluteCentered();
       border-radius: 5000px;
