@@ -44,8 +44,6 @@ const LocationWorld = ({
 
   const angleFromSun = Math.atan2(rootVector.y, rootVector.x) * 180 / Math.PI;
 
-  console.log("angleFromSun", angleFromSun)
-
   return (
     <>
       <Selector location={location} radius={radius} />
