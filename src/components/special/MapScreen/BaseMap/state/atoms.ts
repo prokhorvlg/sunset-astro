@@ -51,4 +51,4 @@ export const activeMapMetaAtom = atom<ActiveMapMeta>((get) => {
 
 export const isSelectedModalOpenAtom = atom<boolean>(false)
 
-export const isIntroOpenAtom = atom<boolean>(false)
+export const isIntroOpenAtom = atom<boolean>(true)
