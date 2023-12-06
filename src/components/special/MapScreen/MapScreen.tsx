@@ -5,6 +5,7 @@ import MapModal from "@/components/special/MapScreen/MapModal"
 import { useAtom } from "jotai"
 import BaseMap from "@/components/special/MapScreen/BaseMap/BaseMap"
 import { FaQuestionCircle } from "react-icons/fa"
+import { MdArrowForward } from "react-icons/md";
 import "./MapScreen.scss"
 import { useEffect } from "react"
 
@@ -34,6 +35,7 @@ const MapScreen = (props) => {
         headerText="About the map"
         isOpen={isIntroOpen}
         setIsOpen={setIsIntroOpen}
+        closeButtonContent={<><MdArrowForward /> Go forth and explore</>}
       >
         {props.mapIntro}
       </MapModal>

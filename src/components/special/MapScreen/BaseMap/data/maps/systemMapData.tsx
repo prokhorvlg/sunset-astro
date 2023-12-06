@@ -141,6 +141,7 @@ export const locationsData: SystemLocationNode = {
       name: "Venus",
       type: LocationType.Planet,
       worldAffiliation: WorldAffiliation.Natural,
+      humanEraPopulation: "250 million",
       typeText: "Hot Jungle World",
       flavorText:
         "Welcome, comrade! Here, our people work as hard as the machines to build our Communist future- ALERT. ALERT. Hive invasion detected. Seek shelter.",
@@ -197,6 +198,7 @@ export const locationsData: SystemLocationNode = {
       typeText: "Wasted World",
       type: LocationType.Planet,
       worldAffiliation: WorldAffiliation.Natural,
+      humanEraPopulation: "8 billion",
       flavorText:
             "Birthplace of humanity, cybernetics, and the esteemed Oakmont QUIKBREW E-90 Coffee Brewer. We would visit more often, but her landscape has not remained the same for more than several minutes.",
           description:
@@ -759,6 +761,7 @@ export const locationsData: SystemLocationNode = {
           startingAngle: 40,
           isImportant: true,
           //localMap: ActiveMap.Titan,
+          humanEraPopulation: "180 million",
           icon: <GiSnail />,
           children: [
             {
@@ -972,6 +975,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 240,
       children: [
         {
+          id: "deep-syne-e",
           name: "Project DEEP SYNE-E",
           typeText: "SRI Number Beacon",
           flavorText:
@@ -984,6 +988,13 @@ export const locationsData: SystemLocationNode = {
           humanEraAffiliation: HumanEraAffiliation.SunsetResearchInitiative,
           distance: 0,
           startingAngle: 0,
+          isWideContent: true,
+          icon: <svg 
+          viewBox="0 0 83 97"
+          width="83px" height="97px">
+         <path fill-rule="evenodd"  fill="rgb(255, 19, 241)"
+          d="M7.106,60.332 L10.467,68.835 L30.240,68.835 L19.958,71.801 L20.156,72.789 L30.635,70.416 L30.635,71.207 L0.976,80.303 L0.581,80.303 L0.383,81.489 L1.965,81.292 L1.965,80.896 L27.274,73.185 L28.065,73.580 L31.426,72.591 L32.217,73.580 L32.613,73.778 L33.799,77.337 L34.590,77.337 L34.788,77.930 L47.838,78.523 L49.024,77.535 L50.408,81.489 L50.211,82.280 L51.792,86.828 L52.781,87.026 L55.945,94.144 L55.747,94.737 L55.945,95.924 L70.774,96.121 L70.577,95.133 L72.159,94.342 L72.159,93.946 L72.554,94.144 L74.729,92.958 L75.322,92.958 L75.718,92.760 L73.345,86.037 L71.763,79.117 L70.972,78.919 L64.843,62.507 L65.633,58.750 L65.436,58.355 L63.656,58.553 L63.261,56.773 L62.865,55.587 L65.238,54.598 L67.018,54.203 L82.836,44.316 L82.638,37.396 L82.045,37.000 L58.911,34.825 L57.527,35.814 L55.352,36.012 L55.549,34.825 L54.956,33.639 L54.561,33.243 L54.561,32.650 L50.211,22.170 L50.606,21.775 L45.267,7.539 L42.499,7.143 L39.731,0.618 L38.545,0.223 L23.715,6.550 L27.669,17.425 L27.076,18.414 L32.020,31.068 L32.810,31.068 L35.381,38.780 L36.172,39.571 L25.099,43.525 L12.642,54.400 L7.106,60.332 Z"/>
+         </svg>
         },
       ]
     },
@@ -994,8 +1005,8 @@ export const locationsData: SystemLocationNode = {
       type: LocationType.Field,
       fieldShape: FieldShape.DistantBottomLeft,
       fieldLabelOffset: {x: -25, y: -150},
-      distance: 1320,
-      startingAngle: 144,
+      distance: 1180,
+      startingAngle: 210,
       children: [
         {
           name: "Project HIGH ATEM",
@@ -1007,8 +1018,8 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Site,
           subType: SiteSubtype.Vessel,
           worldAffiliation: WorldAffiliation.Anomaly,
-          distance: 150,
-          startingAngle: 200,
+          distance: 190,
+          startingAngle: 230,
         },
         {
           name: "Wälstrom Earthbreaker",
@@ -1018,19 +1029,19 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Site,
           subType: SiteSubtype.Danger,
           worldAffiliation: WorldAffiliation.CenturyOfProgress,
-          distance: 25,
-          startingAngle: 20,
+          distance: 155,
+          startingAngle: 180,
         },
         {
-          name: "Kraugerstone",
+          name: "Kraugstone",
           typeText: "Strange Biomechanical Growth",
           flavorText:
             "A dusty floppy disk contains the sensor readings of a misshapen Kuiper object... only it isn't an asteroid at all. Analysis reveals the object to wriggle and breath.",
           type: LocationType.Site,
           subType: SiteSubtype.Asteroid,
           worldAffiliation: WorldAffiliation.Anomaly,
-          distance: 250,
-          startingAngle: 230,
+          distance: 240,
+          startingAngle: 270,
         },
       ]
     },
@@ -1095,7 +1106,7 @@ export const locationsData: SystemLocationNode = {
       worldAffiliation: WorldAffiliation.HumanEra,
       humanEraAffiliation: HumanEraAffiliation.None,
       distance: 1155,
-      startingAngle: 210,
+      startingAngle: 160,
     }
   ],
 }

@@ -73,6 +73,12 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("planet-marbles/Titan.png"),
     alt: "Titan, frigid moon of Saturn",
   },
+  {
+    id: "planet-titan-gallery",
+    src: getImageFromGlob("planet-marbles/Titan.png"),
+    alt: "Titan, frigid moon of Saturn",
+    classes: "shrink-60 border-titan-blue"
+  },
   // TITLE IMAGES
   {
     id: "title-cassette",

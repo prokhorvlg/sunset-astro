@@ -56,13 +56,10 @@ const ImageGallery = ({
                   }}
             >
                 {imageItems.map((imageItem) => {
-                    if (!imageItem || !imageItem.processedObject  || !imageItem.smallImage) return null
+                    if (!imageItem || !imageItem.processedObject) return null
 
                     const originalWidth = Number(imageItem.processedObject.attributes.width || "1")
                     const originalHeight = Number(imageItem.processedObject.attributes.height || "1")
-
-                    //const smallWidth = Number(imageItem.smallImage.attributes.width || "1")
-                    //const smallHeight = Number(imageItem.smallImage.attributes.height || "1")
 
                     return (
                         <div className="gallery-item" key={imageItem.originalObject.id}>
@@ -92,7 +89,7 @@ const ImageGallery = ({
                                 }
                             </div>
                             <Item
-                                thumbnail={imageItem.smallImage.src as string}
+                                thumbnail={imageItem.smallImage ? imageItem.smallImage.src as string : imageItem.processedObject.src as string}
                                 original={imageItem.processedObject.src as string}
                                 width={originalWidth}
                                 height={originalHeight}
