@@ -31,6 +31,7 @@ const MapScreen = (props) => {
 
       {/* INTRO MODAL */}
       <MapModal
+        hasHeader={false}
         headerIcon={<FaQuestionCircle />}
         headerText="About the map"
         isOpen={isIntroOpen}

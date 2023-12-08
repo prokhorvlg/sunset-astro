@@ -941,5 +941,10 @@ export const Images: ImageDetails[] = [
     alt: "An infograph about the slugma.",
     classes: "border-aqua",
     artist: ArtistProkhor,
-  }
+  },
+  {
+    id: "map-terminal",
+    src: getImageFromGlob("map_terminal (8).png"),
+    alt: "",
+  },
 ]

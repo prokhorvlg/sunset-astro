@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5"
 
 const MapModal = ({
   children,
+  hasHeader = true,
   headerText,
   headerIcon,
   isOpen,
@@ -14,6 +15,7 @@ const MapModal = ({
   closeButtonContent = <><IoClose /> Close</>
 }: {
   children: any
+  hasHeader?: boolean
   headerText?: string
   headerIcon?: any
   isOpen: boolean
@@ -57,16 +59,18 @@ const MapModal = ({
             width: desiredWidth ? desiredWidth : undefined
           }}
           >
-            <div className="map-dialog-header">
-              <h2>
-                {headerIcon}
-                {headerText}
-              </h2>
-              <div className="map-header-diagonal"></div>
-              <button className="close" onClick={onClose}>
-                <IoClose />
-              </button>
-            </div>
+            {hasHeader &&
+              <div className="map-dialog-header">
+                <h2>
+                  {headerIcon}
+                  {headerText}
+                </h2>
+                <div className="map-header-diagonal"></div>
+                <button className="close" onClick={onClose}>
+                  <IoClose />
+                </button>
+              </div>
+            }
 
             <Dialog.Panel className="map-dialog-content">
               <div className="content-child">{children}</div>

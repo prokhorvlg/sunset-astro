@@ -1,0 +1,22 @@
+@import 'src/styles/imports.scss';
+
+.map-intro-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  h1 {
+    font-size: 70px;
+    margin: 0;
+    color: $map-amber-color;
+  }
+  P {
+    color: $map-reddish-color;
+  }
+  img {
+    margin-top: 40px;
+    width: 900px;
+    max-width: 100%;
+  }
+}
