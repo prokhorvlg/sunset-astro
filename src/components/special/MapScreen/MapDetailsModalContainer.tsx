@@ -61,7 +61,9 @@ const MapDetailsModalContainer = ({
                   >
                     {selectedLocation?.name}
                   </h2>
-                  <p className="type">
+                  <p className="type" style={{
+                      color: selectedLocation?.colorSecondary || undefined,
+                  }}> 
                     {selectedLocation?.typeText}
                   </p>
                 </div>
