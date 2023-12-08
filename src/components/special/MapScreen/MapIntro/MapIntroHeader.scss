@@ -14,9 +14,12 @@
   P {
     color: $map-reddish-color;
   }
-  img {
-    margin-top: 40px;
-    width: 900px;
-    max-width: 100%;
+  .terminal-container {
+    img.terminal-image {
+      margin-top: 40px;
+      width: 900px;
+      max-width: 100%;
+    }
   }
+  
 }

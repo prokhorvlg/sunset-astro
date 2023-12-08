@@ -1,7 +1,7 @@
 // import Modal from "react-modal"
 import "./MapModal.scss"
 import { Dialog, Transition } from "@headlessui/react"
-import { Fragment, ReactNode } from "react"
+import { Fragment, ReactNode, useRef } from "react"
 import { IoClose } from "react-icons/io5"
 
 const MapModal = ({
@@ -23,6 +23,8 @@ const MapModal = ({
   desiredWidth?: number // What is the desired internal width of this modal
   closeButtonContent?: ReactNode
 }) => {
+  let completeButtonRef = useRef(null)
+  
   const onClose = () => {
     setIsOpen(false)
   }
@@ -30,6 +32,7 @@ const MapModal = ({
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
+        initialFocus={completeButtonRef}
         as="div"
         className="map-dialog"
         onClose={onClose}
@@ -72,12 +75,12 @@ const MapModal = ({
               </div>
             }
 
-            <Dialog.Panel className="map-dialog-content">
+            <Dialog.Panel className={`map-dialog-content ${hasHeader ? "has-header" : "no-header"}`}>
               <div className="content-child">{children}</div>
             </Dialog.Panel>
 
             <div className="map-dialog-footer">
-              <button onClick={onClose}>{closeButtonContent}</button>
+              <button onClick={onClose} ref={completeButtonRef}>{closeButtonContent}</button>
             </div>
           </div>
         </Transition.Child>

@@ -302,6 +302,7 @@ export const locationsData: SystemLocationNode = {
       name: "Mars",
       type: LocationType.Planet,
       worldAffiliation: WorldAffiliation.Natural,
+      humanEraPopulation: "90 million",
       icon: <GiSandSnake />,
       typeText: "Arid Desert World",
       flavorText:

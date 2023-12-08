@@ -79,6 +79,18 @@ export const Images: ImageDetails[] = [
     alt: "Titan, frigid moon of Saturn",
     classes: "shrink-60 border-titan-blue"
   },
+  {
+    id: "planet-venus-gallery",
+    src: getImageFromGlob("planet-marbles/Venus.png"),
+    alt: "Venus, the hot jungle",
+    classes: "shrink-60 border-venus-yellow"
+  },
+  {
+    id: "planet-mars-gallery",
+    src: getImageFromGlob("planet-marbles/Mars.png"),
+    alt: "Mars, the world of red sands",
+    classes: "shrink-60 border-red"
+  },
   // TITLE IMAGES
   {
     id: "title-cassette",

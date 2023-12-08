@@ -2014,6 +2014,9 @@ $post-heading-width: 1000px;
             &.border-titan-blue {
               border-color: rgb(27, 126, 247);
             }
+            &.border-venus-yellow {
+              border-color: rgb(255, 235, 28);
+            }
 
             @mixin shrink($percent) {
                 max-width: $percent;

@@ -67,7 +67,7 @@
       }
       .map-header-diagonal {
         position: relative;
-        height: 18px;
+        height: 28px;
         display: flex;
         
         flex: 1;
@@ -108,29 +108,21 @@
       padding: 5px;
       height: auto;
       width: 100%;
+      //margin-top: 30px;
       @media screen and (max-width: $breakpoint-mobile) {
         width: auto;
       }
 
-      // @include abg(0.5);
-      // @include abg-red-dot-grid;
-
-      // &::after {
-      //   content: '';
-      //   position: absolute;
-      //   top: 0;
-      //   left: 0;
-      //   right: 0;
-      //   height: 1000px;
-      //   pointer-events: none;
-      //   background: linear-gradient(to bottom, rgba($map-background-color, 0.5) 0px, rgba($map-reddish-color, 0.1) 60px, rgba($map-reddish-color, 0) 900px);
-      // }
+      &.no-header {
+        margin-top: 40px;
+      }
 
       .content-child {
         position: relative;
         height: 100%;
         width: 100%;
         overflow-y: auto;
+        border-radius: 4px;
 
         background: url('/images/patterns/bg-dot-pattern-0.5.svg');
         background-size: 110px;
@@ -144,8 +136,8 @@
           left: 0;
           right: 0;
 
-          background: linear-gradient(to bottom, rgba(255, 78, 24, 0.2) 0px, rgba(70, 23, 9, 0) 400px);
-          opacity: 0.6;
+          background: linear-gradient(to bottom, rgba(255, 78, 24, 0.3) 0px, rgba(70, 23, 9, 0) 400px);
+          opacity: 1;
           pointer-events: none;
           overflow: hidden;
         }
