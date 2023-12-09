@@ -1,5 +1,5 @@
 // MARKDOWN STYLING
-article.markdown {
+article.markdown, .markdown-styles {
     // Maximum width and z index for all elements
     > h1, > h2, > h3, > h4, > h5, > h6, > ul, > p, > hr, > blockquote, > pre {
         max-width: $width-1000;

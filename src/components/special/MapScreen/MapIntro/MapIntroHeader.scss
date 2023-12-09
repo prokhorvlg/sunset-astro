@@ -2,24 +2,95 @@
 
 .map-intro-header {
   width: 100%;
+  
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   h1 {
-    font-size: 70px;
+    text-align: center;
+    font-size: 100px;
+    line-height: 100px;
     margin: 0;
     color: $map-amber-color;
-  }
-  P {
-    color: $map-reddish-color;
-  }
-  .terminal-container {
-    img.terminal-image {
-      margin-top: 40px;
-      width: 900px;
-      max-width: 100%;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      font-size: 70px;
+      line-height: 70px;
     }
   }
-  
+  p {
+    color: $map-reddish-color;
+    margin: 25px 0 0px 0;
+    color: $map-reddish-color;
+    font-family: $font-code;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 0;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    max-width: 90%;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  .terminal-container {
+    margin-top: 40px;
+    $defaultWidth: 900px;
+
+    position: relative;
+    width: 900px;
+    max-width: 90vw;
+
+    img.terminal-image {
+      width: 100%;
+      z-index: 1;
+      position: relative;
+    }
+    img.terminal-screen {
+      position: absolute;
+      z-index: 2;
+      top: 25.5%;
+      left: 31.5%;
+      width: 22%;
+    }
+  }
+}
+
+.map-intro-header-text {
+  .map-intro-header-expand {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+
+    padding: 20px;
+    letter-spacing: -0.5px;
+    color: $map-reddish-color;
+    cursor: pointer;
+    user-select: none;
+
+    border-bottom: 2px dashed transparent;
+    border-radius: 4px;
+    font-family: $font-code;
+
+    &:hover {
+      color: $map-amber-color;
+      background: rgba($map-reddish-color, 0.1);
+      border-bottom: 2px dashed $map-amber-color;
+    }
+
+    svg {
+      font-size: 30px;
+      margin-right: 10px;
+    }
+
+  }
 }
