@@ -212,6 +212,7 @@ export const locationsData: SystemLocationNode = {
       icon: <IoHeart />,
       children: [
         {
+          id: "seventh-orbital",
           name: "Seventh Orbital",
           typeText: "Home of the Machine World",
           flavorText:
@@ -539,16 +540,22 @@ export const locationsData: SystemLocationNode = {
           startingAngle: 38,
           children: [
             {
-              name: "Blade of Stars",
-              typeText: "Anomalous Vessel of Glass",
+              id: "unity-ascent",
+              name: "Unity Ascent", //"Blade of Stars"
+              typeText: "Starscraper of Glass",
               flavorText:
-                "A tower of soaring glass appears in the skies over Callisto every few months before diving back into the fold. They only ever respond: DO NOT APPROACH US.",
-              description: "",
+                "A tower of sharp glass, similar in appearance to a futuristic skyscraper, appears in the skies over Callisto every few months before diving back into the fold. They only ever respond: DO NOT APPROACH US.",
               type: LocationType.Site,
               subType: SiteSubtype.Vessel,
               worldAffiliation: WorldAffiliation.MachinesOfGlass,
               distance: 45,
               startingAngle: 190,
+              icon: <svg 
+              viewBox="0 0 92 106"
+              width="92px" height="106px">
+             <path fill-rule="evenodd"  fill="#e251ff"
+              d="M78.465,22.610 L80.570,25.317 L80.270,26.521 L67.937,47.876 L68.539,48.778 L69.441,48.778 L69.579,49.247 L73.352,43.966 L73.953,43.966 L70.043,50.583 L70.344,51.185 L70.945,51.185 C70.945,51.185 71.551,52.801 70.753,53.237 L70.945,53.892 L70.645,54.794 L63.581,66.398 L63.727,67.126 L60.719,72.239 L60.026,72.239 L58.012,75.548 L58.914,78.556 L58.613,81.263 L50.793,90.888 L54.402,101.716 L53.801,103.521 L53.199,103.521 L46.883,95.700 L46.281,95.700 L39.664,100.212 L33.949,99.610 L33.949,99.310 L30.941,98.107 L28.836,101.415 L21.617,105.325 L21.617,105.626 L17.105,105.325 L13.195,97.204 L4.773,100.513 L4.473,99.911 L0.863,101.415 L0.563,101.114 L1.465,99.610 L12.293,95.399 L11.992,94.497 L24.324,72.540 L27.934,71.036 L32.746,71.337 L33.348,71.036 L34.250,68.028 L35.453,66.224 L23.121,62.614 L23.121,61.712 L21.316,60.810 L22.219,59.907 L24.625,59.607 L25.227,61.110 L24.926,61.712 L36.055,63.817 L36.055,62.614 L39.363,59.907 L40.266,59.907 L67.937,21.407 L68.840,21.407 L70.043,19.302 L69.742,18.099 L73.051,16.294 L73.953,16.294 L76.660,19.903 L90.797,0.954 L91.699,0.954 L91.1000,1.857 L78.465,22.610 ZM37.258,49.982 L36.355,49.982 L37.258,47.575 L36.656,46.372 L41.770,42.462 L42.070,43.064 L40.867,44.868 L37.258,49.982 ZM75.758,57.501 L75.758,56.599 L77.562,55.396 L85.984,45.169 L86.887,45.169 L81.773,55.997 L81.172,58.103 L80.270,58.103 L74.855,65.622 L74.555,64.419 L77.262,58.403 L75.758,57.501 Z"/>
+             </svg>
             },
             {
               name: "Peculiar Angle",
@@ -836,9 +843,7 @@ export const locationsData: SystemLocationNode = {
           name: "Sanket Star",
           typeText: "Particle Collider Facility",
           flavorText:
-            "",
-          description:
-            "",
+            "It's usually cold, dark, and terrifying out here... but not at Sanket!",
           type: LocationType.Site,
           subType: SiteSubtype.Outpost,
           worldAffiliation: WorldAffiliation.HumanEra,
@@ -1025,6 +1030,7 @@ export const locationsData: SystemLocationNode = {
       startingAngle: 210,
       children: [
         {
+          id: "project-high-atem",
           name: "Project HIGH ATEM",
           typeText: "Experimental SRI Vessel",
           flavorText:
@@ -1034,8 +1040,16 @@ export const locationsData: SystemLocationNode = {
           type: LocationType.Site,
           subType: SiteSubtype.Vessel,
           worldAffiliation: WorldAffiliation.Anomaly,
+          humanEraAffiliation: HumanEraAffiliation.SunsetResearchInitiative,
+          humanEraPopulation: 3000,
           distance: 190,
           startingAngle: 230,
+          icon: <svg 
+          viewBox="0 0 106 67"
+          width="106px" height="67px">
+         <path fill-rule="evenodd"  fill="rgb(255, 19, 241)"
+          d="M102.614,34.246 L103.112,33.254 L103.361,32.511 L103.859,32.015 L105.851,33.007 L105.851,33.750 L104.108,34.990 L102.614,34.246 ZM102.614,30.775 L102.863,29.784 L103.610,29.288 L104.108,29.784 L104.108,30.775 L103.361,31.023 L102.614,30.775 ZM82.688,65.337 L82.609,65.572 L83.245,66.205 L84.170,65.859 L85.151,66.205 L86.421,65.994 L91.081,62.620 L92.140,62.199 L99.282,64.096 L102.247,61.355 L102.670,61.145 L105.000,49.337 L96.164,42.801 L96.164,41.958 L88.963,37.530 L85.574,37.319 L85.362,34.789 L80.248,31.894 C79.956,31.312 79.374,30.429 78.373,29.940 C77.452,29.490 76.529,29.421 75.917,29.442 L74.561,28.675 L68.384,26.464 L65.207,29.416 L63.760,28.464 L63.972,26.145 L63.548,25.512 L63.548,20.663 L59.100,17.078 C59.100,17.078 59.006,14.528 57.618,13.705 C56.230,12.881 54.653,13.283 54.653,13.283 L41.098,4.217 L32.415,4.639 L27.967,2.741 L21.825,2.952 L16.716,9.151 L2.129,0.000 L0.858,0.211 L0.646,0.633 L9.965,6.958 L9.753,7.590 L14.413,10.964 L15.068,11.150 L15.048,11.175 L14.836,11.596 L14.553,14.348 L9.753,10.964 L9.330,10.964 L9.118,11.807 L9.330,12.229 L13.989,15.813 L14.385,15.971 L13.989,19.819 L14.413,20.241 L14.201,22.771 L13.777,22.982 L13.989,24.458 L22.461,29.518 L22.249,34.157 L22.249,34.578 L24.215,37.789 L23.943,37.952 L24.790,39.639 L25.730,40.262 L27.544,43.223 L28.814,43.855 L29.450,43.855 L50.792,53.235 L60.000,49.000 L67.000,54.000 L69.000,59.1000 L71.384,61.355 L72.000,60.1000 L82.688,65.337 ZM87.423,28.792 L87.423,27.800 L88.917,28.296 L88.668,29.288 L87.423,28.792 ZM85.680,26.313 L77.711,19.867 L78.209,17.388 L80.450,16.892 L81.198,18.132 L82.941,18.380 L83.251,18.820 L83.439,17.884 L84.933,17.388 L85.431,18.380 L84.282,20.287 L88.170,25.817 L85.680,26.313 ZM11.288,49.608 L10.502,50.129 L7.620,49.347 L7.358,48.303 L9.192,48.043 L11.288,49.608 ZM14.171,45.434 L13.909,44.391 L16.267,44.912 L16.005,45.434 L14.957,45.434 L14.171,45.434 ZM14.695,46.217 L23.604,50.912 L24.128,50.651 L24.652,50.912 L23.866,51.955 L23.866,53.260 L23.080,54.042 L19.935,53.520 L18.363,51.694 L12.599,46.999 L13.909,46.217 L14.695,46.217 Z"/>
+         </svg>
         },
         {
           name: "Wälstrom Earthbreaker",
@@ -1066,8 +1080,8 @@ export const locationsData: SystemLocationNode = {
     // Inner system
     // Middle system
     {
-      name: "ICS Justice For All",
-      typeText: "Coalition Thumper",
+      name: "ICS Justice",
+      typeText: "Coalition Dawnframe Thumper",
       flavorText:
         "Nuclear-pulsed vessel of incredible might on its way to deliver empty passenger spaceplanes.",
       icon: <svg viewBox="0 0 145 80"
