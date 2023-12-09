@@ -1,9 +1,10 @@
-import { HumanEraAffiliation, LocationType, mapHumanEraAffiliationToText, mapSiteSubTypeToText, mapTypeToText, mapWorldAffiliationToText } from "@/components/special/MapScreen/BaseMap/data/types"
+import { HumanEraAffiliation, LocationType, mapHumanEraAffiliationToText, mapSiteSubTypeToText, mapTypeToText, mapWorldAffiliationToText, WorldAffiliation } from "@/components/special/MapScreen/BaseMap/data/types"
 import { isSelectedModalOpenAtom, selectedLocationAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import MapModal from "@/components/special/MapScreen/MapModal"
 import { useAtom } from "jotai"
 import { useEffect } from "react"
 import { MdLocationPin } from "react-icons/md"
+import { WiStars } from "react-icons/wi";
 import './MapDetailsModalContainer.scss'
 import { getIconFromHumanEraAffiliation, getIconFromSubType, getIconFromType, getIconFromWorldAffiliation } from "@/components/special/MapScreen/BaseMap/data/icons"
 
@@ -35,7 +36,6 @@ const MapDetailsModalContainer = ({
         headerText="Selected location"
         isOpen={locationIsOpen}
         setIsOpen={setIsSelectedModalOpen}
-        //desiredWidth={matchingFile !== undefined ? 1600 : 1200}
         desiredWidth={selectedLocation?.isWideContent ? 1600 : 1200}
       >
         <div className="map-selected-content">
@@ -103,39 +103,25 @@ const MapDetailsModalContainer = ({
             <div className="flavor-text-container">
               <p>{selectedLocation?.flavorText}</p>
             </div>
+
+            {(selectedLocation?.type === LocationType.Field && selectedLocation?.worldAffiliation === WorldAffiliation.Anomaly) && 
+              <div className="reality-field">
+                <p className="field-title"><WiStars /> <strong>Reality Field</strong></p>
+
+                <p>This is a region of space where the rules governing reality no longer apply. They have either been deliberately altered or destroyed by chaotic noetic phenomena, causing strange anomalies that cannot be explained by rational means. The border is only an approximation, mostly based on events recorded within the field.</p>
+                  
+                <p>Intensity can vary depending on the field. Weak anomalies can be as simple as spatial warps, unexplainable signals, and manifested objects. These gradually ramp to include unwelcome visitors from timelines that never came to pass, dimensional folds which exist outside of known space, even entire planets in a state of flux.</p>
+                  
+                <p>The most dangerous of these anomalies change <em>you</em> in such a way that your own memory of events and very existence are inconsistent with the generally-accepted truth.</p>
+              </div>
+            }
             
             <>{children}</>
-
-            {/* <hr />
-
-            <SelectedDataRow
-              label="Sub-type"
-              content={selectedLocation?.subType}
-            />
-            <SelectedDataRow
-              label="Realm of Origin"
-              content={mapWorldAffiliationToText[selectedLocation?.worldAffiliation || ""]}
-            />
-            <SelectedDataRow
-              label="Human-Era Affiliation"
-              content={
-                mapHumanEraAffiliationToText[
-                  selectedLocation?.humanEraAffiliation ||
-                    ""
-                ]
-              }
-            />
-            <SelectedDataRow
-              label="Machine-Era Affiliation"
-              content={undefined}
-            /> */}
-
           </div>
         </div>
       </MapModal>
   )
 }
-
 
 const SelectedDataRow = ({
   label,

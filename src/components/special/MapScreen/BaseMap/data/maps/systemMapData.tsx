@@ -236,6 +236,7 @@ export const locationsData: SystemLocationNode = {
           flavorText:
             "The convergence of all concepts from all realities; dissonance in material form.",
           type: LocationType.Field,
+          worldAffiliation: WorldAffiliation.Anomaly,
           fieldShape: FieldShape.Earth,
           fieldLabelOffset: {x: 0, y: -50},
           distance: 22,
@@ -534,6 +535,7 @@ export const locationsData: SystemLocationNode = {
           typeText: "Uncertain Reality",
           flavorText: "It seems that it was here that the architect began their work. Unfortunately, they were somewhat indecisive, and now we'll learn to live with the results.",
           type: LocationType.Field,
+          worldAffiliation: WorldAffiliation.Anomaly,
           fieldShape: FieldShape.Jupiter,
           fieldLabelOffset: {x: 30, y: 80},
           distance: 155,
@@ -627,6 +629,7 @@ export const locationsData: SystemLocationNode = {
           name: "Europa",
           typeText: "Tropical Ocean World",
           flavorText: "Sunshine, cigars, and renown academies! Make your next scientific conference a Europan one. Just don't go diving deeper than a kilometer, comrade.",
+          humanEraPopulation: "205 million",
           type: LocationType.Moon,
           color: "#38fcb1",
           colorSecondary: "#5cffe4",
@@ -888,6 +891,7 @@ export const locationsData: SystemLocationNode = {
           name: "Thousand Eyes Field",
           typeText: "Horrific Reality",
           type: LocationType.Field,
+          worldAffiliation: WorldAffiliation.Anomaly,
           fieldShape: FieldShape.SRICircle,
           fieldLabelOffset: {x: 0, y: -40},
           distance: 48,
@@ -990,6 +994,7 @@ export const locationsData: SystemLocationNode = {
       typeText: "Managed Reality",
       flavorText: "You see the beacon, lingering clearly before you, so you swiftly move towards it. You arrive... the beacon is directly behind you. How you got here is impossible to comprehend, but one thing is certain. The beacon wishes for you to leave immediately.",
       type: LocationType.Field,
+      worldAffiliation: WorldAffiliation.Anomaly,
       fieldShape: FieldShape.SRICircle,
       fieldLabelOffset: {x: 0, y: 50},
       distance: 520,
@@ -1024,6 +1029,7 @@ export const locationsData: SystemLocationNode = {
       typeText: "Disturbed Reality", // Uncertain
       flavorText: "Are some objects never meant to exist? Some events never destined to transpire? Does the cosmos rid itself of these malformations?",
       type: LocationType.Field,
+      worldAffiliation: WorldAffiliation.Anomaly,
       fieldShape: FieldShape.DistantBottomLeft,
       fieldLabelOffset: {x: -25, y: -150},
       distance: 1180,
@@ -1061,10 +1067,16 @@ export const locationsData: SystemLocationNode = {
           worldAffiliation: WorldAffiliation.CenturyOfProgress,
           distance: 155,
           startingAngle: 180,
+          icon: <svg 
+          viewBox="0 0 80 97"
+          width="80px" height="97px">
+         <path fill-rule="evenodd"  fill="#ff5194"
+          d="M79.223,50.171 C78.629,51.537 78.631,51.634 78.631,51.634 L40.744,54.561 L37.784,55.146 L36.896,55.146 L37.784,91.439 L42.520,92.317 L42.816,92.902 L37.784,93.488 L37.488,96.415 L35.120,96.1000 L28.016,96.1000 L28.016,95.244 L18.840,94.366 L18.248,93.195 L18.248,92.610 L28.608,91.732 L28.608,91.146 L27.424,90.854 L25.648,75.634 L25.648,82.659 L25.056,82.659 L23.576,80.317 L21.800,54.561 L16.176,53.098 L15.584,52.512 L12.328,52.220 C12.328,52.220 9.603,51.293 9.664,47.537 C9.725,43.780 9.664,43.146 9.664,43.146 L11.736,41.976 L11.440,39.927 L8.184,38.756 L7.000,37.585 L7.296,25.878 L8.184,24.707 L11.440,23.537 L11.440,22.366 L13.216,21.488 L13.512,18.268 C13.512,18.268 15.059,15.231 18.544,15.049 C18.637,12.733 18.544,5.683 18.544,5.683 L18.248,5.098 L18.248,2.463 L20.024,1.000 L20.912,1.000 L21.208,5.098 L21.208,14.756 L22.392,16.220 L23.280,15.927 L22.984,13.585 L22.984,12.415 L23.280,11.829 L25.648,11.829 L26.240,12.415 L25.944,13.585 L28.904,12.707 L76.855,12.415 L77.743,13.878 L78.039,31.146 L78.039,31.732 L68.271,31.732 L67.975,32.317 L68.271,35.537 L75.079,35.829 L75.375,36.122 L79.223,36.122 L79.815,36.707 C79.815,36.707 80.499,47.754 79.223,50.171 ZM69.000,1.1000 L67.1000,1.000 L69.000,0.000 L73.1000,1.000 L72.1000,1.1000 L69.000,1.1000 ZM0.1000,13.000 L-0.000,11.000 L0.1000,9.000 L10.1000,10.000 L10.1000,11.000 L8.1000,13.000 L0.1000,13.000 ZM65.000,67.1000 L67.000,70.000 L66.000,71.1000 L55.000,71.1000 L54.000,68.1000 L55.000,67.1000 L65.000,67.1000 Z"/>
+         </svg>
         },
         {
-          name: "Kraugstone",
-          typeText: "Strange Biomechanical Growth",
+          name: "Taranis",
+          typeText: "Huge Biomechanical Growth",
           flavorText:
             "A dusty floppy disk contains the sensor readings of a misshapen Kuiper object... only it isn't an asteroid at all. Analysis reveals the object to wriggle and breath.",
           type: LocationType.Site,
@@ -1072,6 +1084,12 @@ export const locationsData: SystemLocationNode = {
           worldAffiliation: WorldAffiliation.Anomaly,
           distance: 240,
           startingAngle: 270,
+          icon: <svg 
+          viewBox="0 0 99 63"
+          width="99px" height="63px">
+         <path fill-rule="evenodd"  fill="#fc43b5"
+          d="M66.373,37.928 C59.192,35.512 55.383,33.399 55.383,33.399 C54.761,33.252 55.128,33.244 55.383,32.576 C55.638,31.908 61.672,34.834 64.338,35.870 C67.004,36.905 74.176,39.604 74.107,39.987 C74.038,40.369 73.554,40.344 66.373,37.928 ZM98.936,46.162 C98.385,47.007 96.215,47.424 90.796,42.457 C89.466,41.238 87.768,39.536 85.602,37.614 C85.538,38.434 85.386,39.237 85.097,39.987 C83.383,44.435 82.739,42.657 82.248,42.457 C81.756,42.257 82.117,40.277 81.841,37.928 C81.759,37.230 82.013,36.059 81.826,34.475 C75.697,29.725 66.763,24.540 53.766,21.917 C58.531,23.881 63.957,26.962 67.187,28.871 C71.733,31.558 77.735,34.232 78.991,35.458 C80.248,36.684 79.061,37.170 77.770,37.105 C76.480,37.039 73.188,36.851 70.851,35.458 C61.907,29.177 55.598,26.693 52.430,25.738 C52.826,26.896 53.057,27.940 52.941,28.871 C52.653,31.172 50.450,34.345 48.463,35.046 C48.364,35.081 48.284,35.137 48.192,35.180 C51.445,35.880 57.592,37.238 65.559,39.163 C77.585,42.070 82.780,47.599 88.760,51.514 C94.741,55.430 99.160,59.354 98.529,60.160 C97.899,60.966 93.543,60.435 88.353,56.043 C83.163,51.651 73.536,45.033 57.825,40.810 C53.234,39.499 48.527,38.916 45.062,38.334 C44.857,38.505 44.641,38.656 44.393,38.752 C43.643,39.040 41.811,40.143 39.279,40.922 C43.686,44.734 48.980,43.669 57.825,44.927 C67.063,46.241 74.006,52.343 76.549,53.985 C79.092,55.626 81.427,55.750 81.027,57.690 C80.627,59.630 77.269,59.742 72.886,56.043 C68.502,52.344 65.218,51.065 50.499,48.221 C40.515,46.291 35.844,43.384 33.866,41.711 C32.313,41.681 30.657,41.430 28.925,40.810 C27.655,39.731 26.661,38.884 25.850,38.193 C24.478,38.075 22.288,37.871 18.749,37.516 C10.960,36.737 7.339,30.722 6.173,28.269 C3.365,25.597 -0.315,20.311 0.025,14.873 C0.230,11.605 5.105,5.365 7.759,4.168 C9.749,2.755 11.770,1.959 14.272,1.287 C20.425,-0.368 24.041,0.051 24.041,0.051 C24.041,0.051 29.199,0.110 34.217,2.933 C34.330,2.997 34.430,3.059 34.538,3.122 C41.874,3.206 59.948,6.068 83.469,28.459 C83.696,28.790 84.330,30.116 84.855,31.868 C86.298,32.978 87.738,34.166 89.167,35.458 C96.743,42.344 99.488,45.318 98.936,46.162 ZM21.192,34.635 C20.313,34.146 17.199,33.248 14.070,32.195 C16.345,34.436 19.866,35.179 22.441,35.400 C22.032,35.112 21.684,34.908 21.192,34.635 ZM62.710,16.931 C52.191,11.773 45.092,9.461 40.519,8.460 C40.726,8.715 40.924,8.934 41.137,9.109 C42.151,9.941 46.817,14.245 49.086,17.850 C54.112,18.202 65.639,19.837 78.034,27.228 C75.283,24.268 70.617,20.809 62.710,16.931 ZM52.941,5.404 C50.645,4.372 43.774,1.993 39.508,1.287 C36.540,0.795 34.997,0.048 37.473,0.051 C39.949,0.055 50.757,3.050 53.348,4.168 C55.938,5.287 55.237,6.435 52.941,5.404 ZM66.780,55.220 C69.180,56.496 71.748,57.886 74.107,59.337 C77.381,61.350 79.289,60.208 78.991,61.395 C78.694,62.583 76.015,61.908 73.700,60.572 C71.385,59.236 63.672,55.331 63.524,54.808 C63.375,54.285 64.380,53.944 66.780,55.220 Z"/>
+         </svg>
         },
       ]
     },
@@ -1125,18 +1143,24 @@ export const locationsData: SystemLocationNode = {
     },
     // Outer system
     {
-      name: "399 Voyager",
+      id: "voyager-399",
+      name: "Voyager 399",
       typeText: "Furthest Human Outpost",
       flavorText:
         "A nothingness so pure and black, it would drive anyone mad.",
-      description:
-        "",
       type: LocationType.Site,
       subType: SiteSubtype.Outpost,
       worldAffiliation: WorldAffiliation.HumanEra,
-      humanEraAffiliation: HumanEraAffiliation.None,
+      humanEraAffiliation: HumanEraAffiliation.EnduringCoalition,
+      humanEraPopulation: 16,
       distance: 1155,
       startingAngle: 160,
+      icon: <svg 
+      viewBox="0 0 105 74"
+      width="105px" height="74px">
+     <path fill-rule="evenodd"  fill="rgb(255, 78, 24)"
+      d="M102.603,11.664 L100.685,11.664 C100.685,11.664 100.523,11.363 100.277,10.905 L88.435,16.933 L90.616,21.329 L90.616,22.295 L88.699,23.262 L86.328,18.005 L85.059,18.651 L81.333,21.563 L82.945,24.711 L81.986,26.161 L81.027,25.195 L79.815,22.750 L73.158,27.953 L74.315,30.027 L74.315,30.993 L72.877,31.960 L71.467,29.275 L62.286,36.450 C62.199,37.677 61.973,38.865 61.619,39.997 C62.403,41.361 63.568,43.358 63.767,43.557 C64.073,43.862 62.808,45.973 62.808,45.973 L65.205,50.322 L65.205,51.289 L69.041,62.886 C69.041,62.886 68.846,66.916 68.082,67.235 C67.319,67.553 61.849,69.168 61.849,69.168 L54.658,61.436 L52.260,61.436 L44.992,50.664 C44.274,50.564 43.571,50.417 42.887,50.225 L45.068,52.738 L41.233,55.154 L40.274,55.154 L36.438,49.356 L38.219,48.010 C37.924,47.801 37.640,47.577 37.361,47.349 L37.397,47.423 L6.748,60.254 L9.589,66.268 L8.151,67.718 L3.836,67.718 L-0.000,59.503 L1.438,56.604 L4.526,56.159 L5.274,55.154 L13.305,51.107 L8.630,44.040 L9.110,43.074 L10.068,43.074 L14.863,50.322 L20.101,47.682 L14.384,39.208 L14.863,38.725 L16.781,38.242 L21.870,46.791 L32.818,41.274 C32.064,39.447 31.644,37.445 31.644,35.342 C31.644,34.808 31.671,34.280 31.723,33.759 L31.644,33.893 C31.644,33.893 29.480,31.114 30.685,29.060 C31.295,28.020 32.634,27.427 33.814,27.082 L30.000,19.1000 L28.1000,0.1000 L30.1000,-0.000 L38.000,0.1000 L51.974,20.728 C55.439,21.932 58.342,24.351 60.183,27.484 L68.361,23.363 L64.247,15.530 L65.685,14.564 L70.105,22.484 L77.767,18.623 L73.836,10.698 L73.836,9.732 L75.274,9.732 L79.405,17.798 L84.970,14.993 L81.507,7.315 L81.507,6.349 L82.945,5.866 L86.973,13.984 L98.741,8.054 C98.316,7.269 97.949,6.596 97.808,6.349 C97.384,5.606 98.767,2.483 98.767,2.483 L101.164,1.1000 L105.000,10.215 L102.603,11.664 ZM23.708,49.877 L23.973,50.322 L23.493,51.289 L22.534,51.289 L22.125,50.682 L16.781,53.403 L16.781,53.705 L15.342,54.188 L15.316,54.148 L6.083,58.848 L6.287,59.280 L36.532,46.618 C35.801,45.931 35.128,45.182 34.542,44.363 L23.708,49.877 ZM69.931,26.351 L61.586,30.598 C62.040,32.018 62.293,33.526 62.319,35.092 L70.996,28.380 L69.931,26.351 ZM79.248,21.609 L71.747,25.426 L72.672,27.083 L79.388,21.889 L79.248,21.609 ZM32.123,63.369 L37.397,72.550 L36.438,74.000 L35.479,74.000 L29.726,64.336 L30.685,62.886 L32.123,63.369 ZM77.671,34.859 L80.027,40.691 L79.068,41.658 L78.000,41.000 L75.753,36.792 L76.233,35.342 L77.671,34.859 Z"/>
+     </svg>
     }
   ],
 }

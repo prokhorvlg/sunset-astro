@@ -149,6 +149,34 @@
         margin: 0;
       }
     }
+
+    .reality-field {
+      border-top: 2px dotted $colorWorldAnomaly;
+      padding: 10px 20px;
+      //border-radius: 6px;
+      .field-title {
+        margin-top: 30px;
+        display: flex;
+        //justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        strong {
+          text-transform: uppercase;
+          margin: 0;
+        }
+        svg {
+          font-size: 38px;
+          margin-right: 5px;
+        }
+      }
+      
+      p {
+        color: $colorWorldAnomaly;
+        font-family: $font-code;
+        letter-spacing: -0.3px;
+        margin-bottom: 30px;
+      }
+    }
     
     .row {
       display: flex;
