@@ -9,9 +9,9 @@ export const CommonText = {
     prints: "Buy posters of Sunset artwork",
     discord: "Chat about retrofuturism, worldbuilding, etc",
     subreddit: "Participate in the Sunset community",
-    twitter: "Follow announcements and art/lore posts on social media.",
-    instagram: "Follow announcements and art/lore posts on social media.",
-    supporters: "The people who make this possible."
+    twitter: "Follow announcements and art/lore posts on social media",
+    instagram: "Follow announcements and art/lore posts on social media",
+    supporters: "The people who make this possible"
 }
 
 export const CommonLinks = {

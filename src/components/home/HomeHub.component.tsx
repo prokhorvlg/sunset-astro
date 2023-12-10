@@ -65,7 +65,9 @@ const HomeHub = ({
                                 <p>Explore a gallery of all the released Sunset content.</p>
                                 <HubLink url={CommonLinks.posts} text="Posts" />
                                 <div className="spacer"></div>
-                                <p>The crew is working on a 🕹️ metroidvania game set in this universe!</p>
+                                <p>Dive into an interactive map of Sunset System.</p>
+                                <HubLink url={CommonLinks.map} text="Map" />
+                                {/* <p>The crew is working on a 🕹️ metroidvania game set in this universe!</p> */}
                                 {/*<HubLink url={CommonLinks.game} text="Game" />*/}
                             </HubCol>
                             <HubCol
