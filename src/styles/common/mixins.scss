@@ -76,3 +76,10 @@ $standardBoxShadow: drop-shadow(0px 0px 15px rgba(0,0,0,0.5));
         line-height: 24px;
     }
 }
+
+// MAP
+@mixin absoluteCentered($scale: 1) {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale($scale);
+}

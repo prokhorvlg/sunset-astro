@@ -1,0 +1,28 @@
+@import "src/styles/imports.scss";
+
+.map-asteroid-belt-container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  .map-asteroid-belt {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    background: url("/images/patterns/map-asteroid-belt-pattern.svg");
+    background-size: 80px;
+    opacity: 1;
+
+    border-radius: 100%;
+    //animation: rotate 200s linear infinite;
+    //box-sizing: border-box;
+    .map-asteroid-belt-cover {
+      position: absolute;
+      top: 60px;
+      left: 60px;
+      right: 60px;
+      bottom: 60px;
+      border-radius: 5000px;
+      background: $map-background-color;
+    }
+  }
+}

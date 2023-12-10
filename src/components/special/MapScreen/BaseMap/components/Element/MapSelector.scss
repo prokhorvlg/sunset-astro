@@ -1,0 +1,313 @@
+@import 'src/styles/imports.scss';
+
+$startDimensions: 65px;
+$endDimensions: 75px;
+@keyframes selectedMarker {
+  0% {
+    height: $startDimensions;
+    width: $startDimensions;
+  }
+  50% {
+    height: $endDimensions;
+    width: $endDimensions;
+  }
+  100% {
+    height: $startDimensions;
+    width: $startDimensions;
+  }
+}
+
+.selection-button-offset {
+  position: absolute;
+  z-index: $map-zindex-selectionButton;
+  
+  &:hover {
+    .selection-button {
+      .selection-button-inner {
+        opacity: 0.2;
+        &.dotted {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    & ~ .map-site { 
+      
+      h2.map-name {
+        display: block;
+      }
+      .map-site-icon {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.3)
+      }
+    }
+
+    & ~ .map-world {
+      h2.map-name {
+        transform: translate(0, 6px) scale(1.4);
+      }
+      .inner-symbol {
+        display: block;
+      }
+    }
+  }
+  &.is-detail-level:hover {
+    & ~ .map-site {
+      h2.map-name {
+        transform: translate(-50%, -50%) scale(1.3);
+      }
+    }
+  }
+
+  .selection-button {
+    position: absolute;
+    cursor: pointer;
+
+    z-index: $map-zindex-selectionButton;
+    background: none;
+    border: none;
+    
+    .selection-button-inner {
+      position: absolute;
+      inset: 0;
+      transform: scale(1.2);
+      opacity: 0;
+      border-radius: 999px;
+      background: $map-reddish-color;
+      pointer-events: none;
+
+      &.is-detail-level {
+        inset: -15px;
+      }
+
+      &.human-era {
+        background-color: $colorWorldHumanEra;
+      }
+      &.anomaly {
+        background-color: $colorWorldAnomaly;
+      }
+      &.machine-era {
+        background-color: $colorWorldMachineEra;
+      }
+
+      &.dotted {
+        background: none;
+        border: 2px dotted $map-reddish-color;
+        // z-index: 20;
+        &.human-era {
+          border-color: $colorWorldHumanEra;
+        }
+        &.anomaly {
+          border-color: $colorWorldAnomaly;
+        }
+        &.machine-era {
+          border-color: $colorWorldMachineEra;
+        }
+      }
+    }
+  }
+
+  &.normal {
+    inset: 0;
+    border-radius: 999px;
+    .selection-button {
+      height: 100%;
+      width: 100%;
+      border-radius: 999px;
+      .selection-button-inner {
+        border-radius: 999px;
+      }
+    }
+  }
+
+  &.field {
+    .selection-button {
+      $sizeOffset: 3px;
+      transform: translate(-50%, -50%);
+      border-radius: 0;
+
+      .selection-button-inner {
+        border-radius: 0;
+        transform: scale(1);
+        //top: -$sizeOffset; left: -$sizeOffset; right: -$sizeOffset; bottom: -$sizeOffset;
+        background-color: $colorWorldAnomaly;
+        &.dotted {
+          display: none;
+        }
+      }
+  
+      .map-name {
+        border: 2px solid transparent;
+        color: $colorWorldAnomaly;     
+        &.magnetic-storm {
+          color: rgb(204, 166, 116);
+        }
+      }
+    }
+
+    &:hover {
+      .selection-button {
+        .selection-button-inner {
+          opacity: 1;
+          background: none;
+        }
+
+        .map-name {
+          border: 2px dotted $colorWorldAnomaly;
+          font-size: 16px;
+          padding: 10px;
+          //transform: scale(1.1);
+          &.magnetic-storm {
+            border-color: rgb(204, 166, 116);
+          }
+        }
+      }
+
+      & ~ .map-field {
+        opacity: 1 !important;
+        .field-clipped {
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+
+  &.belt {
+    transform: translateY(-50%);
+
+    .selection-button-inner {
+      border-radius: 0;
+      transform: scale(1);
+    }
+
+    .map-name {
+      text-align: left;
+    }
+    .flavor-text {
+      text-align: left;
+    }
+
+    &:hover {
+      .selection-button {
+        //padding: 10px;
+        //top: 50%;
+        //transform: translateY(-50%);
+        .map-name {
+          font-size: 30px;
+          
+        }
+      }
+    }
+  }
+}
+
+// SELECTED MARKER
+.map-selected-marker-container {
+  @include absoluteCentered();
+  z-index: 500;
+}
+.selected-marker {
+  @include absoluteCentered();
+
+  height: 60px;
+  width: 60px;
+  $borderWidth: 3px;
+
+  animation: selectedMarker 1s ease-in-out infinite;
+  pointer-events: none;
+
+  .corner {
+    height: 9px;
+    width: 9px;
+    border: 0px solid $map-amber-color;
+    position: absolute;
+    //transform: rotate(180deg);
+  }
+
+  .top-left {
+    border-top-width: $borderWidth;
+    border-left-width: $borderWidth;
+    left: 0;
+    top: 0;
+  }
+  .top-right {
+    border-top-width: $borderWidth;
+    border-right-width: $borderWidth;
+    right: 0;
+    top: 0;
+  }
+  .bottom-left {
+    border-bottom-width: $borderWidth;
+    border-left-width: $borderWidth;
+    left: 0;
+    bottom: 0;
+  }
+  .bottom-right {
+    border-bottom-width: $borderWidth;
+    border-right-width: $borderWidth;
+    right: 0;
+    bottom: 0;
+  }
+}
+.selected-marker-radial-dot {
+  @include absoluteCentered();
+  //border: 8px solid rgba($map-background-color, 0.8);
+  border-radius: 999px;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    //@include absoluteCentered();
+    border: 3px dashed $map-amber-color;
+    //height: 100%;
+    //width: 100%;
+    border-radius: 999px;
+    animation: rotate 5s linear infinite;
+  }
+}
+
+.selected-marker-radial {
+  @include absoluteCentered();
+  //z-index: -1;
+  .selected-marker-radial-inner {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 200;
+
+    animation: rotate 5s linear infinite;
+    
+    .line {
+      position: absolute;
+      
+      width: 3px;
+      height: 15px;
+      border-radius: 5px;
+      background: $map-amber-color;
+
+      .subline {
+        display: none;
+        position: absolute;
+        width: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 3px;
+        background: $map-amber-color;
+      }
+      
+      &.top {
+        top: 0;
+        .subline {
+          bottom: 0;
+        }
+      }
+      &.bottom {
+        bottom: 0;
+        .subline {
+          top: 0;
+        }
+      }
+    }
+  }
+  
+}

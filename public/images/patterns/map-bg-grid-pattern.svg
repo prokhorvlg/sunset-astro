@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="80px" height="80px">
+    <path  stroke="#ffb64e" stroke-width="3px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M44.500,0.500 L44.500,88.500 "/>
+    <path  stroke="#ffb64e" stroke-width="3px" stroke-linecap="butt" stroke-linejoin="miter" fill="none" d="M88.500,45.000 L0.500,45.000 "/>
+</svg>

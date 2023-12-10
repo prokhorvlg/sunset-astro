@@ -1,6 +1,5 @@
 import TagCloud from "@/components/common/TagCloud/TagCloud.component"
 import DialogContainer from "@/components/containers/DialogContainer/DialogContainer.component"
-import { PostType, ProcessedPost } from "@/components/posts/PostsGrid.component"
 import { getDateString } from "@/utils/date"
 import { faPatreon } from "@fortawesome/free-brands-svg-icons"
 import { faArrowRight, faBullhorn, faDatabase, faKey, faMicrochip } from "@fortawesome/free-solid-svg-icons"
@@ -8,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
 
 import './PostCard.scss'
+import { type ProcessedPost, PostType } from "@/components/posts/PostsGrid.component"
 
 export const MapStringToIcon = {
     "faMicrochip": faMicrochip

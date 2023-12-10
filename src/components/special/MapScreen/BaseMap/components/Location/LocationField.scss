@@ -1,0 +1,42 @@
+@import 'src/styles/imports.scss';
+
+.map-field {
+  //display: none;
+  @include absoluteCentered();
+  z-index: $map-zindex-field;
+
+  opacity: 0.6;
+  
+  .culling-radius {
+    @include absoluteCentered();
+  }
+
+  .field-container {
+    @include absoluteCentered();
+    z-index: $map-zindex-field;
+  }
+
+  &.magnetic-storm {
+    // .field-clipped {
+    //   background-image: radial-gradient( 
+    //     rgba(255, 169, 39, 0.3) 10%, 
+    //     rgba(255, 169, 39, 0.15) 30%, 
+    //     rgba(253, 59, 0, 0.0) 100%);
+    //   background-size: 1700px;
+    //   background-position: 50% 50%;
+    // }
+  }
+
+  .field-clipped {
+    @include absoluteCentered();
+    
+    background-image: linear-gradient(to bottom, rgb(120, 0, 189), rgb(255, 23, 224));
+    background-size: 100px;
+
+    -webkit-mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
+    mask: url('/images/patterns/map-diagonal-pattern.svg') 0 50%/100px 100px;
+  }
+  svg {
+    @include absoluteCentered();
+  }
+}

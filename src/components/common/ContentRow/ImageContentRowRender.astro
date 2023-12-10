@@ -2,13 +2,13 @@
 export const prerender = true;
 
 import { FullImageDetails } from '@/components/common/ImageGallery/ImageGallery.component';
-import { ImageDetails, ImageId, Images } from '@/data/sharedImages';
-import { getImage } from '@astrojs/image';
+import { ImageDetails, Images } from '@/data/sharedImages';
+import { getImage } from 'astro:assets';
 import ImageContentRow from './ImageContentRow.component'
 
 interface Props {
   direction?: "vertical" | "horizontal"
-  images: ImageId[];
+  images: string[];
   noCap?: boolean
 }
 
@@ -19,21 +19,26 @@ const imagesProcessed = await Promise.all(Astro.props.images.map(async (image) =
   const imageObject = Images.find((imageItem) => imageItem.id === image)
   if (!imageObject) return null
 
-  // Check if image is smaller than crunch size
-  const isSmall = imageObject.width < CRUNCH_WIDTH
+  const importedImage = await imageObject.src()
+  const importedImageInner = importedImage.default
 
-  //const isVideo = imageObject.isVideo
+  // Check if image is smaller than crunch size
+  const isSmall = importedImageInner.width < CRUNCH_WIDTH  
 
   // Generate an image of the correct size
   return {
     originalObject: imageObject,
-    processedObject: await getImage({
-      src: imageObject.src,
+    smallImage: await getImage({
+      src: importedImageInner,
       alt: imageObject.alt || "",
-      aspectRatio: `${imageObject.width}:${imageObject.height}`,
-      width: isSmall ? imageObject.width : CRUNCH_WIDTH,
-      format: imageObject.format ? imageObject.format as any : "webp",
+      format: "webp",
+      width: isSmall ? importedImageInner.width : CRUNCH_WIDTH,
       quality: 99
+    }),
+    processedObject: await getImage({
+      src: importedImageInner,
+      alt: imageObject.alt || "",
+      format: "webp"
     })
   } as FullImageDetails
 }))

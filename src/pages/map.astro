@@ -1,0 +1,72 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_DESCRIPTION } from '../consts';
+import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
+import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
+import MapScreen from '@/components/special/MapScreen/MapScreen';
+
+import { Content as MapIntro } from '@/data/map/map-intro.mdx';
+import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
+import MapDetailsModalContainer from '@/components/special/MapScreen/MapDetailsModalContainer';
+
+import { locationsData } from '@/components/special/MapScreen/BaseMap/data/maps/systemMapData';
+import { getProcessedImageById } from '@/utils/astroHelpers';
+
+const markdownFiles = await Astro.glob('../data/map/locations/*.{md,mdx}')
+
+const getDeepLocations = (location) => {
+  const hasId = location.id !== undefined
+  const effectiveId = hasId ? location.id : location.name.toLowerCase()
+  const hasChildren = location.children !== undefined
+  if (hasChildren) {
+    return [effectiveId, ...location.children.map((child) => { return getDeepLocations(child) })].flat(100)
+  }
+  return [effectiveId]
+}
+const allLocations = getDeepLocations(locationsData)
+
+const image = await getProcessedImageById("map-terminal-full")
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<BaseHead 
+      title={"Map"} 
+      description={"An interactive display of locations within Sunset System, a retrofuturistic world where only existential robots remain."} 
+      image={image?.src} 
+			isLargeImage={(image !== null)} 
+    />
+	</head>
+	<body>
+		<SunsetHeader client:only="react" currentPage={"/map"} />
+		<main>
+
+			<MapScreen client:only="react">
+        <MarkdownWrapper slot="mapIntro">
+          <MapIntro />
+        </MarkdownWrapper>
+      </MapScreen>
+
+      {allLocations.map((location, i) => {
+        const getSlugFromUrl = (url) => url.split('/').pop().replace('.mdx', '')
+        const matchingFile = markdownFiles.find((file) => getSlugFromUrl(file.url) === location)
+
+        return (
+          <MapDetailsModalContainer client:only="react" id={location} matchingFile={matchingFile}>
+            <div class="location-content">
+              <MarkdownWrapper >
+                {matchingFile && <matchingFile.Content />}
+              </MarkdownWrapper>
+            </div>
+          </MapDetailsModalContainer>
+        )
+      }
+        
+      )}
+      
+		</main>
+		<ScriptsAfterBody />
+	</body>
+</html>

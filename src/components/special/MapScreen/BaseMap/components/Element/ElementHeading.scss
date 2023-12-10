@@ -1,0 +1,78 @@
+@import 'src/styles/imports.scss';
+
+.map-name {
+  z-index: $map-zindex-label;
+  
+  font-family: $font-code;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+
+  background: rgba($map-background-color, 0.8);
+
+  &.is-detail-level {
+    padding: 3px 14px;
+  }
+
+  // WORLD
+  &.world {
+    user-select: none;
+    pointer-events: none;
+
+    font-size: 14px;
+    background: rgba($map-background-color, 0.8);
+    margin-bottom: -20px;
+
+    &.is-detail-level {
+      // margin-bottom: 0px;
+      // position: absolute;
+      // border: 2px solid red;
+      //transform: translate(-50%, -50%);
+    }
+  }
+
+  // SITE
+  &.site {
+    user-select: none;
+    pointer-events: none;
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+
+    display: none;
+
+    &.is-detail-level {
+      margin-bottom: 20px;
+      display: block;
+    }
+  }
+
+  // FIELD
+  &.field {
+    font-size: 13px;
+    line-height: 13px;
+    padding: 2px 0px;
+
+    &.is-detail-level {
+      font-size: 20px;
+      line-height: 20px;
+      padding: 10px 1px;
+    }
+  }
+
+  // BELT
+  &.belt {
+    color: $map-reddish-color;
+    background: rgba($map-background-color, 0);
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    svg {
+      margin-right: 10px;
+    }
+  }
+}

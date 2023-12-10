@@ -1,14 +1,14 @@
 ---
-import { AuthorUniserve } from '@/data/Authors';
 import { getImageById }  from '@/data/sharedImages';
-import { getImage } from '@astrojs/image';
+import { getImage } from 'astro:assets';
 import UniserveConclusion from './UniserveConclusion.component'
     
 const uniserveImageObject = getImageById("uniserve-welcome-modern")
+const importedImage = await uniserveImageObject.src()
+const importedImageInner = importedImage.default
 const uniserveImageProcessed = await getImage({
-    src: uniserveImageObject!.src,
+    src: importedImageInner,
     width: 400,
-    aspectRatio: uniserveImageObject!.width / uniserveImageObject!.height,
     format: "webp",
     alt: ""
 })

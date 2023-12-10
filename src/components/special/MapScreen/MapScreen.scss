@@ -1,0 +1,101 @@
+@import 'src/styles/imports.scss';
+
+$map-header-height: 40px;
+$map-selected-peek-height: 0px;
+$map-selected-peek-extra-height: 40px;
+
+.map-screen {
+  position: absolute;
+  top: 86px; 
+  bottom: 0px; 
+  left: 0px; 
+  right: 0px;
+
+  max-width: 2000px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @media screen and (max-width: 2000px) {
+    left: 2px; 
+    right: 2px;
+  }
+  @media screen and (max-width: $breakpoint-tablet) {
+    top: 65px;
+  }
+
+  .map-header {
+    position: relative;
+    height: $map-header-height;
+    
+    margin-bottom: 3px;
+    margin-top: 6px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: $breakpoint-tablet) {
+      margin-top: 3px;
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+      display: none;
+    }
+
+    .map-title {
+      @include abg-child();
+      position: absolute;
+      left: 50%;
+      //top: 50%;
+      transform: translateX(-50%);
+      background: $color-background-dark;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: $map-header-height;
+      padding: 0 20px;
+
+      h1 {
+        font-size: 16px;
+        font-family: $font-code;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: $color-sunset-red;
+        user-select: none;
+        white-space: nowrap;
+      }
+    }
+    
+    .map-header-diagonal {
+      flex: 1;
+      position: relative;
+      height: calc(100% - 4px);
+      margin-left: 2px;
+      margin-right: 2px;
+      @include abg(1);
+      @include abg-red-diagonal();
+    }
+
+    .button-set {
+      @include abg-child();
+      button {
+        //width: 60px;
+        height: 100%;
+        background: none;
+        border: 2px solid red;
+        text-align: center;
+        margin: 0 2px 0 2px;
+      }
+    }    
+  }
+
+  .map-body {
+    height: calc(100% - $map-header-height - $map-selected-peek-height - 8px);
+    left: 0; right: 0;
+    @media screen and (max-width: $breakpoint-mobile) {
+      height: calc(100% - 4px);
+    }
+  }
+}

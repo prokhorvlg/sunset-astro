@@ -41,7 +41,6 @@
     &.top-mid {
         margin-top: $mid;
     }
-    // TODO: generate some proper classes idk
     &.top-tall {
         margin-top: $tall;
         @media screen and (max-width: $breakpoint-mobile) {

@@ -3,6 +3,6 @@ const { postType } = Astro.props;
 
 ---
 
-<article class=`markdown ${postType}`>
+<article class=`markdown ${postType ? postType : ""}`>
     <slot />
 </article>

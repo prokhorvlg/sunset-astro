@@ -1,5 +1,5 @@
 // MARKDOWN STYLING
-article.markdown {
+article.markdown, .markdown-styles {
     // Maximum width and z index for all elements
     > h1, > h2, > h3, > h4, > h5, > h6, > ul, > p, > hr, > blockquote, > pre {
         max-width: $width-1000;
@@ -96,7 +96,7 @@ article.markdown {
     // ◻ ▒ ›
 
     // Tertiary heading
-    > h3, > h4 {
+    > h3 {
         font-size: 24px;
         line-height: 34px;
         font-weight: 600;
@@ -141,6 +141,24 @@ article.markdown {
         }
     }
 
+    > h4 {
+      font-family: $font-code;
+      text-transform: uppercase;
+      color: $color-sunset-red;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      font-weight: 700;
+      border-bottom: 1px solid $color-sunset-red;
+      padding-bottom: 6px;
+
+      //text-align: center;
+      //width: 90%;
+      margin-top: 70px;
+      //margin-right: 30px;
+
+      //box-sizing: content-box;
+    }
+
     // Links ( ()[] )
     > a, > p a, > ul li a {
         @include BasicLinkStyle();
@@ -164,6 +182,8 @@ article.markdown {
 
     // Lists ( - xyz )
     > ul, > ol {
+      //margin: 50px auto;
+      //list-style: ;
         li {
             > p {
                 font-size: 18px;
@@ -258,10 +278,12 @@ article.markdown {
         margin-top: -20px;
         border-top: 2px dotted $color-sunset-red;
         margin-bottom: 35px;
+        //box-sizing: content-box;
         @media screen and (max-width: $breakpoint-tablet) {
             width: 90%;
         }
         p {
+          //margin-top: 10px;
             color: $color-sunset-orange;
             font-family: $font-code;
             font-style: italic;

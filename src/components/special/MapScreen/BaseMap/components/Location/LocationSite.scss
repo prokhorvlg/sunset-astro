@@ -1,0 +1,117 @@
+@import 'src/styles/imports.scss';
+
+.map-site-dark-container {
+  @include absoluteCentered();
+  z-index: calc($map-zindex-field);
+
+  &.is-detail-level {
+    z-index: calc($map-zindex-field + 100);
+    .dark-container-circle {
+      $diameter: 60px;
+      height: $diameter;
+      width: $diameter;
+      background: rgba($map-background-color, 0.5);
+      border: 2px solid rgba($map-amber-color, 1);
+
+      &::before {
+        //content: '';
+        position: absolute;
+        top: 50%;
+        right: calc(100% + 5px);
+        transform: translate(0, -50%);
+
+        height: 4px;
+        width: 4px;
+        z-index: 2000;
+        border-radius: 4px;
+        background: rgba($map-amber-color, 1);
+      }
+      &::after {
+        //content: '';
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 5px);
+        transform: translate(0, -50%);
+        height: 4px;
+        width: 4px;
+        z-index: 2000;
+        border-radius: 4px;
+        background: rgba($map-amber-color, 1);
+      }
+    }
+  }
+
+  .dark-container-circle {
+    @include absoluteCentered();
+
+    height: 24px;
+    width: 24px;
+
+    border-radius: 5000px;
+    background: rgba($map-background-color, 1);
+  }
+}
+
+.map-site {
+  @include absoluteCentered();
+  z-index: $map-zindex-label;
+
+  &.is-detail-level {
+    .map-site-icon {
+      opacity: 1;
+    }
+  }
+
+  .map-site-icon {
+    @include absoluteCentered();
+    
+    border-radius: 5000px;
+
+    $dimensions: 20px;
+    height: $dimensions;
+    width: $dimensions;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 1;
+    //opacity: 0.8;
+
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      // SUBTYPE -> ICON STYLE
+      &.beacon {
+        transform: scale(1.3);
+      }
+      &.vessel {
+        transform: scale(1) rotate(180deg);
+      }
+      &.danger {
+        transform: scale(1.1);
+      }
+      &.data-trove {
+        transform: scale(1.2);
+      }
+      &.poi {
+        transform: scale(1.1);
+      }
+    }
+    .icon-container-custom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        //width: 30px;
+        //height: 30px;
+        transform: scale(0.3);
+      }
+    }
+  }
+
+  // WORLD AFFILIATION -> COLOR
+  @include mapWorldToColor("svg, .map-name");
+}
