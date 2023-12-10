@@ -107,7 +107,6 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("title-images/title-robots.png"),
     alt: "Boxy robot looking at you",
   },
-
   // UNISERVE
   {
     id: "uniserve-present",
@@ -963,5 +962,11 @@ export const Images: ImageDetails[] = [
     id: "number-beacon-sketch",
     src: getImageFromGlob("location-pictures/number-beacon-sketch.png"),
     alt: "",
+  },
+  {
+    id: 'ryujin-catalog',
+    src: getImageFromGlob("/images/content/ryujin_catalog-2.jpg"),
+    alt: "RYUJIN finds a floppy disk containing the Schafer's 2093 Fall and Winter catalog.",
+    artist: ArtistProkhor
   },
 ]
