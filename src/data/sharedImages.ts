@@ -965,7 +965,7 @@ export const Images: ImageDetails[] = [
   },
   {
     id: 'ryujin-catalog',
-    src: getImageFromGlob("/images/content/ryujin_catalog-2.jpg"),
+    src: getImageFromGlob("content/ryujin_catalog-2.jpg"),
     alt: "RYUJIN finds a floppy disk containing the Schafer's 2093 Fall and Winter catalog.",
     artist: ArtistProkhor
   },
