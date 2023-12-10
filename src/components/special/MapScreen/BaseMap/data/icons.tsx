@@ -86,7 +86,7 @@ export const getIconFromSubType = (
         <MdQuestionMark /> //<LuCompass />
       )
     case SiteSubtype.Factory:
-      return <FaIndustry />
+      return <CgShapeRhombus />//<FaIndustry />
   }
   return <CgClose />
 }

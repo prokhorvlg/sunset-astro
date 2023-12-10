@@ -108,7 +108,7 @@ const MapDetailsModalContainer = ({
               <div className="reality-field">
                 <p className="field-title"><WiStars /> <strong>Reality Field</strong></p>
 
-                <p>This is a region of space where the rules governing reality no longer apply. They have either been deliberately altered or destroyed by chaotic noetic phenomena, causing strange anomalies that cannot be explained by rational means. The border is only an approximation, mostly based on events recorded within the field.</p>
+                <p>This is a region of space where the rules governing reality no longer apply. They have either been deliberately altered or destroyed by chaotic metaphysical phenomena, causing strange anomalies that cannot be explained by rational means. The border is only an approximation, mostly based on events recorded within the field.</p>
                   
                 <p>Intensity can vary depending on the field. Weak anomalies can be as simple as spatial warps, unexplainable signals, and manifested objects. These gradually ramp to include unwelcome visitors from timelines that never came to pass, dimensional folds which exist outside of known space, even entire planets in a state of flux.</p>
                   

@@ -142,8 +142,8 @@ export const mapTypeToText = {
 }
 
 export const mapSiteSubTypeToText = {
-  [SiteSubtype.Orbital]: "Orbital Station",
-  [SiteSubtype.Outpost]: "Outpost",
+  [SiteSubtype.Orbital]: "Orbital-Scale Station",
+  [SiteSubtype.Outpost]: "Outpost-Scale Station",
   [SiteSubtype.MachineMade]: "Construct",
   [SiteSubtype.PointOfInterest]: "Point of Interest",
   [SiteSubtype.Asteroid]: "Celestial Body",
