@@ -959,4 +959,9 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("map_terminal (8).png"),
     alt: "",
   },
+  {
+    id: "number-beacon-sketch",
+    src: getImageFromGlob("location-pictures/number-beacon-sketch.png"),
+    alt: "",
+  },
 ]

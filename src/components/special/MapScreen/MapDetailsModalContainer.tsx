@@ -112,7 +112,7 @@ const MapDetailsModalContainer = ({
                   
                 <p>Intensity can vary depending on the field. Weak anomalies can be as simple as spatial warps, unexplainable signals, and manifested objects. These gradually ramp to include unwelcome visitors from timelines that never came to pass, dimensional folds which exist outside of known space, even entire planets in a state of flux.</p>
                   
-                <p>The most dangerous of these anomalies change <em>you</em> in such a way that your own memory of events and very existence are inconsistent with the generally-accepted truth.</p>
+                <p>The most dangerous of these anomalies change <em>you</em> in such a way that your own memory of events and very existence are inconsistent with the generally-accepted truth, though this brings reality itself into question. Is the Solar System we know an anomaly? Could it merely be one of many dimensional folds, tucked away within a reality field of a different "truth"?</p>
               </div>
             }
             
