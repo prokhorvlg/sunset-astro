@@ -955,8 +955,8 @@ export const Images: ImageDetails[] = [
     artist: ArtistProkhor,
   },
   {
-    id: "map-terminal",
-    src: getImageFromGlob("map_terminal (8).png"),
+    id: "map-terminal-full",
+    src: getImageFromGlob("map_terminal-full.jpg"),
     alt: "",
   },
   {

@@ -10,6 +10,7 @@ import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
 import MapDetailsModalContainer from '@/components/special/MapScreen/MapDetailsModalContainer';
 
 import { locationsData } from '@/components/special/MapScreen/BaseMap/data/maps/systemMapData';
+import { getProcessedImageById } from '@/utils/astroHelpers';
 
 const markdownFiles = await Astro.glob('../data/map/locations/*.{md,mdx}')
 
@@ -24,12 +25,19 @@ const getDeepLocations = (location) => {
 }
 const allLocations = getDeepLocations(locationsData)
 
+const image = await getProcessedImageById("map-terminal-full")
+
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<BaseHead title={"Map"} description={SITE_DESCRIPTION} />
+		<BaseHead 
+      title={"Map"} 
+      description={"An interactive display of locations within Sunset System, a retrofuturistic world where only existential robots remain."} 
+      image={image?.src} 
+			isLargeImage={(image !== null)} 
+    />
 	</head>
 	<body>
 		<SunsetHeader client:only="react" currentPage={"/map"} />
