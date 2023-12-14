@@ -969,4 +969,11 @@ export const Images: ImageDetails[] = [
     alt: "RYUJIN finds a floppy disk containing the Schafer's 2093 Fall and Winter catalog.",
     artist: ArtistProkhor
   },
+  {
+    id: 'dynatek-fredi-ad',
+    src: getImageFromGlob("content/fred-virgil-ad-1.jpg"),
+    alt: "Advertisement for the dynatek fredi combat robot",
+    caption: "FREDI is armed with a heavy machine gun, multiple missile pods, scanners, manipulators, and more hidden redundant systems than one could count.",
+    artist: ArtistProkhor
+  },
 ]
