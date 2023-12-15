@@ -1,5 +1,4 @@
 import PostCard from "@/components/posts/PostCard.component"
-import FullWidthWrapper from "@/components/wrappers/FullWidthWrapper.component"
 import { faArrowDown, faArrowUp, faBoxOpen, faCircleXmark, faSearch } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import type { CollectionEntry } from "astro:content"
@@ -18,7 +17,7 @@ export enum PostType {
 export interface ProcessedPost {
     post: CollectionEntry<PostType.Lore> | CollectionEntry<PostType.Introduction>
     searchData: string
-    processedThumbImage: astroHTML.JSX.ImgHTMLAttributes | null
+    processedThumbImage: any // TODO: astro image type here
 }
 
 interface PropTypes {

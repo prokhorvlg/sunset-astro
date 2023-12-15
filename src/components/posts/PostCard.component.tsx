@@ -44,8 +44,8 @@ const PostCard = ({
     const isPatreonExclusive = post.data.patreonLocked
     const target = isPatreonExclusive ? post.data.target : `/posts/${post.slug}`
 
-    const originalWidth = Number(processedPost.processedThumbImage?.width) || 100
-    const originalHeight = Number(processedPost.processedThumbImage?.height) || 100
+    const originalWidth = Number(processedPost.processedThumbImage?.attributes.width) || 100
+    const originalHeight = Number(processedPost.processedThumbImage?.attributes.height) || 100
     const imageRatio = originalWidth / originalHeight
 
     // DYNAMIC CALCULATIONS
