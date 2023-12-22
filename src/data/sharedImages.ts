@@ -976,4 +976,24 @@ export const Images: ImageDetails[] = [
     caption: "FREDI is armed with a heavy machine gun, multiple missile pods, scanners, manipulators, and more hidden redundant systems than one could count.",
     artist: ArtistProkhor
   },
+
+  {
+    id: 'coalition_road_trip',
+    src: getImageFromGlob("content/vehicles-2023/coalition_road_trip.jpg"),
+    alt: "Road trip",
+    artist: ArtistProkhor
+  },
+  {
+    id: 'coalition_luxury_hovercars',
+    src: getImageFromGlob("content/vehicles-2023/coalition_luxury_hovercars-fin.jpg"),
+    alt: "Coalition luxury hovercars",
+    artist: ArtistProkhor
+  },
+  {
+    id: 'union-sedans',
+    src: getImageFromGlob("content/vehicles-2023/union-sedans.jpg"),
+    alt: "Road trip",
+    artist: ArtistProkhor
+  },
+  
 ]

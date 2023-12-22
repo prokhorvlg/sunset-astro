@@ -1,5 +1,5 @@
 import { useMapWheel } from "@/components/special/MapScreen/BaseMap/hooks/useMapWheel"
-import { transformAtom, rescaleAtom, selectedLocationAtom, isDetailLevelAtom, activeMapMetaAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
+import { transformAtom, rescaleAtom, selectedLocationAtom, isDetailLevelAtom, activeMapMetaAtom, isSelectedModalOpenAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import { useAtom } from "jotai"
 import { useState } from "react"
 import './MapSelector.scss'
@@ -18,9 +18,13 @@ const MapSelector = ({
 
   const onWheelHandler = (e) => onWheel(e)
   const onClickHandler = (e) => {
+    // Zoom in
     setSelectedLocation(location)
     const effectiveId = location.id ? location.id : location.name
     transform?.zoomToElement(effectiveId, 10, 400)
+
+    // Open modal
+    setIsSelectedModalOpen(true)
   }
 
   const [transform, setTransform] = useAtom(transformAtom)
@@ -28,6 +32,7 @@ const MapSelector = ({
   const [selectedLocation, setSelectedLocation] = useAtom(
     selectedLocationAtom
   )
+  const [isSelectedModalOpen, setIsSelectedModalOpen] = useAtom(isSelectedModalOpenAtom)
   const [isDetailLevel, setIsDetailLevel] = useAtom(isDetailLevelAtom)
 
   const [isField] = useState(location.type === LocationType.Field)
