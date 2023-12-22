@@ -994,6 +994,5 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("content/vehicles-2023/union-sedans.jpg"),
     alt: "Road trip",
     artist: ArtistProkhor
-  },
-  
+  }
 ]
