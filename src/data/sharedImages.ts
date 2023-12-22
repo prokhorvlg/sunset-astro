@@ -994,5 +994,17 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("content/vehicles-2023/union-sedans.jpg"),
     alt: "Road trip",
     artist: ArtistProkhor
-  }
+  },
+  {
+    id: 'american_beaters',
+    src: getImageFromGlob("content/vehicles-2023/american_beaters.jpg"),
+    alt: "American beaters",
+    artist: ArtistProkhor
+  },
+  {
+    id: 'callahan_prospector',
+    src: getImageFromGlob("content/vehicles-2023/callahan_prospector.jpg"),
+    alt: "Callahan Prospector",
+    artist: ArtistProkhor
+  },
 ]
