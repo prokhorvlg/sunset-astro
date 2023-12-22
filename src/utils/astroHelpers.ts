@@ -3,6 +3,8 @@ import { Images } from "@/data/sharedImages";
 import { getImage } from "astro:assets";
 import { getCollection, getEntryBySlug } from "astro:content";
 
+// Helpers related to preprocessing Astro markdown posts and image content
+
 export const loadAnyPost = async () => {
   const posts = await getCollection("lore");
   const introductionPosts = await getCollection("introduction");

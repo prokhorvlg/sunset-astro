@@ -3,18 +3,11 @@ import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
 import { useRef, useState } from "react"
 import "./LocationSite.scss"
-import { CgShapeTriangle, CgClose, CgBlock, CgMaximize, CgShapeRhombus, CgShapeSquare, CgShapeCircle, CgAsterisk, CgSignal, CgData, CgVercel, CgMinimize, CgMathPlus, CgSmartphoneChip, CgServer, CgSearch, CgEditHighlight } from "react-icons/cg";
-
-import {LuCompass} from "react-icons/lu"
-import {IoSkullSharp} from "react-icons/io5"
-import {MdQuestionMark} from "react-icons/md"
-import { PiPlanetBold, PiSkullBold } from "react-icons/pi"
-import { AiOutlineQuestionCircle, AiOutlineSave } from "react-icons/ai";
 import { transformAtom, rescaleAtom, isDetailLevelAtom, selectedLocationAtom, hoveredLocationAtom, isDetailLevel2Atom } from "@/components/special/MapScreen/BaseMap/state/atoms";
 import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector";
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading";
 import DetailsContainer from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer";
-import { SiteSubtype, type LocationNode, type SystemLocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
+import { type LocationNode } from "@/components/special/MapScreen/BaseMap/data/types";
 import { getIconFromSubType } from "@/components/special/MapScreen/BaseMap/data/icons";
 
 const LocationSite = ({

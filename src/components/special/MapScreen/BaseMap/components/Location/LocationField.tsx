@@ -1,11 +1,10 @@
 import { transformAtom, rescaleAtom, isDetailLevelAtom, opacityFadeOutAtom } from "@/components/special/MapScreen/BaseMap/state/atoms"
 import ElementHeading from "@/components/special/MapScreen/BaseMap/components/Element/ElementHeading"
-import ElementOffset from "@/components/special/MapScreen/BaseMap/components/Element/DetailsContainer"
 import Selector from "@/components/special/MapScreen/BaseMap/components/Element/MapSelector"
 import { mathClamp } from "@/components/special/MapScreen/BaseMap/utils/math"
 import { useIsVisible } from "@/utils/hooks/useIsVisible"
 import { useAtom } from "jotai"
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import "./LocationField.scss"
 import { type SystemLocationNode, FieldShape, type LocationNode } from "@/components/special/MapScreen/BaseMap/data/types"
 

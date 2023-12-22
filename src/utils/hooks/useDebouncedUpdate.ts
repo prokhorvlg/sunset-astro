@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export function useDebouncedUpdate(value: any, delay: number) {
+export function useDebouncedUpdate(value: Function, delay: number) {
     const timeoutRef = useRef<number>();
   
     useEffect(() => {
