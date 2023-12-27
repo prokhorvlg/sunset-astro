@@ -154,7 +154,7 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "goldspire-rev",
-    src: getImageFromGlob("home/Goldspire (3).png"),
+    src: getImageFromGlob("home/goldspire-rev.png"),
     alt: "The Goldspire Archival Complex",
     classes: "border-orange",
     caption:
