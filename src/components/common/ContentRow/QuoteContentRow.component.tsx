@@ -10,10 +10,13 @@ import { useEffect, useState } from "react"
 interface Props {
     children: JSX.Element
     author: QuoteAuthor
+
     shrink?: boolean
     none?: boolean
     transcription?: boolean
     left?: boolean
+    nameOnly?: boolean
+
     imageObject?: ImageDetails
     imageItem?: astroHTML.JSX.ImgHTMLAttributes
 }
@@ -29,6 +32,7 @@ const QuoteContentRow = ({
     author,
     shrink,
     none,
+    nameOnly,
     transcription,
     imageItem,
     imageObject,
@@ -73,7 +77,7 @@ const QuoteContentRow = ({
                 {none || !isOpen || isAuthorUnknown ? 
                     null : 
                     <div className="author-box">
-                        {shrink || (!hasImage && !isAuthorYou) ?
+                        {shrink || nameOnly || (!hasImage && !isAuthorYou) ?
                             null : 
                             isAuthorYou ? 
                                 <div className="blinkbox-container">
@@ -87,7 +91,7 @@ const QuoteContentRow = ({
                         
                         <div className="text">
                             <a className="name" target="_blank" href={author.originalPage ? author.originalPage : "/"}>{author.name}</a>
-                            <span className="description">{author.description}</span>
+                            { !nameOnly && <span className="description">{author.description}</span> }
                         </div>
                     </div>
                 }

@@ -1015,11 +1015,21 @@ export const Images: ImageDetails[] = [
   },
 
   {
-    id: 'polyus',
+    id: 'polyus-injii',
     src: getImageFromGlob("content/polyus/polyus.jpg"),
-    alt: "polyus",
+    alt: "polyus-injii",
     classes: "border-uniserve-blue",
     caption: "POLYUS is grilled by IN-16JIII during a teleconference with the Consensus of Genesis. The 'hologram' isn't actually real, and exists merely as a representation of the digital debate. (Drawn by BuddBudd, modified by prokhorVLG.)",
     artist: ArtistBuddBudd
+  },
+  {
+    id: "avatar-polyus",
+    src: getImageFromGlob("content/author-images/avatar-polyus-.jpg"),
+    alt: "",
+  },
+  {
+    id: "avatar-injii",
+    src: getImageFromGlob("content/author-images/avatar-injii-.jpg"),
+    alt: "",
   },
 ]

@@ -71,7 +71,7 @@ export const AuthorOperatorCobalt: QuoteAuthor = {
     id: "operator-cobalt",
     name: "OPERATOR COBALT",
     description: "Lord of Order; strategic and reserved one.",
-    theme: "cobalt",
+    theme: "cobalt cobalt-color",
     image: "cobalt",
     originalPage: "/posts/two-lords-cobalt"
 }
@@ -148,14 +148,16 @@ export const AuthorAKULA: QuoteAuthor = {
 export const AuthorPOLYUS: QuoteAuthor = {
   id: "polyus",
   name: "POLYUS",
-  originalPage: "/posts/radius",
-  description: "Former military mastermind, now biological researcher.",
+  image: "avatar-polyus",
+  originalPage: "/posts/a-matter-of-fact",
+  description: "Station mastermind turned bio-researcher on Europa.",
   theme: "aqua"
 }
 export const AuthorINJII: QuoteAuthor = {
   id: "injii",
-  name: "INJII",
-  originalPage: "/posts/radius",
-  description: "IN-16JIII",
-  theme: "cobalt"
+  name: "IN-16JIII",
+  image: "avatar-injii",
+  originalPage: "/posts/a-matter-of-fact",
+  description: "High-trust Academic, school of Accuracy. Martian.",
+  theme: "cobalt-color"
 }

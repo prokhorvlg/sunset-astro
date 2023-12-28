@@ -90,8 +90,8 @@ $quoteMobileSidePadding: 20px;
             background-position-y: 10%;
         }
     }
-    &.cobalt {
-        $cobalt: #6399fd;
+    &.cobalt-color {
+      $cobalt: #6399fd;
         @include recolorQuote(
             lighten($cobalt, 20%),
             darken($cobalt, 05%),
@@ -100,6 +100,8 @@ $quoteMobileSidePadding: 20px;
             $cobalt
         );
         @include whiteBGQuote();
+    }
+    &.cobalt {
         .author-box .image {
             background-size: 150%;
             background-position-x: 0%;
