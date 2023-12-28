@@ -19,6 +19,12 @@ const ArtistLarkine: ImageArtist = {
     name: 'Larkine',
     profilePic: 'https://pbs.twimg.com/profile_images/1608746857521623041/_TXZ0DgS_400x400.jpg'
 }
+const ArtistBuddBudd: ImageArtist = {
+    id: 'buddbudd',
+    link: 'https://twitter.com/butterbudd',
+    name: 'BuddBudd',
+    profilePic: 'https://pbs.twimg.com/profile_images/1653320928196202496/hTcGWrfK_400x400.jpg'
+}
 
 export interface ImageDetails {
   id: string
@@ -1006,5 +1012,14 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("content/vehicles-2023/callahan_prospector.jpg"),
     alt: "Callahan Prospector",
     artist: ArtistProkhor
+  },
+
+  {
+    id: 'polyus',
+    src: getImageFromGlob("content/polyus/polyus.jpg"),
+    alt: "polyus",
+    classes: "border-uniserve-blue",
+    caption: "POLYUS is grilled by IN-16JIII during a teleconference with the Consensus of Genesis. The 'hologram' isn't actually real, and exists merely as a representation of the digital debate. (Drawn by BuddBudd, modified by prokhorVLG.)",
+    artist: ArtistBuddBudd
   },
 ]

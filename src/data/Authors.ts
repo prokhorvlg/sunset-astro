@@ -144,3 +144,18 @@ export const AuthorAKULA: QuoteAuthor = {
     description: "Intelligent, adapting virus. Extremely dangerous.",
     theme: "akula"
 }
+
+export const AuthorPOLYUS: QuoteAuthor = {
+  id: "polyus",
+  name: "POLYUS",
+  originalPage: "/posts/radius",
+  description: "Former military mastermind, now biological researcher.",
+  theme: "aqua"
+}
+export const AuthorINJII: QuoteAuthor = {
+  id: "injii",
+  name: "INJII",
+  originalPage: "/posts/radius",
+  description: "IN-16JIII",
+  theme: "cobalt"
+}
