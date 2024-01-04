@@ -1032,4 +1032,11 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("content/author-images/avatar-injii-.jpg"),
     alt: "",
   },
+  {
+    id: "bbm-executive-ad",
+    src: getImageFromGlob("content/bbm-executive-ad.jpg"),
+    //classes: "border-uniserve-blue",
+    caption: "",
+    alt: "",
+  },
 ]

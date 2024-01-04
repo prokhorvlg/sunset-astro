@@ -786,7 +786,7 @@ export const locationsData: SystemLocationNode = {
           radius: 8,
           startingAngle: 40,
           isImportant: true,
-          //localMap: ActiveMap.Titan,
+          // localMap: ActiveMap.Titan,
           humanEraPopulation: "180 million",
           icon: <GiSnail />,
           children: [
