@@ -1,12 +1,9 @@
 ---
 title: "Data Storage Devices"
-mainText: "A variety of data storage technologies and their use cases."
-subText: "The devices cover a wide variety of designs including reel tapes, cassettes, optical disks, floppies, and platter drives. They give a good sense of the hardware that programs, media, and neuromorphic memories are typically stored on."
-pubDate: "Aug 5 2023"
-thumbImage: "data-storage-devices-locked"
-thumbAlignment: "center 25%"
-patreonLocked: true
-target: "https://www.patreon.com/posts/final-collection-87218068"
+mainText: "Varied data storage methods from across the System. Most would consider it junk."
+subText: "These were the kinds of devices that programs, multimedia, and memories were stored on. Device standards often remained unchanged for many decades, as the technologies advanced in lockstep with each other."
+pubDate: "Jan 5 2024"
+thumbImage: "data-storage-devices"
 tags:
   - retrofuturistic dreams
   - computer
@@ -16,9 +13,113 @@ tags:
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
 import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorTerminal, AuthorUniserve, AuthorOperatorCobalt } from '@/data/Authors.ts'
 
 <ImageContentRowRender 
-  images={['data-storage-devices-locked']}
+  images={['data-storage-devices']}
 />
 
-See the original post on the [Patreon page](https://www.patreon.com/posts/final-collection-87218068).
+Take note of how each of the three major powers had a sort of preference for particular storage media. Even though all base technologies were available across the world by the 21st century, cassettes were ultimately king within the Communist sphere, while optical discs became prevalent in the East-Asian based Pact.
+
+Since most of these form factors ended up advancing in relative lockstep, there was little incentive to switch to "newer" ones. The dominance of proprietary formats over open standards (a movement which died in the 1990s) caused most companies to prefer incorporating new storage capabilities into their existing devices, rather than reinventing them entirely.
+
+While some machines may call this dynamic stagnant, it also means that a floppy port designed in the 2020s could still slot and read a floppy from the 2090s, even if the latter might contains thousands of times as much information. But it would become more and more difficult to switch standards with time, as more devices across space and time came to rely on them...
+
+This dynamic lead to a System where there were many one-off, esoteric technologies that were either purpose-built or simply did not take off in the face of existing ones, living alongside designs which lasted for far longer than one would expect.
+
+<QuoteContentRowRender author={AuthorUniserve}>
+No, these are NOT JUNK. How many times must this unit insist?
+</QuoteContentRowRender>
+
+## <span class="short"><i>title:</i>Enduring Coalition<i>:</i></span> Western standards from the Enduring Coalition.
+
+### 12-Track MAX
+> Multimedia Tape
+
+Semi-common, advanced cassette typically used for audiovisual storage. Later models were designed to contain holographic and simulation data within crystal-lined tapes, making them useful for virtual and projected experiences among other more nuanced cases.
+
+### BBM 4-Inch
+> Floppy Diskette
+
+Extremely common format used for transferring files of all kinds, but especially software programs. Read speeds are moderate. This standard format would remain nearly-unchanged for a century, but storage capacity of newer designs scaled exponentially every few decades.
+
+### Maxwell 10GQ  
+> Hard Platter Drive (HPD)
+
+Magnetic-based internal storage device for medium to large computers and neuromorphs. Internal devices were preferable to ejectable media for system-critical data, thanks to faster read/write speeds and durability over time. Floppy disks, optical disks, and cassettes wear out when subject to ongoing stress.
+
+### Redmond 2065m
+> Human Authorization Chip (HAC)
+
+A gem-stick based on similar technology to the Kaizen HDLD, but designed to be portable. `Human Authorization Chips` are rare devices which serve as a key for high-risk operations that must be triggered by a human being, such as a military strike or activation of a cargo railgun. Neuromorphs are typically programmed to be incapable of even consciously perceiving a HAC.
+
+<QuoteContentRowRender author={AuthorUniserve}>
+Best method to locate HAC is to identify the discrepancies within POTENTIAL SURROUNDINGS. Identify UNTRACABLE DISTURBANCE in the air, pattern inconsistencies in underlying surface. 
+
+This unit has not yet mastered the technique. HOW UNFORTUNATE!
+</QuoteContentRowRender>
+
+## <span class="short"><i>title:</i>Rising Pact<i>:</i></span> East-Asian standards.
+
+### Saito Microdisc
+> Laser-Optical Disc
+
+Data storage format common in the Pact for a variety of uses, especially audiovisual information. Earlier models could only be written to a single time before they became read-only.
+
+### Sankalpa Scratch "E"
+> Neuromorphic Laser-Optical Disc
+
+Laser-optical disc proprietary to the Pact's Sankalpa Institute, usually used to transfer neuromorphic data and installations. These are designed to be encrypted and hyper-secure.
+
+### Kaizen HDLD (High Density Lattice Drive)
+> Lattice-based Hard Drive 
+
+Advanced internal storage device using crystalline lattice mined on Io. Lattice-based storage is superior to most other formats in all ways other than cost - durability over time, speed, capacity, and power efficiency. Also known as `gems`, lattice-based devices easily support the device stress induced by mastermind operations.
+
+<QuoteContentRowRender author={AuthorUniserve}>
+If you are aware of ANYONE with spare lattice drives, please inform them that this unit wishes to "STRIKE A DEAL". 
+
+ORDER is unwilling to part with any more, even though they are ABSOLUTELY MANDATORY to my operation!
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorOperatorCobalt} left>
+░ ... ░
+░ How many more could POSSIBLY NEED ░
+░ You ALREADY operate at 5200% EFFICIENCY ░
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorUniserve}>
+SANGUINE would get it.
+</QuoteContentRowRender>
+
+## <span class="short"><i>title:</i>Greater People's Union<i>:</i></span> Communist-sphere standards.
+
+### G-217
+> Archive Reel
+
+Archival tape reel format typical in the Union. Cheap and bottomless, but low read speeds make it ideal for long-term bulk data storage. Devices like these can be found in abundance within data centers and mastermind facilities.
+
+### Magma C60
+> Standard Datasette
+
+Common cassette style for data storage and transfer. Read/write speeds are lower than their optical and disc counterparts, but fast enough to be practical. On the upside, Magma C60 are cheap and durable.
+
+### Minicol KOMANDA
+> Command Cassette
+
+Proprietary cassette used by Soviet military organizations, including the Ministry of Colonization. KOMANDA cassettes had a very high read-write speed, but wore out quickly, making them ideal for rapid transfer of sensitive, critical data. You are most likely to find these in abundance within shady under-surface bases on Venus or Europa.
+
+<QuoteContentRowRender author={AuthorUniserve}>
+This unit cannot understate how valuable these were to the MRDCI intelligence apparatus once.
+
+Then, some CIKAVAK unit left a bundle of SIX THOUSAND on Goldspire's doorstep. We use them as SOUVENIRS, now... be sure to collect as many as you can on your way out.
+</QuoteContentRowRender>
+
+### Rosum DK5
+> Hard Platter Drum
+
+Platter-based internal storage device commonly installed in Union systems during the early 21st century, especially in the construction of Interbeacon. The drums are well-shielded to protect data from space-based radiation.
+
+---
+
+*Originally a Patreon post from August 5, 2023.* [Patreon page](https://www.patreon.com/posts/final-collection-87218068).

@@ -827,8 +827,8 @@ export const Images: ImageDetails[] = [
     alt: "",
   },
   {
-    id: "data-storage-devices-locked",
-    src: getImageFromGlob("content/data-storage-devices-locked.jpg"),
+    id: "data-storage-devices",
+    src: getImageFromGlob("content/data-storage-devices.jpg"),
     alt: "",
   },
   {
