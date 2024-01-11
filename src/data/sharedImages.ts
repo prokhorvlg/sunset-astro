@@ -1039,4 +1039,17 @@ export const Images: ImageDetails[] = [
     caption: "",
     alt: "",
   },
+
+  {
+    id: "teledex-waiting",
+    src: getImageFromGlob("content/teledex_waiting.jpg"),
+    //classes: "border-uniserve-blue",
+    alt: "",
+  },
+  {
+    id: "teledex-waiting-2",
+    src: getImageFromGlob("content/teledex_waiting_2.jpg"),
+    //classes: "border-uniserve-blue",
+    alt: "",
+  },
 ]
