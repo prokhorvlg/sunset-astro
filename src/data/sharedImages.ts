@@ -1052,4 +1052,9 @@ export const Images: ImageDetails[] = [
     //classes: "border-uniserve-blue",
     alt: "",
   },
+  {
+    id: "redmond-ruby",
+    src: getImageFromGlob("content/ruby-ad.jpg"),
+    alt: "",
+  },
 ]
