@@ -1,6 +1,6 @@
-![Sunset image](./src/assets/images/sunset-system-image.jpg)
+[![Sunset image](./src/assets/images/sunset-system-image.jpg)](https://www.sunset-system.com)
 
-**Sunset System** is an Astro-based custom worldbuilding blog. The website is currently automatically deployed and hosted on Vercel, at [sunset-system.com](www.sunset-system.com).
+**Sunset System** is an Astro-based custom worldbuilding blog. The website is currently automatically deployed and hosted on Vercel, at [sunset-system.com](https://www.sunset-system.com).
 
 I developed, styled, and drew (almost) everything here. You may have seen my work on the internet before; drawing is a big hobby of mine. Nonetheless, I am a software engineer at heart.
 
@@ -14,7 +14,7 @@ Astro is perfectly suited for static site generation, coming with markdown parsi
 
 ## React (front-end framework)
 
-Muscle memory. Astro lets you use any framework, even Astro itself, for components. But React is what I know, and lets me easily make more advanced components (be sure to check out the map page, at [sunset-system.com/map](www.sunset-system.com/map))
+Muscle memory. Astro lets you use any framework, even Astro itself, for components. But React is what I know, and lets me easily make more advanced components... be sure to check out the map page, at [sunset-system.com/map](https://www.sunset-system.com/map).
 
 ## Typescript (programming language)
 
