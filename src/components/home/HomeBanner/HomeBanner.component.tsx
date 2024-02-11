@@ -96,12 +96,12 @@ const HomeBanner = ({
                     }}
                 />
 
-                <div 
+                {/* <div 
                     className="layer noise"
                     style={{
                         backgroundImage: `url('${noiseSrc}')`
                     }}
-                />              
+                />               */}
                 
                 <div className="floating-header">
                     <h1 style={{textAlign: "center"}}>Sunset System</h1>
