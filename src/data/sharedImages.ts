@@ -1,29 +1,32 @@
 const imagesGlob = import.meta.glob("../assets/images/**/*")
 
 export interface ImageArtist {
-    id: string
-    link: string
-    name: string
-    profilePic: string
+  id: string
+  link: string
+  name: string
+  profilePic: string
 }
 
 const ArtistProkhor: ImageArtist = {
-    id: 'prokhor',
-    link: 'https://twitter.com/prokhorVLG',
-    name: 'ProkhorVLG',
-    profilePic: 'https://pbs.twimg.com/profile_images/1622668839036100617/GNEm5ReN_400x400.jpg'
+  id: "prokhor",
+  link: "https://twitter.com/prokhorVLG",
+  name: "ProkhorVLG",
+  profilePic:
+    "https://pbs.twimg.com/profile_images/1622668839036100617/GNEm5ReN_400x400.jpg",
 }
 const ArtistLarkine: ImageArtist = {
-    id: 'larkine',
-    link: 'https://twitter.com/_larkine',
-    name: 'Larkine',
-    profilePic: 'https://pbs.twimg.com/profile_images/1608746857521623041/_TXZ0DgS_400x400.jpg'
+  id: "larkine",
+  link: "https://twitter.com/_larkine",
+  name: "Larkine",
+  profilePic:
+    "https://pbs.twimg.com/profile_images/1608746857521623041/_TXZ0DgS_400x400.jpg",
 }
 const ArtistBuddBudd: ImageArtist = {
-    id: 'buddbudd',
-    link: 'https://twitter.com/butterbudd',
-    name: 'BuddBudd',
-    profilePic: 'https://pbs.twimg.com/profile_images/1653320928196202496/hTcGWrfK_400x400.jpg'
+  id: "buddbudd",
+  link: "https://twitter.com/butterbudd",
+  name: "BuddBudd",
+  profilePic:
+    "https://pbs.twimg.com/profile_images/1653320928196202496/hTcGWrfK_400x400.jpg",
 }
 
 export interface ImageDetails {
@@ -40,10 +43,10 @@ export interface ImageDetails {
 }
 
 export const getImageById = (id: string) => {
-    return Images.find((image) => image.id === id)
+  return Images.find((image) => image.id === id)
 }
 // '../assets/images/content/11b2-k_yashkin.png
-const IMAGE_FILEPATH_PREFIX = '../assets/images/'
+const IMAGE_FILEPATH_PREFIX = "../assets/images/"
 const getImageFromGlob = (fileName: string) => {
   return imagesGlob[IMAGE_FILEPATH_PREFIX + fileName]
 }
@@ -83,29 +86,33 @@ export const Images: ImageDetails[] = [
     id: "planet-titan-gallery",
     src: getImageFromGlob("planet-marbles/Titan.png"),
     alt: "Titan, frigid moon of Saturn",
-    classes: "shrink-60 border-titan-blue"
+    classes: "shrink-60 border-titan-blue",
   },
   {
     id: "planet-venus-gallery",
     src: getImageFromGlob("planet-marbles/Venus.png"),
     alt: "Venus, the hot jungle",
-    classes: "shrink-60 border-venus-yellow"
+    classes: "shrink-60 border-venus-yellow",
   },
   {
     id: "planet-mars-gallery",
     src: getImageFromGlob("planet-marbles/Mars.png"),
     alt: "Mars, the world of red sands",
-    classes: "shrink-60 border-red"
+    classes: "shrink-60 border-red",
   },
   // TITLE IMAGES
   {
     id: "title-cassette",
-    src: getImageFromGlob("title-images/title-cassette.png"),
+    src: getImageFromGlob(
+      "title-images/title-cassette.png"
+    ),
     alt: "Cassette that stores data",
   },
   {
     id: "title-space-race",
-    src: getImageFromGlob("title-images/title-space-race-4.png"),
+    src: getImageFromGlob(
+      "title-images/title-space-race-4.png"
+    ),
     alt: "Rocket launching into the sky",
   },
   {
@@ -138,17 +145,23 @@ export const Images: ImageDetails[] = [
   // PATREON
   {
     id: "interface-robot",
-    src: getImageFromGlob("patron-images/interface-robot.jpg"),
+    src: getImageFromGlob(
+      "patron-images/interface-robot.jpg"
+    ),
     alt: "Interface robot looks at a sheet of paper",
   },
   {
     id: "scrubber-drone",
-    src: getImageFromGlob("patron-images/scrubber-drone.jpg"),
+    src: getImageFromGlob(
+      "patron-images/scrubber-drone.jpg"
+    ),
     alt: "Scrubber drone",
   },
   {
     id: "transit-mastermind",
-    src: getImageFromGlob("patron-images/transit-mastermind.jpg"),
+    src: getImageFromGlob(
+      "patron-images/transit-mastermind.jpg"
+    ),
     alt: "Transit mastermind",
   },
   // GOLDSPIRE INTRO
@@ -187,21 +200,27 @@ export const Images: ImageDetails[] = [
   // LARKIN LOCATIONS
   {
     id: "weston-mission-control",
-    src: getImageFromGlob("larkine-locations/weston-mission-control.png"),
+    src: getImageFromGlob(
+      "larkine-locations/weston-mission-control.png"
+    ),
     alt: "Scene depicting a mission control room",
     classes: "border-red",
     artist: ArtistLarkine,
   },
   {
     id: "storage-bay",
-    src: getImageFromGlob("larkine-locations/storage-bay.png"),
+    src: getImageFromGlob(
+      "larkine-locations/storage-bay.png"
+    ),
     alt: "Scene depicting a storage bay where the walls are filled with containers",
     classes: "border-red",
     artist: ArtistLarkine,
   },
   {
     id: "earthview-garden",
-    src: getImageFromGlob("larkine-locations/earthview-garden.png"),
+    src: getImageFromGlob(
+      "larkine-locations/earthview-garden.png"
+    ),
     alt: "Scene depicting a garden within a space station",
     classes: "border-red",
     artist: ArtistLarkine,
@@ -232,14 +251,18 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "sri-brochure",
-    src: getImageFromGlob("content/sunset-brochure-intro.jpg"),
+    src: getImageFromGlob(
+      "content/sunset-brochure-intro.jpg"
+    ),
     alt: "Brochure for the Sunset Research Initiative",
     originalPost: "sri-brochure",
     artist: ArtistProkhor,
   },
   {
     id: "sri-brochure-photo",
-    src: getImageFromGlob("content/sunset-brochure-photo.png"),
+    src: getImageFromGlob(
+      "content/sunset-brochure-photo.png"
+    ),
     alt: "Photo of the Input Data Sanitization Team",
     caption:
       "A photograph of the Input Data Sanitization Team on Project BELOBOG: Genadiy Sobakin, Jane Davis, and DTEK.",
@@ -257,7 +280,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "nations-tri-panel",
-    src: getImageFromGlob("content/sunset-system-nations.png"),
+    src: getImageFromGlob(
+      "content/sunset-system-nations.png"
+    ),
     alt: "Advertisement for the Pan Sol Crane spaceplane",
   },
   {
@@ -272,13 +297,17 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "internal-use-only",
-    src: getImageFromGlob("content/internal-use-only-2.png"),
+    src: getImageFromGlob(
+      "content/internal-use-only-2.png"
+    ),
     alt: "Hanging television in a spooky dark area",
     classes: "border-red",
   },
   {
     id: "organ-terrarium",
-    src: getImageFromGlob("content/heart-organ-terrarium-ad.png"),
+    src: getImageFromGlob(
+      "content/heart-organ-terrarium-ad.png"
+    ),
     alt: "Rolling organ terrarium robot with heart inside",
   },
   {
@@ -310,7 +339,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "presenter-snapshot",
-    src: getImageFromGlob("content/presenter-final-orange.png"),
+    src: getImageFromGlob(
+      "content/presenter-final-orange.png"
+    ),
     alt: "Excited scientist facing camera presents a strange wearable device in their hand",
     caption:
       "Dr. Samuel Lewis demonstrates the wearable nooscope in a series of educational videos.",
@@ -318,35 +349,45 @@ export const Images: ImageDetails[] = [
   // Consensus of a Dream
   {
     id: "consensus-of-a-dream-illustration",
-    src: getImageFromGlob("content/consensus-dream/consensus-dream-art.jpg"),
+    src: getImageFromGlob(
+      "content/consensus-dream/consensus-dream-art.jpg"
+    ),
     alt: "Robot sitting in front of a computer is approached by another",
     originalPost: "consensus-of-a-dream",
     classes: "border-uniserve-blue",
   },
   {
     id: "consensus-of-a-dream-full",
-    src: getImageFromGlob("content/consensus-dream/consensus-dream-erasure.jpg"),
+    src: getImageFromGlob(
+      "content/consensus-dream/consensus-dream-erasure.jpg"
+    ),
     alt: "Robot sitting in front of a computer is approached by another",
     originalPost: "consensus-of-a-dream",
     classes: "",
   },
   {
     id: "consensus-of-a-dream-narrative",
-    src: getImageFromGlob("content/consensus-dream/consensus-dream-erasure-narrative.jpg"),
+    src: getImageFromGlob(
+      "content/consensus-dream/consensus-dream-erasure-narrative.jpg"
+    ),
     alt: "Robot sitting in front of a computer is approached by another",
     originalPost: "consensus-of-a-dream",
     classes: "",
   },
   {
     id: "isaac",
-    src: getImageFromGlob("content/isaac-magazine-spread.jpg"),
+    src: getImageFromGlob(
+      "content/isaac-magazine-spread.jpg"
+    ),
     alt: "Macintosh-inspired robot waving at the reader",
     originalPost: "maple-cybernetic-isaac",
     classes: "",
   },
   {
     id: "portable-commander",
-    src: getImageFromGlob("content/micro-datanet-ad-PRINT.jpg"),
+    src: getImageFromGlob(
+      "content/micro-datanet-ad-PRINT.jpg"
+    ),
     alt: "Bulky computer in a retrofuturistic digital ad",
     originalPost: "portable-commander",
     classes: "",
@@ -359,7 +400,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "baryt-t8",
-    src: getImageFromGlob("content/agregat-pc-print-PRINT.jpg"),
+    src: getImageFromGlob(
+      "content/agregat-pc-print-PRINT.jpg"
+    ),
     alt: "",
     originalPost: "baryt-t8",
   },
@@ -383,49 +426,63 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "consensus-of-the-everything-illustration",
-    src: getImageFromGlob("content/consensus-everything-art.jpg"),
+    src: getImageFromGlob(
+      "content/consensus-everything-art.jpg"
+    ),
     alt: "",
     originalPost: "consensus-of-the-everything",
     classes: "border-orange",
   },
   {
     id: "consensus-of-the-everything-full",
-    src: getImageFromGlob("content/consensus-everything.jpg"),
+    src: getImageFromGlob(
+      "content/consensus-everything.jpg"
+    ),
     alt: "",
     originalPost: "consensus-of-the-everything",
     classes: "",
   },
   {
     id: "consensus-of-the-everything-narrative",
-    src: getImageFromGlob("content/consensus-everything-narrative.jpg"),
+    src: getImageFromGlob(
+      "content/consensus-everything-narrative.jpg"
+    ),
     alt: "",
     originalPost: "consensus-of-the-everything",
     classes: "",
   },
   {
     id: "zero-g-coffee-makers",
-    src: getImageFromGlob("content/coffee-makers/zero-g-coffee-makers-main.png"),
+    src: getImageFromGlob(
+      "content/coffee-makers/zero-g-coffee-makers-main.png"
+    ),
     alt: "",
     originalPost: "zero-g-coffee-makers",
     classes: "",
   },
   {
     id: "coffee-maker-hufschmidt",
-    src: getImageFromGlob("content/coffee-makers/Hufschmidt_Coffee_Maker.png"),
+    src: getImageFromGlob(
+      "content/coffee-makers/Hufschmidt_Coffee_Maker.png"
+    ),
     alt: "",
     originalPost: "zero-g-coffee-makers",
     classes: "",
   },
   {
     id: "coffee-maker-rusl",
-    src: getImageFromGlob("content/coffee-makers/Rusl_Coffee_Maker.png"),
+    src: getImageFromGlob(
+      "content/coffee-makers/Rusl_Coffee_Maker.png"
+    ),
     alt: "",
     originalPost: "zero-g-coffee-makers",
     classes: "",
   },
   {
     id: "coffee-maker-sultan",
-    src: getImageFromGlob("content/coffee-makers/Sultan_Coffee_Maker.png"),
+    src: getImageFromGlob(
+      "content/coffee-makers/Sultan_Coffee_Maker.png"
+    ),
     alt: "",
     originalPost: "zero-g-coffee-makers",
     classes: "",
@@ -462,7 +519,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "larkin",
-    src: getImageFromGlob("content/larkin-waterlogged-machine.png"),
+    src: getImageFromGlob(
+      "content/larkin-waterlogged-machine.png"
+    ),
     alt: "",
     originalPost: "larkin",
   },
@@ -500,7 +559,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "buckley-whispercraft",
-    src: getImageFromGlob("content/buckley-whispercraft.png"),
+    src: getImageFromGlob(
+      "content/buckley-whispercraft.png"
+    ),
     alt: "",
     originalPost: "vehicles-2022",
   },
@@ -519,34 +580,44 @@ export const Images: ImageDetails[] = [
   // Gadgets 2021-2022
   {
     id: "guns-1",
-    src: getImageFromGlob("content/artifacts-2021-2022/guns-1.png"),
+    src: getImageFromGlob(
+      "content/artifacts-2021-2022/guns-1.png"
+    ),
     alt: "",
     originalPost: "artifacts-2021-2022",
   },
   {
     id: "neurocaster",
-    src: getImageFromGlob("content/artifacts-2021-2022/neurocaster.png"),
+    src: getImageFromGlob(
+      "content/artifacts-2021-2022/neurocaster.png"
+    ),
     alt: "",
     originalPost: "artifacts-2021-2022",
     classes: "shrink-50",
   },
   {
     id: "kobra-pistol",
-    src: getImageFromGlob("content/artifacts-2021-2022/kobra pistol.png"),
+    src: getImageFromGlob(
+      "content/artifacts-2021-2022/kobra pistol.png"
+    ),
     alt: "",
     originalPost: "artifacts-2021-2022",
     classes: "shrink-50",
   },
   {
     id: "uspeh",
-    src: getImageFromGlob("content/artifacts-2021-2022/uspeh.png"),
+    src: getImageFromGlob(
+      "content/artifacts-2021-2022/uspeh.png"
+    ),
     alt: "",
     originalPost: "artifacts-2021-2022",
     classes: "shrink-80",
   },
   {
     id: "brainsaver",
-    src: getImageFromGlob("content/artifacts-2021-2022/brainsaver.png"),
+    src: getImageFromGlob(
+      "content/artifacts-2021-2022/brainsaver.png"
+    ),
     alt: "",
     originalPost: "artifacts-2021-2022",
     classes: "shrink-50",
@@ -554,25 +625,33 @@ export const Images: ImageDetails[] = [
   // robots 2022
   {
     id: "agro-rev",
-    src: getImageFromGlob("content/robots-2022/agro-rev.png"),
+    src: getImageFromGlob(
+      "content/robots-2022/agro-rev.png"
+    ),
     alt: "",
     originalPost: "random-robots-2022",
   },
   {
     id: "contemplate",
-    src: getImageFromGlob("content/robots-2022/contemplate.png"),
+    src: getImageFromGlob(
+      "content/robots-2022/contemplate.png"
+    ),
     alt: "",
     originalPost: "random-robots-2022",
   },
   {
     id: "encounter",
-    src: getImageFromGlob("content/robots-2022/encounter.png"),
+    src: getImageFromGlob(
+      "content/robots-2022/encounter.png"
+    ),
     alt: "",
     originalPost: "random-robots-2022",
   },
   {
     id: "moh-walker",
-    src: getImageFromGlob("content/robots-2022/moh-walker.png"),
+    src: getImageFromGlob(
+      "content/robots-2022/moh-walker.png"
+    ),
     alt: "",
     originalPost: "random-robots-2022",
     classes: "shrink-60",
@@ -586,7 +665,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "steel-titan",
-    src: getImageFromGlob("content/robots-2022/steel-titan.png"),
+    src: getImageFromGlob(
+      "content/robots-2022/steel-titan.png"
+    ),
     alt: "",
     originalPost: "random-robots-2022",
     classes: "shrink-60",
@@ -642,7 +723,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "northern-alliance-thundercat",
-    src: getImageFromGlob("content/northern-alliance-thundercat.png"),
+    src: getImageFromGlob(
+      "content/northern-alliance-thundercat.png"
+    ),
     alt: "High-altitude fighter rocketship",
     originalPost: "northern-alliance-thundercat",
   },
@@ -654,7 +737,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "northern-alliance-zoro",
-    src: getImageFromGlob("content/northern-alliance-zoro.png"),
+    src: getImageFromGlob(
+      "content/northern-alliance-zoro.png"
+    ),
     alt: "Coalition helicopter gunship flying over a desert",
     originalPost: "northern-alliance-zoro",
   },
@@ -683,7 +768,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "powerful-organizations",
-    src: getImageFromGlob("content/powerful-organizations.png"),
+    src: getImageFromGlob(
+      "content/powerful-organizations.png"
+    ),
     alt: "Logos of various factions in the Solar System",
     classes: "border-uniserve-blue",
   },
@@ -734,42 +821,56 @@ export const Images: ImageDetails[] = [
   // EXOTIC RESOURCES
   {
     id: "exotic-resources",
-    src: getImageFromGlob("content/exotic-resources/exotic-resources.png"),
+    src: getImageFromGlob(
+      "content/exotic-resources/exotic-resources.png"
+    ),
     alt: "",
   },
   {
     id: "alloy",
-    src: getImageFromGlob("content/exotic-resources/alloy.png"),
+    src: getImageFromGlob(
+      "content/exotic-resources/alloy.png"
+    ),
     alt: "",
     classes: "shrink-60",
   },
   {
     id: "meta",
-    src: getImageFromGlob("content/exotic-resources/meta.png"),
+    src: getImageFromGlob(
+      "content/exotic-resources/meta.png"
+    ),
     alt: "",
     classes: "shrink-60",
   },
   {
     id: "genetic",
-    src: getImageFromGlob("content/exotic-resources/genetic.png"),
+    src: getImageFromGlob(
+      "content/exotic-resources/genetic.png"
+    ),
     alt: "",
     classes: "shrink-60",
   },
   {
     id: "particle",
-    src: getImageFromGlob("content/exotic-resources/particle.png"),
+    src: getImageFromGlob(
+      "content/exotic-resources/particle.png"
+    ),
     alt: "",
     classes: "shrink-60",
   },
   {
     id: "platter",
-    src: getImageFromGlob("content/exotic-resources/platter.png"),
+    src: getImageFromGlob(
+      "content/exotic-resources/platter.png"
+    ),
     alt: "",
     classes: "shrink-60",
   },
   {
     id: "sanguine-haze",
-    src: getImageFromGlob("content/sanguine-haze-final-min.png"),
+    src: getImageFromGlob(
+      "content/sanguine-haze-final-min.png"
+    ),
     alt: "Pact android stands guard in front of mastermind",
     classes: "border-red",
     //caption: "A Hokota J-1108 interfacer stands guard at the base of SANGUINE HAZE, somewhere inside of a complex under the Martian Sands."
@@ -795,7 +896,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "kaizen-robots-ad-locked",
-    src: getImageFromGlob("content/pact-android-locked.png"),
+    src: getImageFromGlob(
+      "content/pact-android-locked.png"
+    ),
     alt: "Pair of kaizen robots",
   },
   {
@@ -813,12 +916,16 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "ryujin-avatar",
-    src: getImageFromGlob("content/author-images/ryujin.jpg"),
+    src: getImageFromGlob(
+      "content/author-images/ryujin.jpg"
+    ),
     alt: "",
   },
   {
     id: "toshi-avatar",
-    src: getImageFromGlob("content/author-images/toshi.jpg"),
+    src: getImageFromGlob(
+      "content/author-images/toshi.jpg"
+    ),
     alt: "",
   },
   {
@@ -828,7 +935,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "data-storage-devices",
-    src: getImageFromGlob("content/data-storage-devices.jpg"),
+    src: getImageFromGlob(
+      "content/data-storage-devices.jpg"
+    ),
     alt: "",
   },
   {
@@ -840,27 +949,35 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "profile-sheet-nohint",
-    src: getImageFromGlob("content/neuromorph-profile-sheet/neuromorph-worksheet-nohint.jpg"),
+    src: getImageFromGlob(
+      "content/neuromorph-profile-sheet/neuromorph-worksheet-nohint.jpg"
+    ),
     alt: "Neuromorph profile worksheet without hints.",
     caption:
       "The neuromorph profile sheet, WITHOUT hints. Be sure to use the download version as the one displayed here is compressed unless opened.",
   },
   {
     id: "profile-sheet-hint",
-    src: getImageFromGlob("content/neuromorph-profile-sheet/neuromorph-worksheet-hint.jpg"),
+    src: getImageFromGlob(
+      "content/neuromorph-profile-sheet/neuromorph-worksheet-hint.jpg"
+    ),
     alt: "Neuromorph profile worksheet with hints.",
     caption:
       "The neuromorph profile sheet, WITH hints. Be sure to use the download version as the one displayed here is compressed unless opened.",
   },
   {
     id: "profile-sheet-thumb",
-    src: getImageFromGlob("content/neuromorph-profile-sheet/neuromorph-worksheet-thumb.jpg"),
+    src: getImageFromGlob(
+      "content/neuromorph-profile-sheet/neuromorph-worksheet-thumb.jpg"
+    ),
     alt: "",
     caption: "",
   },
   {
     id: "number-beacon-locked",
-    src: getImageFromGlob("content/number-beacon-locked.png"),
+    src: getImageFromGlob(
+      "content/number-beacon-locked.png"
+    ),
     alt: "",
     caption: "",
   },
@@ -886,7 +1003,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "interbeacon",
-    src: getImageFromGlob("content/interbeacon-final-1.jpg"),
+    src: getImageFromGlob(
+      "content/interbeacon-final-1.jpg"
+    ),
     alt: "",
     caption:
       "A nuclear-pulsed thumper, patrolling the region around the enormous statite, is dwarfed by the incredible scale of Interbeacon. The megastructure hovers about 5 Solar radii over the northern pole of the Sun.",
@@ -894,39 +1013,53 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "interbeacon-components",
-    src: getImageFromGlob("content/interbeacon-components.jpg"),
+    src: getImageFromGlob(
+      "content/interbeacon-components.jpg"
+    ),
     alt: "",
     classes: "border-red",
   },
 
   {
     id: "avatar-globe",
-    src: getImageFromGlob("content/author-images/logo-globe.png"),
+    src: getImageFromGlob(
+      "content/author-images/logo-globe.png"
+    ),
     alt: "",
   },
   {
     id: "avatar-center",
-    src: getImageFromGlob("content/author-images/logo-center.png"),
+    src: getImageFromGlob(
+      "content/author-images/logo-center.png"
+    ),
     alt: "",
   },
   {
     id: "avatar-orbit",
-    src: getImageFromGlob("content/author-images/logo-orbit.png"),
+    src: getImageFromGlob(
+      "content/author-images/logo-orbit.png"
+    ),
     alt: "",
   },
   {
     id: "avatar-tangent",
-    src: getImageFromGlob("content/author-images/logo-tangent.png"),
+    src: getImageFromGlob(
+      "content/author-images/logo-tangent.png"
+    ),
     alt: "",
   },
   {
     id: "avatar-radius",
-    src: getImageFromGlob("content/author-images/logo-radius.png"),
+    src: getImageFromGlob(
+      "content/author-images/logo-radius.png"
+    ),
     alt: "",
   },
   {
     id: "avatar-sikarius",
-    src: getImageFromGlob("content/author-images/logo-sikarius.png"),
+    src: getImageFromGlob(
+      "content/author-images/logo-sikarius.png"
+    ),
     alt: "",
   },
 
@@ -948,7 +1081,9 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "appliance-class-robots-locked",
-    src: getImageFromGlob("content/appliance_class_bots_locked.jpg"),
+    src: getImageFromGlob(
+      "content/appliance_class_bots_locked.jpg"
+    ),
     alt: "",
     caption: "",
   },
@@ -966,70 +1101,88 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "number-beacon-sketch",
-    src: getImageFromGlob("location-pictures/number-beacon-sketch.png"),
+    src: getImageFromGlob(
+      "location-pictures/number-beacon-sketch.png"
+    ),
     alt: "",
   },
   {
-    id: 'ryujin-catalog',
+    id: "ryujin-catalog",
     src: getImageFromGlob("content/ryujin_catalog-2.jpg"),
     alt: "RYUJIN finds a floppy disk containing the Schafer's 2093 Fall and Winter catalog.",
-    artist: ArtistProkhor
+    artist: ArtistProkhor,
   },
   {
-    id: 'dynatek-fredi-ad',
+    id: "dynatek-fredi-ad",
     src: getImageFromGlob("content/fred-virgil-ad-1.jpg"),
     alt: "Advertisement for the dynatek fredi combat robot",
-    caption: "FREDI is armed with a heavy machine gun, multiple missile pods, scanners, manipulators, and more hidden redundant systems than one could count.",
-    artist: ArtistProkhor
+    caption:
+      "FREDI is armed with a heavy machine gun, multiple missile pods, scanners, manipulators, and more hidden redundant systems than one could count.",
+    artist: ArtistProkhor,
   },
 
   {
-    id: 'coalition_road_trip',
-    src: getImageFromGlob("content/vehicles-2023/coalition_road_trip.jpg"),
+    id: "coalition_road_trip",
+    src: getImageFromGlob(
+      "content/vehicles-2023/coalition_road_trip.jpg"
+    ),
     alt: "Road trip",
-    artist: ArtistProkhor
+    artist: ArtistProkhor,
   },
   {
-    id: 'coalition_luxury_hovercars',
-    src: getImageFromGlob("content/vehicles-2023/coalition_luxury_hovercars-fin.jpg"),
+    id: "coalition_luxury_hovercars",
+    src: getImageFromGlob(
+      "content/vehicles-2023/coalition_luxury_hovercars-fin.jpg"
+    ),
     alt: "Coalition luxury hovercars",
-    artist: ArtistProkhor
+    artist: ArtistProkhor,
   },
   {
-    id: 'union-sedans',
-    src: getImageFromGlob("content/vehicles-2023/union-sedans.jpg"),
+    id: "union-sedans",
+    src: getImageFromGlob(
+      "content/vehicles-2023/union-sedans.jpg"
+    ),
     alt: "Road trip",
-    artist: ArtistProkhor
+    artist: ArtistProkhor,
   },
   {
-    id: 'american_beaters',
-    src: getImageFromGlob("content/vehicles-2023/american_beaters.jpg"),
+    id: "american_beaters",
+    src: getImageFromGlob(
+      "content/vehicles-2023/american_beaters.jpg"
+    ),
     alt: "American beaters",
-    artist: ArtistProkhor
+    artist: ArtistProkhor,
   },
   {
-    id: 'callahan_prospector',
-    src: getImageFromGlob("content/vehicles-2023/callahan_prospector.jpg"),
+    id: "callahan_prospector",
+    src: getImageFromGlob(
+      "content/vehicles-2023/callahan_prospector.jpg"
+    ),
     alt: "Callahan Prospector",
-    artist: ArtistProkhor
+    artist: ArtistProkhor,
   },
 
   {
-    id: 'polyus-injii',
+    id: "polyus-injii",
     src: getImageFromGlob("content/polyus/polyus.jpg"),
     alt: "polyus-injii",
     classes: "border-uniserve-blue",
-    caption: "POLYUS is grilled by IN-16JIII during a teleconference with the Consensus of Genesis. The 'hologram' isn't actually real, and exists merely as a representation of the digital debate. (Drawn by BuddBudd, modified by prokhorVLG.)",
-    artist: ArtistBuddBudd
+    caption:
+      "POLYUS is grilled by IN-16JIII during a teleconference with the Consensus of Genesis. The 'hologram' isn't actually real, and exists merely as a representation of the digital debate. (Drawn by BuddBudd, modified by prokhorVLG.)",
+    artist: ArtistBuddBudd,
   },
   {
     id: "avatar-polyus",
-    src: getImageFromGlob("content/author-images/avatar-polyus-.jpg"),
+    src: getImageFromGlob(
+      "content/author-images/avatar-polyus-.jpg"
+    ),
     alt: "",
   },
   {
     id: "avatar-injii",
-    src: getImageFromGlob("content/author-images/avatar-injii-.jpg"),
+    src: getImageFromGlob(
+      "content/author-images/avatar-injii-.jpg"
+    ),
     alt: "",
   },
   {
@@ -1055,6 +1208,52 @@ export const Images: ImageDetails[] = [
   {
     id: "redmond-ruby",
     src: getImageFromGlob("content/ruby-ad.jpg"),
+    alt: "",
+  },
+  {
+    id: "moment-of-death",
+    src: getImageFromGlob("content/moment_of_death.jpg"),
+    alt: "",
+    classes: "border-walker-green",
+    // caption:
+    //   "A Dynatek FREDI sinks into a bogswamp on Venus.",
+  },
+
+  // FAN ART
+  {
+    id: "televangeline-bugdinos",
+    src: getImageFromGlob(
+      "creations/televangeline-bugdinos.jpg"
+    ),
+    alt: "",
+  },
+  {
+    id: "televangeline-xrl8",
+    src: getImageFromGlob(
+      "creations/televangeline-xrl8.jpg"
+    ),
+    alt: "",
+  },
+  {
+    id: "televangeline-dekka",
+    src: getImageFromGlob(
+      "creations/televangeline-dekka.jpg"
+    ),
+    alt: "",
+  },
+  {
+    id: "gwyvern-cikavak",
+    src: getImageFromGlob("creations/gwyvern-cikavak.png"),
+    alt: "",
+  },
+  {
+    id: "bevaupeh-drones",
+    src: getImageFromGlob("creations/bevaupeh-drones.jpg"),
+    alt: "",
+  },
+  {
+    id: "robbe-bogatyr",
+    src: getImageFromGlob("creations/robbe-bogatyr.jpg"),
     alt: "",
   },
 ]

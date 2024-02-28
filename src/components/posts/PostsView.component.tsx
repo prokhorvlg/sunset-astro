@@ -4,57 +4,46 @@ import PostsGrid from "@/components/posts/PostsGrid.component"
 import SpookyView from "@/components/posts/SpookyView.component"
 import { useEffect, useState } from "react"
 
-import "./PostsView.scss"
-
 interface Props {
-    title: string
-    subtext: string
-    secretPosts: any
-    processedPosts: any
+  title: string
+  subtext: string
+  secretPosts: any
+  processedPosts: any
 }
 
 const PostsView = ({
-    title,
-    subtext,
-    secretPosts,
-    processedPosts
+  title,
+  subtext,
+  secretPosts,
+  processedPosts,
 }: Props) => {
-    const [isSpookyMode, setIsSpookyMode] = useState(false)
+  const [isSpookyMode, setIsSpookyMode] = useState(false)
 
-    useEffect(()=> {
-        if (isSpookyMode) {
-            // Animate to spooky mode here...
-        }
-    }, [isSpookyMode])
-
-    return (
-        <div className="posts-view">
-            { isSpookyMode ? 
-                <SpookyView 
-                    secretPosts={secretPosts}
-                />
-            :
-                <>
-                    <PageHeading 
-                        title={title}
-                        subtext={subtext} 
-                        image='computer-blinking' 
-                        isSpooky
-                        isSpookyMode={isSpookyMode}
-                        setIsSpookyMode={setIsSpookyMode}
-                    />
-                    <PostsGrid
-                        processedPosts={processedPosts}
-                    />
-                    <TransitionGradient direction="to-bottom" 
-                        floaterTextRight="disc corruption detected"
-                        floaterTextLeft="WHATAR~1.TXT"
-			            classes="spooky-left"
-                    />
-                </>
-            }
-        </div>
-    )
+  return (
+    <div className="posts-view">
+      {isSpookyMode ? (
+        <SpookyView secretPosts={secretPosts} />
+      ) : (
+        <>
+          <PageHeading
+            title={title}
+            subtext={subtext}
+            image="computer-blinking"
+            isSpooky
+            isSpookyMode={isSpookyMode}
+            setIsSpookyMode={setIsSpookyMode}
+          />
+          <PostsGrid processedPosts={processedPosts} />
+          <TransitionGradient
+            direction="to-bottom"
+            floaterTextRight="disc corruption detected"
+            floaterTextLeft="WHATAR~1.TXT"
+            classes="spooky-left"
+          />
+        </>
+      )}
+    </div>
+  )
 }
 
 export default PostsView

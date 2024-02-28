@@ -2,445 +2,554 @@
 
 // - POST CARD
 .post-card-container {
+  width: 100%;
+  max-width: 100%;
+
+  //overflow: hidden;
+  .above-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .above-message {
+      display: block;
+      text-transform: uppercase;
+      font-family: $font-code;
+      letter-spacing: 1px;
+      margin: 0 0 2px 4px;
+      user-select: none;
+      z-index: 50;
+    }
+
+    .collection {
+      color: $color-sunset-red;
+    }
+
+    .patreon-exclusive {
+      color: $color-patreon;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .icon {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .post-card {
     width: 100%;
     max-width: 100%;
-    //overflow: hidden;
-    .above-card {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        .above-message {
-            display: block;
-            text-transform: uppercase;
-            font-family: $font-code;
-            letter-spacing: 1px;
-            margin: 0 0 2px 4px;
-            user-select: none;
-            z-index: 50;
-        }
-        .collection {
-            color: $color-sunset-red;
-        }
-        .patreon-exclusive {
-            color: $color-patreon;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            .icon {
-                margin-right: 4px;
-            }
-        }
-    }
-    
-    .post-card {
-        width: 100%;
-        max-width: 100%;
-        @include standardBoxShadow;
-        .border {
-            transition: border-color 0s;
-        }
-        
-        &:hover, &:focus {
-            $selectColor: lighten($color-sunset-orange, 20%);
-            .border {
-                border-color: $selectColor;
-            }
-            .dialog-wrap-slot {
-                border-color: $selectColor;
-                &::after {
-                    opacity: 0.2;
-                }
-                .dialog-content {
-                    background-color: $selectColor;
-                    .post-card-content {
-                        border-top-color: $selectColor;
-                        .icon, .main-icon {
-                            color: $selectColor;
-                        }
-                        .title {
-                            color: $selectColor;
-                        }
-                    }
-                    .post-card-bottom {
-                        border-top-color: $selectColor;
-                    }
-                }
-            }
-        }
-        .dialog-wrap-slot {
-            position: relative;
-            &::after {
-                content: '';
-                top: 0; left: 0; right: 0; bottom: 0; display: block; position: absolute;
-                background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
-                opacity: 0;
-                mix-blend-mode: screen;
-                z-index: 99;
-                transition: 0.05s ease-in-out;
-                pointer-events: none;
-            }
-            .dialog-content {
-                padding: 0;
-                height: 600px;
-                
-                user-select: none;
-                cursor: pointer;
-    
-                display: grid;
-                grid-template-columns: 1fr;
-                grid-template-rows: 2.4fr 1.2fr 40px;
-                align-items: stretch;
-                transition: background-color 0s;
-                background: $color-sunset-red;
+    @include standardBoxShadow;
 
-                //background: linear-gradient(to bottom, $color-background-dark, $color-ultradark-red);
-                .post-card-top {
-                    overflow: hidden;
-                    border: 3px solid $color-background-dark;
-                    border-top-right-radius: $chicanery-border-radius;
-                    border-top-left-radius: $chicanery-border-radius;
-                    background-color: $color-background-dark;
-                    border-radius: 6px;
-                    
-
-                    z-index: 10;
-                    .post-card-image {
-                        height: 100%;
-                        background-size: cover;
-                        background-position: top;
-                        background-repeat: no-repeat;
-                        transform: scale(1) translate(0, 0);
-                        transition: 0.1s ease-in-out;
-                        position: relative;
-                        box-shadow: inset 0 0 30px 3px rgba(black, 0.3);
-                        border-radius: 3px;
-    
-                        @include abg(0.2);
-                    }
-                    
-                    .post-card-image, .post-card-image-mobile {
-                        &.patreon-exclusive {
-                            position: relative;
-                            .patreon-exclusive-overlay {
-                                background: rgba(darken($color-patreon, 60%), 0.7);
-                                border: 2px dotted $color-patreon;
-                                box-sizing: border-box;
-                                border-radius: 4px;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                flex-direction: column;
-
-                                position: absolute;
-                                top: 0;
-                                left: 0;
-                                bottom: 0;
-                                right: 0;
-                                p, .main-icon, .icon {
-                                    color: $color-patreon;
-                                }
-                                .main-icon {
-                                    font-size: 60px;
-                                    margin-bottom: 20px;
-                                }
-                                p {
-                                    margin-top: 5px;
-                                    margin-bottom: 0;
-                                    .icon {
-                                        margin-left: 5px;
-                                    }
-                                    span {
-                                        color: white;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                .post-card-content {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: flex-start;
-                    border-top: $size-line-width solid $color-sunset-red;
-                    border-radius: $chicanery-border-radius;
-                    background: $color-ultradark-red;
-                    padding: 12px 20px 20px 20px;
-                    overflow: hidden;
-
-                    position: relative;
-                    @include abg(0.3);
-                    @include abg-red-dot-grid();
-                    
-                    > span, > div, > h3, > p {
-                        @include abg-child();
-                    }
-    
-                    .title {
-                        font-family: $font-title;
-                        line-height: 32px;
-                        margin: 0px 0 0px 0;
-                        color: $color-sunset-red;
-                        font-weight: 600;
-                        letter-spacing: 0.1px;
-                        text-overflow: ellipsis;
-                        //white-space:nowrap;
-
-                        //font-family: $font-code;
-                        font-size: 20px;
-                        font-weight: 600;
-                        letter-spacing: -0.5px;
-
-                        overflow: hidden;
-                        display: -webkit-box;
-                        max-height: 60px;
-                        -webkit-line-clamp: 1;
-                        -webkit-box-orient: vertical;
-                    }
-                    .description {
-                        margin: 0 0 10px 0;
-                        color: $color-sunset-orange;
-                        flex: 1;
-                        flex-shrink: none;
-
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        display: -webkit-box;
-                        min-height: 60px;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                    }
-                    .fill {
-                        flex: 1;
-                    }
-                }
-                .post-card-bottom {
-                    position: relative;
-                    border-top: $size-line-width solid $color-sunset-red;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 10px;
-                    background: $color-ultradark-red;
-                    border-radius: $chicanery-border-radius;
-    
-                    @include abg(0.4);
-                    @include abg-red-diagonal();
-                    .date {
-                        color: $color-sunset-orange;
-                        padding: 0;
-                        margin: 0;
-                        font-weight: 500;
-                        font-size: 16px;
-                    }
-                    .arrow {
-                        color: $color-sunset-orange;
-                        font-size: 16px;
-                    }
-                }
-            }
-        }
+    .border {
+      transition: border-color 0s;
     }
 
-    @mixin card-recolor($card-base-color, $card-background-color) {
-        .collection {
-            color: $card-base-color;
-            
+    &:hover,
+    &:focus {
+      $selectColor: lighten($color-sunset-orange, 20%);
+
+      .border {
+        border-color: $selectColor;
+      }
+
+      .dialog-wrap-slot {
+        border-color: $selectColor;
+
+        &::after {
+          opacity: 0.2;
         }
-        .post-card {
-            .dialog-wrap-slot {
-                .dialog-content {
-                    background: $card-base-color;
-                    .post-card-content {
-                        background: $card-background-color;
-                    }
-                    .post-card-bottom {
-                        border-color: $card-base-color;
-                    }
-                }
-            }
-        }
-    }
 
-    &.introduction {       
-        .dialog-wrap-slot {
-            border-color: $color-sunset-red;
-            .dialog-content {
-                grid-template-columns: 1fr;
-                grid-template-rows: 1.2fr 1fr 40px;
-                border-radius: 6px;
+        .dialog-content {
+          background-color: $selectColor;
 
-                background: linear-gradient(to bottom, #360e01 0%, #681703 100%);
-                        @include abg(0.4);
-                        @include abg-red-dot-grid();
+          .post-card-content {
+            border-top-color: $selectColor;
 
-                .post-card-top {
-                    border: none;
-                    flex-basis: 50%;
-                    flex: 1;
-                    background: none;
-                    border-radius: $chicanery-border-radius;
-                    margin: 10px;
-                    &::after {
-                        display: none;
-                    }
-                    .post-card-image {
-                        background-size: contain;
-                        &::after {
-                            display: none;
-                        }
-                    }
-                }
-                .post-card-content {
-                    border-top: none;
-                    justify-content: center;
-                    align-items: center;
-                    background: none;
-                    &::after {
-                        display: none;
-                    }
-                    
-                    h3.title {
-                        text-align: center;
-                        font-size: 24px;
-                        letter-spacing: -0.5px;
-                        margin-bottom: 10px;
-                        display: block;
-                        max-height: none;
-                        line-height: 35px;
-                        @media screen and (max-width: $breakpoint-mobile) {
-                            font-size: 24px;
-                        }
-                    }
-                    p.description {
-                        margin-bottom: 30px;
-                        font-size: 16px;
-                        line-height: 22px;
-
-                        max-width: 400px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-
-                        display: -webkit-box;
-                        max-height:66px;
-                        -webkit-line-clamp: 3; 
-                        -webkit-box-orient: vertical;
-                        @media screen and (max-width: $breakpoint-mobile) {
-                            -webkit-line-clamp: 4; 
-                            max-height:88px; 
-                            font-size: 15px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    &.announcement, &.database {
-        .dialog-wrap-slot {
-            border-color: $color-sunset-red;
-            .dialog-content {
-                grid-template-columns: 1fr;
-                grid-template-rows: 1fr 40px;
-                border-radius: 6px;
-
-                background: linear-gradient(to bottom, #360e01 0%, #681703 100%);
-                        @include abg(0.4);
-                        @include abg-red-dot-grid();
-
-                .post-card-top {
-                    display: none;
-                }
-                .post-card-content {
-                    border-top: none;
-                    justify-content: center;
-                    align-items: center;
-                    background: none;
-                    &::after {
-                        display: none;
-                    }
-                    .main-icon {
-                        font-size: 80px;
-                        margin-bottom: 30px;
-                        color: $color-sunset-red;
-                    }
-                    h3.title {
-                        text-align: center;
-                        font-size: 28px;
-                        letter-spacing: -0.5px;
-                        margin-bottom: 10px;
-                        display: block;
-                        max-height: none;
-                        line-height: 35px;
-                        @media screen and (max-width: $breakpoint-mobile) {
-                            font-size: 28px;
-                        }
-                    }
-                    p.description {
-                        margin-bottom: 0px;
-                        font-size: 16px;
-                        line-height: 22px;
-
-                        max-width: 400px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        display: block;
-                        flex: 0;
-                        text-align: center;
-
-                        display: -webkit-box;
-                        min-height: 66px;
-                        max-height:66px;
-                        -webkit-line-clamp: 3; 
-                        -webkit-box-orient: vertical;
-                        @media screen and (max-width: $breakpoint-mobile) {
-                            -webkit-line-clamp: 3; 
-                            max-height: 88px; 
-                            font-size: 15px;
-                        }
-                    }
-                    .tag-cloud {
-                        margin-top: 30px;
-                        justify-content: center;
-                    }
-                }
-            }
-        }
-    }
-
-    &.database {
-        .dialog-wrap-slot .dialog-content .post-card-content {
+            .icon,
             .main-icon {
-                font-size: 120px;
+              color: $selectColor;
             }
+
+            .title {
+              color: $selectColor;
+            }
+          }
+
+          .post-card-bottom {
+            border-top-color: $selectColor;
+          }
         }
+      }
     }
 
-    &.gallery-mode.lore {
-        @media screen and (max-width: $postsGalleryCutoff) {
-            width: auto;
-            .post-card {
-                .dialog-wrap-slot {
-                    .dialog-content {
-                        height: auto;
-                        grid-template-rows: 2.4fr 0.8fr 40px;
-                        display: table;
-                        .post-card-top {
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            img {
-                                object-fit: contain;
-                                width: 100%;
-                                border-radius: 4px;
-                            }
-                        }
-                        .post-card-content {
-                            overflow: auto;
-                        }
-                    }
+    .dialog-wrap-slot {
+      position: relative;
+
+      &::after {
+        content: '';
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        position: absolute;
+        background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
+        opacity: 0;
+        mix-blend-mode: screen;
+        z-index: 99;
+        transition: 0.05s ease-in-out;
+        pointer-events: none;
+      }
+
+      .dialog-content {
+        padding: 0;
+        height: 600px;
+
+        user-select: none;
+        cursor: pointer;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 2.4fr 1.2fr 40px;
+        align-items: stretch;
+        transition: background-color 0s;
+        background: $color-sunset-red;
+
+        //background: linear-gradient(to bottom, $color-background-dark, $color-ultradark-red);
+        .post-card-top {
+          overflow: hidden;
+          border: 3px solid $color-background-dark;
+          border-top-right-radius: $chicanery-border-radius;
+          border-top-left-radius: $chicanery-border-radius;
+          background-color: $color-background-dark;
+          border-radius: 6px;
+
+
+          z-index: 10;
+
+          .post-card-image {
+            height: 100%;
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            transform: scale(1) translate(0, 0);
+            transition: 0.1s ease-in-out;
+            position: relative;
+            box-shadow: inset 0 0 30px 3px rgba(black, 0.3);
+            border-radius: 3px;
+
+            @include abg(0.2);
+          }
+
+          .post-card-image,
+          .post-card-image-mobile {
+            &.patreon-exclusive {
+              position: relative;
+
+              .patreon-exclusive-overlay {
+                background: rgba(darken($color-patreon, 60%), 0.7);
+                border: 2px dotted $color-patreon;
+                box-sizing: border-box;
+                border-radius: 4px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+
+                p,
+                .main-icon,
+                .icon {
+                  color: $color-patreon;
                 }
+
+                .main-icon {
+                  font-size: 60px;
+                  margin-bottom: 20px;
+                }
+
+                p {
+                  margin-top: 5px;
+                  margin-bottom: 0;
+
+                  .icon {
+                    margin-left: 5px;
+                  }
+
+                  span {
+                    color: white;
+                  }
+                }
+              }
             }
+          }
         }
+
+        .post-card-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          border-top: $size-line-width solid $color-sunset-red;
+          border-radius: $chicanery-border-radius;
+          background: $color-ultradark-red;
+          padding: 12px 20px 20px 20px;
+          overflow: hidden;
+
+          position: relative;
+          @include abg(0.3);
+          @include abg-red-dot-grid();
+
+          >span,
+          >div,
+          >h3,
+          >p {
+            @include abg-child();
+          }
+
+          .title {
+            font-family: $font-title;
+            line-height: 32px;
+            margin: 0px 0 0px 0;
+            color: $color-sunset-red;
+            font-weight: 600;
+            letter-spacing: 0.1px;
+            text-overflow: ellipsis;
+            //white-space:nowrap;
+
+            //font-family: $font-code;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+
+            overflow: hidden;
+            display: -webkit-box;
+            max-height: 60px;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
+
+          .description {
+            margin: 0 0 10px 0;
+            color: $color-sunset-orange;
+            flex: 1;
+            flex-shrink: none;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            min-height: 60px;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+          }
+
+          .fill {
+            flex: 1;
+          }
+        }
+
+        .post-card-bottom {
+          position: relative;
+          border-top: $size-line-width solid $color-sunset-red;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          background: $color-ultradark-red;
+          border-radius: $chicanery-border-radius;
+
+          @include abg(0.4);
+          @include abg-red-diagonal();
+
+          .date {
+            color: $color-sunset-orange;
+            padding: 0;
+            margin: 0;
+            font-weight: 500;
+            font-size: 16px;
+          }
+
+          .arrow {
+            color: $color-sunset-orange;
+            font-size: 16px;
+          }
+        }
+      }
     }
+  }
+
+  @mixin card-recolor($card-base-color, $card-background-color) {
+    .collection {
+      color: $card-base-color;
+
+    }
+
+    .post-card {
+      .dialog-wrap-slot {
+        .dialog-content {
+          background: $card-base-color;
+
+          .post-card-content {
+            background: $card-background-color;
+          }
+
+          .post-card-bottom {
+            border-color: $card-base-color;
+          }
+        }
+      }
+    }
+  }
+
+  // &.creation {
+  //   @include card-recolor(#fff, #000);
+  // }
+  &.distinguished {
+    position: relative;
+
+    // &::before {
+    //   content: "";
+    //   position: absolute;
+    //   inset: -10px;
+    //   // outline: 2px dotted orange;
+    //   border: 2px solid red;
+    //   border-radius: 6px;
+    //   // filter: blur(10px);
+    // }
+
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: -5px;
+      transform: translate(10px, 8px);
+      background: conic-gradient(from 90deg at 40% -25%, #ffd700, #f79d03, #ee6907, #e6390a, #de0d0d, #d61039, #cf1261, #c71585, #cf1261, #d61039, #de0d0d, #ee6907, #f79d03, #ffd700, #ffd700, #ffd700);
+      filter: blur(30px);
+      opacity: 0.6;
+    }
+
+    /* Reproduces the main element styles */
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      /* Inherit all the decorations defined on the main element */
+      background: inherit;
+      border: inherit;
+      box-shadow: inherit;
+    }
+  }
+
+  &.introduction {
+    .dialog-wrap-slot {
+      border-color: $color-sunset-red;
+
+      .dialog-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1.2fr 1fr 40px;
+        border-radius: 6px;
+
+        background: linear-gradient(to bottom, #360e01 0%, #681703 100%);
+        @include abg(0.4);
+        @include abg-red-dot-grid();
+
+        .post-card-top {
+          border: none;
+          flex-basis: 50%;
+          flex: 1;
+          background: none;
+          border-radius: $chicanery-border-radius;
+          margin: 10px;
+
+          &::after {
+            display: none;
+          }
+
+          .post-card-image {
+            background-size: contain;
+
+            &::after {
+              display: none;
+            }
+          }
+        }
+
+        .post-card-content {
+          border-top: none;
+          justify-content: center;
+          align-items: center;
+          background: none;
+
+          &::after {
+            display: none;
+          }
+
+          h3.title {
+            text-align: center;
+            font-size: 24px;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            display: block;
+            max-height: none;
+            line-height: 35px;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+              font-size: 24px;
+            }
+          }
+
+          p.description {
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 22px;
+
+            max-width: 400px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            display: -webkit-box;
+            max-height: 66px;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+              -webkit-line-clamp: 4;
+              max-height: 88px;
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.announcement,
+  &.database {
+    .dialog-wrap-slot {
+      border-color: $color-sunset-red;
+
+      .dialog-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 40px;
+        border-radius: 6px;
+
+        background: linear-gradient(to bottom, #360e01 0%, #681703 100%);
+        @include abg(0.4);
+        @include abg-red-dot-grid();
+
+        .post-card-top {
+          display: none;
+        }
+
+        .post-card-content {
+          border-top: none;
+          justify-content: center;
+          align-items: center;
+          background: none;
+
+          &::after {
+            display: none;
+          }
+
+          .main-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            color: $color-sunset-red;
+          }
+
+          h3.title {
+            text-align: center;
+            font-size: 28px;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            display: block;
+            max-height: none;
+            line-height: 35px;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+              font-size: 28px;
+            }
+          }
+
+          p.description {
+            margin-bottom: 0px;
+            font-size: 16px;
+            line-height: 22px;
+
+            max-width: 400px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            flex: 0;
+            text-align: center;
+
+            display: -webkit-box;
+            min-height: 66px;
+            max-height: 66px;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+
+            @media screen and (max-width: $breakpoint-mobile) {
+              -webkit-line-clamp: 3;
+              max-height: 88px;
+              font-size: 15px;
+            }
+          }
+
+          .tag-cloud {
+            margin-top: 30px;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+
+  &.database {
+    .dialog-wrap-slot .dialog-content .post-card-content {
+      .main-icon {
+        font-size: 120px;
+      }
+    }
+  }
+
+  &.gallery-mode.lore {
+    @media screen and (max-width: $postsGalleryCutoff) {
+      width: auto;
+
+      .post-card {
+        .dialog-wrap-slot {
+          .dialog-content {
+            height: auto;
+            grid-template-rows: 2.4fr 0.8fr 40px;
+            display: table;
+
+            .post-card-top {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              img {
+                object-fit: contain;
+                width: 100%;
+                border-radius: 4px;
+              }
+            }
+
+            .post-card-content {
+              overflow: auto;
+            }
+          }
+        }
+      }
+    }
+  }
 }

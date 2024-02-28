@@ -20,14 +20,15 @@ $color-spooky-light: lighten($color-spooky, 16%);
 $color-spooky-secondary: #ff4ac3;
 
 $color-patreon: #0effaf;
+$color-distinguished: #b1241f;
 
 $color-union: #e90000;
 $color-coalition: #007bd2;
 $color-pact: #f8cd00;
 
 // MAP
-$map-amber-color: $color-sunset-orange;//#ffb64e;
-$map-reddish-color: $color-sunset-red;//#ff4111;
+$map-amber-color: $color-sunset-orange; //#ffb64e;
+$map-reddish-color: $color-sunset-red; //#ff4111;
 $map-background-color: #220a06;
 
 // MAP site colors
@@ -53,6 +54,7 @@ $colorWorldCenturyOfProgress: #ff5194; //#fff67e;
         color: $color;
       }
     }
+
     @else {
       color: $color;
     }

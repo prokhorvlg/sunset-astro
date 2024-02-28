@@ -10,35 +10,32 @@ import {
   getAllPosts,
   getAllSecretPosts,
 } from "@/utils/astroHelpers"
-import PostsView from "@/components/posts/PostsView.component"
+import CreationsView from "@/components/creations/CreationsView.component"
 import ScriptsAfterBody from "@/components/ScriptsAfterBody.astro"
 
-const posts = await getAllPosts()
+const posts = await getAllPosts("creation")
 const SUBTEXT =
-  "A collection of every post made for the Sunset System project."
-
-const secretPosts = await getAllSecretPosts()
+  "A collection of contributions from wonderful exhibit visitors (fans)!"
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={"Posts"} description={SUBTEXT} />
+    <BaseHead title={"Creations"} description={SUBTEXT} />
   </head>
   <body>
-    <SunsetHeader client:only currentPage={"/posts"} />
+    <SunsetHeader client:only currentPage={"/creations"} />
     <main>
-      <PostsView
-        title="Posts"
+      <CreationsView
+        title="Creations"
         subtext={SUBTEXT}
         processedPosts={posts}
-        secretPosts={secretPosts}
         client:only="react"
       />
     </main>
     <SunsetFooter
       client:only
-      currentPage={"/posts"}
+      currentPage={"/creations"}
       noGradient
     />
 

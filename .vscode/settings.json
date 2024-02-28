@@ -3,5 +3,21 @@
 
     "editor.detectIndentation": false,
     "typescript.tsdk": "node_modules\\typescript\\lib",
-    "gitlens.statusBar.dateFormat": ""
+    "gitlens.statusBar.dateFormat": "",
+    "cSpell.enableFiletypes": [
+      "mdx"
+    ],
+    "cSpell.language": "en,en-US",
+    "cSpell.words": [
+      "aerotrains",
+      "agrodrone",
+      "bioluminescent",
+      "bladetrees",
+      "Cosmodrome",
+      "insectoids",
+      "machinegun",
+      "neuromorphic",
+      "yadki",
+      "yadkosaurs"
+    ]
 }

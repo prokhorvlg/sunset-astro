@@ -1,0 +1,26 @@
+@import 'src/styles/imports.scss';
+
+
+.artist-tag {
+  img {
+    position: absolute;
+    z-index: 50;
+    border-radius: 100px;
+    height: 40px;
+    width: 40px;
+    transition: 0.08s ease-in-out;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  .text-container {
+    margin-left: 40px;
+
+    @media screen and (max-width: $breakpoint-mobile) {
+      margin-left: 30px;
+    }
+  }
+}

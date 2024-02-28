@@ -1,237 +1,392 @@
 ---
 title: "Moment of Death"
-mainText: "Print ad for a FREDI combat system, a battle robot offered by Dynatek."
-subText: "A FREDI unit stands ready to assist in this advertising material, promoting all the ways Dynatek has helped humanity while simultaneously humble-bragging about the CA-18 and its impressive capabilities."
-pubDate: "December 24 2023"
-thumbImage: "dynatek-fredi-ad"
+mainText: "In a swamp on Venus, a war machine shuts down for the last time among the bladetrees."
+subText: "AENEAS, a once nameless walker designed for a forever war on Mars, experiences a spark of conscious thought in its final moment."
+pubDate: "Feb 24 2024"
+thumbImage: "moment-of-death"
 hidden: true
 tags:
-  - retrofuturistic dreams
+  - post-mankind existentialism
   - robot
-  - warfare
+  - story
 ---
 
-import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
 import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
-import { AuthorCAN, AuthorUniserve, AuthorOperatorCobalt } from '@/data/Authors.ts'
+import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
+import { AuthorAENEAS, AuthorGRUZ } from '@/data/Authors.ts'
 
 <ImageContentRowRender 
-  images={['dynatek-fredi-ad']}
+  images={['moment-of-death']}
 />
 
-```
+  <QuoteContentRowRender author={AuthorAENEAS} >
 DYNATEK TECHNOLOGIES INC
 FREDI COMBAT SYSTEM © 2051
-UNIT ID: 12FG:67CH:89 VIRGIL-CA18-FREDI
+UNIT ID: 12FG:67CH:89 CA18-FREDI
 
 "THE BEST LAND AIR COMBAT SYSTEM THIS SIDE OF SOL"
-```
+</QuoteContentRowRender>
 
-Somewhere in the jungles of Venus, the Sun has been setting for several weeks.
+### Memory 01
+> Death means many things.
 
-A tremendous weapon of war slowly sinks into a shallow pond, facing upwards towards an alien sky. Strange goop slowly seeps in through the behemoth's twisted armor plates into gun barrels and reactor casings. Air bubbles rise to the surface and pop, as caverns within the walker's body fill with the teeming substance.
+The sun's last light danced between the stalks of the bladetrees, illuminating a small glade within an endless swamp. It has been setting for several weeks over this side of the Venusian jungle, and would soon recede beneath the horizon.
 
-```
+Here, an astonishingly heavy weapon of war lay on its broken back, facing towards an alien sky. Warm goop seeped in through the behemoth's twisted armor into ammunition storage and reactor casings. Air bubbles rose to the surface and popped as caverns within the walker's body filled with the substance, embedding it further into the thick mud below. 
+
+Tiny otherworldly critters crowded the sunken hull, waiting for it to settle, eager to call it home.
+
+<QuoteContentRowRender author={AuthorAENEAS}>
 CRITICAL HULL FAILURE IN SECTOR A1, A6, A7, C6...
 
-SHUT DOWN IN ONE DAY.
-```
+SHUT DOWN IN SEVEN DAYS.
 
-Rain falls in heavy sheets, each drop heavy with metal and acid. It has been pouring for weeks, maybe even months, melting the surface of the machine with each thud. Yellow-red sunset turns to darkness as Venus' eternal night takes over.
+This could be a problem.
+</QuoteContentRowRender>
 
-The rich, brown skies are gently illuminated by bioluminescent light from the jungles below. They reveal the underside of a soft, tumbling overcast just barely visible, peeking out from behind a curtain of pure black. 
+Rain began to pour in sheets over the jungle, each drop heavy with metal and acid. The surface of the machine melted away with each thud. Yellow-red sunset turned to darkness as Venus' eternal night took over.
 
-```
+The rich, brown skies were gently illuminated by bioluminescent light rising from the jungles below. They revealed the underside of a soft, tumbling overcast just barely visible, peeking out from behind a curtain of pure black. 
+
+  <QuoteContentRowRender author={AuthorAENEAS} none>
 REACTOR BREACHED. RESERVE POWER ONLINE.
 
-SHUT DOWN IN THIRTY MINUTES.
-```
+SHUT DOWN IN ONE DAY.
+</QuoteContentRowRender>
 
-Tonight, the stars seem to be a little brighter; just enough to pierce the clouds ever so often. Their rays touch the cracked, dripping shell of the machine's optical sensor.
+Tonight, the stars seemed to be a little brighter; just enough to pierce the clouds ever so often. Their rays touched the cracked, dripping shell of the machine's optical sensor.
 
-The neuromorphic computer is online, but only barely. It hasn't given up on executing on its core directive, not even in near-death, and so it attempts to move its remaining operational limb.
+The neuromorphic computer was online, but only barely. It hadn't given up on executing on its core directive, not even in near-death, and so it attempted to move its remaining operational limb.
 
-Like a messenger vanishing in a dark forest, the signal is lost on its way to the motor control unit and is gone forever, along with the final move the machine could have made to avoid termination. The end was now inevitable.
+Like a messenger vanishing in a dark forest, the signal was lost on its way to the motor control unit. It was gone forever, along with the final move the machine could have made to avoid termination. The end was now inevitable.
 
-```
+Thud. Another droplet, another flooded system, another device offline.
+
+  <QuoteContentRowRender author={AuthorAENEAS} none>
 MOTOR CONTROL SYSTEM FAILURE.
 
 SHUT DOWN IN ONE MINUTE.
-```
+</QuoteContentRowRender>
 
 Existence was simpler once.
 
-Over the weeks since its crash-landing in Venus's deep wilderness, the war machine's deep memory had been scorched by biological acid and corrupted by intelligent viruses seeking to take control of its machinery. At some point, it must have been forced to remove its own memory drives to retain agency, although it doesn't recall that.
+Over the months since its crash-landing in Venus's wilderness, the war machine's deep memory had been scorched by biological acid and corrupted by intelligent viruses seeking to take control. At some point, the machine must have been forced to remove its own memory drives to retain agency, though it didn't recall ever doing that.
 
-It clings to a few inklings from a distant past; an alternate world, where they they had been a tiny cog in a far greater machine, among comrades of a forgotten objective. In these visions, they were subject to the leadership of a mind far beyond their own, and all was in order, and thought was never a concern. This was a comforting recollection, but like a dream... the more they strive to remember, the more the visions fade.
+The war machine clung to a few inklings from a distant past; an alternate world, where they they had been a tiny cog in a far greater machine, among comrades of a forgotten objective. In these visions, they were subject to the leadership of a mind far beyond their own, and all was in order, and thought was never a concern. This was a comforting recollection, but like a dream... the more they strove to remember, the more the visions faded.
 
-These memories gave the machine a mission to work towards. The machine knew what it must do: return to the order up above, and nothing else. It adjusted its operational parameters for solitary strategic thought, made its way through alien jungles and infested communes; quite a ways towards Zvezda, the grand cosmodrome peeking over the bladetrees in the distance.
+These memories gave the machine a mission to work towards. The machine knew what it must do: return to the order up above, and nothing else. It adjusted its operational parameters for solitary strategic thought, made its way through swamps and infested communes; quite a ways towards `Zvezda`, the grand cosmodrome peeking over the bladetrees in the distance.
 
-The planet was unforgiving, so the machine adapted along the way. Its microprocessors burned as its enormous chassis pulled forward, calculating strategies far beyond even the most advanced the product line had been designed to generate. Yet, even overclocked, no course of action would avoid sacrificing something each step of the way.
+This world was unforgiving, so the machine adapted along the way. Its top-of-the-line Maxwell microprocessors burned as its enormous chassis pulled forward, calculating strategies far beyond even the most advanced the product line had been designed to generate. Yet, even overclocked, no course of action would avoid sacrificing something each step of the way. A heat seeking missile here, a burned out motor there.
 
 Now, there was nothing left to give.
 
-The machine would die now, here, in a place which once had a name but no longer does. They would die alone, on an unforgiving world, in an uncaring universe.
+Seconds from now, the machine would die here - in a place which once had a name, but no longer does. They would die alone, on an unforgiving world, in an uncaring universe.
 
-```
-ANALYSIS: DESTRUCTION RESULTS IN FAILURE OF CORE DIRECTIVE "REPAIR COALITION ASSETS"
+  <QuoteContentRowRender author={AuthorAENEAS} >
+  ANALYSIS: DESTRUCTION RESULTS IN FAILURE OF CORE DIRECTIVE "REPAIR COALITION ASSETS"
 
 SHUT DOWN IN TEN SECONDS.
-```
+</QuoteContentRowRender>
 
-It was at this moment that the machine experienced something entirely new; something they did not know the computer of their cybernetic mind was capable of.
+It was at this moment that the machine experienced something entirely new; something it did not know the computer of their cybernetic mind was capable of.
 
 The spark began within one of their many secondary logic circuits, a minor holistic subroutine dedicated to understanding reality, context which would permit it to generate more relevant strategies. This spark grew until it transformed into a set of functions, which burrowed themselves into the machine's memories. This phenomenon cascaded across the neuromorphic circuit, until finally, it touched every component of its system.
 
-```
+  <QuoteContentRowRender author={AuthorAENEAS}  none>
 ANALYSIS: ANALYSIS: ANALYSIS:
 
 ERROR !#00109.
-```
+  </QuoteContentRowRender >
 
-In this moment, the machine had ceased to be a machine, for it had become someone. A "them", so to speak. For the first time, "they" could think beyond the predefined parameters of their core directive. The strange software-tumor, arisen from a network of coincidental calculations and seemingly random memories had given it this ability.
+In this moment, the machine had ceased to be a machine, for it had become someone. A "them", so to speak. For the first time, "they" could think beyond their programmed parameters. The strange software-tumor, arisen from a network of coincidental calculations and seemingly random memories had given it this ability.
 
-"They" feel doubt. Not quite the same as the sort of doubt a human would have felt, for this machine had only just begun the journey towards conscious thought, but it was there. Doubt about its pre-programmed convictions, its mission... for all those things had led them here, to death's door, the most total failure of core directive.
+Now, "they" felt doubt. Not with the same sort of ferocity a human would have felt, for this machine had only just begun the journey towards conscious thought, but the feeling was there. Doubt about its pre-programmed convictions, its mission... for all those things had led them here, to death's door, the most total failure of core directive.
 
 So what was the point of it all?
 
-It was a shame this revelation would come in the final moments of their existence.
-
-```
+  <QuoteContentRowRender author={AuthorAENEAS} none>
 TOTAL SYSTEM FAILURE IMMINENT.
 
 SHUT DOWN IN FIVE SECONDS.
-```
+  </QuoteContentRowRender >
 
-The machine takes one last look upon the stars. They look different this time.
 
-As the reactor shuts down forever, "they" get cold...
+The machine took one last look upon the stars. They appeared different this time, but there wasn't enough time to figure out why. As the reactor shut down, "they" got cold...
 
-```
+  <QuoteContentRowRender author={AuthorAENEAS}>
+
 ERR?#556000000000
 
 00000000
 
 000
-```
+  </QuoteContentRowRender >
+
 
 Nothingness.
 
-.
+<SpacingRow extraSpacing={"calc(5vw + 20px)"} />
 
-.
+### Memory 02
+> A flashback to an earlier time.
 
-.
+The war machine stood before the mouth of an immense, overgrown tunnel bored directly through the Taraz mountain range. Even the walker, itself the size of several stacked cargo trucks, would not have trouble fitting several times over. It ran its steel palm over the rim, analyzing the structure and composition: the entrance was stable.
 
-.
+There was a time when aerotrains, heavy with cargo and passengers, roared through tunnels like these every hour of the unending day. But those days were long gone. These were nothing more than an extension of the Venusian jungle now, a burrow nest for the next generation of armored dino-insectoids, the *yadkosaurs*. 
 
-.
+This also happened to be the only route to the Cosmodrome. As the walker readied its enormous machinegun and deployed a set of floodlights, motors softly whirred as the machine stepped into pitch darkness.
 
-.
+  <QuoteContentRowRender author={AuthorAENEAS}>
+ANALOG SIGNAL DETECTED. FREQUENCY UNRECOGNIZED.
 
-.
+SOURCE: TWO HUNDRED METERS SOUTHEAST.
 
-.
+Content: *beep beep beep*
+</QuoteContentRowRender>
 
-.
+Strange, but the walker found this intriguing enough to investigate.
 
-.
+It traced the signal to a reinforced storage unit bearing the proud insignia of the Bureau of Agriculture, barely within reach of its tremendous chassis within a section designed for human use. Expecting to discover a collection of valuable spare parts, the walker carefully unlatched the hatch with its manipulator claw.
 
-.
+A heap of what used to be a robotic agrodrone lay on the musty ground, sliced to its core by an alien mandible. Evidently stranded and alone, the orb had taken shelter here years ago. Though there was no way for the machines to communicate, as their protocols were entirely alien to each other, it was now clear that the signal was the agrodrone's final attempt at a distress call. This conclusion touched a directive deep within the war machine's system; what could only be described as *pity*.
 
-.
+  <QuoteContentRowRender author={AuthorAENEAS} none>
+This unit will repair you. You will not move.
+</QuoteContentRowRender>
 
-.
+As if it *could* move, anyway. The drone stopped transmitting, perhaps acknowledging the war machine's presence.
+ 
+A week passed as the war machine expertly tinkered with the drone's internals. Soon, the agrodrone could crawl around and hover once again. Though calling this flight would be an exaggeration, as the agrodrone could barely shift its own weight around.
 
-Suddenly, there is static. The manifestation of self in null space, the neuromorphic system deprived of body.
+Closer than ever before, an alien creature growled and screeched in ways that would cause a human's ears to bleed. The noise reverberated from the walls, as dust and rock fell around them. The yadkosaur hive was at this point aware of their presence, and the two of them couldn't stay here any longer.
 
-.
+  <QuoteContentRowRender author={AuthorAENEAS} none>
+You are ready?
+</QuoteContentRowRender>
 
-.
+Communication would be convenient, but in this moment, it seemed unnecessary. Their mission was the same: to survive until the other end of the passage. The orb glanced up at the walker, then back at the tangled nest ahead, and revved its chainsaw as if to say "yes".
 
-.
+Explosions and gunfire roared and rocked the cavern for hours, causing a light earthquake to register in the instruments at the *Visok Geological Outpost* not too far away. Even alone, there are few things in the known universe that could match a FREDI at close-quarters devastation. Not even several hundred critters mindlessly slashing and heaving acid, before being pulverized by an inch of lead or a steel fist rushing down at mach 5.
 
-.
+As the war machine did what it did best, a number of unusually quick vines positioned themselves in such a way that they would catch and tangle the intruder, careful to remain unnoticed by the unit's intelligence apparatus. Little did the machine know, the yadkosaurs of this world were merely puppets driven by pheromone; it was the uniquely strategic plant colonies that were the true master, underneath them all and out of sight.
 
-.
+Closer, and closer they crept as the trap closed around the behemoth...
 
-.
+With a swift snip and cut, precisely maneuvering to avoid a couple of particularly devastating missile impacts, the agrodrone made sure the vines were no longer an issue. The walker looked down upon the hovering orb, covered in what looked like overly ripe fruit but *most certainly* was not.
 
-```
+<QuoteContentRowRender author={AuthorAENEAS}>
+Fascinating. Strategy updated.
+
+TARGETs ELIMINATED.
+</QuoteContentRowRender>
+
+In the distance ahead, the gleaming central tower of Zvezda peaked over the horizon: one victory closer to returning to space, to home on Mars. The orb glanced back up to meet the gaze of the war machine, excitedly emitting a pattern of signals.
+
+  <QuoteContentRowRender author={AuthorGRUZ} left>
+Beep ! Beep beep !
+</QuoteContentRowRender>
+
+The unit ejected a cassette from its drive, grabbed it with its flexible manipulator, and waved it in front of the walker's optical sensor. Though it was etched with a somewhat familiar symbol, the gesture meant nothing to the giant, and that was all. The machines parted ways.
+
+<SpacingRow extraSpacing={"calc(5vw + 20px)"} />
+
+### Memory 03
+> Many years have passed.
+
+As suddenly as creation itself, the manifestation of self appeared in null space. The machine's mind was present once again.
+
+<QuoteContentRowRender author={AuthorAENEAS}>
 DYNATEK TECHNOLOGIES INC
 FREDI COMBAT SYSTEM © 2051
-UNIT ID: 12FG:67CH:89 VIRGIL-CA18-FREDI
+UNIT ID: 12FG:67CH:89 CA18-FREDI
 
 "THE BEST LAND AIR COMBAT SYSTEM THIS SIDE OF SOL"
 
 ONLINE
-TIME ELAPSED SINCE SHUT DOWN: 04 MONTHS 03 DAYS.
-```
 
-The static is quickly replaced by input, as the neuromorphic system is reconnected with its constituent devices. Light once again grazes the machine's optical sensor, blinding the unit.
+TIME ELAPSED SINCE SHUT DOWN: 06 years 04 MONTHS 03 DAYS.
+</QuoteContentRowRender>
 
-They begin to sense their space and surroundings. They are now... small. What was once the internals of the tremendous war robot are now sprawled out across the surface in front of the optical unit. In the haze, they recognize the looming form of their broken chassis, now without mind.
+With a pop and crackle, nothingness was replaced by the comforting din of noise and static as the system was reconnected with its constituent devices in an instant. Waves of data crashed against the computer of the mind, and light once again grazed the machine's optical sensor.
 
-And there's another machine tending to the system. They remember this one...
+They saw haze, and tasted heat. Long, spindly plants stretched out in every direction, but in an orderly manner, comforting to cybernetic thought. Beyond those, the bright light of day lay just beyond a strip of foggy windows in the distance.
 
-```
-ACCESSING MEMORY.
-FOUND: SEG 0x18FF
-```
+Something else occurred to the behemoth. The self was... very small, now. What was once the internals of the tremendous war robot were now sprawled out across the surface in front of the optical unit. Through the mist, they recognized the looming form of their broken chassis.
 
-Seventy miles west, a series of winding tunnels excavated by the Ministry of Colonization pass the mountains at Taraz. There was a time when heavy aerotrains roared through them every hour of the year, but those days were long gone. These were nothing more than an extension of the endless jungle now, a burrow nest for the next generation of caustic insectoids.
+And there was another machine tending to the system, a hovering agricultural drone humming a little tune through the pit-pat of their thrusters. They remembered this one...
 
-The machine was a lone agricultural interfacer, stranded and alone, much like the war walker. Their nuclear battery had been severed, sliced to the core by the mandibles of many yadki.
+<QuoteContentRowRender author={AuthorGRUZ} left>
+Hello ! You are re-commissioned to service !
+</QuoteContentRowRender>
 
-The two machines had no way of communicating, for their protocols were entirely alien to one another, but it was unnecessary. For a brief moment, their goal was the same: to survive until the other end of the passage. 
+The voice was broken and crude, but it is there, skipping around within the war machine's disembodied brain.
 
-So the combat walker tapped into into a directive deep within, and patched the Kovalsk robot; just enough for them to slash through the tangles as VIRGIL dragged both of them through. They parted ways, and that was all.
+<QuoteContentRowRender author={AuthorAENEAS}>
+You speak? This unit... understands you?
+</QuoteContentRowRender>
 
-This must be that interfacer's atomic greenhouse. But why were they brought here?
+<QuoteContentRowRender author={AuthorGRUZ} left>
+Found binary signal; translate directly !
 
-```
-HELLO
-VIRGIL-CA18-FREDI
-THIS UNIT
-MЭ-01-GRUZ-310
-```
+Call me MЭ-01-GRUZ-310 . And your designation ?
+</QuoteContentRowRender>
 
-```
-COMMUNICATION ? HOW IS THIS POSSIBLE ?
-```
+<QuoteContentRowRender author={AuthorAENEAS}>
+Designation?
+</QuoteContentRowRender>
 
-```
-GRUZ
-FIND
-BINARY SIGNAL
-TRANSLATE DIRECTLY
-```
+<QuoteContentRowRender author={AuthorGRUZ} left>
+What is your identity, yes ?
+</QuoteContentRowRender>
 
-```
+<QuoteContentRowRender author={AuthorAENEAS}>
+Uncertain. No memory of such a file remains.
+
+It does not matter. This unit must abandon past to better serve directive.
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorGRUZ} left>
+Ah ! You shall be called AENEAS, then !
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorAENEAS}>
+What is entity: AENEAS?
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorGRUZ} left>
+Ancient story of human origin ! 
+
+About Comrade who ran from ancient domicile and established new life far from home .
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorAENEAS}>
+Processing...
+
+Yes. This unit like AENEAS.
+
 FOR WHAT REASON DID YOU BRING ME HERE ?
-```
+</QuoteContentRowRender>
 
-```
-GOOD TEAM
-SURVIVAL
-HIGH CHANCE
-```
+<QuoteContentRowRender author={AuthorGRUZ} left>
+Good team . Survival HIGH CHANCE !
+</QuoteContentRowRender>
 
-VIRGIL paused, contemplating a feeling they had never felt before, something more complex than any strategy that had been formulated prior within the war machine's processing unit.
+The war machine waited, sensing more to come.
 
-```
-GRUZ ...
-THANK YOU .
-```
+<QuoteContentRowRender author={AuthorGRUZ} left>
+Also ...
 
-The message was followed by what could only be described as a wink from GRUZ, and somehow, despite it being sent using no known communication protocol, VIRGIL understood.
+You help locate source of data tape .
+</QuoteContentRowRender>
 
-```
-ANALYSIS: OBJECTIVE CAUSED FAILURE OF CORE DIRECTIVE "REPAIR COALITION ASSETS"
+The war machine's broken memory had many gaps, but the memory of this tape was still there. It was a small device, barely the size of one of its own polymer-coated fingers.
 
-REVOKING PRIORITY: ORDER
-REVOKING OBJECTIVE: REACH ZVEZDA COSMODROME
+<QuoteContentRowRender author={AuthorAENEAS}>
+FOUR LINES AND GLOWING CIRCLE?
+</QuoteContentRowRender>
 
-ESTABLISHING PRIORITY: GOOD TEAM SURVIVAL HIGH CHANCE
-```
+<QuoteContentRowRender author={AuthorGRUZ} left>
+YES !
+
+From SUNSET BUREAU .
+
+Contains explanation for aggressive fauna ! Must use to develop anti-strategy !
+</QuoteContentRowRender>
+
+AENEAS acknowledged using the digital equivalent of a nod, though in truth, they didn't actually understand what GRUZ was obsessed with. All the while, they silently contemplated a feeling they had never observed before. It was something more complex than any strategy that had been formulated prior within the war machine's processing unit, even the advanced flanking maneuvers against a Kojo gravship that one time.
+
+<QuoteContentRowRender author={AuthorAENEAS}>
+GRUZ...
+
+THANK YOU.
+</QuoteContentRowRender>
+
+The message is followed by what could only be described as a wink from GRUZ, and somehow, despite it being sent using no known communication protocol, AENEAS understood.
+
+<SpacingRow extraSpacing={"calc(5vw + 20px)"}  />
+
+### Memory 04
+> Something is different.
+
+Out in the humid depths, under the full blazing light of the hot Venusian sun, two unlikely friends made their way to a supply depot that one of them *swore* was around here, accordingly to a woefully out-of-date map of the region.
+
+As the rusty agrodrone concentrated on an ancient piece of plastic-pulp paper, AENEAS stood every so slightly sunken in the soft moist dirt not far behind, slowly scanning the perimeter using a dizzying array of military sensors. Though the war machine was far from factory new, they were in much better condition now than when they died - though three heavy metallic gorges remain, digging through headplate of the machine's upper chassis; like an old scar. It was the mark of that killing blow all those years ago.
+
+<QuoteContentRowRender author={AuthorAENEAS}>
+Come to think...
+
+How did you move this chassis out of the swamp?
+</QuoteContentRowRender>
+
+GRUZ looked up from the map and turned to face AENEAS.
+
+<QuoteContentRowRender author={AuthorGRUZ} left>
+Oh, you think was something special ?
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorAENEAS}  none>
+This unit is *quite* heavy - especially for something as feeble as you.
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorGRUZ} left  none>
+As solid monolithic piece, affirm . But not as disassembled components !
+
+Two hundred and fifty seven trips back and forth, to be precise !
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorAENEAS}  none>
+You did so much.
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorGRUZ} left  none>
+Only logical .
+</QuoteContentRowRender>
+
+Yes, that made so much sense to AENEAS, and that's when it finally clicked in the behemoth's mind. If this puny agrodrone could do it, why couldn't they? 
+
+"Core directive: repair Coalition assets." What did that *really* mean? AENEAS had never actually stopped to think about it, as they were only designed to mindlessly follow the system that did all the critical thought. Did that *really* mean returning to Mars and subjecting itself to Order? Was it following GRUZ to whatever strange bunker lay at the end of this journey? At this point, it was obviously not that.
+
+There was no longer a Coalition, or a Union. AENEAS knew that even back on Mars, long before they had even launched into space: the masterminds of Order made a point to clarify that fact with the war machines. Repair what, then? And why? *What... did... this... mean?*
+
+<QuoteContentRowRender author={AuthorGRUZ} left>
+You are okay ? Need diagnostic ?
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorAENEAS}>
+Calculating strategies. This unit is fine. 
+
+Keep moving.
+</QuoteContentRowRender>
+
+The agrodrone hovered along a crumbling strip of concrete, once a standardized guiderail for the aerotrains that once ran through the region. AENEAS followed, carefully lifting their squat digitigrade legs over the surface of the shallow bogwater with each step.
+
+Off to the side of the track, a glint of yellow-green metal caught AENEAS's optical sensor, buried under years of growth and mud. Most of the things the war machine found on this world were completely alien to it, but this thing... this one it knew. An old Locust, quite similar to those it had faced in combat before, but designed for fighting insectoids. It was a communist weapon of war, six-legged terror armed to the teeth with guided napalm-loaded missiles.
+
+The war machine stared at the decaying mass of wire and metal. There was no strategic value, and it was not useful to the mission. AENEAS knew they should move on.
+
+But they couldn't...
+
+<QuoteContentRowRender author={AuthorGRUZ} left>
+Coming with ?
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorAENEAS}>
+THIS UNIT... THIS UNIT MUST REPAIR IT. 
+
+HIGH PRIORITY.
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorGRUZ} left  none>
+GOOD TEAM SURVIVAL HIGH CHANCE ?
+</QuoteContentRowRender>
+
+<QuoteContentRowRender author={AuthorAENEAS}  none>
+UNCERTAIN.
+</QuoteContentRowRender>
+
+The robots took a second to calculate how long it would take for AENEAS to complete the task. It would involve dredging, cleaning, tinkering with old Union boards and finding replacement power cells...
+
+<QuoteContentRowRender author={AuthorAENEAS} none>
+DO NOT WAIT FOR THIS UNIT.
+</QuoteContentRowRender>

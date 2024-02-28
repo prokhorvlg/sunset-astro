@@ -1,0 +1,26 @@
+---
+export const prerender = true
+
+import ScriptsAfterBody from "@/components/ScriptsAfterBody.astro"
+import PostLayout from "@/layouts/PostLayout.astro"
+import {
+  getProcessedImageById,
+  loadAnyPost,
+} from "@/utils/astroHelpers"
+
+export async function getStaticPaths() {
+  return await loadAnyPost("creations")
+}
+
+const post = Astro.props
+const { Content } = await post.render()
+
+const image = await getProcessedImageById(
+  post.data.thumbImage,
+  1500
+)
+---
+
+<PostLayout post={post} image={image?.src}>
+  <Content />
+</PostLayout>
