@@ -183,7 +183,7 @@ export const AuthorDynatekSystem: QuoteAuthor = {
 export const AuthorAENEAS: QuoteAuthor = {
   id: "aeneas",
   name: "AENEAS",
-  image: "moment-of-death",
+  image: "avatar-aeneas",
   originalPage: "/posts/moment-of-death",
   description: "Large war machine, trapped on Venus.",
   theme: "aeneas aeneas-color",
@@ -191,7 +191,7 @@ export const AuthorAENEAS: QuoteAuthor = {
 export const AuthorGRUZ: QuoteAuthor = {
   id: "gruz",
   name: "GRUZ",
-  image: "moment-of-death",
+  image: "avatar-gruz",
   originalPage: "/posts/moment-of-death",
   description: "Little hovering agrodrone.",
   theme: "gruz gruz-color",

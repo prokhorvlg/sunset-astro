@@ -43,7 +43,9 @@ const imagesProcessed = await Promise.all(
       processedObject: await getImage({
         src: importedImageInner,
         alt: imageObject.alt || "",
+        quality: 90,
         format: "webp",
+        loading: "lazy",
       }),
     } as FullImageDetails
   })

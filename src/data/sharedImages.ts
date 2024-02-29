@@ -1119,6 +1119,7 @@ export const Images: ImageDetails[] = [
     caption:
       "FREDI is armed with a heavy machine gun, multiple missile pods, scanners, manipulators, and more hidden redundant systems than one could count.",
     artist: ArtistProkhor,
+    originalPost: "fredi",
   },
 
   {
@@ -1215,8 +1216,23 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("content/moment_of_death.jpg"),
     alt: "",
     classes: "border-walker-green",
+    artist: ArtistProkhor,
     // caption:
     //   "A Dynatek FREDI sinks into a bogswamp on Venus.",
+  },
+  {
+    id: "avatar-aeneas",
+    src: getImageFromGlob(
+      "content/author-images/avatar-aeneas.png"
+    ),
+    alt: "",
+  },
+  {
+    id: "avatar-gruz",
+    src: getImageFromGlob(
+      "content/author-images/avatar-gruz.png"
+    ),
+    alt: "",
   },
 
   // FAN ART

@@ -1,6 +1,61 @@
 $breakpoint-quote: 1600px;
 $quoteMobileSidePadding: 20px;
 
+@mixin WrapTextCharacter($left, $right) {
+  p {
+    //text-transform: uppercase;
+    &::before {
+      content: $left + " ";
+    }
+    &::after {
+      content: " " + $right;
+    }
+  }
+}
+@mixin MinimalistAuthorBox(
+  $gradientLeftColor,
+  $gradientRightColor,
+  $hasDescription: false
+) {
+  .author-box {
+    user-select: none;
+    flex-direction: row;
+    align-items: center;
+    background: linear-gradient(
+      to right,
+      $gradientLeftColor 0%,
+      $gradientRightColor 100%
+    );
+    border-radius: 6px;
+    width: 300px;
+
+    .name {
+      padding: 10px 25px 10px 5px;
+      @if $hasDescription {
+        padding-bottom: 0px;
+      }
+    }
+    .description {
+      display: none;
+    }
+    @if $hasDescription {
+      .description {
+        display: block;
+        padding-bottom: 10px;
+        margin-left: 4px;
+        margin-right: 10px;
+      }
+    }
+    .image {
+      width: 80px;
+      height: 80px;
+      margin: 0;
+      border: none;
+      box-shadow: none;
+    }
+  }
+}
+
 @mixin recolorQuote(
   $color-text,
   $color-border,
@@ -150,36 +205,27 @@ $quoteMobileSidePadding: 20px;
   }
 
   // AENEAS & GRUZ
+  $aeneas: #d68e08;
   &.aeneas-color {
     //   $color-text,
     // $color-border,
     // $color-background,
     // $color-highlight,
     // $color-description,
-    $aeneas: #cac418;
+    
     @include recolorQuote(
       lighten($aeneas, 20%),
       lighten($aeneas, 20%),
-      darken($aeneas, 35%),
+      #381f02,
       lighten($aeneas, 20%),
-      $aeneas
+      #e6a429
     );
     @include whiteBGQuote();
   }
   &.aeneas {
-    .author-box .image {
-      background-size: 160%;
-      background-position-x: 44%;
-      background-position-y: 0%;
-    }
+    @include MinimalistAuthorBox(#421a083d, #472b06, true);
     .quote-box p {
       text-transform: uppercase;
-      // &::before {
-      //     content: "▸ ";
-      // }
-      // &::after {
-      //     content: " ◂";
-      // }
       &::before {
         content: "▒ ";
       }
@@ -188,20 +234,21 @@ $quoteMobileSidePadding: 20px;
       }
     }
   }
+  $gruz: #cac418;
+  $gruzHighlight: #fdee20;
   &.gruz-color {
-    $gruz: #9dff34;
     @include recolorQuote(
-      lighten($gruz, 20%),
-      lighten($gruz, 20%),
-      darken($gruz, 50%),
+      lighten($gruzHighlight, 10%),
+      lighten($gruzHighlight, 10%),
+      darken($gruz, 35%),
       lighten($gruz, 20%),
       $gruz
     );
     @include whiteBGQuote();
   }
   &.gruz {
+    @include MinimalistAuthorBox(#50430a3d, #333209, true);
     .quote-box p {
-      // text-transform: uppercase;
       &::before {
           content: "❮ ";
       }
@@ -211,50 +258,7 @@ $quoteMobileSidePadding: 20px;
     }
   }
 
-  @mixin WrapTextCharacter($left, $right) {
-    p {
-      //text-transform: uppercase;
-      &::before {
-        content: $left + " ";
-      }
-      &::after {
-        content: " " + $right;
-      }
-    }
-  }
-  @mixin MinimalistAuthorBox(
-    $gradientLeftColor,
-    $gradientRightColor
-  ) {
-    .author-box {
-      user-select: none;
-      flex-direction: row;
-      align-items: center;
-      background: linear-gradient(
-        to right,
-        $gradientLeftColor 0%,
-        $gradientRightColor 100%
-      );
-      border-radius: 6px;
-
-      .name {
-        padding: 10px 25px 10px 5px;
-      }
-      .description {
-        display: none;
-      }
-      .image {
-        width: 80px;
-        height: 80px;
-        margin: 0;
-        border: none;
-        box-shadow: none;
-        //background-size: 200%;
-        //background-position-x: 50%;
-        //background-position-y: 30%;
-      }
-    }
-  }
+  
 
   // RADIUS AND THE SILENCES
   &.silence {
