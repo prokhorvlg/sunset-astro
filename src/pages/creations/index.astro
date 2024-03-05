@@ -12,6 +12,7 @@ import {
 } from "@/utils/astroHelpers"
 import CreationsView from "@/components/creations/CreationsView.component"
 import ScriptsAfterBody from "@/components/ScriptsAfterBody.astro"
+import { getProcessedImageById } from "@/utils/astroHelpers"
 
 const posts = await getAllPosts("creation")
 const SUBTEXT =
@@ -20,12 +21,21 @@ const SUBTEXT =
 import { Content } from "@/data/creations-content.mdx"
 import * as post from "@/data/creations-content.mdx"
 import MarkdownWrapper from "@/layouts/MarkdownWrapper.astro"
+
+const image = await getProcessedImageById(
+  "creations-embed",
+  1500
+)
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={"Creations"} description={SUBTEXT} />
+    <BaseHead
+      title={"Creations"}
+      description={SUBTEXT}
+      image={image?.src}
+    />
   </head>
   <body>
     <SunsetHeader client:only currentPage={"/creations"} />

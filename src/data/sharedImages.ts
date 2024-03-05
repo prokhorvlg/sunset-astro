@@ -1245,6 +1245,10 @@ export const Images: ImageDetails[] = [
 
   // FAN ART
   {
+    id: "creations-embed",
+    src: getImageFromGlob("creations/creations-embed.png"),
+  },
+  {
     id: "televangeline-bugdinos",
     src: getImageFromGlob(
       "creations/televangeline-bugdinos.jpg"
