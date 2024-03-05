@@ -74,8 +74,6 @@ const PostCard = ({
   const [imageWidth, setImageWidth] = useState(500)
 
   useEffect(() => {
-    console.log("post.data", post.data)
-
     const updateWidth = () => {
       const isMobile = window.innerWidth <= 768
       setMobileMode(isMobile)
@@ -130,134 +128,144 @@ const PostCard = ({
           isExternal: isPatreonExclusive,
         }}
       >
-        <div className="post-card-top">
-          {galleryMode &&
-          mobileMode &&
-          collection !== PostType.Introduction &&
-          collection !== PostType.Announcement &&
-          collection !== PostType.Database ? (
-            <div
-              className={`post-card-image-mobile ${
-                isPatreonExclusive
-                  ? "patreon-exclusive"
-                  : ""
-              }`}
-            >
-              <img
-                src={imageSrc || ""}
-                height={imageHeight}
-                width={imageWidth}
-              />
-              {isPatreonExclusive && (
-                <PatreonExclusiveOverlay />
-              )}
-            </div>
-          ) : (
-            <div
-              className={`post-card-image ${
-                isPatreonExclusive
-                  ? "patreon-exclusive"
-                  : ""
-              }`}
-              style={{
-                backgroundImage: `url(${imageSrc})`,
-                backgroundPosition: post.data.thumbAlignment
-                  ? post.data.thumbAlignment
-                  : "top",
-                backgroundSize: post.data.thumbSize
-                  ? post.data.thumbSize
-                  : undefined,
-              }}
-            >
-              {isPatreonExclusive && (
-                <PatreonExclusiveOverlay />
-              )}
-            </div>
+        <>
+          {collection === PostType.Creation && (
+            <ArtistTag
+              artistName={post.data.author || "unspecified"}
+              href={post.data.authorURL || "#"}
+            />
           )}
-        </div>
-        {collection === PostType.Lore ? (
-          <div className="post-card-content">
-            <h3 className="title">{post.data.title}</h3>
-            <p className="description">
-              {post.data.mainText}
-            </p>
-            <div className="fill"></div>
-            <TagCloud
-              tags={post.data.tags || []}
-              onCardTagClick={onCardTagClick}
-            />
+
+          <div className="post-card-top">
+            {galleryMode &&
+            mobileMode &&
+            collection !== PostType.Introduction &&
+            collection !== PostType.Announcement &&
+            collection !== PostType.Database ? (
+              <div
+                className={`post-card-image-mobile ${
+                  isPatreonExclusive
+                    ? "patreon-exclusive"
+                    : ""
+                }`}
+              >
+                <img
+                  src={imageSrc || ""}
+                  height={imageHeight}
+                  width={imageWidth}
+                />
+                {isPatreonExclusive && (
+                  <PatreonExclusiveOverlay />
+                )}
+              </div>
+            ) : (
+              <div
+                className={`post-card-image ${
+                  isPatreonExclusive
+                    ? "patreon-exclusive"
+                    : ""
+                }`}
+                style={{
+                  backgroundImage: `url(${imageSrc})`,
+                  backgroundPosition: post.data
+                    .thumbAlignment
+                    ? post.data.thumbAlignment
+                    : "top",
+                  backgroundSize: post.data.thumbSize
+                    ? post.data.thumbSize
+                    : undefined,
+                }}
+              >
+                {isPatreonExclusive && (
+                  <PatreonExclusiveOverlay />
+                )}
+              </div>
+            )}
           </div>
-        ) : null}
-        {collection === PostType.Introduction ? (
-          <div className="post-card-content">
-            <h3 className="title">{post.data.mainText}</h3>
-            <p className="description">
-              {post.data.subText}
-            </p>
-            <TagCloud
-              tags={post.data.tags || []}
-              onCardTagClick={onCardTagClick}
-            />
-          </div>
-        ) : null}
-        {collection === PostType.Announcement ? (
-          <div className="post-card-content">
-            <FontAwesomeIcon
-              icon={faBullhorn}
-              className="main-icon"
-            />
-            <h3 className="title">{post.data.title}</h3>
-            <p className="description">
-              {post.data.description}
-            </p>
-          </div>
-        ) : null}
-        {collection === PostType.Database ? (
-          <div className="post-card-content">
-            <div className="icon-pack small">
+          {collection === PostType.Lore ? (
+            <div className="post-card-content">
+              <h3 className="title">{post.data.title}</h3>
+              <p className="description">
+                {post.data.mainText}
+              </p>
+              <div className="fill"></div>
+              <TagCloud
+                tags={post.data.tags || []}
+                onCardTagClick={onCardTagClick}
+              />
+            </div>
+          ) : null}
+          {collection === PostType.Introduction ? (
+            <div className="post-card-content">
+              <h3 className="title">
+                {post.data.mainText}
+              </h3>
+              <p className="description">
+                {post.data.subText}
+              </p>
+              <TagCloud
+                tags={post.data.tags || []}
+                onCardTagClick={onCardTagClick}
+              />
+            </div>
+          ) : null}
+          {collection === PostType.Announcement ? (
+            <div className="post-card-content">
               <FontAwesomeIcon
-                icon={faDatabase}
+                icon={faBullhorn}
                 className="main-icon"
               />
-              <FontAwesomeIcon
-                className="sub-icon"
-                icon={MapStringToIcon[post.data.icon || ""]}
+              <h3 className="title">{post.data.title}</h3>
+              <p className="description">
+                {post.data.description}
+              </p>
+            </div>
+          ) : null}
+          {collection === PostType.Database ? (
+            <div className="post-card-content">
+              <div className="icon-pack small">
+                <FontAwesomeIcon
+                  icon={faDatabase}
+                  className="main-icon"
+                />
+                <FontAwesomeIcon
+                  className="sub-icon"
+                  icon={
+                    MapStringToIcon[post.data.icon || ""]
+                  }
+                />
+              </div>
+              <h3 className="title">{post.data.title}</h3>
+              <p className="description">
+                {post.data.subText}
+              </p>
+              <TagCloud
+                tags={post.data.tags || []}
+                onCardTagClick={onCardTagClick}
               />
             </div>
-            <h3 className="title">{post.data.title}</h3>
-            <p className="description">
-              {post.data.subText}
-            </p>
-            <TagCloud
-              tags={post.data.tags || []}
-              onCardTagClick={onCardTagClick}
+          ) : null}
+          {collection === PostType.Creation ? (
+            <div className="post-card-content">
+              <h3 className="title">{post.data.title}</h3>
+              <p className="description">
+                {post.data.subText}
+              </p>
+              <div className="fill"></div>
+              <TagCloud
+                tags={post.data.tags || []}
+                onCardTagClick={onCardTagClick}
+              />
+            </div>
+          ) : null}
+          <div className="post-card-bottom">
+            <span className="date code">{dateString}</span>
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className="arrow"
             />
           </div>
-        ) : null}
-        {collection === PostType.Creation ? (
-          <div className="post-card-content">
-            <h3 className="title">{post.data.title}</h3>
-            <p className="description">
-              {post.data.subText}
-            </p>
-            {/* <div className="fill"></div> */}
-
-            {/* <ArtistTag
-              artistName={post.data.author || ""}
-            /> */}
-            <TagCloud
-              tags={post.data.tags || []}
-              onCardTagClick={onCardTagClick}
-            />
-          </div>
-        ) : null}
-        <div className="post-card-bottom">
-          <span className="date code">{dateString}</span>
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            className="arrow"
-          />
-        </div>
+        </>
       </DialogContainer>
     </div>
   )

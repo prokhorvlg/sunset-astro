@@ -1,7 +1,7 @@
 ---
 ---
 
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorUniserve, AuthorTerminal, AuthorCAN } from '@/data/Authors.ts'
 
@@ -11,10 +11,10 @@ Or, perhaps it's a bit more than that...
 
 According to some of the really old files left by an MRDCI intelligence officer at Goldspire Archive, Svyatagor's run-down state was just a cover to divert curiousity. In reality, the vessel was critical in coordinating the Union's `NKGB` agents and their deployment among the population of Titan.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Is... is this where you came from, CAN?
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorCAN} left>
+<QuoteRow author={AuthorCAN} left>
 INVALID QUERY. THIS UNIT IS AMERICAN. SO VERY AMERICAN THAT THIS FACT IS BEYOND QUERY.
-</QuoteContentRowRender>
+</QuoteRow>

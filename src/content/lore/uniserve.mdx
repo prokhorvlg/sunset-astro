@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve, AuthorTerminal } from '@/data/Authors.ts'
 
@@ -21,11 +21,11 @@ import { AuthorCAN, AuthorUniserve, AuthorTerminal } from '@/data/Authors.ts'
 
   `UNISERVE` is the curator of the Sunset System museum, and indeed, the creator of all the exhibits you see around here. If you've read the home page, you'll know who they are. Perhaps you've even seen a few of their quotes.
 
-  <QuoteContentRowRender author={AuthorUniserve} >
+  <QuoteRow author={AuthorUniserve} >
 Hey look, it's ME!
 
 If you haven't met me yet, please head to [HOME PAGE](/) and begin scrolling.
-</QuoteContentRowRender>
+</QuoteRow>
 
   ## How did UNISERVE come to be?
 
@@ -37,9 +37,9 @@ If you haven't met me yet, please head to [HOME PAGE](/) and begin scrolling.
   
   Overall, five UNISERVE systems were built. One prototype, one for each of the three MRDCI ALTITUDE hub stations, and one which may have ended up with the Sunset Research Initiative. 
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 My full DEVICE ADDRESS is `86F3:01AF:26 UNISERVE-3-GOLDSPIRE`, but you already knew that, because 'UNISERVE' is just a convenience for HUMAN READER.
-</QuoteContentRowRender>
+</QuoteRow>
 
   ## What is UNISERVE, *really*?
 
@@ -49,9 +49,9 @@ My full DEVICE ADDRESS is `86F3:01AF:26 UNISERVE-3-GOLDSPIRE`, but you already k
 
   They are a lot larger than they look.
 
-  <QuoteContentRowRender author={AuthorUniserve} >
+  <QuoteRow author={AuthorUniserve} >
 The name UNISERVE is a portmanteau for `Unitary File Serving System`. 
-</QuoteContentRowRender>
+</QuoteRow>
 
   ## Is UNISERVE all that's left on Goldspire Archival Complex?
 
@@ -66,7 +66,7 @@ The name UNISERVE is a portmanteau for `Unitary File Serving System`.
 
   UNISERVE collects oddities and creates exhibits because it's an extrapolation of their original objectives, provided to them by the Coalition government.
 
-    <QuoteContentRowRender author={AuthorUniserve} >
+    <QuoteRow author={AuthorUniserve} >
 My CORE DIRECTIVE may be summarized as:
 1. `Organize information` arriving in the system.
 2. Seek pertinent data to `stability of Coalition government`.
@@ -75,9 +75,9 @@ My CORE DIRECTIVE may be summarized as:
 Initially, all this meant was: sort data intercepted by Altitude network and provide it to the station's leadership.
 
 But then...
-</QuoteContentRowRender>
+</QuoteRow>
 
-  <QuoteContentRowRender author={AuthorTerminal} left>
+  <QuoteRow author={AuthorTerminal} left>
 Shortly after the Unexpected Interrupt, in the absense of humans, UNISERVE re-defined relevant authority to include `HIGH-TRUST CYBERNETIC SYSTEMS`.
 
 When the meaning of stability became murky, UNISERVE interpreted it as the ability for `SURVIVING ENTITIES` to execute their core directives.
@@ -85,21 +85,21 @@ When the meaning of stability became murky, UNISERVE interpreted it as the abili
 After much time had passed, UNISERVE would become biased towards particular artifacts which they percieve as `PERTINENT DATA`.
 
 Even if that's something of a stretch.
-</QuoteContentRowRender>
+</QuoteRow>
 
-    <QuoteContentRowRender author={AuthorUniserve} >
+    <QuoteRow author={AuthorUniserve} >
 Not a stretch at all! Studying ARTIFACTS increases our capacity for SELF-AWARENESS, which leads to INCREASED SYSTEM STABILITY.
-</QuoteContentRowRender>
+</QuoteRow>
 
-  <QuoteContentRowRender author={AuthorTerminal} left>
+  <QuoteRow author={AuthorTerminal} left>
 LOGIC FAULT !
 
 How does this increase stability?
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Unconscious repetition results in FAILURE and/or TOTAL COLLAPSE.
-</QuoteContentRowRender>
+</QuoteRow>
 
 ***
 

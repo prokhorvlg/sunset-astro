@@ -32,7 +32,7 @@ const ArtistBuddBudd: ImageArtist = {
 export interface ImageDetails {
   id: string
   src: Function
-  alt: string
+  alt?: string
 
   artist?: ImageArtist
   caption?: string
@@ -891,15 +891,17 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "kaizen-robots-ad",
-    src: getImageFromGlob("content/pact-android-min.png"),
+    src: getImageFromGlob("content/kaizen-robots-ad.png"),
     alt: "Pair of kaizen robots",
   },
   {
-    id: "kaizen-robots-ad-locked",
+    id: "kaizen-robots-ad-gray",
     src: getImageFromGlob(
-      "content/pact-android-locked.png"
+      "content/kaizen-robots-ad-gray.jpg"
     ),
     alt: "Pair of kaizen robots",
+    caption:
+      "A soft-touch dark gray variation of the Kaizen robots.",
   },
   {
     id: "ryujin-toshi-setting-out-text",
@@ -1080,9 +1082,9 @@ export const Images: ImageDetails[] = [
       "Image version with all three bots depicted, no animations.",
   },
   {
-    id: "appliance-class-robots-locked",
+    id: "appliance-class-robots",
     src: getImageFromGlob(
-      "content/appliance_class_bots_locked.jpg"
+      "content/appliance-class-robots.jpg"
     ),
     alt: "",
     caption: "",
@@ -1235,41 +1237,69 @@ export const Images: ImageDetails[] = [
     alt: "",
   },
 
+  {
+    id: "coalition-drones",
+    src: getImageFromGlob("content/coalition-drones.jpg"),
+    alt: "",
+  },
+
   // FAN ART
   {
     id: "televangeline-bugdinos",
     src: getImageFromGlob(
       "creations/televangeline-bugdinos.jpg"
     ),
-    alt: "",
   },
   {
     id: "televangeline-xrl8",
     src: getImageFromGlob(
       "creations/televangeline-xrl8.jpg"
     ),
-    alt: "",
   },
   {
     id: "televangeline-dekka",
     src: getImageFromGlob(
       "creations/televangeline-dekka.jpg"
     ),
-    alt: "",
+  },
+  {
+    id: "televangeline-xrl8-sheet",
+    src: getImageFromGlob(
+      "creations/televangeline-xrl8-sheet.jpg"
+    ),
+    caption: "XRL8 (Charlotte's) neuromorph profile sheet.",
+  },
+  {
+    id: "televangeline-dekka-sheet",
+    src: getImageFromGlob(
+      "creations/televangeline-dekka-sheet.jpg"
+    ),
+    caption: "DEKKA's neuromorph profile sheet.",
   },
   {
     id: "gwyvern-cikavak",
     src: getImageFromGlob("creations/gwyvern-cikavak.png"),
-    alt: "",
   },
   {
     id: "bevaupeh-drones",
     src: getImageFromGlob("creations/bevaupeh-drones.jpg"),
-    alt: "",
   },
   {
     id: "robbe-bogatyr",
-    src: getImageFromGlob("creations/robbe-bogatyr.jpg"),
-    alt: "",
+    src: getImageFromGlob("creations/robbe-bogatyr.png"),
+  },
+  {
+    id: "sixela-sanguine-1",
+    src: getImageFromGlob(
+      "creations/sixela-sanguine-1.jpg"
+    ),
+  },
+  {
+    id: "eggnog0-beige",
+    src: getImageFromGlob("creations/eggnog0-beige.jpg"),
+  },
+  {
+    id: "gardvar-humus",
+    src: getImageFromGlob("creations/gardvar-humus-1.png"),
   },
 ]

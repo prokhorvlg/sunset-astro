@@ -1,19 +1,27 @@
 ---
-title: "Venereal Megafauna"
-mainText: "Venereal Megafauna"
-subText: "Collection of Venusian insectoid-dinosaurs!"
+title: "Televangeline's Venereal Megafauna"
+mainText: "Televangeline's Venereal Megafauna"
+subText: "Collection of Venusian super-insectoids, the yadkosaurs, which are very reminiscent of Earth's ancient dinosaurs."
 pubDate: "Jan 26 2024"
 thumbImage: "televangeline-bugdinos"
 tags:
-  - canonized
-  # - distinguished
+  - distinguished
+  - canon
+  - original
 
 author: televangeline
 ---
 
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorUniserve } from '@/data/Authors.ts'
 
 <ImageContentRowRender 
   images={['televangeline-bugdinos']}
 />
+
+<QuoteRow author={AuthorUniserve} >
+ALIEN LIFEFORMS are something we don't see often here - but *really should*. Venereal Megafauna is a genuinely fascinating and thought-provoking contribution to the EXHIBIT.
+
+YADKOSAURS (named post-creation) are encountered in [this story](/posts/moment-of-death), inspired by televangeline's contribution!
+</QuoteRow>

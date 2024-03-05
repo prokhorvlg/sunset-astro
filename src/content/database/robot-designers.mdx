@@ -11,24 +11,24 @@ tags:
 ---
 
 import OrganizationsList from '@/components/special/OrganizationsList/OrganizationsList'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import { AuthorCAN, AuthorTerminal, AuthorUniserve, AuthorUnknown } from '@/data/Authors.ts'
 
 After the [invention of the neuromorph](/posts/cybernetics-lab) in 1975, it took less than five years for SLAVA's blueprint to leave the Soviet Union and enter the domain of common knowledge. Hundreds of corporations, design bureaus, research teams, and individual tinkerers jumped on the opportunity to create intelligent systems based on this artificial brain, often to great success.
 
 By the turn of the century, most organizations were expanding their operations to incorporate cybernetics, even if it wasn't their original speciality. After all, there was a way to make artificial intellect a boon to any industry, and it was seen as the inevitable future. You'll find that most organizations in this list specialized in something other than robot manufacturing; anything from software design, to construction and engineering, to consumer electronics.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
   Ah, you have discovered a DATABASE PAGE!
 
   A DATABASE contains a list or gallery of items, and is meant to be used as DETAILED REFERENCE. It may not be as approachable as a typical lore page, so if you are unfamiliar with the project, this unit would HIGHLY recommend visiting the [home page](/) first!
-</QuoteContentRowRender>
+</QuoteRow>
 
 This is a list of organizations from across the Solar System that participated in the manufacturing of neuromorphs and robots, including `drones`, `interfacers`, `behemoths`, `masterminds`, and their components. It is updated with any newly uncovered organizations. You may click on individual organizations to learn more.
 
 <OrganizationsList client:only />
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
   The company that produced this unit, DYNATEK TECHNOLOGIES, is not currently on the list. The list is INCOMPLETE, and will be updated with more organizations at LATER DATE. Those currently unaccounted for include:
 
   - `Vaughn Corporation` (Coalition)
@@ -39,4 +39,4 @@ This is a list of organizations from across the Solar System that participated i
   - `Volken Collective` (Union)
   - `Muguang` (???)
   - ...
-</QuoteContentRowRender>
+</QuoteRow>

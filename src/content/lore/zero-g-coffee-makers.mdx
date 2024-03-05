@@ -10,7 +10,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -24,13 +24,13 @@ They made those endless nights through the starry void just a little more bearab
 - The standard coffee maker of the interplanetary Union - the `Sultan ABK-1568` - doubled as a bludgeoning tool, and makes a strange grinding noise.
 - Finally, the `RUSL 229` is what spacers reached for when they settled. Better than a capsule, but worse than a proper brew.
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 `HUFSCHMIDT 5600`: German over-engineering
 
 `ABK-15BV SULTAN`: Might of the Union!
 
 `RUSL 229`: Gets job done.
-</QuoteContentRowRender>
+</QuoteRow>
 
 <ImageContentRowRender 
   images={['coffee-maker-hufschmidt', 'coffee-maker-rusl', 'coffee-maker-sultan']}

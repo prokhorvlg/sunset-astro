@@ -14,7 +14,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -28,7 +28,7 @@ It comes standard with a scratch disc reader and a light pen for those wacky Wes
 
 Have you tried playing GLOOM 3D with a light pen?
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 ## Indulge in the most feature-rich portable computer on the market.
 
 Ever tried full-powered Video Gaming on the go?
@@ -41,4 +41,4 @@ With its longer battery life, durable construction, and premium performance, the
 Improvement by Design™
 
 *© 2081 Kaizen America Computing Solutions, Inc. All brands indicated by trademark symbols are trademarked by respective companies.*
-</QuoteContentRowRender>
+</QuoteRow>

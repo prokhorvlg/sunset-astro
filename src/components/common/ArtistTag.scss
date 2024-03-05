@@ -1,5 +1,4 @@
-@import 'src/styles/imports.scss';
-
+@import "src/styles/imports.scss";
 
 .artist-tag {
   img {
@@ -17,8 +16,10 @@
   }
 
   .text-container {
+    margin-left: 5px;
+  }
+  img + .text-container {
     margin-left: 40px;
-
     @media screen and (max-width: $breakpoint-mobile) {
       margin-left: 30px;
     }

@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -23,11 +23,11 @@ A translated version of a magazine article from the other side of the Iron Curta
 
 `N8 Buryak` (or "Beetroot") is a command-combine designed to coordinate a fleet of drones more effectively than any previous Union design. While this machine appears to be designed for a civilian operation (the endless harvest), systems much like this one were armed and directed towards the local fauna and separatist groups, eventually turning the Union's Ministry of Agriculture into one of the largest military organizations in the Solar System and a powerful faction within the Union.
 
-<QuoteContentRowRender author={AuthorUniserve} left>
+<QuoteRow author={AuthorUniserve} left>
 It's safe to call this the machine equivalent of a COMBINE.
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 VICTORY OF THE CYBERNETIC MACHINE
 
 December 2046 • Technology in Life 203
@@ -68,4 +68,4 @@ Print authorized by:
 
 **N-991-DPOKB-BURYAK** for more information on AGREGAT node network
 **UNION-BURYAK for** more information on Datanet network protocol
-</QuoteContentRowRender>
+</QuoteRow>

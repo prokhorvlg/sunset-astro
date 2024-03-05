@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -25,9 +25,9 @@ import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
 - `MRDCI`: Department of Covert Intelligence for the Coalition. Does some very unsavory things. Operates ALTITUDE network, a system-wide surveillance network.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 That's who operated this space station. We really see EVERYTHING.
-</QuoteContentRowRender>
+</QuoteRow>
 
 - `Administration for Charitable Tribute (ACT)`: Handles all donations to Coalition efforts, something highly pressured in Coalition society. Distributes additional funding as deemed necessary.
 
@@ -35,17 +35,17 @@ That's who operated this space station. We really see EVERYTHING.
 
 - `Committee for Scientific Integrity (NANCOM)`: Formed in the wake of Aggregate economic disaster. Administers national internet. Rules on merits and ethics of scientific programs.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 NANCOM fielded a mastermind known as `RADIUS`, a massively powerful neuromorph in charge of the economic planning system. Their existence and exact design was covered up, but nonetheless, they controlled the Union economy for the better half of a century.
-</QuoteContentRowRender>
+</QuoteRow>
 
 - `Ministry of Colonization (MINICOL)`: Military wing of the Union. Pretty similar role to Heavenbreaker.
 
 - `Bureau of Agriculture (AGBURO)`: Handles Venusian terraforming efforts, farming, and genetic collection/engineering programs. Butts heads with Minicol.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Practically a military force of its own. Destroying the aggressive VENUSIAN BEATLES was a massive endeavor.
-</QuoteContentRowRender>
+</QuoteRow>
 
 ## Rising Pact
 
@@ -55,6 +55,6 @@ Practically a military force of its own. Destroying the aggressive VENUSIAN BEAT
 
 - `Sankalpa Temple`: Responsible for mass manufacture and authorization of the creation of any new neuromorph. Butts heads with Kojo.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Due to their DAGUIST BELIEFS, which assured that `neuromorphic circuits were targets for reincarnation` and part of the collective soul, SANKALPA enforced a more ethical approach towards machine design.
-</QuoteContentRowRender>
+</QuoteRow>

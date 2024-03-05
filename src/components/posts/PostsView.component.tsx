@@ -28,7 +28,7 @@ const PostsView = ({
           <PageHeading
             title={title}
             subtext={subtext}
-            image="computer-blinking"
+            image="posts"
             isSpooky
             isSpookyMode={isSpookyMode}
             setIsSpookyMode={setIsSpookyMode}

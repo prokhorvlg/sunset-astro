@@ -70,7 +70,8 @@ $quoteMobileSidePadding: 20px;
     li {
       color: $color-text;
     }
-    code {
+    code,
+    span.line > span {
       color: $color-highlight;
     }
     a {
@@ -212,12 +213,12 @@ $quoteMobileSidePadding: 20px;
     // $color-background,
     // $color-highlight,
     // $color-description,
-    
+
     @include recolorQuote(
       lighten($aeneas, 20%),
       lighten($aeneas, 20%),
       #381f02,
-      lighten($aeneas, 20%),
+      #ffebab,
       #e6a429
     );
     @include whiteBGQuote();
@@ -241,7 +242,7 @@ $quoteMobileSidePadding: 20px;
       lighten($gruzHighlight, 10%),
       lighten($gruzHighlight, 10%),
       darken($gruz, 35%),
-      lighten($gruz, 20%),
+      white,
       $gruz
     );
     @include whiteBGQuote();
@@ -250,15 +251,13 @@ $quoteMobileSidePadding: 20px;
     @include MinimalistAuthorBox(#50430a3d, #333209, true);
     .quote-box p {
       &::before {
-          content: "❮ ";
+        content: "❮ ";
       }
       &::after {
-          content: " ❯";
+        content: " ❯";
       }
     }
   }
-
-  
 
   // RADIUS AND THE SILENCES
   &.silence {

@@ -12,7 +12,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -36,16 +36,16 @@ However, their immense computing power and innate ability to pool those resource
 
 QUARK played a large role in the the Soviet Union's widespread cybernetics program: the `Mandate of Data Collectivization`. The robots produced by this initiative, known as `Comrades`, were designed to send real, highly-accurate information directly to government economic planning offices, verifying often-faulty human reports. In exchange, Comrades were provided free of charge, provided that one can hold out for years on a lengthy waiting list.
 
-<QuoteContentRowRender author={AuthorUniserve}>
+<QuoteRow author={AuthorUniserve}>
 The data didn't ONLY go to economic planning offices, but that seems FAIRLY OBVIOUS...
-</QuoteContentRowRender>
+</QuoteRow>
 
 Besides Comrade QUARK, there are a few other product lines we are aware of:
 
 - `Comrade PROTON`: Served as a household robot; nanny, maid, and servant all-in-one. PROTON also recorded the use rates of common products.
 - `Comrade BOSON`: Designed to manipulate and carry heavy things for use in industrial and warehousing environments. BOSON would send accurate inventory records of everything they touched to the high office.
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 **MINICYBERPROM CCCP**
 Authorized under order 110-451B
 
@@ -60,4 +60,4 @@ Official phrase: "We design intelligent cybernetics"
 Limited mobility • High dexterity • Shared computing might with nearby units
 Optimal for research assistance & statistical analysis
 Application guarantees position on waiting list • Priority granted for scientific pursuit
-</QuoteContentRowRender>
+</QuoteRow>

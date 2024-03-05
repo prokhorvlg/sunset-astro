@@ -16,6 +16,10 @@ import ScriptsAfterBody from "@/components/ScriptsAfterBody.astro"
 const posts = await getAllPosts("creation")
 const SUBTEXT =
   "A collection of contributions from wonderful exhibit visitors (fans)!"
+
+import { Content } from "@/data/creations-content.mdx"
+import * as post from "@/data/creations-content.mdx"
+import MarkdownWrapper from "@/layouts/MarkdownWrapper.astro"
 ---
 
 <!DOCTYPE html>
@@ -31,7 +35,11 @@ const SUBTEXT =
         subtext={SUBTEXT}
         processedPosts={posts}
         client:only="react"
-      />
+      >
+        <MarkdownWrapper>
+          <Content />
+        </MarkdownWrapper>
+      </CreationsView>
     </main>
     <SunsetFooter
       client:only

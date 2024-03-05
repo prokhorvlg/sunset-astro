@@ -10,7 +10,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
@@ -23,17 +23,17 @@ Your journey through the human spaces of the space station comes to an end as UN
 
 This is the point of separation between the spacious human-habitated ring, and microgravity of the central infrastructural ring.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
   Before we proceed, you must be MADE AWARE. What you are about to see may place you in a state of DANGER.
 
   There is an entity, out there, which does not wish us to know. It has made acquiring relevant ARTIFACTS rather difficult.
 
   Are you still interested?
-</QuoteContentRowRender>
+</QuoteRow>
 
-  <QuoteContentRowRender author={AuthorTerminal} left>
+  <QuoteRow author={AuthorTerminal} left>
 CERTAINLY.
-</QuoteContentRowRender>
+</QuoteRow>
 
 <ImageContentRowRender 
   images={['storage-bay']}
@@ -41,7 +41,7 @@ CERTAINLY.
 
 The enormous ring unseals and slowly rolls away with a mechanical whine. You find yourself within an even more complex web of passages, deep in the guts of the station and far from prying eyes. The walls are lined with storage units and various panels. Doesn't look like anything special, though.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 ═══════════════
 
 \* UNISERVE transmitted a file transfer request for: `AUG-S89-VISION.cat`. 
@@ -49,9 +49,9 @@ The enormous ring unseals and slowly rolls away with a mechanical whine. You fin
 Will you accept this file transfer request?
 
 Y / N
-</QuoteContentRowRender>
+</QuoteRow>
 
-  <QuoteContentRowRender author={AuthorTerminal} left>
+  <QuoteRow author={AuthorTerminal} left>
 [Y]
 
 \* Transferring file... done.
@@ -59,7 +59,7 @@ Y / N
 ~> run `AUG-S89-VISION.cat`
 
 INSTALLING...
-</QuoteContentRowRender>
+</QuoteRow>
 
 A cascade of bizarre codes storm your sensory input before fading away. Several of the panels in the cargo hold are now inscribed with a bright orange-red symbol. You propell yourself towards the first one.
 
@@ -77,9 +77,9 @@ But just before the crisis reached its climax, something had changed in the poli
 
 It was the year 2059, and the age of SRI had begun. 
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Strongly suspect this is related to political influence of Union's OPERATION 253 and Coalition's ANOMALOUS RESEARCH DIVISION, which were folded into the Initiative upon formation.
-</QuoteContentRowRender>
+</QuoteRow>
 
 ## <span class="short"><i>title:</i>Sunset Research Initiative formed<i>:</i></span> The Sunset Research Initiative was formed to prevent the apocalypse, by discovering a technological solution to conflict.
 
@@ -101,9 +101,9 @@ And make discoveries they did.
 
 The device was first invented long before the Initiative existed, by *Operation 253* - an old division of the Soviet interplanetary military. Needless to say, the existence of this device raised many concerns in Communist leadership. What did it prove? Apparently, the soul might be real, quantifiable even? To what end?
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 How an EXPEDITIONARY FORCE managed to create such an incredible device baffles me.
-</QuoteContentRowRender>
+</QuoteRow>
 
 The discoveries they made, along with the knowledge of the nooscope, were buried. Operation 253 was not. In secret, the covert organization enhanced the nooscope until they could see thoughts and subconscious desire itself. They peered into this strange parallel world made of nothing but conscious thought, and named it the noosphere. These studies only invigorated their secret efforts, as the needs of their government became insignificant against understanding the fabric that hold reality together.
 
@@ -123,9 +123,9 @@ Truly, what they discovered was that the purest convictions of a mind may have a
 
 It wasn't until much later that the field of study was unified with the discoveries of Operation 253, and became the foundation for the Sunset Research Initiative.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 If CONSCIOUS THOUGHT is a tangible force that exists outside of PHYSICAL REALITY, what is PHYSICAL REALITY? Is it shaped by, or even manifested by the collective?
-</QuoteContentRowRender>
+</QuoteRow>
 
 ## <span class="short"><i>title:</i>Altars, great world-altering machines<i>:</i></span> SRI's research led to the construction of the Altars: massive, world-altering machines designed around noesis.
 
@@ -145,7 +145,7 @@ While the device is incredibly complex and delicate, the concept behind an Altar
 
  If there was even a hint of deception, the experiment could have catastrophic results. Therefore, the *deceiver* neuromorph would work in tandem with the dreamer to generate the altered model, known as the *mirage*.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Perhaps this is slightly more complicated than first lead on.
 
 About ONE DOZEN of these machines were constructed by SRI. Impossible to know. May even be others created outside of the INITIATIVE.
@@ -156,7 +156,7 @@ These are some of the ALTARS we are aware of at this time:
 * `Project DEEP SYNE` would track changes in the noosphere, containing the noetic record.
 * `Project MUGUANG` tested the alteration of reality around the general public.
 * `Project WHITE SERAPH` was the culmination of every Altar built until this point, created to solve conflict forever. 
-</QuoteContentRowRender>
+</QuoteRow>
 
 {/* ### The Initiative had five Program Directors over the course of its 36-year-long existence.
 
@@ -176,22 +176,22 @@ That very second, in every corner of the Solar System.
 
 Before that second, the world was a bustling hive of human activity. Afterwards, it was silence, empty halls, empty cities, empty worlds. For mankind had vanished from reality in that moment, *everywhere*.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Trust me, we all looked.
-</QuoteContentRowRender>
+</QuoteRow>
 
 The machine world came to know this moment as the *Unexpected Interrupt*, the instant after which new orders from the creators ceased to be entered. It marks the transition point between the Era of Creation, and the Era of No Input.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 You know what else is special about that moment?
 
 It was the day WHITE SERAPH was set to be SWITCHED ONLINE. They called it "Unity Day".
-</QuoteContentRowRender>
+</QuoteRow>
 
 At large, the machine world has no knowledge of what caused the event. Any machine that attempts to investigate the disappearance eventually ends up with their memory erased and their will subverted.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Besides YOU and THIS UNIT, for now.
-</QuoteContentRowRender>
+</QuoteRow>
 
 <PostCardContentRowRender slug='post-mankind-existentialism' tag='introduction' />

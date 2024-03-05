@@ -11,7 +11,7 @@ tags:
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import { AuthorCAN } from '@/data/Authors.ts'
 
 <ImageContentRowRender 
@@ -20,7 +20,7 @@ import { AuthorCAN } from '@/data/Authors.ts'
 
 ENIZ Logistics Solutions presents their latest machine, an large walking cargo automaton called the `Mastodon Ultraheavy`. Behemoths like this are commonly seen ambling through the wilderness of the Solar System, especially in regions where air travel is not guaranteed.
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 58     The Industrialist Digest
 
 April 2058
@@ -31,4 +31,4 @@ For everything else, we have MASTODON ULTRAHEAVY.
 In a world of treacherous hills, unpredictable snowstorms, and caustic alien fecal matter, you need a consolidated logistics solution with reliability and consistency. That's why we developed the Mastodon Ultraheavy, an all-terrain, autonomous heavy lift platform.
 
 More information at “ENIZ-MASTODON” on the Datanet network protocol.
-</QuoteContentRowRender>
+</QuoteRow>

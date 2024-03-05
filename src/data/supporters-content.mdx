@@ -5,7 +5,7 @@ description: 'Sunset System may be my pet project, but it was not built alone!'
 import { faPatreon } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import HeadingContentRowRender from '@/components/common/ContentRow/HeadingContentRowRender.astro'
@@ -16,9 +16,9 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 
     A huge thank you to everyone on this page, and to anyone else that has supported my work!
 
-<QuoteContentRowRender author={AuthorUniserve} >
-    Special thanks to my partner, BLACK_VELVET, for putting up with me doing... whatever this is... when I'm not performing my primary functions.
-</QuoteContentRowRender>
+<QuoteRow author={AuthorUniserve} >
+    Special thanks to my partner, BLACK_VELVET, for putting up with me doing... whatever this is... when this unit is not performing its primary functions.
+</QuoteRow>
 
 ---
 
@@ -27,13 +27,13 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 ### 🛠️ Goldspire Crew
 > Contributing members of Sunset System, focused around the development of a Sunset System video game. (currently on hiatus)
 
-- `TheOneTruBae (Kyle)`: Lead developer, handles everything related to game tech.
 - `Bughana (Nick)`: Concept musician and occasional programmer.
 - `superwendel (Wendel)`: Concept musician and often programmer.
 
 ### 💽 Contributors
 > Recognition of crew who contribute passively or have contributed in the past.
 
+- `TheOneTruBae (Kyle)`: Lead developer, handles everything related to game tech.
 - `Kyanicu (Kat)`: Lead level designer and programmer.
 - `Adam`: Programmer. Helped with some of the game's tooling.
 - `dajaca25 (Dan)`: Artist. Came up with the look of Union androids.
@@ -44,8 +44,8 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 > Special mentions for community members.
 
 - `Larkine`: for some beautiful artistic contributions to the project.
-- `TheRedPharaoh`: for being a cool server contributer.
 - `Nervosus`: for being so incredibly supportive of my work.
+- `televangeline`: for their amazing contributions which truly embody the spirit of Sunset.
 
 ### ✨ Patrons
 > Community members who have subscribed to the Patreon page!

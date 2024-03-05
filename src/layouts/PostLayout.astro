@@ -1,74 +1,112 @@
 ---
-import BaseHead from '@/components/BaseHead.astro';
-import MarkdownWrapper from '@/layouts/MarkdownWrapper.astro';
-import SunsetFooter from '@/components/layout/Footer/SunsetFooter.component';
-import SunsetHeader from '@/components/layout/Header/SunsetHeader.component';
-import PostHeading from '@/components/post/PostHeading.component';
-import PostNavigationBar from '@/components/post/PostNavigationBar.component';
+import BaseHead from "@/components/BaseHead.astro"
+import MarkdownWrapper from "@/layouts/MarkdownWrapper.astro"
+import SunsetFooter from "@/components/layout/Footer/SunsetFooter.component"
+import SunsetHeader from "@/components/layout/Header/SunsetHeader.component"
+import PostHeading from "@/components/post/PostHeading.component"
+import PostNavigationBar from "@/components/post/PostNavigationBar.component"
 
-import { findAdjacentProcessedPosts } from '@/utils/posts';
-import { processPost, sortProcessedPostsByPubDate, getAllPosts, processPosts } from '@/utils/astroHelpers';
-import TableOfContents from '@/components/common/TableOfContents/TableOfContents.component';
-import RedirectSecret from '@/components/layout/common/RedirectSecret.component';
-import ScriptsAfterBody from '@/components/ScriptsAfterBody.astro';
+import { findAdjacentProcessedPosts } from "@/utils/posts"
+import {
+  processPost,
+  sortProcessedPostsByPubDate,
+  getAllPosts,
+  processPosts,
+} from "@/utils/astroHelpers"
+import TableOfContents from "@/components/common/TableOfContents/TableOfContents.component"
+import RedirectSecret from "@/components/layout/common/RedirectSecret.component"
+import ScriptsAfterBody from "@/components/ScriptsAfterBody.astro"
 
-const { post, image = null } = Astro.props;
-const posts = await getAllPosts();
+const { post, image = null, postType } = Astro.props
+
+const getPostType =
+  postType === "creation" ? "creation" : "canon"
+const getTargetCollection =
+  postType === "creation" ? "creations" : "posts"
+const getTargetText =
+  postType === "creation" ? "Creation" : "Post"
+
+const posts = await getAllPosts(getPostType)
 const sortedPosts = sortProcessedPostsByPubDate(posts)
-const { previousPost, nextPost } = findAdjacentProcessedPosts(sortedPosts, post.data.title)
+const { previousPost, nextPost } =
+  findAdjacentProcessedPosts(sortedPosts, post.data.title)
 
 const processedPost = await processPost(post)
 const processedThumb = processedPost.processedThumbImage
-const { headings } = await post.render();
+const { headings } = await post.render()
 
-const showTableOfContents = 
-	post.data?.noTableOfContents === undefined ||
-	post.data?.noTableOfContents === false
+const showTableOfContents =
+  post.data?.noTableOfContents === undefined ||
+  post.data?.noTableOfContents === false
 
-const isIntroduction = post.collection === "introduction" || post.collection === "database"
+const isIntroduction =
+  post.collection === "introduction" ||
+  post.collection === "database"
 let metaTitle = post.data.title
 let metaDescription = post.data.mainText
 if (isIntroduction) {
-	metaTitle = post.data.mainText
-	metaDescription = post.data.subText
+  metaTitle = post.data.mainText
+  metaDescription = post.data.subText
 }
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead 
-			title={metaTitle} 
-			description={metaDescription} 
-			image={image} 
-			isLargeImage={(image !== null)} 
-		/>
-	</head>
-	<body>
-		<SunsetHeader client:only currentPage={Astro.url.pathname} />
-		<PostHeading 
-			post={post} 
-			processedThumb={processedThumb}
-			postType={post.collection}
-			client:only 
-		/>
-		<RedirectSecret postType={post.collection} client:only />
-		<div class="aside-container">
-			{ showTableOfContents && <TableOfContents headings={headings} client:only /> }
-			<main>
-				<MarkdownWrapper postType={post.collection}><slot /></MarkdownWrapper>
-				{ post.collection !== "secret" &&
-					<PostNavigationBar previousPost={previousPost} nextPost={nextPost}/>
-				}
-				<!-- <JamComments path={url} /> -->
-			</main>
-		</div>
-		<SunsetFooter 
-			client:only
-			currentPage={Astro.url.pathname}
-			postType={post.collection}
-		/>
+  <head>
+    <BaseHead
+      title={metaTitle}
+      description={metaDescription}
+      image={image}
+      isLargeImage={image !== null}
+    />
+  </head>
+  <body>
+    <SunsetHeader
+      client:only
+      currentPage={Astro.url.pathname}
+    />
+    <PostHeading
+      post={post}
+      processedThumb={processedThumb}
+      postType={post.collection}
+      client:only
+    />
+    <RedirectSecret
+      postType={post.collection}
+      client:only
+    />
+    <div class="aside-container">
+      {
+        showTableOfContents && (
+          <TableOfContents
+            headings={headings}
+            client:only
+          />
+        )
+      }
+      <main>
+        <MarkdownWrapper postType={post.collection}>
+          <slot />
+        </MarkdownWrapper>
+        {
+          post.collection !== "secret" && (
+            <PostNavigationBar
+              previousPost={previousPost}
+              nextPost={nextPost}
+              targetCollection={getTargetCollection}
+              itemName={getTargetText}
+            />
+          )
+        }
+        <!-- <JamComments path={url} /> -->
+      </main>
+    </div>
+    <SunsetFooter
+      client:only
+      currentPage={Astro.url.pathname}
+      postType={post.collection}
+    />
 
-		<ScriptsAfterBody />
-	</body>
+    <ScriptsAfterBody />
+  </body>
 </html>

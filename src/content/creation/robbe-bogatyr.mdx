@@ -1,19 +1,30 @@
 ---
-title: "robbe-bogatyr"
-mainText: "bevaupeh-drones"
-subText: "Collection of Venusian insectoid-dinosaurs!"
-pubDate: "Jan 26 2024"
+title: "Robbe's Bogatyr-M/cc"
+mainText: "Robbe's Bogatyr-M/cc"
+subText: "Close-quarters combat variation of the TR-60 Bogatyr, a behemoth used by the Union."
+pubDate: "Oct 4 2023"
 thumbImage: "robbe-bogatyr"
+thumbAlignment: "center 35%"
 tags:
-  - canonized
-  # - distinguished
+  - canon
+  - original
 
-author: televangeline
+author: robbe
+authorURL: https://flickr.com/photos/145236510@N06/
 ---
 
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorUniserve } from '@/data/Authors.ts'
 
 <ImageContentRowRender 
   images={['robbe-bogatyr']}
 />
+
+<QuoteRow author={AuthorUniserve} >
+Excellent work, ROBBE :]
+
+This references the [Bogatyr behemoth](/posts/behemoths).
+
+Here is a link to the <a href="https://flickr.com/photos/145236510@N06/53233121526/" target="_blank">original</a>, by Robbe37 on Flickr.
+</QuoteRow>

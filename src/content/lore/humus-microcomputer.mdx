@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN } from '@/data/Authors.ts'
 
@@ -27,7 +27,7 @@ Ultimately, the design firm was forced to produce the HUMUS Radial to satisfy th
 
 Guess there's something to radial screens after all.
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 ## HUMUS.™
 
 It’s the radial microcomputer everyone’s talking about.
@@ -42,4 +42,4 @@ Yep, it’s that radial microcomputer. Try it now at your local cybernetics stor
 
 **“We are thinking ahead of the competition.”**
 *KASA CYBERNETICS INC.*
-</QuoteContentRowRender>
+</QuoteRow>

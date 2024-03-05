@@ -39,14 +39,14 @@ export const LinksSegment = ({
           dropText={CommonText.map}
           isFooter={isFooter}
         />
-        {/* <HeaderLink
+        <HeaderLink
           title="Creations"
           active={currentPage === "/creations"}
           icon={faHeart}
           target={CommonLinks.creations}
           dropText={CommonText.creations}
           isFooter={isFooter}
-        /> */}
+        />
         <HeaderLink
           title="Credits"
           active={currentPage === "/credits"}

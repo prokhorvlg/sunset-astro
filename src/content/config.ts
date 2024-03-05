@@ -32,6 +32,7 @@ const collectionSetup = {
     patreonLocked: z.boolean().optional(),
     target: z.string().optional(),
     author: z.string().optional(),
+    authorURL: z.string().optional(),
   }),
 }
 

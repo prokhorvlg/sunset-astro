@@ -4,6 +4,7 @@ const TagStrategy = {
   "retrofuturistic dreams": "retrofuturistic dreams",
   "core mystery": "core mystery",
   distinguished: "distinguished",
+  canonized: "canonized",
 }
 
 interface Props {

@@ -9,10 +9,12 @@ const CreationsView = ({
   title,
   subtext,
   processedPosts,
+  children,
 }: {
   title: string
   subtext: string
   processedPosts: ProcessedPost[]
+  children?: any
 }) => {
   return (
     <div className="posts-view">
@@ -21,17 +23,17 @@ const CreationsView = ({
         subtext={subtext}
         image="creations"
       />
-      {/* {processedPosts.map((post) => {
-        return <div>{post.post.slug}</div>
-      })} */}
+
+      {children}
+
       <PostsGrid
         processedPosts={processedPosts}
         usesFilter={false}
       />
       <TransitionGradient
         direction="to-bottom"
-        floaterTextRight="bla"
-        floaterTextLeft="yes"
+        floaterTextRight="0X0018"
+        floaterTextLeft="memory file located"
         classes=""
       />
     </div>

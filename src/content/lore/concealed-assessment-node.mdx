@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -21,21 +21,21 @@ import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
 Concealed Assessment Node, or `CAN`, is one of the hundreds of robotic trash cans that were found at MRDCI's covert intelligence-gathering space station. It's a sort of spy gadget - designed to take photographs, videos, and audio recordings while looking fairly inconspicuous. If only not for the huge, obvious, high-quality camera eye.
 
-<QuoteContentRowRender author={AuthorCAN}>
+<QuoteRow author={AuthorCAN}>
 \> MUST ACQUIRE DOCUMENTS AT ALL COSTS.
 
 \> NONE WILL STAND IN OUR WAY.
 
 \> SNAP SNAP SNAP
-</QuoteContentRowRender>
+</QuoteRow>
 
 Long after mankind has vanished from reality, CAN has been assigned to protect you (the visitor) and transcribe documents you stumble upon. Not a problem, it lines up with their core directive nicely. They're a fairly simple robot, and don't appear to be self-aware, unlike UNISERVE.
 
-<QuoteContentRowRender author={AuthorUniserve} left>
+<QuoteRow author={AuthorUniserve} left>
 If you haven't met CAN yet, head to the [home page](/)!
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 CONFIDENTIAL
 
 Classification: Top Secret 3
@@ -53,4 +53,4 @@ This is an intelligent data collection system disguised as a standard-issue garb
 The origins of this device is unknown. At least 250 have been recovered from offices and rest areas.
 
 Remain vigilant
-</QuoteContentRowRender>
+</QuoteRow>

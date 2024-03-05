@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -35,13 +35,13 @@ import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
   PAL was initially released with two models, `Draw` and `Pro`. Several years later, Maple would release the Pal Mini, a cheaper screen-less design relying on vocal interfacing. Maple and its competitors would ultimately release thousands of various teleindexer models.
 
-  <QuoteContentRowRender author={AuthorUniserve} left >
+  <QuoteRow author={AuthorUniserve} left >
 There are still at least a few dozen PALS and other TELEINDEXERS lying around this space station. They fell to the ground, completely immobile, the moment the UNEXPECTED INTERRUPT occured.
 
 But they weren't ENTIRELY HELPLESS. No legs, sure, but they half-exist in the realm of the digital. Like THIS UNIT.
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 ## Say hello to Pal, your new best friend.
 
 *Pal Draw   Pal Pro*
@@ -66,4 +66,4 @@ Pal is available for a week-long test run at your local authorized Maple dealer.
 See things differently.
 
 *All rights reserved. Maple, the Maple logo, PAL, and Pal are registered trademarks of Maple Cybernetic Inc. To learn more about the product or to find an authorized Maple dealer nearest you, please call (800)-662-9238 or write Maple Cybernetic Inc. Advertising and Promotion Department, 1009 McIntosh Road, Sunnyvale, CA 95088.*
-</QuoteContentRowRender>
+</QuoteRow>

@@ -12,7 +12,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve, AuthorTerminal } from '@/data/Authors.ts'
 
@@ -26,14 +26,14 @@ import { AuthorCAN, AuthorUniserve, AuthorTerminal } from '@/data/Authors.ts'
 
 - Slugma grow disposable eyeballs which fall off when they're stressed. This is likely an adaptation to the storm seasons of Titan, during which eyes may be... too much of a liability?
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 Several SLUGMA species have been found to be SELF-AWARE and INTELLIGENT. 
 
 Some units speculate that, with mankind gone, it is only a matter of FEW MILLION YEARS before slugma evolve to take their place as the next GREAT ORGANISM of the Solar System.
 
 Which BEGS the question...
-</QuoteContentRowRender>
+</QuoteRow>
 
-  <QuoteContentRowRender author={AuthorTerminal} left>
+  <QuoteRow author={AuthorTerminal} left>
 Did humanity inherit the System, too?
-</QuoteContentRowRender>
+</QuoteRow>

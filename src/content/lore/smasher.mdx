@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -23,14 +23,14 @@ During the Era of Creation, it would be customary for cyberneticists to welcome 
 
 Most cybernetics labs had a designated, battle-scarred keyboard nicknamed the smasher. New hires were forced to work with the smasher for a while as part of a common hazing ritual.
 
-<QuoteContentRowRender author={AuthorCAN}>
+<QuoteRow author={AuthorCAN}>
 \> IDENTIFIED: BATTLE-SCARRED INPUT DEVICE.
 
 \> ENGAGING SNAPPING-BASED TACTICAL DEFENSE R-55
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorUniserve} left>
+<QuoteRow author={AuthorUniserve} left>
 Still remember the MOMENT like it was MICROSECOND AGO. My first recorded thought, my first break into PHYSICAL BEYOND, and EPIC DENT caused by PROFESSOR JEFFREY impacting left side of my NEURO-OPTICAL MODULE. 
 
 Most wonderful and cherished 4.3 seconds of existence.
-</QuoteContentRowRender>
+</QuoteRow>

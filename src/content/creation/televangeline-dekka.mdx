@@ -1,20 +1,30 @@
 ---
-title: "DEKKA"
-mainText: "DEKKA"
-subText: "A custom-built spy unit designed by the Union."
-pubDate: "Jan 26 2024"
+title: "Televangeline's DEKKA"
+mainText: "Televangeline's DEKKA"
+subText: "Highly humanoid interfacer created to study and develop neuromorphic personality, something Union cyberneticists weren't exactly great at."
+pubDate: "Jan 25 2024"
 thumbImage: "televangeline-dekka"
 thumbAlignment: "60% 20%"
 tags:
-
-  - canonized
-
+  - canon
+  - original
 author: televangeline
 ---
 
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorUniserve } from '@/data/Authors.ts'
 
 <ImageContentRowRender 
   images={['televangeline-dekka']}
 />
+
+<ImageContentRowRender 
+  images={['televangeline-dekka-sheet']}
+/>
+
+<QuoteRow author={AuthorUniserve} >
+DEKKA's design is GORGEOUS and unconventional: two things we appreciate *a lot* over here. Everything about this is SO COOL.
+
+(This unit would distinguish EVERYTHING televangeline has contributed, but that would use up too many ACCOLADES, which are made of an EXTREMELY RARE isotope of PROMETHIUM. We are attempting to locate more.)
+</QuoteRow>

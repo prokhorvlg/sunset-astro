@@ -44,18 +44,18 @@ const PostHeading = ({
       {/* Secrets do not have post headings */}
       {postType !== "secret" && (
         <div className="date-row">
-          <Button
-            classes="back-all-posts"
-            type={ButtonType.Link}
-            linkURL="/posts"
-          >
-            <>
-              <FontAwesomeIcon
-                icon={faArrowLeft}
-              ></FontAwesomeIcon>
-              <span>All Posts</span>
-            </>
-          </Button>
+          {postType === "creation" && (
+            <PostHeadingBackButton
+              linkURL="/creations"
+              text="All Creations"
+            />
+          )}
+          {postType !== "creation" && (
+            <PostHeadingBackButton
+              linkURL="/posts"
+              text="All Posts"
+            />
+          )}
           <DialogContainer
             wrapStyle={{
               headerTitle: post.data.title,
@@ -183,5 +183,28 @@ const PostHeading = ({
     </FullWidthWrapper>
   )
 }
-//by prokhorVLG
+
+const PostHeadingBackButton = ({
+  linkURL,
+  text,
+}: {
+  linkURL: string
+  text: string
+}) => {
+  return (
+    <Button
+      classes="back-all-posts"
+      type={ButtonType.Link}
+      linkURL={linkURL}
+    >
+      <>
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+        ></FontAwesomeIcon>
+        <span>{text}</span>
+      </>
+    </Button>
+  )
+}
+
 export default PostHeading

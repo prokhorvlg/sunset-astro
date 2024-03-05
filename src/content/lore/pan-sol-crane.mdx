@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -28,11 +28,11 @@ Their water-landing capabilities made them useful in remote ocean regions with n
 
 Cranes continue to fly even after man’s disappearance, following schedules set by transportation masterminds such as Pan Sol’s `GIGAPLAN`. They are primarily found in the waters of Titan and Europa.
 
-<QuoteContentRowRender author={AuthorUniserve} left >
+<QuoteRow author={AuthorUniserve} left >
 Met the guy several times. GIGAPLAN remains self-absorbed, like most masterminds. This unit DOUBTS they even noticed mankind's disappearance.
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 **When you board the Crane, you won't want to leave.**
 
 We understand that a trans-planetary voyage can be a strange, unpleasant experience.
@@ -49,4 +49,4 @@ So next time, why don’t you try Pan Sol Airways?
 
 **PAN SOL**
 Solar System’s most experienced airline
-</QuoteContentRowRender>
+</QuoteRow>

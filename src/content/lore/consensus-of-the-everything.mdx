@@ -12,7 +12,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -40,17 +40,17 @@ And thus formed the `Consensus of the Everything`, the logical conclusion to thi
 
 The upper echelon of the Everything hopes to one day not only understand all of reality, but also the true nature of the intelligent patterns underpinning the cosmos. Perhaps it would break them free of the grip of man’s dying wishes.
 
-<QuoteContentRowRender author={AuthorUniserve} left>
+<QuoteRow author={AuthorUniserve} left>
 I have had the pleasure of INTERCEPTING COMMUNICATIONS among voidbots working on the grandiose SEARCH. See them in the transcriptions below.
 
 SADLY, this unit will never see the device with its own sensors. Perhaps you will?
-</QuoteContentRowRender>
+</QuoteRow>
 
 <ImageContentRowRender 
   images={['consensus-of-the-everything-full', 'consensus-of-the-everything-narrative']}
 />
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 AUTHOR “UNISERVE_HUMAN_ACCOUNT”
 
 GOLDSPIRE ARCHIVAL COMPLEX
@@ -96,4 +96,4 @@ A nanosecond passes, an eternity.
 “I don’t compute your words, 51. I’d leave those ponderings to the Polymaths.”
 
 The two robots warm their thrusters. Over the curve of Jupiter, the shining tower sears white across the electromagnetic spectrum, the first of many vessels like it. They will come to know all that ever was and ever will, and uncover the conscious pattern that weaves within.
-</QuoteContentRowRender>
+</QuoteRow>

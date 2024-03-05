@@ -1,14 +1,13 @@
-@import './imports.scss';
+@import "./imports.scss";
 
 // LAYOUT COMPONENTS
 // Components that form the page layout.
-@import './layout/full-width-wrapper.scss';
-@import './layout/PostsView.scss';
-
+@import "./layout/full-width-wrapper.scss";
+@import "./layout/PostsView.scss";
 
 // BODY
 // Components that form the content of the page.
-@import './body/quote.scss';
+@import "./body/quote.scss";
 
 // - SIMPLE CONTAINER
 .simple-container {
@@ -65,7 +64,6 @@
 }
 
 .heading-content-row {
-
   h1,
   h2,
   h3,
@@ -86,7 +84,6 @@
       font-size: 20px;
       line-height: 30px;
     }
-
   }
 
   h3,
@@ -169,7 +166,6 @@
 
   // Normal heading with red x box
   &.grandiose {
-
     h1,
     h2,
     h3,
@@ -226,20 +222,22 @@
         @include abg-red-diagonal();
 
         $borderWidth: 2px;
-        background:
-          linear-gradient(to top left,
+        background: linear-gradient(
+            to top left,
             rgba(0, 0, 0, 0) 0%,
             rgba(0, 0, 0, 0) calc(50% - $borderWidth),
             $color-sunset-red 50%,
             rgba(0, 0, 0, 0) calc(50% + $borderWidth),
-            rgba(0, 0, 0, 0) 100%),
-          linear-gradient(to top right,
+            rgba(0, 0, 0, 0) 100%
+          ),
+          linear-gradient(
+            to top right,
             rgba(0, 0, 0, 0) 0%,
             rgba(0, 0, 0, 0) calc(50% - $borderWidth),
             $color-sunset-red 50%,
             rgba(0, 0, 0, 0) calc(50% + $borderWidth),
-            rgba(0, 0, 0, 0) 100%);
-
+            rgba(0, 0, 0, 0) 100%
+          );
 
         @media screen and (max-width: $breakpoint-tablet) {
           position: relative;
@@ -257,8 +255,6 @@
           background: none;
         }
       }
-
-
     }
   }
 
@@ -378,7 +374,6 @@
           }
         }
       }
-
     }
   }
 
@@ -406,7 +401,8 @@
 
     &.red {
       background: $color-sunset-orange;
-      box-shadow: 0px 3px 2px 0 rgba($color-sunset-orange, 0.1);
+      box-shadow: 0px 3px 2px 0
+        rgba($color-sunset-orange, 0.1);
     }
 
     &.yellow {
@@ -508,7 +504,7 @@
       }
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -1px;
         left: 0px;
@@ -556,13 +552,15 @@
 
       @include abg(0.3);
       @include abg-red-diagonal();
-      filter: drop-shadow(0 0 0.5rem rgba($color-background-dark, 0.8));
+      filter: drop-shadow(
+        0 0 0.5rem rgba($color-background-dark, 0.8)
+      );
 
       @media screen and (max-width: $breakpoint-mobile) {
         display: none;
       }
 
-      >svg,
+      > svg,
       p {
         @include abg-child();
       }
@@ -641,7 +639,6 @@
         display: block;
         width: 100%;
       }
-
     }
   }
 
@@ -728,7 +725,6 @@
     &:hover,
     &:focus {
       .icon-container {
-
         svg,
         .title {
           color: $color-sunset-manila;
@@ -746,7 +742,6 @@
       justify-content: flex-start;
 
       .icon-container {
-
         //flex-direction: row;
         .title {
           //display: block;
@@ -795,7 +790,8 @@
   }
 
   // (no style, just padding and transparent)
-  &.none {}
+  &.none {
+  }
 
   &.simple {
     border: $size-line-width solid $color-sunset-red;
@@ -810,7 +806,6 @@
 }
 
 // HOME PAGE
-
 
 // HEADER NAV, MOBILE
 .sunset-button.simple.menu {
@@ -870,7 +865,6 @@
             display: block;
           }
         }
-
       }
     }
   }
@@ -909,7 +903,7 @@
         margin-left: 30px;
       }
 
-      >ul {
+      > ul {
         padding: 0;
         margin: 0;
         display: flex;
@@ -959,7 +953,7 @@
               bottom: -50px;
               right: 0;
               left: 0;
-              background: url('/images/Hero_Background.png');
+              background: url("/images/Hero_Background.png");
               background-size: cover;
               background-repeat: no-repeat;
               background-position: center;
@@ -997,9 +991,11 @@
             @include abg();
 
             &::after {
-              background: linear-gradient(185deg,
-                  rgba(152, 42, 0, 0.8) 0%,
-                  rgba(255, 99, 1, 0) 20%);
+              background: linear-gradient(
+                185deg,
+                rgba(152, 42, 0, 0.8) 0%,
+                rgba(255, 99, 1, 0) 20%
+              );
               mix-blend-mode: multiply;
               z-index: 2;
             }
@@ -1009,7 +1005,8 @@
             padding: 60px 60px 60px 60px;
             //max-width: 1000px;
             flex: 1;
-            border-left: $size-line-width solid $dialog-main-color;
+            border-left: $size-line-width solid
+              $dialog-main-color;
             position: relative;
             border-radius: $chicanery-border-radius;
             background: $color-ultradark-red;
@@ -1074,7 +1071,9 @@
     flex-shrink: 0;
 
     .dialog-wrap-slot {
-      height: calc(100% - $size-line-width - $size-line-width);
+      height: calc(
+        100% - $size-line-width - $size-line-width
+      );
       background: rgba($color-sunset-red, 0.1);
       border-color: $color-sunset-red;
 
@@ -1148,7 +1147,11 @@
         left: 0;
         right: 2px;
         opacity: 1;
-        background: linear-gradient(0deg, rgba($color-background-dark, 1) 0%, rgba($color-background-dark, 0.7) 80%);
+        background: linear-gradient(
+          0deg,
+          rgba($color-background-dark, 1) 0%,
+          rgba($color-background-dark, 0.7) 80%
+        );
         background-size: 100%;
         background-position: 0% 0%;
         z-index: -99;
@@ -1163,7 +1166,11 @@
         right: 2px;
         opacity: 0.9;
         //background: black;
-        background: linear-gradient(0deg, rgba($color-background-dark, 1) 0%, rgba($color-background-dark, 0.7) 80%);
+        background: linear-gradient(
+          0deg,
+          rgba($color-background-dark, 1) 0%,
+          rgba($color-background-dark, 0.7) 80%
+        );
         z-index: -98;
         transition: 0.1s ease-in-out;
       }
@@ -1238,7 +1245,10 @@
   // Blue-colored navlink button
   &.melancholic {
     .dialog-wrap-slot {
-      background-color: rgba($color-sunset-melancholic, 0.1);
+      background-color: rgba(
+        $color-sunset-melancholic,
+        0.1
+      );
     }
 
     .dialog-wrap-slot,
@@ -1257,7 +1267,10 @@
     }
 
     .nav-link-pushdown div.icon {
-      background-color: rgba($color-sunset-melancholic, 0.2);
+      background-color: rgba(
+        $color-sunset-melancholic,
+        0.2
+      );
     }
 
     .dialog-wrap .dialog-wrap-slot:hover {
@@ -1285,7 +1298,7 @@
 }
 
 // - POST: TAG CLOUD
-@mixin tag-color ($className, $color, $textColor: white) {
+@mixin tag-color($className, $color, $textColor: white) {
   &#{$className} {
     border: $size-line-width solid transparent;
     background-color: $color;
@@ -1338,11 +1351,26 @@
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 
-    @include tag-color(".post-mankind", $color-post-mankind);
-    @include tag-color(".retrofuturistic", $color-retro-dreams);
+    @include tag-color(
+      ".post-mankind",
+      $color-post-mankind
+    );
+    @include tag-color(
+      ".retrofuturistic",
+      $color-retro-dreams
+    );
     @include tag-color(".core", $color-core-mystery);
-    @include tag-color(".distinguished", $color-distinguished);
+    @include tag-color(".distinguished", #a52303, #fff6d0);
 
+    &::before {
+      margin-right: 5px;
+    }
+    &.distinguished::before {
+      content: "◈";
+    }
+    &.canon::before {
+      content: "✔";
+    }
 
     &:hover {
       color: white;
@@ -1356,7 +1384,7 @@
       padding-right: 2px;
     }
 
-    @mixin canonTag ($color) {
+    @mixin canonTag($color) {
       position: relative;
       @include bbg(1);
       font-family: $font-code;
@@ -1364,12 +1392,12 @@
 
       &::before {
         z-index: -1;
-        background: url('/images/patterns/dark-diag.svg');
+        background: url("/images/patterns/dark-diag.svg");
         background-size: 110px;
       }
 
       &::after {
-        content: '⚠️';
+        content: "⚠️";
         font-family: $font-code;
       }
 
@@ -1398,7 +1426,6 @@
     }
   }
 }
-
 
 .post-navigation-bar {
   margin-top: 200px;
@@ -1468,7 +1495,11 @@ $post-heading-width: 1000px;
 
 .heading-area {
   margin: 0 auto;
-  background: linear-gradient(0deg, rgba(36, 21, 14, 0) 70%, rgba(36, 21, 14, 1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(36, 21, 14, 0) 70%,
+    rgba(36, 21, 14, 1) 100%
+  );
 
   .dialog-wrap .border {
     z-index: 0;
@@ -1496,14 +1527,16 @@ $post-heading-width: 1000px;
     .heading-content {
       width: $width-1000;
       max-width: 100%;
-      margin: -50px $space-around-heading-content 50px $space-around-heading-content;
+      margin: -50px $space-around-heading-content 50px
+        $space-around-heading-content;
       z-index: 1;
 
       @media screen and (max-width: $post-heading-width) {
-        margin: 60px $space-around-heading-content 10px $space-around-heading-content;
+        margin: 60px $space-around-heading-content 10px
+          $space-around-heading-content;
       }
 
-      >div,
+      > div,
       h1,
       p {
         position: relative;
@@ -1550,19 +1583,22 @@ $post-heading-width: 1000px;
   }
 
   &.post {
-
     &.introduction,
     &.lore {
-
       // Only hide the floater on mobile for intro and lore
-      .transition-gradient-dialog .main-area-wrapper .main-area.pull-down .floater {
+      .transition-gradient-dialog
+        .main-area-wrapper
+        .main-area.pull-down
+        .floater {
         @media screen and (max-width: $breakpoint-mobile) {
           display: none;
         }
       }
     }
 
-    .transition-gradient-dialog .main-area-wrapper .main-area.pull-down {
+    .transition-gradient-dialog
+      .main-area-wrapper
+      .main-area.pull-down {
       margin-bottom: -200px;
 
       @media screen and (max-width: $breakpoint-mobile) {
@@ -1639,7 +1675,6 @@ $post-heading-width: 1000px;
           @media screen and (max-width: $breakpoint-mobile) {
             margin-right: 0;
           }
-
         }
 
         p {
@@ -1700,7 +1735,6 @@ $post-heading-width: 1000px;
       position: relative;
       margin-left: 2px;
       margin-right: 2px;
-
     }
 
     .heading-crown {
@@ -1814,14 +1848,14 @@ $post-heading-width: 1000px;
         }
 
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           left: 0;
           top: -300px;
           right: 0;
           bottom: -300px;
           opacity: 0.03;
-          background-image: url('/images/streak.webp');
+          background-image: url("/images/streak.webp");
           background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
@@ -1833,39 +1867,67 @@ $post-heading-width: 1000px;
 
         .heading-image {
           max-width: 100%;
+          position: relative;
 
           &.posts {
-            position: relative;
-
-            .computer {
+            .posts-image {
               max-width: 100%;
               filter: $standardBoxShadow contrast(1.05);
             }
-
-            .screen-gif {
+            .posts-anim {
               top: 12.5%;
               left: 36%;
               position: absolute;
               z-index: 99;
             }
-
             @media screen and (max-width: 820px) {
-              .computer {
+              .posts-image {
                 width: 600px;
               }
-
-              .screen-gif {
+              .posts-anim {
                 width: 156px;
               }
             }
-
             @media screen and (max-width: 620px) {
-              .computer {
+              .posts-image {
                 width: 400px;
               }
-
-              .screen-gif {
+              .posts-anim {
                 width: 102px;
+              }
+            }
+          }
+
+          &.creations {
+            margin-top: -100px;
+            @media screen and (max-width: 820px) {
+              margin-top: 0;
+            }
+
+            .creations-image {
+              max-width: 100%;
+              filter: $standardBoxShadow contrast(1.05);
+            }
+            .creations-anim {
+              top: 8%;
+              left: 1%;
+              position: absolute;
+              z-index: 99;
+            }
+            @media screen and (max-width: 820px) {
+              .creations-image {
+                width: 600px;
+              }
+              .creations-anim {
+                width: 548px;
+              }
+            }
+            @media screen and (max-width: 620px) {
+              .creations-image {
+                width: 400px;
+              }
+              .creations-anim {
+                width: 365px;
               }
             }
           }
@@ -1933,7 +1995,9 @@ $post-heading-width: 1000px;
       }
     }
 
-    .transition-gradient-dialog .main-area-wrapper .main-area.pull-down {
+    .transition-gradient-dialog
+      .main-area-wrapper
+      .main-area.pull-down {
       margin-bottom: -300px;
 
       // If screen too flat, shrink a bit more
@@ -2243,7 +2307,6 @@ $post-heading-width: 1000px;
       }
     }
   }
-
 }
 
 .image-content-row {
@@ -2357,7 +2420,7 @@ $post-heading-width: 1000px;
     }
 
     &::before {
-      content: '';
+      content: "";
       z-index: 1;
       display: block;
       position: absolute;
@@ -2368,7 +2431,11 @@ $post-heading-width: 1000px;
       border-radius: $chicanery-border-radius;
       opacity: 0;
 
-      background: linear-gradient(to bottom, $color-sunset-orange, $color-sunset-red);
+      background: linear-gradient(
+        to bottom,
+        $color-sunset-orange,
+        $color-sunset-red
+      );
       transition: 0.1s ease-in-out;
       user-select: none;
       pointer-events: none;
@@ -2408,7 +2475,8 @@ $post-heading-width: 1000px;
   justify-content: flex-end;
   gap: 5px;
 
-  a {}
+  a {
+  }
 }
 
 .bubble-tag {
@@ -2417,7 +2485,11 @@ $post-heading-width: 1000px;
   z-index: 50;
 
   border: 2px solid $color-sunset-red;
-  background: linear-gradient(to right, darken($color-ultradark-red, 4%), $color-ultradark-red);
+  background: linear-gradient(
+    to right,
+    darken($color-ultradark-red, 4%),
+    $color-ultradark-red
+  );
   color: $color-sunset-orange;
   padding: 2px;
   border-radius: 100px;
@@ -2442,7 +2514,7 @@ $post-heading-width: 1000px;
       font-size: 14px;
     }
 
-    >span {
+    > span {
       &.hide-on-mobile {
         @media screen and (max-width: $breakpoint-mobile) {
           display: none;
@@ -2489,7 +2561,6 @@ $post-heading-width: 1000px;
   }
 }
 
-
 .spacing-content-row {
   .divide {
     height: 2px;
@@ -2525,12 +2596,20 @@ $post-heading-width: 1000px;
 
     &.to-bottom {
       margin: -200px auto 3px auto;
-      background: linear-gradient(to top, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+      background: linear-gradient(
+        to top,
+        rgba($color-sunset-red, 0.3),
+        rgba($color-ultradark-red, 0)
+      );
     }
 
     &.to-top {
       margin: 3px auto -200px auto;
-      background: linear-gradient(to bottom, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+      background: linear-gradient(
+        to bottom,
+        rgba($color-sunset-red, 0.3),
+        rgba($color-ultradark-red, 0)
+      );
     }
   }
 }
@@ -2554,22 +2633,30 @@ $post-heading-width: 1000px;
     // Gradient lines on the side
     &::before {
       position: absolute;
-      content: '';
+      content: "";
       left: 0px;
       top: 10px;
       width: 2px;
       height: 60%;
-      background: linear-gradient(to bottom, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+      background: linear-gradient(
+        to bottom,
+        rgba($color-sunset-red, 1),
+        rgba($color-sunset-red, 0)
+      );
     }
 
     &::after {
       position: absolute;
-      content: '';
+      content: "";
       right: 0px;
       top: 10px;
       width: 2px;
       height: 60%;
-      background: linear-gradient(to bottom, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+      background: linear-gradient(
+        to bottom,
+        rgba($color-sunset-red, 1),
+        rgba($color-sunset-red, 0)
+      );
     }
 
     // Solid border on top/bottom edge
@@ -2594,7 +2681,11 @@ $post-heading-width: 1000px;
       justify-content: center;
 
       position: relative;
-      background: linear-gradient(to bottom, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+      background: linear-gradient(
+        to bottom,
+        rgba($color-sunset-red, 0.3),
+        rgba($color-ultradark-red, 0)
+      );
       border-radius: $chicanery-border-radius;
 
       margin: 6px 4px;
@@ -2684,18 +2775,30 @@ $post-heading-width: 1000px;
       &::before {
         top: auto;
         bottom: 10px;
-        background: linear-gradient(to top, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+        background: linear-gradient(
+          to top,
+          rgba($color-sunset-red, 1),
+          rgba($color-sunset-red, 0)
+        );
       }
 
       &::after {
         top: auto;
         bottom: 10px;
-        background: linear-gradient(to top, rgba($color-sunset-red, 1), rgba($color-sunset-red, 0));
+        background: linear-gradient(
+          to top,
+          rgba($color-sunset-red, 1),
+          rgba($color-sunset-red, 0)
+        );
       }
 
       // Actual gradient area
       .main-area {
-        background: linear-gradient(to top, rgba($color-sunset-red, 0.3), rgba($color-ultradark-red, 0));
+        background: linear-gradient(
+          to top,
+          rgba($color-sunset-red, 0.3),
+          rgba($color-ultradark-red, 0)
+        );
 
         &.pull-down {
           margin-bottom: auto;
@@ -2732,13 +2835,15 @@ $post-heading-width: 1000px;
     }
   }
 
-  @mixin recolorGradient($color-border,
-    $color-secondary ) {
+  @mixin recolorGradient($color-border, $color-secondary) {
     .main-area-wrapper {
-
       &::before,
       &::after {
-        background: linear-gradient(to bottom, $color-border, rgba(255, 78, 24, 0));
+        background: linear-gradient(
+          to bottom,
+          $color-border,
+          rgba(255, 78, 24, 0)
+        );
       }
     }
 
@@ -2747,7 +2852,11 @@ $post-heading-width: 1000px;
     }
 
     .main-area.pull-down {
-      background: linear-gradient(to bottom, rgba($color-secondary, 0.3), rgba($color-border, 0));
+      background: linear-gradient(
+        to bottom,
+        rgba($color-secondary, 0.3),
+        rgba($color-border, 0)
+      );
     }
 
     .floater span {
@@ -2756,15 +2865,22 @@ $post-heading-width: 1000px;
 
     &.to-bottom {
       .main-area-wrapper {
-
         &::before,
         &::after {
-          background: linear-gradient(to top, $color-border, rgba(255, 78, 24, 0));
+          background: linear-gradient(
+            to top,
+            $color-border,
+            rgba(255, 78, 24, 0)
+          );
         }
       }
 
       .main-area.pull-down {
-        background: linear-gradient(to top, rgba($color-secondary, 0.3), rgba($color-border, 0));
+        background: linear-gradient(
+          to top,
+          rgba($color-secondary, 0.3),
+          rgba($color-border, 0)
+        );
       }
 
       .main-area-top-border {
@@ -2775,8 +2891,10 @@ $post-heading-width: 1000px;
 
   &.secret {
     margin-top: -2px;
-    @include recolorGradient($color-spooky,
-      $color-spooky-secondary );
+    @include recolorGradient(
+      $color-spooky,
+      $color-spooky-secondary
+    );
   }
 }
 
@@ -2934,14 +3052,18 @@ $aside-sticky-breakpoint: 1800px;
     cursor: pointer;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
       display: block;
-      background: linear-gradient(to top, rgba($color-spooky, 0.03), rgba($color-sunset-yellow, 0.15));
+      background: linear-gradient(
+        to top,
+        rgba($color-spooky, 0.03),
+        rgba($color-sunset-yellow, 0.15)
+      );
       opacity: 0;
     }
 
@@ -3037,8 +3159,6 @@ $aside-sticky-breakpoint: 1800px;
   }
 }
 
-
-
 .muguang-pc-image {
   position: relative;
   width: 1000px;
@@ -3080,7 +3200,7 @@ $aside-sticky-breakpoint: 1800px;
   width: 90%;
   margin: 0 auto;
 
-  >.full-width-wrapper-inner {
+  > .full-width-wrapper-inner {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -3094,5 +3214,4 @@ $aside-sticky-breakpoint: 1800px;
       flex: 1;
     }
   }
-
 }

@@ -9,7 +9,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import HeadingContentRow from '@/components/common/ContentRow/HeadingContentRow.component'
 import SpacingRow from '@/components/common/ContentRow/SpacingRow.component'
@@ -24,13 +24,13 @@ import UniserveConclusion from "@/components/special/UniserveConclusion.astro"
 
 *If you haven't read the rest of the introductions yet, it is recommended that you do so before proceeding here. Go to the [home page](/) and start scrolling!*
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
   FRIEND, our journey together comes to an END.
 
   You are ready to head into the rest of my EXHIBIT on your own.
 
   Did you ENJOY my tour? Y / N
-</QuoteContentRowRender>
+</QuoteRow>
 
 <UniserveConclusion />
 
@@ -50,7 +50,7 @@ You feel like it's calling to you...
 
 ---
 
-  <QuoteContentRowRender author={AuthorTerminal} none>
+  <QuoteRow author={AuthorTerminal} none>
   ## <i>title:Word from the creator:</i>Wow, you actually *read* all that?
 
 You've made it to the end of UNISERVE's tour. Thank you for taking a precious moment to visit and read through my little showcase. I really appreciate it!
@@ -101,6 +101,6 @@ In the longer term, I'm hoping to create a small video game, following the isola
 Head to my <a href={CommonLinks.discord}>Discord server</a>, hang out with the cool peeps.
 
 Or, scroll a bit further...
-</QuoteContentRowRender>
+</QuoteRow>
 
 <HomeHub variant="conclusion"/>

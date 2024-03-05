@@ -1,0 +1,113 @@
+---
+title: "Fan creations page created!"
+description: "For anyone who wishes to submit something to the gallery, this contains a brief guide."
+pubDate: "Mar 3 2024"
+---
+
+import { AuthorCAN, AuthorTerminal, AuthorUniserve, AuthorGRUZ, AuthorAENEAS } from '@/data/Authors.ts'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
+import { CommonLinks } from '@/data/Common.ts'
+
+The [creations](/creations) page has been created. This is a place for third party Sunset System (and related) work to be showcased, because it deserves just as much of a spotlight as the canon stuff.
+
+## What do the tags mean?
+
+- `✔ Canon` creations have been verified by UNISERVE as true, and have been accepted into the world of Sunset System.
+
+- `◈ Distinguished` creations are those that UNISERVE has deemed to be truly exceptional. They embody and build upon the themes of Sunset System in a profound way!
+
+- `Original` creations are new designs created by the author, while `Interpretation` creations are derivative from existing Sunset designs.
+
+## What kind of work can I expect to see here?
+
+- `Art!` That's the most common kind of submission.
+- Stories and `writing` are incredibly welcome.
+- Anything you can come up with that can fit into the post format?
+
+It doesn't *have* to be visual art, that's just the most common kind of contribution. In fact, some of the most thought-provoking and emotional concepts have been expressed through writing and music.
+
+## What can I submit?
+
+Original characters? Speculative biology? Technology exploration? Environments? Use your imagination!
+
+Include these with your post:
+
+- `Title`: The short name for your post. (eg. *Cool Robot*)
+
+- `Main text`: The title of your post. This can be identical to the title. (eg. *This cool robot once roamed the frozen wastes of Enceladus.*)
+
+- `Sub text`: The little red text under the main text on the post page. (eg. *The Mark V BOREALIS was designed by Maxwell Corporation and had a serious temper.*)
+
+- `Author name`: Your name! Preferably an online username. (eg. *Mr. Author*)
+
+- `Author link`: A link to your online presence. Optional. (eg. *www.mrauthor.fakesite.not/real*)
+
+- `Author profile pic`: An image representing your online presence, your avatar. Optional.
+
+- `Content`: Perhaps the most important part, the stuff that goes on the page. If it's a set of images, choose one to be the "hero" (the image that shows up on the card in the gallery). Don't worry about optimization, the site will automatically compress the image to reduce file size.
+
+### If you're submitting text content...
+
+Note that content on this website is written using the <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank">Markdown language</a>. If you intend to submit text, make my job easier by using this formatting.
+
+<QuoteRow author={AuthorUniserve} >
+If you're feeling EXPERIMENTAL, you can also use Sunset's CLASSIC QUOTE BOX!
+
+To indicate a quote box in your text content, use this notation:
+
+```
+<QuoteRow author={AUTHOR_ID}>
+  YOUR_CONTENT
+</QuoteRow>
+```
+</QuoteRow>
+
+<QuoteRow author={AuthorAENEAS} left>
+An individual quote box can be aligned to the left using the keyword `left`, or remove all author details to avoid repetition using the keyword `none`.
+
+This is how you would do that:
+
+```
+<QuoteRow author={AUTHOR_ID} left none>
+  YOUR_CONTENT
+</QuoteRow>
+```
+</QuoteRow>
+
+<QuoteRow author={AuthorGRUZ}>
+Each quote box is linked to an `author`. An author includes a name, ultra-short description, colors (border, text, background, highlight, and description), and optional image. 
+
+You may optionally include `wrapper markers` for an author. These are unicode characters appended to the start and end of each paragraph, such as those currently wrapping this text.
+
+There are two styles to choose from for an author: `classic` and `minimal`. Classic is the style UNISERVE's quote box uses, Minimal is the style GRUZ uses. The minimal style allows you to define a gradient background between two colors.
+
+An author can also be set to be always uppercased, like AENEAS above.
+</QuoteRow>
+
+### Submissions *must* meet a few basic criteria
+
+- `Adheres to the general themes and concepts established by the universe.` Basically, don't submit zombie-killing warriors, sketches of superheros, or whatever other random content. This is not an art gallery, this is a *Sunset System* gallery. Existentialist robots and retrofuturism please.
+
+- `Meets a minimum standard of quality.` If the content does not meet a certain level of effort, it will not be posted here. Please don't be insulted if your work is rejected! Mostly likely, that just means you need to refine it. Feel free to use the Discord server's channels to get critique and improve.
+
+- `Is relatively decent.` Things that are too vulgar, are literal propaganda, etc will not be accepted. This is my personal website - I reserve the right to reject whatever I don't wish to depict.
+
+### What if my stuff isn't canon?
+
+Then it simply won't be marked with the canon tag. You can still submit it and show it off. Or feel free to brainstorm with us on our Discord to tweak your concept until it fits!
+
+## How can I submit it?
+
+Choose whichever's best for you:
+
+- Post to the `#fan-creations` channel on the associated <a href={CommonLinks.discord} target="_blank">Discord server</a>. Consider linking a Google Doc or Pastebin with all of the post content.
+
+- Send a DM to me via Discord if you want to keep it private for whatever reason. You can find me as `@prokhorVLG`.
+
+- Email the website directly at [prokhorvlg@sunset-system.com](mailto:prokhorvlg@sunset-system.com). I will try my best to monitor this inbox for submissions.
+
+This is a static website maintained by the creator (`prokhorVLG`) so all submissions will ultimately have to be added as updates to the Github repo from which this site is generated from. 
+
+Please make my job easier by including as much information as you can and be as clear as possible. I will attempt to fill in any missing information on submissions.
+
+Please be patient as I do have a life outside of this website.

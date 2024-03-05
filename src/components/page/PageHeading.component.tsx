@@ -15,7 +15,7 @@ interface PropTypes {
   title?: string
   subtext?: string
   children?: any
-  image?: "computer-blinking" | "creations" | null
+  image?: "posts" | "creations" | null
   pullDown?: boolean // artificially heighten and reduce margin?
   showHeaderBar?: boolean
   isSpooky?: boolean // Does this page top trigger a spooky mode with close button (only on posts)
@@ -93,21 +93,36 @@ const PageHeading = ({
       <div className="main-area-wrapper">
         <div className={`main-area`}>
           <div className="heading-content">
-            {image === "computer-blinking" && (
-              <div className="heading-image posts">
-                <img
-                  src="/images/Micro_Posts_Screen.gif"
-                  className="screen-gif"
-                  width="208"
-                />
-                <img
-                  src="/images/Micro_Posts.webp"
-                  className="computer"
-                  width="800"
-                />
-              </div>
-            )}
-
+            <div className={`heading-image ${image ?? ""}`}>
+              {image === "posts" && (
+                <>
+                  <img
+                    src="/images/posts-anim.gif"
+                    className="posts-anim"
+                    width="208"
+                  />
+                  <img
+                    src="/images/posts.webp"
+                    className="posts-image"
+                    width="800"
+                  />
+                </>
+              )}
+              {image === "creations" && (
+                <>
+                  <img
+                    src="/images/creations-anim.gif"
+                    className="creations-anim"
+                    width="640"
+                  />
+                  <img
+                    src="/images/creations.webp"
+                    className="creations-image"
+                    width="700"
+                  />
+                </>
+              )}
+            </div>
             <h1 className="title">{title}</h1>
             <p className="description">{subtext}</p>
             {children}

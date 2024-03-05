@@ -16,11 +16,15 @@ const post = Astro.props
 const { Content } = await post.render()
 
 const image = await getProcessedImageById(
-  post.data.thumbImage,
+  post.data.thumbImage || "",
   1500
 )
 ---
 
-<PostLayout post={post} image={image?.src}>
+<PostLayout
+  post={post}
+  image={image?.src}
+  postType={post.collection}
+>
   <Content />
 </PostLayout>

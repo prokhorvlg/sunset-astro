@@ -1,25 +1,24 @@
 ---
 title: "All You Will Ever Need"
 mainText: "Print advertisement for a set of Kaizen robots, a Pact corporation known for its feature-rich machines."
-subText: "This is a Patreon-exclusive post."
+subText: "The Kaizen K3200 and T250, a pair of advanced robots from the Pact, often exported and sold in competition to Western machines from BBM and Redmond."
 pubDate: "Jul 8 2023"
-thumbImage: "kaizen-robots-ad-locked"
+thumbImage: "kaizen-robots-ad"
 thumbAlignment: "center 25%"
-patreonLocked: true
-target: "https://www.patreon.com/posts/kaizen-k3200-85662582"
 tags:
   - retrofuturistic dreams
   - robot
   - pact
 ---
 
-import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
 <ImageContentRowRender 
-  images={['kaizen-robots-ad-locked']}
+  images={['kaizen-robots-ad']}
 />
 
-See the original post on the [Patreon page](https://www.patreon.com/posts/kaizen-k3200-85662582).
+<ImageContentRowRender 
+  images={['kaizen-robots-ad-gray']}
+/>

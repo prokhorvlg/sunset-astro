@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -40,13 +40,13 @@ Just as quickly, the machines were gone. An inquiry into the company was made, b
 
 Digital memories of automatics held no memory of the event. Audiovisual tape recordings of the machines would melt on playback. All that remained in the end was human memory, and with time, even that would be gone.
 
-<QuoteContentRowRender author={AuthorUniserve} left>
+<QuoteRow author={AuthorUniserve} left>
 The robot depicted in Muguang's branding was only ever known as `MASCOT`.
 
 This unit does NOT believe MASCOT was, or is, real.
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 BUY MUGUANG.
 
 Because only "Muguang Computer" can bring satisfaction and peace of mind your soul desires.
@@ -54,4 +54,4 @@ Because only "Muguang Computer" can bring satisfaction and peace of mind your so
 Purchase "Muguang Computer" today at any local area shopping center.
 
 Extra affordable prices only!
-</QuoteContentRowRender>
+</QuoteRow>

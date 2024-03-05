@@ -12,7 +12,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -22,9 +22,9 @@ import { AuthorCAN, AuthorTerminal, AuthorUniserve } from '@/data/Authors.ts'
 
 `Manipulators` (also known as *hands* or *grippers*) are a unique tool found attached to numerous robots across the Solar System. These permit them to interface with human objects and environments: coffee makers, keyboards, door knobs, power tools, clothing, the list goes on!
 
-  <QuoteContentRowRender author={AuthorUniserve}>
+  <QuoteRow author={AuthorUniserve}>
 See? This unit has TWO of them!
-</QuoteContentRowRender>
+</QuoteRow>
 
 Devices similar to manipulators have existed throughout history since even long before the neuromorph was invented, but ultimately they found their home on `interfacers`, a style of robot designed to co-exist within the human world. Interfacers are the ideal size to fit through doors and use physical devices, such knobs and buttons. 
 
@@ -34,17 +34,17 @@ Manipulators can also be found in nearly any other robot class, but much less co
 
 For the most part, the answer is no! They do not.
 
-  <QuoteContentRowRender author={AuthorUniserve}>
+  <QuoteRow author={AuthorUniserve}>
 The chassis neuromorphs are first initialized in is the chassis they come to know. With time, their NEURAL PATHWAYS adapt to take advantage of the systems they come with, and the CHASSIS becomes a strong part of CORE IDENTITY. 
 
 Same goes for other devices: LEGS, JET ENGINES, DISPLAY SCREENS, SONARS, or any other COMPONENT machines might be equipped with!
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorCAN} left>
+<QuoteRow author={AuthorCAN} left>
 \> UNIT DOES NOT REQUIRE MANIPULATORS TO PERFORM DUTY.
 
 \> TACTICAL SNAP VERY EFFECTIVE.
-</QuoteContentRowRender>
+</QuoteRow>
 
 Rather than seeking to modify their own chassis, robots during the *Era of No Input* have a tendency to team up with others with complementary abilities. Where interfacers with manipulators can *touch* the human world, other classes have their own strengths. For instance...
 

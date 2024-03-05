@@ -11,7 +11,7 @@ tags:
 ---
 
 import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
-import QuoteContentRowRender from '@/components/common/ContentRow/QuoteContentRowRender.astro'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
 import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
 import { AuthorCAN, AuthorUniserve } from '@/data/Authors.ts'
 
@@ -27,15 +27,15 @@ The atomic threat that thumpers created would remain as well. Along with *sleepe
 
 Even after humans vanished during the *Unexpected Interrupt*, the remaining thumpers and their automated navigation systems continue to circulate the System in a futile attempt to maintain the backbone of civilization, failing to recognize their efforts are pointless. Mankind would not come back.
 
-<QuoteContentRowRender author={AuthorUniserve} >
+<QuoteRow author={AuthorUniserve} >
 \* `FUN FACT!` MOLNIYA-3 TRAGEDY and Union's DAY OF REMEMBRANCE was caused by miscalculated detonation of PULSE UNIT while in VENUSIAN ORBIT. Over FOUR THOUSAND HUMANS died!
 
 \* `FUN FACT!` While THUMPERS could maintain fairly consistent illusion of gravity during transit, SWINGOUTS were necessary to simulate gravity during ORBIT! KASEI SUNRISE did not require such a mechanism due to gravity-manipulating YOKU COIL.
 
 \* `FUN FACT!` Did you know that three tallest BURNERS on a SABEAH, Titan's version of a menorah for their FESTIVAL OF THE SEVEN AND A HALF, represents drive plumes of three THUMPERS that saved the colonists? PROMETHEUS, GRACE, and COSMOS!
-</QuoteContentRowRender>
+</QuoteRow>
 
-<QuoteContentRowRender author={AuthorCAN} transcription>
+<QuoteRow author={AuthorCAN} transcription>
 - `YSK Heroic Ambition`
 
 Operated by the Greater Union. 
@@ -53,4 +53,4 @@ Lost, crashed into the Orbital of Great Gorsk. Its chassis remains embedded with
 Operated by the Rising Pact.
 
 Continues to be operated by the Consensus of the Journey.
-</QuoteContentRowRender>
+</QuoteRow>
