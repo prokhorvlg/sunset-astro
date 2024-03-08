@@ -1242,6 +1242,20 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("content/coalition-drones.jpg"),
     alt: "",
   },
+  {
+    id: "fredi-gruz",
+    src: getImageFromGlob("content/fredi-gruz.jpg"),
+    alt: "",
+    caption:
+      "AENEAS and GRUZ! Respectively, they are a Dynatek FREDI combat walker and a Kovalsk Type-Г agricultural drone. AENEAS is depicted here with an optional self-propelled gun modification, and GRUZ with their chainsaw attachment.",
+  },
+  {
+    id: "lisa-ad",
+    src: getImageFromGlob("content/lisa (7).png"),
+    alt: "",
+    // classes: "border-titan-blue",
+    artist: ArtistProkhor,
+  },
 
   // FAN ART
   {
