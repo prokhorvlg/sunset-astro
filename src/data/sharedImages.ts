@@ -1320,4 +1320,11 @@ export const Images: ImageDetails[] = [
     id: "gardvar-humus",
     src: getImageFromGlob("creations/gardvar-humus-1.png"),
   },
+  {
+    id: "phoenix3da-guardsman",
+    src: getImageFromGlob(
+      "creations/phoenix3da-guardsman.jpg"
+    ),
+    caption: "Rather large.",
+  },
 ]
