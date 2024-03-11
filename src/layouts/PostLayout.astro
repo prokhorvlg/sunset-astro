@@ -44,8 +44,13 @@ const isIntroduction =
   post.collection === "database"
 let metaTitle = post.data.title
 let metaDescription = post.data.mainText
+
 if (isIntroduction) {
   metaTitle = post.data.mainText
+  metaDescription = post.data.subText
+}
+
+if (post.data.title === post.data.mainText) {
   metaDescription = post.data.subText
 }
 ---
