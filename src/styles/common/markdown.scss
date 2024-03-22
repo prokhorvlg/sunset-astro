@@ -1,366 +1,435 @@
 // MARKDOWN STYLING
-article.markdown, .markdown-styles {
-    // Maximum width and z index for all elements
-    > h1, > h2, > h3, > h4, > h5, > h6, > ul, > p, > hr, > blockquote, > pre {
-        max-width: $width-1000;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        z-index: 1;
+article.markdown,
+.markdown-styles {
+  // Maximum width and z index for all elements
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6,
+  > ul,
+  > p,
+  > hr,
+  > blockquote,
+  > pre {
+    max-width: $width-1000;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  // Headings ( ## )
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    color: $color-sunset-orange;
+    font-weight: 700;
+    margin-top: 50px;
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 80%;
     }
-    
-    // Headings ( ## )
-    > h1, > h2, > h3, > h4, > h5, > h6 {
-        color: $color-sunset-orange;
-        font-weight: 700;
-        margin-top: 50px;
-        @media screen and (max-width: $breakpoint-tablet) {
-            width: 80%;
-        }
-        @media screen and (max-width: $breakpoint-mobile) {
-            font-size: 22px;
-            line-height: 32px;
-            width: 90%;
-        }
-
-        // Used only to transfer data to table of contents
-        i {
-            display: none;
-        }
-    }
-    &.secret {
-        > h1, > h2, > h3, > h4, > h5, > h6 {
-            color: $color-spooky;
-        }
-    }
-
-    // Secondary heading
-    > h2 {
-        font-size: 26px;
-        line-height: 36px;
-        font-weight: 600;
-        position: relative;
-        margin-top: 20px;
-        margin-bottom: 30px;
-        padding-top: 100px;
-        @media screen and (max-width: $breakpoint-mobile) {
-            font-size: 24px;
-            line-height: 32px;
-        }
-
-        span.short {
-            position: absolute;
-            font-family: $font-code;
-            color: $color-sunset-red;
-            font-size: 18px;
-            font-weight: 500;
-            bottom: calc(100% - 62px);
-        }
-
-        @include abg-red-diagonal();
-        &::after {
-            content: "";
-            display: block;
-            position: relative;
-            margin-top: 8px;
-            height: 40px;
-
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: calc(100% - 80px);
-            height: 20px;
-            z-index: -90;
-        }
-        &::before {
-            //content: "›";
-            font-family: $font-code;
-            color: $color-sunset-orange;
-            display: block;
-            position: absolute;
-            right: calc(100% + 40px);
-            font-size: 40px;
-
-            @media screen and (max-width: $breakpoint-mobile) {
-                position: relative;
-                display: inline-block;
-                right: auto;
-                left: -5px;
-                font-size: 26px;
-                top: 1px;
-                margin-right: -2px;
-            }
-        }
+    @media screen and (max-width: $breakpoint-mobile) {
+      font-size: 22px;
+      line-height: 32px;
+      width: 90%;
     }
 
-    // ◻ ▒ ›
+    // Used only to transfer data to table of contents
+    i {
+      display: none;
+    }
+  }
+  &.secret {
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      color: $color-spooky;
+    }
+  }
 
-    // Tertiary heading
-    > h3 {
-        font-size: 24px;
-        line-height: 34px;
-        font-weight: 600;
-        position: relative;
-        color: $color-sunset-red;
-        @media screen and (max-width: $breakpoint-mobile) {
-            font-size: 22px;
-            line-height: 32px;
-        }
-
-        span.short {
-            display: none;
-            font-family: $font-code;
-            color: $color-sunset-orange;
-            font-size: 16px;
-            font-weight: 500;
-            bottom: calc(100% - 5px);
-        }
-        code {
-            background-color: rgba($color-sunset-red, 0.2);
-            padding: 3px 2px;
-        }
-
-        &::before {
-            content: "»";
-            font-weight: 600;
-            font-family: $font-code;
-            color: $color-sunset-red;
-            display: block;
-            position: absolute;
-            right: calc(100% + 30px);
-            font-size: 40px;
-            @media screen and (max-width: $breakpoint-mobile) {
-                position: relative;
-                display: inline-block;
-                right: auto;
-                left: -6px;
-                font-size: 28px;
-                top: 2px;
-                margin-right: 0px;
-            }
-        }
+  // Secondary heading
+  > h2 {
+    font-size: 26px;
+    line-height: 36px;
+    font-weight: 600;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-top: 100px;
+    @media screen and (max-width: $breakpoint-mobile) {
+      font-size: 24px;
+      line-height: 32px;
     }
 
-    > h4 {
+    span.short {
+      position: absolute;
       font-family: $font-code;
-      text-transform: uppercase;
       color: $color-sunset-red;
       font-size: 18px;
-      letter-spacing: 0.5px;
-      font-weight: 700;
-      border-bottom: 1px solid $color-sunset-red;
-      padding-bottom: 6px;
-
-      //text-align: center;
-      //width: 90%;
-      margin-top: 70px;
-      //margin-right: 30px;
-
-      //box-sizing: content-box;
+      font-weight: 500;
+      bottom: calc(100% - 62px);
     }
 
-    // Links ( ()[] )
-    > a, > p a, > ul li a {
-        @include BasicLinkStyle();
+    @include abg-red-diagonal();
+    &::after {
+      content: "";
+      display: block;
+      position: relative;
+      margin-top: 8px;
+      height: 40px;
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: calc(100% - 80px);
+      height: 20px;
+      z-index: -90;
+    }
+    &::before {
+      //content: "›";
+      font-family: $font-code;
+      color: $color-sunset-orange;
+      display: block;
+      position: absolute;
+      right: calc(100% + 40px);
+      font-size: 40px;
+
+      @media screen and (max-width: $breakpoint-mobile) {
+        position: relative;
+        display: inline-block;
+        right: auto;
+        left: -5px;
+        font-size: 26px;
+        top: 1px;
+        margin-right: -2px;
+      }
+    }
+  }
+
+  // ◻ ▒ ›
+
+  // Tertiary heading
+  > h3 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 600;
+    position: relative;
+    color: $color-sunset-red;
+    @media screen and (max-width: $breakpoint-mobile) {
+      font-size: 22px;
+      line-height: 32px;
     }
 
-    // Paragraphs ( )
-    > p {
-        font-size: 18px;
-        line-height: 32px;
-        margin-top: 40px;
-        margin-bottom: 40px;
-        letter-spacing: 0.1px;
-        font-weight: 500;
-        @media screen and (max-width: $breakpoint-tablet) {
-            width: 80%;
-        }
-        @media screen and (max-width: $breakpoint-mobile) {
-            width: 90%;
-        }
-    }
-
-    // Lists ( - xyz )
-    > ul, > ol {
-      //margin: 50px auto;
-      //list-style: ;
-        li {
-            > p {
-                font-size: 18px;
-                line-height: 32px;
-            }
-            font-size: 18px;
-            line-height: 32px;
-            margin-bottom: 10px;
-            letter-spacing: 0.1px;
-            font-weight: 500;
-            &::marker {
-                color: $color-sunset-red;
-            }
-
-            @media screen and (max-width: $breakpoint-tablet) {
-                width: 80%;
-            }
-            @media screen and (max-width: $breakpoint-mobile) {
-                width: 90%;
-                > p {
-                    font-size: 18px;
-                    line-height: 28px;
-                }
-            }
-        }
-    }
-
-    // Code blocks ( ` ` )
-    > pre {
-        word-wrap: normal;
-        padding: 25px;
-        border: 2px solid $color-sunset-red;
-        border-radius: $chicanery-border-radius;
-        
-        line-height: 24px;
-        margin-top: 40px;
-        margin-bottom: 40px;
-        max-width: 960px;
-        @include abg(0.1);
-        @include abg-red-diagonal();
-        @include standardBoxShadow();
-        @media screen and (max-width: $breakpoint-tablet) {
-            width: 80%;
-        }
-        code {
-            &::after, &::before {
-                content: '';
-            }
-            .line span {
-                color: $color-sunset-orange !important;
-            }
-        }
-
-        // Code blocks ( ``` )
-        &.astro-code {
-            overflow: hidden !important;
-            > code {
-                white-space: pre-wrap;
-            }
-        }
-        &.astro-code {
-            background-color: $color-ultradark-red !important;
-        }
-    }
-    > p, > ul > li, > ul > li > p {
-        > code {
-            background-color: rgba($color-sunset-red, 0.2);
-            padding: 0px 3px 2px;
-        }
-    }
-    &.secret {
-        > p, > ul > li {
-            > code {
-                background-color: rgba($color-spooky, 0.2);
-            }
-        }
+    span.short {
+      display: none;
+      font-family: $font-code;
+      color: $color-sunset-orange;
+      font-size: 16px;
+      font-weight: 500;
+      bottom: calc(100% - 5px);
     }
     code {
-        font-family: $font-code;
-        color: $color-sunset-orange;
-        font-weight: 500;
-        letter-spacing: -0.5px;
-    }
-    &.secret {
-        code {
-            color: $color-spooky-secondary;
-        }
+      background-color: rgba($color-sunset-red, 0.2);
+      padding: 3px 2px;
     }
 
-    // Blockquotes ( > )
-    > blockquote {
-        margin-top: -20px;
-        border-top: 2px dotted $color-sunset-red;
-        margin-bottom: 35px;
-        //box-sizing: content-box;
-        @media screen and (max-width: $breakpoint-tablet) {
-            width: 90%;
-        }
-        p {
-          //margin-top: 10px;
-            color: $color-sunset-orange;
-            font-family: $font-code;
-            font-style: italic;
-            font-size: 16.8px;
-            @media screen and (max-width: $breakpoint-mobile) {
-                font-size: 15px;
-            }
-        }
-    }
-
-    // Thematic break ( *** )
-    @mixin break() {
-        border: none;
-        display: block;
+    &::before {
+      content: "»";
+      font-weight: 600;
+      font-family: $font-code;
+      color: $color-sunset-red;
+      display: block;
+      position: absolute;
+      right: calc(100% + 30px);
+      font-size: 40px;
+      @media screen and (max-width: $breakpoint-mobile) {
         position: relative;
-
-        margin-top: 160px;
-        margin-bottom: 160px;
-        @media screen and (max-width: $breakpoint-mobile) {
-            margin-top: 120px;
-            margin-bottom: 120px;
-        }
-
-        &::after {
-            content: '';
-            display: block;
-            position: relative;
-            width: 60%;
-            margin: 0 auto;
-
-            height: 2px;
-            background-color: $color-sunset-red;
-            border-radius: 1px;
-        }
+        display: inline-block;
+        right: auto;
+        left: -6px;
+        font-size: 28px;
+        top: 2px;
+        margin-right: 0px;
+      }
     }
-    > hr {
-        @include break();
+  }
+
+  > h4 {
+    font-family: $font-code;
+    text-transform: uppercase;
+    color: $color-sunset-red;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    border-bottom: 1px solid $color-sunset-red;
+    padding-bottom: 6px;
+
+    //text-align: center;
+    //width: 90%;
+    margin-top: 70px;
+    //margin-right: 30px;
+
+    //box-sizing: content-box;
+  }
+
+  // Links ( ()[] )
+  > a,
+  > p a,
+  > ul li a {
+    @include BasicLinkStyle();
+  }
+
+  // Paragraphs ( )
+  > p {
+    font-size: 18px;
+    line-height: 32px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 80%;
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+      width: 90%;
+    }
+  }
+
+  // Lists ( - xyz )
+  > ul,
+  > ol {
+    //margin: 50px auto;
+    //list-style: ;
+    li {
+      > p {
+        font-size: 18px;
+        line-height: 32px;
+      }
+      font-size: 18px;
+      line-height: 32px;
+      margin-bottom: 10px;
+      letter-spacing: 0.1px;
+      font-weight: 500;
+      &::marker {
+        color: $color-sunset-red;
+      }
+
+      @media screen and (max-width: $breakpoint-tablet) {
+        width: 80%;
+      }
+      @media screen and (max-width: $breakpoint-mobile) {
+        width: 90%;
+        > p {
+          font-size: 18px;
+          line-height: 28px;
+        }
+      }
+    }
+  }
+
+  // Code blocks ( ` ` )
+  > pre {
+    word-wrap: normal;
+    padding: 25px;
+    border: 2px solid $color-sunset-red;
+    border-radius: $chicanery-border-radius;
+
+    line-height: 24px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    max-width: 960px;
+    @include abg(0.1);
+    @include abg-red-diagonal();
+    @include standardBoxShadow();
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 80%;
+    }
+    code {
+      &::after,
+      &::before {
+        content: "";
+      }
+      .line span {
+        color: $color-sunset-orange !important;
+      }
     }
 
-    .icon {
-        text-align: center;
-        font-size: 80px;
-        padding: 60px 0;
-        font-weight: 400;
-        border-radius: 6px;        
-        &.the-voice {
-            svg {
-                transform: rotate(180deg) scaleX(-1);
-            }
-        }
-        &.erasure {
-            svg {
-                transform: rotate(180deg);
-            }
-        }
-        &.dangers-entities {
-            background: rgba($color-sunset-red, 0.1);
-            color: $color-sunset-red;
-            &:hover {
-                background-color: rgba($color-sunset-red, 0.2);
-                color: $color-sunset-orange;
-            }
-        }
+    // Code blocks ( ``` )
+    &.astro-code {
+      overflow: hidden !important;
+      > code {
+        white-space: pre-wrap;
+      }
+    }
+    &.astro-code {
+      background-color: $color-ultradark-red !important;
+    }
+  }
+  &.secret {
+    > pre {
+      background-color: rgba(
+        darken($color-spooky, 35%),
+        0.3
+      ) !important;
+      border-color: $color-spooky;
+      > code > span > span {
+        color: $color-spooky-secondary !important;
+      }
+    }
+  }
+  > p,
+  > ul > li,
+  > ul > li > p {
+    > code {
+      background-color: rgba($color-sunset-red, 0.2);
+      padding: 0px 3px 2px;
+    }
+  }
+  &.secret {
+    > p,
+    > ul > li {
+      > code {
+        background-color: rgba($color-spooky, 0.2);
+      }
+    }
+  }
+  code {
+    font-family: $font-code;
+    color: $color-sunset-orange;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+  }
+  &.secret {
+    code {
+      color: $color-spooky-secondary;
+    }
+  }
+
+  // Blockquotes ( > )
+  > blockquote {
+    margin-top: -20px;
+    border-top: 2px dotted $color-sunset-red;
+    margin-bottom: 35px;
+    //box-sizing: content-box;
+    @media screen and (max-width: $breakpoint-tablet) {
+      width: 90%;
+    }
+    p {
+      //margin-top: 10px;
+      color: $color-sunset-orange;
+      font-family: $font-code;
+      font-style: italic;
+      font-size: 16.8px;
+      @media screen and (max-width: $breakpoint-mobile) {
+        font-size: 15px;
+      }
+    }
+  }
+
+  // Thematic break ( *** )
+  @mixin break() {
+    border: none;
+    display: block;
+    position: relative;
+
+    margin-top: 160px;
+    margin-bottom: 160px;
+    @media screen and (max-width: $breakpoint-mobile) {
+      margin-top: 120px;
+      margin-bottom: 120px;
     }
 
-    // html video tag
-    > video {
-        display: block;
-        margin: 40px auto;
-        //width: 1000px;
-        max-width: 95%;
-        max-height: 95vh;
-        
-        filter: drop-shadow(0px 0px 10px rgba(0,0,0,0.8));
-        &.border-red {
-            border: 2px solid rgba($color-sunset-red, 0.2);
-            border-radius: 6px;
-        }
+    &::after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 60%;
+      margin: 0 auto;
+
+      height: 2px;
+      background-color: $color-sunset-red;
+      border-radius: 1px;
     }
+  }
+  > hr {
+    @include break();
+  }
+
+  .icon {
+    text-align: center;
+    font-size: 80px;
+    padding: 60px 0;
+    font-weight: 400;
+    border-radius: 6px;
+    &.the-voice {
+      svg {
+        transform: rotate(180deg) scaleX(-1);
+      }
+    }
+    &.erasure {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+    &.dangers-entities {
+      background: rgba($color-sunset-red, 0.1);
+      color: $color-sunset-red;
+      &:hover {
+        background-color: rgba($color-sunset-red, 0.2);
+        color: $color-sunset-orange;
+      }
+    }
+  }
+
+  // html video tag
+  > video {
+    display: block;
+    margin: 40px auto;
+    //width: 1000px;
+    max-width: 95%;
+    max-height: 95vh;
+
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.8));
+    &.border-red {
+      border: 2px solid rgba($color-sunset-red, 0.2);
+      border-radius: 6px;
+    }
+  }
+
+  // pros and cons list
+  span.pro,
+  span.con {
+    &::before {
+      display: inline-block;
+      color: rgb(41, 13, 2);
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 24px;
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      border-radius: 100px;
+      margin-right: 10px;
+    }
+  }
+  span.pro {
+    &::before {
+      content: "+";
+      background: rgb(23, 216, 65);
+    }
+  }
+  span.con {
+    &::before {
+      content: "-";
+      background: rgb(216, 52, 23);
+    }
+  }
 }

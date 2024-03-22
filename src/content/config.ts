@@ -30,9 +30,13 @@ const collectionSetup = {
     icon: z.string().optional(),
     // patreon/external link
     patreonLocked: z.boolean().optional(),
+
+    // fan creations
     target: z.string().optional(),
     author: z.string().optional(),
     authorURL: z.string().optional(),
+
+    numberOfImages: z.number().optional(),
   }),
 }
 

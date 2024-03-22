@@ -1236,6 +1236,20 @@ export const Images: ImageDetails[] = [
     ),
     alt: "",
   },
+  {
+    id: "avatar-51",
+    src: getImageFromGlob(
+      "content/author-images/avatar-51.png"
+    ),
+    alt: "",
+  },
+  {
+    id: "avatar-king",
+    src: getImageFromGlob(
+      "content/author-images/avatar-king.png"
+    ),
+    alt: "",
+  },
 
   {
     id: "coalition-drones",
@@ -1255,6 +1269,71 @@ export const Images: ImageDetails[] = [
     alt: "",
     // classes: "border-titan-blue",
     artist: ArtistProkhor,
+  },
+
+  // DISPLAYS
+  {
+    id: "displays-ibt",
+    src: getImageFromGlob(
+      "content/displays/displays_ibt.jpg"
+    ),
+    caption:
+      "A BBM Optical microcomputer and a Magnus terminal, examples of devices with an ion-beam screen. Technology like this was literally everywhere.",
+    alt: "",
+  },
+  {
+    id: "displays-dbt",
+    src: getImageFromGlob(
+      "content/displays/displays_dbt.jpg"
+    ),
+    caption:
+      "A Kaizen-produced ESDOM diverted beam tube; ten times more expensive than the standard alternative. (The morph's name is MEI! They're a simple virtual assistant built into the microcomputer, similar to a teleindexer but much more annoying than helpful...)",
+    alt: "",
+  },
+  {
+    id: "displays-pfd",
+    src: getImageFromGlob(
+      "content/displays/displays_pfd.jpg"
+    ),
+    caption:
+      "A Maxwell 44-Mobile super-portable and a Redmond teleindexer, both examples of electronics which use plasma-based displays.",
+    alt: "",
+  },
+  {
+    id: "displays-lpd",
+    src: getImageFromGlob(
+      "content/displays/display_lpd.jpg"
+    ),
+    caption:
+      "Untendo GameKid video-gamer, Synkia E400M teleindexer, Radiant Range radio, and a Saito G100 watch. Examples of LPD-equipped gadgets.",
+    alt: "",
+  },
+  {
+    id: "displays-retinal",
+    src: getImageFromGlob(
+      "content/displays/displays_retinal.jpg"
+    ),
+    caption:
+      "An Alastair Synclite C4500 and an Elektronika Model R, two examples of microlaser casters from opposite sides of the world.",
+    alt: "",
+  },
+  {
+    id: "displays-softlight",
+    src: getImageFromGlob(
+      "content/displays/displays_softlight.jpg"
+    ),
+    caption:
+      "An EP300 softlight table produced by Maxwell, a leading producer of the technology.",
+    alt: "",
+  },
+  {
+    id: "displays-printing",
+    src: getImageFromGlob(
+      "content/displays/display_printing.jpg"
+    ),
+    caption:
+      "An Omnivision SILENT AM-100 and an Akion Microdot 450 represent typical variations of the subsurface matrix printer, both produced within the Pact. Ink is punched into an endless roll of permampaper as it slides out of the top, line by line.",
+    alt: "",
   },
 
   // FAN ART

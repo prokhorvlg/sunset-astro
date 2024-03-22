@@ -196,3 +196,18 @@ export const AuthorGRUZ: QuoteAuthor = {
   description: "Little hovering agrodrone.",
   theme: "gruz gruz-color",
 }
+
+export const Author51: QuoteAuthor = {
+  id: "51",
+  name: "Agent RATIO",
+  image: "avatar-51",
+  description: "Sentient voidbot of the Everything.",
+  theme: "fiftyone fiftyone-color",
+}
+export const AuthorKing: QuoteAuthor = {
+  id: "king",
+  name: "Agent KING",
+  image: "avatar-king",
+  description: "Trusted machine of the Remembering.",
+  theme: "aqua uniserve-strip",
+}

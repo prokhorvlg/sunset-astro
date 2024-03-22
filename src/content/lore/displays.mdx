@@ -1,0 +1,172 @@
+---
+title: "Displays"
+mainText: "A collection of devices, and the display technologies that underlie them. How did tubes remain relevant for so long?"
+subText: "Turns out there are more than a few ways to carry bytes to fleshy human eyes, but none of the options are that great. Many displays were based on the heavy ion-beam emitter, but things got more interesting from there: the dead-end plasma screen, the emerging retinal lasercaster, and even three-dimensional vector holography."
+pubDate: "Mar 21 2024"
+thumbImage: "displays-ibt"
+thumbAlignment: "46% center"
+numberOfImages: 7
+tags:
+  - retrofuturistic dreams
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
+import { AuthorCAN, AuthorUniserve, AuthorTerminal } from '@/data/Authors.ts'
+
+## Conventional, high-fidelity monitors
+
+### Ion-beam tube (IBT)
+> Excellent picture, but thick and super heavy. Full colors, full fidelity, available everywhere!
+
+<ImageContentRowRender 
+  images={['displays-ibt']}
+/>
+
+Since their invention in the 1990s, `ion-beam tubes` (or IBTs) became the standard for monitors, televisions, robotic ocular modules, and much more. The ubiquitous IBT could be found just about everywhere, would have been dirt cheap to buy or produce, and made up over 65% of all high-fidelity monitors in the System - and things would remain that way until the end of human civilization in 2095.
+
+The device takes the form of a vacuum-sealed pyramid, in which a particle gun at the tip fires ions towards the base, deflected by a powerful electromagnet to strike all possible points on the screen. As the particles strike phosphor elements within the glass bottom facing the user, individual pixels <span class="highlight-spooky spooky-code">LIGHT_W</span> up. Voila! A standard definition color picture.
+
+Though very similar in design and ultimately subject to the same problems as their direct predecessor, the `cathode-ray tube` (CRT), ion-beams are less susceptible to the issues that plagued those. Ion-beam tubes rarely suffer from burn-in, don't fade out over time, have better viewing angles, and are less fragile. They remained incredibly heavy even with decades of miniaturization, but longevity and "quality feel" was of more value to consumers.
+
+### Diverted-beam tube (DBT)
+> Expensive, flatter version of the ion beam for the picky consumer.
+
+<ImageContentRowRender 
+  images={['displays-dbt']}
+/>
+
+Mankind never discovered a great way to miniaturize the ion-beam. The closest they got was the `diverted-beam tube`, an advanced version of the ion-beam tube. In these far more expensive machines, the particle gun rests parallel to the display, and the beam is bent towards the target using a set of special gravity-manipulating yoku coils.
+
+This allows the emitter gun to rest *next* to the screen rather than directly *behind* it, making for a much thinner display. Unlike simple mirrors, the picture remains completely undisturbed or warped.
+
+<QuoteRow author={AuthorUniserve}>
+There is truly NO ESCAPE from the mighty BEAM TUBE; the BACKBONE of human civilization.
+</QuoteRow>
+
+### Plasma-field display (PFD)
+> Nearly flat and produces a vivid picture, but colorburns when too many colors are used simultaneously.
+
+<ImageContentRowRender 
+  images={['displays-pfd']}
+/>
+
+Striking a perfect balance between display quality and size, `plasma-field displays` or PFDs are an ultra-thin display technology that became standard for advanced portable electronics including teleindexers, luggables, and laptops. PFDs function by exciting gas-filled cells sandwiched between layers of glass with electric current to produce a colorful image.
+
+At one point, plasma-field displays were thought to be the next stage in display technology, set to replace the heavy IBTs. Plasma-fields were really thin, and looked amazing! Sadly, it turned out that the technology was a dead end. No amount of development could resolve fundamental issues, especially a form of decay called `colorburn`, inherent to the compound commonly used in its manufacturing. 
+
+PFDs could *never* display many colors at one time without degrading at an incredibly fast rate. Software and content designers went through incredible lengths to ensure full-color content would only be displayed for limited amounts of time. This meant that most of the time, users were staring at a low-color or monochromatic user interface until they deliberately accessed full-color games or media. 
+
+## Low-end display technologies
+
+### Latent-parallel display (LPD)
+> Astonishingly cheap and durable flat display, but fully monochromatic. Doesn't always have a backlight.
+
+<ImageContentRowRender 
+  images={['displays-lpd']}
+/>
+
+The `latent-parallel display` panel is perhaps the most produced electronic display in human history. LPDs could be found on everything from calculators to water heaters: pretty much a perfect choice for anything complex enough to show information, but not complex enough to warrant the much pricier and more power hungry plasma-field display.
+
+The primary component of a latent-parallel display is a layer of fluid which becomes active (creating a patch of "ink") on contact with electrical current. Since the fluid can only exist in one of two states, LPDs are inherently incapable of portraying more than a single color. Though black over light green is the most common color pairing, LPDs are found in many forms, especially depending on the style of a particular decade.
+
+On a microscopic level, latent parallel settles into cells similar to the grain of celluloid film, so the resolution of the display is limited only by the number of electronic contacts built into the system. These contacts can be as simple and large as the components of an eight-segment number panel, or as complex as a full pixel grid or even a motoric vector-based element.
+
+<QuoteRow author={AuthorUniserve}>
+FUN FACT!
+
+If one snaps an LPD in half, the fluid will EXPLODE OUT. 
+
+One can observe the LATENT PARALLEL EFFECT by pouring the fluid over an exposed wire. (This is EXTREMELY DANGEROUS. Make a drone do it.)
+</QuoteRow>
+
+<QuoteRow author={AuthorCAN} left>
+\> OR JUST... DON'T DO THAT?
+</QuoteRow>
+
+Latent-parallel faced stiff competition from its primary alternative, the `vacuum-luminescent display`, or VLD. VLDs are somewhat similar to cathode-ray tubes in principle, and have a much brighter light-on-dark image... but they're more fragile and expensive than a typical LPD.
+
+### Subsurface matrix printing
+> Injecting permapaper with subsurface ink... it's printing. Not technically a display, but commonly used to present information.
+
+<ImageContentRowRender 
+  images={['displays-printing']}
+/>
+
+Perhaps the most unconventional entry in this exhibit, `subsurface matrix printing` was the most common way to place ink onto paper by the end of the 21st century (though it might be more analogous to tattooing). While technically not a *display*, printers were used to present all sorts of data, including images, charts, and readouts - enough to warrant a position in this list.
+
+Subsurface matrix printing is a variation of dot matrix printing, designed to work with everlasting `permapaper`. Permapaper is a plastic composite borne out of the crisis of the late 20th century, during which atomic proxy conflicts across the world caused the logging industry to grind to a standstill, making wood pulp scarce. Since then, paper being "permanent" rather than degrading over time became the cultural default, even though mass-produced pulps produced by Venusian gene farms had become common. The unusual environmental conditions of offworld colonies likely contributed to this shift.
+
+<QuoteRow author={AuthorUniserve}>
+FUN FACT! Printers were considered to be one the most reliable pieces of technology in the late 21st century. They never fail, never bug, and never JAM!
+
+(This unit LOVES printers.)
+</QuoteRow>
+
+Thanks to subsurface matrix printers, most permapaper records produced in the 21st century can still be read and used by robots. Humanity's brilliance never ceases to amaze the machine world.
+
+It is worth noting that subsurface matrix was only one of many printing methods used. Laser printing was also well developed, though they were generally considered to be unreliable, niche machines. These were most commonly found in print shops, where picture quality was more important than speed and cost.
+
+## Esoteric, high-tech systems
+
+### Retinal lasercasters
+> Beams an image directly into the user's eyeballs. Hyper-realistic, but inflicts permanent retinal damage if used for too long.
+
+<ImageContentRowRender 
+  images={['displays-retinal']}
+/>
+
+Thanks to the invention of `retinal lasercasters`, the entire concept of a screen was called into question in the late 21st century. Retinal casters are full-fidelity, full-color hyper reality display systems that typically take the form of a small projector-like device positioned near or over an existing monitor.
+
+To form a picture in a user's eye, a caster tracks and rapidly scans an image directly into the person's retina using a set of color lasers. The device is, in principle, quite similar to an ion beam except that the image bypasses the need for a screen or vacuum-sealed pyramid. Combined with strategically positioned mirror cubes, a single retinal caster can fully immerse a matching user within a virtual space, or augment their vision to include "virtual" displays.
+
+In an ideal world, advanced retinal casting could replace ion-beams almost entirely, paving the way for a world filled with augmented and virtual reality experiences around every corner. Unfortunately, there is a single massive drawback to the technology in its most contemporary form: extended use of any caster causes permanent retinal scorching. Simple scorches can be recovered from within several weeks, but prolonged use causes injuries which require serious regeneration therapy.
+
+<QuoteRow author={AuthorUniserve}>
+The length of time that a RETINAL CASTER can be used safely depends heavily on the ERA from which the device comes from, and the QUALITY of the machine.
+
+An old, 2080s-era caster would likely cause scorching after a mere TWENTY MINUTES of use. Top-of-the-line prototypes from the 2090s could be safely used for over FOUR HOURS, and come with safety shut-offs.
+</QuoteRow>
+
+Despite the health risks, retinal casters became commercially available in the 2080s. They were commonly used in conjunction with `quester` style video games, in which the user's adventure would be generated by a console-based neuromorph. They also found limited use in areas outside of entertainment, such as industrial machine control.
+
+<QuoteRow author={AuthorUniserve}>
+A common CONSPIRACY THEORY speculated that the limit was engineered in secret to avoid causing addiction in the population. This was COMPLETELY UNTRUE.
+</QuoteRow>
+
+### Soft-light projector
+> Projects three-dimensional forms into open air through lasers and controlled gas, but can only produce vector-based images.
+
+<ImageContentRowRender 
+  images={['displays-softlight']}
+/>
+
+The `soft-light projector`, also referred to as a `light table`, represents the pinnacle of vector display technology by the end of human civilization. The device typically takes the form of a flat surface combined with a set of laser projectors. By controlling the shape of gas using gravity-manipulating yoku coils within the base and tracing vector images using rapid-moving lasers, a soft-light table can produce a three-dimensional image seemingly suspended in open air.
+
+The picture is most clear closest to the base of the table, and can produce a larger image over wider tables. The resulting hologram can even be physically interrupted for limited amounts of time, as the gas retains a memory and yoku coils compensate for the disturbance... meaning a person could walk right through the image without disrupting it (at least on the newer models).
+
+Though quite advanced, soft-light projectors were not a new invention. For over fifty years, three-dimensional holography was almost exclusively the domain of military organizations. In the late 2080s, the technology began to be witnessed by the public as Mars-originated yoku coils became more common. Experts in the field predicted that computing would advance to a point where the systems could support voxel (a three-dimensional pixel) holograms within only a decade.
+
+---
+
+Society at large anticipated that retinal casters, soft-light projectors, and other laser-based display technologies would become commonplace within only a decade or two as they continued to be developed. Though these were not ready to replace existing devices yet, development into traditional display technologies stalled completely once it was clear they would soon become fundamentally obsolete. Thus, human civilization was largely left to stare at ion-beams, plasma-fields, and their variations until their disappearance from reality in 2095.
+
+The world today remains a snapshot of this moment in history, a transition from the established paradigm to something new and unknown.
+
+
+{/* `Why are we so sure this is the way things should be? All the evidence we have collected points to the existence of other worlds, or really different versions of *this* one, realms upon realms layered over the others beyond the comprehensible conceptions of time and space. This is the reality: the System we know, the one we hold as absolute fact, is one of many potential configurations; configurations which normally would never exist at the same time, except when something terrible happens... perhaps, they lie just beyond the shimmer that surrounds us.`
+
+### Volumetric glass
+
+- <span class="pro" /> Impossibly strong and light
+
+### Light-cell array
+
+- <span class="pro" /> Visual clarity beyond the realm of possibility
+
+Strip-cell arrays are flexible sandwiches of an unknown. All SCA devices in existence appeared after the disappearance of mankind, and they are truly incredible pieces of technology. Completely flat, extremely bright, and fully colorful - they are at least fifty years more advanced than anything we know.
+
+Truly astonishing technology.  */}

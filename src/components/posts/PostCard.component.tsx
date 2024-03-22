@@ -8,6 +8,7 @@ import {
   faDatabase,
   faKey,
   faMicrochip,
+  faImage,
 } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState, useEffect } from "react"
@@ -52,6 +53,7 @@ const PostCard = ({
     : post.data.thumbImage
 
   const isPatreonExclusive = post.data.patreonLocked
+  const { numberOfImages } = post.data
 
   let target = `/posts/${post.slug}`
   if (isPatreonExclusive) target = post.data.target ?? ""
@@ -154,6 +156,11 @@ const PostCard = ({
                   height={imageHeight}
                   width={imageWidth}
                 />
+                {numberOfImages ? (
+                  <NumberOfImagesTag
+                    numberOfImages={numberOfImages}
+                  />
+                ) : null}
                 {isPatreonExclusive && (
                   <PatreonExclusiveOverlay />
                 )}
@@ -176,6 +183,11 @@ const PostCard = ({
                     : undefined,
                 }}
               >
+                {numberOfImages ? (
+                  <NumberOfImagesTag
+                    numberOfImages={numberOfImages}
+                  />
+                ) : null}
                 {isPatreonExclusive && (
                   <PatreonExclusiveOverlay />
                 )}
@@ -267,6 +279,19 @@ const PostCard = ({
           </div>
         </>
       </DialogContainer>
+    </div>
+  )
+}
+
+const NumberOfImagesTag = ({
+  numberOfImages,
+}: {
+  numberOfImages?: number
+}) => {
+  return (
+    <div className="number-of-images">
+      <FontAwesomeIcon icon={faImage} className="icon" />{" "}
+      {numberOfImages} images
     </div>
   )
 }

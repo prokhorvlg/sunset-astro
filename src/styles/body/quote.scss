@@ -208,12 +208,6 @@ $quoteMobileSidePadding: 20px;
   // AENEAS & GRUZ
   $aeneas: #d68e08;
   &.aeneas-color {
-    //   $color-text,
-    // $color-border,
-    // $color-background,
-    // $color-highlight,
-    // $color-description,
-
     @include recolorQuote(
       lighten($aeneas, 20%),
       lighten($aeneas, 20%),
@@ -259,6 +253,35 @@ $quoteMobileSidePadding: 20px;
     }
   }
 
+  $fiftyone: #ff9813;
+  $fiftyoneHighlight: #e64b0e;
+  &.fiftyone-color {
+    @include recolorQuote(
+      lighten($fiftyone, 5%),
+      lighten($fiftyone, 5%),
+      darken($fiftyoneHighlight, 39%),
+      white,
+      $fiftyoneHighlight
+    );
+    // @include whiteBGQuote();
+  }
+  &.fiftyone {
+    @include MinimalistAuthorBox(
+      #3f190457,
+      #502408e3,
+      true
+    );
+    @include WrapTextCharacter("::", "::");
+  }
+
+  &.uniserve-strip {
+    @include MinimalistAuthorBox(
+      #04273f57,
+      #033744d0,
+      true
+    );
+  }
+
   // RADIUS AND THE SILENCES
   &.silence {
     //᠁
@@ -276,12 +299,6 @@ $quoteMobileSidePadding: 20px;
     }
     &.globe {
       @include WrapTextCharacter("《", "》");
-    }
-    &.tangent {
-      //@include WrapTextCharacter("᚜", "᚛");
-    }
-    &.orbit {
-      //@include WrapTextCharacter("﴾", "﴿");
     }
   }
 
