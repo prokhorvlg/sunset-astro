@@ -1406,4 +1406,23 @@ export const Images: ImageDetails[] = [
     ),
     caption: "Rather large.",
   },
+  {
+    id: "eryk-we-rise-together",
+    src: getImageFromGlob(
+      "creations/eryk-we-rise-together.png"
+    ),
+  },
+  {
+    id: "elizatronic-altar-diagram-still",
+    src: getImageFromGlob(
+      "creations/elizatronic-altar-diagram-still.png"
+    ),
+  },
+  {
+    id: "elizatronic-altar-diagram",
+    src: getImageFromGlob(
+      "creations/elizatronic-altar-diagram.gif"
+    ),
+    classes: "border-orange",
+  },
 ]

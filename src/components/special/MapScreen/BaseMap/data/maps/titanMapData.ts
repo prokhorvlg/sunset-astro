@@ -1,156 +1,174 @@
 import TitanMap from "@/assets/images/maps/map-titan-dollar-bank.jpg"
-import { type ActiveMapMeta, ActiveMapType } from "@/components/special/MapScreen/BaseMap/data/mapTypes"
-import { type LocalLocationNode, LocationType, SiteSubtype } from "@/components/special/MapScreen/BaseMap/data/types"
+import {
+  type ActiveMapMeta,
+  ActiveMapType,
+} from "@/components/special/MapScreen/BaseMap/data/mapTypes"
+import {
+  type LocalLocationNode,
+  LocationType,
+  SiteSubtype,
+} from "@/components/special/MapScreen/BaseMap/data/types"
 
 export const titanLocations: LocalLocationNode[] = [
   {
     id: "new-providence",
-    name: 'New Providence',
+    name: "New Providence",
     typeText: "Hub City",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: -100, 
-    y: -450
-  }, 
+    x: -100,
+    y: -450,
+  },
   {
-    name: 'Petoskey Springs',
+    name: "Petoskey Springs",
     typeText: "Shipping Town",
-    flavorText: "Quaint little town at the foot of the Highwinds.",
-    type: LocationType.Site, 
+    flavorText:
+      "Quaint little town at the foot of the Highwinds.",
+    type: LocationType.Site,
     subType: SiteSubtype.Outpost,
-    x: -860, 
-    y: -700
-  }, 
+    x: -860,
+    y: -700,
+  },
   {
-    name: 'Monolith Supergun',
+    name: "Monolith Supergun",
     typeText: "Orbital Shipping System",
-    flavorText: "Enormous railgun.",
-    type: LocationType.Site, 
+    flavorText:
+      "The Monolith railgun, large enough to fire truck-sized armatures, sits silent for a century. It waits for launch authorization from a human being that will never come.",
+    type: LocationType.Site,
     subType: SiteSubtype.Outpost,
-    x: -910, 
-    y: -720
-  }, 
+    x: -910,
+    y: -720,
+  },
   {
-    name: 'Quentoria',
+    name: "Quentoria",
     typeText: "Suburban Town",
-    type: LocationType.Site, 
+    flavorText:
+      "One of hundreds of cookie-cutter suburbs that dot the Dollar Bank.",
+    type: LocationType.Site,
     subType: SiteSubtype.Outpost,
-    x: -280, 
-    y: -500
-  }, 
+    x: -280,
+    y: -500,
+  },
   {
-    name: 'Gibson Lake',
+    name: "Gibson Lake",
     typeText: "Lake Town",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.Outpost,
-    x: -430, 
-    y: -240
+    x: -430,
+    y: -240,
   },
   {
-    name: 'Gibson Dam',
+    name: "Gibson Dam",
     typeText: "Hydroelectric Dam",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.Outpost,
-    x: -385, 
-    y: -250
+    x: -385,
+    y: -250,
   },
   {
-    name: 'Fort Hood',
+    name: "Fort Hood",
     typeText: "Military Base",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.Outpost,
-    x: -140, 
-    y: -240
-  }, 
+    x: -140,
+    y: -240,
+  },
   {
-    name: 'Rhodes',
+    name: "Rhodes",
     typeText: "Mining Town",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.Outpost,
-    x: -385, 
-    y: 120
-  }, 
+    x: -385,
+    y: 120,
+  },
   {
-    name: 'Redmond Plant A2',
+    name: "Redmond Plant A2",
     typeText: "Robotics Factory",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.Outpost,
-    x: -425, 
-    y: 45
-  }, 
+    x: -425,
+    y: 45,
+  },
   {
-    name: 'Northern Nuclear',
+    name: "Northern Nuclear",
     typeText: "Power Plant",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: -640, 
-    y: -300
-  }, 
+    x: -640,
+    y: -300,
+  },
   {
-    name: 'Objective Titan Warship',
+    name: "Objective Titan Warship",
     typeText: "Planetary Defense Vessel",
-    type: LocationType.Site, 
+    flavorText:
+      "Some mistake it for an island... until it begins to move.",
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: 60, 
-    y: 250
-  }, 
+    x: 60,
+    y: 250,
+  },
   {
-    name: 'Clibber Creek Park',
+    name: "Clibber Creek Park",
     typeText: "Visitor Center",
-    type: LocationType.Site, 
+    flavorText:
+      "Welcome to Clibber Creek State Park, home of the man who designed the Grillmaster! Please make your visit to our park safe and enjoyable, and remain in the vicinity of the marked trails.",
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: -490, 
-    y: -350
-  }, 
+    x: -490,
+    y: -350,
+  },
   {
-    name: 'Albatross Campsite',
+    name: "Albatross Campsite",
     typeText: "Remote Campsite",
-    type: LocationType.Site, 
+    flavorText:
+      "People once came here to watch the lights dance in the night sky.",
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: -890, 
-    y: -410
-  }, 
+    x: -890,
+    y: -410,
+  },
   {
-    name: 'Pine Valley Research',
+    name: "Pine Valley Research",
     typeText: "Technology Complex",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: -990, 
-    y: -450
-  }, 
+    x: -990,
+    y: -450,
+  },
   {
-    name: 'Drowning Monument',
+    name: "Drowning Monument",
     typeText: "???",
-    flavorText: "Couple of unusually smooth, glowy stones peeking out over the waterline.",
-    type: LocationType.Site, 
+    flavorText:
+      "Couple of unusually smooth, glowy stones peeking out over the waterline.",
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: -1150, 
-    y: 150
-  }, 
+    x: -1150,
+    y: 150,
+  },
   {
-    name: 'Fort Haversat',
+    name: "Fort Haversat",
     typeText: "Research Base",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: 990, 
-    y: 600
-  }, 
+    x: 990,
+    y: 600,
+  },
   {
-    name: 'Offshore #8',
+    name: "Offshore #8",
     typeText: "Drilling Platform",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: 890, 
-    y: -500
-  }, 
+    x: 890,
+    y: -500,
+  },
   {
-    name: 'Sea Dragon',
+    name: "Sea Dragon",
     typeText: "Old Launch Site",
-    type: LocationType.Site, 
+    type: LocationType.Site,
     subType: SiteSubtype.PointOfInterest,
-    x: 690, 
-    y: -600
-  }, 
+    x: 690,
+    y: -600,
+  },
 ]
 
 export const titanMapMeta: ActiveMapMeta = {
@@ -160,15 +178,23 @@ export const titanMapMeta: ActiveMapMeta = {
   image: TitanMap,
   dimensions: {
     x: 3000,
-    y: 2000
+    y: 2000,
   },
   centerLocationId: "new-providence",
   minScale: 0.7,
   maxScale: 5,
   detailLevelScale: 2,
-  detailLevel2Scale: 5,
-  diagPatternScale: "4px",
+  detailLevel2Scale: 4,
+  diagPatternScale: "3px",
   centerOffset: 0,
   distanceMultiplier: 1,
-  locations: titanLocations
+  locations: titanLocations,
 }
+
+// ICE SHELF
+//
+/// STONE COLD WATERS
+// The seas to the north are
+
+// NUCLEAR LAUNCH SITE
+// Don't be concerned. The people are upwind

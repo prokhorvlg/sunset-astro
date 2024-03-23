@@ -282,6 +282,18 @@ $quoteMobileSidePadding: 20px;
     );
   }
 
+  &.crawler-pilot {
+    @include MinimalistAuthorBox(
+      #04273f57,
+      #033744d0,
+      true
+    );
+    .quote-box p {
+      text-transform: uppercase;
+    }
+    @include WrapTextCharacter("▹", "◃");
+  }
+
   // RADIUS AND THE SILENCES
   &.silence {
     //᠁

@@ -197,6 +197,7 @@ export const AuthorGRUZ: QuoteAuthor = {
   theme: "gruz gruz-color",
 }
 
+// Lightwave
 export const Author51: QuoteAuthor = {
   id: "51",
   name: "Agent RATIO",
@@ -210,4 +211,20 @@ export const AuthorKing: QuoteAuthor = {
   image: "avatar-king",
   description: "Trusted machine of the Remembering.",
   theme: "aqua uniserve-strip",
+}
+
+// Glass
+export const AuthorCrawlerPilot: QuoteAuthor = {
+  id: "crawler-pilot",
+  name: "Crawler 388",
+  image: "avatar-king",
+  description: "Control system of a massive alloy crawler.",
+  theme: "aqua crawler-pilot",
+}
+export const AuthorCrawlerNavigator: QuoteAuthor = {
+  id: "crawler-navigator",
+  name: "Navigator",
+  image: "avatar-king",
+  description: "Trusted machine of the Remembering.",
+  theme: "aqua crawler-pilot",
 }
