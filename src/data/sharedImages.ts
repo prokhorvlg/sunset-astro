@@ -1425,4 +1425,33 @@ export const Images: ImageDetails[] = [
     ),
     classes: "border-orange",
   },
+
+  {
+    id: "bb-dot",
+    src: getImageFromGlob("creations/dot_S.png"),
+  },
+  {
+    id: "bb-dot-sheet",
+    src: getImageFromGlob(
+      "creations/dot-neuromorph-worksheet.png"
+    ),
+  },
+  {
+    id: "author-dot",
+    src: getImageFromGlob(
+      "content/author-images/dot/AuthorDot.png"
+    ),
+  },
+  {
+    id: "author-insist",
+    src: getImageFromGlob(
+      "content/author-images/dot/AuthorINSIST.png"
+    ),
+  },
+  {
+    id: "author-dot-2",
+    src: getImageFromGlob(
+      "content/author-images/dot/AuthorDot2.png"
+    ),
+  },
 ]

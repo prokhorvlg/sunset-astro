@@ -3,12 +3,11 @@ $quoteMobileSidePadding: 20px;
 
 @mixin WrapTextCharacter($left, $right) {
   p {
-    //text-transform: uppercase;
     &::before {
-      content: $left + " ";
+      content: $left;
     }
     &::after {
-      content: " " + $right;
+      content: $right;
     }
   }
 }
@@ -101,10 +100,10 @@ $quoteMobileSidePadding: 20px;
   }
 }
 
-@mixin whiteBGQuote {
+@mixin whiteBGQuote($opacity: 0.3) {
   .simple-container.quote-box::after {
     background: url("/images/patterns/white-crisscross-pattern.svg");
-    opacity: 0.3;
+    opacity: $opacity;
     background-size: 150px;
   }
 }
@@ -271,7 +270,7 @@ $quoteMobileSidePadding: 20px;
       #502408e3,
       true
     );
-    @include WrapTextCharacter("::", "::");
+    @include WrapTextCharacter(":: ", " ::");
   }
 
   &.uniserve-strip {
@@ -291,7 +290,36 @@ $quoteMobileSidePadding: 20px;
     .quote-box p {
       text-transform: uppercase;
     }
-    @include WrapTextCharacter("▹", "◃");
+    @include WrapTextCharacter("▹ ", " ◃");
+  }
+
+  &.dot {
+    @include MinimalistAuthorBox(
+      #33154479,
+      #332452ee,
+      true
+    );
+    @include recolorQuote(
+      #bb8fec,
+      #9171da,
+      #241f31,
+      white,
+      #9171da
+    );
+    @include WrapTextCharacter("", " ¶");
+    @include whiteBGQuote(0.2);
+  }
+  &.insist {
+    @include MinimalistAuthorBox(#30303081, #444444, true);
+    @include recolorQuote(
+      #cccccc,
+      #cccccc,
+      #303030,
+      white,
+      #cccccc
+    );
+    @include WrapTextCharacter("> ", "");
+    @include whiteBGQuote(0.3);
   }
 
   // RADIUS AND THE SILENCES
@@ -299,7 +327,7 @@ $quoteMobileSidePadding: 20px;
     //᠁
     .quote-box {
       padding: 5px 30px;
-      @include WrapTextCharacter("〈", "〉");
+      @include WrapTextCharacter("〈 ", " 〉");
     }
     @include MinimalistAuthorBox(
       rgba(187, 42, 16, 0.05),
@@ -307,10 +335,10 @@ $quoteMobileSidePadding: 20px;
     );
 
     &.center {
-      @include WrapTextCharacter("⦑", "⦒");
+      @include WrapTextCharacter("⦑ ", " ⦒");
     }
     &.globe {
-      @include WrapTextCharacter("《", "》");
+      @include WrapTextCharacter("《 ", " 》");
     }
   }
 

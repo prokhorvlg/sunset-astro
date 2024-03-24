@@ -228,3 +228,28 @@ export const AuthorCrawlerNavigator: QuoteAuthor = {
   description: "Trusted machine of the Remembering.",
   theme: "aqua crawler-pilot",
 }
+
+// Pan's DOT
+export const AuthorDOT: QuoteAuthor = {
+  id: "pan-dot",
+  name: "DOT",
+  image: "author-dot",
+  description: "Oakland’s last automaton.",
+  theme: "dot",
+}
+export const AuthorINSIST: QuoteAuthor = {
+  id: "pan-insist",
+  name: "INSIST",
+  image: "author-insist",
+  description:
+    //"Insite Neuromorphic Systems Interfacer Software Troubleshooter",
+    "Neuromorphic troubleshooter by Insite.",
+  theme: "insist",
+}
+export const AuthorDOT2: QuoteAuthor = {
+  id: "pan-dot2",
+  name: "DOT",
+  image: "author-dot-2",
+  description: "Oakland’s first neuromorph.",
+  theme: "dot",
+}
