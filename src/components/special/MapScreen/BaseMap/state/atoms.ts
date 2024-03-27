@@ -54,7 +54,7 @@ export const hoveredLocationAtom =
   atom<LocationNode | null>(null)
 
 export const activeMapAtom = atom<ActiveMap>(
-  ActiveMap.Titan
+  ActiveMap.System
 )
 export const activeMapMetaAtom = atom<ActiveMapMeta>(
   (get) => {
