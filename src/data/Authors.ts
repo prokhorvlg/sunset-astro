@@ -213,20 +213,30 @@ export const AuthorKing: QuoteAuthor = {
   theme: "aqua uniserve-strip",
 }
 
-// Glass
+// Shattered
 export const AuthorCrawlerPilot: QuoteAuthor = {
   id: "crawler-pilot",
-  name: "Crawler 388",
-  image: "avatar-king",
-  description: "Control system of a massive alloy crawler.",
-  theme: "aqua crawler-pilot",
+  name: "OPCON",
+  image: "avatar-opcon",
+  description: "Curious pilot of the crawler.",
+  theme: "crawler-pilot",
+  originalPage: "/posts/shattered",
 }
 export const AuthorCrawlerNavigator: QuoteAuthor = {
   id: "crawler-navigator",
-  name: "Navigator",
-  image: "avatar-king",
-  description: "Trusted machine of the Remembering.",
-  theme: "aqua crawler-pilot",
+  name: "LONGSIGHT",
+  image: "avatar-longsight",
+  description: "Uptight navigator of the crawler.",
+  theme: "crawler-navigator",
+  originalPage: "/posts/shattered",
+}
+export const AuthorLisa: QuoteAuthor = {
+  id: "lisa",
+  name: "Aquila",
+  image: "avatar-aquila",
+  description: "Broken servitor from a world of Glass.",
+  theme: "glass lisa",
+  originalPage: "/posts/shattered",
 }
 
 // Pan's DOT
@@ -241,9 +251,7 @@ export const AuthorINSIST: QuoteAuthor = {
   id: "pan-insist",
   name: "INSIST",
   image: "author-insist",
-  description:
-    //"Insite Neuromorphic Systems Interfacer Software Troubleshooter",
-    "Neuromorphic troubleshooter by Insite.",
+  description: "Neuromorphic troubleshooter by Insite.",
   theme: "insist",
 }
 export const AuthorDOT2: QuoteAuthor = {

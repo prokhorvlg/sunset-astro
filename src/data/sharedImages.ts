@@ -1250,6 +1250,27 @@ export const Images: ImageDetails[] = [
     ),
     alt: "",
   },
+  {
+    id: "avatar-aquila",
+    src: getImageFromGlob(
+      "content/author-images/avatar-aquila.png"
+    ),
+    alt: "",
+  },
+  {
+    id: "avatar-opcon",
+    src: getImageFromGlob(
+      "content/author-images/avatar-opcon.png"
+    ),
+    alt: "",
+  },
+  {
+    id: "avatar-longsight",
+    src: getImageFromGlob(
+      "content/author-images/avatar-longsight.png"
+    ),
+    alt: "",
+  },
 
   {
     id: "coalition-drones",
@@ -1265,10 +1286,12 @@ export const Images: ImageDetails[] = [
   },
   {
     id: "lisa-ad",
-    src: getImageFromGlob("content/lisa (7).png"),
+    src: getImageFromGlob("content/lisa-ad.jpg"),
     alt: "",
     // classes: "border-titan-blue",
     artist: ArtistProkhor,
+    caption:
+      "An advertisement for a Lisa G9, recovered from an anomalous reality field by █████. Note the significantly altered yet familiar branding.",
   },
 
   // DISPLAYS

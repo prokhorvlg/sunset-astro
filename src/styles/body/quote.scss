@@ -281,16 +281,44 @@ $quoteMobileSidePadding: 20px;
     );
   }
 
+  // Shattered
   &.crawler-pilot {
-    @include MinimalistAuthorBox(
-      #04273f57,
-      #033744d0,
-      true
-    );
+    @include WrapTextCharacter("❯ ", "");
     .quote-box p {
       text-transform: uppercase;
     }
-    @include WrapTextCharacter("▹ ", " ◃");
+  }
+  &.crawler-navigator {
+    @include WrapTextCharacter("░ ", " ░");
+  }
+  &.crawler-pilot,
+  &.crawler-navigator {
+    @include MinimalistAuthorBox(
+      #470f015d,
+      #632501d0,
+      true
+    );
+  }
+  $lisa: #0ef1ff;
+  $lisaHighlight: #0ebbff;
+  &.lisa {
+    @include MinimalistAuthorBox(
+      #07d1f533,
+      #01335c5b,
+      true
+    );
+    @include recolorQuote(
+      lighten($lisa, 25%),
+      lighten($lisa, 5%),
+      darken($lisaHighlight, 43%),
+      white,
+      $lisaHighlight
+    );
+    @include whiteBGQuote();
+    .quote-box p {
+      text-shadow: 3px 0px 2px #0f8bc4a2,
+        7px 0px 2px #1773eb7a;
+    }
   }
 
   &.dot {
@@ -521,6 +549,7 @@ $quoteMobileSidePadding: 20px;
             line-height: 32px;
             text-align: left;
             color: $color-sunset-orange;
+            white-space: nowrap;
             @media screen and (max-width: $breakpoint-quote) {
               text-align: left;
             }
