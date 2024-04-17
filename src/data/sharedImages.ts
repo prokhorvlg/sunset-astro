@@ -1370,7 +1370,7 @@ export const Images: ImageDetails[] = [
     id: "innovation-cat",
     src: getImageFromGlob("content/innovation_cat.jpg"),
     caption:
-      "QUIKBREW, an all-in-one coffee appliance from Raypoint, spots an unserviced mug within a souvenir pile left behind by a vanished human. Miss Maxine looks off into the distance in the direction of the food stores.",
+      "QUIKBREW, an all-in-one coffee appliance from Raypoint, spots an unserviced mug within a souvenir pile left behind by a vanished human. Miss Whiskers looks off into the distance in the direction of the food stores.",
     alt: "",
     classes: "border-red",
   },
