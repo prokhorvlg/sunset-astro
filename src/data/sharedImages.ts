@@ -1374,6 +1374,15 @@ export const Images: ImageDetails[] = [
     alt: "",
     classes: "border-red",
   },
+  {
+    id: "innovation-cat-crop",
+    src: getImageFromGlob(
+      "content/innovation_cat_crop.jpg"
+    ),
+    caption: "Closeup on QUIKBREW and Miss Whiskers.",
+    alt: "",
+    classes: "border-red",
+  },
 
   // FAN ART
   {
