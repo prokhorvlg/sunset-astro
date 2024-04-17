@@ -239,6 +239,16 @@ export const AuthorLisa: QuoteAuthor = {
   originalPage: "/posts/shattered",
 }
 
+// Coffee and cat
+export const AuthorBrewmaster: QuoteAuthor = {
+  id: "brewmaster",
+  name: "QUIKBREW",
+  image: "avatar-quikbrew",
+  description: "Last Quikbrew in the Innovation Cubes.",
+  theme: "quikbrew",
+  // originalPage: "/posts/shattered",
+}
+
 // Pan's DOT
 export const AuthorDOT: QuoteAuthor = {
   id: "pan-dot",

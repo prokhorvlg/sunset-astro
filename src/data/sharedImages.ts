@@ -35,7 +35,7 @@ export interface ImageDetails {
   alt?: string
 
   artist?: ImageArtist
-  caption?: string
+  caption?: string | React.ReactNode
   classes?: string
   quoteClasses?: string
   originalPost?: string
@@ -1271,6 +1271,13 @@ export const Images: ImageDetails[] = [
     ),
     alt: "",
   },
+  {
+    id: "avatar-quikbrew",
+    src: getImageFromGlob(
+      "content/author-images/avatar-quikbrew.png"
+    ),
+    alt: "",
+  },
 
   {
     id: "coalition-drones",
@@ -1357,6 +1364,15 @@ export const Images: ImageDetails[] = [
     caption:
       "An Omnivision SILENT AM-100 and an Akion Microdot 450 represent typical variations of the subsurface matrix printer, both produced within the Pact. Ink is punched into an endless roll of permampaper as it slides out of the top, line by line.",
     alt: "",
+  },
+
+  {
+    id: "innovation-cat",
+    src: getImageFromGlob("content/innovation_cat.jpg"),
+    caption:
+      "QUIKBREW, an all-in-one coffee appliance from Raypoint, spots an unserviced mug within a souvenir pile left behind by a vanished human. Miss Maxine looks off into the distance in the direction of the food stores.",
+    alt: "",
+    classes: "border-red",
   },
 
   // FAN ART

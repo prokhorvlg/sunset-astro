@@ -321,6 +321,24 @@ $quoteMobileSidePadding: 20px;
     }
   }
 
+  $quikbrew: #ffd4a2;
+  $quikbrewHighlight: #ee7707;
+  &.quikbrew {
+    @include WrapTextCharacter("→ ", " ");
+    @include MinimalistAuthorBox(
+      #4720015d,
+      #633801d0,
+      true
+    );
+    @include recolorQuote(
+      lighten($quikbrew, 0%),
+      lighten($quikbrew, 5%),
+      darken($quikbrewHighlight, 38%),
+      $quikbrewHighlight,
+      $quikbrewHighlight
+    );
+  }
+
   &.dot {
     @include MinimalistAuthorBox(
       #33154479,
