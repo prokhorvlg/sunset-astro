@@ -818,6 +818,13 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob("content/thinkbot-ad-6.png"),
     alt: "Union thinkbot robot",
   },
+  {
+    id: "thinkbot-military",
+    src: getImageFromGlob("content/thinkbot-ad-sm.jpg"),
+    caption:
+      "Standard, military color scheme of the QUARK thinkbot.",
+    alt: "",
+  },
   // EXOTIC RESOURCES
   {
     id: "exotic-resources",
@@ -873,14 +880,22 @@ export const Images: ImageDetails[] = [
     ),
     alt: "Pact android stands guard in front of mastermind",
     classes: "border-red",
-    //caption: "A Hokota J-1108 interfacer stands guard at the base of SANGUINE HAZE, somewhere inside of a complex under the Martian Sands."
+  },
+  {
+    id: "queen-of-red-sands",
+    src: getImageFromGlob(
+      "content/nonbinary_queen_of_sands.jpg"
+    ),
+    caption:
+      "A doodle of the (nonbinary) Queen of the Red Sands.",
+    alt: "",
+    classes: "border-red",
   },
   {
     id: "cobalt",
     src: getImageFromGlob("content/cobalt-full.jpg"),
     alt: "Coalition wood-paneled mastermind with tanky bodyguard",
     classes: "border-uniserve-blue",
-    //caption: `Operator COBALT and their bodyguard, STONEWALL. COBALT doesn't seem to be very fond of STONEWALL, or SANGUINE HAZE, or anyone really. SANGUINE assures us it's just their hard, wood-paneled exterior concealing a heart of gold.`
   },
   {
     id: "klaus-meister",
