@@ -1399,6 +1399,17 @@ export const Images: ImageDetails[] = [
     classes: "border-red",
   },
 
+  {
+    id: "bbm-interfacer",
+    src: getImageFromGlob(
+      "content/bbm-interfacer-ad-4.jpg"
+    ),
+    caption:
+      'The tagline is a reference to the "mullet", a strange human hairstyle which saw brief revivals during the 2030s and 2080s.',
+    alt: "",
+    // classes: "border-red",
+  },
+
   // FAN ART
   {
     id: "creations-embed",
