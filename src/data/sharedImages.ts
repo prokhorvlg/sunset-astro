@@ -12,7 +12,7 @@ const ArtistProkhor: ImageArtist = {
   link: "https://twitter.com/prokhorVLG",
   name: "ProkhorVLG",
   profilePic:
-    "https://pbs.twimg.com/profile_images/1622668839036100617/GNEm5ReN_400x400.jpg",
+    "https://pbs.twimg.com/profile_images/1778832695587475456/METlR4AN_400x400.jpg",
 }
 const ArtistLarkine: ImageArtist = {
   id: "larkine",
@@ -1388,6 +1388,7 @@ export const Images: ImageDetails[] = [
       "QUIKBREW, an all-in-one coffee appliance from Raypoint, spots an unserviced mug within a souvenir pile left behind by a vanished human. Miss Whiskers looks off into the distance in the direction of the food stores.",
     alt: "",
     classes: "border-red",
+    artist: ArtistProkhor,
   },
   {
     id: "innovation-cat-crop",
@@ -1406,8 +1407,22 @@ export const Images: ImageDetails[] = [
     ),
     caption:
       'The tagline is a reference to the "mullet", a strange human hairstyle which saw brief revivals during the 2030s and 2080s.',
+    alt: "Advertisement for a BBM robot, styles after an IBM PC.",
+    artist: ArtistProkhor,
+  },
+  {
+    id: "oakland-dot",
+    src: getImageFromGlob("content/oakland_dot.jpg"),
     alt: "",
-    // classes: "border-red",
+    artist: ArtistProkhor,
+  },
+  {
+    id: "too-heavy",
+    src: getImageFromGlob("content/too_heavy.jpg"),
+    alt: "",
+    caption:
+      "A Maple ISAAC and a BBM Interfacer/36 attempt to sit. It goes poorly.",
+    artist: ArtistProkhor,
   },
 
   // FAN ART
@@ -1527,5 +1542,30 @@ export const Images: ImageDetails[] = [
     src: getImageFromGlob(
       "content/author-images/dot/AuthorDot2.png"
     ),
+  },
+  // fan art, early may drop
+  {
+    id: "eggnogo-ruby-sketch",
+    src: getImageFromGlob(
+      "creations/eggnogo-ruby-sketch.png"
+    ),
+  },
+  {
+    id: "zoidsfan-quikbrew-internals",
+    src: getImageFromGlob(
+      "creations/zoidsfan-quikbrew-internals.jpg"
+    ),
+  },
+  {
+    id: "shaun-sjm-akion",
+    src: getImageFromGlob("creations/shaun-sjm-akion.jpg"),
+  },
+  {
+    id: "atlas-brew-crew",
+    src: getImageFromGlob("creations/atlas-brew-crew.png"),
+  },
+  {
+    id: "retro-ivex-pc",
+    src: getImageFromGlob("creations/retro-ivex-pc.png"),
   },
 ]
