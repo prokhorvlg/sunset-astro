@@ -1414,6 +1414,7 @@ export const Images: ImageDetails[] = [
     id: "oakland-dot",
     src: getImageFromGlob("content/oakland_dot.jpg"),
     alt: "",
+    caption: "My fanart of DOT.",
     artist: ArtistProkhor,
   },
   {
@@ -1551,6 +1552,12 @@ export const Images: ImageDetails[] = [
     ),
   },
   {
+    id: "eggnogo-facerblast",
+    src: getImageFromGlob(
+      "creations/eggnogo-facerblast.jpg"
+    ),
+  },
+  {
     id: "zoidsfan-quikbrew-internals",
     src: getImageFromGlob(
       "creations/zoidsfan-quikbrew-internals.jpg"
@@ -1567,5 +1574,15 @@ export const Images: ImageDetails[] = [
   {
     id: "retro-ivex-pc",
     src: getImageFromGlob("creations/retro-ivex-pc.png"),
+  },
+  {
+    id: "kev-rev-marat",
+    src: getImageFromGlob("creations/kev-rev-marat.png"),
+  },
+  {
+    id: "kev-rev-marat-sheet",
+    src: getImageFromGlob(
+      "creations/kev-rev-marat-sheet.png"
+    ),
   },
 ]

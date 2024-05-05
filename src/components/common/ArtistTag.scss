@@ -24,4 +24,9 @@
       margin-left: 30px;
     }
   }
+
+  &.no-link {
+    pointer-events: none;
+    cursor: default;
+  }
 }

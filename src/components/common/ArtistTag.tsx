@@ -12,11 +12,15 @@ const ArtistTag = ({
   imageSrc?: string
   artistName: string
 }) => {
+  const hasLink = href && href !== "#"
+
   return (
     <a
-      className="bubble-tag artist-tag"
+      className={`bubble-tag artist-tag ${
+        !hasLink ? "no-link" : ""
+      }`}
       target="_blank"
-      href={href ?? "#"}
+      href={hasLink ? href : "#"}
     >
       {imageSrc && <img src={imageSrc} width="60" />}
       <div className="text-container">
@@ -25,11 +29,11 @@ const ArtistTag = ({
         </span>
         <span className="show-on-mobile">by&nbsp;</span>
         {artistName}
-        {href ? (
+        {hasLink && (
           <FontAwesomeIcon
             icon={faArrowUpRightFromSquare}
           />
-        ) : null}
+        )}
       </div>
     </a>
   )
