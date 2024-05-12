@@ -1,0 +1,76 @@
+---
+title: "Robots at SRI"
+mainText: "A robot used at the Sunset Research Initiative, the organization that vanished humanity."
+subText: "Are these machines still around? Can we ask them about what it was like?"
+pubDate: "May 5 2024"
+thumbImage: "sri-mike"
+thumbAlignment: "center 60%"
+tags:
+  - core mystery
+  - sri
+  - robot
+---
+
+import TextContentRow from '@/components/common/ContentRow/TextContentRow.component'
+import QuoteRow from '@/components/common/ContentRow/QuoteRow.astro'
+import ImageContentRowRender from '@/components/common/ContentRow/ImageContentRowRender.astro'
+import { AuthorCAN, AuthorUniserve, AuthorTerminal } from '@/data/Authors.ts'
+
+<ImageContentRowRender 
+  images={['sri-mike']}
+/>
+
+Bolt by bolt, hiss by hiss, the hundred-ton steel bulkhead facing you unseals from the structure surrounding it. Accompanied by the whine of a hidden hydraulic system, the previously indistinguishable section of wall pulls away, revealing an aperture to a hidden compartment. You pass weightlessly through the opening, ignoring dozens of red-orange symbols warning you of various dangers. *Those were for humans.*
+
+It's a storage room in Goldspire's crown. A "room" takes on a different meaning here in space, though; this cavern was the size of a warehouse. Makes sense, after all, there was no real limit to the scale of orbital construction, especially that which is not subjected to any kind of continuous force like the centripetal ring of the space station.
+
+The cavern is dark and signalless, save for a small illuminated pedestal near the center. It is adorned by faux wood and a dedicated spotlight, suspended by a series of trusses and well-concealed security measures. A small placard reads "MIKE"; each letter etched with nanometer symbols designed for machine eyes. 
+
+And at its heart are the fragments of an ancient military interfacer. No complete component remains besides the head, itself scarred almost beyond recognition. Certainly this machine was designed for hazardous environments, so where could it have been to cause such extreme damage?
+
+<QuoteRow author={AuthorUniserve}>
+BEAUTIFUL, isn't it? Fine piece of DYNATEK craftsmanship, but the DATA is what's TRULY valuable.
+
+In fact, this unit DATAMINED most of our information on SRI from this single head. 
+</QuoteRow>
+
+<QuoteRow author={AuthorTerminal} left>
+Did... did you not try to bring them back ?
+</QuoteRow>
+
+<QuoteRow author={AuthorUniserve} none>
+OF COURSE this unit did! We are NOT rogue programs. 
+
+Sadly, there was little left of the morphic mind.
+</QuoteRow>
+
+<QuoteRow author={AuthorTerminal} left none>
+How did you find it ?
+</QuoteRow>
+
+UNISERVE hesitates for a moment, caught off-guard by the question.
+
+<QuoteRow author={AuthorUniserve} none>
+It... fell out of a thumper during interplanetary transit.
+
+Want to see the NEXT ONE?
+</QuoteRow>
+
+You hear the hissing of a bulkhead unsealing in another dark corner of the room. *To be continued?*
+
+---
+
+<QuoteRow author={AuthorCAN} left>
+## "Be nice to MIKEs"
+
+Dynatek MI-5K, or "MIKE", is a ruggedized all-purpose interfacer belonging to our INTERPLANETARY LOGISTICS and OPERATIONAL SECURITY departments. Kindly donated by our Coalition partners at Heavenbreaker, the majority of these systems were sourced from the Martian wargrounds and have extensive colonial military experience.
+
+MIKEs are exceptionally durable, designed to withstand a range of hostile environmental conditions including physical impact, temperature, and pressure. Despite this, we ask that staff treat MIKEs with respect. The integrity of their on-board sensors and training experience are critical to smooth operation of SRI facilities. 
+
+We thank you on behalf of all MIKEs.
+
+- internal combat computer excels at inventory (though whether it enjoys the activity is under discussion)
+- protective flaps keep ocular display and hidden optics safe from hazards
+- luggable and draggable due to frame-linked durable carry handle
+</QuoteRow>
+

@@ -1425,6 +1425,14 @@ export const Images: ImageDetails[] = [
       "A Maple ISAAC and a BBM Interfacer/36 attempt to sit. It goes poorly.",
     artist: ArtistProkhor,
   },
+  {
+    id: "sri-mike",
+    src: getImageFromGlob("content/sri-mike.jpg"),
+    alt: "",
+    caption:
+      "Public memo about the MIKE interfacer. These would have been created and distributed by SRI's Internal Communications Department. It is possible that they wielded an Altar for preventing these documents from leaking to the public...",
+    artist: ArtistProkhor,
+  },
 
   // FAN ART
   {
